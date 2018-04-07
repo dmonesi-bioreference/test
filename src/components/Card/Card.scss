@@ -1,0 +1,24 @@
+.c-card {
+  border-radius: $border-radius-large;
+  box-shadow: $shadow-small;
+}
+
+.c-card__header {
+  background-color: $color-primary;
+  border-top-left-radius: $border-radius-medium;
+  border-top-right-radius: $border-radius-medium;
+  padding: $spacing-small $spacing-medium;
+  position: relative;
+}
+
+.c-card__title {
+  color: $color-white;
+  font-size: $font-size-heading-x-small;
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+}
+
+.c-card__body {
+  background-color: $color-white;
+  padding: $spacing-small $spacing-medium;
+}

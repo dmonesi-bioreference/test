@@ -1,0 +1,42 @@
+html {
+  font-family: $font-family;
+  line-height: $line-height-text;
+}
+
+h1 {
+  color: $color-black;
+  font-size: $font-size-heading-x-large;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-heading;
+}
+
+h2 {
+  color: $color-black;
+  font-size: $font-size-heading-large;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-heading;
+}
+
+h3 {
+  color: $color-black;
+  font-size: $font-size-heading-medium;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-heading;
+}
+
+h4 {
+  color: $color-black;
+  font-size: $font-size-heading-small;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-heading;
+}
+
+p {
+  color: $color-primary;
+  font-size: $font-size-text-medium;
+}
+
+small {
+  color: $color-accent;
+  font-size: $font-size-heading-x-small;
+}
