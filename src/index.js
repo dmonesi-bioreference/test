@@ -1,8 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+export { Button } from './components/Button';
+export { Card } from './components/Card';
+export { Flash } from './components/Flash';
+export { Fieldset } from './components/Fieldset';
+export { Icon } from './components/Icon';
+export { InputCheckbox } from './components/InputCheckbox';
+export { InputRadio } from './components/InputRadio';
+export { Select } from './components/InputSelect';
+export { InputText } from './components/InputText';
+export { InputTextArea } from './components/InputTextarea';
+export { LabelValue } from './components/LabelValue';
+export { Message } from './components/Message';
+export { Table, TableBody, TableCell, TableHeader, TableRow } from './components/Table';
