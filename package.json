@@ -21,7 +21,7 @@
     "build:sass-compile": "node-sass src/sass/styles.scss -o dist/css/pre",
     "build:autoprefixer": "postcss dist/css/pre/styles.css --use autoprefixer -d dist/css",
     "build:all": "npm run build:components && npm run build:sass-compile && npm run build:autoprefixer",
-    "deploy": "npm run build:all && standard-version && npm publish"
+    "deploy": "npm run build:all && npm version patch && npm publish"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^3.4.0",
@@ -41,7 +41,6 @@
     "node-sass-chokidar": "^1.2.2",
     "postcss-cli": "^5.0.0",
     "postcss-loader": "^2.1.3",
-    "sass-loader": "^6.0.7",
-    "standard-version": "^4.3.0"
+    "sass-loader": "^6.0.7"
   }
 }
