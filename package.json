@@ -1,6 +1,6 @@
 {
   "name": "@zolk/react-storybook-starter-kit",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "main": "dist/index.js",
   "dependencies": {
     "npm": "^5.8.0",
@@ -14,14 +14,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "build:storybook": "build-storybook -s public",
-    "build:components": "rm -rf dist && mkdir -p dist/components && babel -d dist src",
-    "build:sass-compile": "node-sass src/sass/styles.scss -o dist/css/pre",
-    "build:autoprefixer": "postcss dist/css/pre/styles.css --use autoprefixer -d dist/css",
-    "prepare": "npm run build:components && npm run build:sass-compile && npm run build:autoprefixer",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
-    "deploy": "npm run prepare && standard-version && npm publish"
+    "build:components": "rm -rf dist && mkdir -p dist/components && babel -d dist src",
+    "build:sass-compile": "node-sass src/sass/styles.scss -o dist/css/pre",
+    "build:autoprefixer": "postcss dist/css/pre/styles.css --use autoprefixer -d dist/css",
+    "build:all": "npm run build:components && npm run build:sass-compile && npm run build:autoprefixer",
+    "deploy": "npm run build:all && standard-version && npm publish"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^3.4.0",
