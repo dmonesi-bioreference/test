@@ -1,4 +1,4 @@
-import './sass/base.scss';
+import './css/styles.css'; // eslint-disable-line import/no-unresolved
 
 export { default as Button } from './components/Button';
 export { default as Card } from './components/Card';

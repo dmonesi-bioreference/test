@@ -6,7 +6,7 @@ import { withInfo } from '@storybook/addon-info';
 import { withKnobs } from '@storybook/addon-knobs';
 import { selectV2 } from '@storybook/addon-knobs/react';
 
-import '../sass/base.scss';
+import '../sass/styles.scss';
 
 import Button from '../components/Button';
 import Card from '../components/Card';

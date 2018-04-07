@@ -14,7 +14,6 @@ module.exports = {
         }, {
           loader: "sass-loader", options: {
             sourceMap: true,
-            data: '@import "./src/sass/variables";',
             includePaths: [
               path.resolve(__dirname, './src/components/')
             ]

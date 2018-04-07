@@ -1,5 +1,3 @@
-import './Table.scss';
-
 export { default } from './Table';
 export { default as TableCell } from './TableCell';
 export { default as TableHeader } from './TableHeader';
