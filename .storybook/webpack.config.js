@@ -13,10 +13,7 @@ module.exports = {
           }
         }, {
           loader: "sass-loader", options: {
-            sourceMap: true,
-            includePaths: [
-              path.resolve(__dirname, './src/components/')
-            ]
+            sourceMap: true
           }
         }, {
           loader: 'postcss-loader', options: {
