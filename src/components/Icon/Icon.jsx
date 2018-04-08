@@ -24,7 +24,7 @@ const Icon = ({
 }) => {
   const icons = {
     add: IconAdd,
-    arrow: IconArrowdown,
+    arrowdown: IconArrowdown,
     chat: IconChat,
     checkmark: IconCheckmark,
     close: IconClose,
