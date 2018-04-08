@@ -9,6 +9,7 @@ const InputRadio = ({
   invalidMessage,
   label,
   name,
+  onChange,
   readonly,
 }) => {
   const invalidClass = invalid ? '--has-errors' : '';
@@ -20,6 +21,7 @@ const InputRadio = ({
         defaultChecked={checked}
         disabled={disabled}
         name={name}
+        onChange={onChange}
         readOnly={readonly}
         type="radio"
       />
@@ -36,6 +38,7 @@ InputRadio.propTypes = {
   invalidMessage: PropTypes.string,
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
   readonly: PropTypes.bool,
 };
 
@@ -44,6 +47,7 @@ InputRadio.defaultProps = {
   disabled: false,
   invalid: false,
   invalidMessage: null,
+  onChange: () => {},
   readonly: false,
 };
 

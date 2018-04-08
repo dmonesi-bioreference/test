@@ -5,6 +5,7 @@ import Icon from '../../components/Icon';
 const Flash = ({
   collapsable,
   message,
+  onCloseClick,
   type,
 }) => {
   const bemClass = `c-flash--${type}`;
@@ -18,7 +19,12 @@ const Flash = ({
       <div className="c-flash__message">
         {message}
       </div>
-      {collapsable && <div className="c-flash__close"><Icon name="close" /></div>}
+      {collapsable &&
+        <div className="c-flash__close">
+          <button onClick={onCloseClick}>
+            <Icon name="close" />
+          </button>
+        </div>}
     </div>
   );
 };
@@ -26,6 +32,7 @@ const Flash = ({
 Flash.propTypes = {
   collapsable: PropTypes.bool,
   message: PropTypes.string.isRequired,
+  onCloseClick: PropTypes.func.isRequired,
   type: PropTypes.oneOf(['success', 'error']).isRequired,
 };
 

@@ -11,6 +11,8 @@ const InputText = ({
   invalidMessage,
   label,
   name,
+  onBlur,
+  onFocus,
   placeholder,
   readonly,
   type,
@@ -27,6 +29,8 @@ const InputText = ({
         data-icon={icon}
         disabled={disabled}
         name={name}
+        onBlur={onBlur}
+        onFocus={onFocus}
         placeholder={placeholder}
         readOnly={readonly}
         type={type}
@@ -45,6 +49,8 @@ InputText.propTypes = {
   invalidMessage: PropTypes.string,
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  onBlur: PropTypes.func,
+  onFocus: PropTypes.func,
   placeholder: PropTypes.string,
   readonly: PropTypes.bool,
   type: PropTypes.oneOf(['email', 'number', 'password', 'search', 'tel', 'url', 'text']).isRequired,
@@ -57,6 +63,8 @@ InputText.defaultProps = {
   icon: null,
   invalid: false,
   invalidMessage: null,
+  onBlur: null,
+  onFocus: null,
   placeholder: null,
   readonly: false,
   value: undefined,

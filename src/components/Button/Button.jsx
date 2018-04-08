@@ -6,6 +6,7 @@ const Button = ({
   disabled,
   icon,
   label,
+  onClick,
   size,
   type,
 }) => {
@@ -14,7 +15,7 @@ const Button = ({
   const bemClass = `c-btn${typeClass} ${sizeClass}`;
 
   return (
-    <button className={bemClass} disabled={disabled}>
+    <button className={bemClass} disabled={disabled} onClick={onClick}>
       {icon && <Icon name={icon} />}
       {label}
     </button>
@@ -25,6 +26,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   icon: PropTypes.oneOf(iconArray),
   label: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   type: PropTypes.oneOf(['primary', 'secondary', 'outline', 'black', 'danger', 'text']),
 };
@@ -32,6 +34,7 @@ Button.propTypes = {
 Button.defaultProps = {
   disabled: false,
   icon: null,
+  onClick: null,
   size: 'large',
   type: 'primary',
 };

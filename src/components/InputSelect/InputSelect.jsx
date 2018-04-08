@@ -9,6 +9,7 @@ const Select = ({
   invalidMessage,
   label,
   name,
+  onChange,
   options,
   readonly,
 }) => {
@@ -22,6 +23,7 @@ const Select = ({
       <select
         disabled={disabled}
         name={name}
+        onChange={onChange}
         readOnly={readonly}
       >
         {
@@ -43,6 +45,7 @@ Select.propTypes = {
   invalidMessage: PropTypes.string,
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
   options: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
@@ -55,6 +58,7 @@ Select.defaultProps = {
   hideLabel: false,
   invalid: false,
   invalidMessage: null,
+  onChange: () => {},
   readonly: false,
 };
 
