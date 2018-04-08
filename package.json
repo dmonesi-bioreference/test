@@ -7,16 +7,15 @@
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-inlinesvg": "^0.8.1",
     "react-scripts": "1.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build:storybook": "build-storybook -s public",
+    "build:storybook": "build-storybook",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public",
+    "storybook": "start-storybook -p 9009",
     "build:components": "rm -rf dist && mkdir -p dist/components && babel -d dist src",
     "build:sass-compile": "node-sass src/sass/styles.scss -o dist/css/pre",
     "build:autoprefixer": "postcss dist/css/pre/styles.css --use autoprefixer -d dist/css",
