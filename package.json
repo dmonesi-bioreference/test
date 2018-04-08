@@ -1,6 +1,6 @@
 {
   "name": "@zolk/react-storybook-starter-kit",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "main": "dist/index.js",
   "dependencies": {
     "npm": "^5.8.0",
