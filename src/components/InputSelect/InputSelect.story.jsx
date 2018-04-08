@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { withSmartKnobs } from 'storybook-addon-smart-knobs';
 import Select from '../InputSelect';
 
 const options = [
@@ -9,4 +10,5 @@ const options = [
 ];
 
 storiesOf('Inputs/Select', module)
+  .addDecorator(withSmartKnobs)
   .add('default', () => <Select name="select" label="Select Label" options={options} />);
