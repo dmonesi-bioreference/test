@@ -12,10 +12,10 @@
 @import '05_objects/main';
 @import '05_objects/positioning';
 
-@import './src/components/Button/Button';
-@import './src/components/Card/Card';
-@import './src/components/Table/Table';
-@import './src/components/Flash/Flash';
-@import './src/components/Icon/Icon';
-@import './src/components/LabelValue/LabelValue';
-@import './src/components/Message/Message';
+@import '06_components/button';
+@import '06_components/card';
+@import '06_components/table';
+@import '06_components/flash';
+@import '06_components/icon';
+@import '06_components/label-value';
+@import '06_components/message';
