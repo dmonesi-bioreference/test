@@ -8,6 +8,7 @@
   width: 100%;
 
   &:hover .c-flash__close {
+    path,
     polygon {
       fill: $color-white;
     }
@@ -42,6 +43,7 @@
   cursor: pointer;
   flex-shrink: 1;
 
+  path,
   polygon {
     fill: $color-accent;
   }
