@@ -17,10 +17,10 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009",
     "build:components": "rm -rf dist && mkdir -p dist/components && babel -d dist src",
-    "build:sass-compile": "node-sass src/sass/styles.scss -o dist/css/pre",
+    "build:sass": "node-sass src/sass/styles.scss -o dist/css/pre",
     "build:autoprefixer": "postcss dist/css/pre/styles.css --use autoprefixer -d dist/css",
-    "build:all": "npm run build:components && npm run build:sass-compile && npm run build:autoprefixer",
-    "deploy": "npm run build:all && npm version patch && npm publish"
+    "build:all": "npm run build:components && npm run build:sass && npm run build:autoprefixer",
+    "release": "npm run build:all && npm version patch && npm publish"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^3.4.0",
