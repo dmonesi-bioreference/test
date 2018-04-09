@@ -1,5 +1,5 @@
 {
-  "name": "@zolk/react-storybook-starter-kit",
+  "name": "@zolk/react-ui-starter-kit",
   "version": "0.2.9",
   "main": "dist/index.js",
   "dependencies": {

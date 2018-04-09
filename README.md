@@ -1,6 +1,6 @@
-# React Starter Component Library
+# React UI Component Library Starter Kit
 
-This project serves as a starter component library for new projects.
+This project serves as a starter component library for new projects in React.
 
 ## Powered by Storybook
 
