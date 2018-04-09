@@ -1,0 +1,17 @@
+.o-input--has-errors {
+  color: $color-error;
+
+  label,
+  legend {
+    color: inherit;
+  }
+}
+
+.o-input--hidden-label {
+  margin-bottom: 0;
+
+  span {
+    left: -10000px;
+    position: absolute;
+  }
+}
