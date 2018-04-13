@@ -18,7 +18,12 @@ By default, Storybook will run at `http://localhost:9009`.
 
 ## Creating a new component
 
-TODO
+To create all files associated with a new component, run:
+
+> `npm run plop`
+
+You'll be prompted for a component name. All necessary files will then be
+generated automatically.
 
 ## Deploying a Release
 
