@@ -28,6 +28,12 @@ module.exports = function (plop) {
         path: 'src/sass/06_components/{{dashCase name}}.scss',
         templateFile: 'plop/component/component.scss.hbs',
       },
+      {
+        type: 'append',
+        path: 'src/sass/styles.scss',
+        pattern: /$/,
+        templateFile: 'plop/component/styles.hbs',
+      },
     ],
   });
 };
