@@ -43,10 +43,10 @@ An example integration app is available in `example/integration-example`.
 
 To use these components in your app, add the package via NPM or Yarn:
 
-`yarn install @zolk/react-ui-starter-kit`
+> `yarn install @zolk/react-ui-starter-kit`
 
 Then import components as needed:
 
-`import { Button, Card } from '@zolk/react-ui-starter-kit';`
+> `import { Button, Card } from '@zolk/react-ui-starter-kit';`
 
 The necessary CSS will automatically be included.
