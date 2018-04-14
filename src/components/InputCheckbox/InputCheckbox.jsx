@@ -25,6 +25,7 @@ const InputCheckbox = ({
         readOnly={readonly}
         type="checkbox"
       />
+      <span className="o-input-focus" />
       {label}
       {invalid && <Message icon="error" text={invalidMessage} type="error" />}
     </label>

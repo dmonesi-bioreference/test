@@ -25,6 +25,7 @@ const InputRadio = ({
         readOnly={readonly}
         type="radio"
       />
+      <span className="o-input-focus" />
       {label}
       {invalid && <Message icon="error" text={invalidMessage} type="error" />}
     </label>
