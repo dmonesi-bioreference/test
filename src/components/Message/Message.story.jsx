@@ -5,7 +5,7 @@ import { selectV2 } from '@storybook/addon-knobs/react';
 import Message from '../Message';
 import { iconArray } from '../Icon';
 
-storiesOf('Message', module)
+storiesOf('Components/Message', module)
   .addDecorator(withSmartKnobs)
   .add('default', () => <Message text="Message text goes here." icon={selectV2('Icon', iconArray, undefined, null)} />)
   .add('info', () => <Message text="Message text goes here." type="info" icon={selectV2('Icon', iconArray, 'info', null)} />)

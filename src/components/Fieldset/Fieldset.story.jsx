@@ -5,7 +5,7 @@ import InputCheckbox from '../InputCheckbox';
 import InputRadio from '../InputRadio';
 import InputText from '../InputText';
 
-storiesOf('Inputs/Fieldset', module)
+storiesOf('Components/Inputs/Fieldset', module)
   .add('with text inputs', () => (
     <Fieldset label="Fieldset Label">
       <InputText name="field1" type="text" label="Field One" />

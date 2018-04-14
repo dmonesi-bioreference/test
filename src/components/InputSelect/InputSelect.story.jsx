@@ -9,6 +9,6 @@ const options = [
   { name: 'Option 3', value: 'option3' },
 ];
 
-storiesOf('Inputs/Select', module)
+storiesOf('Components/Inputs/Select', module)
   .addDecorator(withSmartKnobs)
   .add('default', () => <Select name="select" label="Select Label" options={options} />);

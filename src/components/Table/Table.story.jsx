@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Table, { TableBody, TableCell, TableHeader, TableRow } from '../Table';
 
-storiesOf('Table', module)
+storiesOf('Components/Table', module)
   .add('default', () => (
     <Table caption="Table Data">
       <TableHeader>
