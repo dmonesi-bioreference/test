@@ -24,6 +24,12 @@ module.exports = function (plop) {
         templateFile: 'plop/component/component.story.hbs',
       },
       {
+        type: 'append',
+        path: 'src/index.js',
+        pattern: /$/,
+        templateFile: 'plop/component/export.hbs',
+      },
+      {
         type: 'add',
         path: 'src/sass/06_components/{{dashCase name}}.scss',
         templateFile: 'plop/component/component.scss.hbs',
