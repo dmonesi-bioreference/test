@@ -1,13 +1,16 @@
 {
   "buildCommand": "npm run build:all",
   "src": {
-    "commit": true,
-    "push": true,
-    "tag": true,
+    "commit": false,
+    "push": false,
+    "tag": false,
     "addUntrackedFiles": true
   },
   "dist": {
     "repo": "git@github.com:8thlight/react-ui-starter-kit.git#dist",
+    "commit": true,
+    "push": true,
+    "tag": true,
     "github": {
       "release": true
     }
