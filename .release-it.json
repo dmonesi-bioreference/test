@@ -8,8 +8,8 @@
   "dist": {
     "repo": "git@github.com:8thlight/react-ui-starter-kit.git#dist",
     "files": [
-      "dist/*",
-      "package.json"
+      "/dist/*",
+      "/package.json"
     ],
     "addUntrackedFiles": true,
     "github": {
