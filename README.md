@@ -37,7 +37,7 @@ This command will:
 * Increment the patch version number.
 * Upload the release to NPM.
 
-## Integrating the library
+## Integrating the Library
 
 An example integration app is available in `example/integration-example`.
 
