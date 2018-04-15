@@ -9,7 +9,7 @@
     "repo": "git@github.com:8thlight/react-ui-starter-kit.git#dist",
     "baseDir": "./",
     "files": [
-      "dist/*",
+      "dist/**/*",
       "package.json"
     ],
     "commit": true,
