@@ -5,9 +5,14 @@
     "push": true,
     "tag": true
   },
+  "dist": {
+    "repo": "git@github.com:8thlight/react-ui-starter-kit.git#dist",
+    "github": {
+      "release": true
+    }
+  },
   "github": {
-    "release": true,
-    "assets": "dist/"
+    "release": false
   },
   "npm": {
     "publish": false
