@@ -3,15 +3,19 @@
   "src": {
     "commit": false,
     "push": false,
-    "tag": false,
-    "addUntrackedFiles": true
+    "tag": false
   },
   "dist": {
     "repo": "git@github.com:8thlight/react-ui-starter-kit.git#dist",
     "baseDir": "./",
+    "files": [
+      "dist/",
+      "package.json"
+    ],
     "commit": true,
     "push": true,
     "tag": true,
+    "addUntrackedFiles": true,
     "github": {
       "release": true
     }
