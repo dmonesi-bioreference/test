@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@zolk/react-ui-starter-kit@^0.2.10":
-  version "0.2.10"
-  resolved "https://registry.yarnpkg.com/@zolk/react-ui-starter-kit/-/react-ui-starter-kit-0.2.10.tgz#9a55f72c6c00d83fd4e8a8cc538bf4195a03af50"
+"@zolk/react-ui-starter-kit@^0.2.29":
+  version "0.2.29"
+  resolved "https://registry.yarnpkg.com/@zolk/react-ui-starter-kit/-/react-ui-starter-kit-0.2.29.tgz#8af825f9ca2cf6eff21153fd18d331804af078b4"
   dependencies:
     npm "^5.8.0"
     prop-types "^15.6.1"
