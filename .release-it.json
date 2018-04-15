@@ -1,8 +1,8 @@
 {
   "buildCommand": "npm run build:all",
   "src": {
-    "commit": false,
-    "push": false,
+    "commit": true,
+    "push": true,
     "tag": true
   },
   "dist": {
@@ -12,9 +12,6 @@
       "dist/**/*",
       "package.json"
     ],
-    "commit": true,
-    "push": true,
-    "tag": true,
     "addUntrackedFiles": true,
     "github": {
       "release": true
