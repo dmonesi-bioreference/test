@@ -24,7 +24,7 @@
     "build:sass": "node-sass src/sass/styles.scss -o dist/css/pre",
     "build:autoprefixer": "postcss dist/css/pre/styles.css --use autoprefixer -d dist/css && rm -rf dist/css/pre",
     "build:all": "npm run build:components && npm run build:sass && npm run build:autoprefixer",
-    "release": "release-it && rm -rf dist"
+    "release": "release-it -n -dry--run && rm -rf dist"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^3.4.0",
