@@ -1,4 +1,5 @@
 {
+  "buildCommand": "npm run build:all",
   "src": {
     "commit": true,
     "push": true,
