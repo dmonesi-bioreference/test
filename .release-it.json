@@ -8,7 +8,7 @@
   },
   "dist": {
     "repo": "git@github.com:8thlight/react-ui-starter-kit.git#dist",
-    "baseDir": "/",
+    "baseDir": "./",
     "commit": true,
     "push": true,
     "tag": true,
