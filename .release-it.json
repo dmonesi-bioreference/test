@@ -12,6 +12,7 @@
       "dist/",
       "package.json"
     ],
+    "addUntrackedFiles": true,
     "github": {
       "release": true
     }
