@@ -14,7 +14,7 @@ var _InputTextarea2 = _interopRequireDefault(_InputTextarea);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _react3.storiesOf)('Inputs/Textarea', module).addDecorator(_storybookAddonSmartKnobs.withSmartKnobs).add('default', function () {
+(0, _react3.storiesOf)('Components/Inputs/Textarea', module).addDecorator(_storybookAddonSmartKnobs.withSmartKnobs).add('default', function () {
   return _react2.default.createElement(_InputTextarea2.default, { name: 'textarea', label: 'Text Area' });
 }).add('error', function () {
   return _react2.default.createElement(_InputTextarea2.default, { name: 'textarea', label: 'Text Area Error State', invalidMessage: 'This field is required.', invalid: true });

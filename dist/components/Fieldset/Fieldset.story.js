@@ -24,7 +24,7 @@ var _InputText2 = _interopRequireDefault(_InputText);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _react3.storiesOf)('Inputs/Fieldset', module).add('with text inputs', function () {
+(0, _react3.storiesOf)('Components/Inputs/Fieldset', module).add('with text inputs', function () {
   return _react2.default.createElement(
     _Fieldset2.default,
     { label: 'Fieldset Label' },

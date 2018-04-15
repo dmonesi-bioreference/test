@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.TableRow = exports.TableHeader = exports.TableCell = exports.TableBody = exports.Table = exports.Message = exports.LabelValue = exports.InputTextArea = exports.InputText = exports.Select = exports.InputRadio = exports.InputCheckbox = exports.Icon = exports.Fieldset = exports.Flash = exports.Card = exports.Button = undefined;
+exports.Main = exports.TableRow = exports.TableHeader = exports.TableCell = exports.TableBody = exports.Table = exports.Message = exports.LabelValue = exports.InputTextArea = exports.InputText = exports.Select = exports.InputRadio = exports.InputCheckbox = exports.Icon = exports.Fieldset = exports.Flash = exports.Card = exports.Button = undefined;
 
 var _Button = require('./components/Button');
 
@@ -143,6 +143,15 @@ Object.defineProperty(exports, 'TableRow', {
   enumerable: true,
   get: function get() {
     return _Table.TableRow;
+  }
+});
+
+var _Main = require('./templates/Main');
+
+Object.defineProperty(exports, 'Main', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Main).default;
   }
 });
 

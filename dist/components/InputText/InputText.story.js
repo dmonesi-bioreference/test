@@ -18,7 +18,7 @@ var _Icon = require('../Icon');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _react3.storiesOf)('Inputs/Text', module).addDecorator(_storybookAddonSmartKnobs.withSmartKnobs).add('default', function () {
+(0, _react3.storiesOf)('Components/Inputs/Text', module).addDecorator(_storybookAddonSmartKnobs.withSmartKnobs).add('default', function () {
   return _react2.default.createElement(_InputText2.default, { name: 'text', type: 'text', label: 'Text Input' });
 }).add('password', function () {
   return _react2.default.createElement(_InputText2.default, { name: 'password', type: 'password', label: 'Password Field' });

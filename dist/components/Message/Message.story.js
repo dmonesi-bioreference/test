@@ -18,7 +18,7 @@ var _Icon = require('../Icon');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _react3.storiesOf)('Message', module).addDecorator(_storybookAddonSmartKnobs.withSmartKnobs).add('default', function () {
+(0, _react3.storiesOf)('Components/Message', module).addDecorator(_storybookAddonSmartKnobs.withSmartKnobs).add('default', function () {
   return _react2.default.createElement(_Message2.default, { text: 'Message text goes here.', icon: (0, _react4.selectV2)('Icon', _Icon.iconArray, undefined, null) });
 }).add('info', function () {
   return _react2.default.createElement(_Message2.default, { text: 'Message text goes here.', type: 'info', icon: (0, _react4.selectV2)('Icon', _Icon.iconArray, 'info', null) });

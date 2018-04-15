@@ -16,7 +16,7 @@ var _Card2 = _interopRequireDefault(_Card);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _react3.storiesOf)('Card', module).add('basic', function () {
+(0, _react3.storiesOf)('Components/Card', module).add('basic', function () {
   return _react2.default.createElement(_Card2.default, { title: 'Card', content: 'Card with basic content' });
 }).add('with component', function () {
   return _react2.default.createElement(

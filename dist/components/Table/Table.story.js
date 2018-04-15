@@ -12,7 +12,7 @@ var _Table2 = _interopRequireDefault(_Table);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _react3.storiesOf)('Table', module).add('default', function () {
+(0, _react3.storiesOf)('Components/Table', module).add('default', function () {
   return _react2.default.createElement(
     _Table2.default,
     { caption: 'Table Data' },

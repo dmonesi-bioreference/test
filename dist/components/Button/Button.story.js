@@ -18,7 +18,7 @@ var _Icon = require('../Icon');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _react3.storiesOf)('Button', module).addDecorator(_storybookAddonSmartKnobs.withSmartKnobs).add('primary', function () {
+(0, _react3.storiesOf)('Components/Button', module).addDecorator(_storybookAddonSmartKnobs.withSmartKnobs).add('primary', function () {
   return _react2.default.createElement(_Button2.default, { label: 'Primary Button', type: 'primary' });
 }).add('primary with icon', function () {
   return _react2.default.createElement(_Button2.default, { label: 'Primary Icon Button', type: 'primary', icon: (0, _react4.selectV2)('Icon', _Icon.iconArray, 'checkmark', null) });

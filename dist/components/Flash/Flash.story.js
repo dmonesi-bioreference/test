@@ -14,7 +14,7 @@ var _Flash2 = _interopRequireDefault(_Flash);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _react3.storiesOf)('Flash', module).addDecorator(_storybookAddonSmartKnobs.withSmartKnobs).add('default', function () {
+(0, _react3.storiesOf)('Components/Flash', module).addDecorator(_storybookAddonSmartKnobs.withSmartKnobs).add('default', function () {
   return _react2.default.createElement(_Flash2.default, { message: 'This is a flash message.', type: 'success' });
 }).add('collapsable', function () {
   return _react2.default.createElement(_Flash2.default, { message: 'This is a flash message that can be closed.', type: 'success', collapsable: true });
