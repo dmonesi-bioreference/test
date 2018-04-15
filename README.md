@@ -36,6 +36,7 @@ This command will:
 * Pipe CSS through [Autoprefixer](https://github.com/postcss/autoprefixer).
 * Increment the patch version number.
 * Upload the release to NPM.
+* Tag the release on GitHub.
 
 ## Integrating the Library
 
