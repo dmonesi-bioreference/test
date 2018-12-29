@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Message from '../../components/Message';
+import Message from '../Message';
 
-const InputCheckbox = ({
+const InputRadio = ({
   checked,
   disabled,
   invalid,
@@ -23,7 +23,7 @@ const InputCheckbox = ({
         name={name}
         onChange={onChange}
         readOnly={readonly}
-        type="checkbox"
+        type="radio"
       />
       <span className="o-input-focus" />
       {label}
@@ -32,7 +32,7 @@ const InputCheckbox = ({
   );
 };
 
-InputCheckbox.propTypes = {
+InputRadio.propTypes = {
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
   invalid: PropTypes.bool,
@@ -43,7 +43,7 @@ InputCheckbox.propTypes = {
   readonly: PropTypes.bool,
 };
 
-InputCheckbox.defaultProps = {
+InputRadio.defaultProps = {
   checked: false,
   disabled: false,
   invalid: false,
@@ -52,4 +52,4 @@ InputCheckbox.defaultProps = {
   readonly: false,
 };
 
-export default InputCheckbox;
+export default InputRadio;

@@ -1,14 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Icon, { iconArray } from '../../components/Icon';
+import Icon, { iconArray } from '../Icon';
 
 const Button = ({
-  disabled,
-  icon,
-  label,
-  onClick,
-  size,
-  type,
+  disabled, icon, label, onClick, size, type,
 }) => {
   const typeClass = type ? `--${type}` : '';
   const sizeClass = size ? `c-btn--${size}` : '';

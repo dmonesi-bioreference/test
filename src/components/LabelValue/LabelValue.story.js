@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withSmartKnobs } from 'storybook-addon-smart-knobs';
-import LabelValue from '../LabelValue';
+import LabelValue from '.';
 
 storiesOf('Components/Label Value', module)
   .addDecorator(withSmartKnobs)

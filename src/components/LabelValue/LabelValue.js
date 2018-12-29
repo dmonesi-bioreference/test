@@ -2,10 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const LabelValue = ({
-  children,
-  label,
-  reverse,
-  value,
+  children, label, reverse, value,
 }) => {
   const reverseClass = reverse ? '--reverse' : '';
   const bemClass = `c-label-value${reverseClass}`;

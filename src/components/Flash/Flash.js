@@ -1,12 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Icon from '../../components/Icon';
+import Icon from '../Icon';
 
 const Flash = ({
-  collapsable,
-  message,
-  onCloseClick,
-  type,
+  collapsable, message, onCloseClick, type,
 }) => {
   const bemClass = `c-flash--${type}`;
 
@@ -16,15 +13,14 @@ const Flash = ({
         {type === 'error' && <Icon name="error" />}
         {type === 'success' && <Icon name="checkmark" />}
       </div>
-      <div className="c-flash__message">
-        {message}
-      </div>
-      {collapsable &&
+      <div className="c-flash__message">{message}</div>
+      {collapsable && (
         <div className="c-flash__close">
           <button onClick={onCloseClick}>
             <Icon name="close" />
           </button>
-        </div>}
+        </div>
+      )}
     </div>
   );
 };

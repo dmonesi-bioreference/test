@@ -1,12 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Message from '../../components/Message';
+import Message from '../Message';
 
 const Fieldset = ({
-  children,
-  invalid,
-  invalidMessage,
-  label,
+  children, invalid, invalidMessage, label,
 }) => {
   const invalidClass = invalid ? '--has-errors' : '';
   const bemClass = `o-input${invalidClass}`;

@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withSmartKnobs } from 'storybook-addon-smart-knobs';
-import InputRadio from '../InputRadio';
+import InputCheckbox from '.';
 
-storiesOf('Components/Inputs/Radio', module)
+storiesOf('Components/Inputs/Checkbox', module)
   .addDecorator(withSmartKnobs)
-  .add('default', () => <InputRadio name="radio1" label="Radio Input" />);
+  .add('default', () => <InputCheckbox name="checkbox1" label="Checkbox Input" />);
