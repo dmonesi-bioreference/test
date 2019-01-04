@@ -11,7 +11,7 @@ addDecorator(withKnobs);
 addDecorator(checkA11y);
 
 function loadStories() {
-  const req = require.context('../src', true, /\.story\.jsx$/);
+  const req = require.context('../src', true, /\.story\.js$/);
   req.keys().forEach(filename => req(filename));
 }
 

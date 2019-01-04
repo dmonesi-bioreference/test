@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Message from '../../components/Message';
-import { iconArray } from '../../components/Icon';
+import Message from '../Message';
 
-const InputText = ({
+const InputTextArea = ({
   disabled,
   hideLabel,
-  icon,
   invalid,
   invalidMessage,
   label,
@@ -15,7 +13,6 @@ const InputText = ({
   onFocus,
   placeholder,
   readonly,
-  type,
   value,
 }) => {
   const invalidClass = invalid ? '--has-errors' : '';
@@ -25,15 +22,13 @@ const InputText = ({
   return (
     <label className={bemClass}>
       <span>{label}</span>
-      <input
-        data-icon={icon}
+      <textarea
         disabled={disabled}
         name={name}
         onBlur={onBlur}
         onFocus={onFocus}
         placeholder={placeholder}
         readOnly={readonly}
-        type={type}
         value={value}
       />
       {invalid && <Message icon="error" text={invalidMessage} type="error" />}
@@ -41,10 +36,9 @@ const InputText = ({
   );
 };
 
-InputText.propTypes = {
+InputTextArea.propTypes = {
   disabled: PropTypes.bool,
   hideLabel: PropTypes.bool,
-  icon: PropTypes.oneOf(iconArray),
   invalid: PropTypes.bool,
   invalidMessage: PropTypes.string,
   label: PropTypes.string.isRequired,
@@ -53,14 +47,12 @@ InputText.propTypes = {
   onFocus: PropTypes.func,
   placeholder: PropTypes.string,
   readonly: PropTypes.bool,
-  type: PropTypes.oneOf(['email', 'number', 'password', 'search', 'tel', 'url', 'text']).isRequired,
   value: PropTypes.string,
 };
 
-InputText.defaultProps = {
+InputTextArea.defaultProps = {
   disabled: false,
   hideLabel: false,
-  icon: null,
   invalid: false,
   invalidMessage: null,
   onBlur: null,
@@ -70,4 +62,4 @@ InputText.defaultProps = {
   value: undefined,
 };
 
-export default InputText;
+export default InputTextArea;

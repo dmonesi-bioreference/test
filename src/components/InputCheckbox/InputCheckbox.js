@@ -1,65 +1,55 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Message from '../../components/Message';
+import Message from '../Message';
 
-const Select = ({
+const InputCheckbox = ({
+  checked,
   disabled,
-  hideLabel,
   invalid,
   invalidMessage,
   label,
   name,
   onChange,
-  options,
   readonly,
 }) => {
   const invalidClass = invalid ? '--has-errors' : '';
-  const hideLabelClass = hideLabel ? 'o-input--hidden-label' : '';
-  const bemClass = `o-input${invalidClass} ${hideLabelClass}`;
+  const bemClass = `o-input${invalidClass}`;
 
   return (
     <label className={bemClass}>
-      <span>{label}</span>
-      <select
+      <input
+        defaultChecked={checked}
         disabled={disabled}
         name={name}
         onChange={onChange}
         readOnly={readonly}
-      >
-        {
-          options.map(option => (
-            <option key={option.value.toString()} value={option.value}>
-              {option.name}
-            </option>))
-        }
-      </select>
+        type="checkbox"
+      />
+      <span className="o-input-focus" />
+      {label}
       {invalid && <Message icon="error" text={invalidMessage} type="error" />}
     </label>
   );
 };
 
-Select.propTypes = {
+InputCheckbox.propTypes = {
+  checked: PropTypes.bool,
   disabled: PropTypes.bool,
-  hideLabel: PropTypes.bool,
   invalid: PropTypes.bool,
   invalidMessage: PropTypes.string,
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
-  options: PropTypes.arrayOf(PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-  }).isRequired).isRequired,
   readonly: PropTypes.bool,
 };
 
-Select.defaultProps = {
+InputCheckbox.defaultProps = {
+  checked: false,
   disabled: false,
-  hideLabel: false,
   invalid: false,
   invalidMessage: null,
   onChange: () => {},
   readonly: false,
 };
 
-export default Select;
+export default InputCheckbox;

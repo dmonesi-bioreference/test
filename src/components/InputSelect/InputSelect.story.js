@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withSmartKnobs } from 'storybook-addon-smart-knobs';
-import Select from '../InputSelect';
+import Select from '.';
 
 const options = [
   { name: 'Option 1', value: 'option1' },

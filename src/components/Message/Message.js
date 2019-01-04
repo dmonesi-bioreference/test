@@ -1,12 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Icon, { iconArray } from '../../components/Icon';
+import Icon, { iconArray } from '../Icon';
 
-const Message = ({
-  icon,
-  text,
-  type,
-}) => {
+const Message = ({ icon, text, type }) => {
   const typeClass = type ? `--${type}` : '';
   const bemClass = `c-message${typeClass}`;
   return (
