@@ -13,6 +13,7 @@ const InputTextArea = ({
   onFocus,
   placeholder,
   readonly,
+  required,
   value,
 }) => {
   const invalidClass = invalid ? '--has-errors' : '';
@@ -30,6 +31,7 @@ const InputTextArea = ({
         onFocus={onFocus}
         placeholder={placeholder}
         readOnly={readonly}
+        required={required}
         value={value}
       />
       {invalid && <Message icon="error" text={invalidMessage} type="error" />}
@@ -48,6 +50,7 @@ InputTextArea.propTypes = {
   onFocus: PropTypes.func,
   placeholder: PropTypes.string,
   readonly: PropTypes.bool,
+  required: PropTypes.bool,
   value: PropTypes.string,
 };
 
@@ -60,6 +63,7 @@ InputTextArea.defaultProps = {
   onFocus: null,
   placeholder: null,
   readonly: false,
+  required: false,
   value: undefined,
 };
 

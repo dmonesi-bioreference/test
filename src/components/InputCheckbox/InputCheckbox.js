@@ -11,6 +11,7 @@ const InputCheckbox = ({
   name,
   onChange,
   readonly,
+  required,
 }) => {
   const invalidClass = invalid ? '--has-errors' : '';
   const bemClass = `o-input${invalidClass}`;
@@ -24,6 +25,7 @@ const InputCheckbox = ({
         name={name}
         onChange={onChange}
         readOnly={readonly}
+        required={required}
         type="checkbox"
       />
       <span className="o-input-focus" />
@@ -42,6 +44,7 @@ InputCheckbox.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   readonly: PropTypes.bool,
+  required: PropTypes.bool,
 };
 
 InputCheckbox.defaultProps = {
@@ -51,6 +54,7 @@ InputCheckbox.defaultProps = {
   invalidMessage: null,
   onChange: () => {},
   readonly: false,
+  required: false,
 };
 
 export default InputCheckbox;

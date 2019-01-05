@@ -15,6 +15,7 @@ const InputText = ({
   onFocus,
   placeholder,
   readonly,
+  required,
   type,
   value,
 }) => {
@@ -54,6 +55,7 @@ InputText.propTypes = {
   onFocus: PropTypes.func,
   placeholder: PropTypes.string,
   readonly: PropTypes.bool,
+  required: PropTypes.bool,
   type: PropTypes.oneOf(['email', 'number', 'password', 'search', 'tel', 'url', 'text']).isRequired,
   value: PropTypes.string,
 };
@@ -68,6 +70,7 @@ InputText.defaultProps = {
   onFocus: null,
   placeholder: null,
   readonly: false,
+  required: false,
   value: undefined,
 };
 
