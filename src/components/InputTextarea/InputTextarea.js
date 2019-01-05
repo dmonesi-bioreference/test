@@ -10,6 +10,7 @@ const InputTextArea = ({
   label,
   name,
   onBlur,
+  onChange,
   onFocus,
   placeholder,
   readonly,
@@ -28,6 +29,7 @@ const InputTextArea = ({
         disabled={disabled}
         name={name}
         onBlur={onBlur}
+        onChange={onChange}
         onFocus={onFocus}
         placeholder={placeholder}
         readOnly={readonly}
@@ -47,6 +49,7 @@ InputTextArea.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
+  onChange: PropTypes.func,
   onFocus: PropTypes.func,
   placeholder: PropTypes.string,
   readonly: PropTypes.bool,
@@ -60,6 +63,7 @@ InputTextArea.defaultProps = {
   invalid: false,
   invalidMessage: null,
   onBlur: null,
+  onChange: null,
   onFocus: null,
   placeholder: null,
   readonly: false,

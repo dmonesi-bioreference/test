@@ -12,6 +12,7 @@ const InputText = ({
   label,
   name,
   onBlur,
+  onChange,
   onFocus,
   placeholder,
   readonly,
@@ -32,9 +33,11 @@ const InputText = ({
         disabled={disabled}
         name={name}
         onBlur={onBlur}
+        onChange={onChange}
         onFocus={onFocus}
         placeholder={placeholder}
         readOnly={readonly}
+        required={required}
         type={type}
         value={value}
       />
@@ -52,6 +55,7 @@ InputText.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
+  onChange: PropTypes.func,
   onFocus: PropTypes.func,
   placeholder: PropTypes.string,
   readonly: PropTypes.bool,
@@ -67,6 +71,7 @@ InputText.defaultProps = {
   invalid: false,
   invalidMessage: null,
   onBlur: null,
+  onChange: null,
   onFocus: null,
   placeholder: null,
   readonly: false,
