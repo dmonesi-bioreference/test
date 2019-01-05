@@ -4,8 +4,6 @@ import { action } from '@storybook/addon-actions';
 import { checkA11y } from '@storybook/addon-a11y';
 import { withInfo } from '@storybook/addon-info';
 import { withKnobs } from '@storybook/addon-knobs';
-import '../src/sass/styles.scss';
-
 addDecorator((story, context) => withInfo('')(story)(context));
 addDecorator(withKnobs);
 addDecorator(checkA11y);
