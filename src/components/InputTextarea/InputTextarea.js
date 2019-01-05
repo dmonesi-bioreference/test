@@ -23,6 +23,7 @@ const InputTextArea = ({
     <label className={bemClass}>
       <span>{label}</span>
       <textarea
+        aria-invalid={invalid}
         disabled={disabled}
         name={name}
         onBlur={onBlur}

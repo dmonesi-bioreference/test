@@ -20,7 +20,13 @@ const Select = ({
   return (
     <label className={bemClass}>
       <span>{label}</span>
-      <select disabled={disabled} name={name} onChange={onChange} readOnly={readonly}>
+      <select
+        aria-invalid={invalid}
+        disabled={disabled}
+        name={name}
+        onChange={onChange}
+        readOnly={readonly}
+      >
         {options.map(option => (
           <option key={option.value.toString()} value={option.value}>
             {option.name}

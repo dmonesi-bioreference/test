@@ -18,6 +18,7 @@ const InputCheckbox = ({
   return (
     <label className={bemClass}>
       <input
+        aria-invalid={invalid}
         defaultChecked={checked}
         disabled={disabled}
         name={name}

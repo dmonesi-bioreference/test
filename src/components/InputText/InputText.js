@@ -26,6 +26,7 @@ const InputText = ({
     <label className={bemClass}>
       <span>{label}</span>
       <input
+        aria-invalid={invalid}
         data-icon={icon}
         disabled={disabled}
         name={name}
