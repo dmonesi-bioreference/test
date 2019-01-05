@@ -23,9 +23,7 @@
     "storybook": "start-storybook -p 9009",
     "plop": "plop",
     "build:components": "rm -rf dist && mkdir -p dist/components && babel -d dist src",
-    "build:sass": "node-sass src/sass/styles.scss -o dist/css/pre",
-    "build:autoprefixer": "postcss dist/css/pre/styles.css --use autoprefixer -d dist/css && rm -rf dist/css/pre",
-    "build:all": "npm run build:components && npm run build:sass && npm run build:autoprefixer",
+    "build:all": "npm run build:components",
     "release": "npm run build:all && npm version patch && npm publish && git push && git push --tags"
   },
   "devDependencies": {
@@ -51,11 +49,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.7.0",
     "moment": "^2.22.2",
-    "node-sass": "^4.8.3",
     "plop": "^2.0.0",
-    "postcss-cli": "^5.0.0",
-    "postcss-loader": "^2.1.3",
-    "sass-loader": "^6.0.7",
     "storybook-addon-smart-knobs": "^4.1.0"
   }
 }
