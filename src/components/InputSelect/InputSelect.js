@@ -12,6 +12,7 @@ const Select = ({
   onChange,
   options,
   readonly,
+  required,
 }) => {
   const invalidClass = invalid ? '--has-errors' : '';
   const hideLabelClass = hideLabel ? 'o-input--hidden-label' : '';
@@ -20,7 +21,14 @@ const Select = ({
   return (
     <label className={bemClass}>
       <span>{label}</span>
-      <select disabled={disabled} name={name} onChange={onChange} readOnly={readonly}>
+      <select
+        aria-invalid={invalid}
+        disabled={disabled}
+        name={name}
+        onChange={onChange}
+        readOnly={readonly}
+        required={required}
+      >
         {options.map(option => (
           <option key={option.value.toString()} value={option.value}>
             {option.name}
@@ -45,6 +53,7 @@ Select.propTypes = {
     value: PropTypes.string.isRequired,
   }).isRequired).isRequired,
   readonly: PropTypes.bool,
+  required: PropTypes.bool,
 };
 
 Select.defaultProps = {
@@ -54,6 +63,7 @@ Select.defaultProps = {
   invalidMessage: null,
   onChange: () => {},
   readonly: false,
+  required: false,
 };
 
 export default Select;

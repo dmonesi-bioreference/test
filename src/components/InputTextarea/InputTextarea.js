@@ -10,9 +10,11 @@ const InputTextArea = ({
   label,
   name,
   onBlur,
+  onChange,
   onFocus,
   placeholder,
   readonly,
+  required,
   value,
 }) => {
   const invalidClass = invalid ? '--has-errors' : '';
@@ -23,12 +25,15 @@ const InputTextArea = ({
     <label className={bemClass}>
       <span>{label}</span>
       <textarea
+        aria-invalid={invalid}
         disabled={disabled}
         name={name}
         onBlur={onBlur}
+        onChange={onChange}
         onFocus={onFocus}
         placeholder={placeholder}
         readOnly={readonly}
+        required={required}
         value={value}
       />
       {invalid && <Message icon="error" text={invalidMessage} type="error" />}
@@ -44,9 +49,11 @@ InputTextArea.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
+  onChange: PropTypes.func,
   onFocus: PropTypes.func,
   placeholder: PropTypes.string,
   readonly: PropTypes.bool,
+  required: PropTypes.bool,
   value: PropTypes.string,
 };
 
@@ -56,9 +63,11 @@ InputTextArea.defaultProps = {
   invalid: false,
   invalidMessage: null,
   onBlur: null,
+  onChange: null,
   onFocus: null,
   placeholder: null,
   readonly: false,
+  required: false,
   value: undefined,
 };
 
