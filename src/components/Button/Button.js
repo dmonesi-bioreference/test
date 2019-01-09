@@ -1,19 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Icon, { iconArray } from '../Icon';
+import ButtonStyled from './Button.styles';
 
 const Button = ({
   disabled, icon, label, onClick, size, type,
 }) => {
-  const typeClass = type ? `--${type}` : '';
-  const sizeClass = size ? `c-btn--${size}` : '';
-  const bemClass = `c-btn${typeClass} ${sizeClass}`;
-
   return (
-    <button className={bemClass} disabled={disabled} onClick={onClick}>
+    <ButtonStyled disabled={disabled} onClick={onClick} data-size={size} data-type={type}>
       {icon && <Icon name={icon} />}
       {label}
-    </button>
+    </ButtonStyled>
   );
 };
 
