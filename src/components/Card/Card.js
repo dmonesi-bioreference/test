@@ -1,21 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import CardStyled from './Card.styles';
 
-const Card = ({
-  children,
-  content,
-  title,
-}) => {
+const Card = ({ children, content, title }) => {
   return (
-    <div className="c-card">
-      <header className="c-card__header">
-        <div className="c-card__title">{title}</div>
+    <CardStyled>
+      <header className="header">
+        <div className="title">{title}</div>
       </header>
-      <div className="c-card__body">
+      <div className="body">
         {children}
         {content}
       </div>
-    </div>
+    </CardStyled>
   );
 };
 
