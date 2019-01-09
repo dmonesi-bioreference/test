@@ -1,20 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import LabelValueStyled from './LabelValue.styles';
 
 const LabelValue = ({
   children, label, reverse, value,
 }) => {
-  const reverseClass = reverse ? '--reverse' : '';
-  const bemClass = `c-label-value${reverseClass}`;
-
   return (
-    <dl className={bemClass}>
-      <dt className="c-label-value__label">{label}</dt>
-      <dd className="c-label-value__value">
+    <LabelValueStyled data-reverse={reverse}>
+      <dt>{label}</dt>
+      <dd>
         {value}
         {children}
       </dd>
-    </dl>
+    </LabelValueStyled>
   );
 };
 
