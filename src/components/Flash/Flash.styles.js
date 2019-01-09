@@ -1,0 +1,55 @@
+import styled from 'styled-components';
+import t from '../GlobalStyle/settings/tokens';
+
+const FlashStyled = styled.div`
+  align-items: center;
+  background-color: ${t.colorBackground};
+  box-shadow: ${t.shadowSubtle};
+  display: flex;
+  margin: ${t.spacingSmall} 0;
+  padding: ${t.spacingXSmall} ${t.spacingSmall};
+  width: 100%;
+
+  .message {
+    flex-grow: 2;
+  }
+
+  .icon {
+    flex-shrink: 1;
+    margin-right: ${t.spacingXSmall};
+
+    path,
+    polygon {
+      fill: ${t.colorWhite};
+    }
+  }
+
+  .close {
+    cursor: pointer;
+    flex-shrink: 1;
+
+    path,
+    polygon {
+      fill: ${t.colorAccent};
+    }
+  }
+
+  &:hover .close {
+    path,
+    polygon {
+      fill: ${t.colorWhite};
+    }
+  }
+
+  &[data-type='success'] {
+    background-color: ${t.colorSuccess};
+    color: ${t.colorWhite};
+  }
+
+  &[data-type='error'] {
+    background-color: ${t.colorError};
+    color: ${t.colorWhite};
+  }
+`;
+
+export default FlashStyled;
