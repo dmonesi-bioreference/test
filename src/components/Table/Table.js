@@ -1,17 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import TableStyled from './Table.styles';
 
-const Table = ({
-  caption,
-  children,
-}) => {
-  const bemClass = 'c-table';
-
+const Table = ({ caption, children }) => {
   return (
-    <table className={bemClass}>
+    <TableStyled>
       <caption>{caption}</caption>
       {children}
-    </table>
+    </TableStyled>
   );
 };
 
@@ -20,7 +16,6 @@ Table.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-Table.defaultProps = {
-};
+Table.defaultProps = {};
 
 export default Table;

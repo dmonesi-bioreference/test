@@ -1,27 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../Icon';
+import FlashStyled from './Flash.styles';
 
 const Flash = ({
   collapsable, message, onCloseClick, type,
 }) => {
-  const bemClass = `c-flash--${type}`;
-
   return (
-    <div className={bemClass}>
-      <div className="c-flash__icon">
+    <FlashStyled data-type={type}>
+      <div className="icon">
         {type === 'error' && <Icon name="error" />}
         {type === 'success' && <Icon name="checkmark" />}
       </div>
-      <div className="c-flash__message">{message}</div>
+      <div className="message">{message}</div>
       {collapsable && (
-        <div className="c-flash__close">
+        <div className="close">
           <button onClick={onCloseClick}>
             <Icon name="close" />
           </button>
         </div>
       )}
-    </div>
+    </FlashStyled>
   );
 };
 

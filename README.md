@@ -22,7 +22,7 @@ To create all files associated with a new component, run:
 
 > `npm run plop`
 
-You'll be prompted for a component name. All necessary files, including SCSS,
+You'll be prompted for a component name. All necessary files
 will then be generated automatically.
 
 ## Deploying a Release
@@ -31,12 +31,10 @@ will then be generated automatically.
 
 This command will:
 
-* Compile all JavaScript from ES2015 to ES5.
-* Compile SCSS to CSS.
-* Pipe CSS through [Autoprefixer](https://github.com/postcss/autoprefixer).
-* Increment the patch version number.
-* Upload the release to NPM.
-* Tag the release on GitHub.
+- Compile all JavaScript from ES2015 to ES5.
+- Increment the patch version number.
+- Upload the release to NPM.
+- Tag the release on GitHub.
 
 ## Integrating the Library
 
@@ -48,6 +46,18 @@ To use these components in your app, add the package via NPM or Yarn:
 
 Then import components as needed:
 
-> `import { Button, Card } from '@zolk/react-ui-starter-kit';`
+```
+import { Button, Card } from '@zolk/react-ui-starter-kit';
+```
 
-The necessary CSS will automatically be included.
+It is also highly recommend that you include the GlobalStyle component
+in your root App component:
+
+```
+import { GlobalStyle } from '@zolk/react-ui-starter-kit';
+
+<App>
+  <GlobalStyle />
+  {children}
+</App>
+```

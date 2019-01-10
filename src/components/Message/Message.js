@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import MessageStyled from './Message.styles';
 import Icon, { iconArray } from '../Icon';
 
 const Message = ({ icon, text, type }) => {
-  const typeClass = type ? `--${type}` : '';
-  const bemClass = `c-message${typeClass}`;
   return (
-    <div className={bemClass}>
+    <MessageStyled data-type={type}>
       {icon && <Icon name={icon} />}
       {text}
-    </div>
+    </MessageStyled>
   );
 };
 

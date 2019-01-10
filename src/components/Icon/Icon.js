@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import IconStyled from './Icon.styles';
 
 import IconAdd from '../../icons/add.svg';
 import IconArrowdown from '../../icons/arrowdown.svg';
@@ -19,9 +20,7 @@ import IconSignout from '../../icons/signout.svg';
 import IconTrash from '../../icons/trash.svg';
 import IconUpload from '../../icons/upload.svg';
 
-const Icon = ({
-  name,
-}) => {
+const Icon = ({ name }) => {
   const icons = {
     add: IconAdd,
     arrowdown: IconArrowdown,
@@ -45,9 +44,9 @@ const Icon = ({
   const IconComponent = icons[name];
 
   return (
-    <div className="c-icon">
+    <IconStyled>
       <IconComponent />
-    </div>
+    </IconStyled>
   );
 };
 
@@ -77,7 +76,6 @@ Icon.propTypes = {
   name: PropTypes.oneOf(iconArray).isRequired,
 };
 
-Icon.defaultProps = {
-};
+Icon.defaultProps = {};
 
 export default Icon;

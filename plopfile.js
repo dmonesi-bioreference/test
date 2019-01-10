@@ -22,6 +22,11 @@ module.exports = function (plop) {
       },
       {
         type: 'add',
+        path: 'src/components/{{properCase name}}/{{properCase name}}.styles.js',
+        templateFile: 'plop/component/component.styles.hbs',
+      },
+      {
+        type: 'add',
         path: 'src/components/{{properCase name}}/{{properCase name}}.story.js',
         templateFile: 'plop/component/component.story.hbs',
       },
@@ -30,17 +35,6 @@ module.exports = function (plop) {
         path: 'src/index.js',
         pattern: /$/,
         templateFile: 'plop/component/export.hbs',
-      },
-      {
-        type: 'add',
-        path: 'src/sass/06_components/{{dashCase name}}.scss',
-        templateFile: 'plop/component/component.scss.hbs',
-      },
-      {
-        type: 'append',
-        path: 'src/sass/styles.scss',
-        pattern: /$/,
-        templateFile: 'plop/component/styles.hbs',
       },
     ],
   });

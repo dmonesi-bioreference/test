@@ -4,11 +4,17 @@ import { action } from '@storybook/addon-actions';
 import { checkA11y } from '@storybook/addon-a11y';
 import { withInfo } from '@storybook/addon-info';
 import { withKnobs } from '@storybook/addon-knobs';
-import '../src/sass/styles.scss';
+import GlobalStyle from '../src/components/GlobalStyle';
 
 addDecorator((story, context) => withInfo('')(story)(context));
 addDecorator(withKnobs);
 addDecorator(checkA11y);
+addDecorator(story => (
+  <>
+    <GlobalStyle />
+    {story()}
+  </>
+));
 
 function loadStories() {
   const req = require.context('../src', true, /\.story\.js$/);
