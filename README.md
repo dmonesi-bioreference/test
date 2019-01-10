@@ -46,4 +46,18 @@ To use these components in your app, add the package via NPM or Yarn:
 
 Then import components as needed:
 
-> `import { Button, Card } from '@zolk/react-ui-starter-kit';`
+```
+import { Button, Card } from '@zolk/react-ui-starter-kit';
+```
+
+It is also highly recommend that you include the GlobalStyle component
+in your root App component:
+
+```
+import { GlobalStyle } from '@zolk/react-ui-starter-kit';
+
+<App>
+  <GlobalStyle />
+  {children}
+</App>
+```
