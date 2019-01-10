@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import t from '../GlobalStyle/settings/tokens';
+import IconStyled from '../Icon/Icon.styles';
 
 const ButtonStyled = styled.button`
   align-items: center;
@@ -34,7 +35,7 @@ const ButtonStyled = styled.button`
     }
   }
 
-  .c-icon {
+  ${IconStyled} {
     margin-left: -0.3rem;
     margin-right: ${t.spacingSmall};
 
