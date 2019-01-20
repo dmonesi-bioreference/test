@@ -11,17 +11,23 @@ storiesOf('Templates/Main', module)
   .add('Example Form', () => (
     <Main>
       <Card title="Register">
-        <Message text="Please fill out this form to continue" icon="info" />
+        <Message icon="info">Please fill out this form to continue</Message>
         <InputText name="text" type="text" label="First Name" />
         <InputText name="text" type="text" label="Last Name" />
-        <Button type="primary" label="Submit" onClick={linkTo('Templates/Main', 'Example Landing')} />
+        <Button
+          type="primary"
+          label="Submit"
+          onClick={linkTo('Templates/Main', 'Example Landing')}
+        />
       </Card>
     </Main>
   ))
   .add('Example Landing', () => (
     <Main>
       <Card title="Welcome">
-        <Message text="You are now signed in." type="success" icon="checkmark" />
+        <Message type="success" icon="checkmark">
+          You are now signed in.
+        </Message>
       </Card>
     </Main>
   ));

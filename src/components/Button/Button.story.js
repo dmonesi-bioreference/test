@@ -7,19 +7,25 @@ import { iconArray } from '../Icon';
 
 storiesOf('Components/Button', module)
   .addDecorator(withSmartKnobs)
-  .add('primary', () => <Button label="Primary Button" type="primary" />)
+  .add('primary', () => <Button type="primary">Primary Button</Button>)
   .add('primary with icon', () => (
-    <Button
-      label="Primary Icon Button"
-      type="primary"
-      icon={selectV2('Icon', iconArray, 'checkmark', null)}
-    />
+    <Button type="primary" icon={selectV2('Icon', iconArray, 'checkmark', null)}>
+      Primary Icon Button
+    </Button>
   ))
-  .add('medium button', () => <Button label="Medium Primary Button" type="primary" size="medium" />)
-  .add('small button', () => <Button label="Small Primary Button" type="primary" size="small" />)
-  .add('secondary', () => <Button label="Secondary Button" type="secondary" />)
-  .add('black', () => <Button label="Black Button" type="black" />)
-  .add('outline', () => <Button label="Outline Button" type="outline" />)
-  .add('danger', () => <Button label="Danger Button" type="danger" />)
-  .add('disabled', () => <Button label="Disabled Button" disabled />)
-  .add('text', () => <Button label="Text Button" type="text" />);
+  .add('medium button', () => (
+    <Button type="primary" size="medium">
+      Medium Primary Button
+    </Button>
+  ))
+  .add('small button', () => (
+    <Button type="primary" size="small">
+      Small Primary Button
+    </Button>
+  ))
+  .add('secondary', () => <Button type="secondary">Secondary Button</Button>)
+  .add('black', () => <Button type="black">Black Button</Button>)
+  .add('outline', () => <Button type="outline">Outline Button</Button>)
+  .add('danger', () => <Button type="danger">Danger Button</Button>)
+  .add('disabled', () => <Button disabled>Disabled Button</Button>)
+  .add('text', () => <Button type="text">Text Button</Button>);

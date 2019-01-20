@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 import MessageStyled from './Message.styles';
 import Icon, { iconArray } from '../Icon';
 
-const Message = ({ icon, text, type }) => {
+const Message = ({ children, icon, type }) => {
   return (
     <MessageStyled data-type={type}>
       {icon && <Icon name={icon} />}
-      {text}
+      {children}
     </MessageStyled>
   );
 };
 
 Message.propTypes = {
+  children: PropTypes.string.isRequired,
   icon: PropTypes.oneOf(iconArray),
-  text: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['info', 'error', 'success']),
 };
 

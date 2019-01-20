@@ -41,7 +41,11 @@ const InputText = ({
         type={type}
         value={value}
       />
-      {invalid && <Message icon="error" text={invalidMessage} type="error" />}
+      {invalid && (
+        <Message icon="error" ype="error">
+          {invalidMessage}
+        </Message>
+      )}
     </label>
   );
 };
