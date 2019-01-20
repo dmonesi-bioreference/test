@@ -14,7 +14,11 @@ const Fieldset = ({
         {label} {required && <span>*</span>}
       </legend>
       {children}
-      {invalid && <Message icon="error" text={invalidMessage} type="error" />}
+      {invalid && (
+        <Message icon="error" type="error">
+          {invalidMessage}
+        </Message>
+      )}
     </fieldset>
   );
 };

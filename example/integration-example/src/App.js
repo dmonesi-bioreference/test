@@ -5,11 +5,11 @@ class App extends Component {
   render() {
     return (
       <div>
-      <Message text="Please fill out this form to continue" icon="info" />
+        <Message icon="info">Please fill out this form to continue</Message>
         <Card title="Register">
-          <InputText name="text" type="text" label="First Name"/>
-          <InputText name="text" type="text" label="Last Name"/>
-          <Button type="primary" label="Submit" />
+          <InputText name="text" type="text" label="First Name" />
+          <InputText name="text" type="text" label="Last Name" />
+          <Button type="primary">Submit</Button>
         </Card>
       </div>
     );

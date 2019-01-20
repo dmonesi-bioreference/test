@@ -36,7 +36,11 @@ const InputTextArea = ({
         required={required}
         value={value}
       />
-      {invalid && <Message icon="error" text={invalidMessage} type="error" />}
+      {invalid && (
+        <Message icon="error" type="error">
+          {invalidMessage}
+        </Message>
+      )}
     </label>
   );
 };

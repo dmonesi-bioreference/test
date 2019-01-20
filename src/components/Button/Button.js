@@ -4,20 +4,28 @@ import Icon, { iconArray } from '../Icon';
 import ButtonStyled from './Button.styles';
 
 const Button = ({
-  disabled, icon, label, onClick, size, type,
+  children, disabled, icon, onClick, size, type,
 }) => {
   return (
-    <ButtonStyled disabled={disabled} onClick={onClick} data-size={size} data-type={type}>
+    <ButtonStyled
+      disabled={disabled}
+      onClick={(e) => {
+        e.preventDefault();
+        onClick();
+      }}
+      data-size={size}
+      data-type={type}
+    >
       {icon && <Icon name={icon} />}
-      {label}
+      {children}
     </ButtonStyled>
   );
 };
 
 Button.propTypes = {
+  children: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   icon: PropTypes.oneOf(iconArray),
-  label: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   type: PropTypes.oneOf(['primary', 'secondary', 'outline', 'black', 'danger', 'text']),

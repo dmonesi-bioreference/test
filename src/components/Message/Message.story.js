@@ -8,26 +8,20 @@ import { iconArray } from '../Icon';
 storiesOf('Components/Message', module)
   .addDecorator(withSmartKnobs)
   .add('default', () => (
-    <Message text="Message text goes here." icon={selectV2('Icon', iconArray, undefined, null)} />
+    <Message icon={selectV2('Icon', iconArray, undefined, null)}>Message text goes here.</Message>
   ))
   .add('info', () => (
-    <Message
-      text="Message text goes here."
-      type="info"
-      icon={selectV2('Icon', iconArray, 'info', null)}
-    />
+    <Message type="info" icon={selectV2('Icon', iconArray, 'info', null)}>
+      Message text goes here.
+    </Message>
   ))
   .add('error', () => (
-    <Message
-      text="Message text goes here."
-      type="error"
-      icon={selectV2('Icon', iconArray, 'error', null)}
-    />
+    <Message type="error" icon={selectV2('Icon', iconArray, 'error', null)}>
+      Message text goes here.
+    </Message>
   ))
   .add('success', () => (
-    <Message
-      text="Message text goes here."
-      type="success"
-      icon={selectV2('Icon', iconArray, 'checkmark', null)}
-    />
+    <Message type="success" icon={selectV2('Icon', iconArray, 'checkmark', null)}>
+      Message text goes here.
+    </Message>
   ));
