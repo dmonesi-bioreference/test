@@ -1,5 +1,7 @@
 import { css } from 'styled-components';
 
+/* stylelint-disable */
+
 const normalize = css`
   html {
     box-sizing: border-box;

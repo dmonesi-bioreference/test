@@ -1,5 +1,4 @@
 import { css } from 'styled-components';
-import tokens from '../settings/tokens';
 
 const main = css`
   .o-main {
