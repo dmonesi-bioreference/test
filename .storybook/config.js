@@ -6,7 +6,7 @@ import { withInfo } from '@storybook/addon-info';
 import { withKnobs } from '@storybook/addon-knobs';
 import GlobalStyle from '../src/components/GlobalStyle';
 
-addDecorator((story, context) => withInfo('')(story)(context));
+addDecorator(withInfo);
 addDecorator(withKnobs);
 addDecorator(checkA11y);
 addDecorator(story => (
