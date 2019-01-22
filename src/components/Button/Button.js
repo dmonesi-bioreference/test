@@ -4,7 +4,7 @@ import Icon, { iconArray } from '../Icon';
 import ButtonStyled from './Button.styles';
 
 const Button = ({
-  children, disabled, icon, onClick, size, type,
+  children, disabled, icon, onClick, size, kind,
 }) => {
   return (
     <ButtonStyled
@@ -14,7 +14,7 @@ const Button = ({
         onClick();
       }}
       data-size={size}
-      data-type={type}
+      data-kind={kind}
     >
       {icon && <Icon name={icon} />}
       {children}
@@ -26,17 +26,17 @@ Button.propTypes = {
   children: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   icon: PropTypes.oneOf(iconArray),
+  kind: PropTypes.oneOf(['primary', 'secondary', 'outline', 'black', 'danger', 'text']),
   onClick: PropTypes.func,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
-  type: PropTypes.oneOf(['primary', 'secondary', 'outline', 'black', 'danger', 'text']),
 };
 
 Button.defaultProps = {
   disabled: false,
   icon: null,
+  kind: 'primary',
   onClick: null,
   size: 'large',
-  type: 'primary',
 };
 
 export default Button;

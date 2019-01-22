@@ -7,6 +7,6 @@ storiesOf('Components/Card', module)
   .add('basic', () => <Card title="Card" content="Card with basic content" />)
   .add('with component', () => (
     <Card title="Card with Component">
-      <Button label="Button" />
+      <Button>Button</Button>
     </Card>
   ));

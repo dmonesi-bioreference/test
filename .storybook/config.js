@@ -1,12 +1,11 @@
 import React from 'react';
-import { configure, storiesOf, addDecorator } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
+import { configure, addDecorator } from '@storybook/react';
 import { checkA11y } from '@storybook/addon-a11y';
 import { withInfo } from '@storybook/addon-info';
 import { withKnobs } from '@storybook/addon-knobs';
 import GlobalStyle from '../src/components/GlobalStyle';
 
-addDecorator((story, context) => withInfo('')(story)(context));
+addDecorator(withInfo);
 addDecorator(withKnobs);
 addDecorator(checkA11y);
 addDecorator(story => (
@@ -17,7 +16,7 @@ addDecorator(story => (
 ));
 
 function loadStories() {
-  const req = require.context('../src', true, /\.story\.js$/);
+  const req = require.context('../src', true, /\.stories\.js$/);
   req.keys().forEach(filename => req(filename));
 }
 

@@ -15,7 +15,7 @@ const Flash = ({
       <div className="message">{message}</div>
       {collapsable && (
         <div className="close">
-          <button onClick={onCloseClick}>
+          <button onClick={onCloseClick} type="button">
             <Icon name="close" />
           </button>
         </div>
@@ -27,12 +27,23 @@ const Flash = ({
 Flash.propTypes = {
   collapsable: PropTypes.bool,
   message: PropTypes.string.isRequired,
-  onCloseClick: PropTypes.func.isRequired,
+  /* eslint-disable react/destructuring-assignment */
+  onCloseClick(props, propName) {
+    if (
+      props.collapsable === true &&
+      (props[propName] === undefined || typeof props[propName] !== 'function')
+    ) {
+      return new Error('onCloseClick function is required if collapsable');
+    }
+    return null;
+  },
+  /* eslint-enable react/destructuring-assignment */
   type: PropTypes.oneOf(['success', 'error']).isRequired,
 };
 
 Flash.defaultProps = {
   collapsable: false,
+  onCloseClick: null,
 };
 
 export default Flash;

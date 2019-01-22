@@ -9,7 +9,7 @@ class App extends Component {
         <Card title="Register">
           <InputText name="text" type="text" label="First Name" />
           <InputText name="text" type="text" label="Last Name" />
-          <Button type="primary">Submit</Button>
+          <Button kind="primary">Submit</Button>
         </Card>
       </div>
     );
