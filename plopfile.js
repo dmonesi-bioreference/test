@@ -27,7 +27,7 @@ module.exports = function (plop) {
       },
       {
         type: 'add',
-        path: 'src/components/{{properCase name}}/{{properCase name}}.story.js',
+        path: 'src/components/{{properCase name}}/{{properCase name}}.stories.js',
         templateFile: 'plop/component/component.story.hbs',
       },
       {
