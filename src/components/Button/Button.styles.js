@@ -55,7 +55,7 @@ const ButtonStyled = styled.button`
     padding: ${t.spacingXSmall} ${t.spacingMedium};
   }
 
-  &[data-type='secondary'] {
+  &[data-kind='secondary'] {
     background-color: ${t.colorSecondary};
     border-color: ${t.colorSecondary};
 
@@ -65,7 +65,7 @@ const ButtonStyled = styled.button`
     }
   }
 
-  &[data-type='black'] {
+  &[data-kind='black'] {
     background-color: ${t.colorBlack};
     border-color: ${t.colorBlack};
 
@@ -75,7 +75,7 @@ const ButtonStyled = styled.button`
     }
   }
 
-  &[data-type='outline'] {
+  &[data-kind='outline'] {
     background-color: ${t.colorWhite};
     border-color: ${t.colorAccent};
     color: ${t.colorAccent};
@@ -94,7 +94,7 @@ const ButtonStyled = styled.button`
     }
   }
 
-  &[data-type='danger'] {
+  &[data-kind='danger'] {
     background-color: ${t.colorError};
     border-color: ${t.colorError};
 
@@ -104,7 +104,7 @@ const ButtonStyled = styled.button`
     }
   }
 
-  &[data-type='text'] {
+  &[data-kind='text'] {
     background: none;
     border: 0;
     color: ${t.colorPrimary};

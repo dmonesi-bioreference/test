@@ -15,7 +15,7 @@ storiesOf('Templates/Main', module)
         <InputText name="text" type="text" label="First Name" />
         <InputText name="text" type="text" label="Last Name" />
         <Button
-          type="primary"
+          kind="primary"
           label="Submit"
           onClick={linkTo('Templates/Main', 'Example Landing')}
         />
