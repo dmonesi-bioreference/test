@@ -1,12 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withSmartKnobs } from 'storybook-addon-smart-knobs';
 import { selectV2 } from '@storybook/addon-knobs/react';
 import Message from '.';
 import { iconArray } from '../Icon';
 
 storiesOf('Components/Message', module)
-  .addDecorator(withSmartKnobs)
   .add('default', () => (
     <Message icon={selectV2('Icon', iconArray, undefined, null)}>Message text goes here.</Message>
   ))

@@ -1,12 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withSmartKnobs } from 'storybook-addon-smart-knobs';
 import { selectV2 } from '@storybook/addon-knobs/react';
 import InputText from '.';
 import { iconArray } from '../Icon';
 
 storiesOf('Components/Inputs/Text', module)
-  .addDecorator(withSmartKnobs)
   .add('default', () => <InputText name="text" type="text" label="Text Input" />)
   .add('password', () => <InputText name="password" type="password" label="Password Field" />)
   .add('left icon', () => (

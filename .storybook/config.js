@@ -1,11 +1,9 @@
 import React from 'react';
 import { configure, addDecorator } from '@storybook/react';
 import { checkA11y } from '@storybook/addon-a11y';
-import { withInfo } from '@storybook/addon-info';
 import { withKnobs } from '@storybook/addon-knobs';
 import GlobalStyle from '../src/components/GlobalStyle';
 
-addDecorator(withInfo);
 addDecorator(withKnobs);
 addDecorator(checkA11y);
 addDecorator(story => (

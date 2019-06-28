@@ -1,15 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withSmartKnobs } from 'storybook-addon-smart-knobs';
-import { selectV2 } from '@storybook/addon-knobs/react';
 import Button from '.';
-import { iconArray } from '../Icon';
 
 storiesOf('Components/Button', module)
-  .addDecorator(withSmartKnobs)
   .add('primary', () => <Button kind="primary">Primary Button</Button>)
   .add('primary with icon', () => (
-    <Button kind="primary" icon={selectV2('Icon', iconArray, 'checkmark', null)}>
+    <Button kind="primary" icon="checkmark">
       Primary Icon Button
     </Button>
   ))

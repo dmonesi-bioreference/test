@@ -1,10 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withSmartKnobs } from 'storybook-addon-smart-knobs';
 import InputTextArea from '.';
 
 storiesOf('Components/Inputs/Textarea', module)
-  .addDecorator(withSmartKnobs)
   .add('default', () => <InputTextArea name="textarea" label="Text Area" />)
   .add('error', () => (
     <InputTextArea
