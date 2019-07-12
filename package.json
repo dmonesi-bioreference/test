@@ -82,14 +82,45 @@
     }
   },
   "eslintConfig": {
-    "extends": "airbnb",
+    "parser": "babel-eslint",
+    "extends": [
+      "airbnb",
+      "plugin:prettier/recommended"
+    ],
     "rules": {
-      "arrow-body-style": 0,
-      "func-names": [
-        "error",
-        "never"
-      ],
+      "strict": 0,
       "import/no-extraneous-dependencies": 0,
+      "jsx-a11y/label-has-for": [
+        2,
+        {
+          "components": [
+            "Label"
+          ],
+          "required": {
+            "every": [
+              "nesting",
+              "id"
+            ]
+          },
+          "allowChildren": true
+        }
+      ],
+      "jsx-a11y/label-has-associated-control": [
+        "error",
+        {
+          "assert": "either"
+        }
+      ],
+      "prettier/prettier": "error",
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
+        }
+      ],
       "jsx-a11y/anchor-is-valid": [
         "error",
         {
@@ -106,31 +137,6 @@
           ]
         }
       ],
-      "jsx-a11y/label-has-for": [
-        2,
-        {
-          "components": [
-            "Label"
-          ],
-          "required": {
-            "every": [
-              "nesting",
-              "id"
-            ]
-          },
-          "allowChildren": true
-        }
-      ],
-      "no-console": 0,
-      "react/jsx-filename-extension": [
-        1,
-        {
-          "extensions": [
-            ".js",
-            ".jsx"
-          ]
-        }
-      ],
       "sort-keys": [
         "error",
         "asc",
@@ -139,7 +145,16 @@
           "natural": false
         }
       ]
-    }
+    },
+    "plugins": [
+      "prettier"
+    ]
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "semi": true
   },
   "stylelint": {
     "processors": [
