@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import Button from '.';
 
 storiesOf('Components/Button', module)
+  .addParameters({ component: Button })
   .add('primary', () => <Button kind="primary">Primary Button</Button>)
   .add('primary with icon', () => (
     <Button kind="primary" icon="checkmark">

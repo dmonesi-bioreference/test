@@ -4,6 +4,7 @@ import Button from '../Button';
 import Card from '.';
 
 storiesOf('Components/Card', module)
+  .addParameters({ component: Card })
   .add('basic', () => <Card title="Card" content="Card with basic content" />)
   .add('with component', () => (
     <Card title="Card with Component">

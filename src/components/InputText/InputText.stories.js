@@ -1,10 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { selectV2 } from '@storybook/addon-knobs/react';
+import { select } from '@storybook/addon-knobs/react';
 import InputText from '.';
 import { iconArray } from '../Icon';
 
 storiesOf('Components/Inputs/Text', module)
+  .addParameters({ component: InputText })
   .add('default', () => <InputText name="text" type="text" label="Text Input" />)
   .add('password', () => <InputText name="password" type="password" label="Password Field" />)
   .add('left icon', () => (
@@ -12,7 +13,7 @@ storiesOf('Components/Inputs/Text', module)
       name="text"
       type="text"
       label="Text Input w/ Left Icon"
-      icon={selectV2('Icon', iconArray, 'search', null)}
+      icon={select('Icon', iconArray, 'search', null)}
     />
   ))
   .add('placeholder', () => (

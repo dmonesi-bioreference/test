@@ -1203,6 +1203,13 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
+"@babel/runtime@^7.4.4":
+  version "7.5.4"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.5.4.tgz#cb7d1ad7c6d65676e66b47186577930465b5271b"
+  integrity sha512-Na84uwyImZZc3FKf4aUF1tysApzwf3p2yuFBIyBfbzT5glzKTdvYI4KVW4kcgjrzoGUjC7w3YyCHcJKaRxsr2Q==
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
 "@babel/template@^7.1.0", "@babel/template@^7.1.2", "@babel/template@^7.2.2":
   version "7.2.2"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.2.2.tgz#005b3fdf0ed96e88041330379e0da9a708eb2907"
@@ -1287,18 +1294,7 @@
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-9.0.1.tgz#c27b391d8457d1e893f1eddeaf5e5412d12ffbb5"
   integrity sha512-6It2EVfGskxZCQhuykrfnALg7oVeiI6KclWSmGDqB0AiInVrTGB9Jp9i4/Ad21u9Jde/voVQz6eFX/eSg/UsPA==
 
-"@emotion/babel-utils@^0.6.4":
-  version "0.6.4"
-  resolved "https://registry.yarnpkg.com/@emotion/babel-utils/-/babel-utils-0.6.4.tgz#2eac69eb31ae944fbe4a2a0e736a35db5f810866"
-  dependencies:
-    "@emotion/hash" "^0.6.3"
-    "@emotion/memoize" "^0.6.2"
-    "@emotion/serialize" "^0.8.2"
-    convert-source-map "^1.5.1"
-    find-root "^1.1.0"
-    source-map "^0.7.2"
-
-"@emotion/cache@^10.0.14":
+"@emotion/cache@^10.0.14", "@emotion/cache@^10.0.9":
   version "10.0.14"
   resolved "https://registry.yarnpkg.com/@emotion/cache/-/cache-10.0.14.tgz#56093cff025c04b0330bdd92afe8335ed326dd18"
   integrity sha512-HNGEwWnPlNyy/WPXBXzbjzkzeZFV657Z99/xq2xs5yinJHbMfi3ioCvBJ6Y8Zc8DQzO9F5jDmVXJB41Ytx3QMw==
@@ -1308,7 +1304,7 @@
     "@emotion/utils" "0.11.2"
     "@emotion/weak-memoize" "0.2.3"
 
-"@emotion/core@^10.0.9":
+"@emotion/core@^10.0.14", "@emotion/core@^10.0.9":
   version "10.0.14"
   resolved "https://registry.yarnpkg.com/@emotion/core/-/core-10.0.14.tgz#cac5c334b278d5b7688cfff39e460a5b50abb71c"
   integrity sha512-G9FbyxLm3lSnPfLDcag8fcOQBKui/ueXmWOhV+LuEQg9HrqExuWnWaO6gm6S5rNe+AMcqLXVljf8pYgAdFLNSg==
@@ -1320,7 +1316,7 @@
     "@emotion/sheet" "0.9.3"
     "@emotion/utils" "0.11.2"
 
-"@emotion/css@^10.0.14":
+"@emotion/css@^10.0.14", "@emotion/css@^10.0.9":
   version "10.0.14"
   resolved "https://registry.yarnpkg.com/@emotion/css/-/css-10.0.14.tgz#95dacabdd0e22845d1a1b0b5968d9afa34011139"
   integrity sha512-MozgPkBEWvorcdpqHZE5x1D/PLEHUitALQCQYt2wayf4UNhpgQs2tN0UwHYS4FMy5ROBH+0ALyCFVYJ/ywmwlg==
@@ -1334,10 +1330,6 @@
   resolved "https://registry.yarnpkg.com/@emotion/hash/-/hash-0.7.2.tgz#53211e564604beb9befa7a4400ebf8147473eeef"
   integrity sha512-RMtr1i6E8MXaBWwhXL3yeOU8JXRnz8GNxHvaUfVvwxokvayUY0zoBeWbKw1S9XkufmGEEdQd228pSZXFkAln8Q==
 
-"@emotion/hash@^0.6.2", "@emotion/hash@^0.6.3":
-  version "0.6.3"
-  resolved "https://registry.yarnpkg.com/@emotion/hash/-/hash-0.6.3.tgz#0e7a5604626fc6c6d4ac4061a2f5ac80d50262a4"
-
 "@emotion/is-prop-valid@0.8.2", "@emotion/is-prop-valid@^0.8.1":
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/@emotion/is-prop-valid/-/is-prop-valid-0.8.2.tgz#b9692080da79041683021fcc32f96b40c54c59dc"
@@ -1350,10 +1342,6 @@
   resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.7.2.tgz#7f4c71b7654068dfcccad29553520f984cc66b30"
   integrity sha512-hnHhwQzvPCW1QjBWFyBtsETdllOM92BfrKWbUTmh9aeOlcVOiXvlPsK4104xH8NsaKfg86PTFsWkueQeUfMA/w==
 
-"@emotion/memoize@^0.6.1", "@emotion/memoize@^0.6.2":
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.6.2.tgz#138e00b332d519b4e307bded6159e5ba48aba3ae"
-
 "@emotion/serialize@^0.11.8":
   version "0.11.8"
   resolved "https://registry.yarnpkg.com/@emotion/serialize/-/serialize-0.11.8.tgz#e41dcf7029e45286a3e0cf922933e670fe05402c"
@@ -1364,15 +1352,6 @@
     "@emotion/unitless" "0.7.4"
     "@emotion/utils" "0.11.2"
     csstype "^2.5.7"
-
-"@emotion/serialize@^0.8.2":
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/@emotion/serialize/-/serialize-0.8.2.tgz#d3b2caddfc93107d63c79fc6bbc11e555e3b762e"
-  dependencies:
-    "@emotion/hash" "^0.6.3"
-    "@emotion/memoize" "^0.6.2"
-    "@emotion/unitless" "^0.6.3"
-    "@emotion/utils" "^0.7.1"
 
 "@emotion/sheet@0.9.3":
   version "0.9.3"
@@ -1389,7 +1368,7 @@
     "@emotion/serialize" "^0.11.8"
     "@emotion/utils" "0.11.2"
 
-"@emotion/styled@^10.0.7":
+"@emotion/styled@^10.0.14", "@emotion/styled@^10.0.7":
   version "10.0.14"
   resolved "https://registry.yarnpkg.com/@emotion/styled/-/styled-10.0.14.tgz#538bcf0d67bf8f6de946bcfbee53dc7d0187b346"
   integrity sha512-Ae8d5N/FmjvZKXjqWcjfhZhjCdkvxZSqD95Q72BYDNQnsOKLHIA4vWlMolLXDNkw1dIxV3l2pp82Z87HXj6eYQ==
@@ -1402,19 +1381,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/stylis/-/stylis-0.8.4.tgz#6c51afdf1dd0d73666ba09d2eb6c25c220d6fe4c"
   integrity sha512-TLmkCVm8f8gH0oLv+HWKiu7e8xmBIaokhxcEKPh1m8pXiV/akCiq50FvYgOwY42rjejck8nsdQxZlXZ7pmyBUQ==
 
-"@emotion/stylis@^0.7.0":
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/@emotion/stylis/-/stylis-0.7.1.tgz#50f63225e712d99e2b2b39c19c70fff023793ca5"
-  integrity sha512-/SLmSIkN13M//53TtNxgxo57mcJk/UJIDFRKwOiLIBEyBHEcipgR6hNMQ/59Sl4VjCJ0Z/3zeAZyvnSLPG/1HQ==
-
 "@emotion/unitless@0.7.4":
   version "0.7.4"
   resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.7.4.tgz#a87b4b04e5ae14a88d48ebef15015f6b7d1f5677"
   integrity sha512-kBa+cDHOR9jpRJ+kcGMsysrls0leukrm68DmFQoMIWQcXdr2cZvyvypWuGYT7U+9kAExUE7+T7r6G3C3A6L8MQ==
-
-"@emotion/unitless@^0.6.2", "@emotion/unitless@^0.6.3":
-  version "0.6.3"
-  resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.6.3.tgz#65682e68a82701c70eefb38d7f941a2c0bfa90de"
 
 "@emotion/unitless@^0.7.0":
   version "0.7.3"
@@ -1425,10 +1395,6 @@
   version "0.11.2"
   resolved "https://registry.yarnpkg.com/@emotion/utils/-/utils-0.11.2.tgz#713056bfdffb396b0a14f1c8f18e7b4d0d200183"
   integrity sha512-UHX2XklLl3sIaP6oiMmlVzT0J+2ATTVpf0dHQVyPJHTkOITvXfaSqnRk6mdDhV9pR8T/tHc3cex78IKXssmzrA==
-
-"@emotion/utils@^0.7.1":
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/@emotion/utils/-/utils-0.7.1.tgz#e44e596d03c9f16ba3b127ad333a8a072bcb5a0a"
 
 "@emotion/weak-memoize@0.2.3":
   version "0.2.3"
@@ -1692,17 +1658,17 @@
   dependencies:
     any-observable "^0.3.0"
 
-"@storybook/addon-a11y@^5.2.0-alpha.31":
-  version "5.2.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-5.2.0-alpha.31.tgz#8949ce21ad2e574afa8a13d9cc13155222f6bb3e"
-  integrity sha512-Uwr+By2PMT0PkfuP9He07KTGv5hwnUWl6ZsNSCqOoBh8Xw9rDCxdOC0nWtQRPDE8LxBacIqgwSEDyGxLzBHMeA==
+"@storybook/addon-a11y@^5.2.0-alpha.42":
+  version "5.2.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-5.2.0-alpha.42.tgz#76a5a269d03572f3ab13ece68cb92c17dd4b68d6"
+  integrity sha512-G3BrDj0dVrsPeoQE1Y3Z2H3ODGVNIgClGTBnTON574Yu4B9ni9dJ41ltmNdrTf317HKtT3Gm+0UCbRAsEtqp0A==
   dependencies:
-    "@storybook/addons" "5.2.0-alpha.31"
-    "@storybook/api" "5.2.0-alpha.31"
-    "@storybook/client-logger" "5.2.0-alpha.31"
-    "@storybook/components" "5.2.0-alpha.31"
-    "@storybook/core-events" "5.2.0-alpha.31"
-    "@storybook/theming" "5.2.0-alpha.31"
+    "@storybook/addons" "5.2.0-alpha.42"
+    "@storybook/api" "5.2.0-alpha.42"
+    "@storybook/client-logger" "5.2.0-alpha.42"
+    "@storybook/components" "5.2.0-alpha.42"
+    "@storybook/core-events" "5.2.0-alpha.42"
+    "@storybook/theming" "5.2.0-alpha.42"
     axe-core "^3.2.2"
     common-tags "^1.8.0"
     core-js "^3.0.1"
@@ -1715,72 +1681,72 @@
     redux "^4.0.1"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-actions@^5.2.0-alpha.31":
-  version "5.2.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-5.2.0-alpha.31.tgz#a09ed14b2340c400baa3713e905f138f4f6bde7a"
-  integrity sha512-G1NH5bTTT2n4eS5tmKxQOmExgsrqYLHcLmIX+TEv6nZVE9Le2Vlpz1su8NcPovSLVHFUf+Th24lUo6C56xgvyA==
+"@storybook/addon-actions@^5.2.0-alpha.42":
+  version "5.2.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-5.2.0-alpha.42.tgz#a8e191a1cff526e23b71e96f6f561b085e815a6a"
+  integrity sha512-D15XxQqxncQHchSbkD3pY11JD9lWS4t+cVOkHQZvEBvIhdUph9Mq3VQhaWLJyQFwATQBOhP5/oPUfpArA7LOFA==
   dependencies:
-    "@storybook/addons" "5.2.0-alpha.31"
-    "@storybook/api" "5.2.0-alpha.31"
-    "@storybook/components" "5.2.0-alpha.31"
-    "@storybook/core-events" "5.2.0-alpha.31"
-    "@storybook/theming" "5.2.0-alpha.31"
+    "@storybook/addons" "5.2.0-alpha.42"
+    "@storybook/api" "5.2.0-alpha.42"
+    "@storybook/client-api" "5.2.0-alpha.42"
+    "@storybook/components" "5.2.0-alpha.42"
+    "@storybook/core-events" "5.2.0-alpha.42"
+    "@storybook/theming" "5.2.0-alpha.42"
     core-js "^3.0.1"
     fast-deep-equal "^2.0.1"
     global "^4.3.2"
-    lodash "^4.17.11"
     polished "^3.3.1"
     prop-types "^15.7.2"
     react "^16.8.3"
     react-inspector "^3.0.2"
     uuid "^3.3.2"
 
-"@storybook/addon-backgrounds@^5.2.0-alpha.31":
-  version "5.2.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-backgrounds/-/addon-backgrounds-5.2.0-alpha.31.tgz#749589dfaedefea40dbe393743207a25dd05737a"
-  integrity sha512-gmdO14C/I0Hi+lnqoWfPUbgKQLMHVBpHidiOBLe8IsVgbRSPGPA0YfwWruTMEcD4RxjIF9DsO3F950z0oIcSrA==
+"@storybook/addon-backgrounds@^5.2.0-alpha.42":
+  version "5.2.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-backgrounds/-/addon-backgrounds-5.2.0-alpha.42.tgz#212f2b56904e01f753567b2da2c6e57778802f71"
+  integrity sha512-WXaojuufSEUxhn8PUi8XvUGmsoW2t7mywV3783mfmxKDCjat0onLJtFFctL5qtkhcC/k1LoeX1EkTpRCUFPUPg==
   dependencies:
-    "@storybook/addons" "5.2.0-alpha.31"
-    "@storybook/api" "5.2.0-alpha.31"
-    "@storybook/client-logger" "5.2.0-alpha.31"
-    "@storybook/components" "5.2.0-alpha.31"
-    "@storybook/core-events" "5.2.0-alpha.31"
-    "@storybook/theming" "5.2.0-alpha.31"
+    "@storybook/addons" "5.2.0-alpha.42"
+    "@storybook/api" "5.2.0-alpha.42"
+    "@storybook/client-logger" "5.2.0-alpha.42"
+    "@storybook/components" "5.2.0-alpha.42"
+    "@storybook/core-events" "5.2.0-alpha.42"
+    "@storybook/theming" "5.2.0-alpha.42"
     core-js "^3.0.1"
     memoizerific "^1.11.3"
     react "^16.8.3"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-docs@^5.2.0-alpha.31":
-  version "5.2.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-docs/-/addon-docs-5.2.0-alpha.31.tgz#349140f71002ee0de4869ffdbbfc09d6203d7e6a"
-  integrity sha512-ElmlBRJokvrhYghLkOkW9YStbMR3SB7wgOrmsbhYu3u+5im2VFlU0lPwdlGmMEvicXMxFAFh+PUnQF6PWAPKig==
+"@storybook/addon-docs@^5.2.0-alpha.42":
+  version "5.2.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-docs/-/addon-docs-5.2.0-alpha.42.tgz#abfda5da17079848b678eb91eb99bd8958c34e79"
+  integrity sha512-tgPpGELM1Kapgbj+hL+ohCBlBzzaT1nWHWG/EBFkpUm63mp4o1hWdApO7ajyZbWuLJceN8Jq1XicRf8VM9i8/Q==
   dependencies:
     "@babel/generator" "^7.4.0"
     "@babel/parser" "^7.4.2"
     "@mdx-js/loader" "^1.0.0"
     "@mdx-js/mdx" "^1.0.0"
     "@mdx-js/react" "^1.0.16"
-    "@storybook/addons" "5.2.0-alpha.31"
-    "@storybook/api" "5.2.0-alpha.31"
-    "@storybook/components" "5.2.0-alpha.31"
-    "@storybook/router" "5.2.0-alpha.31"
-    "@storybook/theming" "5.2.0-alpha.31"
+    "@storybook/addons" "5.2.0-alpha.42"
+    "@storybook/api" "5.2.0-alpha.42"
+    "@storybook/components" "5.2.0-alpha.42"
+    "@storybook/router" "5.2.0-alpha.42"
+    "@storybook/theming" "5.2.0-alpha.42"
     core-js "^3.0.1"
     global "^4.3.2"
     lodash "^4.17.11"
     prop-types "^15.7.2"
 
-"@storybook/addon-knobs@^5.2.0-alpha.31":
-  version "5.2.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-knobs/-/addon-knobs-5.2.0-alpha.31.tgz#9e92432bdeefb1afea4e4f2a5ef870623f108baa"
-  integrity sha512-h5Pf3VA9YBT9w/pVSS/4yAkJ4DZdoa6+vRI3Z1J/QsfvbxuUxa8Zv2BNjRWdi9E1QJvZn6P5WP7bHz1z3181iA==
+"@storybook/addon-knobs@^5.2.0-alpha.42":
+  version "5.2.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-knobs/-/addon-knobs-5.2.0-alpha.42.tgz#23d1b8f7ec2fe4c17fb5b0e337609ef6955a8360"
+  integrity sha512-WKiwcJbYDb9en0Yv0+j+TEWHlLcv3TAMa6ObIYDWXuxHvSNb7S5vZB1F/i3DtsF1LpDH5MhXoevNz3/Nmrhd1w==
   dependencies:
-    "@storybook/addons" "5.2.0-alpha.31"
-    "@storybook/client-api" "5.2.0-alpha.31"
-    "@storybook/components" "5.2.0-alpha.31"
-    "@storybook/core-events" "5.2.0-alpha.31"
-    "@storybook/theming" "5.2.0-alpha.31"
+    "@storybook/addons" "5.2.0-alpha.42"
+    "@storybook/client-api" "5.2.0-alpha.42"
+    "@storybook/components" "5.2.0-alpha.42"
+    "@storybook/core-events" "5.2.0-alpha.42"
+    "@storybook/theming" "5.2.0-alpha.42"
     copy-to-clipboard "^3.0.8"
     core-js "^3.0.1"
     escape-html "^1.0.3"
@@ -1791,40 +1757,40 @@
     qs "^6.6.0"
     react-color "^2.17.0"
     react-lifecycles-compat "^3.0.4"
-    react-select "^2.2.0"
+    react-select "^3.0.0"
 
-"@storybook/addon-links@^5.2.0-alpha.31":
-  version "5.2.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-5.2.0-alpha.31.tgz#8fcbba88ba94566e5ccf436758e35be61d85241c"
-  integrity sha512-WNpRnBeEXjCbyPy7F0d8AIsdTDRlULGVWsQf4zaf5xPMio2ro+iF2BFTUjO/VEZR0Y5Kei47wcFVxo/goJHIeA==
+"@storybook/addon-links@^5.2.0-alpha.42":
+  version "5.2.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-5.2.0-alpha.42.tgz#e9767727731dde32909a3fcf9238be055254bf12"
+  integrity sha512-2LYWf1WkuTsAZq+nCfqhlzKcM2ZJf4C6yOTfZjSb1Ap/QA45RJRT9q36loRIyiuKNvmGCaLCjDB0W1xbQzJboA==
   dependencies:
-    "@storybook/addons" "5.2.0-alpha.31"
-    "@storybook/core-events" "5.2.0-alpha.31"
-    "@storybook/router" "5.2.0-alpha.31"
+    "@storybook/addons" "5.2.0-alpha.42"
+    "@storybook/core-events" "5.2.0-alpha.42"
+    "@storybook/router" "5.2.0-alpha.42"
     common-tags "^1.8.0"
     core-js "^3.0.1"
     global "^4.3.2"
     prop-types "^15.7.2"
     qs "^6.6.0"
 
-"@storybook/addon-options@^5.2.0-alpha.31":
-  version "5.2.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-options/-/addon-options-5.2.0-alpha.31.tgz#2a95cc05e20c504be7369b66c788a9badb4fc141"
-  integrity sha512-7tfXvwHJcm1Ui4u1LUMk9m0odiWgbglHvm7+7WvkZ/uoMEKl+t8niLXxtyktLCkQ3Iqt5W3Qy57dsqhqUgPpNg==
+"@storybook/addon-options@^5.2.0-alpha.42":
+  version "5.2.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-options/-/addon-options-5.2.0-alpha.42.tgz#0fc5a2ba58689f1c5aab05edb9c35fbfea200f16"
+  integrity sha512-vVos7Nzrzq0v39+U2PF81vEnOx4hKjDZ+Zo0MNGKK+e7gnRjdXXzQscU7TcDWyzIp+DNQcXJaVaL7/DAAov3bA==
   dependencies:
-    "@storybook/addons" "5.2.0-alpha.31"
+    "@storybook/addons" "5.2.0-alpha.42"
     core-js "^3.0.1"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-storysource@^5.2.0-alpha.31":
-  version "5.2.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-storysource/-/addon-storysource-5.2.0-alpha.31.tgz#87becd03a434100dfbb15754dd36ff4a04de2ed0"
-  integrity sha512-ZGfAyuxS3IGr1vEOM4DXs0PYt56EijkFw2CATaoVvvHgfaSZ4qj3rHt5tY1QAldXNia283UNiGXFmrGqlsvBDg==
+"@storybook/addon-storysource@^5.2.0-alpha.42":
+  version "5.2.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-storysource/-/addon-storysource-5.2.0-alpha.42.tgz#421951f6d90f668baa03ede1488b43b6c564c0a8"
+  integrity sha512-IZGu9muTBAUUQLp2RvRYq04WYzqse32IUFrFc3GSJl+tg5uO7OgRTc2XvOD8x8crZ2KGlocYfVpnA8s79UbpSQ==
   dependencies:
-    "@storybook/addons" "5.2.0-alpha.31"
-    "@storybook/components" "5.2.0-alpha.31"
-    "@storybook/router" "5.2.0-alpha.31"
-    "@storybook/theming" "5.2.0-alpha.31"
+    "@storybook/addons" "5.2.0-alpha.42"
+    "@storybook/components" "5.2.0-alpha.42"
+    "@storybook/router" "5.2.0-alpha.42"
+    "@storybook/theming" "5.2.0-alpha.42"
     core-js "^3.0.1"
     estraverse "^4.2.0"
     loader-utils "^1.2.3"
@@ -1833,31 +1799,31 @@
     react-syntax-highlighter "^8.0.1"
     regenerator-runtime "^0.12.1"
 
-"@storybook/addon-viewport@^5.2.0-alpha.31":
-  version "5.2.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-viewport/-/addon-viewport-5.2.0-alpha.31.tgz#0dfab5893ba140361f81ce3dd185f6895e49250d"
-  integrity sha512-EbsTEW317gKDsH2dg8v5grurjkkZyfAKL8x5v1LMe9xYfmlbN9jqOvDNmYJeUsRVxxNw/NlwQQjzMe51IfTOLg==
+"@storybook/addon-viewport@^5.2.0-alpha.42":
+  version "5.2.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-viewport/-/addon-viewport-5.2.0-alpha.42.tgz#030a4c4208e825cafea2bab1d138b64fbae121ff"
+  integrity sha512-jRBy+dgDF+IyZij8p8HtpZdN4oHKFI1i3kxuTmL/+/j2bPUJYKDeTvje3CPU6Hlu64rnaijayE7skMIYpAjw9w==
   dependencies:
-    "@storybook/addons" "5.2.0-alpha.31"
-    "@storybook/api" "5.2.0-alpha.31"
-    "@storybook/client-logger" "5.2.0-alpha.31"
-    "@storybook/components" "5.2.0-alpha.31"
-    "@storybook/core-events" "5.2.0-alpha.31"
-    "@storybook/theming" "5.2.0-alpha.31"
+    "@storybook/addons" "5.2.0-alpha.42"
+    "@storybook/api" "5.2.0-alpha.42"
+    "@storybook/client-logger" "5.2.0-alpha.42"
+    "@storybook/components" "5.2.0-alpha.42"
+    "@storybook/core-events" "5.2.0-alpha.42"
+    "@storybook/theming" "5.2.0-alpha.42"
     core-js "^3.0.1"
     global "^4.3.2"
     memoizerific "^1.11.3"
     prop-types "^15.7.2"
     util-deprecate "^1.0.2"
 
-"@storybook/addons@5.2.0-alpha.31", "@storybook/addons@^5.2.0-alpha.31":
-  version "5.2.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-5.2.0-alpha.31.tgz#0c70f7bf62be42b6579650b99f7204829a145598"
-  integrity sha512-hDBqQ5KHQY0ynN7vEdObbpwm8xdbxnay7LAyNJ+eVV9+tnIFlO/IWnnw7OxJe6NDnbqomrfenzamhiwgsqTxSg==
+"@storybook/addons@5.2.0-alpha.42", "@storybook/addons@^5.2.0-alpha.42":
+  version "5.2.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-5.2.0-alpha.42.tgz#7c8bb8ff2bc8e6a8571aead54e4f3d5503862500"
+  integrity sha512-5e36y7bjtPRdu6a1aUs2VmXJGzckKY+hY9PH5rslcGuDOKvrmvXZKwMdeciBLwg8y498cznrduwKG0AudgTlFA==
   dependencies:
-    "@storybook/api" "5.2.0-alpha.31"
-    "@storybook/channels" "5.2.0-alpha.31"
-    "@storybook/client-logger" "5.2.0-alpha.31"
+    "@storybook/api" "5.2.0-alpha.42"
+    "@storybook/channels" "5.2.0-alpha.42"
+    "@storybook/client-logger" "5.2.0-alpha.42"
     core-js "^3.0.1"
     global "^4.3.2"
     util-deprecate "^1.0.2"
@@ -1897,16 +1863,16 @@
     telejson "^2.2.1"
     util-deprecate "^1.0.2"
 
-"@storybook/api@5.2.0-alpha.31":
-  version "5.2.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@storybook/api/-/api-5.2.0-alpha.31.tgz#4fa4ef87092ea09793d1cfcc107dfd199ed062b6"
-  integrity sha512-M9poOfnu2m2NXK+KeBZMNcc2EcXYUecc6+qZ9d0YBGTtl98VJcEbmhmXbbwq9G8UltKO8fql2r+5ZzMS71TnLA==
+"@storybook/api@5.2.0-alpha.42":
+  version "5.2.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/@storybook/api/-/api-5.2.0-alpha.42.tgz#7682e2b9e597a69e52cb58652fc0bb5a0332ea58"
+  integrity sha512-Owonr6F+HQHe/vieYoE04Rb0eFGqyAcmxh/UogAV5VrTAdlyg2UjJlcv6CJfe6VN/RNsZSi2lTiqSWZ9/mUuCw==
   dependencies:
-    "@storybook/channels" "5.2.0-alpha.31"
-    "@storybook/client-logger" "5.2.0-alpha.31"
-    "@storybook/core-events" "5.2.0-alpha.31"
-    "@storybook/router" "5.2.0-alpha.31"
-    "@storybook/theming" "5.2.0-alpha.31"
+    "@storybook/channels" "5.2.0-alpha.42"
+    "@storybook/client-logger" "5.2.0-alpha.42"
+    "@storybook/core-events" "5.2.0-alpha.42"
+    "@storybook/router" "5.2.0-alpha.42"
+    "@storybook/theming" "5.2.0-alpha.42"
     core-js "^3.0.1"
     fast-deep-equal "^2.0.1"
     global "^4.3.2"
@@ -1920,13 +1886,13 @@
     telejson "^2.2.1"
     util-deprecate "^1.0.2"
 
-"@storybook/channel-postmessage@5.2.0-alpha.31":
-  version "5.2.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@storybook/channel-postmessage/-/channel-postmessage-5.2.0-alpha.31.tgz#57230962ac2164d98fe897a0a0cf237b9d3245bb"
-  integrity sha512-zv+WhVp+wrSsMeFZLVCwL9nqocnCleoh9QVTGH4bqw+yKoQeNtOulmWDTJ3kmk3YOskTFCzzp1vv/yK7Doc+oQ==
+"@storybook/channel-postmessage@5.2.0-alpha.42":
+  version "5.2.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/@storybook/channel-postmessage/-/channel-postmessage-5.2.0-alpha.42.tgz#228a0cbd541a1141b110a971504cd872c67acf45"
+  integrity sha512-MWdO64U8dXrCT2f6HlJ3nXwA2WEjTqf7bx29123wfQWpyj0hDhmJgqKkKeygrZZ/l8u1/iIv58HrcW3Fi2BcFQ==
   dependencies:
-    "@storybook/channels" "5.2.0-alpha.31"
-    "@storybook/client-logger" "5.2.0-alpha.31"
+    "@storybook/channels" "5.2.0-alpha.42"
+    "@storybook/client-logger" "5.2.0-alpha.42"
     core-js "^3.0.1"
     global "^4.3.2"
     telejson "^2.2.1"
@@ -1938,22 +1904,24 @@
   dependencies:
     core-js "^3.0.1"
 
-"@storybook/channels@5.2.0-alpha.31":
-  version "5.2.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-5.2.0-alpha.31.tgz#ecae6078c389c72926309475f7e0d958f87d32fa"
-  integrity sha512-yxjfY1OTojnb9VNOBNd76hjjAjQ+C1GUnuQqU5273/o8jdcFXURUyHeSmFvYijw5Ti7R19uN1LT/WnLjCIz/oA==
+"@storybook/channels@5.2.0-alpha.42":
+  version "5.2.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-5.2.0-alpha.42.tgz#4b92d1d2a1dde1ea8d584a480323179f1fdd786f"
+  integrity sha512-hNv/tMj+HxDybwr3y2irpfTE5vcINvS30HmY9VK3jm68A2A9Ovcq5vG3sbIyuROQX6VKgJIMAUqmjxlBmm7WxQ==
   dependencies:
     core-js "^3.0.1"
 
-"@storybook/client-api@5.2.0-alpha.31":
-  version "5.2.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@storybook/client-api/-/client-api-5.2.0-alpha.31.tgz#5d0668016f8403c4dcd94e826707abeac5821bd5"
-  integrity sha512-YX7MADPTO5j9OtQnxRnagnIalAX9pq0I0qz/a0uiqaw2AdXLu0wbvriylZLwtiMsgq1FGZaLHHktnUossUUetQ==
+"@storybook/client-api@5.2.0-alpha.42":
+  version "5.2.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/@storybook/client-api/-/client-api-5.2.0-alpha.42.tgz#809a4374000a440cc86e8ca3e7eb4a5b335516f2"
+  integrity sha512-9tXPx2mA6o+t0jNieSwUG7xOJ37661siiQidtIT60JR/BiDszgxJIDZNa5iyY3c6dKK7w+kE+ga8eSKunMaACg==
   dependencies:
-    "@storybook/addons" "5.2.0-alpha.31"
-    "@storybook/client-logger" "5.2.0-alpha.31"
-    "@storybook/core-events" "5.2.0-alpha.31"
-    "@storybook/router" "5.2.0-alpha.31"
+    "@storybook/addons" "5.2.0-alpha.42"
+    "@storybook/channel-postmessage" "5.2.0-alpha.42"
+    "@storybook/channels" "5.2.0-alpha.42"
+    "@storybook/client-logger" "5.2.0-alpha.42"
+    "@storybook/core-events" "5.2.0-alpha.42"
+    "@storybook/router" "5.2.0-alpha.42"
     common-tags "^1.8.0"
     core-js "^3.0.1"
     eventemitter3 "^3.1.0"
@@ -1962,6 +1930,7 @@
     lodash "^4.17.11"
     memoizerific "^1.11.3"
     qs "^6.6.0"
+    util-deprecate "^1.0.2"
 
 "@storybook/client-logger@5.1.9":
   version "5.1.9"
@@ -1970,20 +1939,21 @@
   dependencies:
     core-js "^3.0.1"
 
-"@storybook/client-logger@5.2.0-alpha.31":
-  version "5.2.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@storybook/client-logger/-/client-logger-5.2.0-alpha.31.tgz#f0c3201dfa70fcff5228ed37445859997d2a5804"
-  integrity sha512-ceki0xJzf65TE/un7rsmtow4XDf8lYozdCy71jnpxuN2AKclC1KZJADTf1Wzc+yTr+NVZM6RYXSGGh0L8CbfrA==
+"@storybook/client-logger@5.2.0-alpha.42":
+  version "5.2.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/@storybook/client-logger/-/client-logger-5.2.0-alpha.42.tgz#fe3ca3ef1cc3fb0bea1c043c084ea114979f7c32"
+  integrity sha512-+yF9burawkiFM04HqW4Ea+VyWJLoGPH11NYwOo6ojsEft1e5UmhwFBRfPyJqieVy+kBNCQLj3muRUMBUG30KIQ==
   dependencies:
     core-js "^3.0.1"
 
-"@storybook/components@5.2.0-alpha.31":
-  version "5.2.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@storybook/components/-/components-5.2.0-alpha.31.tgz#0e531f615bf5dd42ce127c05af0367aeb046fc70"
-  integrity sha512-ng+z3skiJuzzefNNQvbS0QjSBHkjGXwXbJgRazVGCJ2wyQRt8TKs0d3ZJ95akc0t6I0v3etHiLqUq7GUDlN7ew==
+"@storybook/components@5.2.0-alpha.42":
+  version "5.2.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/@storybook/components/-/components-5.2.0-alpha.42.tgz#9c15bb7c41e9b6d236e0d853173c6e62040e7e5f"
+  integrity sha512-/BEJZDI0jjfquuQuNBJudYMZdUo0tRd7NFV0v2b0J1gJgHyH+9ne65z5tJDAvX12SLmHWufrBNqn2u1SwfRK3g==
   dependencies:
-    "@storybook/client-logger" "5.2.0-alpha.31"
-    "@storybook/theming" "5.2.0-alpha.31"
+    "@storybook/client-logger" "5.2.0-alpha.42"
+    "@storybook/theming" "5.2.0-alpha.42"
+    "@types/react-syntax-highlighter" "10.1.0"
     core-js "^3.0.1"
     global "^4.3.2"
     markdown-to-jsx "^6.9.1"
@@ -2008,37 +1978,37 @@
   dependencies:
     core-js "^3.0.1"
 
-"@storybook/core-events@5.2.0-alpha.31":
-  version "5.2.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-5.2.0-alpha.31.tgz#fbb8becfcf56a3fac1eb0d13293b2f376a44bf6c"
-  integrity sha512-XSDhx0n9J9Xt8Khcs/CbCORqRbPl5F7nwNGLLC1GIdvXu0do9835gwzwEAyhfstJzm1lYDPibeF63zqL8YClQw==
+"@storybook/core-events@5.2.0-alpha.42":
+  version "5.2.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-5.2.0-alpha.42.tgz#19b09b81ab2f91a61afb99c1c88d3014242fb9df"
+  integrity sha512-7GV85rx7mu5Xz1zKGnh1QcFTAfgVYebhH7u4h/1DrGz0QnrHqHuGl19vrUNTHY4Y7zeuwXjdCGwETLLNXBeULw==
   dependencies:
     core-js "^3.0.1"
 
-"@storybook/core@5.2.0-alpha.31":
-  version "5.2.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@storybook/core/-/core-5.2.0-alpha.31.tgz#78cd06ca90c4173dd3621aa0773af3cc9d2796b6"
-  integrity sha512-+vaU8nMi0XLIP0+5N73JqbZsoHNReRuHQqMrQVAYr1x4/Gl+tCLEccr5TgvPDsyivGrvqNaNkt/JJDha64E1sw==
+"@storybook/core@5.2.0-alpha.42":
+  version "5.2.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/@storybook/core/-/core-5.2.0-alpha.42.tgz#80cc5fe9c28471011b967544fc3908e719939e4d"
+  integrity sha512-7khAlLVA04Fw9mUCArtQkbDqhhyxJYWZI0o6DJFQZscCWkMmAhLGohs1jJx2J44u3FDHGJX+JiDCDwYdSPSNBw==
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.3.3"
     "@babel/plugin-proposal-object-rest-spread" "^7.3.2"
     "@babel/plugin-syntax-dynamic-import" "^7.2.0"
     "@babel/plugin-transform-react-constant-elements" "^7.2.0"
     "@babel/preset-env" "^7.4.5"
-    "@storybook/addons" "5.2.0-alpha.31"
-    "@storybook/channel-postmessage" "5.2.0-alpha.31"
-    "@storybook/client-api" "5.2.0-alpha.31"
-    "@storybook/client-logger" "5.2.0-alpha.31"
-    "@storybook/core-events" "5.2.0-alpha.31"
-    "@storybook/node-logger" "5.2.0-alpha.31"
-    "@storybook/router" "5.2.0-alpha.31"
-    "@storybook/theming" "5.2.0-alpha.31"
-    "@storybook/ui" "5.2.0-alpha.31"
+    "@storybook/addons" "5.2.0-alpha.42"
+    "@storybook/channel-postmessage" "5.2.0-alpha.42"
+    "@storybook/client-api" "5.2.0-alpha.42"
+    "@storybook/client-logger" "5.2.0-alpha.42"
+    "@storybook/core-events" "5.2.0-alpha.42"
+    "@storybook/node-logger" "5.2.0-alpha.42"
+    "@storybook/router" "5.2.0-alpha.42"
+    "@storybook/theming" "5.2.0-alpha.42"
+    "@storybook/ui" "5.2.0-alpha.42"
     airbnb-js-shims "^1 || ^2"
     ansi-to-html "^0.6.11"
     autoprefixer "^9.4.9"
     babel-plugin-add-react-displayname "^0.0.5"
-    babel-plugin-emotion "^10.0.9"
+    babel-plugin-emotion "^10.0.14"
     babel-plugin-macros "^2.4.5"
     babel-preset-minify "^0.5.0 || 0.6.0-alpha.5"
     boxen "^3.0.0"
@@ -2088,10 +2058,10 @@
     webpack-dev-middleware "^3.7.0"
     webpack-hot-middleware "^2.25.0"
 
-"@storybook/node-logger@5.2.0-alpha.31":
-  version "5.2.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-5.2.0-alpha.31.tgz#c2cd50b19a4c7383ef232ad032c640bbb3ef9830"
-  integrity sha512-ht7LwmVBLlUKwhRPmgs6Oysd4DtkcPtHUEoLacyhhr/eJ31WsHSsyBAMPMgtsGK43WnOvtliXYESccZAENvTgQ==
+"@storybook/node-logger@5.2.0-alpha.42":
+  version "5.2.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-5.2.0-alpha.42.tgz#99f743da89921eaf82d85d2f8dc16d9ee4e327f1"
+  integrity sha512-SYKTdhgBA6NwGsbSLQ6/CAkB4xgIdbEMKMG4htPJE3McoDMlwQNwblPXPd38cLgiI8hTXfbulDlUlnCJ1dGUNQ==
   dependencies:
     chalk "^2.4.2"
     core-js "^3.0.1"
@@ -2099,16 +2069,17 @@
     pretty-hrtime "^1.0.3"
     regenerator-runtime "^0.12.1"
 
-"@storybook/react@^5.2.0-alpha.31":
-  version "5.2.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@storybook/react/-/react-5.2.0-alpha.31.tgz#9b1174dc46935d5459fc52c8adf879636ef6564f"
-  integrity sha512-psNjvZyQaQQhlne1dtzA/Yg20RzWn9sTeTbbM2INZ7qqI/Cn65rS45rcDXjUWzZzIoWCpJgGOwQXD2dYZ573nQ==
+"@storybook/react@^5.2.0-alpha.42":
+  version "5.2.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/@storybook/react/-/react-5.2.0-alpha.42.tgz#46a1e5ea4ff6f25236894e527de705610f80d4b6"
+  integrity sha512-Wv3TamNNBPx8Gr6n32QEtlp8M4CGMd+e1HFvpTLbAFf7l/p8Fj4LGoZiR2KWzNsZevG/PNPowP7SnfsCBdE3yA==
   dependencies:
     "@babel/plugin-transform-react-constant-elements" "^7.2.0"
     "@babel/preset-flow" "^7.0.0"
     "@babel/preset-react" "^7.0.0"
-    "@storybook/core" "5.2.0-alpha.31"
-    "@storybook/node-logger" "5.2.0-alpha.31"
+    "@storybook/addons" "5.2.0-alpha.42"
+    "@storybook/core" "5.2.0-alpha.42"
+    "@storybook/node-logger" "5.2.0-alpha.42"
     "@svgr/webpack" "^4.0.3"
     babel-plugin-add-react-displayname "^0.0.5"
     babel-plugin-named-asset-import "^0.3.1"
@@ -2136,12 +2107,13 @@
     memoizerific "^1.11.3"
     qs "^6.6.0"
 
-"@storybook/router@5.2.0-alpha.31":
-  version "5.2.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@storybook/router/-/router-5.2.0-alpha.31.tgz#1082633f1a5dca5a8d706e51a6082bb745cb1397"
-  integrity sha512-YQQgNypNx1l5HNJDms5A5QoqcGZ54WggqbH3BTDqjJGG4FDG2oQDvBZ1GM7F3+vEk4DYnVA0413axxy/gFrZCQ==
+"@storybook/router@5.2.0-alpha.42":
+  version "5.2.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/@storybook/router/-/router-5.2.0-alpha.42.tgz#5d442bc35d19c45e0ae481391d5b7fccedc869c1"
+  integrity sha512-rk+WutNKLy7uTvlCmvuHz0/gcjZ+dSU8GNNq1vYTns3hke4XTEeS136JRuzWfCHWD+/lvWULMIi4jxSAUrEaJw==
   dependencies:
     "@reach/router" "^1.2.1"
+    "@types/reach__router" "^1.2.3"
     core-js "^3.0.1"
     global "^4.3.2"
     memoizerific "^1.11.3"
@@ -2180,41 +2152,41 @@
     prop-types "^15.7.2"
     resolve-from "^5.0.0"
 
-"@storybook/theming@5.2.0-alpha.31":
-  version "5.2.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-5.2.0-alpha.31.tgz#60e67a7a42b854677ec599879d7f0640b4c6ac15"
-  integrity sha512-JMAYFCDk19U/qRm3Rohv720WbRNM/JFQzCShBo9B85DrWnTGO6AYZNuqR+yvOYf9CAFH7aTfQB9Tz4vUp3yKqQ==
+"@storybook/theming@5.2.0-alpha.42":
+  version "5.2.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-5.2.0-alpha.42.tgz#7309a9f3286c3f3fc57efd34956410c21a27827e"
+  integrity sha512-nV7kbTDatHOQSobkxophkZ8hqvTKw0HcibqfMMUy4J+qZfysYdP/flBTF2HkRjTYa676SrLBzJhdVkfLCdFitQ==
   dependencies:
-    "@emotion/core" "^10.0.9"
-    "@emotion/styled" "^10.0.7"
-    "@storybook/client-logger" "5.2.0-alpha.31"
+    "@emotion/core" "^10.0.14"
+    "@emotion/styled" "^10.0.14"
+    "@storybook/client-logger" "5.2.0-alpha.42"
     common-tags "^1.8.0"
     core-js "^3.0.1"
     deep-object-diff "^1.1.0"
-    emotion-theming "^10.0.9"
+    emotion-theming "^10.0.14"
     global "^4.3.2"
     memoizerific "^1.11.3"
     polished "^3.3.1"
     prop-types "^15.7.2"
     resolve-from "^5.0.0"
 
-"@storybook/ui@5.2.0-alpha.31":
-  version "5.2.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@storybook/ui/-/ui-5.2.0-alpha.31.tgz#8a1e83df07a8dc01f5a807771f4fbe1fb9d4fe6c"
-  integrity sha512-VNdQv5RRvZkYcXfTkoAtU3q0WWjdFr0jHLOKByqVjzGJsemCfQ/WvqgTmsj4N3bMRBuGYvzJR6FM6aRFlBmxXQ==
+"@storybook/ui@5.2.0-alpha.42":
+  version "5.2.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/@storybook/ui/-/ui-5.2.0-alpha.42.tgz#057c7524501317351c39750d1a946d17e249b9a6"
+  integrity sha512-cBf6+MkYLqV0I/2NFuMFi9ZLarvCX2Id+NabUp4ly+qzrC+eI52VNaa8k0cXpxSVfOn6QFzlDurEtRrxbZ3r3A==
   dependencies:
-    "@storybook/addons" "5.2.0-alpha.31"
-    "@storybook/api" "5.2.0-alpha.31"
-    "@storybook/channels" "5.2.0-alpha.31"
-    "@storybook/client-logger" "5.2.0-alpha.31"
-    "@storybook/components" "5.2.0-alpha.31"
-    "@storybook/core-events" "5.2.0-alpha.31"
-    "@storybook/router" "5.2.0-alpha.31"
-    "@storybook/theming" "5.2.0-alpha.31"
+    "@storybook/addons" "5.2.0-alpha.42"
+    "@storybook/api" "5.2.0-alpha.42"
+    "@storybook/channels" "5.2.0-alpha.42"
+    "@storybook/client-logger" "5.2.0-alpha.42"
+    "@storybook/components" "5.2.0-alpha.42"
+    "@storybook/core-events" "5.2.0-alpha.42"
+    "@storybook/router" "5.2.0-alpha.42"
+    "@storybook/theming" "5.2.0-alpha.42"
     copy-to-clipboard "^3.0.8"
     core-js "^3.0.1"
     core-js-pure "^3.0.1"
-    emotion-theming "^10.0.10"
+    emotion-theming "^10.0.14"
     fast-deep-equal "^2.0.1"
     fuse.js "^3.4.4"
     global "^4.3.2"
@@ -2390,6 +2362,11 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
+"@types/history@*":
+  version "4.7.2"
+  resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.2.tgz#0e670ea254d559241b6eeb3894f8754991e73220"
+  integrity sha512-ui3WwXmjTaY73fOQ3/m3nnajU/Orhi6cEu5rzX+BrAAJxa3eITXZ5ch9suPqtM03OWhAHhPSyBGCN4UKoxO20Q==
+
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.1.tgz#42995b446db9a48a11a07ec083499a860e9138ff"
@@ -2425,10 +2402,38 @@
   resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
   integrity sha512-f5j5b/Gf71L+dbqxIpQ4Z2WlmI/mPJ0fOkGGmFgtb6sAu97EPczzbS3/tJKxmcYDj55OX6ssqwDAWOHIYDRDGA==
 
+"@types/prop-types@*":
+  version "15.7.1"
+  resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.1.tgz#f1a11e7babb0c3cad68100be381d1e064c68f1f6"
+  integrity sha512-CFzn9idOEpHrgdw8JsoTkaDDyRWk1jrzIV8djzcgpq0y9tG4B4lFT+Nxh52DVpDXV+n4+NPNv7M1Dj5uMp6XFg==
+
 "@types/q@^1.5.1":
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.1.tgz#48fd98c1561fe718b61733daed46ff115b496e18"
   integrity sha512-eqz8c/0kwNi/OEHQfvIuJVLTst3in0e7uTKeuY+WL/zfKn0xVujOTp42bS/vUUokhK5P2BppLd9JXMOMHcgbjA==
+
+"@types/reach__router@^1.2.3":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@types/reach__router/-/reach__router-1.2.4.tgz#44a701fdf15934880f6dfdef38ca49bc30e2d372"
+  integrity sha512-a+MFhebeSGi0LwHZ0UhH/ke77rWtNQnt8YmaHnquSaY3HmyEi+BPQi3GhPcUPnC9X5BLw/qORw3BPxGb1mCtEw==
+  dependencies:
+    "@types/history" "*"
+    "@types/react" "*"
+
+"@types/react-syntax-highlighter@10.1.0":
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/@types/react-syntax-highlighter/-/react-syntax-highlighter-10.1.0.tgz#9c534e29bbe05dba9beae1234f3ae944836685d4"
+  integrity sha512-dF49hC4FZp1dIKyzacOrHvqMUe8U2IXyQCQXOcT1e6n64gLBp+xM6qGtPsThIT9XjiIHSg2W5Jc2V5IqekBfnA==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react@*":
+  version "16.8.23"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.23.tgz#ec6be3ceed6353a20948169b6cb4c97b65b97ad2"
+  integrity sha512-abkEOIeljniUN9qB5onp++g0EY38h7atnDHxwKUFz1r3VH1+yG1OKi2sNPTyObL40goBmfKFpdii2lEzwLX1cA==
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^2.2.0"
 
 "@types/stack-utils@^1.0.1":
   version "1.0.1"
@@ -3163,7 +3168,7 @@ babel-plugin-dynamic-import-node@2.2.0:
   dependencies:
     object.assign "^4.1.0"
 
-babel-plugin-emotion@^10.0.14, babel-plugin-emotion@^10.0.9:
+babel-plugin-emotion@^10.0.14:
   version "10.0.14"
   resolved "https://registry.yarnpkg.com/babel-plugin-emotion/-/babel-plugin-emotion-10.0.14.tgz#c1d0e4621e303507ea7da57daa3cd771939d6df4"
   integrity sha512-T7hdxJ4xXkKW3OXcizK0pnUJlBeNj/emjQZPDIZvGOuwl2adIgicQWRNkz6BuwKdDTrqaXQn1vayaL6aL8QW5A==
@@ -3178,24 +3183,6 @@ babel-plugin-emotion@^10.0.14, babel-plugin-emotion@^10.0.9:
     escape-string-regexp "^1.0.5"
     find-root "^1.1.0"
     source-map "^0.5.7"
-
-babel-plugin-emotion@^9.2.11:
-  version "9.2.11"
-  resolved "https://registry.yarnpkg.com/babel-plugin-emotion/-/babel-plugin-emotion-9.2.11.tgz#319c005a9ee1d15bb447f59fe504c35fd5807728"
-  integrity sha512-dgCImifnOPPSeXod2znAmgc64NhaaOjGEHROR/M+lmStb3841yK1sgaDYAYMnlvWNz8GnpwIPN0VmNpbWYZ+VQ==
-  dependencies:
-    "@babel/helper-module-imports" "^7.0.0"
-    "@emotion/babel-utils" "^0.6.4"
-    "@emotion/hash" "^0.6.2"
-    "@emotion/memoize" "^0.6.1"
-    "@emotion/stylis" "^0.7.0"
-    babel-plugin-macros "^2.0.0"
-    babel-plugin-syntax-jsx "^6.18.0"
-    convert-source-map "^1.5.0"
-    find-root "^1.1.0"
-    mkdirp "^0.5.1"
-    source-map "^0.5.7"
-    touch "^2.0.1"
 
 babel-plugin-inline-react-svg@^1.1.0:
   version "1.1.0"
@@ -4447,7 +4434,7 @@ convert-source-map@^1.1.0:
   dependencies:
     safe-buffer "~5.1.1"
 
-convert-source-map@^1.4.0, convert-source-map@^1.5.0, convert-source-map@^1.5.1:
+convert-source-map@^1.4.0, convert-source-map@^1.5.0:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-1.5.1.tgz#b8278097b9bc229365de5c62cf5fcaed8b5599e5"
 
@@ -4575,19 +4562,6 @@ create-emotion@^10.0.14:
     "@emotion/serialize" "^0.11.8"
     "@emotion/sheet" "0.9.3"
     "@emotion/utils" "0.11.2"
-
-create-emotion@^9.2.12:
-  version "9.2.12"
-  resolved "https://registry.yarnpkg.com/create-emotion/-/create-emotion-9.2.12.tgz#0fc8e7f92c4f8bb924b0fef6781f66b1d07cb26f"
-  integrity sha512-P57uOF9NL2y98Xrbl2OuiDQUZ30GVmASsv5fbsjF4Hlraip2kyAvMm+2PoYUvFFw03Fhgtxk3RqZSm2/qHL9hA==
-  dependencies:
-    "@emotion/hash" "^0.6.2"
-    "@emotion/memoize" "^0.6.1"
-    "@emotion/stylis" "^0.7.0"
-    "@emotion/unitless" "^0.6.2"
-    csstype "^2.5.2"
-    stylis "^3.5.0"
-    stylis-rule-sheet "^0.0.10"
 
 create-hash@^1.1.0, create-hash@^1.1.2:
   version "1.2.0"
@@ -4916,9 +4890,10 @@ cssstyle@^1.0.0, cssstyle@^1.1.1:
   dependencies:
     cssom "0.3.x"
 
-csstype@^2.5.2:
-  version "2.5.5"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.5.5.tgz#4125484a3d42189a863943f23b9e4b80fedfa106"
+csstype@^2.2.0:
+  version "2.6.6"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.6.tgz#c34f8226a94bbb10c32cc0d714afdf942291fc41"
+  integrity sha512-RpFbQGUE74iyPgvr46U9t1xoQBM8T4BL8SxrN66Le2xYAPSaDJJKeztV3awugusb3g3G9iL8StmkBBXhcbbXhg==
 
 csstype@^2.5.7:
   version "2.6.5"
@@ -5434,7 +5409,7 @@ emojis-list@^2.0.0:
   resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
   integrity sha1-TapNnbAPmBmIDHn6RXrlsJof04k=
 
-emotion-theming@^10.0.10, emotion-theming@^10.0.9:
+emotion-theming@^10.0.14, emotion-theming@^10.0.9:
   version "10.0.14"
   resolved "https://registry.yarnpkg.com/emotion-theming/-/emotion-theming-10.0.14.tgz#e548d388493d07bedbb0d9d3bbe221766174b1f4"
   integrity sha512-zMGhPSYz48AAR6DYjQVaZHeO42cYKPq4VyB1XjxzgR62/NmO99679fx8qDDB1QZVYGkRWZtsOe+zJE/e30XdbA==
@@ -5450,14 +5425,6 @@ emotion@^10.0.14:
   dependencies:
     babel-plugin-emotion "^10.0.14"
     create-emotion "^10.0.14"
-
-emotion@^9.1.2:
-  version "9.2.12"
-  resolved "https://registry.yarnpkg.com/emotion/-/emotion-9.2.12.tgz#53925aaa005614e65c6e43db8243c843574d1ea9"
-  integrity sha512-hcx7jppaI8VoXxIWEhxpDW7I+B4kq9RNzQLmsrF6LY8BGKqe2N+gFAQr0EfuFucFlPs2A9HM4+xNj4NeqEWIOQ==
-  dependencies:
-    babel-plugin-emotion "^9.2.11"
-    create-emotion "^9.2.12"
 
 encodeurl@~1.0.2:
   version "1.0.2"
@@ -9576,12 +9543,6 @@ nopt@^4.0.1:
     abbrev "1"
     osenv "^0.1.4"
 
-nopt@~1.0.10:
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/nopt/-/nopt-1.0.10.tgz#6ddd21bd2a31417b92727dd585f8a6f37608ebee"
-  dependencies:
-    abbrev "1"
-
 normalize-package-data@^2.3.2, normalize-package-data@^2.3.4:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/normalize-package-data/-/normalize-package-data-2.4.0.tgz#12f95a307d58352075a04907b84ac8be98ac012f"
@@ -11701,13 +11662,16 @@ react-scripts@3.0.1:
   optionalDependencies:
     fsevents "2.0.6"
 
-react-select@^2.2.0:
-  version "2.4.4"
-  resolved "https://registry.yarnpkg.com/react-select/-/react-select-2.4.4.tgz#ba72468ef1060c7d46fbb862b0748f96491f1f73"
-  integrity sha512-C4QPLgy9h42J/KkdrpVxNmkY6p4lb49fsrbDk/hRcZpX7JvZPNb6mGj+c5SzyEtBv1DmQ9oPH4NmhAFvCrg8Jw==
+react-select@^3.0.0:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/react-select/-/react-select-3.0.4.tgz#16bde37c24fd4f6444914d4681e78f15ffbc86d3"
+  integrity sha512-fbVISKa/lSUlLsltuatfUiKcWCNvdLXxFFyrzVQCBUsjxJZH/m7UMPdw/ywmRixAmwXAP++MdbNNZypOsiDEfA==
   dependencies:
+    "@babel/runtime" "^7.4.4"
+    "@emotion/cache" "^10.0.9"
+    "@emotion/core" "^10.0.9"
+    "@emotion/css" "^10.0.9"
     classnames "^2.2.5"
-    emotion "^9.1.2"
     memoize-one "^5.0.0"
     prop-types "^15.6.0"
     raf "^3.4.0"
@@ -12864,10 +12828,6 @@ source-map@^0.6.0, source-map@^0.6.1, source-map@~0.6.0, source-map@~0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
 
-source-map@^0.7.2:
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.7.3.tgz#5302f8169031735226544092e64981f751750383"
-
 space-separated-tokens@^1.0.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/space-separated-tokens/-/space-separated-tokens-1.1.2.tgz#e95ab9d19ae841e200808cd96bc7bd0adbbb3412"
@@ -13699,13 +13659,6 @@ toposort@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/toposort/-/toposort-2.0.2.tgz#ae21768175d1559d48bef35420b2f4962f09c330"
   integrity sha1-riF2gXXRVZ1IvvNUILL0li8JwzA=
-
-touch@^2.0.1:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/touch/-/touch-2.0.2.tgz#ca0b2a3ae3211246a61b16ba9e6cbf1596287164"
-  integrity sha512-qjNtvsFXTRq7IuMLweVgFxmEuQ6gLbRs2jQxL80TtZ31dEKWYIxRXquij6w6VimyDek5hD3PytljHmEtAs2u0A==
-  dependencies:
-    nopt "~1.0.10"
 
 tough-cookie@^2.3.3, tough-cookie@^2.3.4, tough-cookie@^2.5.0:
   version "2.5.0"

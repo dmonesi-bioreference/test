@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import InputTextArea from '.';
 
 storiesOf('Components/Inputs/Textarea', module)
+  .addParameters({ component: InputTextArea })
   .add('default', () => <InputTextArea name="textarea" label="Text Area" />)
   .add('error', () => (
     <InputTextArea

@@ -8,6 +8,6 @@ const options = [
   { name: 'Option 3', value: 'option3' },
 ];
 
-storiesOf('Components/Inputs/Select', module).add('default', () => (
-  <Select name="select" label="Select Label" options={options} />
-));
+storiesOf('Components/Inputs/Select', module)
+  .addParameters({ component: Select })
+  .add('default', () => <Select name="select" label="Select Label" options={options} />);

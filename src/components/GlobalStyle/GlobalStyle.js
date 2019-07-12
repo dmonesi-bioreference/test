@@ -9,4 +9,15 @@ const GlobalStyle = createGlobalStyle`
   ${objects}
 `;
 
+export const StorybookGlobalStyle = createGlobalStyle`
+  ${generic}
+  ${elements}
+  ${objects}
+
+  body {
+    background-color: transparent;
+    min-width: 0;
+  }
+`;
+
 export default GlobalStyle;
