@@ -1,9 +1,9 @@
 import { css } from 'styled-components';
-import tokens from '../settings/tokens';
+import t from '../01_settings/tokens';
 
 const form = css`
   .o-input--has-errors {
-    color: ${tokens.colorError};
+    color: ${t.colorError};
 
     label,
     legend {

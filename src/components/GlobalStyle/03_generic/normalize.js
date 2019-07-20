@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import t from '../01_settings/tokens';
 
 /* stylelint-disable */
 
@@ -15,7 +16,7 @@ const normalize = css`
     box-sizing: inherit;
   }
   body {
-    background-color: $color-background;
+    background-color: ${t.colorBackground};
     margin: 0;
   }
   article,
@@ -112,7 +113,7 @@ const normalize = css`
   optgroup,
   select,
   textarea {
-    font-family: sans-serif;
+    font-family: ${t.fontFamilyBody};
     font-size: 100%;
     line-height: 1.15;
     margin: 0;
@@ -124,12 +125,6 @@ const normalize = css`
   button,
   select {
     text-transform: none;
-  }
-  button,
-  html [type='button'],
-  [type='reset'],
-  [type='submit'] {
-    -webkit-appearance: button;
   }
   button::-moz-focus-inner,
   [type='button']::-moz-focus-inner,

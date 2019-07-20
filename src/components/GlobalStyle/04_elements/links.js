@@ -1,9 +1,9 @@
 import { css } from 'styled-components';
-import tokens from '../settings/tokens';
+import t from '../01_settings/tokens';
 
 const links = css`
   a {
-    color: ${tokens.colorPrimary};
+    color: ${t.colorPrimary};
     text-decoration: underline;
   }
 `;
