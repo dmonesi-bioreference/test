@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import t from '../GlobalStyle/settings/tokens';
+import t, { colors } from '../GlobalStyle/01_settings/tokens';
 import IconStyled from '../Icon/Icon.styles';
 
 const ButtonStyled = styled.button`
@@ -24,14 +24,14 @@ const ButtonStyled = styled.button`
   }
 
   &:disabled {
-    background-color: ${t.colorAccent};
-    border-color: ${t.colorAccent};
+    background-color: ${colors.blueGray[200]};
+    border-color: ${colors.blueGray[200]};
     color: ${t.colorWhite};
     cursor: not-allowed;
 
     &:hover {
-      background-color: ${t.colorAccent};
-      border-color: ${t.colorAccent};
+      background-color: ${colors.blueGray[200]};
+      border-color: ${colors.blueGray[200]};
     }
   }
 
@@ -77,20 +77,20 @@ const ButtonStyled = styled.button`
 
   &[data-kind='outline'] {
     background-color: ${t.colorWhite};
-    border-color: ${t.colorAccent};
-    color: ${t.colorAccent};
+    border-color: ${t.colorPrimary};
+    color: ${t.colorPrimary};
 
     .c-icon {
       polygon,
       path {
-        fill: ${t.colorAccent};
+        fill: ${t.colorPrimary};
       }
     }
 
     &:hover {
       background-color: ${t.colorBackground};
-      border-color: ${t.colorAccent};
-      color: ${t.colorAccentHover};
+      border-color: ${t.colorPrimary};
+      color: ${t.colorPrimaryHover};
     }
   }
 

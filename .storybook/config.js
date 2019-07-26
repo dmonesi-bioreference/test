@@ -3,7 +3,7 @@ import { addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
 import { withKnobs } from '@storybook/addon-knobs';
 import { addParameters, load } from '@storybook/react';
-import StorybookGlobalStyle from '../src/components/GlobalStyle';
+import { StorybookGlobalStyle } from '../src/components/GlobalStyle/GlobalStyle';
 import { DocsPage } from '@storybook/addon-docs/blocks';
 
 addDecorator(withKnobs);

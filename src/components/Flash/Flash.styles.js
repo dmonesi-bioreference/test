@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import t from '../GlobalStyle/settings/tokens';
+import t from '../GlobalStyle/01_settings/tokens';
 
 const FlashStyled = styled.div`
   align-items: center;
@@ -30,7 +30,7 @@ const FlashStyled = styled.div`
 
     path,
     polygon {
-      fill: ${t.colorAccent};
+      fill: ${t.colorOffWhite};
     }
   }
 

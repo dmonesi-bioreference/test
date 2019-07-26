@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import t from '../GlobalStyle/settings/tokens';
+import t from '../GlobalStyle/01_settings/tokens';
 
 const MessageStyled = styled.div`
   align-content: center;

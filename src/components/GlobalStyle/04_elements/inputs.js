@@ -33,7 +33,7 @@ const inputs = css`
 
   label,
   legend {
-    color: ${t.colorSecondary};
+    color: ${colors.blueGray[700]};
     display: block;
     font-size: ${t.fontSize14};
     line-height: ${t.lineHeightTall};
@@ -190,7 +190,7 @@ const inputs = css`
     height: 20px;
     position: absolute;
     top: 5px;
-    left: 7px;
+    left: -2px;
   }
 
   [type='checkbox'],
@@ -216,12 +216,13 @@ const inputs = css`
       color: ${t.colorPrimary};
       content: '';
       display: inline-block;
+      font-family: Arial, Helvetica, sans-serif;
       height: 22px;
       left: -2px;
       position: relative;
       text-align: center;
       width: 22px;
-      top: -3px;
+      top: -5px;
     }
 
     &:disabled {
@@ -243,11 +244,12 @@ const inputs = css`
   [type='checkbox'] {
     &::before {
       border-radius: ${t.borderRadiusSmall};
+      top: -6px;
     }
 
     &:checked {
       &::before {
-        color: ${t.colorAccent};
+        color: ${t.colorPrimary};
         content: '\\2714';
         font-size: 1.1rem;
       }
@@ -263,9 +265,9 @@ const inputs = css`
 
     &:checked {
       &::before {
-        color: ${t.colorAccent};
+        color: ${t.colorPrimary};
         content: '\\2022';
-        font-size: 3.41rem;
+        font-size: 3.2rem;
         line-height: 0.43;
       }
     }

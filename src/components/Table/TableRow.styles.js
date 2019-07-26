@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import t from '../GlobalStyle/settings/tokens';
+import t from '../GlobalStyle/01_settings/tokens';
 
 const TableRowStyled = styled.tr`
   td {
-    border-bottom: 1px solid ${t.colorAccent};
+    border-bottom: 1px solid ${t.colorSecondary};
     padding: ${t.spacingSmall} 0;
   }
 
