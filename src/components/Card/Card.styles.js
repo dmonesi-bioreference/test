@@ -6,7 +6,7 @@ const CardStyled = styled.div`
   box-shadow: ${t.shadowSmall};
 
   .header {
-    background-color: ${t.colorBackground};
+    background-color: ${t.colorSecondary};
     border-top-left-radius: ${t.borderRadiusMedium};
     border-top-right-radius: ${t.borderRadiusMedium};
     padding: ${t.spacingSmall} ${t.spacingMedium};

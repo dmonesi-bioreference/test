@@ -15,7 +15,10 @@ addDecorator(story => (
 ))
 
 addParameters({
-  backgrounds: [{ name: 'white', value: '#fff', default: true }],
+  backgrounds: [
+    { name: 'white', value: '#FFF', default: true },
+    { name: 'blue gray', value: '#F0F4F8' },
+  ],
   docs: DocsPage,
 })
 
