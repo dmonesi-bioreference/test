@@ -13,7 +13,7 @@ storiesOf('Components/Icon', module)
       }}
     >
       {iconArray.map(name => (
-        <div>
+        <div key={name}>
           <span>{`${name}: `}</span>
           <Icon name={name} />
         </div>

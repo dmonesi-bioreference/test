@@ -11,14 +11,12 @@ storiesOf('Templates/Main', module)
   .add('Example Form', () => (
     <Main>
       <Card title="Register">
-        <Message icon="info">Please fill out this form to continue</Message>
+        <Message icon="information-outline">Please fill out this form to continue</Message>
         <InputText name="text" type="text" label="First Name" />
         <InputText name="text" type="text" label="Last Name" />
-        <Button
-          kind="primary"
-          label="Submit"
-          onClick={linkTo('Templates/Main', 'Example Landing')}
-        />
+        <Button kind="primary" onClick={linkTo('Templates/Main', 'Example Landing')}>
+          Submit
+        </Button>
       </Card>
     </Main>
   ))
