@@ -1,8 +1,8 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { select } from '@storybook/addon-knobs/react';
-import Message from '.';
-import { iconArray } from '../Icon';
+import React from 'react'
+import { storiesOf } from '@storybook/react'
+import { select } from '@storybook/addon-knobs/react'
+import Message from '.'
+import { iconArray } from '../Icon'
 
 storiesOf('Components/Message', module)
   .addParameters({ component: Message })
@@ -10,12 +10,17 @@ storiesOf('Components/Message', module)
     <Message icon={select('Icon', iconArray, undefined, null)}>Message text goes here.</Message>
   ))
   .add('info', () => (
-    <Message type="info" icon={select('Icon', iconArray, 'info', null)}>
+    <Message type="info" icon={select('Icon', iconArray, 'information-outline', null)}>
       Message text goes here.
     </Message>
   ))
   .add('error', () => (
-    <Message type="error" icon={select('Icon', iconArray, 'error', null)}>
+    <Message type="error" icon={select('Icon', iconArray, 'exclamation-outline', null)}>
+      Message text goes here.
+    </Message>
+  ))
+  .add('warning', () => (
+    <Message type="warning" icon={select('Icon', iconArray, 'flag', null)}>
       Message text goes here.
     </Message>
   ))
@@ -23,4 +28,4 @@ storiesOf('Components/Message', module)
     <Message type="success" icon={select('Icon', iconArray, 'checkmark', null)}>
       Message text goes here.
     </Message>
-  ));
+  ))

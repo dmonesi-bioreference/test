@@ -1,6 +1,6 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import Table, { TableBody, TableCell, TableHeader, TableRow } from '.';
+import React from 'react'
+import { storiesOf } from '@storybook/react'
+import Table, { TableBody, TableCell, TableHeader, TableRow } from '.'
 
 storiesOf('Components/Table', module)
   .addParameters({ component: Table })
@@ -25,4 +25,4 @@ storiesOf('Components/Table', module)
         </TableRow>
       </TableBody>
     </Table>
-  ));
+  ))

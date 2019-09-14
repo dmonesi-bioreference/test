@@ -1,6 +1,6 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import Button from '.';
+import React from 'react'
+import { storiesOf } from '@storybook/react'
+import Button from '.'
 
 storiesOf('Components/Button', module)
   .addParameters({ component: Button })
@@ -25,4 +25,10 @@ storiesOf('Components/Button', module)
   .add('outline', () => <Button kind="outline">Outline Button</Button>)
   .add('danger', () => <Button kind="danger">Danger Button</Button>)
   .add('disabled', () => <Button disabled>Disabled Button</Button>)
-  .add('text', () => <Button kind="text">Text Button</Button>);
+  .add('text', () => <Button kind="text">Text Button</Button>)
+  .add('text - danger', () => <Button kind="text-danger">Danger Text Button</Button>)
+  .add('text with icon', () => (
+    <Button kind="text" icon="duplicate">
+      Text Button
+    </Button>
+  ))

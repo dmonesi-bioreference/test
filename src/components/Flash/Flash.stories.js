@@ -1,6 +1,6 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import Flash from '.';
+import React from 'react'
+import { storiesOf } from '@storybook/react'
+import Flash from '.'
 
 storiesOf('Components/Flash', module)
   .addParameters({ component: Flash })
@@ -8,4 +8,4 @@ storiesOf('Components/Flash', module)
   .add('collapsable', () => (
     <Flash message="This is a flash message that can be closed." type="success" collapsable />
   ))
-  .add('error', () => <Flash message="This is a flash message." type="error" />);
+  .add('error', () => <Flash message="This is a flash message." type="error" />)

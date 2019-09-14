@@ -1,9 +1,9 @@
-import { createGlobalStyle } from 'styled-components';
-import tools from './02_tools';
-import generic from './03_generic';
-import elements from './04_elements';
-import objects from './05_objects';
-import utilities from './06_utilities';
+import { createGlobalStyle } from 'styled-components'
+import tools from './02_tools'
+import generic from './03_generic'
+import elements from './04_elements'
+import objects from './05_objects'
+import utilities from './06_utilities'
 
 const GlobalStyle = createGlobalStyle`
   ${tools}
@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
   ${elements}
   ${objects}
   ${utilities}
-`;
+`
 
 export const StorybookGlobalStyle = createGlobalStyle`
   ${tools}
@@ -24,6 +24,6 @@ export const StorybookGlobalStyle = createGlobalStyle`
     background-color: transparent;
     min-width: 0;
   }
-`;
+`
 
-export default GlobalStyle;
+export default GlobalStyle

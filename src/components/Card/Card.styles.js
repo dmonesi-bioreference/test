@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import t from '../GlobalStyle/01_settings/tokens';
+import styled from 'styled-components'
+import t from '../GlobalStyle/01_settings/tokens'
 
 const CardStyled = styled.div`
   border-radius: ${t.borderRadiusLarge};
@@ -15,7 +15,7 @@ const CardStyled = styled.div`
 
   .title {
     color: ${t.colorWhite};
-    font-size: ${t.fontSizeHeadingXSmall};
+    font-size: ${t.fontSize16};
     font-weight: ${t.fontWeightBold};
     text-transform: uppercase;
   }
@@ -24,6 +24,6 @@ const CardStyled = styled.div`
     background-color: ${t.colorWhite};
     padding: ${t.spacingSmall} ${t.spacingMedium};
   }
-`;
+`
 
-export default CardStyled;
+export default CardStyled

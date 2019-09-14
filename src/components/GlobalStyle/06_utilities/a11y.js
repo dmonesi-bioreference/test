@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import { css } from 'styled-components'
 
 const a11y = css`
   .visually-hidden {
@@ -11,6 +11,6 @@ const a11y = css`
     position: absolute;
     width: 1px;
   }
-`;
+`
 
-export default a11y;
+export default a11y

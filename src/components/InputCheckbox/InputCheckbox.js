@@ -1,10 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Message from '../Message';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Message from '../Message'
 
 const InputCheckbox = ({
   checked,
   disabled,
+  hideLabel,
   invalid,
   invalidMessage,
   label,
@@ -13,14 +14,20 @@ const InputCheckbox = ({
   readonly,
   required,
 }) => {
-  const invalidClass = invalid ? '--has-errors' : '';
-  const bemClass = `o-input${invalidClass}`;
+  const invalidClass = invalid ? '--has-errors' : ''
+  const hideLabelClass = hideLabel ? 'o-input--hidden-label' : ''
+  const bemClass = `o-input${invalidClass} ${hideLabelClass}`
 
   return (
-    <label className={bemClass}>
+    <label
+      className={bemClass}
+      data-checked={checked}
+      data-input-type="checkbox"
+      data-orientation="horizontal"
+    >
       <input
         aria-invalid={invalid}
-        defaultChecked={checked}
+        checked={checked}
         disabled={disabled}
         name={name}
         onChange={onChange}
@@ -29,36 +36,39 @@ const InputCheckbox = ({
         type="checkbox"
       />
       <span className="o-input-focus" />
-      {label}
+      {label && <span>{label}</span>}
       {invalid && (
-        <Message icon="error" type="error">
+        <Message icon="exclamation-outline" type="error">
           {invalidMessage}
         </Message>
       )}
     </label>
-  );
-};
+  )
+}
 
 InputCheckbox.propTypes = {
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
+  hideLabel: PropTypes.bool,
   invalid: PropTypes.bool,
   invalidMessage: PropTypes.string,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   readonly: PropTypes.bool,
   required: PropTypes.bool,
-};
+}
 
 InputCheckbox.defaultProps = {
   checked: false,
   disabled: false,
+  hideLabel: false,
   invalid: false,
   invalidMessage: null,
+  label: null,
   onChange: () => {},
   readonly: false,
   required: false,
-};
+}
 
-export default InputCheckbox;
+export default InputCheckbox

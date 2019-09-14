@@ -1,27 +1,47 @@
-import styled from 'styled-components';
-import t from '../GlobalStyle/01_settings/tokens';
+import styled from 'styled-components'
+import t from '../GlobalStyle/01_settings/tokens'
 
 const LabelValueStyled = styled.dl`
   display: flex;
   flex-flow: column;
-  margin: 0;
+  margin: 0 0 ${t.spacingSmall};
 
   dt {
     color: ${t.colorBlackSecondary};
-    font-size: ${t.fontSizeHeadingXxSmall};
+    font-size: ${t.fontSize14};
     font-weight: ${t.fontWeightRegular};
-    text-transform: uppercase;
   }
 
   dd {
-    color: ${t.colorPrimary};
-    font-size: ${t.fontSizeTextXLarge};
+    color: ${t.colorBlack};
+    font-size: ${t.fontSize18};
     margin-left: 0;
+    white-space: pre-line;
   }
 
   &[data-reverse='true'] {
     flex-flow: column-reverse;
   }
-`;
 
-export default LabelValueStyled;
+  &[data-orientation='horizontal'] {
+    flex-flow: row;
+    align-items: center;
+
+    dd {
+      margin-left: ${t.spacingSmall};
+    }
+  }
+
+  &[data-orientation='horizontal'][data-reverse='true'] {
+    flex-flow: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+
+    dd {
+      margin-right: ${t.spacingSmall};
+      margin-left: 0;
+    }
+  }
+`
+
+export default LabelValueStyled

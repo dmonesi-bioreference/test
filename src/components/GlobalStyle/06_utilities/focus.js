@@ -1,9 +1,22 @@
-import { css } from 'styled-components';
+import { css } from 'styled-components'
 
 const focus = css`
-  .mouse-intent *:focus {
-    outline: none;
-  }
-`;
+  .mouse-intent {
+    *:focus {
+      outline: none;
+    }
 
-export default focus;
+    [type='checkbox'],
+    [type='radio'] {
+      &:focus::before {
+        outline: none;
+      }
+    }
+
+    .o-input-focus {
+      display: none;
+    }
+  }
+`
+
+export default focus

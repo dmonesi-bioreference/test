@@ -1,5 +1,5 @@
-import { css } from 'styled-components';
-import t from '../01_settings/tokens';
+import { css } from 'styled-components'
+import t from '../01_settings/tokens'
 
 const button = css`
   button {
@@ -10,6 +10,6 @@ const button = css`
     font-family: ${t.fontFamilyBody};
     text-align: left;
   }
-`;
+`
 
-export default button;
+export default button

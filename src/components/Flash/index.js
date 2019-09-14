@@ -1,1 +1,1 @@
-export { default } from './Flash';
+export { default } from './Flash'

@@ -1,32 +1,30 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import LabelValueStyled from './LabelValue.styles';
+import React from 'react'
+import PropTypes from 'prop-types'
+import LabelValueStyled from './LabelValue.styles'
 
-const LabelValue = ({
-  children, label, reverse, value,
-}) => {
-  return (
-    <LabelValueStyled data-reverse={reverse}>
-      <dt>{label}</dt>
-      <dd>
-        {value}
-        {children}
-      </dd>
-    </LabelValueStyled>
-  );
-};
+const LabelValue = ({ children, label, orientation, reverse, value }) => (
+  <LabelValueStyled data-reverse={reverse} data-orientation={orientation}>
+    <dt>{label}</dt>
+    <dd>
+      {value}
+      {children}
+    </dd>
+  </LabelValueStyled>
+)
 
 LabelValue.propTypes = {
   children: PropTypes.node,
   label: PropTypes.string.isRequired,
+  orientation: PropTypes.oneOf(['vertical', 'horizontal']),
   reverse: PropTypes.bool,
-  value: PropTypes.string,
-};
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.node, PropTypes.instanceOf(Date)])
+    .isRequired,
+}
 
 LabelValue.defaultProps = {
   children: null,
+  orientation: 'vertical',
   reverse: false,
-  value: null,
-};
+}
 
-export default LabelValue;
+export default LabelValue

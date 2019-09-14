@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import { css } from 'styled-components'
 
 const positioning = css`
   .o-centered {
@@ -16,6 +16,6 @@ const positioning = css`
     display: flex;
     justify-content: space-between;
   }
-`;
+`
 
-export default positioning;
+export default positioning

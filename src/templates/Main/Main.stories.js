@@ -1,11 +1,11 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { linkTo } from '@storybook/addon-links';
-import Main from '.';
-import Message from '../../components/Message';
-import Card from '../../components/Card';
-import InputText from '../../components/InputText';
-import Button from '../../components/Button';
+import React from 'react'
+import { storiesOf } from '@storybook/react'
+import { linkTo } from '@storybook/addon-links'
+import Main from '.'
+import Message from '../../components/Message'
+import Card from '../../components/Card'
+import InputText from '../../components/InputText'
+import Button from '../../components/Button'
 
 storiesOf('Templates/Main', module)
   .add('Example Form', () => (
@@ -30,4 +30,4 @@ storiesOf('Templates/Main', module)
         </Message>
       </Card>
     </Main>
-  ));
+  ))

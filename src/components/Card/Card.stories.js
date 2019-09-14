@@ -1,7 +1,7 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import Button from '../Button';
-import Card from '.';
+import React from 'react'
+import { storiesOf } from '@storybook/react'
+import Button from '../Button'
+import Card from '.'
 
 storiesOf('Components/Card', module)
   .addParameters({ component: Card })
@@ -10,4 +10,4 @@ storiesOf('Components/Card', module)
     <Card title="Card with Component">
       <Button>Button</Button>
     </Card>
-  ));
+  ))

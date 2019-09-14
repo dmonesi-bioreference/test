@@ -1,8 +1,8 @@
 /* stylelint-disable property-no-vendor-prefix */
 /* stylelint-disable no-descending-specificity */
 
-import { css } from 'styled-components';
-import t, { colors } from '../01_settings/tokens';
+import { css } from 'styled-components'
+import t, { colors } from '../01_settings/tokens'
 
 const inputs = css`
   fieldset {
@@ -33,7 +33,7 @@ const inputs = css`
 
   label,
   legend {
-    color: ${colors.blueGray[700]};
+    color: ${t.colorSecondary};
     display: block;
     font-size: ${t.fontSize14};
     line-height: ${t.lineHeightTall};
@@ -47,29 +47,12 @@ const inputs = css`
   label {
     margin-bottom: ${t.spacingXSmall};
 
-    .help {
-      float: right;
-      color: ${t.colorBlackSecondary};
-      margin-right: ${t.spacingXxxSmall};
-      font-weight: ${t.fontWeightRegular};
-
-      *::before {
-        top: 1.8rem;
-        right: 0.2rem;
-        left: unset;
-      }
-    }
-
     &[data-orientation='horizontal'] {
       display: grid;
       grid-template-columns: auto 1fr;
       grid-template-rows: auto 1fr;
       justify-items: start;
       align-items: center;
-
-      .help {
-        display: none;
-      }
 
       > span {
         margin-right: ${t.spacingMedium};
@@ -108,6 +91,14 @@ const inputs = css`
     &[data-style='normal'] {
       font-weight: ${t.fontWeightRegular};
     }
+
+    &[data-style='header'] {
+      width: 100%;
+      margin-bottom: ${t.spacingXxSmall};
+      padding: 0 ${t.spacingXxSmall};
+      background-color: ${colors.blueGray[200]};
+      border-radius: ${t.borderRadiusMedium};
+    }
   }
 
   [type='text'],
@@ -130,7 +121,7 @@ const inputs = css`
     border-radius: ${t.borderRadiusMedium};
     box-shadow: ${t.shadowInsertSubtle};
     display: block;
-    font-family: ${t.fontFamilyFreightSans};
+    font-family: ${t.fontFamilyBody};
     font-size: ${t.fontSize16};
     padding: ${t.spacingXSmall};
     transition: all ${t.durationPromptly} ease-in-out;
@@ -164,6 +155,15 @@ const inputs = css`
     padding-left: 2.5rem;
   }
 
+  [data-icon='send'] {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="%23C1C3CD" d="M0 0l20 10L0 20V0zm0 8v4l10-2L0 8z"/></svg>');
+    background-origin: content-box;
+    background-position: right -1.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1rem;
+    padding-right: ${t.spacingXLarge};
+  }
+
   select {
     -webkit-appearance: none;
     background-color: ${t.colorWhite};
@@ -172,7 +172,16 @@ const inputs = css`
     background-position: right -1rem center;
     background-repeat: no-repeat;
     background-size: 9px 6px;
-    padding-right: 1.8rem;
+    padding-right: 1.85rem;
+    padding-left: 0.5rem;
+
+    &.placeholder {
+      color: ${t.colorBlackSecondary};
+    }
+
+    option {
+      color: ${t.colorBlack};
+    }
   }
 
   [type='date'] {
@@ -189,8 +198,8 @@ const inputs = css`
     width: 20px;
     height: 20px;
     position: absolute;
-    top: 5px;
-    left: -2px;
+    top: 3px;
+    left: -1px;
   }
 
   [type='checkbox'],
@@ -199,15 +208,6 @@ const inputs = css`
     margin-left: 0.2rem;
     margin-right: ${t.spacingSmall};
     margin-top: 0.35rem;
-
-    &:focus {
-      outline: 0;
-    }
-
-    &:focus + .o-input-focus {
-      display: inline-block;
-      outline: 1px solid ${t.colorPrimary};
-    }
 
     &::before {
       background-color: ${t.colorWhite};
@@ -222,7 +222,12 @@ const inputs = css`
       position: relative;
       text-align: center;
       width: 22px;
-      top: -5px;
+      top: -3px;
+    }
+
+    &:focus + .o-input-focus {
+      outline: rgba(0, 103, 244, 0.247) auto 5px;
+      outline-offset: -2px;
     }
 
     &:disabled {
@@ -244,7 +249,6 @@ const inputs = css`
   [type='checkbox'] {
     &::before {
       border-radius: ${t.borderRadiusSmall};
-      top: -6px;
     }
 
     &:checked {
@@ -271,10 +275,6 @@ const inputs = css`
         line-height: 0.43;
       }
     }
-
-    &:focus + .o-input-focus {
-      outline: 0;
-    }
   }
 
   [invalid] {
@@ -293,6 +293,6 @@ const inputs = css`
       border-color: ${t.colorBackground};
     }
   }
-`;
+`
 
-export default inputs;
+export default inputs

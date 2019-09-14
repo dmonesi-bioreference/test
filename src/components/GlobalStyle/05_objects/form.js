@@ -1,9 +1,9 @@
-import { css } from 'styled-components';
-import t from '../01_settings/tokens';
+import { css } from 'styled-components'
+import t from '../01_settings/tokens'
 
 const form = css`
   .o-input--has-errors {
-    color: ${t.colorError};
+    color: ${t.colorerror};
 
     label,
     legend {
@@ -11,7 +11,8 @@ const form = css`
     }
   }
 
-  .o-input--hidden-label {
+  .o-input--hidden-label,
+  .o-input--hidden-legend {
     margin-bottom: 0;
 
     span {
@@ -19,6 +20,6 @@ const form = css`
       position: absolute;
     }
   }
-`;
+`
 
-export default form;
+export default form

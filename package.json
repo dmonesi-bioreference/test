@@ -13,6 +13,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
+    "react-svg": "^10.0.20",
     "styled-components": "^4.3.2"
   },
   "scripts": {
@@ -24,7 +25,7 @@
     "fix-js": "eslint --fix 'src/**/*.{js,jsx}'",
     "lint-styles": "stylelint 'src/**/*.js'",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009",
+    "storybook": "start-storybook -s ./public -p 9009",
     "plop": "plop",
     "build:components": "rm -rf dist && mkdir -p dist/components && babel -d dist src",
     "build:all": "yarn build:components",
@@ -145,6 +146,13 @@
           "caseSensitive": true,
           "natural": false
         }
+      ],
+      "semi": [
+        "error",
+        "never",
+        {
+          "beforeStatementContinuationChars": "always"
+        }
       ]
     },
     "plugins": [
@@ -155,7 +163,7 @@
     "printWidth": 100,
     "singleQuote": true,
     "trailingComma": "es5",
-    "semi": true
+    "semi": false
   },
   "stylelint": {
     "processors": [

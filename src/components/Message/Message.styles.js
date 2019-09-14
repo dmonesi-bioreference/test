@@ -1,13 +1,21 @@
-import styled from 'styled-components';
-import t from '../GlobalStyle/01_settings/tokens';
+import styled from 'styled-components'
+import t from '../GlobalStyle/01_settings/tokens'
 
 const MessageStyled = styled.div`
-  align-content: center;
   color: ${t.colorBlack};
-  display: flex;
+  display: block;
+  line-height: ${t.lineHeightText};
+
+  span {
+    align-content: center;
+    display: inline-flex;
+    padding: 0.15rem ${t.spacingXxxSmall};
+    border-radius: ${t.borderRadiusMedium};
+  }
 
   svg {
-    margin-right: ${t.spacingXxSmall};
+    margin-top: 0.1rem;
+    margin-right: ${t.spacingXxxSmall};
     transform: scale(0.8);
   }
 
@@ -28,6 +36,15 @@ const MessageStyled = styled.div`
       fill: ${t.colorSuccess};
     }
   }
-`;
 
-export default MessageStyled;
+  &[data-type='warning'] {
+    color: ${t.colorWarning};
+
+    path,
+    polygon {
+      fill: ${t.colorWarning};
+    }
+  }
+`
+
+export default MessageStyled

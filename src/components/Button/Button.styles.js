@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import t, { colors } from '../GlobalStyle/01_settings/tokens';
-import IconStyled from '../Icon/Icon.styles';
+import styled from 'styled-components'
+import t, { colors } from '../GlobalStyle/01_settings/tokens'
+import IconStyled from '../Icon/Icon.styles'
 
 const ButtonStyled = styled.button`
   align-items: center;
@@ -9,30 +9,24 @@ const ButtonStyled = styled.button`
   border-radius: ${t.borderRadiusMedium};
   color: ${t.colorWhite};
   cursor: pointer;
-  display: flex;
-  font-family: ${t.fontFamily};
-  font-size: ${t.fontSizeTextXLarge};
+  display: ${props => (['a', 'div'].includes(props.as) ? 'inline-flex' : 'flex')};
+  font-family: ${t.fontFamilyBody};
+  font-size: ${t.fontSize18};
   font-weight: ${t.fontWeightBold};
   justify-content: center;
   line-height: ${t.lineHeightText};
   padding: ${t.spacingXSmall} ${t.spacingLarge};
+  text-decoration: none;
   transition: all ${t.durationPromptly} ease-in-out;
+  white-space: nowrap;
+
+  a {
+    color: ${t.colorWhite};
+  }
 
   &:hover {
     background-color: ${t.colorPrimaryHover};
     border-color: ${t.colorPrimaryHover};
-  }
-
-  &:disabled {
-    background-color: ${colors.blueGray[200]};
-    border-color: ${colors.blueGray[200]};
-    color: ${t.colorWhite};
-    cursor: not-allowed;
-
-    &:hover {
-      background-color: ${colors.blueGray[200]};
-      border-color: ${colors.blueGray[200]};
-    }
   }
 
   ${IconStyled} {
@@ -45,13 +39,40 @@ const ButtonStyled = styled.button`
     }
   }
 
+  &:disabled {
+    background-color: ${colors.blueGray[200]};
+    border-color: ${colors.blueGray[200]};
+    color: ${t.colorWhite};
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: ${colors.blueGray[200]};
+      border-color: ${colors.blueGray[200]};
+    }
+
+    ${IconStyled} {
+      polygon,
+      path {
+        fill: ${colors.blueGray[600]};
+      }
+    }
+  }
+
   &[data-size='small'] {
-    font-size: ${t.fontSizeTextMedium};
+    font-size: ${t.fontSize14};
     padding: ${t.spacingXSmall} ${t.spacingMedium};
+
+    ${IconStyled} {
+      margin-right: ${t.spacingXxxSmall};
+
+      svg {
+        transform: scale(0.6);
+      }
+    }
   }
 
   &[data-size='medium'] {
-    font-size: ${t.fontSizeTextLarge};
+    font-size: ${t.fontSize16};
     padding: ${t.spacingXSmall} ${t.spacingMedium};
   }
 
@@ -104,18 +125,43 @@ const ButtonStyled = styled.button`
     }
   }
 
-  &[data-kind='text'] {
+  &[data-kind^='text'] {
     background: none;
     border: 0;
     color: ${t.colorPrimary};
-    font-size: ${t.fontSizeTextMedium};
+    font-size: ${t.fontSize16};
     padding: 0;
+    text-decoration: underline;
 
     &:hover {
       background: none;
       color: ${t.colorBlack};
     }
-  }
-`;
 
-export default ButtonStyled;
+    ${IconStyled} {
+      position: relative;
+      top: 1px;
+      margin: 0 0 0 -0.35rem;
+      padding: 0 0.35rem;
+
+      svg {
+        width: 0.7rem;
+      }
+
+      polygon,
+      path {
+        fill: ${t.colorPrimary};
+      }
+    }
+  }
+
+  &[data-kind='text-danger'] {
+    color: ${t.colorError};
+
+    &:hover {
+      color: ${t.colorErrorHover};
+    }
+  }
+`
+
+export default ButtonStyled
