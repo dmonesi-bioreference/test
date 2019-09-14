@@ -7,7 +7,7 @@ const ButtonStyled = styled.button`
   background-color: ${t.colorPrimary};
   border: ${t.borderWidthThin} solid ${t.colorPrimary};
   border-radius: ${t.borderRadiusMedium};
-  color: ${t.colorWhite};
+  color: ${t.colorPrimaryText};
   cursor: pointer;
   display: ${props => (['a', 'div'].includes(props.as) ? 'inline-flex' : 'flex')};
   font-family: ${t.fontFamilyBody};
@@ -35,7 +35,7 @@ const ButtonStyled = styled.button`
 
     polygon,
     path {
-      fill: ${t.colorWhite};
+      fill: ${t.colorPrimaryText};
     }
   }
 
@@ -79,6 +79,7 @@ const ButtonStyled = styled.button`
   &[data-kind='secondary'] {
     background-color: ${t.colorSecondary};
     border-color: ${t.colorSecondary};
+    color: ${t.colorSecondaryText};
 
     &:hover {
       background-color: ${t.colorSecondaryHover};
@@ -89,6 +90,7 @@ const ButtonStyled = styled.button`
   &[data-kind='black'] {
     background-color: ${t.colorBlack};
     border-color: ${t.colorBlack};
+    color: ${t.colorWhite};
 
     &:hover {
       background-color: ${t.colorBlackHover};
@@ -96,28 +98,10 @@ const ButtonStyled = styled.button`
     }
   }
 
-  &[data-kind='outline'] {
-    background-color: ${t.colorWhite};
-    border-color: ${t.colorPrimary};
-    color: ${t.colorPrimary};
-
-    .c-icon {
-      polygon,
-      path {
-        fill: ${t.colorPrimary};
-      }
-    }
-
-    &:hover {
-      background-color: ${t.colorBackground};
-      border-color: ${t.colorPrimary};
-      color: ${t.colorPrimaryHover};
-    }
-  }
-
   &[data-kind='danger'] {
     background-color: ${t.colorError};
     border-color: ${t.colorError};
+    color: ${t.colorWhite};
 
     &:hover {
       background-color: ${t.colorErrorHover};
@@ -128,7 +112,7 @@ const ButtonStyled = styled.button`
   &[data-kind^='text'] {
     background: none;
     border: 0;
-    color: ${t.colorPrimary};
+    color: ${t.colorSecondaryText};
     font-size: ${t.fontSize16};
     padding: 0;
     text-decoration: underline;
@@ -150,7 +134,7 @@ const ButtonStyled = styled.button`
 
       polygon,
       path {
-        fill: ${t.colorPrimary};
+        fill: ${t.colorSecondaryText};
       }
     }
   }

@@ -33,7 +33,7 @@ const inputs = css`
 
   label,
   legend {
-    color: ${t.colorSecondary};
+    color: ${t.colorSecondaryText};
     display: block;
     font-size: ${t.fontSize14};
     line-height: ${t.lineHeightTall};

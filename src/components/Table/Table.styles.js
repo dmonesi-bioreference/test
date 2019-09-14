@@ -20,7 +20,7 @@ const TableStyled = styled.table`
   thead th {
     background-color: ${t.colorSecondary};
     border: 0;
-    color: ${t.colorWhite};
+    color: ${t.colorSecondaryText};
     text-align: left;
     font-weight: ${t.fontWeightSemibold};
   }

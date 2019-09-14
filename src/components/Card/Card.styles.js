@@ -6,7 +6,7 @@ const CardStyled = styled.div`
   box-shadow: ${t.shadowSmall};
 
   .header {
-    background-color: ${t.colorPrimary};
+    background-color: ${t.colorBackground};
     border-top-left-radius: ${t.borderRadiusMedium};
     border-top-right-radius: ${t.borderRadiusMedium};
     padding: ${t.spacingSmall} ${t.spacingMedium};
@@ -14,7 +14,7 @@ const CardStyled = styled.div`
   }
 
   .title {
-    color: ${t.colorWhite};
+    color: ${t.colorSecondaryText};
     font-size: ${t.fontSize16};
     font-weight: ${t.fontWeightBold};
     text-transform: uppercase;

@@ -20,29 +20,29 @@ const MessageStyled = styled.div`
   }
 
   &[data-type='error'] {
-    color: ${t.colorError};
+    color: ${t.colorErrorText};
 
     path,
     polygon {
-      fill: ${t.colorError};
+      fill: ${t.colorErrorText};
     }
   }
 
   &[data-type='success'] {
-    color: ${t.colorSuccess};
+    color: ${t.colorSuccessText};
 
     path,
     polygon {
-      fill: ${t.colorSuccess};
+      fill: ${t.colorSuccessText};
     }
   }
 
   &[data-type='warning'] {
-    color: ${t.colorWarning};
+    color: ${t.colorWarningText};
 
     path,
     polygon {
-      fill: ${t.colorWarning};
+      fill: ${t.colorWarningText};
     }
   }
 `

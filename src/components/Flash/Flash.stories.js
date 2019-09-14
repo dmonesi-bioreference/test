@@ -1,5 +1,6 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
+import { action } from '@storybook/addon-actions'
 import Flash from '.'
 
 storiesOf('Components/Flash', module)
@@ -10,7 +11,7 @@ storiesOf('Components/Flash', module)
       message="This is a flash message that can be closed."
       type="success"
       collapsable
-      onCloseClick={() => {}}
+      onCloseClick={action('onCloseClick')}
     />
   ))
   .add('error', () => <Flash message="This is a flash message." type="error" />)
