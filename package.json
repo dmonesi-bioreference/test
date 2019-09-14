@@ -28,8 +28,7 @@
     "storybook": "start-storybook -s ./public -p 9009",
     "plop": "plop",
     "build:components": "rm -rf dist && mkdir -p dist/components && babel -d dist src",
-    "build:all": "yarn build:components",
-    "release": "yarn run build:all && npm version patch && npm publish && git push && git push --tags"
+    "build:all": "yarn build:components"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
