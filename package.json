@@ -47,9 +47,7 @@
     "@storybook/addons": "^5.2.0",
     "@storybook/source-loader": "^5.2.0",
     "babel-loader": "8.0.5",
-    "babel-plugin-inline-react-svg": "^1.1.0",
     "babel-plugin-styled-components": "^1.10.4",
-    "emotion": "^10.0.14",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^6.0.0",
@@ -177,8 +175,7 @@
       "@babel/preset-react"
     ],
     "plugins": [
-      "babel-plugin-styled-components",
-      "inline-react-svg"
+      "babel-plugin-styled-components"
     ]
   },
   "browserslist": {
