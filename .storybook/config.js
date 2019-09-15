@@ -22,4 +22,11 @@ addParameters({
   docs: DocsPage,
 })
 
-configure(require.context('../src/', true, /\.stories\.js$/), module)
+configure(
+  [
+    require.context('../src', true, /\.stories\.mdx$/),
+    require.context('../src', true, /\.stories\.js$/),
+    require.context('../src', true, /\.stories\.tsx$/),
+  ],
+  module
+)
