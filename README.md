@@ -1,6 +1,6 @@
 # React UI Component Library Starter Kit
 
-This project serves as a starter component library for new React projects.
+This project serves as a starter component library for new React projects. It's built upon [create-react-app](https://github.com/facebook/create-react-app).
 
 ## Powered by Storybook & styled-components
 
