@@ -80,6 +80,7 @@ const tokens = {
   colorSecondaryText: colors.blueGray[900],
   colorWhite: colors.white,
   colorOffWhite: colors.blueGray[50],
+  colorHaze: rgba(colors.white, 0.5),
   colorGray: colors.blueGray[100],
   colorBlack: colors.black,
   colorBlackHover: darken(0.1, colors.black),

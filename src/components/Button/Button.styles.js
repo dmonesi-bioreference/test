@@ -96,6 +96,13 @@ const ButtonStyled = styled.button`
       background-color: ${t.colorBlackHover};
       border-color: ${t.colorBlackHover};
     }
+
+    ${IconStyled} {
+      polygon,
+      path {
+        fill: ${t.colorWhite};
+      }
+    }
   }
 
   &[data-kind='danger'] {
