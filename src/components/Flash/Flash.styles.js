@@ -1,12 +1,12 @@
-import styled from 'styled-components';
-import t from '../GlobalStyle/settings/tokens';
+import styled from 'styled-components'
+import t from '../GlobalStyle/01_settings/tokens'
 
 const FlashStyled = styled.div`
   align-items: center;
   background-color: ${t.colorBackground};
   box-shadow: ${t.shadowSubtle};
   display: flex;
-  margin: ${t.spacingSmall} 0;
+  margin: 0;
   padding: ${t.spacingXSmall} ${t.spacingSmall};
   width: 100%;
 
@@ -25,12 +25,17 @@ const FlashStyled = styled.div`
   }
 
   .close {
+    display: flex;
     cursor: pointer;
     flex-shrink: 1;
 
+    svg {
+      width: 0.8rem;
+    }
+
     path,
     polygon {
-      fill: ${t.colorAccent};
+      fill: ${t.colorOffWhite};
     }
   }
 
@@ -50,6 +55,6 @@ const FlashStyled = styled.div`
     background-color: ${t.colorError};
     color: ${t.colorWhite};
   }
-`;
+`
 
-export default FlashStyled;
+export default FlashStyled

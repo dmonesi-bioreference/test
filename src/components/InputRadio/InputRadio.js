@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Message from '../Message';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Message from '../Message'
 
 const InputRadio = ({
   checked,
@@ -13,14 +13,14 @@ const InputRadio = ({
   readonly,
   required,
 }) => {
-  const invalidClass = invalid ? '--has-errors' : '';
-  const bemClass = `o-input${invalidClass}`;
+  const invalidClass = invalid ? '--has-errors' : ''
+  const bemClass = `o-input${invalidClass}`
 
   return (
-    <label className={bemClass}>
+    <label className={bemClass} data-input-type="radio" data-orientation="horizontal">
       <input
         aria-invalid={invalid}
-        defaultChecked={checked}
+        checked={checked}
         disabled={disabled}
         name={name}
         onChange={onChange}
@@ -29,27 +29,27 @@ const InputRadio = ({
         type="radio"
       />
       <span className="o-input-focus" />
-      {label}
+      <span>{label}</span>
       {invalid && (
         <Message icon="error" type="error">
           {invalidMessage}
         </Message>
       )}
     </label>
-  );
-};
+  )
+}
 
 InputRadio.propTypes = {
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
   invalid: PropTypes.bool,
   invalidMessage: PropTypes.string,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   readonly: PropTypes.bool,
   required: PropTypes.bool,
-};
+}
 
 InputRadio.defaultProps = {
   checked: false,
@@ -59,6 +59,6 @@ InputRadio.defaultProps = {
   onChange: () => {},
   readonly: false,
   required: false,
-};
+}
 
-export default InputRadio;
+export default InputRadio

@@ -1,5 +1,5 @@
 /* eslint-disable sort-keys */
-module.exports = function (plop) {
+module.exports = function(plop) {
   plop.setGenerator('component', {
     description: 'create files for a new component',
     prompts: [
@@ -37,5 +37,5 @@ module.exports = function (plop) {
         templateFile: 'plop/component/export.hbs',
       },
     ],
-  });
-};
+  })
+}

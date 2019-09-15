@@ -1,21 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-const TableBody = ({
-  children,
-}) => {
-  return (
-    <tbody>
-      {children}
-    </tbody>
-  );
-};
+const TableBody = ({ children }) => <tbody>{children}</tbody>
 
 TableBody.propTypes = {
   children: PropTypes.node.isRequired,
-};
+}
 
-TableBody.defaultProps = {
-};
+TableBody.defaultProps = {}
 
-export default TableBody;
+export default TableBody

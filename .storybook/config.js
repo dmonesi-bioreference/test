@@ -1,23 +1,32 @@
-import React from 'react';
-import { configure, addDecorator } from '@storybook/react';
-import { checkA11y } from '@storybook/addon-a11y';
-import { withInfo } from '@storybook/addon-info';
-import { withKnobs } from '@storybook/addon-knobs';
-import GlobalStyle from '../src/components/GlobalStyle';
+import React from 'react'
+import { withA11y } from '@storybook/addon-a11y'
+import { withKnobs } from '@storybook/addon-knobs'
+import { addDecorator, addParameters, configure } from '@storybook/react'
+import { StorybookGlobalStyle } from '../src/components/GlobalStyle/GlobalStyle'
+import { DocsPage } from '@storybook/addon-docs/blocks'
 
-addDecorator(withInfo);
-addDecorator(withKnobs);
-addDecorator(checkA11y);
+addDecorator(withKnobs)
+addDecorator(withA11y)
 addDecorator(story => (
   <>
-    <GlobalStyle />
+    <StorybookGlobalStyle />
     {story()}
   </>
-));
+))
 
-function loadStories() {
-  const req = require.context('../src', true, /\.stories\.js$/);
-  req.keys().forEach(filename => req(filename));
-}
+addParameters({
+  backgrounds: [
+    { name: 'white', value: '#FFF', default: true },
+    { name: 'blue gray', value: '#F0F4F8' },
+  ],
+  docs: DocsPage,
+})
 
-configure(loadStories, module);
+configure(
+  [
+    require.context('../src', true, /\.stories\.mdx$/),
+    require.context('../src', true, /\.stories\.js$/),
+    require.context('../src', true, /\.stories\.tsx$/),
+  ],
+  module
+)

@@ -1,21 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-const Main = ({
-  children,
-}) => {
-  return (
-    <main className="o-main">
-      {children}
-    </main>
-  );
-};
+const Main = ({ children }) => {
+  return <main className="o-main">{children}</main>
+}
 
 Main.propTypes = {
   children: PropTypes.node.isRequired,
-};
+}
 
-Main.defaultProps = {
-};
+Main.defaultProps = {}
 
-export default Main;
+export default Main

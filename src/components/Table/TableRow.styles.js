@@ -1,19 +1,11 @@
-import styled from 'styled-components';
-import t from '../GlobalStyle/settings/tokens';
+import styled from 'styled-components'
+import t from '../GlobalStyle/01_settings/tokens'
 
 const TableRowStyled = styled.tr`
-  td {
-    border-bottom: 1px solid ${t.colorAccent};
-    padding: ${t.spacingSmall} 0;
+  td,
+  th {
+    border-bottom: 1px solid ${t.colorBorder};
   }
+`
 
-  &:last-child td {
-    border-bottom: 0;
-  }
-
-  td:last-child {
-    text-align: right;
-  }
-`;
-
-export default TableRowStyled;
+export default TableRowStyled

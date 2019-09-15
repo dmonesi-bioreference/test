@@ -1,15 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import TableRowStyled from './TableRow.styles';
+import React from 'react'
+import PropTypes from 'prop-types'
+import TableRowStyled from './TableRow.styles'
 
-const TableRow = ({ children }) => {
-  return <TableRowStyled>{children}</TableRowStyled>;
-};
+const TableRow = ({ children }) => <TableRowStyled>{children}</TableRowStyled>
 
 TableRow.propTypes = {
   children: PropTypes.node.isRequired,
-};
+}
 
-TableRow.defaultProps = {};
+TableRow.defaultProps = {}
 
-export default TableRow;
+export default TableRow

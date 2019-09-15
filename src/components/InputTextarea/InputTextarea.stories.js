@@ -1,11 +1,16 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withSmartKnobs } from 'storybook-addon-smart-knobs';
-import InputTextArea from '.';
+import React from 'react'
+import { storiesOf } from '@storybook/react'
+import InputTextArea from '.'
 
 storiesOf('Components/Inputs/Textarea', module)
-  .addDecorator(withSmartKnobs)
+  .addParameters({ component: InputTextArea })
   .add('default', () => <InputTextArea name="textarea" label="Text Area" />)
+  .add('bold weight label', () => (
+    <InputTextArea name="textarea" label="Text Area" labelStyle="emphasized" />
+  ))
+  .add('horizontal layout', () => (
+    <InputTextArea name="textarea" label="Text Area" orientation="horizontal" />
+  ))
   .add('error', () => (
     <InputTextArea
       name="textarea"
@@ -24,4 +29,4 @@ storiesOf('Components/Inputs/Textarea', module)
       value="Ready only value"
       readonly
     />
-  ));
+  ))
