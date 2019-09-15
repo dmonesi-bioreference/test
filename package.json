@@ -17,18 +17,20 @@
     "styled-components": "^4.3.2"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
     "build:storybook": "build-storybook",
-    "test": "react-scripts test --env=jsdom",
-    "lint-js": "eslint 'src/**/*.{js,jsx}'",
-    "fix-js": "eslint --fix 'src/**/*.{js,jsx}'",
-    "lint-styles": "stylelint 'src/**/*.js'",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -s ./public -p 9009",
-    "plop": "plop",
     "build:components": "rm -rf dist && mkdir -p dist/components && babel -d dist src",
-    "build:all": "yarn build:components"
+    "build:all": "yarn build:components",
+    "eject": "react-scripts eject",
+    "fix-js": "eslint --fix 'src/**/*.{js,jsx}'",
+    "fix-ts": "tslint --fix -c tslint.json 'src/**/*.{ts,tsx}'",
+    "lint-js": "eslint 'src/**/*.{js,jsx}'",
+    "lint-styles": "stylelint 'src/**/*.js'",
+    "lint-ts": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
+    "plop": "plop",
+    "start": "react-scripts start",
+    "storybook": "start-storybook -s ./public -p 9009",
+    "test": "react-scripts test --env=jsdom"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -46,6 +48,7 @@
     "@storybook/addon-viewport": "^5.2.0",
     "@storybook/addons": "^5.2.0",
     "@storybook/source-loader": "^5.2.0",
+    "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "8.0.5",
     "babel-plugin-styled-components": "^1.10.4",
     "eslint": "^5.16.0",
@@ -62,7 +65,12 @@
     "stylelint": "^10.1.0",
     "stylelint-config-standard": "^18.3.0",
     "stylelint-config-styled-components": "^0.1.1",
-    "stylelint-processor-styled-components": "^1.8.0"
+    "stylelint-processor-styled-components": "^1.8.0",
+    "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "tslint-react": "^4.0.0",
+    "typescript": "^3.6.3"
   },
   "husky": {
     "hooks": {
@@ -74,6 +82,11 @@
       "*.{js,jsx}": [
         "stylelint",
         "eslint --fix",
+        "yarn test --bail --findRelatedTests --watchAll=false",
+        "git add"
+      ],
+      "*.{ts,tsx}": [
+        "tslint --fix",
         "yarn test --bail --findRelatedTests --watchAll=false",
         "git add"
       ]
