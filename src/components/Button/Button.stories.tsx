@@ -1,6 +1,6 @@
-import React from 'react'
-import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
+import { storiesOf } from '@storybook/react'
+import React from 'react'
 import Button from '.'
 
 storiesOf('Components/Button', module)
@@ -41,7 +41,7 @@ storiesOf('Components/Button', module)
     </Button>
   ))
   .add('disabled', () => (
-    <Button disabled onClick={action('button-click')}>
+    <Button disabled={true} onClick={action('button-click')}>
       Disabled Button
     </Button>
   ))

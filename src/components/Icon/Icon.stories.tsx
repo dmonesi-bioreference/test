@@ -1,6 +1,6 @@
-import React from 'react'
 import { storiesOf } from '@storybook/react'
-import Icon, { iconArray } from './Icon'
+import React from 'react'
+import Icon, { iconArray as icons } from './Icon'
 
 storiesOf('Components/Icon', module)
   .addParameters({ component: Icon })
@@ -12,7 +12,7 @@ storiesOf('Components/Icon', module)
         gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
       }}
     >
-      {iconArray.map(name => (
+      {icons.map(name => (
         <div key={name}>
           <span>{`${name}: `}</span>
           <Icon name={name} />

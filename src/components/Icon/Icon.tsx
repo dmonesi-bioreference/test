@@ -1,9 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC } from 'react'
 import ReactSVG from 'react-svg'
 import IconStyled from './Icon.styles'
 
-const Icon = ({ name, rotate }) => (
+interface IconProps {
+  name: IconName
+  rotate?: number
+}
+
+const Icon: FC<IconProps> = ({ name, rotate = 0 }) => (
   <IconStyled rotate={rotate}>
     <ReactSVG src={`/icons/${name}.svg`} />
   </IconStyled>
@@ -303,15 +307,8 @@ export const iconArray = [
   'yin-yang',
   'zoom-in',
   'zoom-out',
-]
+] as const
 
-Icon.propTypes = {
-  name: PropTypes.oneOf(iconArray).isRequired,
-  rotate: PropTypes.number,
-}
-
-Icon.defaultProps = {
-  rotate: 0,
-}
+export type IconName = typeof iconArray[number]
 
 export default Icon
