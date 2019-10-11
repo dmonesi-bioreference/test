@@ -48,6 +48,7 @@
     "@storybook/addon-options": "^5.2.0",
     "@storybook/addon-viewport": "^5.2.0",
     "@storybook/addons": "^5.2.0",
+    "@storybook/cli": "^5.2.3",
     "@storybook/source-loader": "^5.2.0",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "8.0.5",

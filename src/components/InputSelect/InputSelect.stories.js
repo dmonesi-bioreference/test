@@ -1,5 +1,4 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
 import Select from '.'
 
 const options = [
@@ -8,12 +7,17 @@ const options = [
   { name: 'Option 3', value: 'option3' },
 ]
 
-storiesOf('Components/Inputs/Select', module)
-  .addParameters({ component: Select })
-  .add('default', () => <Select name="select" label="Select Label" options={options} />)
-  .add('bold weight label', () => (
-    <Select name="select" label="Select Label" options={options} labelStyle="emphasized" />
-  ))
-  .add('horizontal layout', () => (
-    <Select name="select" label="Select Label" options={options} orientation="horizontal" />
-  ))
+export default {
+  component: Select,
+  title: 'Components/Inputs/Select',
+}
+
+export const defaultStory = () => <Select name="select" label="Select Label" options={options} />
+
+export const boldWeightLabel = () => (
+  <Select name="select" label="Select Label" options={options} labelStyle="emphasized" />
+)
+
+export const horizontalLayout = () => (
+  <Select name="select" label="Select Label" options={options} orientation="horizontal" />
+)
