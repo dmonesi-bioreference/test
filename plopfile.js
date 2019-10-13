@@ -12,12 +12,12 @@ module.exports = function(plop) {
     actions: [
       {
         type: 'add',
-        path: 'src/components/{{properCase name}}/index.js',
+        path: 'src/components/{{properCase name}}/index.ts',
         templateFile: 'plop/component/index.hbs',
       },
       {
         type: 'add',
-        path: 'src/components/{{properCase name}}/{{properCase name}}.js',
+        path: 'src/components/{{properCase name}}/{{properCase name}}.tsx',
         templateFile: 'plop/component/component.hbs',
       },
       {
@@ -27,12 +27,12 @@ module.exports = function(plop) {
       },
       {
         type: 'add',
-        path: 'src/components/{{properCase name}}/{{properCase name}}.stories.js',
+        path: 'src/components/{{properCase name}}/{{properCase name}}.stories.tsx',
         templateFile: 'plop/component/component.story.hbs',
       },
       {
         type: 'append',
-        path: 'src/index.js',
+        path: 'src/index.ts',
         pattern: /$/,
         templateFile: 'plop/component/export.hbs',
       },
