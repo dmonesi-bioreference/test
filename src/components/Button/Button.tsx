@@ -3,7 +3,7 @@ import Icon from '../Icon'
 import { IconName } from '../Icon/Icon'
 import ButtonStyled from './Button.styles'
 
-interface ButtonProps {
+export interface ButtonProps {
   /** Override the HTML element rendered by this component. */
   as?: 'a' | 'div' | 'span' | 'button'
   disabled?: boolean
@@ -22,7 +22,7 @@ interface ButtonProps {
 const Button: FC<ButtonProps> = ({
   as = 'button',
   children,
-  disabled = false,
+  disabled,
   href,
   icon,
   iconRotation = 0,
