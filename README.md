@@ -4,7 +4,7 @@ This project serves as a starter component library for new React projects. It's 
 
 ## Powered by Storybook & styled-components
 
-This React component library is built with [Storybook](https://storybook.js.org). Components are styled using [styled-components](https://www.styled-components.com).
+This React component library is built with [Storybook](https://storybook.js.org). Components are written with [TypeScript](https://www.typescriptlang.org) and styled using [styled-components](https://www.styled-components.com).
 
 ## Installation
 
