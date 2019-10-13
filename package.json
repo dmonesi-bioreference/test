@@ -8,14 +8,14 @@
   ],
   "dependencies": {
     "@storybook/react": "^5.2.3",
-    "husky": "^2.7.0",
+    "husky": "^3.0.9",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1",
-    "react-svg": "^10.0.20",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-scripts": "3.2.0",
+    "react-svg": "^10.0.23",
     "react-svg-spinner": "^1.0.4",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.4.0"
   },
   "scripts": {
     "build": "react-scripts build",
@@ -34,11 +34,11 @@
     "test": "react-scripts test --env=jsdom"
   },
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/runtime": "^7.4.5",
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "@babel/runtime": "^7.6.3",
     "@storybook/addon-a11y": "^5.2.3",
     "@storybook/addon-actions": "^5.2.3",
     "@storybook/addon-backgrounds": "^5.2.3",
