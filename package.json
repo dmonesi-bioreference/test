@@ -7,7 +7,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@storybook/react": "^5.2.0",
+    "@storybook/react": "^5.2.3",
     "husky": "^2.7.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
@@ -39,41 +39,41 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.4.5",
-    "@storybook/addon-a11y": "^5.2.0",
-    "@storybook/addon-actions": "^5.2.0",
-    "@storybook/addon-backgrounds": "^5.2.0",
-    "@storybook/addon-docs": "^5.2.0",
-    "@storybook/addon-knobs": "^5.2.0",
-    "@storybook/addon-links": "^5.2.0",
-    "@storybook/addon-options": "^5.2.0",
-    "@storybook/addon-viewport": "^5.2.0",
-    "@storybook/addons": "^5.2.0",
+    "@storybook/addon-a11y": "^5.2.3",
+    "@storybook/addon-actions": "^5.2.3",
+    "@storybook/addon-backgrounds": "^5.2.3",
+    "@storybook/addon-docs": "^5.2.3",
+    "@storybook/addon-knobs": "^5.2.3",
+    "@storybook/addon-links": "^5.2.3",
+    "@storybook/addon-options": "^5.2.3",
+    "@storybook/addon-viewport": "^5.2.3",
+    "@storybook/addons": "^5.2.3",
     "@storybook/cli": "^5.2.3",
-    "@storybook/source-loader": "^5.2.0",
+    "@storybook/source-loader": "^5.2.3",
     "awesome-typescript-loader": "^5.2.1",
-    "babel-loader": "8.0.5",
+    "babel-loader": "8.0.6",
     "babel-plugin-styled-components": "^1.10.4",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-prettier": "^6.0.0",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-react": "^7.14.2",
-    "lint-staged": "^8.2.1",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "lint-staged": "^9.4.2",
     "moment": "^2.24.0",
     "plop": "^2.4.0",
     "prettier": "^1.18.2",
     "react-docgen-typescript-loader": "^3.3.0",
-    "stylelint": "^10.1.0",
-    "stylelint-config-standard": "^18.3.0",
+    "stylelint": "^11.1.1",
+    "stylelint-config-standard": "^19.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.8.0",
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",
-    "tslint-react": "^4.0.0",
-    "typescript": "^3.6.3"
+    "tslint-react": "^4.1.0",
+    "typescript": "^3.6.4"
   },
   "husky": {
     "hooks": {
@@ -81,19 +81,17 @@
     }
   },
   "lint-staged": {
-    "linters": {
-      "*.{js,jsx}": [
-        "stylelint",
-        "eslint --fix",
-        "yarn test --bail --findRelatedTests --watchAll=false",
-        "git add"
-      ],
-      "*.{ts,tsx}": [
-        "tslint --fix",
-        "yarn test --bail --findRelatedTests --watchAll=false",
-        "git add"
-      ]
-    }
+    "*.{js,jsx}": [
+      "stylelint",
+      "eslint --fix",
+      "yarn test --bail --findRelatedTests --watchAll=false",
+      "git add"
+    ],
+    "*.{ts,tsx}": [
+      "tslint --fix",
+      "yarn test --bail --findRelatedTests --watchAll=false",
+      "git add"
+    ]
   },
   "eslintConfig": {
     "parser": "babel-eslint",
