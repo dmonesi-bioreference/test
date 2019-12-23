@@ -7,12 +7,11 @@
     "dist/"
   ],
   "dependencies": {
-    "@storybook/react": "^5.2.3",
+    "@storybook/react": "^5.2.8",
     "husky": "^3.0.9",
-    "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-scripts": "3.2.0",
+    "react-scripts": "3.3.0",
     "react-svg": "^10.0.23",
     "react-svg-spinner": "^1.0.4",
     "styled-components": "^4.4.0"
@@ -39,17 +38,17 @@
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
     "@babel/runtime": "^7.6.3",
-    "@storybook/addon-a11y": "^5.2.3",
-    "@storybook/addon-actions": "^5.2.3",
-    "@storybook/addon-backgrounds": "^5.2.3",
-    "@storybook/addon-docs": "^5.2.3",
-    "@storybook/addon-knobs": "^5.2.3",
-    "@storybook/addon-links": "^5.2.3",
-    "@storybook/addon-options": "^5.2.3",
-    "@storybook/addon-viewport": "^5.2.3",
-    "@storybook/addons": "^5.2.3",
-    "@storybook/cli": "^5.2.3",
-    "@storybook/source-loader": "^5.2.3",
+    "@storybook/addon-a11y": "^5.2.8",
+    "@storybook/addon-actions": "^5.2.8",
+    "@storybook/addon-backgrounds": "^5.2.8",
+    "@storybook/addon-docs": "^5.2.8",
+    "@storybook/addon-knobs": "^5.2.8",
+    "@storybook/addon-links": "^5.2.8",
+    "@storybook/addon-options": "^5.2.8",
+    "@storybook/addon-viewport": "^5.2.8",
+    "@storybook/addons": "^5.2.8",
+    "@storybook/cli": "^5.2.8",
+    "@storybook/source-loader": "^5.2.8",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "8.0.6",
     "babel-plugin-styled-components": "^1.10.4",
@@ -63,17 +62,19 @@
     "lint-staged": "^9.4.2",
     "moment": "^2.24.0",
     "plop": "^2.4.0",
-    "prettier": "^1.18.2",
+    "prettier": "^1.19.1",
     "react-docgen-typescript-loader": "^3.3.0",
-    "stylelint": "^11.1.1",
+    "stylelint": "^12.0.0",
+    "stylelint-config-prettier": "^8.0.0",
     "stylelint-config-standard": "^19.0.0",
     "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-prettier": "^1.1.2",
     "stylelint-processor-styled-components": "^1.8.0",
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",
     "tslint-react": "^4.1.0",
-    "typescript": "^3.6.4"
+    "typescript": "^3.7.4"
   },
   "husky": {
     "hooks": {
@@ -181,8 +182,16 @@
     ],
     "extends": [
       "stylelint-config-standard",
+      "stylelint-config-prettier",
       "stylelint-config-styled-components"
-    ]
+    ],
+    "plugins": [
+      "stylelint-prettier"
+    ],
+    "rules": {
+      "at-rule-no-unknown": null,
+      "prettier/prettier": true
+    }
   },
   "babel": {
     "presets": [
