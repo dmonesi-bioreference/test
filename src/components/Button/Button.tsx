@@ -10,6 +10,7 @@ export interface ButtonProps {
   kind?: 'primary' | 'secondary' | 'black' | 'danger' | 'text' | 'text-danger'
   /** Passing `href` will overide the `as` prop, rendering this button as an `a` element. */
   href?: string
+  hidden?: boolean
   icon?: IconName
   iconRotation?: number
   id?: string
@@ -23,6 +24,7 @@ const Button: FC<ButtonProps> = ({
   as = 'button',
   children,
   disabled,
+  hidden,
   href,
   icon,
   iconRotation = 0,
@@ -41,6 +43,7 @@ const Button: FC<ButtonProps> = ({
       type={type}
       data-size={size}
       data-kind={kind}
+      hidden={hidden}
       href={href}
       name={name}
       as={element}

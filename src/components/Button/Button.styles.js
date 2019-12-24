@@ -20,6 +20,10 @@ const ButtonStyled = styled.button`
   transition: all ${t.durationPromptly} ease-in-out;
   white-space: nowrap;
 
+  &[hidden] {
+    display: none;
+  }
+
   a {
     color: ${t.colorWhite};
   }

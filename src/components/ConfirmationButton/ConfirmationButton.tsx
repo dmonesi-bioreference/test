@@ -35,15 +35,7 @@ const ConfirmationButton: FC<ConfirmationButtonProps> = ({
 
   const confirmationButtons = (
     <ButtonGroup>
-      <Button
-        kind={confirmationActionKind}
-        size={size}
-        onClick={handleConfirmationButtonClick}
-        // onClick={() => {
-        //   onClick()
-        //   setConfirm(false)
-        // }}
-      >
+      <Button kind={confirmationActionKind} size={size} onClick={handleConfirmationButtonClick}>
         {confirmationAction}
       </Button>
       <Button kind={exitActionKind} size={size} onClick={() => setConfirm(false)}>
@@ -77,11 +69,13 @@ const ConfirmationButton: FC<ConfirmationButtonProps> = ({
 
   return (
     <ConfirmationButtonStyled>
-      {confirm ? (
-        confirmation()
-      ) : (
-        <Button {...buttonProps} size={size} onClick={() => setConfirm(true)} />
-      )}
+      {confirm && confirmation()}
+      <Button
+        {...buttonProps}
+        size={size}
+        onClick={() => setConfirm(true)}
+        hidden={confirm && confirmationType === 'prompt'}
+      />
     </ConfirmationButtonStyled>
   )
 }
