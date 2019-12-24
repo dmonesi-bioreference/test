@@ -193,24 +193,20 @@ const inputs = css`
     padding-right: 1.5rem;
   }
 
-  .o-input-focus {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    top: 3px;
-    left: -1px;
-  }
-
   [type='checkbox'],
   [type='radio'] {
     align-self: flex-start;
     margin-left: 0.2rem;
     margin-right: ${t.spacingSmall};
     margin-top: 0.35rem;
+    -moz-appearance: initial;
+    width: 14px;
+    height: 14px;
 
     &::before {
       background-color: ${t.colorWhite};
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
       border: ${t.borderWidthThin} solid ${t.colorBorderInput};
       box-shadow: ${t.shadowInsertSubtle};
       color: ${t.colorPrimary};
@@ -225,9 +221,13 @@ const inputs = css`
       top: -3px;
     }
 
-    &:focus + .o-input-focus {
-      outline: rgba(0, 103, 244, 0.247) auto 5px;
-      outline-offset: -2px;
+    &:focus {
+      outline: none;
+
+      &::before {
+        box-shadow: 0 0 1px 3px rgba(0, 103, 244, 0.6);
+        border-color: #3c6dce;
+      }
     }
 
     &:disabled {
@@ -253,8 +253,8 @@ const inputs = css`
 
     &:checked {
       &::before {
-        color: ${t.colorPrimary};
-        content: '\\2714';
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35"><path fill="%235f8ec4" d="M13.0254194,35 C11.8846422,35 10.804182,34.492461 10.1118483,33.6173938 L0.741740832,21.8139872 C-0.477710606,20.2813695 -0.160390984,18.0987019 1.44980941,16.9361126 C3.06263228,15.7685229 5.35205401,16.0760465 6.57150545,17.6111645 L12.736947,25.3717605 L28.2384039,1.63993778 C29.3057517,0.00981257825 31.5610812,-0.490225827 33.2761807,0.527352328 C34.9886577,1.54243029 35.5157754,3.69259543 34.4458051,5.32772102 L16.1304312,33.3548736 C15.495792,34.3324487 14.3969745,34.9424956 13.1932579,34.9949996 C13.1355634,35 13.0831139,35 13.0254194,35 Z"/></svg>');
+        background-size: 0.8rem;
         font-size: 1.1rem;
       }
     }
@@ -269,10 +269,8 @@ const inputs = css`
 
     &:checked {
       &::before {
-        color: ${t.colorPrimary};
-        content: '\\2022';
-        font-size: 3.2rem;
-        line-height: 0.43;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="%235F8EC3" fill-rule="evenodd"/></svg>');
+        color: ${t.colorAccent};
       }
     }
   }

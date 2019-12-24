@@ -32,7 +32,6 @@ const InputRadio: FC<InputRadioProps> = ({
         required={required}
         type="radio"
       />
-      <span className="o-input-focus" />
       <span>{label}</span>
       {invalid && invalidMessage && (
         <Message icon="exclamation-solid" type="error">

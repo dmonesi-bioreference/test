@@ -9,12 +9,9 @@ const focus = css`
     [type='checkbox'],
     [type='radio'] {
       &:focus::before {
-        outline: none;
+        box-shadow: none;
+        border-color: inherit;
       }
-    }
-
-    .o-input-focus {
-      display: none;
     }
   }
 `
