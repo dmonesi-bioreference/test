@@ -16,16 +16,18 @@ const CardGridStyled = styled.div`
 
   &[data-columns='2'] {
     grid-template-columns: 1fr;
-    ${media.medium`
+
+    ${media.mediumUp} {
       grid-template-columns: 1fr 1fr;
-    `}
+    }
   }
 
   &[data-columns='3'] {
     grid-template-columns: 1fr;
-    ${media.medium`
+
+    ${media.mediumUp} {
       grid-template-columns: 1fr 1fr 1fr;
-    `}
+    }
   }
 `
 
