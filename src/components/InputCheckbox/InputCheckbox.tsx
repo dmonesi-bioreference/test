@@ -40,7 +40,6 @@ const InputCheckbox: FC<InputCheckboxProps> = ({
         required={required}
         type="checkbox"
       />
-      <span className="o-input-focus" />
       {label && <span>{label}</span>}
       {invalid && invalidMessage && (
         <Message icon="exclamation-outline" type="error">
