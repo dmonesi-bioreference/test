@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import ReactSVG from 'react-svg'
+import { ReactSVG } from 'react-svg'
 import IconStyled from './Icon.styles'
 
 interface IconProps {
