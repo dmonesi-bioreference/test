@@ -33,7 +33,7 @@
     "test": "react-scripts test --env=jsdom"
   },
   "devDependencies": {
-    "@babel/cli": "^7.6.4",
+    "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.7.4",
