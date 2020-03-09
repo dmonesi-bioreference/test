@@ -7,14 +7,34 @@ export default {
   title: 'Components/Button',
 }
 
-export const primary = () => (
-  <Button kind="primary" onClick={action('button-click')}>
+export const primary = () => <Button kind="primary">Primary Button</Button>
+
+export const PrimaryOnClick = () => (
+  <Button kind="primary" onClick={action('button clicked')}>
+    Primary Button
+  </Button>
+)
+
+export const PrimaryHref = () => (
+  <Button kind="primary" href="https://example.com">
+    Primary Button
+  </Button>
+)
+
+export const PrimaryRouterLink = () => (
+  <Button kind="primary" linkTo="#">
     Primary Button
   </Button>
 )
 
 export const primaryWithIcon = () => (
   <Button kind="primary" icon="checkmark" onClick={action('button-click')}>
+    Primary Icon Button
+  </Button>
+)
+
+export const PrimaryWithIconOnRight = () => (
+  <Button kind="primary" icon="arrow-right" iconPosition="end">
     Primary Icon Button
   </Button>
 )

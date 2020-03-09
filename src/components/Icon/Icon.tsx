@@ -3,13 +3,14 @@ import { ReactSVG } from 'react-svg'
 import IconStyled from './Icon.styles'
 
 interface IconProps {
+  element?: 'div' | 'span'
   name: IconName
   rotate?: number
 }
 
-const Icon: FC<IconProps> = ({ name, rotate = 0 }) => (
-  <IconStyled rotate={rotate}>
-    <ReactSVG src={`/icons/${name}.svg`} />
+const Icon: FC<IconProps> = ({ element = 'div', name, rotate = 0 }) => (
+  <IconStyled rotate={rotate} as={element}>
+    <ReactSVG src={`/icons/${name}.svg`} wrapper={element} />
   </IconStyled>
 )
 

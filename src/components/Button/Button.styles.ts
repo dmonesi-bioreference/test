@@ -33,6 +33,10 @@ const ButtonStyled = styled.button`
     border-color: ${t.colorPrimaryHover};
   }
 
+  .children {
+    display: block;
+  }
+
   ${IconStyled} {
     margin-left: -0.3rem;
     margin-right: ${t.spacingSmall};
@@ -59,6 +63,15 @@ const ButtonStyled = styled.button`
       path {
         fill: ${colors.blueGray[600]};
       }
+    }
+  }
+
+  &[data-icon-position='end'] {
+    flex-flow: row-reverse;
+
+    ${IconStyled} {
+      margin-right: -0.3rem;
+      margin-left: ${t.spacingXxSmall};
     }
   }
 

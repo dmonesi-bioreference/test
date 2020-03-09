@@ -20,7 +20,7 @@ const Select: FC<SelectProps> = ({
   label,
   labelStyle = 'normal',
   name,
-  onChange,
+  onBlur,
   options,
   orientation = 'vertical',
   placeholder,
@@ -39,7 +39,7 @@ const Select: FC<SelectProps> = ({
         aria-invalid={invalid}
         disabled={disabled}
         name={name}
-        onChange={onChange}
+        onBlur={onBlur}
         required={required}
         value={value}
         className={!value ? 'placeholder' : ''}

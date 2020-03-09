@@ -1,6 +1,6 @@
 {
   "name": "@zolk/react-ui-starter-kit",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "private": true,
   "main": "dist/index.js",
   "files": [
@@ -11,6 +11,8 @@
     "husky": "^3.1.0",
     "react": "^16.10.2",
     "react-dom": "^16.12.0",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0",
     "react-svg": "^11.0.5",
     "react-svg-spinner": "^1.0.4",
@@ -22,11 +24,9 @@
     "build:components": "rm -rf dist && mkdir -p dist/components && babel -d dist src",
     "build:all": "yarn build:components",
     "eject": "react-scripts eject",
-    "fix-js": "eslint --fix 'src/**/*.{js,jsx}'",
-    "fix-ts": "tslint --fix -c tslint.json 'src/**/*.{ts,tsx}'",
-    "lint-js": "eslint 'src/**/*.{js,jsx}'",
-    "lint-styles": "stylelint 'src/**/*.js'",
-    "lint-ts": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
+    "lint": "eslint . --ext ts --ext tsx --ext js --ext jsx",
+    "lint-styles": "stylelint 'src/**/*.ts'",
+    "lint:fix": "yarn lint -- --fix",
     "plop": "plop",
     "start": "react-scripts start",
     "storybook": "start-storybook -s ./public -p 9009",
@@ -48,32 +48,31 @@
     "@storybook/addon-viewport": "^5.2.8",
     "@storybook/addons": "^5.2.8",
     "@storybook/cli": "^5.2.8",
+    "@storybook/preset-create-react-app": "^2.0.0",
     "@storybook/source-loader": "^5.2.8",
-    "awesome-typescript-loader": "^5.2.1",
+    "@typescript-eslint/eslint-plugin": "^2.23.0",
+    "@typescript-eslint/parser": "^2.23.0",
     "babel-loader": "8.0.6",
     "babel-plugin-styled-components": "^1.10.4",
     "eslint": "^6.6.0",
-    "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.9.0",
-    "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-security": "^1.4.0",
     "lint-staged": "^9.5.0",
     "moment": "^2.24.0",
     "plop": "^2.4.0",
     "prettier": "^1.19.1",
     "react-docgen-typescript-loader": "^3.6.0",
+    "storybook-react-router": "^1.0.8",
     "stylelint": "^12.0.1",
     "stylelint-config-prettier": "^8.0.0",
     "stylelint-config-standard": "^19.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-prettier": "^1.1.2",
     "stylelint-processor-styled-components": "^1.9.0",
-    "tslint": "^5.20.1",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-plugin-prettier": "^2.1.0",
-    "tslint-react": "^4.1.0",
+    "ts-loader": "^6.2.1",
     "typescript": "^3.7.4"
   },
   "husky": {
@@ -82,92 +81,12 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx}": [
+    "*.{js,jsx,ts,tsx}": [
       "stylelint",
       "eslint --fix",
+      "prettier --write",
       "yarn test --bail --findRelatedTests --watchAll=false",
       "git add"
-    ],
-    "*.{ts,tsx}": [
-      "tslint --fix",
-      "yarn test --bail --findRelatedTests --watchAll=false",
-      "git add"
-    ]
-  },
-  "eslintConfig": {
-    "parser": "babel-eslint",
-    "extends": [
-      "airbnb",
-      "plugin:prettier/recommended"
-    ],
-    "rules": {
-      "strict": 0,
-      "import/no-extraneous-dependencies": 0,
-      "jsx-a11y/label-has-for": [
-        2,
-        {
-          "components": [
-            "Label"
-          ],
-          "required": {
-            "every": [
-              "nesting",
-              "id"
-            ]
-          },
-          "allowChildren": true
-        }
-      ],
-      "jsx-a11y/label-has-associated-control": [
-        "error",
-        {
-          "assert": "either"
-        }
-      ],
-      "prettier/prettier": "error",
-      "react/jsx-filename-extension": [
-        1,
-        {
-          "extensions": [
-            ".js",
-            ".jsx"
-          ]
-        }
-      ],
-      "jsx-a11y/anchor-is-valid": [
-        "error",
-        {
-          "components": [
-            "Link"
-          ],
-          "specialLink": [
-            "hrefLeft",
-            "hrefRight"
-          ],
-          "aspects": [
-            "invalidHref",
-            "preferButton"
-          ]
-        }
-      ],
-      "sort-keys": [
-        "error",
-        "asc",
-        {
-          "caseSensitive": true,
-          "natural": false
-        }
-      ],
-      "semi": [
-        "error",
-        "never",
-        {
-          "beforeStatementContinuationChars": "always"
-        }
-      ]
-    },
-    "plugins": [
-      "prettier"
     ]
   },
   "prettier": {
