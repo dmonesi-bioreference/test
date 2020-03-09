@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 
 const IconStyled = styled.div`
-  align-items: center;
   display: flex;
+  align-items: center;
 
+  span,
   div {
     display: flex;
     align-items: center;
