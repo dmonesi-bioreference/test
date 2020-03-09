@@ -3,7 +3,7 @@ import t from '../01_settings/tokens'
 
 const form = css`
   .o-input--has-errors {
-    color: ${t.colorerror};
+    color: ${t.colorError};
 
     label,
     legend {
