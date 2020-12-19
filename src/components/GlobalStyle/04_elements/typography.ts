@@ -1,5 +1,5 @@
-import { css } from 'styled-components'
-import t, { fontPairs } from '../01_settings/tokens'
+import { css } from 'styled-components';
+import t, { fontPairs } from '../01_settings/tokens';
 
 const typography = css`
   html {
@@ -63,6 +63,6 @@ const typography = css`
       color: ${t.colorSecondary};
     }
   }
-`
+`;
 
-export default typography
+export default typography;

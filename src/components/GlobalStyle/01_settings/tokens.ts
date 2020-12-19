@@ -1,5 +1,5 @@
 /* eslint-disable sort-keys */
-import { darken, rgba, rem } from 'polished'
+import { darken, rgba, rem } from 'polished';
 
 export const colors = {
   white: '#FFFFFF',
@@ -64,11 +64,11 @@ export const colors = {
     800: 'hsl(350, 94%, 28%)',
     900: 'hsl(348, 94%, 20%)',
   },
-}
+};
 
 const fonts = {
   fontFamilyOpenSans: "'Open Sans', 'Helvetica Neue', Arial, sans-serif",
-}
+};
 
 const tokens = {
   colorBackground: colors.blueGray[50],
@@ -176,7 +176,7 @@ const tokens = {
   zIndexModal: '8000',
   zIndexSpinner: '9000',
   zIndexToast: '10000',
-}
+};
 
 export const fontPairs = {
   bodyBook: `
@@ -191,6 +191,6 @@ export const fontPairs = {
     font-family: ${tokens.fontFamilyBody};
     font-weight: ${tokens.fontWeightBold};
   `,
-}
+};
 
-export default tokens
+export default tokens;

@@ -1,8 +1,8 @@
 /* stylelint-disable property-no-vendor-prefix */
 /* stylelint-disable no-descending-specificity */
 
-import { css } from 'styled-components'
-import t, { colors } from '../01_settings/tokens'
+import { css } from 'styled-components';
+import t, { colors } from '../01_settings/tokens';
 
 const inputs = css`
   fieldset {
@@ -291,6 +291,6 @@ const inputs = css`
       border-color: ${t.colorBackground};
     }
   }
-`
+`;
 
-export default inputs
+export default inputs;

@@ -1,9 +1,9 @@
-import React, { FC } from 'react'
-import { InputTextBaseProps } from '../Input/props'
-import Message from '../Message'
+import React, { FC } from 'react';
+import { InputTextBaseProps } from '../Input/props';
+import Message from '../Message';
 
 interface InputTextAreaProps extends InputTextBaseProps {
-  rows?: number
+  rows?: number;
 }
 
 const InputTextArea: FC<InputTextAreaProps> = ({
@@ -25,9 +25,9 @@ const InputTextArea: FC<InputTextAreaProps> = ({
   value,
   rows,
 }) => {
-  const invalidClass = invalid ? '--has-errors' : ''
-  const hideLabelClass = hideLabel ? 'o-input--hidden-label' : ''
-  const bemClass = `o-input${invalidClass} ${hideLabelClass}`
+  const invalidClass = invalid ? '--has-errors' : '';
+  const hideLabelClass = hideLabel ? 'o-input--hidden-label' : '';
+  const bemClass = `o-input${invalidClass} ${hideLabelClass}`;
 
   return (
     <label
@@ -41,14 +41,14 @@ const InputTextArea: FC<InputTextAreaProps> = ({
         aria-invalid={invalid}
         disabled={disabled}
         name={name}
-        onBlur={e => {
+        onBlur={(e) => {
           if (onChange) {
-            e.currentTarget.value = e.currentTarget.value.trim()
-            onChange(e)
+            e.currentTarget.value = e.currentTarget.value.trim();
+            onChange(e);
           }
 
           if (onBlur) {
-            onBlur(e)
+            onBlur(e);
           }
         }}
         onChange={onChange}
@@ -66,7 +66,7 @@ const InputTextArea: FC<InputTextAreaProps> = ({
         </Message>
       )}
     </label>
-  )
-}
+  );
+};
 
-export default InputTextArea
+export default InputTextArea;

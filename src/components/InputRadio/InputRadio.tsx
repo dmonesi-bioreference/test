@@ -1,9 +1,9 @@
-import React, { FC } from 'react'
-import { InputBaseProps } from '../Input/props'
-import Message from '../Message'
+import React, { FC } from 'react';
+import { InputBaseProps } from '../Input/props';
+import Message from '../Message';
 
 interface InputRadioProps extends InputBaseProps {
-  checked?: boolean
+  checked?: boolean;
 }
 
 const InputRadio: FC<InputRadioProps> = ({
@@ -17,13 +17,12 @@ const InputRadio: FC<InputRadioProps> = ({
   readonly,
   required,
 }) => {
-  const invalidClass = invalid ? '--has-errors' : ''
-  const bemClass = `o-input${invalidClass}`
+  const invalidClass = invalid ? '--has-errors' : '';
+  const bemClass = `o-input${invalidClass}`;
 
   return (
     <label className={bemClass} data-input-type="radio" data-orientation="horizontal">
       <input
-        aria-invalid={invalid}
         checked={checked}
         disabled={disabled}
         name={name}
@@ -39,7 +38,7 @@ const InputRadio: FC<InputRadioProps> = ({
         </Message>
       )}
     </label>
-  )
-}
+  );
+};
 
-export default InputRadio
+export default InputRadio;

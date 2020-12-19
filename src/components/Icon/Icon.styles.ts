@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { IconProps } from './Icon';
 
 const IconStyled = styled.div`
   display: flex;
@@ -8,12 +9,12 @@ const IconStyled = styled.div`
   div {
     display: flex;
     align-items: center;
-    transform: rotate(${props => props.rotate}deg);
+    transform: rotate(${(props: IconProps) => props.rotate}deg);
 
     svg {
       width: 19px;
     }
   }
-`
+`;
 
-export default IconStyled
+export default IconStyled;

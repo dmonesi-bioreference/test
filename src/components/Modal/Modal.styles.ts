@@ -1,8 +1,8 @@
-import styled from 'styled-components'
-import t from '../GlobalStyle/01_settings/tokens'
+import styled from 'styled-components';
+import t from '../GlobalStyle/01_settings/tokens';
 
 const ModalStyled = styled.div`
-  display: ${props => (props.isVisible ? 'flex' : 'none')};
+  display: ${(props) => (props.isVisible ? 'flex' : 'none')};
   position: fixed;
   z-index: 10001;
   left: 0;
@@ -23,12 +23,12 @@ const ModalStyled = styled.div`
     box-shadow: ${t.shadowMedium};
 
     header {
-      background-color: ${props => (props.hideHeader ? t.colorWhite : t.colorSecondary)};
+      background-color: ${(props) => (props.hideHeader ? t.colorWhite : t.colorSecondary)};
       position: relative;
       padding: ${t.spacingSmall} ${t.spacingMedium};
-      padding-bottom: ${props => (props.hideHeader ? '0' : t.spacingSmall)};
+      padding-bottom: ${(props) => (props.hideHeader ? '0' : t.spacingSmall)};
       display: flex;
-      justify-content: ${props => (props.title ? 'space-between' : 'flex-end')};
+      justify-content: ${(props) => (props.title ? 'space-between' : 'flex-end')};
       border-top-left-radius: ${t.borderRadiusMedium};
       border-top-right-radius: ${t.borderRadiusMedium};
 
@@ -41,7 +41,7 @@ const ModalStyled = styled.div`
 
       path,
       polygon {
-        fill: ${props => (props.hideHeader ? t.colorBlackSecondary : t.colorWhite)};
+        fill: ${(props) => (props.hideHeader ? t.colorBlackSecondary : t.colorWhite)};
       }
     }
 
@@ -62,6 +62,6 @@ const ModalStyled = styled.div`
       overflow: hidden;
     }
   }
-`
+`;
 
-export default ModalStyled
+export default ModalStyled;

@@ -1,8 +1,8 @@
-import React, { FC } from 'react'
-import TableStyled from './Table.styles'
+import React, { FC } from 'react';
+import TableStyled from './Table.styles';
 
 interface TableProps {
-  caption?: string
+  caption?: string;
 }
 
 const Table: FC<TableProps> = ({ caption, children }) => {
@@ -11,7 +11,7 @@ const Table: FC<TableProps> = ({ caption, children }) => {
       {!!caption && <caption>{caption}</caption>}
       {children}
     </TableStyled>
-  )
-}
+  );
+};
 
-export default Table
+export default Table;

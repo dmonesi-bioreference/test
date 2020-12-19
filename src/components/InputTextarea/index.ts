@@ -1,1 +1,1 @@
-export { default } from './InputTextarea'
+export { default } from './InputTextarea';

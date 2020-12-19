@@ -1,11 +1,11 @@
-import React, { FC } from 'react'
-import LabelValueStyled from './LabelValue.styles'
+import React, { FC } from 'react';
+import LabelValueStyled from './LabelValue.styles';
 
 interface LabelValueProps {
-  label: string
-  orientation?: 'vertical' | 'horizontal'
-  reverse?: boolean
-  value: string | React.ReactNode
+  label: string;
+  orientation?: 'vertical' | 'horizontal';
+  reverse?: boolean;
+  value: string | React.ReactNode;
 }
 
 const LabelValue: FC<LabelValueProps> = ({
@@ -22,6 +22,6 @@ const LabelValue: FC<LabelValueProps> = ({
       {children}
     </dd>
   </LabelValueStyled>
-)
+);
 
-export default LabelValue
+export default LabelValue;

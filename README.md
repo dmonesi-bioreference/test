@@ -8,11 +8,11 @@ This React component library is built with [Storybook](https://storybook.js.org)
 
 ## Installation
 
-> `yarn install`
+> `npm install`
 
 ## Starting the Library
 
-> `yarn storybook`
+> `npm start storybook`
 
 By default, Storybook will run at `http://localhost:9009`.
 
@@ -20,7 +20,7 @@ By default, Storybook will run at `http://localhost:9009`.
 
 To create all files associated with a new component, run:
 
-> `yarn plop`
+> `npm run plop`
 
 You'll be prompted for a component name. All necessary files
 will then be generated automatically.

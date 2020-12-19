@@ -1,14 +1,14 @@
-import React, { FC } from 'react'
-import Icon from '../Icon'
-import ModalStyled from './Modal.styles'
+import React, { FC } from 'react';
+import Icon from '../Icon';
+import ModalStyled from './Modal.styles';
 
 interface ModalProps {
-  footer?: React.ReactNode
-  hideHeader?: boolean
-  isVisible?: boolean
-  onClose?: () => void
-  showClose?: boolean
-  title?: string
+  footer?: React.ReactNode;
+  hideHeader?: boolean;
+  isVisible?: boolean;
+  onClose?: () => void;
+  showClose?: boolean;
+  title?: string;
 }
 
 const Modal: FC<ModalProps> = ({
@@ -36,6 +36,6 @@ const Modal: FC<ModalProps> = ({
       {footer && <footer>{footer}</footer>}
     </dialog>
   </ModalStyled>
-)
+);
 
-export default Modal
+export default Modal;

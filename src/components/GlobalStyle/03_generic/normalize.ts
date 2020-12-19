@@ -1,5 +1,5 @@
-import { css } from 'styled-components'
-import t from '../01_settings/tokens'
+import { css } from 'styled-components';
+import t from '../01_settings/tokens';
 
 /* stylelint-disable */
 
@@ -194,6 +194,6 @@ const normalize = css`
   [hidden] {
     display: none;
   }
-`
+`;
 
-export default normalize
+export default normalize;

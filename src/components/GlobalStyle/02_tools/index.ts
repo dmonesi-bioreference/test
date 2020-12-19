@@ -1,5 +1,5 @@
-import { css } from 'styled-components'
+import { css } from 'styled-components';
 
-const tools = css``
+const tools = css``;
 
-export default tools
+export default tools;

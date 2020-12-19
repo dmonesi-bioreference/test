@@ -1,10 +1,10 @@
-import React, { FC } from 'react'
-import { InputBaseProps } from '../Input/props'
-import Message from '../Message'
+import React, { FC } from 'react';
+import { InputBaseProps } from '../Input/props';
+import Message from '../Message';
 
 interface InputCheckboxProps extends InputBaseProps {
-  checked?: boolean
-  hideLabel?: boolean
+  checked?: boolean;
+  hideLabel?: boolean;
 }
 
 const InputCheckbox: FC<InputCheckboxProps> = ({
@@ -19,9 +19,9 @@ const InputCheckbox: FC<InputCheckboxProps> = ({
   readonly,
   required,
 }) => {
-  const invalidClass = invalid ? '--has-errors' : ''
-  const hideLabelClass = hideLabel ? 'o-input--hidden-label' : ''
-  const bemClass = `o-input${invalidClass} ${hideLabelClass}`
+  const invalidClass = invalid ? '--has-errors' : '';
+  const hideLabelClass = hideLabel ? 'o-input--hidden-label' : '';
+  const bemClass = `o-input${invalidClass} ${hideLabelClass}`;
 
   return (
     <label
@@ -47,7 +47,7 @@ const InputCheckbox: FC<InputCheckboxProps> = ({
         </Message>
       )}
     </label>
-  )
-}
+  );
+};
 
-export default InputCheckbox
+export default InputCheckbox;

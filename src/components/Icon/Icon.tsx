@@ -1,18 +1,18 @@
-import React, { FC } from 'react'
-import { ReactSVG } from 'react-svg'
-import IconStyled from './Icon.styles'
+import React, { FC } from 'react';
+import { ReactSVG } from 'react-svg';
+import IconStyled from './Icon.styles';
 
-interface IconProps {
-  element?: 'div' | 'span'
-  name: IconName
-  rotate?: number
+export interface IconProps {
+  element?: 'div' | 'span';
+  name: IconName;
+  rotate?: number;
 }
 
 const Icon: FC<IconProps> = ({ element = 'div', name, rotate = 0 }) => (
   <IconStyled rotate={rotate} as={element}>
     <ReactSVG src={`/icons/${name}.svg`} wrapper={element} />
   </IconStyled>
-)
+);
 
 export const iconArray = [
   'add-outline',
@@ -308,8 +308,8 @@ export const iconArray = [
   'yin-yang',
   'zoom-in',
   'zoom-out',
-] as const
+] as const;
 
-export type IconName = typeof iconArray[number]
+export type IconName = typeof iconArray[number];
 
-export default Icon
+export default Icon;

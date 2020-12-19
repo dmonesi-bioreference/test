@@ -1,6 +1,6 @@
-import React from 'react'
-import Loader from '../Loader'
-import LoadingOverlayStyled from './LoadingOverlay.styles'
+import React from 'react';
+import Loader from '../Loader';
+import LoadingOverlayStyled from './LoadingOverlay.styles';
 
 const LoadingOverlay = () => (
   <LoadingOverlayStyled>
@@ -8,6 +8,6 @@ const LoadingOverlay = () => (
       <Loader />
     </div>
   </LoadingOverlayStyled>
-)
+);
 
-export default LoadingOverlay
+export default LoadingOverlay;

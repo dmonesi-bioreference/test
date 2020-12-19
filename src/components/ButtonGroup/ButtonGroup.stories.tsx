@@ -1,12 +1,12 @@
-import { action } from '@storybook/addon-actions'
-import React from 'react'
-import ButtonGroup from '.'
-import Button from '../Button/Button'
+import { action } from '@storybook/addon-actions';
+import React from 'react';
+import ButtonGroup from '.';
+import Button from '../Button/Button';
 
 export default {
   component: ButtonGroup,
   title: 'Components/ButtonGroup',
-}
+};
 
 export const defaultStory = () => (
   <ButtonGroup>
@@ -15,4 +15,4 @@ export const defaultStory = () => (
       Cancel
     </Button>
   </ButtonGroup>
-)
+);

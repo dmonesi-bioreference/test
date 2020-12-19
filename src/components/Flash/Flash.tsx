@@ -1,11 +1,11 @@
-import React, { FC } from 'react'
-import Icon from '../Icon'
-import FlashStyled from './Flash.styles'
+import React, { FC } from 'react';
+import Icon from '../Icon';
+import FlashStyled from './Flash.styles';
 
 interface FlashProps {
-  message: string
-  onCloseClick?: () => void
-  type: 'success' | 'error'
+  message: string;
+  onCloseClick?: () => void;
+  type: 'success' | 'error';
 }
 
 const Flash: FC<FlashProps> = ({ message, onCloseClick, type }) => {
@@ -25,7 +25,7 @@ const Flash: FC<FlashProps> = ({ message, onCloseClick, type }) => {
         </div>
       )}
     </FlashStyled>
-  )
-}
+  );
+};
 
-export default Flash
+export default Flash;

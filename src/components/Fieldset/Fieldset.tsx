@@ -1,17 +1,17 @@
-import React, { FC } from 'react'
-import Message from '../Message'
+import React, { FC } from 'react';
+import Message from '../Message';
 
 interface FieldsetProps {
-  childrenOrientation?: 'vertical' | 'horizontal'
-  disabled?: boolean
-  hideLegend?: boolean
-  invalid?: boolean
-  invalidMessage?: string
-  label: string
-  labelSize?: 'small' | 'large'
-  labelStyle?: 'normal' | 'emphasized' | 'header'
-  orientation?: 'vertical' | 'horizontal'
-  required?: boolean
+  childrenOrientation?: 'vertical' | 'horizontal';
+  disabled?: boolean;
+  hideLegend?: boolean;
+  invalid?: boolean;
+  invalidMessage?: string;
+  label: string;
+  labelSize?: 'small' | 'large';
+  labelStyle?: 'normal' | 'emphasized' | 'header';
+  orientation?: 'vertical' | 'horizontal';
+  required?: boolean;
 }
 
 const Fieldset: FC<FieldsetProps> = ({
@@ -27,9 +27,9 @@ const Fieldset: FC<FieldsetProps> = ({
   orientation = 'vertical',
   required,
 }) => {
-  const invalidClass = invalid ? '--has-errors' : ''
-  const hideLegendClass = hideLegend ? 'o-input--hidden-legend' : ''
-  const bemClass = `o-input${invalidClass}`
+  const invalidClass = invalid ? '--has-errors' : '';
+  const hideLegendClass = hideLegend ? 'o-input--hidden-legend' : '';
+  const bemClass = `o-input${invalidClass}`;
 
   return (
     <fieldset className={bemClass} disabled={disabled} data-orientation={orientation}>
@@ -46,7 +46,7 @@ const Fieldset: FC<FieldsetProps> = ({
         </Message>
       )}
     </fieldset>
-  )
-}
+  );
+};
 
-export default Fieldset
+export default Fieldset;

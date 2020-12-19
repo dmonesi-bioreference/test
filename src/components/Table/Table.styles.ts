@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import t from '../GlobalStyle/01_settings/tokens'
+import styled from 'styled-components';
+import t from '../GlobalStyle/01_settings/tokens';
 
 const TableStyled = styled.table`
   border-collapse: collapse;
@@ -29,6 +29,6 @@ const TableStyled = styled.table`
     text-align: left;
     font-weight: ${t.fontWeightSemibold};
   }
-`
+`;
 
-export default TableStyled
+export default TableStyled;

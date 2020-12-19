@@ -1,5 +1,5 @@
-import { css } from 'styled-components'
-import t from '../01_settings/tokens'
+import { css } from 'styled-components';
+import t from '../01_settings/tokens';
 
 const form = css`
   .o-input--has-errors {
@@ -20,6 +20,6 @@ const form = css`
       position: absolute;
     }
   }
-`
+`;
 
-export default form
+export default form;

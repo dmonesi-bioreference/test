@@ -1,12 +1,12 @@
-import React, { FC } from 'react'
-import { IconName } from '../Icon/Icon'
-import { InputTextBaseProps } from '../Input/props'
-import Message from '../Message'
+import React, { FC } from 'react';
+import { IconName } from '../Icon/Icon';
+import { InputTextBaseProps } from '../Input/props';
+import Message from '../Message';
 
 interface InputTextProps extends InputTextBaseProps {
-  autoComplete?: boolean
-  icon?: IconName
-  type?: 'email' | 'number' | 'password' | 'search' | 'tel' | 'url' | 'text' | 'date'
+  autoComplete?: boolean;
+  icon?: IconName;
+  type?: 'email' | 'number' | 'password' | 'search' | 'tel' | 'url' | 'text' | 'date';
 }
 
 const InputText: FC<InputTextProps> = ({
@@ -31,9 +31,9 @@ const InputText: FC<InputTextProps> = ({
   type,
   value,
 }) => {
-  const invalidClass = invalid ? '--has-errors' : ''
-  const hideLabelClass = hideLabel ? 'o-input--hidden-label' : ''
-  const bemClass = `o-input${invalidClass} ${hideLabelClass}`
+  const invalidClass = invalid ? '--has-errors' : '';
+  const hideLabelClass = hideLabel ? 'o-input--hidden-label' : '';
+  const bemClass = `o-input${invalidClass} ${hideLabelClass}`;
 
   return (
     <label className={bemClass} data-orientation={orientation} data-style={labelStyle}>
@@ -44,14 +44,14 @@ const InputText: FC<InputTextProps> = ({
         data-icon={icon}
         disabled={disabled}
         name={name}
-        onBlur={e => {
+        onBlur={(e) => {
           if (onChange) {
-            e.currentTarget.value = e.currentTarget.value.trim()
-            onChange(e)
+            e.currentTarget.value = e.currentTarget.value.trim();
+            onChange(e);
           }
 
           if (onBlur) {
-            onBlur(e)
+            onBlur(e);
           }
         }}
         onChange={onChange}
@@ -70,7 +70,7 @@ const InputText: FC<InputTextProps> = ({
         </Message>
       )}
     </label>
-  )
-}
+  );
+};
 
-export default InputText
+export default InputText;

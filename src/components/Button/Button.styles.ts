@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import t, { colors } from '../GlobalStyle/01_settings/tokens'
-import IconStyled from '../Icon/Icon.styles'
+import styled from 'styled-components';
+import t, { colors } from '../GlobalStyle/01_settings/tokens';
+import IconStyled from '../Icon/Icon.styles';
 
 const ButtonStyled = styled.button`
   align-items: center;
@@ -9,7 +9,7 @@ const ButtonStyled = styled.button`
   border-radius: ${t.borderRadiusMedium};
   color: ${t.colorPrimaryText};
   cursor: pointer;
-  display: ${props => (['a', 'div'].includes(props.as) ? 'inline-flex' : 'flex')};
+  display: ${(props) => (['a', 'div'].includes(props.as) ? 'inline-flex' : 'flex')};
   font-family: ${t.fontFamilyBody};
   font-size: ${t.fontSize18};
   font-weight: ${t.fontWeightBold};
@@ -170,6 +170,6 @@ const ButtonStyled = styled.button`
       color: ${t.colorErrorHover};
     }
   }
-`
+`;
 
-export default ButtonStyled
+export default ButtonStyled;

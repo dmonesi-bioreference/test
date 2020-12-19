@@ -1,16 +1,16 @@
-import React, { FC, useState } from 'react'
-import Button, { ButtonProps } from '../Button/Button'
-import ButtonGroup from '../ButtonGroup'
-import Modal from '../Modal'
-import ConfirmationButtonStyled from './ConfirmationButton.styles'
+import React, { FC, useState } from 'react';
+import Button, { ButtonProps } from '../Button/Button';
+import ButtonGroup from '../ButtonGroup';
+import Modal from '../Modal';
+import ConfirmationButtonStyled from './ConfirmationButton.styles';
 
 interface ConfirmationButtonProps extends ButtonProps {
-  confirmationAction?: string
-  confirmationActionKind?: ButtonProps['kind']
-  confirmationText?: string
-  confirmationType?: 'prompt' | 'modal'
-  exitAction?: string
-  exitActionKind?: ButtonProps['kind']
+  confirmationAction?: string;
+  confirmationActionKind?: ButtonProps['kind'];
+  confirmationText?: string;
+  confirmationType?: 'prompt' | 'modal';
+  exitAction?: string;
+  exitActionKind?: ButtonProps['kind'];
 }
 
 const ConfirmationButton: FC<ConfirmationButtonProps> = ({
@@ -24,14 +24,14 @@ const ConfirmationButton: FC<ConfirmationButtonProps> = ({
   size,
   ...buttonProps
 } = {}) => {
-  const [confirm, setConfirm] = useState(false)
+  const [confirm, setConfirm] = useState(false);
 
   const handleConfirmationButtonClick = () => {
     if (onClick) {
-      onClick()
+      onClick();
     }
-    setConfirm(false)
-  }
+    setConfirm(false);
+  };
 
   const confirmationButtons = (
     <ButtonGroup>
@@ -42,30 +42,30 @@ const ConfirmationButton: FC<ConfirmationButtonProps> = ({
         {exitAction}
       </Button>
     </ButtonGroup>
-  )
+  );
 
   const confirmationPrompt = (
     <div className="confirmation--prompt">
       {confirmationText}
       {confirmationButtons}
     </div>
-  )
+  );
 
   const confirmationModal = (
     <Modal title="Confirm Action" showClose={false} footer={confirmationButtons}>
       {confirmationText}
     </Modal>
-  )
+  );
 
   const confirmation = () => {
     switch (confirmationType) {
       case 'modal':
-        return confirmationModal
+        return confirmationModal;
       case 'prompt':
       default:
-        return confirmationPrompt
+        return confirmationPrompt;
     }
-  }
+  };
 
   return (
     <ConfirmationButtonStyled>
@@ -77,7 +77,7 @@ const ConfirmationButton: FC<ConfirmationButtonProps> = ({
         hidden={confirm && confirmationType === 'prompt'}
       />
     </ConfirmationButtonStyled>
-  )
-}
+  );
+};
 
-export default ConfirmationButton
+export default ConfirmationButton;

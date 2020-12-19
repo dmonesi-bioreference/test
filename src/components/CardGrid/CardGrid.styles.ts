@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import media from '../GlobalStyle/01_settings/media-queries'
+import styled from 'styled-components';
+import media from '../GlobalStyle/01_settings/media-queries';
 
 const CardGridStyled = styled.div`
   align-items: stretch;
@@ -29,6 +29,6 @@ const CardGridStyled = styled.div`
       grid-template-columns: 1fr 1fr 1fr;
     }
   }
-`
+`;
 
-export default CardGridStyled
+export default CardGridStyled;

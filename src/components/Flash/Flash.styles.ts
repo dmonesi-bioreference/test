@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import t from '../GlobalStyle/01_settings/tokens'
+import styled from 'styled-components';
+import t from '../GlobalStyle/01_settings/tokens';
 
 const FlashStyled = styled.div`
   align-items: center;
@@ -55,6 +55,6 @@ const FlashStyled = styled.div`
     background-color: ${t.colorError};
     color: ${t.colorWhite};
   }
-`
+`;
 
-export default FlashStyled
+export default FlashStyled;

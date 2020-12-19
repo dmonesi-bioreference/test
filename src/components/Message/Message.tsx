@@ -1,11 +1,11 @@
-import React, { FC } from 'react'
-import Icon from '../Icon'
-import { IconName } from '../Icon/Icon'
-import MessageStyled from './Message.styles'
+import React, { FC } from 'react';
+import Icon from '../Icon';
+import { IconName } from '../Icon/Icon';
+import MessageStyled from './Message.styles';
 
 interface MessageProps {
-  icon?: IconName
-  type?: 'info' | 'error' | 'success' | 'warning'
+  icon?: IconName;
+  type?: 'info' | 'error' | 'success' | 'warning';
 }
 
 const Message: FC<MessageProps> = ({ children, icon, type = 'info' }) => (
@@ -15,6 +15,6 @@ const Message: FC<MessageProps> = ({ children, icon, type = 'info' }) => (
       {children}
     </span>
   </MessageStyled>
-)
+);
 
-export default Message
+export default Message;

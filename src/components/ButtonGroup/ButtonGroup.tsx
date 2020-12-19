@@ -1,6 +1,6 @@
-import React, { FC } from 'react'
-import ButtonGroupStyled from './ButtonGroup.styles'
+import React, { FC } from 'react';
+import ButtonGroupStyled from './ButtonGroup.styles';
 
-const ButtonGroup: FC = ({ children }) => <ButtonGroupStyled>{children}</ButtonGroupStyled>
+const ButtonGroup: FC = ({ children }) => <ButtonGroupStyled>{children}</ButtonGroupStyled>;
 
-export default ButtonGroup
+export default ButtonGroup;

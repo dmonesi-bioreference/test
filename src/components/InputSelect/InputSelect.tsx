@@ -1,15 +1,15 @@
-import React, { FC } from 'react'
-import { InputBaseProps } from '../Input/props'
-import Message from '../Message'
+import React, { FC } from 'react';
+import { InputBaseProps } from '../Input/props';
+import Message from '../Message';
 
 interface SelectProps extends InputBaseProps {
-  hideLabel?: boolean
-  labelStyle?: 'normal' | 'emphasized'
-  options: Array<{ name: string; value: string }>
-  orientation?: 'vertical' | 'horizontal'
-  placeholder?: boolean
-  placeholderText?: string
-  value?: string
+  hideLabel?: boolean;
+  labelStyle?: 'normal' | 'emphasized';
+  options: Array<{ name: string; value: string }>;
+  orientation?: 'vertical' | 'horizontal';
+  placeholder?: boolean;
+  placeholderText?: string;
+  value?: string;
 }
 
 const Select: FC<SelectProps> = ({
@@ -28,9 +28,9 @@ const Select: FC<SelectProps> = ({
   required,
   value,
 }) => {
-  const invalidClass = invalid ? '--has-errors' : ''
-  const hideLabelClass = hideLabel ? 'o-input--hidden-label' : ''
-  const bemClass = `o-input${invalidClass} ${hideLabelClass}`
+  const invalidClass = invalid ? '--has-errors' : '';
+  const hideLabelClass = hideLabel ? 'o-input--hidden-label' : '';
+  const bemClass = `o-input${invalidClass} ${hideLabelClass}`;
 
   return (
     <label className={bemClass} data-orientation={orientation} data-style={labelStyle}>
@@ -49,7 +49,7 @@ const Select: FC<SelectProps> = ({
             {placeholderText}
           </option>
         )}
-        {options.map(option => (
+        {options.map((option) => (
           <option key={option.value.toString()} value={option.value}>
             {option.name}
           </option>
@@ -61,7 +61,7 @@ const Select: FC<SelectProps> = ({
         </Message>
       )}
     </label>
-  )
-}
+  );
+};
 
-export default Select
+export default Select;

@@ -1,4 +1,4 @@
-import { css } from 'styled-components'
+import { css } from 'styled-components';
 
 const focus = css`
   .mouse-intent {
@@ -14,6 +14,6 @@ const focus = css`
       }
     }
   }
-`
+`;
 
-export default focus
+export default focus;

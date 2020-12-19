@@ -1,10 +1,10 @@
-import React from 'react'
-import Table, { TableBody, TableCell, TableHeader, TableRow } from '.'
+import React from 'react';
+import Table, { TableBody, TableCell, TableHeader, TableRow } from '.';
 
 export default {
   component: Table,
   title: 'Components/Table',
-}
+};
 
 export const defaultStory = () => (
   <Table caption="Table Data">
@@ -27,4 +27,4 @@ export const defaultStory = () => (
       </TableRow>
     </TableBody>
   </Table>
-)
+);

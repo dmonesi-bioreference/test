@@ -1,41 +1,41 @@
-import React, { FC } from 'react'
-import Spinner from 'react-svg-spinner'
-import t from '../GlobalStyle/01_settings/tokens'
+import React, { FC } from 'react';
+import Spinner from 'react-svg-spinner';
+import t from '../GlobalStyle/01_settings/tokens';
 
 interface LoaderProps {
-  color?: 'primary' | 'secondary'
-  size?: 'small' | 'medium' | 'large'
+  color?: 'primary' | 'secondary';
+  size?: 'small' | 'medium' | 'large';
 }
 
 const Loader: FC<LoaderProps> = ({ color = 'primary', size = 'medium' }) => {
-  let tokenizedColor
-  let tokenizedSize
+  let tokenizedColor: string;
+  let tokenizedSize: string;
 
   switch (color) {
     case 'primary':
-      tokenizedColor = t.colorPrimary
-      break
+      tokenizedColor = t.colorPrimary;
+      break;
     case 'secondary':
-      tokenizedColor = t.colorSecondary
-      break
+      tokenizedColor = t.colorSecondary;
+      break;
     default:
-      break
+      break;
   }
 
   switch (size) {
     case 'small':
-      tokenizedSize = '16px'
-      break
+      tokenizedSize = '16px';
+      break;
     case 'medium':
-      tokenizedSize = '32px'
-      break
+      tokenizedSize = '32px';
+      break;
     case 'large':
-      tokenizedSize = '48px'
-      break
+      tokenizedSize = '48px';
+      break;
     default:
-      break
+      break;
   }
 
-  return <Spinner size={tokenizedSize} color={tokenizedColor} />
-}
-export default Loader
+  return <Spinner size={tokenizedSize} color={tokenizedColor} />;
+};
+export default Loader;

@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import t from '../GlobalStyle/01_settings/tokens'
+import styled from 'styled-components';
+import t from '../GlobalStyle/01_settings/tokens';
 
 const LabelValueStyled = styled.dl`
   display: flex;
@@ -42,6 +42,6 @@ const LabelValueStyled = styled.dl`
       margin-left: 0;
     }
   }
-`
+`;
 
-export default LabelValueStyled
+export default LabelValueStyled;

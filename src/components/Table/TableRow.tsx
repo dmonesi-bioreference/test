@@ -1,6 +1,6 @@
-import React, { FC } from 'react'
-import TableRowStyled from './TableRow.styles'
+import React, { FC } from 'react';
+import TableRowStyled from './TableRow.styles';
 
-const TableRow: FC = ({ children }) => <TableRowStyled>{children}</TableRowStyled>
+const TableRow: FC = ({ children }) => <TableRowStyled>{children}</TableRowStyled>;
 
-export default TableRow
+export default TableRow;

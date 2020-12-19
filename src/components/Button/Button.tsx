@@ -1,8 +1,8 @@
-import React, { FC } from 'react'
-import { Link } from 'react-router-dom'
-import Icon from '../Icon'
-import { IconName } from '../Icon/Icon'
-import ButtonStyled from './Button.styles'
+import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
+import Icon from '../Icon';
+import { IconName } from '../Icon/Icon';
+import ButtonStyled from './Button.styles';
 
 export type ButtonKind =
   | 'primary'
@@ -14,27 +14,27 @@ export type ButtonKind =
   | 'text-tertiary'
   | 'text-gray'
   | 'option'
-  | 'option-vertical'
+  | 'option-vertical';
 
 export interface ButtonProps {
   /** Override the HTML element rendered by this component. */
-  as?: 'a' | 'div' | 'span' | 'button'
-  disabled?: boolean
+  as?: 'a' | 'div' | 'span' | 'button';
+  disabled?: boolean;
   /** Passing `href` will override the `as` prop, rendering this button as an `a` element. */
-  href?: string
-  hidden?: boolean
-  icon?: IconName
-  iconRotation?: number
-  iconPosition?: 'start' | 'end'
-  id?: string
-  kind?: ButtonKind
-  name?: string
-  linkTo?: string | {}
-  onClick?: () => void
+  href?: string;
+  hidden?: boolean;
+  icon?: IconName;
+  iconRotation?: number;
+  iconPosition?: 'start' | 'end';
+  id?: string;
+  kind?: ButtonKind;
+  name?: string;
+  linkTo?: string | Record<string, unknown>;
+  onClick?: () => void;
   /** Open link in new window/tab. Valid only in combination `href` or `linkTo` props.  */
-  openNewTab?: boolean
-  size?: 'small' | 'medium' | 'large'
-  type?: 'button' | 'submit'
+  openNewTab?: boolean;
+  size?: 'small' | 'medium' | 'large';
+  type?: 'button' | 'submit';
 }
 
 const Button: FC<ButtonProps> = ({
@@ -57,16 +57,16 @@ const Button: FC<ButtonProps> = ({
 }) => {
   const determineElement = () => {
     if (href) {
-      return 'a'
+      return 'a';
     }
     if (onClick) {
-      return 'button'
+      return 'button';
     }
     if (linkTo) {
-      return 'div'
+      return 'div';
     }
-    return as
-  }
+    return as;
+  };
 
   const buttonMarkup = (
     <ButtonStyled
@@ -86,17 +86,17 @@ const Button: FC<ButtonProps> = ({
       {icon && <Icon name={icon} element="span" rotate={iconRotation} />}
       <span className="children">{children}</span>
     </ButtonStyled>
-  )
+  );
 
   if (linkTo) {
     return (
       <Link to={linkTo} {...(openNewTab && { target: '_blank' })}>
         {buttonMarkup}
       </Link>
-    )
+    );
   }
 
-  return buttonMarkup
-}
+  return buttonMarkup;
+};
 
-export default Button
+export default Button;

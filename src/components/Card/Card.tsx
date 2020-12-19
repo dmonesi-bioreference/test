@@ -1,9 +1,9 @@
-import React, { FC } from 'react'
-import CardStyled from './Card.styles'
+import React, { FC } from 'react';
+import CardStyled from './Card.styles';
 
 interface CardProps {
-  content?: string
-  title: string
+  content?: string;
+  title: string;
 }
 
 const Card: FC<CardProps> = ({ children, content, title }) => {
@@ -17,7 +17,7 @@ const Card: FC<CardProps> = ({ children, content, title }) => {
         {content}
       </div>
     </CardStyled>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

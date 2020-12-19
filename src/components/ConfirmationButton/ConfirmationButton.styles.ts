@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import t from '../GlobalStyle/01_settings/tokens'
+import styled from 'styled-components';
+import t from '../GlobalStyle/01_settings/tokens';
 
 const ConfirmationButtonStyled = styled.div`
   .confirmation--prompt {
@@ -10,6 +10,6 @@ const ConfirmationButtonStyled = styled.div`
     border-radius: ${t.borderRadiusLarge};
     font-weight: ${t.fontWeightSemibold};
   }
-`
+`;
 
-export default ConfirmationButtonStyled
+export default ConfirmationButtonStyled;

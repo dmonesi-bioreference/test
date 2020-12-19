@@ -1,7 +1,7 @@
-import React, { FC } from 'react'
+import React, { FC } from 'react';
 
 const Main: FC = ({ children }) => {
-  return <main className="o-main">{children}</main>
-}
+  return <main className="o-main">{children}</main>;
+};
 
-export default Main
+export default Main;

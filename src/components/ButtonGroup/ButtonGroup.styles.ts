@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const ButtonGroupStyled = styled.div`
   display: grid;
@@ -6,6 +6,6 @@ const ButtonGroupStyled = styled.div`
   grid-gap: 1rem;
   grid-auto-flow: column;
   justify-content: start;
-`
+`;
 
-export default ButtonGroupStyled
+export default ButtonGroupStyled;

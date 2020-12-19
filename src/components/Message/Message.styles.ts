@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import t from '../GlobalStyle/01_settings/tokens'
+import styled from 'styled-components';
+import t from '../GlobalStyle/01_settings/tokens';
 
 const MessageStyled = styled.div`
   color: ${t.colorBlack};
@@ -45,6 +45,6 @@ const MessageStyled = styled.div`
       fill: ${t.colorWarningText};
     }
   }
-`
+`;
 
-export default MessageStyled
+export default MessageStyled;

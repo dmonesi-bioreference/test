@@ -1,13 +1,13 @@
-import { action } from '@storybook/addon-actions'
-import React from 'react'
-import Flash from '.'
+import { action } from '@storybook/addon-actions';
+import React from 'react';
+import Flash from '.';
 
 export default {
   component: Flash,
   title: 'Components/Flash',
-}
+};
 
-export const defaultStory = () => <Flash message="This is a flash message." type="success" />
+export const defaultStory = () => <Flash message="This is a flash message." type="success" />;
 
 export const collapsableStory = () => (
   <Flash
@@ -15,6 +15,6 @@ export const collapsableStory = () => (
     type="success"
     onCloseClick={action('onCloseClick')}
   />
-)
+);
 
-export const error = () => <Flash message="This is a flash message." type="error" />
+export const error = () => <Flash message="This is a flash message." type="error" />;

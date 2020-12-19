@@ -1,20 +1,20 @@
-import React from 'react'
-import InputTextArea from '.'
+import React from 'react';
+import InputTextArea from '.';
 
 export default {
   component: InputTextArea,
   title: 'Components/Inputs/Textarea',
-}
+};
 
-export const defaultStory = () => <InputTextArea name="textarea" label="Text Area" />
+export const defaultStory = () => <InputTextArea name="textarea" label="Text Area" />;
 
 export const boldWeightLabel = () => (
   <InputTextArea name="textarea" label="Text Area" labelStyle="emphasized" />
-)
+);
 
 export const horizontalLayout = () => (
   <InputTextArea name="textarea" label="Text Area" orientation="horizontal" />
-)
+);
 
 export const error = () => (
   <InputTextArea
@@ -23,11 +23,11 @@ export const error = () => (
     invalidMessage="This field is required."
     invalid={true}
   />
-)
+);
 
 export const disabledStory = () => (
   <InputTextArea name="textarea" label="Disabled Text Area Field" disabled={true} />
-)
+);
 
 export const readOnly = () => (
   <InputTextArea
@@ -36,4 +36,4 @@ export const readOnly = () => (
     value="Ready only value"
     readonly={true}
   />
-)
+);

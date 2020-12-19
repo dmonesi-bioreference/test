@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import t from '../GlobalStyle/01_settings/tokens'
+import styled from 'styled-components';
+import t from '../GlobalStyle/01_settings/tokens';
 
 const LoadingOverlayStyled = styled.div`
   display: flex;
@@ -15,6 +15,6 @@ const LoadingOverlayStyled = styled.div`
   .loader-wrapper {
     margin: auto;
   }
-`
+`;
 
-export default LoadingOverlayStyled
+export default LoadingOverlayStyled;

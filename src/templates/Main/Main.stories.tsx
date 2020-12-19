@@ -1,14 +1,14 @@
-import { linkTo } from '@storybook/addon-links'
-import React from 'react'
-import Main from '.'
-import Button from '../../components/Button'
-import Card from '../../components/Card'
-import InputText from '../../components/InputText'
-import Message from '../../components/Message'
+import { linkTo } from '@storybook/addon-links';
+import React from 'react';
+import Main from '.';
+import Button from '../../components/Button';
+import Card from '../../components/Card';
+import InputText from '../../components/InputText';
+import Message from '../../components/Message';
 
 export default {
   title: 'Templates/Main',
-}
+};
 
 export const exampleForm = () => (
   <Main>
@@ -21,7 +21,7 @@ export const exampleForm = () => (
       </Button>
     </Card>
   </Main>
-)
+);
 
 export const exampleLanding = () => (
   <Main>
@@ -31,4 +31,4 @@ export const exampleLanding = () => (
       </Message>
     </Card>
   </Main>
-)
+);

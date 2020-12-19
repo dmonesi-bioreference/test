@@ -1,5 +1,5 @@
-import React, { FC } from 'react'
+import React, { FC } from 'react';
 
-const TableFooter: FC = ({ children }) => <tfoot>{children}</tfoot>
+const TableFooter: FC = ({ children }) => <tfoot>{children}</tfoot>;
 
-export default TableFooter
+export default TableFooter;
