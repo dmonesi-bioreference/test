@@ -2,7 +2,7 @@ export { default as Button } from './components/Button';
 export { default as Card } from './components/Card';
 export { default as Flash } from './components/Flash';
 export { default as Fieldset } from './components/Fieldset';
-export { default as GlobalStyle } from './components/GlobalStyle';
+export { default as GlobalStyle } from './styles/GlobalStyle';
 export { default as Icon } from './components/Icon';
 export { default as InputCheckbox } from './components/InputCheckbox';
 export { default as InputRadio } from './components/InputRadio';

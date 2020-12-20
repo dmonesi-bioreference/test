@@ -1,9 +1,9 @@
-import { StorybookGlobalStyle } from '../src/components/GlobalStyle/GlobalStyle';
+import GlobalStyle from '../src/styles/GlobalStyle';
 
 export const decorators = [
   (Story) => (
     <>
-      <StorybookGlobalStyle />
+      <GlobalStyle />
       <Story />
     </>
   ),

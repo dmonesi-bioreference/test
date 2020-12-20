@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import Spinner from 'react-svg-spinner';
-import t from '../GlobalStyle/01_settings/tokens';
+import t from '../../styles/tokens';
 
 interface LoaderProps {
   color?: 'primary' | 'secondary';

@@ -1,7 +1,9 @@
 import styled from 'styled-components';
-import t from '../GlobalStyle/01_settings/tokens';
+import t from '../../styles/tokens';
+import { base } from '../../styles/utilities/base';
 
 const LabelValueStyled = styled.dl`
+  ${base}
   display: flex;
   flex-flow: column;
   margin: 0 0 ${t.spacingSmall};

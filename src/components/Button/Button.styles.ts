@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import t, { colors } from '../GlobalStyle/01_settings/tokens';
+import t, { colors } from '../../styles/tokens';
 import IconStyled from '../Icon/Icon.styles';
 
 const ButtonStyled = styled.button`

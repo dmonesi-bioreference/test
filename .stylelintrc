@@ -11,6 +11,7 @@
     "stylelint-prettier"
   ],
   "rules": {
+    "value-keyword-case": ["lower", { ignoreKeywords: ['dummyValue'] }],
     "at-rule-no-unknown": null,
     "prettier/prettier": true
   }

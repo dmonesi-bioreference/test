@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import media from '../GlobalStyle/01_settings/media-queries';
+import media from '../../styles/media-queries';
 
 const CardGridStyled = styled.div`
   align-items: stretch;

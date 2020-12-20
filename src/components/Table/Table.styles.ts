@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import t from '../GlobalStyle/01_settings/tokens';
+import t from '../../styles/tokens';
 
 const TableStyled = styled.table`
   border-collapse: collapse;
