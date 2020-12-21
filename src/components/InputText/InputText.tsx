@@ -1,12 +1,20 @@
 import React, { FC } from 'react';
-import { IconName } from '../Icon/Icon';
+import { HeroiconName } from '../Icon/heroicon';
 import { InputTextBaseProps } from '../Input/props';
 import Message from '../Message';
 
 interface InputTextProps extends InputTextBaseProps {
   autoComplete?: boolean;
-  icon?: IconName;
-  type?: 'email' | 'number' | 'password' | 'search' | 'tel' | 'url' | 'text' | 'date';
+  icon?: HeroiconName;
+  type?:
+    | 'email'
+    | 'number'
+    | 'password'
+    | 'search'
+    | 'tel'
+    | 'url'
+    | 'text'
+    | 'date';
 }
 
 const InputText: FC<InputTextProps> = ({
@@ -36,7 +44,11 @@ const InputText: FC<InputTextProps> = ({
   const bemClass = `o-input${invalidClass} ${hideLabelClass}`;
 
   return (
-    <label className={bemClass} data-orientation={orientation} data-style={labelStyle}>
+    <label
+      className={bemClass}
+      data-orientation={orientation}
+      data-style={labelStyle}
+    >
       <span>{label}</span>
       <input
         autoComplete={autoComplete ? 'on' : 'off'}

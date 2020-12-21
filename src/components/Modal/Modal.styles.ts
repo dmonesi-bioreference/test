@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import t from '../../styles/tokens';
+import t, { colors } from '../../styles/tokens';
+import { ModalProps } from './Modal';
 
 const ModalStyled = styled.div`
   display: ${(props) => (props.isVisible ? 'flex' : 'none')};
@@ -10,10 +11,9 @@ const ModalStyled = styled.div`
   width: 100%;
   height: 100vh;
   overflow: auto;
-  background-color: ${t.colorHaze};
 
   .modal-content {
-    background-color: ${t.colorWhite};
+    background-color: ${colors.white};
     margin: auto;
     border-radius: ${t.borderRadiusMedium};
     position: relative;
@@ -23,12 +23,15 @@ const ModalStyled = styled.div`
     box-shadow: ${t.shadowMedium};
 
     header {
-      background-color: ${(props) => (props.hideHeader ? t.colorWhite : t.colorSecondary)};
+      background-color: ${(props: ModalProps) =>
+        props.hideHeader ? colors.white : t.colorSecondary};
       position: relative;
       padding: ${t.spacingSmall} ${t.spacingMedium};
-      padding-bottom: ${(props) => (props.hideHeader ? '0' : t.spacingSmall)};
+      padding-bottom: ${(props: ModalProps) =>
+        props.hideHeader ? '0' : t.spacingSmall};
       display: flex;
-      justify-content: ${(props) => (props.title ? 'space-between' : 'flex-end')};
+      justify-content: ${(props) =>
+        props.title ? 'space-between' : 'flex-end'};
       border-top-left-radius: ${t.borderRadiusMedium};
       border-top-right-radius: ${t.borderRadiusMedium};
 
@@ -41,7 +44,8 @@ const ModalStyled = styled.div`
 
       path,
       polygon {
-        fill: ${(props) => (props.hideHeader ? t.colorBlackSecondary : t.colorWhite)};
+        fill: ${(props: ModalProps) =>
+          props.hideHeader ? colors.coolGray[800] : colors.white};
       }
     }
 

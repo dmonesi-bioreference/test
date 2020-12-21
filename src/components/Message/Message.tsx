@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import Icon from '../Icon';
-import { IconName } from '../Icon/Icon';
+import { HeroiconName } from '../Icon/heroicon';
 import MessageStyled from './Message.styles';
 
 interface MessageProps {
-  icon?: IconName;
+  icon?: HeroiconName;
   type?: 'info' | 'error' | 'success' | 'warning';
 }
 

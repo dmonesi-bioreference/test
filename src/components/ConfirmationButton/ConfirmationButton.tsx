@@ -35,10 +35,18 @@ const ConfirmationButton: FC<ConfirmationButtonProps> = ({
 
   const confirmationButtons = (
     <ButtonGroup>
-      <Button kind={confirmationActionKind} size={size} onClick={handleConfirmationButtonClick}>
+      <Button
+        kind={confirmationActionKind}
+        size={size}
+        onClick={handleConfirmationButtonClick}
+      >
         {confirmationAction}
       </Button>
-      <Button kind={exitActionKind} size={size} onClick={() => setConfirm(false)}>
+      <Button
+        kind={exitActionKind}
+        size={size}
+        onClick={() => setConfirm(false)}
+      >
         {exitAction}
       </Button>
     </ButtonGroup>
@@ -52,7 +60,11 @@ const ConfirmationButton: FC<ConfirmationButtonProps> = ({
   );
 
   const confirmationModal = (
-    <Modal title="Confirm Action" showClose={false} footer={confirmationButtons}>
+    <Modal
+      title="Confirm Action"
+      showClose={false}
+      footer={confirmationButtons}
+    >
       {confirmationText}
     </Modal>
   );

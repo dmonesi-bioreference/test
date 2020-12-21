@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import Icon from '../Icon';
 import ModalStyled from './Modal.styles';
 
-interface ModalProps {
+export interface ModalProps {
   footer?: React.ReactNode;
   hideHeader?: boolean;
   isVisible?: boolean;
@@ -21,7 +21,11 @@ const Modal: FC<ModalProps> = ({
   footer,
 }) => (
   <ModalStyled isVisible={isVisible} title={title} hideHeader={hideHeader}>
-    <dialog open={isVisible} className="modal-content" aria-labelledby="dialogTitle">
+    <dialog
+      open={isVisible}
+      className="modal-content"
+      aria-labelledby="dialogTitle"
+    >
       <header id="dialogTitle">
         {title && <h4>{title}</h4>}
 

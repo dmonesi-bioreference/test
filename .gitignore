@@ -17,6 +17,9 @@
 .env.test.local
 .env.production.local
 /src/react-app-env.d.ts
+.eslintcache
+src/icons/heroicons
+/.cache
 
 npm-debug.log*
 yarn-debug.log*

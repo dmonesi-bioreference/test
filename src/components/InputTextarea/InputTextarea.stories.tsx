@@ -6,7 +6,9 @@ export default {
   title: 'Components/Inputs/Textarea',
 };
 
-export const defaultStory = () => <InputTextArea name="textarea" label="Text Area" />;
+export const defaultStory = () => (
+  <InputTextArea name="textarea" label="Text Area" />
+);
 
 export const boldWeightLabel = () => (
   <InputTextArea name="textarea" label="Text Area" labelStyle="emphasized" />
@@ -26,7 +28,11 @@ export const error = () => (
 );
 
 export const disabledStory = () => (
-  <InputTextArea name="textarea" label="Disabled Text Area Field" disabled={true} />
+  <InputTextArea
+    name="textarea"
+    label="Disabled Text Area Field"
+    disabled={true}
+  />
 );
 
 export const readOnly = () => (

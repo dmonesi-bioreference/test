@@ -6,4 +6,6 @@ export default {
   title: 'Components/Inputs/Checkbox',
 };
 
-export const defaultStory = () => <InputCheckbox name="checkbox1" label="Checkbox Input" />;
+export const defaultStory = () => (
+  <InputCheckbox name="checkbox1" label="Checkbox Input" />
+);

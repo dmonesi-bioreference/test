@@ -7,7 +7,9 @@ export default {
   title: 'Components/Flash',
 };
 
-export const defaultStory = () => <Flash message="This is a flash message." type="success" />;
+export const defaultStory = () => (
+  <Flash message="This is a flash message." type="success" />
+);
 
 export const collapsableStory = () => (
   <Flash
@@ -17,4 +19,6 @@ export const collapsableStory = () => (
   />
 );
 
-export const error = () => <Flash message="This is a flash message." type="error" />;
+export const error = () => (
+  <Flash message="This is a flash message." type="error" />
+);

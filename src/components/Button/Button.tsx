@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
-import Icon from '../Icon';
-import { IconName } from '../Icon/Icon';
+// import Icon from '../Icon';
+// import { IconName } from '../Icon/Icon';
 import ButtonStyled from './Button.styles';
 
 export type ButtonKind =
@@ -23,7 +23,7 @@ export interface ButtonProps {
   /** Passing `href` will override the `as` prop, rendering this button as an `a` element. */
   href?: string;
   hidden?: boolean;
-  icon?: IconName;
+  icon?: string;
   iconRotation?: number;
   iconPosition?: 'start' | 'end';
   id?: string;
@@ -43,8 +43,8 @@ const Button: FC<ButtonProps> = ({
   disabled,
   hidden,
   href,
-  icon,
-  iconRotation = 0,
+  // icon,
+  // iconRotation = 0,
   iconPosition = 'start',
   id,
   kind = 'primary',
@@ -83,7 +83,7 @@ const Button: FC<ButtonProps> = ({
       name={name}
       {...(determineElement() === 'a' && openNewTab && { target: '_blank' })}
     >
-      {icon && <Icon name={icon} element="span" rotate={iconRotation} />}
+      {/* {icon && <Icon name={icon} element="span" rotate={iconRotation} />} */}
       <span className="children">{children}</span>
     </ButtonStyled>
   );

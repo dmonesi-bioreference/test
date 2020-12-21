@@ -6,4 +6,6 @@ export default {
   title: 'Components/Inputs/Radio',
 };
 
-export const defaultStory = () => <InputRadio name="radio1" label="Radio Input" />;
+export const defaultStory = () => (
+  <InputRadio name="radio1" label="Radio Input" />
+);

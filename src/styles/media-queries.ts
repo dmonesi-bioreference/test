@@ -1,4 +1,5 @@
-const mediaQuery = (minWidth: number) => `@media (min-width: ${minWidth / 16}em)`;
+const mediaQuery = (minWidth: number) =>
+  `@media (min-width: ${minWidth / 16}em)`;
 const minMaxQuery = (minWidth: number, maxWidth: number) =>
   `@media (min-width: ${minWidth / 16}em) and (max-width: ${maxWidth / 16}em)`;
 

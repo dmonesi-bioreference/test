@@ -7,7 +7,9 @@ export default {
   title: 'Components/Card',
 };
 
-export const basic = () => <Card title="Card" content="Card with basic content" />;
+export const basic = () => (
+  <Card title="Card" content="Card with basic content" />
+);
 
 export const withComponent = () => (
   <Card title="Card with Component">

@@ -6,24 +6,48 @@ export default {
   title: 'Components/Inputs/Text',
 };
 
-export const defaultStory = () => <InputText name="text" type="text" label="Text Input" />;
+export const defaultStory = () => (
+  <InputText name="text" type="text" label="Text Input" />
+);
 
 export const horizontalLayout = () => (
-  <InputText name="text" type="text" label="Text Input" orientation="horizontal" />
+  <InputText
+    name="text"
+    type="text"
+    label="Text Input"
+    orientation="horizontal"
+  />
 );
 
 export const boldWeightLabel = () => (
-  <InputText name="text" type="text" label="Text Input" labelStyle="emphasized" />
+  <InputText
+    name="text"
+    type="text"
+    label="Text Input"
+    labelStyle="emphasized"
+  />
 );
 
-export const password = () => <InputText name="password" type="password" label="Password Field" />;
+export const password = () => (
+  <InputText name="password" type="password" label="Password Field" />
+);
 
 export const leftIcon = () => (
-  <InputText name="text" type="text" label="Text Input w/ Left Icon" icon="search" />
+  <InputText
+    name="text"
+    type="text"
+    label="Text Input w/ Left Icon"
+    icon="search"
+  />
 );
 
 export const placeholderStory = () => (
-  <InputText name="text" type="text" label="Text Input w/ Placeholder" placeholder="placeholder" />
+  <InputText
+    name="text"
+    type="text"
+    label="Text Input w/ Placeholder"
+    placeholder="placeholder"
+  />
 );
 
 export const hiddenLabel = () => (
@@ -47,7 +71,12 @@ export const error = () => (
 );
 
 export const disabledStory = () => (
-  <InputText name="text" type="text" label="Disabled Input Field" disabled={true} />
+  <InputText
+    name="text"
+    type="text"
+    label="Disabled Input Field"
+    disabled={true}
+  />
 );
 
 export const readOnly = () => (

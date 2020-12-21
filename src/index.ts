@@ -11,5 +11,11 @@ export { default as InputText } from './components/InputText';
 export { default as InputTextArea } from './components/InputTextarea';
 export { default as LabelValue } from './components/LabelValue';
 export { default as Message } from './components/Message';
-export { default as Table, TableBody, TableCell, TableHeader, TableRow } from './components/Table';
+export {
+  default as Table,
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableRow,
+} from './components/Table';
 export { default as Main } from './templates/Main';

@@ -33,7 +33,11 @@ const Select: FC<SelectProps> = ({
   const bemClass = `o-input${invalidClass} ${hideLabelClass}`;
 
   return (
-    <label className={bemClass} data-orientation={orientation} data-style={labelStyle}>
+    <label
+      className={bemClass}
+      data-orientation={orientation}
+      data-style={labelStyle}
+    >
       <span>{label}</span>
       <select
         aria-invalid={invalid}

@@ -32,8 +32,16 @@ const Fieldset: FC<FieldsetProps> = ({
   const bemClass = `o-input${invalidClass}`;
 
   return (
-    <fieldset className={bemClass} disabled={disabled} data-orientation={orientation}>
-      <legend className={hideLegendClass} data-size={labelSize} data-style={labelStyle}>
+    <fieldset
+      className={bemClass}
+      disabled={disabled}
+      data-orientation={orientation}
+    >
+      <legend
+        className={hideLegendClass}
+        data-size={labelSize}
+        data-style={labelStyle}
+      >
         <span>
           {label}
           {required && <span>*</span>}

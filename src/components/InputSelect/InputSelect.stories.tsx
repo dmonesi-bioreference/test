@@ -12,12 +12,24 @@ export default {
   title: 'Components/Inputs/Select',
 };
 
-export const defaultStory = () => <Select name="select" label="Select Label" options={options} />;
+export const defaultStory = () => (
+  <Select name="select" label="Select Label" options={options} />
+);
 
 export const boldWeightLabel = () => (
-  <Select name="select" label="Select Label" options={options} labelStyle="emphasized" />
+  <Select
+    name="select"
+    label="Select Label"
+    options={options}
+    labelStyle="emphasized"
+  />
 );
 
 export const horizontalLayout = () => (
-  <Select name="select" label="Select Label" options={options} orientation="horizontal" />
+  <Select
+    name="select"
+    label="Select Label"
+    options={options}
+    orientation="horizontal"
+  />
 );

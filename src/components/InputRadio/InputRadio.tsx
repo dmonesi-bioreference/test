@@ -21,7 +21,11 @@ const InputRadio: FC<InputRadioProps> = ({
   const bemClass = `o-input${invalidClass}`;
 
   return (
-    <label className={bemClass} data-input-type="radio" data-orientation="horizontal">
+    <label
+      className={bemClass}
+      data-input-type="radio"
+      data-orientation="horizontal"
+    >
       <input
         checked={checked}
         disabled={disabled}

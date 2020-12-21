@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import t, { colors } from '../../styles/tokens';
-import IconStyled from '../Icon/Icon.styles';
+import { ButtonProps } from './Button';
 
 const ButtonStyled = styled.button`
   align-items: center;
@@ -9,15 +9,16 @@ const ButtonStyled = styled.button`
   border-radius: ${t.borderRadiusMedium};
   color: ${t.colorPrimaryText};
   cursor: pointer;
-  display: ${(props) => (['a', 'div'].includes(props.as) ? 'inline-flex' : 'flex')};
+  display: ${(props: ButtonProps) =>
+    ['a', 'div'].includes(props.as as string) ? 'inline-flex' : 'flex'};
   font-family: ${t.fontFamilyBody};
   font-size: ${t.fontSize18};
   font-weight: ${t.fontWeightBold};
   justify-content: center;
-  line-height: ${t.lineHeightText};
+  line-height: ${t.lineHeightNormal};
   padding: ${t.spacingXSmall} ${t.spacingLarge};
   text-decoration: none;
-  transition: all ${t.durationPromptly} ease-in-out;
+  transition: all ${t.transitionMedium} ease-in-out;
   white-space: nowrap;
 
   &[hidden] {
@@ -25,7 +26,7 @@ const ButtonStyled = styled.button`
   }
 
   a {
-    color: ${t.colorWhite};
+    color: ${colors.white};
   }
 
   &:hover {
@@ -37,55 +38,25 @@ const ButtonStyled = styled.button`
     display: block;
   }
 
-  ${IconStyled} {
-    margin-left: -0.3rem;
-    margin-right: ${t.spacingSmall};
-
-    polygon,
-    path {
-      fill: ${t.colorPrimaryText};
-    }
-  }
-
   &:disabled {
-    background-color: ${colors.blueGray[200]};
-    border-color: ${colors.blueGray[200]};
-    color: ${t.colorWhite};
+    background-color: ${colors.coolGray[200]};
+    border-color: ${colors.coolGray[200]};
+    color: ${colors.white};
     cursor: not-allowed;
 
     &:hover {
-      background-color: ${colors.blueGray[200]};
-      border-color: ${colors.blueGray[200]};
-    }
-
-    ${IconStyled} {
-      polygon,
-      path {
-        fill: ${colors.blueGray[600]};
-      }
+      background-color: ${colors.coolGray[200]};
+      border-color: ${colors.coolGray[200]};
     }
   }
 
   &[data-icon-position='end'] {
     flex-flow: row-reverse;
-
-    ${IconStyled} {
-      margin-right: -0.3rem;
-      margin-left: ${t.spacingXxSmall};
-    }
   }
 
   &[data-size='small'] {
     font-size: ${t.fontSize14};
     padding: ${t.spacingXSmall} ${t.spacingMedium};
-
-    ${IconStyled} {
-      margin-right: ${t.spacingXxxSmall};
-
-      svg {
-        transform: scale(0.6);
-      }
-    }
   }
 
   &[data-size='medium'] {
@@ -104,28 +75,10 @@ const ButtonStyled = styled.button`
     }
   }
 
-  &[data-kind='black'] {
-    background-color: ${t.colorBlack};
-    border-color: ${t.colorBlack};
-    color: ${t.colorWhite};
-
-    &:hover {
-      background-color: ${t.colorBlackHover};
-      border-color: ${t.colorBlackHover};
-    }
-
-    ${IconStyled} {
-      polygon,
-      path {
-        fill: ${t.colorWhite};
-      }
-    }
-  }
-
   &[data-kind='danger'] {
     background-color: ${t.colorError};
     border-color: ${t.colorError};
-    color: ${t.colorWhite};
+    color: ${colors.white};
 
     &:hover {
       background-color: ${t.colorErrorHover};
@@ -143,23 +96,7 @@ const ButtonStyled = styled.button`
 
     &:hover {
       background: none;
-      color: ${t.colorBlack};
-    }
-
-    ${IconStyled} {
-      position: relative;
-      top: 1px;
-      margin: 0 0 0 -0.35rem;
-      padding: 0 0.35rem;
-
-      svg {
-        width: 0.7rem;
-      }
-
-      polygon,
-      path {
-        fill: ${t.colorSecondaryText};
-      }
+      color: ${colors.black};
     }
   }
 

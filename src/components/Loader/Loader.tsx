@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import Spinner from 'react-svg-spinner';
 import t from '../../styles/tokens';
 
 interface LoaderProps {
@@ -36,6 +35,6 @@ const Loader: FC<LoaderProps> = ({ color = 'primary', size = 'medium' }) => {
       break;
   }
 
-  return <Spinner size={tokenizedSize} color={tokenizedColor} />;
+  return <></>;
 };
 export default Loader;

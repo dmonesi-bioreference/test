@@ -8,7 +8,12 @@ export default {
 };
 
 export const prompt = () => (
-  <ConfirmationButton icon="trash" kind="black" size="medium" onClick={action('Deleted')}>
+  <ConfirmationButton
+    icon="trash"
+    kind="black"
+    size="medium"
+    onClick={action('Deleted')}
+  >
     Delete Entry
   </ConfirmationButton>
 );
