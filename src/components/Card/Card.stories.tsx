@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '.';
-import Button from '../Button';
+import Button from '../Button/Button';
 
 export default {
   component: Card,

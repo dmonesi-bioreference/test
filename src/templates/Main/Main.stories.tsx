@@ -1,7 +1,7 @@
 import { linkTo } from '@storybook/addon-links';
 import React from 'react';
 import Main from '.';
-import Button from '../../components/Button';
+import Button from '../../components/Button/Button';
 import Card from '../../components/Card';
 import InputText from '../../components/InputText';
 import Message from '../../components/Message';

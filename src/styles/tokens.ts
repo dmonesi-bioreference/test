@@ -67,34 +67,41 @@ export const colors = {
 };
 
 const fonts = {
-  fontFamilyOpenSans: "'Open Sans', 'Helvetica Neue', Arial, sans-serif",
+  fontFamilyOpenSans: "'Inter', 'Helvetica Neue', Arial, sans-serif",
 };
 
 const tokens = {
   /* color presets */
   colorBackground: colors.white,
-  colorPrimary: colors.blue[800],
-  colorPrimaryHover: colors.blue[900],
+  colorPrimary: colors.blue[600],
+  colorPrimaryHover: colors.blue[500],
   colorPrimaryText: colors.white,
-  colorSecondary: colors.coolGray[200],
-  colorSecondaryHover: colors.coolGray[300],
-  colorSecondaryText: colors.coolGray[900],
-  colorSuccess: colors.green[700],
-  colorSuccessHover: colors.green[800],
+  colorPrimaryFocus: colors.blue[200],
+  colorSecondary: colors.coolGray[600],
+  colorSecondaryHover: colors.coolGray[500],
+  colorSecondaryText: colors.coolGray[700],
+  colorSecondaryFocus: colors.coolGray[200],
+  colorSuccess: colors.green[600],
+  colorSuccessHover: colors.green[500],
   colorSuccessText: colors.green[800],
-  colorWarning: colors.yellow[700],
-  colorWarningHover: colors.yellow[800],
+  colorSuccessFocus: colors.green[200],
+  colorWarning: colors.yellow[600],
+  colorWarningHover: colors.yellow[500],
   colorWarningText: colors.yellow[800],
-  colorError: colors.red[700],
-  colorErrorHover: colors.red[800],
-  colorErrorText: colors.red[800],
+  colorWarningFocus: colors.yellow[200],
+  colorDanger: colors.red[600],
+  colorDangerHover: colors.red[500],
+  colorDangerText: colors.red[800],
+  colorDangerFocus: colors.red[200],
 
   /* font-family */
   fontFamilyBody: fonts.fontFamilyOpenSans,
   fontFamilyMonospace: 'monospace',
 
   /* font-weight */
+  fontWeightLight: '300',
   fontWeightRegular: '400',
+  fontWeightMedium: '500',
   fontWeightSemibold: '600',
   fontWeightBold: '700',
 
@@ -175,9 +182,9 @@ const tokens = {
 };
 
 export const focus = {
-  shadow: `0 0 0 3px ${colors.blue[500]}`,
-  borderColor: `${colors.blue[50]}`,
-  border: `${tokens.borderWidthThin} solid ${colors.blue[50]}`,
+  shadow: `0 0 0 3px ${colors.blue[200]}`,
+  borderColor: `${colors.blue[300]}`,
+  border: `${tokens.borderWidthThin} solid ${colors.blue[300]}`,
 };
 
 export const labels = {
