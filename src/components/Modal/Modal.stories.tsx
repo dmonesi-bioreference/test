@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import React from 'react';
 import Modal from '.';
 import Button from '../Button/Button';
-import ButtonGroup from '../ButtonGroup';
+import ButtonGroup from '../ButtonGroup/ButtonGroup';
 
 const footerActions = () => (
   <ButtonGroup>

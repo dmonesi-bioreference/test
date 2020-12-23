@@ -1,79 +1,84 @@
-import React, { FC, useState } from 'react';
-import Button, { ButtonProps } from '../Button/Button';
-import ButtonGroup from '../ButtonGroup';
+import React, { FC, useEffect, useState, useRef } from 'react';
 import Modal from '../Modal';
 import ConfirmationButtonStyled from './ConfirmationButton.styles';
 
-interface ConfirmationButtonProps extends ButtonProps {
-  confirmationAction?: string;
-  confirmationActionKind?: ButtonProps['kind'];
-  confirmationText?: string;
-  confirmationType?: 'prompt' | 'modal';
-  exitAction?: string;
-  exitActionKind?: ButtonProps['kind'];
+interface ConfirmationButtonProps {
+  type?: 'inline' | 'dialog';
+  prompt?: string;
+  confirmButton: React.ReactNode;
+  cancelButton: React.ReactNode;
+  onConfirm: () => void;
 }
 
-const ConfirmationButton: FC<ConfirmationButtonProps> = ({
-  confirmationAction = 'Confirm',
-  confirmationActionKind = 'primary',
-  confirmationType = 'prompt',
-  confirmationText = 'Are you sure?',
-  exitAction = 'Cancel',
-  exitActionKind = 'secondary',
-  onClick,
-  size,
-  ...buttonProps
-} = {}) => {
+const ConfirmationButton: FC<ConfirmationButtonProps> = (props) => {
   const [confirm, setConfirm] = useState(false);
+  const triggerWrap = useRef<HTMLDivElement>(null);
+  const confirmWrap = useRef<HTMLDivElement>(null);
+  const cancelWrap = useRef<HTMLDivElement>(null);
 
-  const handleConfirmationButtonClick = () => {
-    if (onClick) {
-      onClick();
+  useEffect(() => {
+    triggerWrap.current?.firstChild?.addEventListener(
+      'click',
+      handleTriggerClick
+    );
+    confirmWrap.current?.firstChild?.addEventListener(
+      'click',
+      handleConfirmClick
+    );
+    cancelWrap.current?.firstChild?.addEventListener(
+      'click',
+      handleCancelClick
+    );
+  });
+
+  const handleConfirmClick = () => {
+    if (props.onConfirm) {
+      props.onConfirm();
     }
     setConfirm(false);
   };
 
+  const handleCancelClick = () => {
+    setConfirm(false);
+  };
+
+  const handleTriggerClick = () => {
+    setConfirm(true);
+  };
+
   const confirmationButtons = (
-    <ButtonGroup>
-      <Button
-        kind={confirmationActionKind}
-        size={size}
-        onClick={handleConfirmationButtonClick}
-      >
-        {confirmationAction}
-      </Button>
-      <Button
-        kind={exitActionKind}
-        size={size}
-        onClick={() => setConfirm(false)}
-      >
-        {exitAction}
-      </Button>
-    </ButtonGroup>
+    <>
+      <span ref={confirmWrap} className="confirmation-button__confirm-button">
+        {props.confirmButton}
+      </span>
+      <span ref={cancelWrap} className="confirmation-button__cancel-button">
+        {props.cancelButton}
+      </span>
+    </>
   );
 
   const confirmationPrompt = (
-    <div className="confirmation--prompt">
-      {confirmationText}
+    <div className="confirmation-button__confirm">
+      <span className="confirmation-button__prompt">{props.prompt}</span>
       {confirmationButtons}
     </div>
   );
 
-  const confirmationModal = (
+  const confirmationDialog = (
     <Modal
       title="Confirm Action"
       showClose={false}
       footer={confirmationButtons}
     >
-      {confirmationText}
+      {props.prompt}
     </Modal>
   );
 
   const confirmation = () => {
-    switch (confirmationType) {
-      case 'modal':
-        return confirmationModal;
-      case 'prompt':
+    switch (props.type) {
+      case 'dialog':
+        return confirmationDialog;
+      case 'inline':
       default:
         return confirmationPrompt;
     }
@@ -82,12 +87,13 @@ const ConfirmationButton: FC<ConfirmationButtonProps> = ({
   return (
     <ConfirmationButtonStyled>
       {confirm && confirmation()}
-      <Button
-        {...buttonProps}
-        size={size}
-        onClick={() => setConfirm(true)}
-        hidden={confirm && confirmationType === 'prompt'}
-      />
+      <div
+        className="confirmation-button__trigger"
+        hidden={confirm && props.type === 'inline'}
+        ref={triggerWrap}
+      >
+        {props.children}
+      </div>
     </ConfirmationButtonStyled>
   );
 };

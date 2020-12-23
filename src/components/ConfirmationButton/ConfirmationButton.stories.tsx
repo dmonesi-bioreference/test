@@ -1,31 +1,36 @@
 import { action } from '@storybook/addon-actions';
 import React from 'react';
 import ConfirmationButton from '.';
+import Button from '../Button/Button';
 
 export default {
   component: ConfirmationButton,
-  title: 'Components/ConfirmationButton',
+  title: 'Components/Confirmation Button',
+  parameters: {
+    controls: { hideNoControlsWarning: true },
+  },
 };
 
 export const prompt = () => (
   <ConfirmationButton
-    icon="trash"
-    kind="black"
-    size="medium"
-    onClick={action('Deleted')}
+    type="inline"
+    prompt="Are you sure?"
+    onConfirm={action('Deleted')}
+    confirmButton={<Button kind="danger">Confirm</Button>}
+    cancelButton={<Button kind="default">Cancel</Button>}
   >
-    Delete Entry
+    <Button>Delete Entry</Button>
   </ConfirmationButton>
 );
 
 export const modal = () => (
   <ConfirmationButton
-    icon="trash"
-    kind="black"
-    size="medium"
-    confirmationType="modal"
-    onClick={action('Deleted')}
+    type="dialog"
+    prompt="Are you sure?"
+    onConfirm={action('Deleted')}
+    confirmButton={<Button kind="danger">Confirm</Button>}
+    cancelButton={<Button kind="default">Cancel</Button>}
   >
-    Delete Entry
+    <Button>Delete Entry</Button>
   </ConfirmationButton>
 );

@@ -1,14 +1,22 @@
 import styled from 'styled-components';
 import t from '../../styles/tokens';
+import { base } from '../../styles/utilities/base';
 
 const ConfirmationButtonStyled = styled.div`
-  .confirmation--prompt {
-    display: inline-grid;
-    grid-auto-flow: column;
-    grid-gap: ${t.spacingMedium};
+  ${base}
+
+  .confirmation-button__confirm {
+    display: inline-flex;
     align-items: center;
-    border-radius: ${t.borderRadiusLarge};
-    font-weight: ${t.fontWeightSemibold};
+  }
+
+  .confirmation-button__prompt {
+    margin-right: ${t.spacingMedium};
+    font-weight: ${t.fontWeightMedium};
+  }
+
+  .confirmation-button__confirm-button {
+    margin-right: ${t.spacingMedium};
   }
 `;
 
