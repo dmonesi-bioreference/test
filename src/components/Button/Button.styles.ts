@@ -66,6 +66,7 @@ const ButtonStyled = styled.button<ButtonProps & ButtonStyledProps>`
 
     &:hover:not(.button--disabled) {
       background-color: ${colors.coolGray[50]};
+      border-color: ${colors.coolGray[400]};
     }
 
     &:focus:not(.button--disabled) {

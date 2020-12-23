@@ -46,7 +46,7 @@ const defaultProps: ButtonProps = {
   size: 'medium',
 };
 
-const Button: FC<ButtonProps & { as: 'a' | 'button' | 'div' }> = (props) => {
+const Button: FC<ButtonProps> = (props) => {
   const isLink = props.href ? true : false;
   const isRouterLink = props.linkTo ? true : false;
   const isButton = !isLink && !isRouterLink;
