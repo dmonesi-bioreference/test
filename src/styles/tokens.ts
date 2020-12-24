@@ -205,7 +205,7 @@ export const panels = {
 };
 
 export const modals = {
-  overlayBackgroundColor: 'hsla(210, 10, 70, 0.65)',
+  overlayBackgroundColor: 'hsla(210, 10%, 70%, 0.65)',
 };
 
 export const inputs = {

@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState, useRef } from 'react';
-import Modal from '../Modal';
+import Dialog from '../Dialog/Dialog';
 import ConfirmationButtonStyled from './ConfirmationButton.styles';
 
 interface ConfirmationButtonProps {
@@ -9,6 +9,11 @@ interface ConfirmationButtonProps {
   cancelButton: React.ReactNode;
   onConfirm: () => void;
 }
+
+const defaultProps: Partial<ConfirmationButtonProps> = {
+  type: 'inline',
+  prompt: 'Are you sure?',
+};
 
 const ConfirmationButton: FC<ConfirmationButtonProps> = (props) => {
   const [confirm, setConfirm] = useState(false);
@@ -29,7 +34,7 @@ const ConfirmationButton: FC<ConfirmationButtonProps> = (props) => {
       'click',
       handleCancelClick
     );
-  });
+  }, []);
 
   const handleConfirmClick = () => {
     if (props.onConfirm) {
@@ -58,35 +63,31 @@ const ConfirmationButton: FC<ConfirmationButtonProps> = (props) => {
   );
 
   const confirmationPrompt = (
-    <div className="confirmation-button__confirm">
+    <div
+      className="confirmation-button__confirm"
+      hidden={!confirm ? true : undefined}
+    >
       <span className="confirmation-button__prompt">{props.prompt}</span>
       {confirmationButtons}
     </div>
   );
 
   const confirmationDialog = (
-    <Modal
+    <Dialog
       title="Confirm Action"
-      showClose={false}
+      hideHeader={true}
       footer={confirmationButtons}
+      open={confirm}
+      onClose={() => setConfirm(false)}
     >
       {props.prompt}
-    </Modal>
+    </Dialog>
   );
-
-  const confirmation = () => {
-    switch (props.type) {
-      case 'dialog':
-        return confirmationDialog;
-      case 'inline':
-      default:
-        return confirmationPrompt;
-    }
-  };
 
   return (
     <ConfirmationButtonStyled>
-      {confirm && confirmation()}
+      {props.type === 'inline' && confirmationPrompt}
+      {props.type === 'dialog' && confirmationDialog}
       <div
         className="confirmation-button__trigger"
         hidden={confirm && props.type === 'inline'}
@@ -97,5 +98,7 @@ const ConfirmationButton: FC<ConfirmationButtonProps> = (props) => {
     </ConfirmationButtonStyled>
   );
 };
+
+ConfirmationButton.defaultProps = defaultProps;
 
 export default ConfirmationButton;
