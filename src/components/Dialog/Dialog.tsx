@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import React, { FC, useEffect, useState, useRef } from 'react';
-import Icon from '../Icon';
 import IconButton from '../IconButton/IconButton';
 import DialogStyled from './Dialog.styles';
 
@@ -99,7 +98,7 @@ const Dialog: FC<DialogProps> = (props) => {
           ref={panel}
           role="dialog"
           aria-modal="true"
-          aria-hidden={props.open ? 'false' : 'true'}
+          aria-hidden={isOpen ? 'false' : 'true'}
           aria-label={props.title}
           aria-labelledby={
             !props.hideHeader ? `${componentId}-title` : undefined
