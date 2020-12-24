@@ -1,7 +1,7 @@
 import { Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import CardGrid from '.';
-import Card from '../Card';
+import CardGrid from './CardGrid';
+import Card from '../Card/Card';
 import { CardGridProps } from './CardGrid';
 
 export default {

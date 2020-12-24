@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import Icon from '../Icon';
+import Icon from '../Icon/Icon';
 import Button, { ButtonProps } from './Button';
 
 export default {

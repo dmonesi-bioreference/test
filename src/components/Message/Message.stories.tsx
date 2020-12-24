@@ -1,33 +1,36 @@
+import { Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import Message from '.';
+import Message, { MessageProps } from './Message';
 
 export default {
   component: Message,
   title: 'Components/Message',
 };
 
-export const defaultStory = () => <Message>Message text goes here.</Message>;
-
-export const info = () => (
-  <Message type="info" icon="information-outline">
-    Message text goes here.
-  </Message>
+const Template: Story<MessageProps> = (args) => (
+  <Message {...args}>Message text goes here.</Message>
 );
 
-export const error = () => (
-  <Message type="error" icon="exclamation-outline">
-    Message text goes here.
-  </Message>
-);
+export const Info = Template.bind({});
 
-export const warning = () => (
-  <Message type="warning" icon="flag">
-    Message text goes here.
-  </Message>
-);
+Info.args = {
+  type: 'info',
+};
 
-export const success = () => (
-  <Message type="success" icon="checkmark">
-    Message text goes here.
-  </Message>
-);
+export const Success = Template.bind({});
+
+Success.args = {
+  type: 'success',
+};
+
+export const Warning = Template.bind({});
+
+Warning.args = {
+  type: 'warning',
+};
+
+export const Danger = Template.bind({});
+
+Danger.args = {
+  type: 'danger',
+};
