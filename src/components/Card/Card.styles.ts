@@ -1,28 +1,26 @@
 import styled from 'styled-components';
-import t from '../../styles/tokens';
+import t, { colors } from '../../styles/tokens';
+import { base } from '../../styles/utilities/base';
 
 const CardStyled = styled.div`
+  ${base}
+  background-color: ${colors.white};
+  border: 1px solid ${colors.coolGray[200]};
   border-radius: ${t.borderRadiusLarge};
-  box-shadow: ${t.shadowSmall};
 
-  .header {
-    background-color: ${t.colorSecondary};
-    border-top-left-radius: ${t.borderRadiusMedium};
-    border-top-right-radius: ${t.borderRadiusMedium};
-    padding: ${t.spacingSmall} ${t.spacingMedium};
-    position: relative;
+  .card__header {
+    padding: ${t.spacingLarge};
+    border-bottom: 1px solid ${colors.coolGray[200]};
   }
 
-  .title {
+  .card__title {
     color: ${t.colorSecondaryText};
-    font-size: ${t.fontSize16};
-    font-weight: ${t.fontWeightBold};
-    text-transform: uppercase;
+    font-size: ${t.fontSize18};
+    font-weight: ${t.fontWeightMedium};
   }
 
-  .body {
-    background-color: ${t.colorWhite};
-    padding: ${t.spacingSmall} ${t.spacingMedium};
+  .card__body {
+    padding: ${t.spacingMedium} ${t.spacingLarge};
   }
 `;
 

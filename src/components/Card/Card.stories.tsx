@@ -1,18 +1,24 @@
+import { Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import Card from '.';
-import Button from '../Button/Button';
+import Card, { CardProps } from './Card';
 
 export default {
   component: Card,
   title: 'Components/Card',
 };
 
-export const basic = () => (
-  <Card title="Card" content="Card with basic content" />
-);
-
-export const withComponent = () => (
-  <Card title="Card with Component">
-    <Button>Button</Button>
+const Template: Story<CardProps> = (args) => (
+  <Card {...args}>
+    <p>Card content.</p>
   </Card>
 );
+
+export const Primary = Template.bind({});
+
+Primary.args = {
+  title: 'Card Title',
+};
+
+export const withoutTitle = Template.bind({});
+
+withoutTitle.args = {};
