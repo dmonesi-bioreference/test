@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import React, { FC, useEffect, useState, useRef } from 'react';
 import Icon from '../Icon';
+import IconButton from '../IconButton/IconButton';
 import DialogStyled from './Dialog.styles';
 
 let id = 0;
@@ -110,15 +111,13 @@ const Dialog: FC<DialogProps> = (props) => {
                 {props.title}
               </span>
 
-              <button
-                className="dialog__close"
-                type="button"
-                name="close"
-                onClick={handleCloseClick}
-                aria-label="Close"
-              >
-                <Icon name="x" />
-              </button>
+              <span className="dialog__close">
+                <IconButton
+                  label="close"
+                  onClick={handleCloseClick}
+                  name="x"
+                ></IconButton>
+              </span>
             </header>
           )}
           <div className="dialog__body">{props.children}</div>
