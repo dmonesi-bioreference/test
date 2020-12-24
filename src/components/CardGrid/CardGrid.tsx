@@ -1,12 +1,19 @@
 import React, { FC } from 'react';
 import CardGridStyled from './CardGrid.styles';
 
-interface CardGridProps {
-  columns?: 1 | 2 | 3;
+export interface CardGridProps {
+  /** The number of columns in the grid. */
+  columns?: number;
 }
 
-const CardGrid: FC<CardGridProps> = ({ children, columns = 1 }) => (
-  <CardGridStyled data-columns={columns}>{children}</CardGridStyled>
+const defaultProps = {
+  columns: 2,
+};
+
+const CardGrid: FC<CardGridProps> = (props) => (
+  <CardGridStyled columns={props.columns}>{props.children}</CardGridStyled>
 );
+
+CardGrid.defaultProps = defaultProps;
 
 export default CardGrid;

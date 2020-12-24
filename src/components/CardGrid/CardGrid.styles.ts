@@ -1,33 +1,18 @@
-import styled from 'styled-components';
-import media from '../../styles/media-queries';
+import styled, { css } from 'styled-components';
+import t from '../../styles/tokens';
+import { CardGridProps } from './CardGrid';
 
-const CardGridStyled = styled.div`
-  align-items: stretch;
+const CardGridStyled = styled.div<CardGridProps>`
   display: grid;
-  grid-gap: 2rem;
+  align-items: stretch;
+  grid-gap: ${t.spacingXLarge};
+  ${(p: CardGridProps) =>
+    css`
+      grid-template-columns: repeat(${p.columns}, 1fr);
+    `};
 
   & + & {
-    margin-top: 2rem;
-  }
-
-  &[data-columns='1'] {
-    grid-template-columns: 1fr;
-  }
-
-  &[data-columns='2'] {
-    grid-template-columns: 1fr;
-
-    ${media.mediumUp} {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  &[data-columns='3'] {
-    grid-template-columns: 1fr;
-
-    ${media.mediumUp} {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
+    margin-top: ${t.spacingXLarge};
   }
 `;
 
