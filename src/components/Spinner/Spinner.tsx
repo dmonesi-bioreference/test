@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import tokens from '../../styles/tokens';
+import tokens, { colors } from '../../styles/tokens';
 import SpinnerStyled from './Spinner.styles';
 
 export interface SpinnerProps {
@@ -13,7 +13,7 @@ export interface SpinnerProps {
 
 const defaultProps: SpinnerProps = {
   strokeWidth: 2,
-  trackColor: tokens.colorSecondary,
+  trackColor: colors.coolGray[300],
   indicatorColor: tokens.colorPrimary,
 };
 

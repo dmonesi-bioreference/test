@@ -1,17 +1,37 @@
+import clsx from 'clsx';
 import React, { FC } from 'react';
 import TableStyled from './Table.styles';
 
-interface TableProps {
-  caption?: string;
+export interface TableProps {
+  /** Set to true to enable zebra stripes on rows. */
+  striped?: boolean;
+  /** Set to true to make the header sticky. */
+  stickyHeader?: boolean;
+  /** Set to true to display a row background on hover. */
+  rowHover?: boolean;
 }
 
-const Table: FC<TableProps> = ({ caption, children }) => {
+const defaultProps: TableProps = {
+  striped: false,
+  stickyHeader: false,
+  rowHover: false,
+};
+
+const Table: FC<TableProps> = (props) => {
   return (
-    <TableStyled>
-      {!!caption && <caption>{caption}</caption>}
-      {children}
+    <TableStyled
+      className={clsx({
+        table: true,
+        'table--striped': props.striped,
+        'table--row-hover': props.rowHover,
+        'table--sticky-header': props.stickyHeader,
+      })}
+    >
+      {props.children}
     </TableStyled>
   );
 };
+
+Table.defaultProps = defaultProps;
 
 export default Table;

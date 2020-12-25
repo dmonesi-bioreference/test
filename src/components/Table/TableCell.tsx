@@ -5,17 +5,11 @@ interface TableCellProps {
   scope?: 'row' | 'col';
 }
 
-const TableCell: FC<TableCellProps> = ({ children, header, scope }) => {
-  const bemClass = 'c-table__column';
-
-  if (header) {
-    return (
-      <th className={bemClass} scope={scope}>
-        {children}
-      </th>
-    );
+const TableCell: FC<TableCellProps> = (props) => {
+  if (props.header) {
+    return <th scope={props.scope}>{props.children}</th>;
   }
-  return <td className={bemClass}>{children}</td>;
+  return <td>{props.children}</td>;
 };
 
 export default TableCell;
