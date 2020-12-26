@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
-import focus from './global/focus';
-import utility from './global/utility';
+import focus from './focus';
+import utility from './utility';
 
 const GlobalStyle = createGlobalStyle`
   ${focus}

@@ -1,4 +1,4 @@
-import GlobalStyle from '../src/styles/GlobalStyle';
+import GlobalStyle from '../src/styles/global';
 
 export const decorators = [
   (Story) => (
