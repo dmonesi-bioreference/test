@@ -1,22 +1,39 @@
+import { LabelPosition } from './FormControl';
+
 export interface InputBaseProps {
   disabled?: boolean;
   invalid?: boolean;
   invalidMessage?: string;
-  label: string | React.ReactNode;
+  label: string;
+  labelPosition?: LabelPosition;
+  helpText?: string;
   name: string;
   onBlur?: (e) => void;
   onChange?: (e) => void;
+  onInvalid?: (e) => void;
+  onFocus?: (e) => void;
+  placeholder?: string;
   readonly?: boolean;
   required?: boolean;
+  size: 'small' | 'medium' | 'large';
 }
 
 export interface InputTextBaseProps extends InputBaseProps {
-  hideLabel?: boolean;
-  labelStyle?: 'normal' | 'emphasized';
+  autocapitalize?: string;
+  autocorrect?: string;
+  autocomplete?: string;
+  inputmode?:
+    | 'none'
+    | 'text'
+    | 'decimal'
+    | 'numeric'
+    | 'tel'
+    | 'search'
+    | 'email'
+    | 'url';
+  spellcheck?: boolean;
+  minLength?: number;
   maxLength?: number;
-  onFocus?: (e) => void;
-  onKeyUp?: (e) => void;
-  orientation?: 'vertical' | 'horizontal';
-  placeholder?: string;
+  onInput?: (e) => void;
   value?: string;
 }

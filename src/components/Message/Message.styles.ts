@@ -6,7 +6,7 @@ const MessageStyled = styled.div`
   ${base}
   display: inline-flex;
   align-items: center;
-  padding: 0.15rem ${t.spacingXxxSmall};
+  padding: 0.15rem 0;
   font-size: ${t.fontSize14};
 
   &.message--info {
