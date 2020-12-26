@@ -1,6 +1,6 @@
 export { default as Button } from './components/Button/Button';
 export { default as Card } from './components/Card/Card';
-export { default as Flash } from './components/Flash';
+export { default as Alert } from './components/Alert/Alert';
 export { default as Fieldset } from './components/Fieldset';
 export { default as GlobalStyle } from './styles/GlobalStyle';
 export { default as Icon } from './components/Icon/Icon';
