@@ -15,7 +15,7 @@ export interface InputBaseProps {
   placeholder?: string;
   readonly?: boolean;
   required?: boolean;
-  size: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
 }
 
 export interface InputTextBaseProps extends InputBaseProps {

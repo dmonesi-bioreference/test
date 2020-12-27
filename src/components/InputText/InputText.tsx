@@ -54,14 +54,18 @@ const InputText: FC<InputTextProps> = (props) => {
       helpText={props.helpText || undefined}
       invalid={props.invalid}
       invalidMessage={props.invalidMessage}
-      size={props.size}
+      size={props.size || 'medium'}
     >
       <div
         className={clsx({
           input: true,
+
+          // Sizes
           'input--small': props.size === 'small',
           'input--medium': props.size === 'medium',
           'input--large': props.size === 'large',
+
+          // States
           'input--disabled': props.disabled,
           'input--focused': isFocused,
           'input--invalid': props.invalid,

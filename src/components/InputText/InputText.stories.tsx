@@ -1,6 +1,6 @@
 import { Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import InputText from '.';
+import InputText from './InputText';
 import Icon from '../Icon/Icon';
 import { InputTextProps } from './InputText';
 

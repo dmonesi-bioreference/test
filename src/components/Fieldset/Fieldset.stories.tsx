@@ -2,7 +2,7 @@ import React from 'react';
 import Fieldset from '.';
 import InputCheckbox from '../InputCheckbox';
 import InputRadio from '../InputRadio';
-import InputText from '../InputText';
+import InputText from '../InputText/InputText';
 
 export default {
   component: Fieldset,

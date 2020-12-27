@@ -22,6 +22,7 @@ const InputTextStyled = styled(FormControl)<FormControlProps>`
     vertical-align: middle;
     overflow: hidden;
     transition: ${inputs.transition};
+    cursor: text;
 
     &:hover:not(.input--disabled) {
       border-color: ${inputs.borderHoverColor};
