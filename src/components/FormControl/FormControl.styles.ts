@@ -19,6 +19,33 @@ const FormControlStyled = styled.div`
     color: ${inputs.helpColor};
   }
 
+  &.form-control--boolean {
+    .form-control__label {
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      font-weight: ${t.fontWeightRegular};
+      user-select: none;
+    }
+
+    .form-control__input {
+      display: flex;
+      align-items: center;
+      margin-right: ${inputs.spacingMedium};
+    }
+
+    .form-control__invalid-message,
+    .form-control__help-text {
+      margin-left: calc(${inputs.spacingMedium} + 1em + 2px);
+    }
+  }
+
+  &.form-control--disabled {
+    .form-control__label {
+      cursor: not-allowed;
+    }
+  }
+
   &.form-control--small {
     .form-control__label {
       font-size: ${labels.fontSizeSmall};

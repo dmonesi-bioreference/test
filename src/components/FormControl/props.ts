@@ -10,6 +10,7 @@ export interface InputBaseProps {
   name: string;
   onBlur?: (e) => void;
   onChange?: (e) => void;
+  onClick?: (e) => void;
   onInvalid?: (e) => void;
   onFocus?: (e) => void;
   placeholder?: string;

@@ -2,12 +2,6 @@ import { Story } from '@storybook/react/types-6-0';
 import React from 'react';
 import Select, { SelectProps } from './Select';
 
-// const options = [
-//   { name: 'Option 1', value: 'option1' },
-//   { name: 'Option 2', value: 'option2' },
-//   { name: 'Option 3', value: 'option3' },
-// ];
-
 export default {
   component: Select,
   title: 'Components/Form Elements/Select',

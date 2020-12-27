@@ -1,6 +1,6 @@
 import React from 'react';
 import Fieldset from '.';
-import InputCheckbox from '../InputCheckbox';
+import InputCheckbox from '../Checkbox/Checkbox';
 import InputRadio from '../InputRadio';
 import Input from '../Input/Input';
 

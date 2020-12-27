@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { InputBaseProps } from '../FormControl/props';
 import SelectStyled from './Select.styles';
 
@@ -8,11 +8,15 @@ export type SelectProps = InputBaseProps;
 let id = 0;
 
 const Select: FC<SelectProps> = (props) => {
-  const selectId = `select-${++id}`;
+  const inputId = `select-${++id}`;
   const labelId = `select-label-${id}`;
   const helpTextId = `select-help-text-${id}`;
   const [isFocused, setIsFocused] = useState(false);
   const [value, setValue] = useState(props.placeholder ? '' : null);
+
+  useEffect(() => {
+    setValue(props.value);
+  }, [props.value]);
 
   const handleFocus = () => {
     setIsFocused(true);
@@ -32,7 +36,7 @@ const Select: FC<SelectProps> = (props) => {
 
   return (
     <SelectStyled
-      inputId={selectId}
+      inputId={inputId}
       label={props.label}
       labelPosition={props.labelPosition}
       labelId={labelId}
@@ -59,7 +63,7 @@ const Select: FC<SelectProps> = (props) => {
         })}
       >
         <select
-          id={selectId}
+          id={inputId}
           className="select__control"
           name={props.name}
           placeholder={props.placeholder}
