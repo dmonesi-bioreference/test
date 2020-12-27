@@ -15,7 +15,9 @@ export const Primary = Template.bind({});
 
 Primary.args = {
   label: 'Text Input',
+  labelPosition: 'top',
   size: 'medium',
+  name: 'input',
 };
 
 export const withIcons = Template.bind({});

@@ -1,45 +1,21 @@
+import { Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import InputTextArea from '.';
+import InputTextArea, { InputTextAreaProps } from './InputTextArea';
 
 export default {
   component: InputTextArea,
   title: 'Components/Inputs/Textarea',
 };
 
-export const defaultStory = () => (
-  <InputTextArea name="textarea" label="Text Area" />
+const Template: Story<InputTextAreaProps> = (args) => (
+  <InputTextArea {...args} />
 );
 
-export const boldWeightLabel = () => (
-  <InputTextArea name="textarea" label="Text Area" labelStyle="emphasized" />
-);
+export const Primary = Template.bind({});
 
-export const horizontalLayout = () => (
-  <InputTextArea name="textarea" label="Text Area" orientation="horizontal" />
-);
-
-export const error = () => (
-  <InputTextArea
-    name="textarea"
-    label="Text Area Error State"
-    invalidMessage="This field is required."
-    invalid={true}
-  />
-);
-
-export const disabledStory = () => (
-  <InputTextArea
-    name="textarea"
-    label="Disabled Text Area Field"
-    disabled={true}
-  />
-);
-
-export const readOnly = () => (
-  <InputTextArea
-    name="textarea"
-    label="Ready Only Text Area Field"
-    value="Ready only value"
-    readonly={true}
-  />
-);
+Primary.args = {
+  label: 'Textarea Input',
+  labelPosition: 'top',
+  size: 'medium',
+  name: 'textarea',
+};

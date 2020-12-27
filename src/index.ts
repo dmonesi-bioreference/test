@@ -9,7 +9,7 @@ export { default as InputCheckbox } from './components/InputCheckbox';
 export { default as InputRadio } from './components/InputRadio';
 export { default as Select } from './components/InputSelect';
 export { default as InputText } from './components/InputText/InputText';
-export { default as InputTextArea } from './components/InputTextarea';
+// export { default as InputTextArea } from './components/InputTextarea/InputTextarea';
 export { default as LabelValue } from './components/Data/Data';
 export { default as Message } from './components/Message';
 export {
