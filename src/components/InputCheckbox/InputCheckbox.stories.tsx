@@ -3,7 +3,7 @@ import InputCheckbox from '.';
 
 export default {
   component: InputCheckbox,
-  title: 'Components/Inputs/Checkbox',
+  title: 'Components/Form Elements/Checkbox',
 };
 
 export const defaultStory = () => (

@@ -13,9 +13,9 @@ export interface InputBaseProps {
   onInvalid?: (e) => void;
   onFocus?: (e) => void;
   placeholder?: string;
-  readonly?: boolean;
   required?: boolean;
   size?: 'small' | 'medium' | 'large';
+  value?: string;
 }
 
 export interface InputTextBaseProps extends InputBaseProps {
@@ -35,5 +35,5 @@ export interface InputTextBaseProps extends InputBaseProps {
   minLength?: number;
   maxLength?: number;
   onInput?: (e) => void;
-  value?: string;
+  readonly?: boolean;
 }

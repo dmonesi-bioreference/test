@@ -1,25 +1,37 @@
 import clsx from 'clsx';
 import React, { FC, useState } from 'react';
-import { InputTextBaseProps } from '../Input/props';
-import InputTextAreaStyled from './InputTextArea.styles';
+import { InputTextBaseProps } from '../FormControl/props';
+import InputStyled from './Input.styles';
 
-export interface InputTextAreaProps extends InputTextBaseProps {
-  rows?: number;
-  resize?: 'none' | 'vertical' | 'auto';
+export interface InputProps extends InputTextBaseProps {
+  autoComplete?: boolean;
+  min?: number;
+  max?: number;
+  pattern?: string;
+  prefix?: React.ReactNode;
+  step?: number;
+  suffix?: React.ReactNode;
+  type?:
+    | 'email'
+    | 'number'
+    | 'password'
+    | 'search'
+    | 'tel'
+    | 'url'
+    | 'text'
+    | 'date';
 }
 
 let id = 0;
 
-const defaultProps: Partial<InputTextAreaProps> = {
-  rows: 4,
-  resize: 'vertical',
+const defaultProps: Partial<InputProps> = {
   size: 'medium',
 };
 
-const InputTextArea: FC<InputTextAreaProps> = (props) => {
-  const inputId = `textarea-${++id}`;
-  const labelId = `textarea-label-${id}`;
-  const helpTextId = `textarea-help-text-${id}`;
+const Input: FC<InputProps> = (props) => {
+  const inputId = `input-${++id}`;
+  const labelId = `input-label-${id}`;
+  const helpTextId = `input-help-text-${id}`;
   const [isFocused, setIsFocused] = useState(false);
 
   const handleFocus = () => {
@@ -33,7 +45,7 @@ const InputTextArea: FC<InputTextAreaProps> = (props) => {
   };
 
   return (
-    <InputTextAreaStyled
+    <InputStyled
       inputId={inputId}
       label={props.label}
       labelPosition={props.labelPosition}
@@ -46,30 +58,40 @@ const InputTextArea: FC<InputTextAreaProps> = (props) => {
     >
       <div
         className={clsx({
-          textarea: true,
-          'textarea--small': props.size === 'small',
-          'textarea--medium': props.size === 'medium',
-          'textarea--large': props.size === 'large',
-          'textarea--disabled': props.disabled,
-          'textarea--focused': isFocused,
-          'textarea--invalid': props.invalid,
+          input: true,
+
+          // Sizes
+          'input--small': props.size === 'small',
+          'input--medium': props.size === 'medium',
+          'input--large': props.size === 'large',
+
+          // States
+          'input--disabled': props.disabled,
+          'input--focused': isFocused,
+          'input--invalid': props.invalid,
         })}
       >
-        <textarea
+        <span className="input__prefix">{props.prefix}</span>
+
+        <input
           id={inputId}
-          className="textarea__control"
+          className="input__control"
+          type={props.type}
           name={props.name}
           placeholder={props.placeholder}
           disabled={props.disabled}
           readOnly={props.readonly}
-          rows={props.rows}
           minLength={props.minLength}
           maxLength={props.maxLength}
+          min={props.min}
+          max={props.max}
+          step={props.step}
           value={props.value}
           autoCapitalize={props.autocapitalize}
           autoComplete={props.autocomplete}
           autoCorrect={props.autocorrect}
           spellCheck={props.spellcheck}
+          pattern={props.pattern}
           required={props.required}
           inputMode={props.inputmode}
           aria-labelledby={labelId}
@@ -80,12 +102,14 @@ const InputTextArea: FC<InputTextAreaProps> = (props) => {
           onInvalid={props.onInvalid}
           onFocus={handleFocus}
           onBlur={handleBlur}
-        ></textarea>
+        />
+
+        <span className="input__suffix">{props.suffix}</span>
       </div>
-    </InputTextAreaStyled>
+    </InputStyled>
   );
 };
 
-InputTextArea.defaultProps = defaultProps;
+Input.defaultProps = defaultProps;
 
-export default InputTextArea;
+export default Input;

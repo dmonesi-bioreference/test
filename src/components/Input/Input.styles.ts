@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { inputs, focus } from '../../styles/tokens';
 import { base } from '../../styles/utilities/base';
-import FormControl, { FormControlProps } from '../Input/FormControl';
+import FormControl, { FormControlProps } from '../FormControl/FormControl';
 
 /* stylelint-disable no-descending-specificity */
 
-const InputTextStyled = styled(FormControl)<FormControlProps>`
+const InputStyled = styled(FormControl)<FormControlProps>`
   ${base}
 
   .input {
@@ -138,4 +138,4 @@ const InputTextStyled = styled(FormControl)<FormControlProps>`
   }
 `;
 
-export default InputTextStyled;
+export default InputStyled;

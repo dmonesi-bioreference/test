@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { InputBaseProps } from '../Input/props';
+import { InputBaseProps } from '../FormControl/props';
 import Message from '../Message';
 
 interface InputCheckboxProps extends InputBaseProps {

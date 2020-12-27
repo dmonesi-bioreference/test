@@ -1,15 +1,15 @@
 import { Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import InputText from './InputText';
+import Input from './Input';
 import Icon from '../Icon/Icon';
-import { InputTextProps } from './InputText';
+import { InputProps } from './Input';
 
 export default {
-  component: InputText,
-  title: 'Components/Inputs/Text',
+  component: Input,
+  title: 'Components/Form Elements/Input',
 };
 
-const Template: Story<InputTextProps> = (args) => <InputText {...args} />;
+const Template: Story<InputProps> = (args) => <Input {...args} />;
 
 export const Primary = Template.bind({});
 

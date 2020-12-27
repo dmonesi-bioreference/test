@@ -2,17 +2,17 @@ import React from 'react';
 import Fieldset from '.';
 import InputCheckbox from '../InputCheckbox';
 import InputRadio from '../InputRadio';
-import InputText from '../InputText/InputText';
+import Input from '../Input/Input';
 
 export default {
   component: Fieldset,
-  title: 'Components/Inputs/Fieldset',
+  title: 'Components/Form Elements/Fieldset',
 };
 
 export const withTextInputs = () => (
   <Fieldset label="Fieldset Label">
-    <InputText name="field1" type="text" label="Field One" />
-    <InputText name="field2" type="text" label="Field Two" />
+    <Input name="field1" type="text" label="Field One" />
+    <Input name="field2" type="text" label="Field Two" />
   </Fieldset>
 );
 

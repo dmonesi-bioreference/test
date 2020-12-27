@@ -3,7 +3,7 @@ import React from 'react';
 import Main from '.';
 import Button from '../../components/Button/Button';
 import Card from '../../components/Card/Card';
-import InputText from '../../components/InputText/InputText';
+import Input from '../../components/Input/Input';
 import Message from '../../components/Message/Message';
 
 export default {
@@ -16,8 +16,8 @@ export const exampleForm = () => (
       <Message icon="information-outline">
         Please fill out this form to continue
       </Message>
-      <InputText name="text" type="text" label="First Name" />
-      <InputText name="text" type="text" label="Last Name" />
+      <Input name="text" type="text" label="First Name" />
+      <Input name="text" type="text" label="Last Name" />
       <Button
         kind="primary"
         onClick={linkTo('Templates/Main', 'Example Landing')}

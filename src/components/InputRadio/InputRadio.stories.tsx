@@ -3,7 +3,7 @@ import InputRadio from '.';
 
 export default {
   component: InputRadio,
-  title: 'Components/Inputs/Radio',
+  title: 'Components/Form Elements/Radio',
 };
 
 export const defaultStory = () => (

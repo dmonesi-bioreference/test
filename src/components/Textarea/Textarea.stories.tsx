@@ -1,15 +1,13 @@
 import { Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import InputTextArea, { InputTextAreaProps } from './InputTextArea';
+import Textarea, { TextareaProps } from './Textarea';
 
 export default {
-  component: InputTextArea,
-  title: 'Components/Inputs/Textarea',
+  component: Textarea,
+  title: 'Components/Form Elements/Textarea',
 };
 
-const Template: Story<InputTextAreaProps> = (args) => (
-  <InputTextArea {...args} />
-);
+const Template: Story<TextareaProps> = (args) => <Textarea {...args} />;
 
 export const Primary = Template.bind({});
 
