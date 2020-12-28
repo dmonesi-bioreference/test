@@ -5,10 +5,11 @@ import SelectStyled from './Select.styles';
 
 export type SelectProps = InputBaseProps;
 
-let id = 0;
+let idCount = 0;
 
 const Select: FC<SelectProps> = (props) => {
-  const inputId = `select-${++id}`;
+  const [id] = useState(++idCount);
+  const inputId = `select-${id}`;
   const labelId = `select-label-${id}`;
   const helpTextId = `select-help-text-${id}`;
   const [isFocused, setIsFocused] = useState(false);

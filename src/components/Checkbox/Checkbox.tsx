@@ -13,10 +13,11 @@ export type CheckboxProps = Omit<
   'labelPosition' | 'placeholder'
 >;
 
-let id = 0;
+let idCount = 0;
 
 const Checkbox: FC<CheckboxProps> = (props) => {
-  const inputId = `checkbox-${++id}`;
+  const [id] = useState(++idCount);
+  const inputId = `checkbox-${id}`;
   const labelId = `checkbox-label-${id}`;
   const helpTextId = `select-help-text-${id}`;
   const [isFocused, setIsFocused] = useState(false);

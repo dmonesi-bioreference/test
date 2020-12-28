@@ -13,10 +13,11 @@ export type RadioProps = Omit<
   'labelPosition' | 'placeholder' | 'name' | 'onChange'
 >;
 
-let id = 0;
+let idCount = 0;
 
 const Radio: FC<RadioProps> = (props) => {
-  const inputId = `radio-${++id}`;
+  const [id] = useState(++idCount);
+  const inputId = `radio-${id}`;
   const labelId = `radio-label-${id}`;
   const helpTextId = `select-help-text-${id}`;
   const context = useContext(RadioContext);

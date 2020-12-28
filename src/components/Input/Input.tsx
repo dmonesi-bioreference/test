@@ -22,14 +22,15 @@ export interface InputProps extends InputTextBaseProps {
     | 'date';
 }
 
-let id = 0;
+let idCount = 0;
 
 const defaultProps: Partial<InputProps> = {
   size: 'medium',
 };
 
 const Input: FC<InputProps> = (props) => {
-  const inputId = `input-${++id}`;
+  const [id] = useState(++idCount);
+  const inputId = `input-${id}`;
   const labelId = `input-label-${id}`;
   const helpTextId = `input-help-text-${id}`;
   const [isFocused, setIsFocused] = useState(false);

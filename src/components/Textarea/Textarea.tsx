@@ -8,7 +8,7 @@ export interface TextareaProps extends InputTextBaseProps {
   resize?: 'none' | 'vertical' | 'auto';
 }
 
-let id = 0;
+let idCount = 0;
 
 const defaultProps: Partial<TextareaProps> = {
   rows: 4,
@@ -17,7 +17,8 @@ const defaultProps: Partial<TextareaProps> = {
 };
 
 const Textarea: FC<TextareaProps> = (props) => {
-  const inputId = `textarea-${++id}`;
+  const [id] = useState(++idCount);
+  const inputId = `textarea-${id}`;
   const labelId = `textarea-label-${id}`;
   const helpTextId = `textarea-help-text-${id}`;
   const [isFocused, setIsFocused] = useState(false);
