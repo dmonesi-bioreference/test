@@ -40,6 +40,10 @@ const FormControlStyled = styled.div`
     }
   }
 
+  &.form-control--boolean + &.form-control--boolean {
+    margin-top: ${t.spacingXxSmall};
+  }
+
   &.form-control--disabled {
     .form-control__label {
       cursor: not-allowed;
