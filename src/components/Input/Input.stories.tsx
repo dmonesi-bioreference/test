@@ -1,8 +1,7 @@
 import { Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import Input from './Input';
 import Icon from '../Icon/Icon';
-import { InputProps } from './Input';
+import Input, { InputProps } from './Input';
 
 export default {
   component: Input,
