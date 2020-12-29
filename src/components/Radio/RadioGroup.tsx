@@ -2,8 +2,8 @@ import React, { createContext, FC } from 'react';
 
 type RadioContextProps = {
   name: string;
-  value: string;
-  onChange: (e: React.ChangeEvent) => void;
+  value?: string;
+  onChange?: (e: React.ChangeEvent) => void;
 };
 
 export const RadioContext = createContext<Partial<RadioContextProps>>({});

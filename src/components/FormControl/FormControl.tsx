@@ -98,6 +98,7 @@ const FormControl: FC<FormControlProps> = (props) => {
           {props.helpText}
         </div>
       )}
+
       {props.invalid && props.invalidMessage && (
         <div className="form-control__invalid-message">
           <Message type="danger">{props.invalidMessage}</Message>

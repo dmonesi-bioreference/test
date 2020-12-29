@@ -91,6 +91,7 @@ const Radio: FC<RadioProps> = (props) => {
             required={props.required}
             aria-checked={isChecked ? 'true' : 'false'}
             aria-labelledby={labelId}
+            aria-describedby={helpTextId}
             onClick={props.onClick}
             onChange={context.onChange}
             onBlur={handleBlur}

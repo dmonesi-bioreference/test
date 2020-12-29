@@ -90,6 +90,7 @@ const Checkbox: FC<CheckboxProps> = (props) => {
             required={props.required}
             aria-checked={isChecked ? 'true' : 'false'}
             aria-labelledby={labelId}
+            aria-describedby={helpTextId}
             onClick={handleClick}
             onBlur={handleBlur}
             onFocus={handleFocus}
