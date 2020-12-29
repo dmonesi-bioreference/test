@@ -1,15 +1,15 @@
 import React, { FC } from 'react';
 import {{properCase name}}Styled from './{{properCase name}}.styles';
 
-interface {{properCase name}}Props {
+export interface {{properCase name}}Props {
 
 }
 
-const {{properCase name}}: FC<{{properCase name}}Props> = ({
-  props
-}) => {
+const {{properCase name}}: FC<{{properCase name}}Props> = (props) => {
   return (
-    <{{properCase name}}Styled />
+    <{{properCase name}}Styled>
+      {props.children}
+    </{{properCase name}}Styled>
   );
 };
 

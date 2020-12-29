@@ -1,9 +1,21 @@
-import React from 'react'
-import {{properCase name}} from '.'
+import React from 'react';
+import { Story } from '@storybook/react/types-6-0';
+import {{properCase name}}, { {{properCase name}}Props } from './{{properCase name}}';
 
 export default {
   component: {{properCase name}},
   title: 'Components/{{properCase name}}',
+  parameters: {
+    componentSubtitle: 'Short description of component.',
+  },
 }
 
-export const defaultStory = () => <{{properCase name}} />
+const Template: Story<{{properCase name}}Props> = (args) => (
+  <{{properCase name}} {...args}>
+    <div>Hello world.</div>
+  </{{properCase name}}>
+);
+
+export const Primary = Template.bind({});
+
+Primary.args = {};
