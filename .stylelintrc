@@ -1,0 +1,18 @@
+{
+  "processors": [
+    "stylelint-processor-styled-components"
+  ],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-prettier",
+    "stylelint-config-styled-components"
+  ],
+  "plugins": [
+    "stylelint-prettier"
+  ],
+  "rules": {
+    "value-keyword-case": ["lower", { ignoreKeywords: ['dummyValue'] }],
+    "at-rule-no-unknown": null,
+    "prettier/prettier": true
+  }
+}

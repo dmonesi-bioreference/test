@@ -1,31 +1,29 @@
-import React from 'react'
-import CardGrid from '.'
-import Card from '../Card'
+import { Story } from '@storybook/react/types-6-0';
+import React from 'react';
+import CardGrid from './CardGrid';
+import Card from '../Card/Card';
+import { CardGridProps } from './CardGrid';
 
 export default {
   component: CardGrid,
   title: 'Components/CardGrid',
-}
+  parameters: {
+    componentSubtitle:
+      'Card Grid enables a multi-column layouts of Card components.',
+  },
+};
 
-export const withSingleColumn = () => (
-  <CardGrid columns={1}>
-    <Card title="card 1" content="card 1 content" />
-    <Card title="card 2" content="card 2 content" />
-    <Card title="card 3" content="card 3 content" />
+const Template: Story<CardGridProps> = (args) => (
+  <CardGrid {...args}>
+    <Card title="Card 1">Card one content.</Card>
+    <Card title="Card 2">Card two content.</Card>
+    <Card title="Card 3">Card three content.</Card>
+    <Card title="Card 4">Card four content.</Card>
   </CardGrid>
-)
+);
 
-export const with2Columns = () => (
-  <CardGrid columns={2}>
-    <Card title="card 1" content="card 1 content" />
-    <Card title="card 2" content="card 2 content" />
-  </CardGrid>
-)
+export const withTwoColumns = Template.bind({});
 
-export const with3Columns = () => (
-  <CardGrid columns={3}>
-    <Card title="card 1" content="card 1 content" />
-    <Card title="card 2" content="card 2 content" />
-    <Card title="card 3" content="card 3 content" />
-  </CardGrid>
-)
+withTwoColumns.args = {
+  columns: 2,
+};

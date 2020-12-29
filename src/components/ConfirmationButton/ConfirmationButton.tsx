@@ -1,83 +1,109 @@
-import React, { FC, useState } from 'react'
-import Button, { ButtonProps } from '../Button/Button'
-import ButtonGroup from '../ButtonGroup'
-import Modal from '../Modal'
-import ConfirmationButtonStyled from './ConfirmationButton.styles'
+import React, { FC, useEffect, useState, useRef } from 'react';
+import Dialog from '../Dialog/Dialog';
+import ConfirmationButtonStyled from './ConfirmationButton.styles';
 
-interface ConfirmationButtonProps extends ButtonProps {
-  confirmationAction?: string
-  confirmationActionKind?: ButtonProps['kind']
-  confirmationText?: string
-  confirmationType?: 'prompt' | 'modal'
-  exitAction?: string
-  exitActionKind?: ButtonProps['kind']
+interface ConfirmationButtonProps {
+  /** Specifies the type of confirmation UI to present to the user. */
+  type?: 'inline' | 'dialog';
+  /** Optionally customize the confirmation message. */
+  prompt?: string;
+  /** The button that confirms the action. */
+  confirmButton: React.ReactNode;
+  /** The button that cancels the action. */
+  cancelButton: React.ReactNode;
+  /** The action to perform upon confirmation. */
+  onConfirm: () => void;
 }
 
-const ConfirmationButton: FC<ConfirmationButtonProps> = ({
-  confirmationAction = 'Confirm',
-  confirmationActionKind = 'primary',
-  confirmationType = 'prompt',
-  confirmationText = 'Are you sure?',
-  exitAction = 'Cancel',
-  exitActionKind = 'secondary',
-  onClick,
-  size,
-  ...buttonProps
-} = {}) => {
-  const [confirm, setConfirm] = useState(false)
+const defaultProps: Partial<ConfirmationButtonProps> = {
+  type: 'inline',
+  prompt: 'Are you sure?',
+};
 
-  const handleConfirmationButtonClick = () => {
-    if (onClick) {
-      onClick()
+const ConfirmationButton: FC<ConfirmationButtonProps> = (props) => {
+  const [confirm, setConfirm] = useState(false);
+  const triggerWrap = useRef<HTMLDivElement>(null);
+  const confirmWrap = useRef<HTMLDivElement>(null);
+  const cancelWrap = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    triggerWrap.current?.firstChild?.addEventListener(
+      'click',
+      handleTriggerClick
+    );
+    confirmWrap.current?.firstChild?.addEventListener(
+      'click',
+      handleConfirmClick
+    );
+    cancelWrap.current?.firstChild?.addEventListener(
+      'click',
+      handleCancelClick
+    );
+  }, []);
+
+  const handleConfirmClick = () => {
+    if (props.onConfirm) {
+      props.onConfirm();
     }
-    setConfirm(false)
-  }
+    setConfirm(false);
+  };
+
+  const handleCancelClick = () => {
+    setConfirm(false);
+  };
+
+  const handleTriggerClick = () => {
+    setConfirm(true);
+  };
 
   const confirmationButtons = (
-    <ButtonGroup>
-      <Button kind={confirmationActionKind} size={size} onClick={handleConfirmationButtonClick}>
-        {confirmationAction}
-      </Button>
-      <Button kind={exitActionKind} size={size} onClick={() => setConfirm(false)}>
-        {exitAction}
-      </Button>
-    </ButtonGroup>
-  )
+    <>
+      <span ref={confirmWrap} className="confirmation-button__confirm-button">
+        {props.confirmButton}
+      </span>
+      <span ref={cancelWrap} className="confirmation-button__cancel-button">
+        {props.cancelButton}
+      </span>
+    </>
+  );
 
   const confirmationPrompt = (
-    <div className="confirmation--prompt">
-      {confirmationText}
+    <div
+      className="confirmation-button__confirm"
+      hidden={!confirm ? true : undefined}
+    >
+      <span className="confirmation-button__prompt">{props.prompt}</span>
       {confirmationButtons}
     </div>
-  )
+  );
 
-  const confirmationModal = (
-    <Modal title="Confirm Action" showClose={false} footer={confirmationButtons}>
-      {confirmationText}
-    </Modal>
-  )
-
-  const confirmation = () => {
-    switch (confirmationType) {
-      case 'modal':
-        return confirmationModal
-      case 'prompt':
-      default:
-        return confirmationPrompt
-    }
-  }
+  const confirmationDialog = (
+    <Dialog
+      title="Confirm Action"
+      hideHeader={true}
+      footer={confirmationButtons}
+      open={confirm}
+      onClose={() => setConfirm(false)}
+    >
+      {props.prompt}
+    </Dialog>
+  );
 
   return (
     <ConfirmationButtonStyled>
-      {confirm && confirmation()}
-      <Button
-        {...buttonProps}
-        size={size}
-        onClick={() => setConfirm(true)}
-        hidden={confirm && confirmationType === 'prompt'}
-      />
+      {props.type === 'inline' && confirmationPrompt}
+      {props.type === 'dialog' && confirmationDialog}
+      <div
+        className="confirmation-button__trigger"
+        hidden={confirm && props.type === 'inline'}
+        ref={triggerWrap}
+      >
+        {props.children}
+      </div>
     </ConfirmationButtonStyled>
-  )
-}
+  );
+};
 
-export default ConfirmationButton
+ConfirmationButton.defaultProps = defaultProps;
+
+export default ConfirmationButton;

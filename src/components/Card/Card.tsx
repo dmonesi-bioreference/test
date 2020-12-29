@@ -1,23 +1,22 @@
-import React, { FC } from 'react'
-import CardStyled from './Card.styles'
+import React, { FC } from 'react';
+import CardStyled from './Card.styles';
 
-interface CardProps {
-  content?: string
-  title: string
+export interface CardProps {
+  /** Optional title for the card. */
+  title?: string;
 }
 
-const Card: FC<CardProps> = ({ children, content, title }) => {
+const Card: FC<CardProps> = (props) => {
   return (
-    <CardStyled>
-      <header className="header">
-        <div className="title">{title}</div>
-      </header>
-      <div className="body">
-        {children}
-        {content}
-      </div>
+    <CardStyled className="card">
+      {props.title && (
+        <header className="card__header">
+          <div className="card__title">{props.title}</div>
+        </header>
+      )}
+      <div className="card__body">{props.children}</div>
     </CardStyled>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

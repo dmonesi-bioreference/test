@@ -1,175 +1,268 @@
-import styled from 'styled-components'
-import t, { colors } from '../GlobalStyle/01_settings/tokens'
-import IconStyled from '../Icon/Icon.styles'
+import styled from 'styled-components';
+import t, { colors, inputs, buttons, focus } from '../../styles/tokens';
+import { base } from '../../styles/utilities/base';
+import { ButtonProps } from './Button';
 
-const ButtonStyled = styled.button`
-  align-items: center;
-  background-color: ${t.colorPrimary};
-  border: ${t.borderWidthThin} solid ${t.colorPrimary};
-  border-radius: ${t.borderRadiusMedium};
-  color: ${t.colorPrimaryText};
-  cursor: pointer;
-  display: ${props => (['a', 'div'].includes(props.as) ? 'inline-flex' : 'flex')};
-  font-family: ${t.fontFamilyBody};
-  font-size: ${t.fontSize18};
-  font-weight: ${t.fontWeightBold};
+type ButtonStyledProps = {
+  as: 'a' | 'button' | 'div';
+  type: 'submit' | 'button' | undefined;
+};
+
+const ButtonStyled = styled.button<ButtonProps & ButtonStyledProps>`
+  ${base}
+  display: inline-flex;
+  align-items: stretch;
   justify-content: center;
-  line-height: ${t.lineHeightText};
-  padding: ${t.spacingXSmall} ${t.spacingLarge};
+  border-style: solid;
+  border-width: ${inputs.borderWidth};
+  font-family: ${t.fontFamilyBody};
+  font-weight: ${t.fontWeightMedium};
   text-decoration: none;
-  transition: all ${t.durationPromptly} ease-in-out;
+  user-select: none;
   white-space: nowrap;
+  vertical-align: middle;
+  transition: ${t.transitionFast} all;
+  cursor: pointer;
 
-  &[hidden] {
-    display: none;
+  &:focus {
+    outline: none;
   }
 
-  a {
-    color: ${t.colorWhite};
-  }
-
-  &:hover {
-    background-color: ${t.colorPrimaryHover};
-    border-color: ${t.colorPrimaryHover};
-  }
-
-  .children {
-    display: block;
-  }
-
-  ${IconStyled} {
-    margin-left: -0.3rem;
-    margin-right: ${t.spacingSmall};
-
-    polygon,
-    path {
-      fill: ${t.colorPrimaryText};
-    }
-  }
-
-  &:disabled {
-    background-color: ${colors.blueGray[200]};
-    border-color: ${colors.blueGray[200]};
-    color: ${t.colorWhite};
+  &[disabled] {
+    opacity: 0.5;
     cursor: not-allowed;
 
-    &:hover {
-      background-color: ${colors.blueGray[200]};
-      border-color: ${colors.blueGray[200]};
-    }
-
-    ${IconStyled} {
-      polygon,
-      path {
-        fill: ${colors.blueGray[600]};
-      }
+    * {
+      pointer-events: none;
     }
   }
 
-  &[data-icon-position='end'] {
-    flex-flow: row-reverse;
+  .button__prefix,
+  .button__suffix {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+  }
 
-    ${IconStyled} {
-      margin-right: -0.3rem;
-      margin-left: ${t.spacingXxSmall};
+  .button__prefix *:first-child {
+    margin-left: -${t.spacingXSmall};
+    margin-right: ${t.spacingXSmall};
+  }
+
+  .button__suffix *:last-child {
+    margin-left: ${t.spacingXSmall};
+    margin-right: -${t.spacingXSmall};
+  }
+
+  /*
+  * Style Modifiers
+  */
+
+  &.button--default {
+    background-color: ${colors.white};
+    border-color: ${colors.coolGray[300]};
+    box-shadow: ${t.shadowXSmall};
+    color: ${colors.coolGray[800]};
+
+    &:hover:not(.button--disabled) {
+      background-color: ${colors.coolGray[50]};
+      border-color: ${colors.coolGray[400]};
+    }
+
+    &:focus:not(.button--disabled) {
+      background-color: ${colors.coolGray[50]};
+      border-color: ${focus.borderColor};
+      box-shadow: ${focus.shadow};
+    }
+
+    &:active:not(.button--disabled) {
+      background-color: ${colors.coolGray[50]};
+      border-color: ${colors.coolGray[400]};
+      color: ${colors.coolGray[900]};
     }
   }
 
-  &[data-size='small'] {
-    font-size: ${t.fontSize14};
-    padding: ${t.spacingXSmall} ${t.spacingMedium};
+  &.button--primary {
+    background-color: ${t.colorPrimary};
+    border-color: ${t.colorPrimary};
+    box-shadow: ${t.shadowXSmall};
+    color: ${colors.white};
 
-    ${IconStyled} {
-      margin-right: ${t.spacingXxxSmall};
+    &:hover:not(.button--disabled) {
+      background-color: ${t.colorPrimaryHover};
+      border-color: ${t.colorPrimaryHover};
+      color: ${colors.white};
+    }
 
-      svg {
-        transform: scale(0.6);
-      }
+    &:focus:not(.button--disabled) {
+      background-color: ${t.colorPrimaryHover};
+      border-color: ${t.colorPrimaryHover};
+      color: ${colors.white};
+      box-shadow: ${focus.shadow};
+    }
+
+    &:active:not(.button--disabled) {
+      background-color: ${t.colorPrimary};
+      border-color: ${t.colorPrimary};
+      color: ${colors.white};
     }
   }
 
-  &[data-size='medium'] {
-    font-size: ${t.fontSize16};
-    padding: ${t.spacingXSmall} ${t.spacingMedium};
+  &.button--success {
+    background-color: ${t.colorSuccess};
+    border-color: ${t.colorSuccess};
+    box-shadow: ${t.shadowXSmall};
+    color: ${colors.white};
+
+    &:hover:not(.button--disabled) {
+      background-color: ${t.colorSuccessHover};
+      border-color: ${t.colorSuccessHover};
+      color: ${colors.white};
+    }
+
+    &:focus:not(.button--disabled) {
+      background-color: ${t.colorSuccessHover};
+      border-color: ${t.colorSuccessHover};
+      color: ${colors.white};
+      box-shadow: 0 0 0 3px ${t.colorSuccessFocus};
+    }
+
+    &:active:not(.button--disabled) {
+      background-color: ${t.colorSuccess};
+      border-color: ${t.colorSuccess};
+      color: ${colors.white};
+    }
   }
 
-  &[data-kind='secondary'] {
+  &.button--info {
     background-color: ${t.colorSecondary};
     border-color: ${t.colorSecondary};
-    color: ${t.colorSecondaryText};
+    box-shadow: ${t.shadowXSmall};
+    color: ${colors.white};
 
-    &:hover {
+    &:hover:not(.button--disabled) {
       background-color: ${t.colorSecondaryHover};
       border-color: ${t.colorSecondaryHover};
+      color: ${colors.white};
+    }
+
+    &:focus:not(.button--disabled) {
+      background-color: ${t.colorSecondaryHover};
+      border-color: ${t.colorSecondaryHover};
+      color: ${colors.white};
+      box-shadow: 0 0 0 3px ${t.colorSecondaryFocus};
+    }
+
+    &:active:not(.button--disabled) {
+      background-color: ${t.colorSecondary};
+      border-color: ${t.colorSecondary};
+      color: ${colors.white};
     }
   }
 
-  &[data-kind='black'] {
-    background-color: ${t.colorBlack};
-    border-color: ${t.colorBlack};
-    color: ${t.colorWhite};
+  &.button--warning {
+    background-color: ${t.colorWarning};
+    border-color: ${t.colorWarning};
+    box-shadow: ${t.shadowXSmall};
+    color: ${colors.white};
 
-    &:hover {
-      background-color: ${t.colorBlackHover};
-      border-color: ${t.colorBlackHover};
+    &:hover:not(.button--disabled) {
+      background-color: ${t.colorWarningHover};
+      border-color: ${t.colorWarningHover};
+      color: ${colors.white};
     }
 
-    ${IconStyled} {
-      polygon,
-      path {
-        fill: ${t.colorWhite};
-      }
+    &:focus:not(.button--disabled) {
+      background-color: ${t.colorWarningHover};
+      border-color: ${t.colorWarningHover};
+      color: ${colors.white};
+      box-shadow: 0 0 0 3px ${t.colorWarningFocus};
     }
-  }
 
-  &[data-kind='danger'] {
-    background-color: ${t.colorError};
-    border-color: ${t.colorError};
-    color: ${t.colorWhite};
-
-    &:hover {
-      background-color: ${t.colorErrorHover};
-      border-color: ${t.colorErrorHover};
+    &:active:not(.button--disabled) {
+      background-color: ${t.colorWarning};
+      border-color: ${t.colorWarning};
+      color: ${colors.white};
     }
   }
 
-  &[data-kind^='text'] {
-    background: none;
-    border: 0;
-    color: ${t.colorSecondaryText};
-    font-size: ${t.fontSize16};
-    padding: 0;
-    text-decoration: underline;
+  &.button--danger {
+    background-color: ${t.colorDanger};
+    border-color: ${t.colorDanger};
+    box-shadow: ${t.shadowXSmall};
+    color: ${colors.white};
 
-    &:hover {
-      background: none;
-      color: ${t.colorBlack};
+    &:hover:not(.button--disabled) {
+      background-color: ${t.colorDangerHover};
+      border-color: ${t.colorDangerHover};
+      color: ${colors.white};
     }
 
-    ${IconStyled} {
-      position: relative;
-      top: 1px;
-      margin: 0 0 0 -0.35rem;
-      padding: 0 0.35rem;
+    &:focus:not(.button--disabled) {
+      background-color: ${t.colorDangerHover};
+      border-color: ${t.colorDangerHover};
+      color: ${colors.white};
+      box-shadow: 0 0 0 3px ${t.colorDangerFocus};
+    }
 
-      svg {
-        width: 0.7rem;
-      }
-
-      polygon,
-      path {
-        fill: ${t.colorSecondaryText};
-      }
+    &:active:not(.button--disabled) {
+      background-color: ${t.colorDanger};
+      border-color: ${t.colorDanger};
+      color: ${colors.white};
     }
   }
 
-  &[data-kind='text-danger'] {
-    color: ${t.colorError};
+  &.button--text {
+    background-color: transparent;
+    border-color: transparent;
+    color: ${t.colorPrimary};
 
-    &:hover {
-      color: ${t.colorErrorHover};
+    &:hover:not(.button--disabled) {
+      background-color: transparent;
+      border-color: transparent;
+      color: ${t.colorPrimaryHover};
+    }
+
+    &:focus:not(.button--disabled) {
+      background-color: transparent;
+      border-color: transparent;
+      color: ${t.colorPrimaryHover};
+      box-shadow: 0 0 0 3px ${t.colorPrimaryFocus};
+    }
+
+    &:active:not(.button--disabled) {
+      background-color: transparent;
+      border-color: transparent;
+      color: ${t.colorPrimary};
     }
   }
-`
 
-export default ButtonStyled
+  /*
+  * Size Modifiers
+  */
+  &.button--small {
+    font-size: ${buttons.fontSizeSmall};
+    height: ${inputs.heightSmall};
+    line-height: calc(${inputs.heightSmall} - ${inputs.borderWidth} * 2);
+    border-radius: ${t.borderRadiusMedium};
+    padding: 0 ${t.spacingMedium};
+  }
+
+  &.button--medium {
+    font-size: ${buttons.fontSizeMedium};
+    height: ${inputs.heightMedium};
+    line-height: calc(${inputs.heightMedium} - ${inputs.borderWidth} * 2);
+    border-radius: ${t.borderRadiusMedium};
+    padding: 0 ${t.spacingLarge};
+  }
+
+  &.button--large {
+    font-size: ${buttons.fontSizeLarge};
+    height: ${inputs.heightLarge};
+    line-height: calc(${inputs.heightLarge} - ${inputs.borderWidth} * 2);
+    border-radius: ${t.borderRadiusLarge};
+    padding: 0 ${t.spacingXLarge};
+  }
+`;
+
+export default ButtonStyled;

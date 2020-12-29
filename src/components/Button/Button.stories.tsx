@@ -1,94 +1,91 @@
-import { action } from '@storybook/addon-actions'
-import React from 'react'
-import Button from '.'
+import { action } from '@storybook/addon-actions';
+import { Story } from '@storybook/react/types-6-0';
+import React from 'react';
+import Icon from '../Icon/Icon';
+import Button, { ButtonProps } from './Button';
 
 export default {
   component: Button,
   title: 'Components/Button',
-}
+  parameters: {
+    componentSubtitle:
+      'Buttons represent actions that are available to the user.',
+  },
+};
 
-export const primary = () => <Button kind="primary">Primary Button</Button>
+const Template: Story<ButtonProps> = (args) => (
+  <Button {...args}>Button</Button>
+);
 
-export const PrimaryOnClick = () => (
-  <Button kind="primary" onClick={action('button clicked')}>
-    Primary Button
-  </Button>
-)
+export const Primary = Template.bind({});
 
-export const PrimaryHref = () => (
-  <Button kind="primary" href="https://example.com">
-    Primary Button
-  </Button>
-)
+Primary.args = {
+  onClick: action('button clicked'),
+  kind: 'default',
+  size: 'medium',
+};
 
-export const PrimaryRouterLink = () => (
-  <Button kind="primary" linkTo="#">
-    Primary Button
-  </Button>
-)
+export const Sizes: Story = () => (
+  <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
+    <Button size="small">Small</Button>
+    <Button size="medium">Medium</Button>
+    <Button size="large">Large</Button>
+  </div>
+);
 
-export const primaryWithIcon = () => (
-  <Button kind="primary" icon="checkmark" onClick={action('button-click')}>
-    Primary Icon Button
-  </Button>
-)
+Sizes.parameters = {
+  docs: {
+    storyDescription: "Use the `size` prop to change a button's size.",
+  },
+};
 
-export const PrimaryWithIconOnRight = () => (
-  <Button kind="primary" icon="arrow-right" iconPosition="end">
-    Primary Icon Button
-  </Button>
-)
+export const Kinds: Story = () => (
+  <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
+    <Button kind="default">Default</Button>
+    <Button kind="primary">Primary</Button>
+    <Button kind="success">Success</Button>
+    <Button kind="info">Info</Button>
+    <Button kind="warning">Warning</Button>
+    <Button kind="danger">Danger</Button>
+    <Button kind="text">Text</Button>
+  </div>
+);
 
-export const mediumButton = () => (
-  <Button kind="primary" size="medium" onClick={action('button-click')}>
-    Medium Primary Button
-  </Button>
-)
+Kinds.parameters = {
+  docs: {
+    storyDescription: "Use the `kind` prop to set the button's type.",
+  },
+};
 
-export const smallButton = () => (
-  <Button kind="primary" size="small" onClick={action('button-click')}>
-    Small Primary Button
-  </Button>
-)
+export const asLink = Template.bind({});
 
-export const secondary = () => (
-  <Button kind="secondary" onClick={action('button-click')}>
-    Secondary Button
-  </Button>
-)
+asLink.args = {
+  href: 'https://example.com',
+};
 
-export const black = () => (
-  <Button kind="black" onClick={action('button-click')}>
-    Black Button
-  </Button>
-)
+asLink.parameters = {
+  docs: {
+    storyDescription:
+      'Setting the `href` prop will allow the component to render an `<a>` under the hood. This enables use of the `download` and `target` props.',
+  },
+};
 
-export const danger = () => (
-  <Button kind="danger" onClick={action('button-click')}>
-    Danger Button
-  </Button>
-)
+export const withPrefixIcon = Template.bind({});
 
-export const disabledStory = () => (
-  <Button disabled={true} onClick={action('button-click')}>
-    Disabled Button
-  </Button>
-)
+withPrefixIcon.args = {
+  prefix: <Icon name="download" />,
+  href: 'https://example.com',
+};
 
-export const text = () => (
-  <Button kind="text" onClick={action('button-click')}>
-    Text Button
-  </Button>
-)
+withPrefixIcon.parameters = {
+  docs: {
+    storyDescription: 'Use the `prefix` and `suffix` props to add an icon.',
+  },
+};
 
-export const textDanger = () => (
-  <Button kind="text-danger" onClick={action('button-click')}>
-    Danger Text Button
-  </Button>
-)
+export const withSuffixIcon = Template.bind({});
 
-export const textWithIcon = () => (
-  <Button kind="text" icon="duplicate" onClick={action('button-click')}>
-    Text Button
-  </Button>
-)
+withSuffixIcon.args = {
+  suffix: <Icon name="arrow-right" />,
+  href: 'https://example.com',
+};

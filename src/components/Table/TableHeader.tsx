@@ -1,5 +1,5 @@
-import React, { FC } from 'react'
+import React, { FC } from 'react';
 
-const TableHeader: FC = ({ children }) => <thead>{children}</thead>
+const TableHeader: FC = ({ children }) => <thead>{children}</thead>;
 
-export default TableHeader
+export default TableHeader;

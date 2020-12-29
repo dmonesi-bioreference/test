@@ -1,24 +1,20 @@
-import React from 'react'
-import Icon, { iconArray as icons } from './Icon'
+import React from 'react';
+import { Story } from '@storybook/react/types-6-0';
+import Icon, { IconProps } from './Icon';
 
 export default {
   component: Icon,
   title: 'Components/Icon',
-}
+  parameters: {
+    componentSubtitle: 'Insert an SVG icon from the Heroicons library.',
+  },
+};
 
-export const library = () => (
-  <div
-    style={{
-      display: 'grid',
-      gridRowGap: '0.5rem',
-      gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
-    }}
-  >
-    {icons.map(name => (
-      <div key={name}>
-        <span>{`${name}: `}</span>
-        <Icon name={name} />
-      </div>
-    ))}
-  </div>
-)
+const Template: Story<IconProps> = (args) => <Icon {...args} />;
+
+export const Heroicons = Template.bind({});
+
+Heroicons.args = {
+  name: 'academic-cap',
+  style: 'solid',
+};

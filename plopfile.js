@@ -1,5 +1,5 @@
 /* eslint-disable sort-keys */
-module.exports = function(plop) {
+module.exports = function (plop) {
   plop.setGenerator('component', {
     description: 'create files for a new component',
     prompts: [
@@ -12,23 +12,20 @@ module.exports = function(plop) {
     actions: [
       {
         type: 'add',
-        path: 'src/components/{{properCase name}}/index.ts',
-        templateFile: 'plop/component/index.hbs',
-      },
-      {
-        type: 'add',
         path: 'src/components/{{properCase name}}/{{properCase name}}.tsx',
         templateFile: 'plop/component/component.hbs',
       },
       {
         type: 'add',
-        path: 'src/components/{{properCase name}}/{{properCase name}}.styles.js',
+        path:
+          'src/components/{{properCase name}}/{{properCase name}}.styles.js',
         templateFile: 'plop/component/component.styles.hbs',
       },
       {
         type: 'add',
-        path: 'src/components/{{properCase name}}/{{properCase name}}.stories.tsx',
-        templateFile: 'plop/component/component.story.hbs',
+        path:
+          'src/components/{{properCase name}}/{{properCase name}}.stories.tsx',
+        templateFile: 'plop/component/component.stories.hbs',
       },
       {
         type: 'append',
@@ -37,5 +34,5 @@ module.exports = function(plop) {
         templateFile: 'plop/component/export.hbs',
       },
     ],
-  })
-}
+  });
+};

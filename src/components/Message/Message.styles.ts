@@ -1,50 +1,36 @@
-import styled from 'styled-components'
-import t from '../GlobalStyle/01_settings/tokens'
+import styled from 'styled-components';
+import t from '../../styles/tokens';
+import { base } from '../../styles/utilities/base';
 
 const MessageStyled = styled.div`
-  color: ${t.colorBlack};
-  display: block;
-  line-height: ${t.lineHeightText};
+  ${base}
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0;
+  font-size: ${t.fontSize14};
 
-  span {
-    align-content: center;
-    display: inline-flex;
-    padding: 0.15rem ${t.spacingXxxSmall};
-    border-radius: ${t.borderRadiusMedium};
+  &.message--info {
+    color: ${t.colorSecondaryText};
   }
 
-  svg {
-    margin-top: 0.1rem;
-    margin-right: ${t.spacingXxxSmall};
-    transform: scale(0.8);
-  }
-
-  &[data-type='error'] {
-    color: ${t.colorErrorText};
-
-    path,
-    polygon {
-      fill: ${t.colorErrorText};
-    }
-  }
-
-  &[data-type='success'] {
+  &.message--success {
     color: ${t.colorSuccessText};
-
-    path,
-    polygon {
-      fill: ${t.colorSuccessText};
-    }
   }
 
-  &[data-type='warning'] {
+  &.message--warning {
     color: ${t.colorWarningText};
-
-    path,
-    polygon {
-      fill: ${t.colorWarningText};
-    }
   }
-`
 
-export default MessageStyled
+  &.message--danger {
+    color: ${t.colorDangerText};
+  }
+
+  .message__icon {
+    display: flex;
+    align-items: center;
+    margin-right: ${t.spacingXxxSmall};
+    font-size: ${t.fontSize18};
+  }
+`;
+
+export default MessageStyled;
