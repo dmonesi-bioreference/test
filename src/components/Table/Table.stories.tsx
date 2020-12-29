@@ -6,6 +6,10 @@ import { TableProps } from './Table';
 export default {
   component: Table,
   title: 'Components/Table',
+  parameters: {
+    componentSubtitle:
+      'Table is a lightweight component for enhancing tabular data.',
+  },
 };
 
 const Template: Story<TableProps> = (args) => (

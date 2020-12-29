@@ -52,6 +52,12 @@ Closeable.args = {
   closable: true,
 };
 
+Closeable.parameters = {
+  docs: {
+    storyDescription: 'Add the `closable` prop to show a close button.',
+  },
+};
+
 export const Duration = TriggerTemplate.bind({});
 
 Duration.args = {
@@ -63,7 +69,7 @@ Duration.args = {
 Duration.parameters = {
   docs: {
     storyDescription:
-      'Due to Storybook limitations, this story only works in "Canvas" view.',
+      'Set the `duration` prop to automatically hide an alert after a period of time. (Due to Storybook limitations, this story only works in "Canvas" view.)',
   },
 };
 
@@ -91,3 +97,9 @@ export const Types: Story = () => (
     </Alert>
   </div>
 );
+
+Types.parameters = {
+  docs: {
+    storyDescription: "Set the `type` prop to change the alert's type.",
+  },
+};

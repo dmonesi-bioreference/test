@@ -4,15 +4,14 @@ import { InputTextBaseProps } from '../FormControl/props';
 import TextareaStyled from './Textarea.styles';
 
 export interface TextareaProps extends InputTextBaseProps {
+  /** The initial number of rows for the textarea. */
   rows?: number;
-  resize?: 'none' | 'vertical' | 'auto';
 }
 
 let idCount = 0;
 
 const defaultProps: Partial<TextareaProps> = {
   rows: 4,
-  resize: 'vertical',
   size: 'medium',
 };
 

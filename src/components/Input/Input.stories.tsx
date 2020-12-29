@@ -7,6 +7,9 @@ import { InputProps } from './Input';
 export default {
   component: Input,
   title: 'Components/Form Elements/Input',
+  parameters: {
+    componentSubtitle: 'Inputs collect data from the user.',
+  },
 };
 
 const Template: Story<InputProps> = (args) => <Input {...args} />;

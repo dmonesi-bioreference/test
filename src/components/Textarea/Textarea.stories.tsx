@@ -5,6 +5,10 @@ import Textarea, { TextareaProps } from './Textarea';
 export default {
   component: Textarea,
   title: 'Components/Form Elements/Textarea',
+  parameters: {
+    componentSubtitle:
+      'Textareas collect data from the user and allow multiple lines of text',
+  },
 };
 
 const Template: Story<TextareaProps> = (args) => <Textarea {...args} />;

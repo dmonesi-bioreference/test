@@ -7,6 +7,10 @@ import { CardGridProps } from './CardGrid';
 export default {
   component: CardGrid,
   title: 'Components/CardGrid',
+  parameters: {
+    componentSubtitle:
+      'Card Grid enables a multi-column layouts of Card components.',
+  },
 };
 
 const Template: Story<CardGridProps> = (args) => (

@@ -5,6 +5,10 @@ import Checkbox, { CheckboxProps } from './Checkbox';
 export default {
   component: Checkbox,
   title: 'Components/Form Elements/Checkbox',
+  parameters: {
+    componentSubtitle:
+      'Checkboxes allow the user to toggle an option on or off.',
+  },
 };
 
 const Template: Story<CheckboxProps> = (args) => <Checkbox {...args} />;

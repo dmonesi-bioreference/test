@@ -4,13 +4,19 @@ import { InputTextBaseProps } from '../FormControl/props';
 import InputStyled from './Input.styles';
 
 export interface InputProps extends InputTextBaseProps {
-  autoComplete?: boolean;
+  /** When used with a type of `number`, the minimum value. */
   min?: number;
+  /** When used with a type of `number`, the maximum value. */
   max?: number;
+  /** The pattern used for validation. */
   pattern?: string;
+  /** Used to prepend an icon for similar element to the input. */
   prefix?: React.ReactNode;
+  /** When used with a type of `number`, the step value. */
   step?: number;
+  /** Used to append an icon for similar element to the input. */
   suffix?: React.ReactNode;
+  /** The type of the input. */
   type?:
     | 'email'
     | 'number'

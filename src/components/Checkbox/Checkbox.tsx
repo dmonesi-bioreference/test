@@ -5,6 +5,7 @@ import Icon from '../Icon/Icon';
 import CheckboxStyled from './Checkbox.styles';
 
 interface CheckboxInterface extends InputBaseProps {
+  /** Set to `true` to render the checkbox in a checked state. */
   checked?: boolean;
 }
 

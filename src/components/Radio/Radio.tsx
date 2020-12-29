@@ -5,6 +5,7 @@ import RadioStyled from './Radio.styles';
 import { RadioContext } from './RadioGroup';
 
 interface RadioInterface extends InputBaseProps {
+  /** Set to `true` to render the radio in a selected state. */
   checked?: boolean;
 }
 

@@ -6,6 +6,10 @@ import { Story } from '@storybook/react/types-6-0';
 export default {
   component: Dialog,
   title: 'Components/Dialog',
+  parameters: {
+    componentSubtitle:
+      "Dialogs (also called 'modals') appear above the page and require the user's immediate attention.",
+  },
 };
 
 const Template: Story<DialogProps> = (args) => {

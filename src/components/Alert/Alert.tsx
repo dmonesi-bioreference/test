@@ -24,6 +24,9 @@ const defaultProps: AlertProps = {
   duration: Infinity,
 };
 
+/**
+ *  **➡️ Alerts will not be visible if the `open` prop is not present.**
+ */
 const Alert: FC<AlertProps> = (props) => {
   let autoHideTimeout: NodeJS.Timeout;
   const [isVisible, setIsVisible] = useState(false);

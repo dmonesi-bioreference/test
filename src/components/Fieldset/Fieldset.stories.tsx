@@ -9,6 +9,9 @@ import { Story } from '@storybook/react/types-6-0';
 export default {
   component: Fieldset,
   title: 'Components/Form Elements/Fieldset',
+  parameters: {
+    componentSubtitle: 'Fieldsets group together related form elements.',
+  },
 };
 
 const Template: Story<FieldsetProps> = (args) => (

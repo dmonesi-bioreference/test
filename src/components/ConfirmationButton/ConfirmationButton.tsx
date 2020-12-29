@@ -3,10 +3,15 @@ import Dialog from '../Dialog/Dialog';
 import ConfirmationButtonStyled from './ConfirmationButton.styles';
 
 interface ConfirmationButtonProps {
+  /** Specifies the type of confirmation UI to present to the user. */
   type?: 'inline' | 'dialog';
+  /** Optionally customize the confirmation message. */
   prompt?: string;
+  /** The button that confirms the action. */
   confirmButton: React.ReactNode;
+  /** The button that cancels the action. */
   cancelButton: React.ReactNode;
+  /** The action to perform upon confirmation. */
   onConfirm: () => void;
 }
 

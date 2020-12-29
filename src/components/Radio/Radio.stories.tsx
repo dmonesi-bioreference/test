@@ -6,6 +6,10 @@ import RadioGroup from './RadioGroup';
 export default {
   component: Radio,
   title: 'Components/Form Elements/Radio',
+  parameters: {
+    componentSubtitle:
+      'Radios allow the user to select one option from a group of many.',
+  },
   argTypes: {
     label: {
       table: {

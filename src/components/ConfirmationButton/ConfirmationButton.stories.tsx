@@ -8,6 +8,8 @@ export default {
   title: 'Components/Confirmation Button',
   parameters: {
     controls: { hideNoControlsWarning: true },
+    componentSubtitle:
+      'Confirmation Button requires an additional confirmation from the user before performing a task.',
   },
 };
 
@@ -34,3 +36,10 @@ export const modal = () => (
     <Button>Delete Entry</Button>
   </ConfirmationButton>
 );
+
+modal.parameters = {
+  docs: {
+    storyDescription:
+      'Set `type` to `dialog` to display the confirmation as a modal dialog.',
+  },
+};

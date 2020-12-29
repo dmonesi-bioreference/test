@@ -16,6 +16,19 @@ const defaultProps: Partial<IconButtonProps> = {
   disabled: false,
 };
 
+/**
+ * ## Usage
+ *
+ * Icon Buttons use `currentColor` to determine their fill or stroke colors.
+ * To set a color, set the `color` style property on the button itself or on a
+ * parent element.
+ *
+ * Icon Buttons are sized relative to their current font size. To change their size,
+ * set the `font-size` style property on the button itself or on a parent element.
+ *
+ * ## Available Icons
+ * Search the available icons at https://heroicons.com.
+ */
 const IconButton: FC<IconButtonProps> = (props) => {
   return (
     <IconButtonStyled

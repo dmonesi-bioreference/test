@@ -13,7 +13,7 @@ const Select: FC<SelectProps> = (props) => {
   const labelId = `select-label-${id}`;
   const helpTextId = `select-help-text-${id}`;
   const [isFocused, setIsFocused] = useState(false);
-  const [value, setValue] = useState(props.placeholder ? '' : null);
+  const [value, setValue] = useState(props.placeholder ? '' : undefined);
 
   useEffect(() => {
     setValue(props.value);
