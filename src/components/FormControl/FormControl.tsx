@@ -2,15 +2,7 @@ import clsx from 'clsx';
 import React, { FC } from 'react';
 import { Message } from '../..';
 import FormControlStyled from './FormControl.styles';
-
-export type LabelPosition =
-  | 'hidden'
-  | 'top'
-  | 'right'
-  | 'right-apart'
-  | 'bottom'
-  | 'left'
-  | 'left-apart';
+import { LabelPosition } from './props';
 
 export interface FormControlProps {
   /** Optional class to add to the form control. */

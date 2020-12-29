@@ -1,4 +1,11 @@
-import { LabelPosition } from './FormControl';
+export type LabelPosition =
+  | 'hidden'
+  | 'top'
+  | 'right'
+  | 'right-apart'
+  | 'bottom'
+  | 'left'
+  | 'left-apart';
 
 export interface InputBaseProps {
   /** Set to `true` to render the input in a disabled state. */
