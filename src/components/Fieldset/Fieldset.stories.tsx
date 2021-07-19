@@ -36,8 +36,8 @@ export const withCheckboxes = () => (
 export const withHorizontalLayoutRadio = () => (
   <Fieldset legend="Favorite Mobile OS" orientation="horizontal">
     <RadioGroup name="radio1">
-      <Radio name="radio1" label="Android" />
-      <Radio name="radio1" label="iOS" />
+      <Radio value="android" label="Android" />
+      <Radio value="ios" label="iOS" />
     </RadioGroup>
   </Fieldset>
 );
@@ -48,9 +48,9 @@ export const withHorizontalApartLayoutRadio = () => (
     orientation="horizontal-apart"
   >
     <RadioGroup name="radio1">
-      <Radio name="radio1" label="Chocolate" />
-      <Radio name="radio1" label="Vanilla" />
-      <Radio name="radio1" label="Strawberry" />
+      <Radio value="chocolate" label="Chocolate" />
+      <Radio value="vanilla" label="Vanilla" />
+      <Radio value="strawberry" label="Strawberry" />
     </RadioGroup>
   </Fieldset>
 );
@@ -58,8 +58,8 @@ export const withHorizontalApartLayoutRadio = () => (
 export const withHorizontalChildren = () => (
   <Fieldset legend="Cats or dogs?" inputOrientation="horizontal">
     <RadioGroup name="radio1">
-      <Radio name="radio1" label="😸" />
-      <Radio name="radio1" label="🐶" />
+      <Radio value="cat" label="😸" />
+      <Radio value="dog" label="🐶" />
     </RadioGroup>
   </Fieldset>
 );
@@ -67,8 +67,8 @@ export const withHorizontalChildren = () => (
 export const withHiddenLegend = () => (
   <Fieldset legend="Fieldset Label" hideLegend={true}>
     <RadioGroup name="radio1">
-      <Radio name="radio1" label="Radio One" />
-      <Radio name="radio1" label="Radio Two" />
+      <Radio value="one" label="Radio One" />
+      <Radio value="two" label="Radio Two" />
     </RadioGroup>
   </Fieldset>
 );
