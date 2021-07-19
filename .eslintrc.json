@@ -34,6 +34,8 @@
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "jsx-a11y/no-noninteractive-tabindex": "off",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
     "no-console": "error"
   },
   "settings": {

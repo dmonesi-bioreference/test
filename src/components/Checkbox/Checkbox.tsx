@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { FC, useEffect, useRef, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import { InputBaseProps } from '../FormControl/props';
 import Icon from '../Icon/Icon';
 import CheckboxStyled from './Checkbox.styles';

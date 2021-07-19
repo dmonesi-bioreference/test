@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { InputBaseProps } from '../FormControl/props';
 import SelectStyled from './Select.styles';
 

@@ -1,5 +1,4 @@
 import { Story } from '@storybook/react/types-6-0';
-import React from 'react';
 import Message, { MessageProps } from './Message';
 
 export default {

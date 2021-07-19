@@ -1,4 +1,4 @@
-import React, { FC, Suspense } from 'react';
+import { FC, Suspense, lazy } from 'react';
 import { pascalCase } from 'change-case';
 import HeroiconName from './heroicon';
 
@@ -30,7 +30,7 @@ const Icon: FC<IconProps> = ({
   library = 'heroicons',
 }) => {
   const nameAsPascal = pascalCase(name);
-  const Component = React.lazy(
+  const Component = lazy(
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     () => import(`../../icons/${library}/${style}/${nameAsPascal}`)
   );

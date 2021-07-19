@@ -1,5 +1,4 @@
 import { Story } from '@storybook/react/types-6-0';
-import React from 'react';
 import Data, { DataProps } from './Data';
 
 export default {

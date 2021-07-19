@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState, useRef } from 'react';
+import { FC, useEffect, useState, useRef } from 'react';
 import Dialog from '../Dialog/Dialog';
 import ConfirmationButtonStyled from './ConfirmationButton.styles';
 

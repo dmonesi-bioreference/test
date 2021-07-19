@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import Icon from '../Icon/Icon';
 import IconButton from '../IconButton/IconButton';
 import AlertStyled from './Alert.styles';

@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import Message from '../Message';
 import FieldsetStyled from './Fieldset.styles';
 

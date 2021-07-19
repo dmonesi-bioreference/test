@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import Icon from '../Icon/Icon';
 import MessageStyled from './Message.styles';
 import clsx from 'clsx';

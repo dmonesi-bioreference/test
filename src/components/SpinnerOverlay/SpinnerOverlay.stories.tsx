@@ -1,4 +1,3 @@
-import React from 'react';
 import SpinnerOverlay from './SpinnerOverlay';
 
 export default {

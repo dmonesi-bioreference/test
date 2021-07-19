@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import CardStyled from './Card.styles';
 
 export interface CardProps {

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import CardGridStyled from './CardGrid.styles';
 
 export interface CardGridProps {

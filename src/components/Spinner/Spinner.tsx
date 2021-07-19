@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import tokens, { colors } from '../../styles/tokens';
 import SpinnerStyled from './Spinner.styles';
 

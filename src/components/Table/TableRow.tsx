@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 const TableRow: FC = ({ children }) => <tr>{children}</tr>;
 

@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { FC, useContext, useEffect, useRef, useState } from 'react';
+import { FC, useContext, useEffect, useRef, useState } from 'react';
 import { InputBaseProps } from '../FormControl/props';
 import RadioStyled from './Radio.styles';
 import { RadioContext } from './RadioGroup';

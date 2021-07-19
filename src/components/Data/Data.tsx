@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { FC } from 'react';
+import { FC } from 'react';
 import DataStyled from './Data.styles';
 
 export interface DataProps {

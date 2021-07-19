@@ -1,4 +1,3 @@
-import React from 'react';
 import Fieldset, { FieldsetProps } from './Fieldset';
 import Checkbox from '../Checkbox/Checkbox';
 import Radio from '../Radio/Radio';

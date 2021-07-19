@@ -1,5 +1,4 @@
 import { linkTo } from '@storybook/addon-links';
-import React from 'react';
 import Main from '.';
 import Button from '../../components/Button/Button';
 import Card from '../../components/Card/Card';

@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { FC } from 'react';
+import { FC } from 'react';
 import Message from '../Message/Message';
 import FormControlStyled from './FormControl.styles';
 import { LabelPosition } from './props';

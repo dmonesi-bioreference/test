@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import { InputTextBaseProps } from '../FormControl/props';
 import InputStyled from './Input.styles';
 

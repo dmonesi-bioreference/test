@@ -1,5 +1,5 @@
 import { Story } from '@storybook/react/types-6-0';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Radio, { RadioProps } from './Radio';
 import RadioGroup from './RadioGroup';
 

@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { FC, useEffect, useState, useRef } from 'react';
+import { FC, useEffect, useState, useRef } from 'react';
 import IconButton from '../IconButton/IconButton';
 import DialogStyled from './Dialog.styles';
 
