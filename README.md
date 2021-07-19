@@ -9,7 +9,7 @@ for creating a custom component library for a React-based application.
 
 ## Starting the Storybook Documentation Site
 
-> `npm start storybook`
+> `npm run storybook`
 
 By default, Storybook will run at `http://localhost:9009`.
 
