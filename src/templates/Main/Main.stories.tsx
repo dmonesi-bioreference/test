@@ -12,9 +12,7 @@ export default {
 export const exampleForm = () => (
   <Main>
     <Card title="Register">
-      <Message icon="information-outline">
-        Please fill out this form to continue
-      </Message>
+      <Message type="info">Please fill out this form to continue</Message>
       <Input name="text" type="text" label="First Name" />
       <Input name="text" type="text" label="Last Name" />
       <Button
@@ -30,9 +28,7 @@ export const exampleForm = () => (
 export const exampleLanding = () => (
   <Main>
     <Card title="Welcome">
-      <Message type="success" icon="checkmark">
-        You are now signed in.
-      </Message>
+      <Message type="success">You are now signed in.</Message>
     </Card>
   </Main>
 );
