@@ -14,4 +14,5 @@ export { default as RadioGroup } from './components/Radio/RadioGroup';
 export { default as Select } from './components/Select/Select';
 export { default as Textarea } from './components/Textarea/Textarea';
 export { default as Table } from './components/Table/Table';
+export { default as Typography } from './components/Typography/Typography';
 export * from './components/Table';

@@ -3,7 +3,7 @@ import { rem } from 'polished';
 
 export const colors = {
   white: '#FFFFFF',
-  black: '#070707',
+  black: '#26272A',
   coolGray: {
     50: 'hsl(210, 20%, 98%)',
     100: 'hsl(220, 14%, 96%)',
@@ -128,6 +128,7 @@ const tokens = {
   lineHeightDense: '1.25',
   lineHeightNormal: '1.5',
   lineHeightLoose: '2.2',
+  lineHeightSelf: '1',
 
   /* letter-spacing */
   letterSpacingDense: '-0.015rem',
