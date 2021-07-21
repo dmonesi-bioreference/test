@@ -9,7 +9,7 @@ const TableStyled = styled.table`
   font-family: ${t.fontFamilyBody};
   min-width: 100%;
   border-spacing: 0;
-  border: 1px solid ${colors.coolGray[200]};
+  border: 1px solid ${colors.grey[200]};
   border-radius: ${t.borderRadiusLarge};
 
   thead tr th {
@@ -19,8 +19,8 @@ const TableStyled = styled.table`
     font-size: ${t.fontSize13};
     text-align: left;
     padding: ${t.spacingMedium};
-    color: ${colors.coolGray[500]};
-    border-bottom: 1px solid ${colors.coolGray[200]};
+    color: ${colors.grey[500]};
+    border-bottom: 1px solid ${colors.grey[200]};
     background-color: rgba(255, 255, 255, 0.97);
     backdrop-filter: blur(1px);
   }
@@ -51,7 +51,7 @@ const TableStyled = styled.table`
     text-align: left;
     font-size: ${t.fontSize16};
     padding: ${t.spacingMedium};
-    border-bottom: 1px solid ${colors.coolGray[200]};
+    border-bottom: 1px solid ${colors.grey[200]};
   }
 
   tbody tr:last-child th,
@@ -69,20 +69,20 @@ const TableStyled = styled.table`
 
   tfoot tr th,
   tfoot tr td {
-    border-top: 2px solid ${colors.coolGray[200]};
+    border-top: 2px solid ${colors.grey[200]};
   }
 
   &.table--striped {
     tbody tr:nth-child(odd) th,
     tbody tr:nth-child(odd) td {
-      background-color: ${colors.coolGray[50]};
+      background-color: ${colors.grey[50]};
     }
   }
 
   &.table--row-hover {
     tbody tr:hover th,
     tbody tr:hover td {
-      background-color: ${colors.coolGray[100]};
+      background-color: ${colors.grey[100]};
     }
   }
 

@@ -60,25 +60,25 @@ const ButtonStyled = styled.button<ButtonProps & ButtonStyledProps>`
 
   &.button--default {
     background-color: ${colors.white};
-    border-color: ${colors.coolGray[300]};
+    border-color: ${colors.grey[300]};
     box-shadow: ${t.shadowXSmall};
-    color: ${colors.coolGray[800]};
+    color: ${colors.grey[800]};
 
     &:hover:not(.button--disabled) {
-      background-color: ${colors.coolGray[50]};
-      border-color: ${colors.coolGray[400]};
+      background-color: ${colors.grey[50]};
+      border-color: ${colors.grey[400]};
     }
 
     &:focus:not(.button--disabled) {
-      background-color: ${colors.coolGray[50]};
+      background-color: ${colors.grey[50]};
       border-color: ${focus.borderColor};
       box-shadow: ${focus.shadow};
     }
 
     &:active:not(.button--disabled) {
-      background-color: ${colors.coolGray[50]};
-      border-color: ${colors.coolGray[400]};
-      color: ${colors.coolGray[900]};
+      background-color: ${colors.grey[50]};
+      border-color: ${colors.grey[400]};
+      color: ${colors.grey[900]};
     }
   }
 

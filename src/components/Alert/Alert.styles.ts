@@ -8,7 +8,7 @@ const AlertStyled = styled.div`
   display: flex;
   align-items: stretch;
   background-color: ${colors.white};
-  border: 1px solid ${colors.coolGray[200]};
+  border: 1px solid ${colors.grey[200]};
   border-top-width: 3px;
   border-radius: ${t.borderRadiusMedium};
   font-size: ${t.fontSize14};

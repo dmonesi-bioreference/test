@@ -13,7 +13,7 @@ export interface SpinnerProps {
 
 const defaultProps: SpinnerProps = {
   strokeWidth: 2,
-  trackColor: colors.coolGray[300],
+  trackColor: colors.grey[300],
   indicatorColor: tokens.colorPrimary,
 };
 
