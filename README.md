@@ -1,38 +1,45 @@
 # Project Pandas Prototype
 
-A custom component library for a React-based prototype application.
+This project houses the prototyping kit for GeneDX components, a React-based
+development environment for creating and demonstrating UI elements as they
+are discovered.
 
 ## Installation
 
-> `npm install`
+> `yarn`
 
 ## Starting the Storybook Documentation Site
 
-> `npm run storybook`
+Much of the work done developing components is done through a Storybook environment,
+in order to facilitate visual documentation, and encourage useable design. You can
+run storybook with this command:
 
-By default, Storybook will run at `http://localhost:9009`.
+> `yarn storybook`
+
+By default, Storybook will run at `http://localhost:9009`. It should automatically open
+your browser to the given page.
 
 ## Creating a New Component
 
 To create all files associated with a new component, run:
 
-> `npm run plop`
+> `yarn plop`
 
-You'll be prompted for a component name. All necessary files
-will then be generated automatically.
+You'll be prompted for a component name. All necessary files will then be
+generated automatically.
 
 ## Global Styles
 
 When importing components into your app, include the GlobalStyle component
 in your root App component to ensure accurate styling:
 
-```
+```tsx
 import GlobalStyle from '../src/styles/global';
 
 <App>
   <GlobalStyle />
   {children}
-</App>
+</App>;
 ```
 
 ## Colophon & Attribution
@@ -43,3 +50,24 @@ import GlobalStyle from '../src/styles/global';
 - Component architecture inspired by [Shoelace](https://shoelace.style/).
 - Icons are courtesy of [Heroicons](https://heroicons.com/).
 - Color pallettes created by [Tailwind](https://tailwindcss.com/docs/customizing-colors).
+
+## Troubleshooting
+
+### Husky problems?
+
+If you see the following while attempting to commit changes:
+
+```sh
+error Command husky-run not found.
+```
+
+Try running this command:
+
+```sh
+yarn husky install
+```
+
+**Explanation:** At some point, husky changed how they managed git hooks. Since we've
+used husky at a few different version levels, this can break some of us. The yarn command
+above runs the husky install script manually, which should reinstall the package and run
+the post-install process of changing our project git hooks.

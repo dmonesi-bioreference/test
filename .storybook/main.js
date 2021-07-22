@@ -4,6 +4,8 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
     '@storybook/addon-links',
-    '@storybook/preset-create-react-app',
   ],
-}
+  core: {
+    builder: 'webpack5',
+  },
+};
