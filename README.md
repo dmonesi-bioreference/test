@@ -1,7 +1,6 @@
-# React UI Component Library Starter Kit
+# Project Pandas Prototype
 
-This projects provides a set of common UI components that can built upon
-for creating a custom component library for a React-based application.
+A custom component library for a React-based prototype application.
 
 ## Installation
 
