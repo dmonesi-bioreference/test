@@ -72,8 +72,9 @@ const fonts = {
 const tokens = {
   /* color presets */
   colorBackground: colors.white,
-  colorPrimary: colors.blue[500],
-  colorPrimaryHover: colors.blue[600],
+  colorPrimary: colors.blue[600],
+  colorPrimaryActive: colors.blue[800],
+  colorPrimaryHover: colors.blue[700],
   colorPrimaryText: colors.white,
   colorPrimaryFocus: colors.blue[200],
   colorSecondary: colors.grey[600],
@@ -228,7 +229,7 @@ export const inputs = {
   fontSizeLarge: tokens.fontSize20,
   heightSmall: '30px',
   heightMedium: '40px',
-  heightLarge: '50px',
+  heightLarge: '48px',
   helpColor: colors.grey[500],
   helpFontSizeSmall: tokens.fontSize12,
   helpFontSizeMedium: tokens.fontSize14,
@@ -244,9 +245,7 @@ export const inputs = {
 };
 
 export const buttons = {
-  fontSizeSmall: tokens.fontSize13,
-  fontSizeMedium: tokens.fontSize14,
-  fontSizeLarge: tokens.fontSize20,
+  fontSize: tokens.fontSize16,
 };
 
 export const fontPairs = {

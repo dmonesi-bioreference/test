@@ -14,9 +14,14 @@ const ButtonStyled = styled.button<ButtonProps & ButtonStyledProps>`
   align-items: stretch;
   justify-content: center;
   border-style: solid;
+  border-radius: ${t.borderRadiusXLarge};
   border-width: ${inputs.borderWidth};
   font-family: ${t.fontFamilyBody};
-  font-weight: ${t.fontWeightMedium};
+  font-size: ${buttons.fontSize};
+  font-weight: ${t.fontWeightBold};
+  height: ${inputs.heightLarge};
+  line-height: calc(${inputs.heightLarge} - ${inputs.borderWidth} * 2);
+  padding: 0 ${t.spacingXLarge};
   text-decoration: none;
   user-select: none;
   white-space: nowrap;
@@ -26,32 +31,6 @@ const ButtonStyled = styled.button<ButtonProps & ButtonStyledProps>`
 
   &:focus {
     outline: none;
-  }
-
-  &[disabled] {
-    opacity: 0.5;
-    cursor: not-allowed;
-
-    * {
-      pointer-events: none;
-    }
-  }
-
-  .button__prefix,
-  .button__suffix {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-  }
-
-  .button__prefix *:first-child {
-    margin-left: -${t.spacingXSmall};
-    margin-right: ${t.spacingXSmall};
-  }
-
-  .button__suffix *:last-child {
-    margin-left: ${t.spacingXSmall};
-    margin-right: -${t.spacingXSmall};
   }
 
   /*
@@ -102,8 +81,8 @@ const ButtonStyled = styled.button<ButtonProps & ButtonStyledProps>`
     }
 
     &:active:not(.button--disabled) {
-      background-color: ${t.colorPrimary};
-      border-color: ${t.colorPrimary};
+      background-color: ${t.colorPrimaryActive};
+      border-color: ${t.colorPrimaryActive};
       color: ${colors.white};
     }
   }
@@ -237,31 +216,68 @@ const ButtonStyled = styled.button<ButtonProps & ButtonStyledProps>`
     }
   }
 
-  /*
-  * Size Modifiers
-  */
-  &.button--small {
-    font-size: ${buttons.fontSizeSmall};
-    height: ${inputs.heightSmall};
-    line-height: calc(${inputs.heightSmall} - ${inputs.borderWidth} * 2);
-    border-radius: ${t.borderRadiusMedium};
-    padding: 0 ${t.spacingMedium};
+  &.button--link {
+    background-color: transparent;
+    border-color: transparent;
+    color: ${t.colorPrimary};
+    height: fit-content;
+    padding: 0;
+
+    &:hover:not(.button--disabled) {
+      color: ${t.colorPrimaryHover};
+      text-decoration: underline;
+    }
+
+    &:focus:not(.button--disabled) {
+      color: ${t.colorPrimaryHover};
+      box-shadow: 0 0 0 3px ${t.colorPrimaryFocus};
+      text-decoration: underline;
+    }
+
+    &:active:not(.button--disabled) {
+      color: ${t.colorPrimaryActive};
+      text-decoration: underline;
+    }
   }
 
-  &.button--medium {
-    font-size: ${buttons.fontSizeMedium};
-    height: ${inputs.heightMedium};
-    line-height: calc(${inputs.heightMedium} - ${inputs.borderWidth} * 2);
-    border-radius: ${t.borderRadiusMedium};
-    padding: 0 ${t.spacingLarge};
+  &.button--secondary {
+    font-size: ${t.fontSize20};
+    font-weight: ${t.fontWeightMedium};
+    line-height: ${t.lineHeightDense};
   }
 
-  &.button--large {
-    font-size: ${buttons.fontSizeLarge};
-    height: ${inputs.heightLarge};
-    line-height: calc(${inputs.heightLarge} - ${inputs.borderWidth} * 2);
-    border-radius: ${t.borderRadiusLarge};
-    padding: 0 ${t.spacingXLarge};
+  &.button--tertiary {
+    font-size: ${t.fontSize16};
+    font-weight: ${t.fontWeightSemibold};
+    line-height: ${t.lineHeightSelf};
+  }
+
+  &[disabled] {
+    background-color: ${colors.grey[300]};
+    border-color: ${colors.grey[300]};
+    color: ${colors.grey[900]};
+    cursor: not-allowed;
+
+    * {
+      pointer-events: none;
+    }
+  }
+
+  .button__prefix,
+  .button__suffix {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .button__prefix *:first-child {
+    margin-left: -${t.spacingXSmall};
+    margin-right: ${t.spacingXSmall};
+  }
+
+  .button__suffix *:last-child {
+    margin-left: ${t.spacingXSmall};
+    margin-right: -${t.spacingXSmall};
   }
 `;
 

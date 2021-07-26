@@ -6,6 +6,8 @@ import ButtonStyled from './Button.styles';
 export type ButtonKind =
   | 'default'
   | 'primary'
+  | 'secondary'
+  | 'tertiary'
   | 'success'
   | 'info'
   | 'warning'
@@ -31,8 +33,6 @@ export interface ButtonProps {
   onClick?: () => void;
   /** Used to prepend an icon or similar element to the button. */
   prefix?: React.ReactNode;
-  /** The button's size. */
-  size?: 'small' | 'medium' | 'large';
   /** Set to true if activating the button should submit the form. Ignored if `href` is set. */
   submit?: boolean;
   /** Used to append an icon or similar element to the button. */
@@ -43,7 +43,6 @@ export interface ButtonProps {
 
 const defaultProps: ButtonProps = {
   kind: 'default',
-  size: 'medium',
 };
 
 const Button: FC<ButtonProps> = (props) => {
@@ -57,16 +56,14 @@ const Button: FC<ButtonProps> = (props) => {
     // Kinds
     'button--default': props.kind === 'default',
     'button--primary': props.kind === 'primary',
+    'button--secondary': props.kind === 'secondary',
+    'button--tertiary': props.kind === 'tertiary',
     'button--success': props.kind === 'success',
     'button--info': props.kind === 'info',
     'button--warning': props.kind === 'warning',
     'button--danger': props.kind === 'danger',
     'button--text': props.kind === 'text',
-
-    // Sizes
-    'button--small': props.size === 'small',
-    'button--medium': props.size === 'medium',
-    'button--large': props.size === 'large',
+    'button--link': props.kind === 'secondary' || props.kind === 'tertiary',
 
     // Modifiers
     'button--disabled': props.disabled,

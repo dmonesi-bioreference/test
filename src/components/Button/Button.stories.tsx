@@ -21,21 +21,6 @@ export const Primary = Template.bind({});
 Primary.args = {
   onClick: action('button clicked'),
   kind: 'default',
-  size: 'medium',
-};
-
-export const Sizes: Story = () => (
-  <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
-    <Button size="small">Small</Button>
-    <Button size="medium">Medium</Button>
-    <Button size="large">Large</Button>
-  </div>
-);
-
-Sizes.parameters = {
-  docs: {
-    storyDescription: "Use the `size` prop to change a button's size.",
-  },
 };
 
 export const Kinds: Story = () => (
@@ -56,13 +41,25 @@ Kinds.parameters = {
   },
 };
 
-export const asLink = Template.bind({});
+export const Links: Story = () => (
+  <div
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      gap: '1rem',
+    }}
+  >
+    <Button kind="secondary" href="https://example.com">
+      Secondary
+    </Button>
+    <Button kind="tertiary" href="https://example.com">
+      Tertiary
+    </Button>
+  </div>
+);
 
-asLink.args = {
-  href: 'https://example.com',
-};
-
-asLink.parameters = {
+Links.parameters = {
   docs: {
     storyDescription:
       'Setting the `href` prop will allow the component to render an `<a>` under the hood. This enables use of the `download` and `target` props.',
