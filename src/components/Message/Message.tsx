@@ -1,7 +1,8 @@
-import { FC } from 'react';
-import Icon from '../Icon/Icon';
-import MessageStyled from './Message.styles';
 import clsx from 'clsx';
+
+import { Icon } from 'components/Icon';
+
+import MessageStyled from './Message.styles';
 
 export interface MessageProps {
   /** Determines the message's color and icon, if enabled.  */
@@ -14,7 +15,7 @@ const defaultProps: MessageProps = {
   type: 'info',
 };
 
-const Message: FC<MessageProps> = (props) => {
+const Message: React.FC<MessageProps> = (props) => {
   const renderIcon = () => {
     switch (props.type) {
       case 'info':

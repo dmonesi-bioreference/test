@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import t, { focus, colors } from '../../styles/tokens';
-import { buttonReset } from '../../styles/utilities/button';
+
+import { focus, colors, tokens, buttonReset } from 'styles';
 
 type IconButtonStyled = {
   type: 'submit' | 'button' | undefined;
@@ -11,12 +11,12 @@ const IconButtonStyled = styled.button`
   flex: 0 0 auto;
   display: flex;
   align-items: center;
-  border-radius: ${t.borderRadiusMedium};
+  border-radius: ${tokens.borderRadiusMedium};
   font-size: inherit;
   border: 1px solid transparent;
-  color: ${t.colorSecondary};
-  padding: ${t.spacingSmall};
-  transition: ${t.transitionMedium} color;
+  color: ${tokens.colorSecondary};
+  padding: ${tokens.spacingSmall};
+  transition: ${tokens.transitionMedium} color;
 
   &:focus {
     outline: none;
@@ -26,7 +26,7 @@ const IconButtonStyled = styled.button`
 
   &:hover:not(.icon-button--disabled),
   &:focus:not(.icon-button--disabled) {
-    color: ${t.colorPrimary};
+    color: ${tokens.colorPrimary};
   }
 
   &:active:not(.icon-button--disabled) {

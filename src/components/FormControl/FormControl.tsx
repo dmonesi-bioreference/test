@@ -1,6 +1,7 @@
 import clsx from 'clsx';
-import { FC } from 'react';
-import Message from '../Message/Message';
+
+import { Message } from 'components/Message';
+
 import FormControlStyled from './FormControl.styles';
 import { LabelPosition } from './props';
 
@@ -35,7 +36,7 @@ const defaultProps: Partial<FormControlProps> = {
   labelPosition: 'top',
 };
 
-const FormControl: FC<FormControlProps> = (props) => {
+const FormControl: React.FC<FormControlProps> = (props) => {
   return (
     <FormControlStyled
       className={clsx(

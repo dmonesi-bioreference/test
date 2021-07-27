@@ -1,4 +1,4 @@
-import SpinnerOverlay from './SpinnerOverlay';
+import { SpinnerOverlay } from '.';
 
 export default {
   component: SpinnerOverlay,

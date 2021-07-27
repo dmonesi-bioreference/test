@@ -1,6 +1,6 @@
-import { FC } from 'react';
-import { Link } from 'react-router-dom';
 import clsx from 'clsx';
+import { Link } from 'react-router-dom';
+
 import ButtonStyled from './Button.styles';
 
 export type ButtonKind =
@@ -45,7 +45,7 @@ const defaultProps: ButtonProps = {
   kind: 'default',
 };
 
-const Button: FC<ButtonProps> = (props) => {
+const Button: React.FC<ButtonProps> = (props) => {
   const isLink = props.href ? true : false;
   const isRouterLink = props.linkTo ? true : false;
   const isButton = !isLink && !isRouterLink;

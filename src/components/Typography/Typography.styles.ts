@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import tokens, { colors } from '../../styles/tokens';
-import { base } from '../../styles/utilities/base';
+
+import { tokens, base, colors } from 'styles';
 
 const TypographyStyled = styled.div`
   ${base}

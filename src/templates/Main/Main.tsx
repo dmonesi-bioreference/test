@@ -1,6 +1,4 @@
-import { FC } from 'react';
-
-const Main: FC = ({ children }) => {
+const Main: React.FC = ({ children }) => {
   return <main className="o-main">{children}</main>;
 };
 

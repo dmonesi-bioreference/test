@@ -21,7 +21,8 @@
     "jest",
     "prettier",
     "jsx-a11y",
-    "security"
+    "security",
+    "import"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -35,9 +36,30 @@
     "jsx-a11y/no-noninteractive-tabindex": "off",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
-    "no-console": "error"
+    "no-console": "error",
+    "import/order": [
+      "error",
+      {
+        "alphabetize": {
+          "order": "asc"
+        },
+        "newlines-between": "always",
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object"
+        ]
+      }
+    ]
   },
   "settings": {
+    "import/resolver": {
+      "typescript": {}
+    },
     "react": {
       "version": "detect"
     }

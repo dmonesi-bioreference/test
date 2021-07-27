@@ -1,27 +1,27 @@
 import styled from 'styled-components';
-import t from '../../styles/tokens';
-import { base } from '../../styles/utilities/base';
+
+import { base, tokens } from 'styles';
 
 const DataStyled = styled.dl`
   ${base}
   display: flex;
   flex-flow: column;
-  margin: 0 0 ${t.spacingSmall};
+  margin: 0 0 ${tokens.spacingSmall};
 
   .label-value__label {
-    font-size: ${t.fontSize13};
-    font-weight: ${t.fontWeightLight};
+    font-size: ${tokens.fontSize13};
+    font-weight: ${tokens.fontWeightLight};
   }
 
   .label-value__value {
     margin-left: 0;
     white-space: pre-line;
-    font-weight: ${t.fontWeightMedium};
+    font-weight: ${tokens.fontWeightMedium};
   }
 
   &.label-value--vertical {
     .label-value__label {
-      margin-bottom: ${t.spacingXxxSmall};
+      margin-bottom: ${tokens.spacingXxxSmall};
     }
   }
 
@@ -29,7 +29,7 @@ const DataStyled = styled.dl`
     flex-flow: column-reverse;
 
     .label-value__label {
-      margin-top: ${t.spacingXxxSmall};
+      margin-top: ${tokens.spacingXxxSmall};
       margin-bottom: 0;
     }
   }
@@ -39,7 +39,7 @@ const DataStyled = styled.dl`
     align-items: center;
 
     .label-value__value {
-      margin-left: ${t.spacingXSmall};
+      margin-left: ${tokens.spacingXSmall};
     }
   }
 
@@ -53,7 +53,7 @@ const DataStyled = styled.dl`
     }
 
     .label-value__value {
-      margin-right: ${t.spacingXSmall};
+      margin-right: ${tokens.spacingXSmall};
       margin-left: 0;
     }
   }

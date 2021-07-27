@@ -1,4 +1,4 @@
-import { createContext, FC } from 'react';
+import { createContext } from 'react';
 
 type RadioContextProps = {
   name: string;
@@ -8,7 +8,7 @@ type RadioContextProps = {
 
 export const RadioContext = createContext<Partial<RadioContextProps>>({});
 
-const RadioGroup: FC<RadioContextProps> = ({
+const RadioGroup: React.FC<RadioContextProps> = ({
   name,
   value,
   onChange,

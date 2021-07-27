@@ -1,4 +1,5 @@
-import Spinner from '../Spinner/Spinner';
+import { Spinner } from 'components/Spinner';
+
 import SpinnerOverlayStyled from './SpinnerOverlay.styles';
 
 const SpinnerOverlay = () => (

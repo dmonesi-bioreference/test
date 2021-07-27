@@ -1,6 +1,8 @@
 import clsx from 'clsx';
-import { FC, useState } from 'react';
+import { useState } from 'react';
+
 import { InputTextBaseProps } from '../FormControl/props';
+
 import TextareaStyled from './Textarea.styles';
 
 export interface TextareaProps extends InputTextBaseProps {
@@ -15,7 +17,7 @@ const defaultProps: Partial<TextareaProps> = {
   size: 'medium',
 };
 
-const Textarea: FC<TextareaProps> = (props) => {
+const Textarea: React.FC<TextareaProps> = (props) => {
   const [id] = useState(++idCount);
   const inputId = `textarea-${id}`;
   const labelId = `textarea-label-${id}`;

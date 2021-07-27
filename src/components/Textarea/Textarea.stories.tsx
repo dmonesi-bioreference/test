@@ -1,5 +1,6 @@
 import { Story } from '@storybook/react/types-6-0';
-import Textarea, { TextareaProps } from './Textarea';
+
+import { Textarea, TextareaProps } from '.';
 
 export default {
   component: Textarea,

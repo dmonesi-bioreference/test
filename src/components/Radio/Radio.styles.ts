@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import t, { inputs, focus, colors } from '../../styles/tokens';
-import { base } from '../../styles/utilities/base';
-import FormControl, { FormControlProps } from '../FormControl/FormControl';
+
+import { FormControl, FormControlProps } from 'components/FormControl';
+import { base, tokens, inputs, focus, colors } from 'styles';
 
 /* stylelint-disable no-descending-specificity */
 
@@ -23,11 +23,11 @@ const RadioStyled = styled(FormControl)<FormControlProps>`
     width: 1em;
     height: 1em;
     border: ${inputs.border};
-    border-radius: ${t.borderRadiusCircle};
+    border-radius: ${tokens.borderRadiusCircle};
     color: ${colors.white};
     transition: ${inputs.transition},
-      background-color ${t.transitionFast} ease-in-out,
-      color ${t.transitionFast} ease-in-out;
+      background-color ${tokens.transitionFast} ease-in-out,
+      color ${tokens.transitionFast} ease-in-out;
 
     input[type='radio'] {
       position: absolute;
@@ -63,20 +63,20 @@ const RadioStyled = styled(FormControl)<FormControlProps>`
 
   /* Checked */
   .radio--checked .radio__control {
-    border-color: ${t.colorPrimary};
-    background-color: ${t.colorPrimary};
+    border-color: ${tokens.colorPrimary};
+    background-color: ${tokens.colorPrimary};
   }
 
   /* Checked + hover */
   .radio.radio--checked:not(.radio--disabled) .radio__control:hover {
-    border-color: ${t.colorPrimaryHover};
-    background-color: ${t.colorPrimaryHover};
+    border-color: ${tokens.colorPrimaryHover};
+    background-color: ${tokens.colorPrimaryHover};
   }
 
   /* Checked + focus */
   .radio.radio--checked:not(.radio--disabled).radio--focused .radio__control {
-    border-color: ${t.colorPrimaryHover};
-    background-color: ${t.colorPrimaryHover};
+    border-color: ${tokens.colorPrimaryHover};
+    background-color: ${tokens.colorPrimaryHover};
     box-shadow: ${focus.shadow};
   }
 

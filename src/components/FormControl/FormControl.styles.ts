@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import t, { inputs, labels } from '../../styles/tokens';
-import { visuallyHidden } from '../../styles/utilities/hidden';
+
+import { inputs, labels, tokens, visuallyHidden } from 'styles';
 
 const FormControlStyled = styled.div`
   .form-control__label {
@@ -12,7 +12,7 @@ const FormControlStyled = styled.div`
 
   .form-control__invalid-message,
   .form-control__help-text {
-    margin-top: ${t.spacingXxxSmall};
+    margin-top: ${tokens.spacingXxxSmall};
   }
 
   .form-control__help-text {
@@ -24,7 +24,7 @@ const FormControlStyled = styled.div`
       display: inline-flex;
       align-items: center;
       cursor: pointer;
-      font-weight: ${t.fontWeightRegular};
+      font-weight: ${tokens.fontWeightRegular};
       user-select: none;
     }
 
@@ -41,7 +41,7 @@ const FormControlStyled = styled.div`
   }
 
   &.form-control--boolean + &.form-control--boolean {
-    margin-top: ${t.spacingXxSmall};
+    margin-top: ${tokens.spacingXxSmall};
   }
 
   &.form-control--disabled {

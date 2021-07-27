@@ -1,6 +1,8 @@
 import clsx from 'clsx';
-import { FC, useState } from 'react';
-import { InputTextBaseProps } from '../FormControl/props';
+import { useState } from 'react';
+
+import { InputTextBaseProps } from 'components/FormControl';
+
 import InputStyled from './Input.styles';
 
 export interface InputProps extends InputTextBaseProps {
@@ -34,7 +36,7 @@ const defaultProps: Partial<InputProps> = {
   size: 'medium',
 };
 
-const Input: FC<InputProps> = (props) => {
+const Input: React.FC<InputProps> = (props) => {
   const [id] = useState(++idCount);
   const inputId = `input-${id}`;
   const labelId = `input-label-${id}`;

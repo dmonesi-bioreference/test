@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { modals } from '../../styles/tokens';
+
+import { modals } from 'styles';
 
 const SpinnerOverlayStyled = styled.div`
   display: flex;

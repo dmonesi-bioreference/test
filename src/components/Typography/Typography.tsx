@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import TypographyStyled from './Typography.styles';
 
 export type TypographyProps =
@@ -8,7 +7,7 @@ export type TypographyProps =
       type: 'heading';
     };
 
-const Typography: FC<TypographyProps> = (props) => {
+const Typography: React.FC<TypographyProps> = (props) => {
   switch (props.type) {
     case 'body':
     case 'category':

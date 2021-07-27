@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import t, { colors } from '../../styles/tokens';
-import { base } from '../../styles/utilities/base';
-import { hidden } from '../../styles/utilities/hidden';
+
+import { base, hidden, colors, tokens } from 'styles';
 
 const AlertStyled = styled.div`
   ${base}
@@ -10,14 +9,14 @@ const AlertStyled = styled.div`
   background-color: ${colors.white};
   border: 1px solid ${colors.grey[200]};
   border-top-width: 3px;
-  border-radius: ${t.borderRadiusMedium};
-  font-size: ${t.fontSize14};
+  border-radius: ${tokens.borderRadiusMedium};
+  font-size: ${tokens.fontSize14};
   line-height: 1.6;
-  color: ${t.colorSecondaryText};
+  color: ${tokens.colorSecondaryText};
   opacity: 0;
   transform: scale(0.9);
-  transition: ${t.transitionMedium} opacity ease,
-    ${t.transitionMedium} transform ease;
+  transition: ${tokens.transitionMedium} opacity ease,
+    ${tokens.transitionMedium} transform ease;
 
   &:not(.alert--visible) {
     ${hidden}
@@ -32,48 +31,48 @@ const AlertStyled = styled.div`
     flex: 0 0 auto;
     display: flex;
     align-items: center;
-    font-size: ${t.fontSize24};
+    font-size: ${tokens.fontSize24};
 
     > * {
-      margin-left: ${t.spacingLarge};
+      margin-left: ${tokens.spacingLarge};
     }
   }
 
   &.alert--info {
-    border-top-color: ${t.colorSecondary};
+    border-top-color: ${tokens.colorSecondary};
 
     .alert__icon {
-      color: ${t.colorSecondary};
+      color: ${tokens.colorSecondary};
     }
   }
 
   &.alert--success {
-    border-top-color: ${t.colorSuccess};
+    border-top-color: ${tokens.colorSuccess};
 
     .alert__icon {
-      color: ${t.colorSuccess};
+      color: ${tokens.colorSuccess};
     }
   }
 
   &.alert--warning {
-    border-top-color: ${t.colorWarning};
+    border-top-color: ${tokens.colorWarning};
 
     .alert__icon {
-      color: ${t.colorWarning};
+      color: ${tokens.colorWarning};
     }
   }
 
   &.alert--danger {
-    border-top-color: ${t.colorDanger};
+    border-top-color: ${tokens.colorDanger};
 
     .alert__icon {
-      color: ${t.colorDanger};
+      color: ${tokens.colorDanger};
     }
   }
 
   .alert__message {
     flex: 1 1 auto;
-    padding: ${t.spacingLarge};
+    padding: ${tokens.spacingLarge};
     overflow: hidden;
   }
 
@@ -81,8 +80,8 @@ const AlertStyled = styled.div`
     flex: 0 0 auto;
     display: flex;
     align-items: center;
-    font-size: ${t.fontSize18};
-    padding-right: ${t.spacingMedium};
+    font-size: ${tokens.fontSize18};
+    padding-right: ${tokens.spacingMedium};
   }
 `;
 

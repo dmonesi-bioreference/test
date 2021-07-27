@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import t, { inputs, focus, colors } from '../../styles/tokens';
-import { base } from '../../styles/utilities/base';
-import FormControl, { FormControlProps } from '../FormControl/FormControl';
+
+import { FormControl, FormControlProps } from 'components/FormControl';
+import { base, inputs, focus, colors, tokens } from 'styles';
 
 /* stylelint-disable no-descending-specificity */
 
@@ -25,8 +25,8 @@ const CheckboxStyled = styled(FormControl)<FormControlProps>`
     border: ${inputs.border};
     color: ${colors.white};
     transition: ${inputs.transition},
-      background-color ${t.transitionFast} ease-in-out,
-      color ${t.transitionFast} ease-in-out;
+      background-color ${tokens.transitionFast} ease-in-out,
+      color ${tokens.transitionFast} ease-in-out;
 
     input[type='checkbox'] {
       position: absolute;
@@ -63,22 +63,22 @@ const CheckboxStyled = styled(FormControl)<FormControlProps>`
 
   /* Checked */
   .checkbox--checked .checkbox__control {
-    border-color: ${t.colorPrimary};
-    background-color: ${t.colorPrimary};
+    border-color: ${tokens.colorPrimary};
+    background-color: ${tokens.colorPrimary};
   }
 
   /* Checked + hover */
   .checkbox.checkbox--checked:not(.checkbox--disabled)
     .checkbox__control:hover {
-    border-color: ${t.colorPrimaryHover};
-    background-color: ${t.colorPrimaryHover};
+    border-color: ${tokens.colorPrimaryHover};
+    background-color: ${tokens.colorPrimaryHover};
   }
 
   /* Checked + focus */
   .checkbox.checkbox--checked:not(.checkbox--disabled).checkbox--focused
     .checkbox__control {
-    border-color: ${t.colorPrimaryHover};
-    background-color: ${t.colorPrimaryHover};
+    border-color: ${tokens.colorPrimaryHover};
+    background-color: ${tokens.colorPrimaryHover};
     box-shadow: ${focus.shadow};
   }
 

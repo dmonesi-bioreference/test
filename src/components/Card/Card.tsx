@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import CardStyled from './Card.styles';
 
 export interface CardProps {
@@ -6,7 +5,7 @@ export interface CardProps {
   title?: string;
 }
 
-const Card: FC<CardProps> = (props) => {
+const Card: React.FC<CardProps> = (props) => {
   return (
     <CardStyled className="card">
       {props.title && (

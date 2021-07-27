@@ -1,6 +1,8 @@
 import { Story } from '@storybook/react/types-6-0';
-import Table, { TableBody, TableCell, TableHeader, TableRow } from '.';
+
 import { TableProps } from './Table';
+
+import { Table, TableBody, TableCell, TableHeader, TableRow } from '.';
 
 export default {
   component: Table,

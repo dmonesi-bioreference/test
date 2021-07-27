@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import t from '../../styles/tokens';
-import { base } from '../../styles/utilities/base';
+
+import { base, tokens } from 'styles';
 
 const ConfirmationButtonStyled = styled.div`
   ${base}
@@ -11,12 +11,12 @@ const ConfirmationButtonStyled = styled.div`
   }
 
   .confirmation-button__prompt {
-    margin-right: ${t.spacingMedium};
-    font-weight: ${t.fontWeightMedium};
+    margin-right: ${tokens.spacingMedium};
+    font-weight: ${tokens.fontWeightMedium};
   }
 
   .confirmation-button__confirm-button {
-    margin-right: ${t.spacingMedium};
+    margin-right: ${tokens.spacingMedium};
   }
 `;
 

@@ -1,7 +1,9 @@
-import { useState } from 'react';
-import Dialog, { DialogProps } from './Dialog';
-import Button from '../Button/Button';
 import { Story } from '@storybook/react/types-6-0';
+import { useState } from 'react';
+
+import { Button } from 'components/Button';
+
+import Dialog, { DialogProps } from './Dialog';
 
 export default {
   component: Dialog,

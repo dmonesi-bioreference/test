@@ -1,13 +1,15 @@
 import clsx from 'clsx';
-import { FC, useEffect, useState } from 'react';
-import { InputBaseProps } from '../FormControl/props';
+import { useEffect, useState } from 'react';
+
+import { InputBaseProps } from 'components/FormControl';
+
 import SelectStyled from './Select.styles';
 
 export type SelectProps = InputBaseProps;
 
 let idCount = 0;
 
-const Select: FC<SelectProps> = (props) => {
+const Select: React.FC<SelectProps> = (props) => {
   const [id] = useState(++idCount);
   const inputId = `select-${id}`;
   const labelId = `select-label-${id}`;

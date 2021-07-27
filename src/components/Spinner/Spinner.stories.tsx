@@ -1,5 +1,6 @@
 import { Story } from '@storybook/react/types-6-0';
-import Spinner, { SpinnerProps } from './Spinner';
+
+import { SpinnerProps, Spinner } from './Spinner';
 
 export default {
   component: Spinner,

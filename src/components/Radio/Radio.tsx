@@ -1,6 +1,8 @@
 import clsx from 'clsx';
-import { FC, useContext, useEffect, useRef, useState } from 'react';
-import { InputBaseProps } from '../FormControl/props';
+import { useContext, useEffect, useRef, useState } from 'react';
+
+import { InputBaseProps } from 'components/FormControl';
+
 import RadioStyled from './Radio.styles';
 import { RadioContext } from './RadioGroup';
 
@@ -16,7 +18,7 @@ export type RadioProps = Omit<
 
 let idCount = 0;
 
-const Radio: FC<RadioProps> = (props) => {
+const Radio: React.FC<RadioProps> = (props) => {
   const [id] = useState(++idCount);
   const inputId = `radio-${id}`;
   const labelId = `radio-label-${id}`;

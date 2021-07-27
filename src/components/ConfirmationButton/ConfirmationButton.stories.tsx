@@ -1,6 +1,8 @@
 import { action } from '@storybook/addon-actions';
+
+import { Button } from 'components/Button';
+
 import ConfirmationButton from '.';
-import Button from '../Button/Button';
 
 export default {
   component: ConfirmationButton,

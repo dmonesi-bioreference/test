@@ -1,12 +1,14 @@
 import styled from 'styled-components';
-import t from '../../styles/tokens';
+
+import { tokens } from 'styles';
+
 import { SpinnerProps } from './Spinner';
 
 const SpinnerStyled = styled.span`
   display: inline-block;
   width: 1em;
   height: 1em;
-  border-radius: ${t.borderRadiusCircle};
+  border-radius: ${tokens.borderRadiusCircle};
   border: ${(p: SpinnerProps) => p.strokeWidth}px solid
     ${(p: SpinnerProps) => p.trackColor};
   border-top-color: ${(p: SpinnerProps) => p.indicatorColor};

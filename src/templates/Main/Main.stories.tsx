@@ -1,9 +1,8 @@
 import { linkTo } from '@storybook/addon-links';
+
+import { Button, Card, Input, Message } from 'components';
+
 import Main from '.';
-import Button from '../../components/Button/Button';
-import Card from '../../components/Card/Card';
-import Input from '../../components/Input/Input';
-import Message from '../../components/Message/Message';
 
 export default {
   title: 'Templates/Main',

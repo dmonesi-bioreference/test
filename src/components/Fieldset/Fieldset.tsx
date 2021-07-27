@@ -1,6 +1,8 @@
 import clsx from 'clsx';
-import { FC, useState } from 'react';
-import Message from '../Message';
+import { useState } from 'react';
+
+import { Message } from 'components/Message';
+
 import FieldsetStyled from './Fieldset.styles';
 
 export interface FieldsetProps {
@@ -29,7 +31,7 @@ const defaultProps: Partial<FieldsetProps> = {
 
 let idCount = 0;
 
-const Fieldset: FC<FieldsetProps> = (props) => {
+const Fieldset: React.FC<FieldsetProps> = (props) => {
   const [id] = useState(++idCount);
   const helpTextId = `fieldset-help-text-${id}`;
 

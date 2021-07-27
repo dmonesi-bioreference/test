@@ -1,7 +1,9 @@
 import clsx from 'clsx';
-import { FC, useState, useEffect } from 'react';
-import Icon from '../Icon/Icon';
-import IconButton from '../IconButton/IconButton';
+import { useState, useEffect } from 'react';
+
+import { Icon } from 'components/Icon';
+import { IconButton } from 'components/IconButton';
+
 import AlertStyled from './Alert.styles';
 
 export interface AlertProps {
@@ -27,7 +29,7 @@ const defaultProps: AlertProps = {
 /**
  *  **➡️ Alerts will not be visible if the `open` prop is not present.**
  */
-const Alert: FC<AlertProps> = (props) => {
+const Alert: React.FC<AlertProps> = (props) => {
   let autoHideTimeout: NodeJS.Timeout;
   const [isVisible, setIsVisible] = useState(false);
   const [isOpen, setIsOpen] = useState(props.open ? true : false);

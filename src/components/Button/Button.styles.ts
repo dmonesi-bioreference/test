@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import t, { colors, inputs, buttons, focus } from '../../styles/tokens';
-import { base } from '../../styles/utilities/base';
+
+import { base, colors, inputs, buttons, focus, tokens } from 'styles';
+
 import { ButtonProps } from './Button';
 
 type ButtonStyledProps = {
@@ -14,19 +15,19 @@ const ButtonStyled = styled.button<ButtonProps & ButtonStyledProps>`
   align-items: stretch;
   justify-content: center;
   border-style: solid;
-  border-radius: ${t.borderRadiusXLarge};
+  border-radius: ${tokens.borderRadiusXLarge};
   border-width: ${inputs.borderWidth};
-  font-family: ${t.fontFamilyBody};
+  font-family: ${tokens.fontFamilyBody};
   font-size: ${buttons.fontSize};
-  font-weight: ${t.fontWeightBold};
+  font-weight: ${tokens.fontWeightBold};
   height: ${inputs.heightLarge};
   line-height: calc(${inputs.heightLarge} - ${inputs.borderWidth} * 2);
-  padding: 0 ${t.spacingXLarge};
+  padding: 0 ${tokens.spacingXLarge};
   text-decoration: none;
   user-select: none;
   white-space: nowrap;
   vertical-align: middle;
-  transition: ${t.transitionFast} all;
+  transition: ${tokens.transitionFast} all;
   cursor: pointer;
 
   &:focus {
@@ -40,7 +41,7 @@ const ButtonStyled = styled.button<ButtonProps & ButtonStyledProps>`
   &.button--default {
     background-color: ${colors.white};
     border-color: ${colors.grey[300]};
-    box-shadow: ${t.shadowXSmall};
+    box-shadow: ${tokens.shadowXSmall};
     color: ${colors.grey[800]};
 
     &:hover:not(.button--disabled) {
@@ -62,131 +63,131 @@ const ButtonStyled = styled.button<ButtonProps & ButtonStyledProps>`
   }
 
   &.button--primary {
-    background-color: ${t.colorPrimary};
-    border-color: ${t.colorPrimary};
-    box-shadow: ${t.shadowXSmall};
+    background-color: ${tokens.colorPrimary};
+    border-color: ${tokens.colorPrimary};
+    box-shadow: ${tokens.shadowXSmall};
     color: ${colors.white};
 
     &:hover:not(.button--disabled) {
-      background-color: ${t.colorPrimaryHover};
-      border-color: ${t.colorPrimaryHover};
+      background-color: ${tokens.colorPrimaryHover};
+      border-color: ${tokens.colorPrimaryHover};
       color: ${colors.white};
     }
 
     &:focus:not(.button--disabled) {
-      background-color: ${t.colorPrimaryHover};
-      border-color: ${t.colorPrimaryHover};
+      background-color: ${tokens.colorPrimaryHover};
+      border-color: ${tokens.colorPrimaryHover};
       color: ${colors.white};
       box-shadow: ${focus.shadow};
     }
 
     &:active:not(.button--disabled) {
-      background-color: ${t.colorPrimaryActive};
-      border-color: ${t.colorPrimaryActive};
+      background-color: ${tokens.colorPrimaryActive};
+      border-color: ${tokens.colorPrimaryActive};
       color: ${colors.white};
     }
   }
 
   &.button--success {
-    background-color: ${t.colorSuccess};
-    border-color: ${t.colorSuccess};
-    box-shadow: ${t.shadowXSmall};
+    background-color: ${tokens.colorSuccess};
+    border-color: ${tokens.colorSuccess};
+    box-shadow: ${tokens.shadowXSmall};
     color: ${colors.white};
 
     &:hover:not(.button--disabled) {
-      background-color: ${t.colorSuccessHover};
-      border-color: ${t.colorSuccessHover};
+      background-color: ${tokens.colorSuccessHover};
+      border-color: ${tokens.colorSuccessHover};
       color: ${colors.white};
     }
 
     &:focus:not(.button--disabled) {
-      background-color: ${t.colorSuccessHover};
-      border-color: ${t.colorSuccessHover};
+      background-color: ${tokens.colorSuccessHover};
+      border-color: ${tokens.colorSuccessHover};
       color: ${colors.white};
-      box-shadow: 0 0 0 3px ${t.colorSuccessFocus};
+      box-shadow: 0 0 0 3px ${tokens.colorSuccessFocus};
     }
 
     &:active:not(.button--disabled) {
-      background-color: ${t.colorSuccess};
-      border-color: ${t.colorSuccess};
+      background-color: ${tokens.colorSuccess};
+      border-color: ${tokens.colorSuccess};
       color: ${colors.white};
     }
   }
 
   &.button--info {
-    background-color: ${t.colorSecondary};
-    border-color: ${t.colorSecondary};
-    box-shadow: ${t.shadowXSmall};
+    background-color: ${tokens.colorSecondary};
+    border-color: ${tokens.colorSecondary};
+    box-shadow: ${tokens.shadowXSmall};
     color: ${colors.white};
 
     &:hover:not(.button--disabled) {
-      background-color: ${t.colorSecondaryHover};
-      border-color: ${t.colorSecondaryHover};
+      background-color: ${tokens.colorSecondaryHover};
+      border-color: ${tokens.colorSecondaryHover};
       color: ${colors.white};
     }
 
     &:focus:not(.button--disabled) {
-      background-color: ${t.colorSecondaryHover};
-      border-color: ${t.colorSecondaryHover};
+      background-color: ${tokens.colorSecondaryHover};
+      border-color: ${tokens.colorSecondaryHover};
       color: ${colors.white};
-      box-shadow: 0 0 0 3px ${t.colorSecondaryFocus};
+      box-shadow: 0 0 0 3px ${tokens.colorSecondaryFocus};
     }
 
     &:active:not(.button--disabled) {
-      background-color: ${t.colorSecondary};
-      border-color: ${t.colorSecondary};
+      background-color: ${tokens.colorSecondary};
+      border-color: ${tokens.colorSecondary};
       color: ${colors.white};
     }
   }
 
   &.button--warning {
-    background-color: ${t.colorWarning};
-    border-color: ${t.colorWarning};
-    box-shadow: ${t.shadowXSmall};
+    background-color: ${tokens.colorWarning};
+    border-color: ${tokens.colorWarning};
+    box-shadow: ${tokens.shadowXSmall};
     color: ${colors.white};
 
     &:hover:not(.button--disabled) {
-      background-color: ${t.colorWarningHover};
-      border-color: ${t.colorWarningHover};
+      background-color: ${tokens.colorWarningHover};
+      border-color: ${tokens.colorWarningHover};
       color: ${colors.white};
     }
 
     &:focus:not(.button--disabled) {
-      background-color: ${t.colorWarningHover};
-      border-color: ${t.colorWarningHover};
+      background-color: ${tokens.colorWarningHover};
+      border-color: ${tokens.colorWarningHover};
       color: ${colors.white};
-      box-shadow: 0 0 0 3px ${t.colorWarningFocus};
+      box-shadow: 0 0 0 3px ${tokens.colorWarningFocus};
     }
 
     &:active:not(.button--disabled) {
-      background-color: ${t.colorWarning};
-      border-color: ${t.colorWarning};
+      background-color: ${tokens.colorWarning};
+      border-color: ${tokens.colorWarning};
       color: ${colors.white};
     }
   }
 
   &.button--danger {
-    background-color: ${t.colorDanger};
-    border-color: ${t.colorDanger};
-    box-shadow: ${t.shadowXSmall};
+    background-color: ${tokens.colorDanger};
+    border-color: ${tokens.colorDanger};
+    box-shadow: ${tokens.shadowXSmall};
     color: ${colors.white};
 
     &:hover:not(.button--disabled) {
-      background-color: ${t.colorDangerHover};
-      border-color: ${t.colorDangerHover};
+      background-color: ${tokens.colorDangerHover};
+      border-color: ${tokens.colorDangerHover};
       color: ${colors.white};
     }
 
     &:focus:not(.button--disabled) {
-      background-color: ${t.colorDangerHover};
-      border-color: ${t.colorDangerHover};
+      background-color: ${tokens.colorDangerHover};
+      border-color: ${tokens.colorDangerHover};
       color: ${colors.white};
-      box-shadow: 0 0 0 3px ${t.colorDangerFocus};
+      box-shadow: 0 0 0 3px ${tokens.colorDangerFocus};
     }
 
     &:active:not(.button--disabled) {
-      background-color: ${t.colorDanger};
-      border-color: ${t.colorDanger};
+      background-color: ${tokens.colorDanger};
+      border-color: ${tokens.colorDanger};
       color: ${colors.white};
     }
   }
@@ -194,62 +195,62 @@ const ButtonStyled = styled.button<ButtonProps & ButtonStyledProps>`
   &.button--text {
     background-color: transparent;
     border-color: transparent;
-    color: ${t.colorPrimary};
+    color: ${tokens.colorPrimary};
 
     &:hover:not(.button--disabled) {
       background-color: transparent;
       border-color: transparent;
-      color: ${t.colorPrimaryHover};
+      color: ${tokens.colorPrimaryHover};
     }
 
     &:focus:not(.button--disabled) {
       background-color: transparent;
       border-color: transparent;
-      color: ${t.colorPrimaryHover};
-      box-shadow: 0 0 0 3px ${t.colorPrimaryFocus};
+      color: ${tokens.colorPrimaryHover};
+      box-shadow: 0 0 0 3px ${tokens.colorPrimaryFocus};
     }
 
     &:active:not(.button--disabled) {
       background-color: transparent;
       border-color: transparent;
-      color: ${t.colorPrimary};
+      color: ${tokens.colorPrimary};
     }
   }
 
   &.button--link {
     background-color: transparent;
     border-color: transparent;
-    color: ${t.colorPrimary};
+    color: ${tokens.colorPrimary};
     height: fit-content;
     padding: 0;
 
     &:hover:not(.button--disabled) {
-      color: ${t.colorPrimaryHover};
+      color: ${tokens.colorPrimaryHover};
       text-decoration: underline;
     }
 
     &:focus:not(.button--disabled) {
-      color: ${t.colorPrimaryHover};
-      box-shadow: 0 0 0 3px ${t.colorPrimaryFocus};
+      color: ${tokens.colorPrimaryHover};
+      box-shadow: 0 0 0 3px ${tokens.colorPrimaryFocus};
       text-decoration: underline;
     }
 
     &:active:not(.button--disabled) {
-      color: ${t.colorPrimaryActive};
+      color: ${tokens.colorPrimaryActive};
       text-decoration: underline;
     }
   }
 
   &.button--secondary {
-    font-size: ${t.fontSize20};
-    font-weight: ${t.fontWeightMedium};
-    line-height: ${t.lineHeightDense};
+    font-size: ${tokens.fontSize20};
+    font-weight: ${tokens.fontWeightMedium};
+    line-height: ${tokens.lineHeightDense};
   }
 
   &.button--tertiary {
-    font-size: ${t.fontSize16};
-    font-weight: ${t.fontWeightSemibold};
-    line-height: ${t.lineHeightSelf};
+    font-size: ${tokens.fontSize16};
+    font-weight: ${tokens.fontWeightSemibold};
+    line-height: ${tokens.lineHeightSelf};
   }
 
   &[disabled] {
@@ -271,13 +272,13 @@ const ButtonStyled = styled.button<ButtonProps & ButtonStyledProps>`
   }
 
   .button__prefix *:first-child {
-    margin-left: -${t.spacingXSmall};
-    margin-right: ${t.spacingXSmall};
+    margin-left: -${tokens.spacingXSmall};
+    margin-right: ${tokens.spacingXSmall};
   }
 
   .button__suffix *:last-child {
-    margin-left: ${t.spacingXSmall};
-    margin-right: -${t.spacingXSmall};
+    margin-left: ${tokens.spacingXSmall};
+    margin-right: -${tokens.spacingXSmall};
   }
 `;
 

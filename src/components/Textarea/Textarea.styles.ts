@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { inputs, focus } from '../../styles/tokens';
-import { base } from '../../styles/utilities/base';
-import FormControl, { FormControlProps } from '../FormControl/FormControl';
+
+import { FormControl, FormControlProps } from 'components/FormControl';
+import { base, inputs, focus } from 'styles';
 
 /* stylelint-disable no-descending-specificity */
 

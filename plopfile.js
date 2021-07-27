@@ -17,21 +17,25 @@ module.exports = function (plop) {
       },
       {
         type: 'add',
-        path:
-          'src/components/{{properCase name}}/{{properCase name}}.styles.js',
+        path: 'src/components/{{properCase name}}/{{properCase name}}.styles.js',
         templateFile: 'plop/component/component.styles.hbs',
       },
       {
         type: 'add',
-        path:
-          'src/components/{{properCase name}}/{{properCase name}}.stories.tsx',
+        path: 'src/components/{{properCase name}}/{{properCase name}}.stories.tsx',
         templateFile: 'plop/component/component.stories.hbs',
       },
       {
-        type: 'append',
-        path: 'src/index.ts',
+        type: 'add',
+        path: 'src/components/{{properCase name}}/index.ts',
         pattern: /$/,
         templateFile: 'plop/component/export.hbs',
+      },
+      {
+        type: 'append',
+        path: 'src/components/index.ts',
+        pattern: /$/,
+        templateFile: 'plop/component/index.hbs',
       },
     ],
   });

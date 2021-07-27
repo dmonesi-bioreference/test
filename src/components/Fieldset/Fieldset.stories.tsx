@@ -1,9 +1,10 @@
-import Fieldset, { FieldsetProps } from './Fieldset';
-import Checkbox from '../Checkbox/Checkbox';
-import Radio from '../Radio/Radio';
-import Input from '../Input/Input';
-import RadioGroup from '../Radio/RadioGroup';
 import { Story } from '@storybook/react/types-6-0';
+
+import { Checkbox } from 'components/Checkbox';
+import { Input } from 'components/Input';
+import { Radio, RadioGroup } from 'components/Radio';
+
+import Fieldset, { FieldsetProps } from './Fieldset';
 
 export default {
   component: Fieldset,

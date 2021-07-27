@@ -1,7 +1,9 @@
 import clsx from 'clsx';
-import { FC, useEffect, useRef, useState } from 'react';
-import { InputBaseProps } from '../FormControl/props';
-import Icon from '../Icon/Icon';
+import { useEffect, useRef, useState } from 'react';
+
+import { InputBaseProps } from 'components/FormControl';
+import { Icon } from 'components/Icon';
+
 import CheckboxStyled from './Checkbox.styles';
 
 interface CheckboxInterface extends InputBaseProps {
@@ -16,7 +18,7 @@ export type CheckboxProps = Omit<
 
 let idCount = 0;
 
-const Checkbox: FC<CheckboxProps> = (props) => {
+const Checkbox: React.FC<CheckboxProps> = (props) => {
   const [id] = useState(++idCount);
   const inputId = `checkbox-${id}`;
   const labelId = `checkbox-label-${id}`;

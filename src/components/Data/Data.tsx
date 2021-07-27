@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { FC } from 'react';
+
 import DataStyled from './Data.styles';
 
 export interface DataProps {
@@ -15,7 +15,7 @@ const defaultProps: Partial<DataProps> = {
   orientation: 'vertical',
 };
 
-const Data: FC<DataProps> = (props) => (
+const Data: React.FC<DataProps> = (props) => (
   <DataStyled
     className={clsx({
       'label-value': true,

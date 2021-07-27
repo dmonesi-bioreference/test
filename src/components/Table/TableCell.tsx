@@ -1,11 +1,9 @@
-import { FC } from 'react';
-
 interface TableCellProps {
   header?: boolean;
   scope?: 'row' | 'col';
 }
 
-const TableCell: FC<TableCellProps> = (props) => {
+const TableCell: React.FC<TableCellProps> = (props) => {
   if (props.header) {
     return <th scope={props.scope}>{props.children}</th>;
   }

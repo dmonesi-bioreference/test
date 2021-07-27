@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import CardGridStyled from './CardGrid.styles';
 
 export interface CardGridProps {
@@ -10,7 +9,7 @@ const defaultProps = {
   columns: 2,
 };
 
-const CardGrid: FC<CardGridProps> = (props) => (
+const CardGrid: React.FC<CardGridProps> = (props) => (
   <CardGridStyled columns={props.columns}>{props.children}</CardGridStyled>
 );
 

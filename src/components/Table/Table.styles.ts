@@ -1,24 +1,25 @@
 import styled from 'styled-components';
-import t, { colors } from '../../styles/tokens';
+
+import { tokens, colors } from 'styles/tokens';
 
 /* stylelint-disable no-descending-specificity */
 
 const TableStyled = styled.table`
   position: relative;
   box-sizing: border-box;
-  font-family: ${t.fontFamilyBody};
+  font-family: ${tokens.fontFamilyBody};
   min-width: 100%;
   border-spacing: 0;
   border: 1px solid ${colors.grey[200]};
-  border-radius: ${t.borderRadiusLarge};
+  border-radius: ${tokens.borderRadiusLarge};
 
   thead tr th {
     letter-spacing: 0.06rem;
     text-transform: uppercase;
-    font-weight: ${t.fontWeightMedium};
-    font-size: ${t.fontSize13};
+    font-weight: ${tokens.fontWeightMedium};
+    font-size: ${tokens.fontSize13};
     text-align: left;
-    padding: ${t.spacingMedium};
+    padding: ${tokens.spacingMedium};
     color: ${colors.grey[500]};
     border-bottom: 1px solid ${colors.grey[200]};
     background-color: rgba(255, 255, 255, 0.97);
@@ -26,21 +27,21 @@ const TableStyled = styled.table`
   }
 
   thead tr th:first-child {
-    border-top-left-radius: ${t.borderRadiusLarge};
+    border-top-left-radius: ${tokens.borderRadiusLarge};
   }
 
   thead tr th:last-child {
-    border-top-right-radius: ${t.borderRadiusLarge};
+    border-top-right-radius: ${tokens.borderRadiusLarge};
   }
 
   tbody tr:last-child th:first-child,
   tbody tr:last-child td:first-child {
-    border-bottom-left-radius: ${t.borderRadiusLarge};
+    border-bottom-left-radius: ${tokens.borderRadiusLarge};
   }
 
   tbody tr:last-child th:last-child,
   tbody tr:last-child td:last-child {
-    border-bottom-right-radius: ${t.borderRadiusLarge};
+    border-bottom-right-radius: ${tokens.borderRadiusLarge};
   }
 
   tbody tr th,
@@ -49,8 +50,8 @@ const TableStyled = styled.table`
   tfoot tr td {
     min-height: 2.25rem;
     text-align: left;
-    font-size: ${t.fontSize16};
-    padding: ${t.spacingMedium};
+    font-size: ${tokens.fontSize16};
+    padding: ${tokens.spacingMedium};
     border-bottom: 1px solid ${colors.grey[200]};
   }
 
@@ -64,7 +65,7 @@ const TableStyled = styled.table`
   tbody tr th,
   tfoot tr th,
   tfoot tr td {
-    font-weight: ${t.fontWeightMedium};
+    font-weight: ${tokens.fontWeightMedium};
   }
 
   tfoot tr th,

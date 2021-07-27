@@ -1,6 +1,8 @@
 import clsx from 'clsx';
-import { FC, useEffect, useState, useRef } from 'react';
-import IconButton from '../IconButton/IconButton';
+import { useEffect, useState, useRef } from 'react';
+
+import { IconButton } from 'components/IconButton';
+
 import DialogStyled from './Dialog.styles';
 
 let id = 0;
@@ -26,7 +28,7 @@ const defaultProps: Partial<DialogProps> = {
   open: false,
 };
 
-const Dialog: FC<DialogProps> = (props) => {
+const Dialog: React.FC<DialogProps> = (props) => {
   const componentId = `dialog-${++id}`;
 
   const panel = useRef<HTMLDivElement>(null);

@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { FC } from 'react';
+
 import TableStyled from './Table.styles';
 
 export interface TableProps {
@@ -17,7 +17,7 @@ const defaultProps: TableProps = {
   rowHover: false,
 };
 
-const Table: FC<TableProps> = (props) => {
+const Table: React.FC<TableProps> = (props) => {
   return (
     <TableStyled
       className={clsx({

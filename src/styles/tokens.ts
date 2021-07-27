@@ -65,11 +65,11 @@ export const colors = {
   },
 };
 
-const fonts = {
+export const fonts = {
   fontFamilyOpenSans: "'Inter', 'Helvetica Neue', Arial, sans-serif",
 };
 
-const tokens = {
+export const tokens = {
   /* color presets */
   colorBackground: colors.white,
   colorPrimary: colors.blue[600],
@@ -262,5 +262,3 @@ export const fontPairs = {
     font-weight: ${tokens.fontWeightBold};
   `,
 };
-
-export default tokens;

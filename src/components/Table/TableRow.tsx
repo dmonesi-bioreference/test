@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
-const TableRow: FC = ({ children }) => <tr>{children}</tr>;
+const TableRow: React.FC = ({ children }) => <tr>{children}</tr>;
 
 export default TableRow;

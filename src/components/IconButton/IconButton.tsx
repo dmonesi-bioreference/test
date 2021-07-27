@@ -1,6 +1,7 @@
 import clsx from 'clsx';
-import { FC } from 'react';
-import Icon, { IconProps } from '../Icon/Icon';
+
+import { Icon, IconProps } from 'components/Icon';
+
 import IconButtonStyled from './IconButton.styles';
 
 export interface IconButtonProps extends IconProps {
@@ -29,7 +30,7 @@ const defaultProps: Partial<IconButtonProps> = {
  * ## Available Icons
  * Search the available icons at https://heroicons.com.
  */
-const IconButton: FC<IconButtonProps> = (props) => {
+const IconButton: React.FC<IconButtonProps> = (props) => {
   return (
     <IconButtonStyled
       className={clsx({

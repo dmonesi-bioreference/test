@@ -1,7 +1,9 @@
 import { Story } from '@storybook/react/types-6-0';
 import { useState } from 'react';
+
+import { Button } from 'components/Button';
+
 import Alert, { AlertProps } from './Alert';
-import Button from '../Button/Button';
 
 export default {
   component: Alert,

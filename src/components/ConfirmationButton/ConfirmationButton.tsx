@@ -1,5 +1,7 @@
-import { FC, useEffect, useState, useRef } from 'react';
-import Dialog from '../Dialog/Dialog';
+import { useEffect, useState, useRef } from 'react';
+
+import { Dialog } from 'components/Dialog';
+
 import ConfirmationButtonStyled from './ConfirmationButton.styles';
 
 interface ConfirmationButtonProps {
@@ -20,7 +22,7 @@ const defaultProps: Partial<ConfirmationButtonProps> = {
   prompt: 'Are you sure?',
 };
 
-const ConfirmationButton: FC<ConfirmationButtonProps> = (props) => {
+const ConfirmationButton: React.FC<ConfirmationButtonProps> = (props) => {
   const [confirm, setConfirm] = useState(false);
   const triggerWrap = useRef<HTMLDivElement>(null);
   const confirmWrap = useRef<HTMLDivElement>(null);

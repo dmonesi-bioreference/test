@@ -1,5 +1,5 @@
-import { FC } from 'react';
-import tokens, { colors } from '../../styles/tokens';
+import { colors, tokens } from 'styles/tokens';
+
 import SpinnerStyled from './Spinner.styles';
 
 export interface SpinnerProps {
@@ -17,10 +17,8 @@ const defaultProps: SpinnerProps = {
   indicatorColor: tokens.colorPrimary,
 };
 
-const Spinner: FC<SpinnerProps> = (props) => {
+export const Spinner: React.FC<SpinnerProps> = (props) => {
   return <SpinnerStyled aria-busy="true" aria-live="polite" {...props} />;
 };
 
 Spinner.defaultProps = defaultProps;
-
-export default Spinner;

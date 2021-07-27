@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import t, { panels, modals } from '../../styles/tokens';
-import { base } from '../../styles/utilities/base';
-import { hidden } from '../../styles/utilities/hidden';
+
+import { panels, modals, tokens, base, hidden } from 'styles';
 
 const DialogStyled = styled.div`
   ${base}
@@ -13,7 +12,7 @@ const DialogStyled = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: ${t.zIndexDialog};
+  z-index: ${tokens.zIndexDialog};
 
   &:not(.dialog--visible) {
     ${hidden}
@@ -24,14 +23,15 @@ const DialogStyled = styled.div`
     flex-direction: column;
     z-index: 2;
     width: 30rem;
-    max-width: calc(100% - ${t.spacingXxLarge});
-    max-height: calc(100% - ${t.spacingXxLarge});
+    max-width: calc(100% - ${tokens.spacingXxLarge});
+    max-height: calc(100% - ${tokens.spacingXxLarge});
     background-color: ${panels.backgroundColor};
-    border-radius: ${t.borderRadiusMedium};
+    border-radius: ${tokens.borderRadiusMedium};
     box-shadow: ${panels.boxShadow};
     opacity: 0;
     transform: scale(0.9);
-    transition: ${t.transitionMedium} opacity, ${t.transitionMedium} transform;
+    transition: ${tokens.transitionMedium} opacity,
+      ${tokens.transitionMedium} transform;
 
     &:focus {
       outline: none;
@@ -50,23 +50,23 @@ const DialogStyled = styled.div`
 
   .dialog__title {
     flex: 1 1 auto;
-    font-size: ${t.fontSize20};
-    font-weight: ${t.fontWeightMedium};
-    line-height: ${t.lineHeightDense};
-    padding: ${t.spacingLarge};
+    font-size: ${tokens.fontSize20};
+    font-weight: ${tokens.fontWeightMedium};
+    line-height: ${tokens.lineHeightDense};
+    padding: ${tokens.spacingLarge};
   }
 
   .dialog__close {
     flex: 0 0 auto;
     display: flex;
     align-items: center;
-    font-size: ${t.fontSize24};
-    padding: 0 ${t.spacingLarge};
+    font-size: ${tokens.fontSize24};
+    padding: 0 ${tokens.spacingLarge};
   }
 
   .dialog__body {
     flex: 1 1 auto;
-    padding: ${t.spacingLarge};
+    padding: ${tokens.spacingLarge};
     overflow: auto;
     --webkit-overflow-scrolling: touch;
   }
@@ -74,7 +74,7 @@ const DialogStyled = styled.div`
   .dialog__footer {
     flex: 0 0 auto;
     text-align: right;
-    padding: ${t.spacingLarge};
+    padding: ${tokens.spacingLarge};
   }
 
   &:not(.dialog--has-footer) .dialog__footer {
