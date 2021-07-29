@@ -31,6 +31,12 @@ export const Headings: Story = () => (
     <Typography type="heading" level="6">
       This is a senary heading
     </Typography>
+    <Typography type="heading" level="7">
+      This is a septernary heading
+    </Typography>
+    <Typography type="heading" level="8">
+      This is an octonary heading
+    </Typography>
   </div>
 );
 
@@ -40,4 +46,12 @@ export const Body: Story = () => (
 
 export const Category: Story = () => (
   <Typography type="category">This is a category</Typography>
+);
+
+export const DisplayLabel: Story = () => (
+  <Typography type="label">This is a display label</Typography>
+);
+
+export const HelperText: Story = () => (
+  <Typography type="helper-text">This is a helper text</Typography>
 );

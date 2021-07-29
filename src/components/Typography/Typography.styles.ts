@@ -20,22 +20,32 @@ const TypographyStyled = styled.div`
 
   &.heading3 {
     font-size: ${tokens.fontSize20};
-    font-weight: ${tokens.fontWeightRegular};
+    font-weight: ${tokens.fontWeightBold};
   }
 
   &.heading4 {
-    font-size: ${tokens.fontSize16};
-    font-weight: ${tokens.fontWeightBold};
+    font-size: ${tokens.fontSize20};
+    font-weight: ${tokens.fontWeightRegular};
   }
 
   &.heading5 {
     font-size: ${tokens.fontSize16};
-    font-weight: ${tokens.fontWeightMedium};
+    font-weight: ${tokens.fontWeightBold};
   }
 
   &.heading6 {
     font-size: ${tokens.fontSize16};
+    font-weight: ${tokens.fontWeightMedium};
+  }
+
+  &.heading7 {
+    font-size: ${tokens.fontSize16};
     font-weight: ${tokens.fontWeightRegular};
+  }
+
+  &.heading8 {
+    font-size: ${tokens.fontSize14};
+    font-weight: ${tokens.fontWeightBold};
   }
 
   &.body {
@@ -49,8 +59,21 @@ const TypographyStyled = styled.div`
     font-size: ${tokens.fontSize14};
     font-weight: ${tokens.fontWeightBold};
     line-height: ${tokens.lineHeightSelf};
-    text-transform: uppercase;
     letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  &.helper-text {
+    font-size: ${tokens.fontSize14};
+    font-style: italic;
+    font-weight: ${tokens.fontWeightRegular};
+  }
+
+  &.label {
+    font-size: ${tokens.fontSize12};
+    font-weight: ${tokens.fontWeightBold};
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
   }
 `;
 
