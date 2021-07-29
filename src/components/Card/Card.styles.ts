@@ -5,22 +5,18 @@ import { base, colors, tokens } from 'styles';
 const CardStyled = styled.div`
   ${base}
   background-color: ${colors.white};
-  border: 1px solid ${colors.grey[200]};
-  border-radius: ${tokens.borderRadiusLarge};
+  border-radius: ${tokens.borderRadiusXLarge};
+  box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
 
   .card__header {
-    padding: ${tokens.spacingLarge};
-    border-bottom: 1px solid ${colors.grey[200]};
+    .card__image {
+      width: 100%;
+    }
   }
 
-  .card__title {
-    color: ${tokens.colorSecondaryText};
-    font-size: ${tokens.fontSize18};
-    font-weight: ${tokens.fontWeightMedium};
-  }
-
-  .card__body {
-    padding: ${tokens.spacingMedium} ${tokens.spacingLarge};
+  .card__content {
+    padding: 24px;
   }
 `;
 

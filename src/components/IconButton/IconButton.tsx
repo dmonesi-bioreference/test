@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 
-import { Icon, IconProps } from 'components/Icon';
+import { HeroiconProps, Icon } from 'components/Icon';
 
 import IconButtonStyled from './IconButton.styles';
 
-export interface IconButtonProps extends IconProps {
+export interface IconButtonProps extends HeroiconProps {
   /** A description of the button for screen readers. */
   label: string;
   /** Set to true to render the button in a disabled state. */

@@ -15,7 +15,9 @@ export default {
 };
 
 const Template: Story<ButtonProps> = (args) => (
-  <Button {...args}>Button</Button>
+  <div style={{ width: 150 }}>
+    <Button {...args}>Button</Button>
+  </div>
 );
 
 export const Primary = Template.bind({});

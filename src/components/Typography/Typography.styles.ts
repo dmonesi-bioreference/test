@@ -4,8 +4,9 @@ import { tokens, base, colors } from 'styles';
 
 const TypographyStyled = styled.div`
   ${base}
-  color: ${colors.black};
+  color: ${tokens.colorDefaultText};
   line-height: ${tokens.lineHeightDense};
+  margin: 0;
 
   &.heading1 {
     font-size: ${tokens.fontSize32};
@@ -44,6 +45,7 @@ const TypographyStyled = styled.div`
   }
 
   &.category {
+    color: ${colors.blue[600]};
     font-size: ${tokens.fontSize14};
     font-weight: ${tokens.fontWeightBold};
     line-height: ${tokens.lineHeightSelf};

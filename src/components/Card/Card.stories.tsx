@@ -1,5 +1,7 @@
 import { Story } from '@storybook/react/types-6-0';
 
+import { Typography } from 'components/Typography';
+
 import Card, { CardProps } from './Card';
 
 export default {
@@ -12,17 +14,14 @@ export default {
 };
 
 const Template: Story<CardProps> = (args) => (
-  <Card {...args}>
-    <p>Card content.</p>
-  </Card>
+  <div style={{ width: 300 }}>
+    <Card {...args}>
+      <Typography type="heading" level="2">
+        This is a title
+      </Typography>
+      <p>Card content.</p>
+    </Card>
+  </div>
 );
 
 export const Primary = Template.bind({});
-
-Primary.args = {
-  title: 'Card Title',
-};
-
-export const withoutTitle = Template.bind({});
-
-withoutTitle.args = {};

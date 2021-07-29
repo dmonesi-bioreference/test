@@ -72,6 +72,7 @@ export const fonts = {
 export const tokens = {
   /* color presets */
   colorBackground: colors.white,
+  colorDefaultText: colors.black,
   colorPrimary: colors.blue[600],
   colorPrimaryActive: colors.blue[800],
   colorPrimaryHover: colors.blue[700],

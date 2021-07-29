@@ -29,6 +29,7 @@ const ButtonStyled = styled.button<ButtonProps & ButtonStyledProps>`
   vertical-align: middle;
   transition: ${tokens.transitionFast} all;
   cursor: pointer;
+  width: 100%;
 
   &:focus {
     outline: none;
@@ -223,6 +224,7 @@ const ButtonStyled = styled.button<ButtonProps & ButtonStyledProps>`
     color: ${tokens.colorPrimary};
     height: fit-content;
     padding: 0;
+    width: auto;
 
     &:hover:not(.button--disabled) {
       color: ${tokens.colorPrimaryHover};

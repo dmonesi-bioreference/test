@@ -1,19 +1,14 @@
 import CardStyled from './Card.styles';
 
 export interface CardProps {
-  /** Optional title for the card. */
-  title?: string;
+  header?: React.ReactNode;
 }
 
 const Card: React.FC<CardProps> = (props) => {
   return (
     <CardStyled className="card">
-      {props.title && (
-        <header className="card__header">
-          <div className="card__title">{props.title}</div>
-        </header>
-      )}
-      <div className="card__body">{props.children}</div>
+      <div className="card__header">{props.header}</div>
+      <div className="card__content">{props.children}</div>
     </CardStyled>
   );
 };
