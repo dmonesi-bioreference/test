@@ -49,7 +49,7 @@ const RadioStyled = styled(FormControl)<FormControlProps>`
     }
   }
 
-  // Hover
+  /* Hover */
   .radio:not(.radio--checked):not(.radio--disabled) .radio__control:hover {
     border-color: ${inputs.borderHoverColor};
   }

@@ -35,8 +35,8 @@ const Template: Story<RadioProps> = (args) => {
 
   return (
     <RadioGroup onChange={handleChange} value={value} name="radio">
-      <Radio value="one" label="Option One" {...args} />
-      <Radio value="two" label="Option Two" {...args} />
+      <Radio value="one" {...args} label="Option One" />
+      <Radio value="two" {...args} label="Option Two" />
     </RadioGroup>
   );
 };

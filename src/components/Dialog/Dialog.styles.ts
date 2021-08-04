@@ -68,6 +68,7 @@ const DialogStyled = styled.div`
     flex: 1 1 auto;
     padding: ${tokens.spacingLarge};
     overflow: auto;
+
     --webkit-overflow-scrolling: touch;
   }
 

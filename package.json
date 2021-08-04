@@ -1,6 +1,9 @@
 {
   "name": "project-pandas-prototype",
   "version": "0.0.0",
+  "engines": {
+    "node": ">=14"
+  },
   "private": true,
   "main": "dist/index.js",
   "files": [

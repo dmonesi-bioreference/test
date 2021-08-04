@@ -48,7 +48,7 @@ const CheckboxStyled = styled(FormControl)<FormControlProps>`
     }
   }
 
-  // Hover
+  /* Hover */
   .checkbox:not(.checkbox--checked):not(.checkbox--disabled)
     .checkbox__control:hover {
     border-color: ${inputs.borderHoverColor};
