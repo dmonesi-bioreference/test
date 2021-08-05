@@ -12,7 +12,7 @@ type ButtonStyledProps = {
 const ButtonStyled = styled.button<ButtonProps & ButtonStyledProps>`
   ${base}
   display: inline-flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: center;
   border-style: solid;
   border-radius: ${tokens.borderRadiusXLarge};
@@ -21,7 +21,7 @@ const ButtonStyled = styled.button<ButtonProps & ButtonStyledProps>`
   font-size: ${buttons.fontSize};
   font-weight: ${tokens.fontWeightBold};
   height: ${inputs.heightLarge};
-  line-height: calc(${inputs.heightLarge} - ${inputs.borderWidth} * 2);
+  line-height: ${tokens.lineHeightSelf};
   padding: 0 ${tokens.spacingXLarge};
   text-decoration: none;
   user-select: none;
@@ -268,7 +268,6 @@ const ButtonStyled = styled.button<ButtonProps & ButtonStyledProps>`
 
   .button__prefix,
   .button__suffix {
-    flex: 0 0 auto;
     display: flex;
     align-items: center;
   }

@@ -146,7 +146,7 @@ export const tokens = {
   spacingLarge: rem('24px'),
   spacingXLarge: rem('32px'),
   spacingXxLarge: rem('48px'),
-  spacingXxxLarge: rem('60px'),
+  spacingXxxLarge: rem('64px'),
   spacingXxxxLarge: rem('72px'),
 
   /* border-width */

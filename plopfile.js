@@ -17,7 +17,7 @@ module.exports = function (plop) {
       },
       {
         type: 'add',
-        path: 'src/components/{{properCase name}}/{{properCase name}}.styles.js',
+        path: 'src/components/{{properCase name}}/{{properCase name}}.styles.ts',
         templateFile: 'plop/component/component.styles.hbs',
       },
       {

@@ -7,6 +7,7 @@ export * from './Fieldset';
 export * from './Icon';
 export * from './IconButton';
 export * from './Input';
+export * from './Header';
 export * from './Message';
 export * from './Radio';
 export * from './Select';

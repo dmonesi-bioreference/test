@@ -3,6 +3,7 @@ import { Suspense, lazy } from 'react';
 
 import Icons from 'assets/icons/svg/Icons.svg';
 
+import IconStyled from './Icon.styles';
 import HeroiconName from './heroicon';
 
 interface CustomIconProps {
@@ -14,6 +15,8 @@ export interface HeroiconProps {
   name: HeroiconName;
   style?: 'solid' | 'outline';
   kind?: 'heroicon';
+  color?: 'default' | 'primary' | 'danger';
+  size?: 32 | 24;
 }
 
 export type IconProps = CustomIconProps | HeroiconProps;
@@ -36,7 +39,7 @@ export type IconProps = CustomIconProps | HeroiconProps;
  */
 const Icon: React.FC<IconProps> = (props) => {
   if (props.kind == 'custom') {
-    return customIcon(props.name);
+    return <IconStyled>{customIcon(props.name)}</IconStyled>;
   }
 
   const style = props.style ? props.style : 'outline';
@@ -46,10 +49,15 @@ const Icon: React.FC<IconProps> = (props) => {
     () => import(`icons/heroicons/${style}/${nameAsPascal}`)
   );
 
+  const size = props.size || 24;
+  const color = props.color || 'default';
+
   return (
-    <Suspense fallback="">
-      <Component />
-    </Suspense>
+    <IconStyled className={color}>
+      <Suspense fallback="">
+        <Component height={size} width={size} />
+      </Suspense>
+    </IconStyled>
   );
 };
 
