@@ -15,10 +15,10 @@ export default {
 
 const Template: Story<CardGridProps> = (args) => (
   <CardGrid {...args}>
-    <Card title="Card 1">Card one content.</Card>
-    <Card title="Card 2">Card two content.</Card>
-    <Card title="Card 3">Card three content.</Card>
-    <Card title="Card 4">Card four content.</Card>
+    <Card header="Card 1">Card one content.</Card>
+    <Card header="Card 2">Card two content.</Card>
+    <Card header="Card 3">Card three content.</Card>
+    <Card header="Card 4">Card four content.</Card>
   </CardGrid>
 );
 

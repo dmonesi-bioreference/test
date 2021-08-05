@@ -92,7 +92,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     return (
       <Link
         to={props.linkTo}
-        target={isLink && props.target ? props.target : null}
+        target={isLink && props.target ? props.target : undefined}
       >
         {buttonMarkup('div')}
       </Link>
