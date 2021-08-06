@@ -4,9 +4,20 @@ import { tokens, base, colors } from 'styles';
 
 const TypographyStyled = styled.div`
   ${base}
-  color: ${tokens.colorDefaultText};
   line-height: ${tokens.lineHeightDense};
   margin: 0;
+
+  &.default {
+    color: ${tokens.colorDefaultText};
+  }
+
+  &.primary {
+    color: ${tokens.colorPrimaryText};
+  }
+
+  &.minor {
+    color: ${tokens.colorSecondaryText};
+  }
 
   &.heading1 {
     font-size: ${tokens.fontSize32};

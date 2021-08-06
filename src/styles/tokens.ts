@@ -71,16 +71,16 @@ export const fonts = {
 
 export const tokens = {
   /* color presets */
-  colorBackground: colors.white,
+  colorBackground: colors.grey[100],
   colorDefaultText: colors.black,
   colorPrimary: colors.blue[600],
   colorPrimaryActive: colors.blue[800],
   colorPrimaryHover: colors.blue[700],
-  colorPrimaryText: colors.white,
+  colorPrimaryText: colors.blue[600],
   colorPrimaryFocus: colors.blue[200],
   colorSecondary: colors.grey[600],
   colorSecondaryHover: colors.grey[500],
-  colorSecondaryText: colors.grey[600],
+  colorSecondaryText: colors.grey[700],
   colorSecondaryFocus: colors.grey[200],
   colorSuccess: colors.green[600],
   colorSuccessHover: colors.green[500],

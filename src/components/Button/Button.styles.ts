@@ -224,7 +224,11 @@ const ButtonStyled = styled.button<ButtonProps & ButtonStyledProps>`
     color: ${tokens.colorPrimary};
     height: fit-content;
     padding: 0;
+    white-space: pre-wrap;
     width: auto;
+
+    /* Recommended for Internet Explorer 5.5+ */
+    word-wrap: break-word;
 
     &:hover:not(.button--disabled) {
       color: ${tokens.colorPrimaryHover};
@@ -272,14 +276,17 @@ const ButtonStyled = styled.button<ButtonProps & ButtonStyledProps>`
     align-items: center;
   }
 
-  .button__prefix *:first-child {
-    margin-left: -${tokens.spacingXSmall};
-    margin-right: ${tokens.spacingXSmall};
+  .button__prefix :first-child {
+    margin-right: ${tokens.spacingXxSmall};
   }
 
-  .button__suffix *:last-child {
-    margin-left: ${tokens.spacingXSmall};
-    margin-right: -${tokens.spacingXSmall};
+  .button__suffix :last-child {
+    margin-left: ${tokens.spacingXxSmall};
+  }
+
+  &.button--space-between {
+    justify-content: space-between;
+    width: 100%;
   }
 `;
 

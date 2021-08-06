@@ -2,6 +2,7 @@ import { pascalCase } from 'change-case';
 import { Suspense, lazy } from 'react';
 
 import Icons from 'assets/icons/svg/Icons.svg';
+import { tokens } from 'styles';
 
 import IconStyled from './Icon.styles';
 import HeroiconName from './heroicon';
@@ -16,7 +17,7 @@ export interface HeroiconProps {
   style?: 'solid' | 'outline';
   kind?: 'heroicon';
   color?: 'default' | 'primary' | 'danger';
-  size?: 32 | 24;
+  size?: 'large' | 'small';
 }
 
 export type IconProps = CustomIconProps | HeroiconProps;
@@ -42,29 +43,40 @@ const Icon: React.FC<IconProps> = (props) => {
     return <IconStyled>{customIcon(props.name)}</IconStyled>;
   }
 
-  const style = props.style ? props.style : 'outline';
+  const style = props.style || 'outline';
   const nameAsPascal = pascalCase(props.name);
   const Component = lazy(
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     () => import(`icons/heroicons/${style}/${nameAsPascal}`)
   );
 
-  const size = props.size || 24;
+  const size = props.size || 'small';
   const color = props.color || 'default';
 
   return (
-    <IconStyled className={color}>
+    <IconStyled className={`${color} ${size}`}>
       <Suspense fallback="">
-        <Component height={size} width={size} />
+        <Component
+          height={convertToNumber(size)}
+          width={convertToNumber(size)}
+        />
       </Suspense>
     </IconStyled>
   );
 };
 
+const convertToNumber = (size: string) => {
+  return size == 'large' ? 32 : 24;
+};
+
 const customIcon = (name: string) => {
   return (
-    <svg width="72" height="72" fill="currentColor">
-      <use xlinkHref={`${Icons}#icon-${name}`} />
+    <svg
+      width={`${tokens.spacingXxxxLarge}`}
+      height={`${tokens.spacingXxxxLarge}`}
+      fill="currentColor"
+    >
+      <use xlinkHref={`${Icons}#icon__${name}`} />
     </svg>
   );
 };

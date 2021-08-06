@@ -37,6 +37,8 @@ export interface ButtonProps {
   submit?: boolean;
   /** Used to append an icon or similar element to the button. */
   suffix?: React.ReactNode;
+  /** Used to set spacing between button children. */
+  spreadContent?: boolean;
   /** Tells the browser where to open the link. Used only if `href` is set. */
   target?: '_blank' | '_parent' | '_self' | '_top';
 }
@@ -67,6 +69,7 @@ const Button: React.FC<ButtonProps> = (props) => {
 
     // Modifiers
     'button--disabled': props.disabled,
+    'button--space-between': props.spreadContent,
   });
 
   const buttonMarkup = (as: 'a' | 'button' | 'div') => (
@@ -82,9 +85,9 @@ const Button: React.FC<ButtonProps> = (props) => {
       value={isButton ? props.value : undefined}
       type={isButton ? (props.submit ? 'submit' : 'button') : undefined}
     >
-      <span className="button__prefix">{props.prefix}</span>
+      {renderIfExists(props.prefix, 'button__prefix')}
       <span className="button__label">{props.children}</span>
-      <span className="button__suffix">{props.suffix}</span>
+      {renderIfExists(props.suffix, 'button__suffix')}
     </ButtonStyled>
   );
 
@@ -100,6 +103,10 @@ const Button: React.FC<ButtonProps> = (props) => {
   }
 
   return buttonMarkup(isLink ? 'a' : 'button');
+};
+
+const renderIfExists = (component: React.ReactNode, className: string) => {
+  return component ? <span className={className}>{component}</span> : null;
 };
 
 Button.defaultProps = defaultProps;

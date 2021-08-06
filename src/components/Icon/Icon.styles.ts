@@ -17,6 +17,14 @@ const IconStyled = styled.div`
   &.danger {
     color: ${tokens.colorDanger};
   }
+
+  &.small {
+    width: ${tokens.spacingLarge};
+  }
+
+  &.large {
+    width: ${tokens.spacingXLarge};
+  }
 `;
 
 export default IconStyled;

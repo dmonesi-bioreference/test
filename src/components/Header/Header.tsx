@@ -7,7 +7,7 @@ const Header: React.FC = () => {
   return (
     <HeaderStyled>
       <img src={GeneDxLogo} alt="GeneDx Logo" />
-      <Icon name="menu" kind="heroicon" size={32} />
+      <Icon name="menu" kind="heroicon" size="large" />
     </HeaderStyled>
   );
 };

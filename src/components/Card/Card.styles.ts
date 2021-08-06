@@ -10,7 +10,7 @@ const CardStyled = styled.div`
   overflow: hidden;
 
   .card__header {
-    .card__image {
+    img {
       width: 100%;
     }
   }
