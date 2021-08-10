@@ -39,6 +39,7 @@ export const waitingLandingPage = () => (
           {factCard('101 on Genetics', 'helix')}
           {factCard('Whole Genome Sequencing', 'atom')}
         </PageSection>
+
       </PageLayout>
     </div>
   </Main>
@@ -209,6 +210,7 @@ const resourcesSectionHeader = (
     </div>
 
     <Icon name="chevron-right" />
+
   </div>
 );
 

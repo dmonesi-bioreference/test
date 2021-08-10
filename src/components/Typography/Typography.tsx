@@ -25,6 +25,7 @@ export type TypographyProps =
 
 const Typography: React.FC<TypographyProps> = (props) => {
   const color = props.color || 'default';
+
   switch (props.type) {
     case 'body':
     case 'category':
