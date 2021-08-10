@@ -7,11 +7,9 @@ import {
   PageLayout,
   PageSection,
   Typography,
-} from 'components';
-import {
   TypographyColor,
   TypographyHeadingLevel,
-} from 'components/Typography/Typography';
+} from 'components';
 import { tokens } from 'styles';
 
 import Main from '.';
@@ -59,23 +57,24 @@ const buildHeading = (
   );
 };
 
-const iconBesideBodyText = (
-  iconName: string,
-  text: string,
-  marginBottom?: string
+const Flag = (
+  props: Props<{
+    iconName: string;
+    marginBottom?: string;
+  }>
 ) => {
   return (
     <div
       style={{
         display: 'flex',
         flexDirection: 'row',
-        marginBottom: marginBottom,
+        marginBottom: props.marginBottom,
       }}
     >
       <div style={{ marginRight: tokens.spacingLarge }}>
-        <Icon name={iconName} kind="custom" />
+        <Icon name={props.iconName} kind="custom" />
       </div>
-      <Typography type="body">{text}</Typography>
+      <Typography type="body">{props.children}</Typography>
     </div>
   );
 };
@@ -221,11 +220,9 @@ const careTeamCard = (
     <div style={{ marginBottom: tokens.spacingXLarge }}>
       {buildHeading('2', 'Talk to a Genetic Counselor')}
     </div>
-    {iconBesideBodyText(
-      'healthcare-provider',
-      'Find peace of mind and get your burning questions answered',
-      tokens.spacingXLarge
-    )}
+    <Flag iconName="healthcare-provider" marginBottom={tokens.spacingXLarge}>
+      Find peace of mind and get your burning questions answered
+    </Flag>
     <div style={{ marginBottom: tokens.spacingXLarge }}>
       {buildHeading('7', "Starting today, we're here for you.")}
     </div>
@@ -250,10 +247,10 @@ const factCard = (headingText: string, iconName: string) => {
       <div style={{ marginBottom: tokens.spacingXLarge }}>
         {buildHeading('2', headingText)}
       </div>
-      {iconBesideBodyText(
-        iconName,
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text.'
-      )}
+      <Flag iconName={iconName}>
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry standard dummy text.
+      </Flag>
     </Card>
   );
 };
