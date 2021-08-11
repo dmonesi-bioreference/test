@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { tokens, base, colors } from 'styles';
+import { tokens, base } from 'styles';
 
 const TypographyStyled = styled.div`
   ${base}
@@ -66,7 +66,6 @@ const TypographyStyled = styled.div`
   }
 
   &.category {
-    color: ${colors.blue[600]};
     font-size: ${tokens.fontSize14};
     font-weight: ${tokens.fontWeightBold};
     line-height: ${tokens.lineHeightSelf};

@@ -38,7 +38,9 @@ const addStep = (
   number: number,
   position: StepPosition
 ) => {
-  return steps.push(<Step number={number + 1} position={position} />);
+  return steps.push(
+    <Step number={number + 1} position={position} key={number} />
+  );
 };
 
 export default ProgressBar;
