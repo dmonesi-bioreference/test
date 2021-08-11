@@ -18,9 +18,9 @@
     "isolatedModules": true,
     "noEmit": true,
     "types": ["node", "jest"],
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "public", ".cache"]
+  "include": ["src", "*.config.js", "next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", "public", ".cache", "tmp"]
 }

@@ -41,6 +41,7 @@ const ConfirmationButton: React.FC<ConfirmationButtonProps> = (props) => {
       'click',
       handleCancelClick
     );
+    // eslint-disable-next-line
   }, []);
 
   const handleConfirmClick = () => {

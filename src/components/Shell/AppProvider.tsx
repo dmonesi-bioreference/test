@@ -12,6 +12,7 @@ export function AppProvider(props: Props<unknown>) {
     () => ({
       'app-ready': () => send('app-ready'),
     }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 

@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import InTheNICUImage from 'assets/images/jpg/InTheNICU.jpg';
 import {
   Button,
@@ -153,7 +155,7 @@ const resultsStatusSectionHeader = (
 // -- resources section --
 
 const articleCard = (
-  <Card header={<img src={InTheNICUImage} alt="In The NICU" />}>
+  <Card header={<Image src={InTheNICUImage} alt="In The NICU" />}>
     <div style={{ marginBottom: tokens.spacingXxSmall }}>
       <Typography type="category" color="primary">
         Real family story

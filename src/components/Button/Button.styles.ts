@@ -2,14 +2,7 @@ import styled from 'styled-components';
 
 import { base, colors, inputs, buttons, focus, tokens } from 'styles';
 
-import { ButtonProps } from './Button';
-
-type ButtonStyledProps = {
-  as: 'a' | 'button' | 'div';
-  type: 'submit' | 'button' | undefined;
-};
-
-const ButtonStyled = styled.button<ButtonProps & ButtonStyledProps>`
+const ButtonStyled = styled.button`
   ${base}
   display: inline-flex;
   align-items: center;

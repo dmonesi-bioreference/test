@@ -60,6 +60,9 @@ export const Links: Story = () => (
     <Button kind="tertiary" href="https://example.com">
       Tertiary
     </Button>
+    <Button kind="danger" href="https://example.com" target="_blank">
+      Opens in a new tab
+    </Button>
   </div>
 );
 

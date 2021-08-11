@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import ButtonStyled from './Button.styles';
 
@@ -27,8 +27,6 @@ export interface ButtonProps {
   name?: string;
   /** An optional value for the button. Ignore if `href` is set. */
   value?: string;
-  /** Set a linkTo value with React Router. */
-  linkTo?: string | Record<string, unknown>;
   /** Specify the onClick event for the button. */
   onClick?: () => void;
   /** Used to prepend an icon or similar element to the button. */
@@ -48,11 +46,7 @@ const defaultProps: ButtonProps = {
 };
 
 const Button: React.FC<ButtonProps> = (props) => {
-  const isLink = props.href ? true : false;
-  const isRouterLink = props.linkTo ? true : false;
-  const isButton = !isLink && !isRouterLink;
-
-  const classNames = clsx({
+  const className = clsx({
     button: true,
 
     // Kinds
@@ -72,37 +66,35 @@ const Button: React.FC<ButtonProps> = (props) => {
     'button--space-between': props.spreadContent,
   });
 
-  const buttonMarkup = (as: 'a' | 'button' | 'div') => (
+  return props.href ? (
+    <Link href={props.href} passHref>
+      <ButtonStyled
+        as="a"
+        className={className}
+        target={props.target}
+        download={props.download}
+        onClick={props.onClick}
+        href={props.href}
+      >
+        <span className="button__prefix">{props.prefix}</span>
+        <span className="button__label">{props.children}</span>
+        <span className="button__suffix">{props.suffix}</span>
+      </ButtonStyled>
+    </Link>
+  ) : (
     <ButtonStyled
-      as={as}
-      className={classNames}
-      disabled={isButton ? props.disabled : undefined}
-      target={isLink && props.target ? props.target : undefined}
-      download={isLink && props.download ? props.download : undefined}
+      className={className}
+      disabled={props.disabled}
+      name={props.name}
+      value={props.value}
+      type={props.submit ? 'submit' : 'button'}
       onClick={props.onClick}
-      href={isLink ? props.href : undefined}
-      name={isButton ? props.name : undefined}
-      value={isButton ? props.value : undefined}
-      type={isButton ? (props.submit ? 'submit' : 'button') : undefined}
     >
       {renderIfExists(props.prefix, 'button__prefix')}
       <span className="button__label">{props.children}</span>
       {renderIfExists(props.suffix, 'button__suffix')}
     </ButtonStyled>
   );
-
-  if (props.linkTo) {
-    return (
-      <Link
-        to={props.linkTo}
-        target={isLink && props.target ? props.target : undefined}
-      >
-        {buttonMarkup('div')}
-      </Link>
-    );
-  }
-
-  return buttonMarkup(isLink ? 'a' : 'button');
 };
 
 const renderIfExists = (component: React.ReactNode, className: string) => {

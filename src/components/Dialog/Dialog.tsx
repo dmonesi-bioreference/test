@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 
 import { IconButton } from 'components/IconButton';
 
@@ -36,19 +36,20 @@ const Dialog: React.FC<DialogProps> = (props) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isOpen, setIsOpen] = useState(props.open ? true : false);
 
-  useEffect(() => {
-    props.open ? show() : hide();
-  }, [props.open]);
-
-  const show = () => {
-    setIsVisible(true);
-    setIsOpen(true);
-  };
-
-  const hide = () => {
+  const hide = useCallback(() => {
     setIsOpen(false);
     props.onClose && props.onClose();
-  };
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    const show = () => {
+      setIsVisible(true);
+      setIsOpen(true);
+    };
+
+    props.open ? show() : hide();
+  }, [props.open, hide]);
 
   const handleCloseClick = () => {
     hide();

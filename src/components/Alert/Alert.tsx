@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 
 import { Icon } from 'components/Icon';
 import { IconButton } from 'components/IconButton';
@@ -30,19 +30,26 @@ const defaultProps: AlertProps = {
  *  **➡️ Alerts will not be visible if the `open` prop is not present.**
  */
 const Alert: React.FC<AlertProps> = (props) => {
-  let autoHideTimeout: NodeJS.Timeout;
+  const autoHideTimeout = useRef<NodeJS.Timeout | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [isOpen, setIsOpen] = useState(props.open ? true : false);
+  const close = useCallback(() => {
+    props.onClose && props.onClose();
+    // eslint-disable-next-line
+  }, []);
 
-  useEffect(() => {
-    props.open ? show() : hide();
-  }, [props.open]);
+  const hide = useCallback(() => {
+    if (!isVisible) {
+      return;
+    }
 
-  useEffect(() => {
-    restartAutoHide();
-  }, [props.duration]);
+    setIsOpen(false);
+    close();
+  }, [close, isVisible]);
 
-  const show = () => {
+  const show = useCallback(() => {
+    const timeout = autoHideTimeout.current;
+
     if (isVisible) {
       return;
     }
@@ -51,18 +58,40 @@ const Alert: React.FC<AlertProps> = (props) => {
     setIsOpen(true);
 
     if (props.duration && props.duration < Infinity) {
-      autoHideTimeout = setTimeout(() => hide(), props.duration);
-    }
-  };
-
-  const hide = () => {
-    if (!isVisible) {
-      return;
+      autoHideTimeout.current = setTimeout(hide, props.duration);
     }
 
-    setIsOpen(false);
-    props.onClose && props.onClose();
-  };
+    return () => {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+    };
+  }, [hide, isVisible, props.duration]);
+
+  const restartAutoHide = useCallback(() => {
+    const timeout = autoHideTimeout.current;
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+
+    if (isOpen && props.duration && props.duration < Infinity) {
+      autoHideTimeout.current = setTimeout(hide, props.duration);
+    }
+
+    return () => {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+    };
+  }, [props.duration, isOpen, hide]);
+
+  useEffect(() => {
+    props.open ? show() : hide();
+  }, [props.open, show, hide]);
+
+  useEffect(() => {
+    restartAutoHide();
+  }, [restartAutoHide]);
 
   const handleCloseClick = () => {
     hide();
@@ -80,13 +109,6 @@ const Alert: React.FC<AlertProps> = (props) => {
       target.classList.contains('alert')
     ) {
       setIsVisible(isOpen);
-    }
-  };
-
-  const restartAutoHide = () => {
-    clearTimeout(autoHideTimeout);
-    if (isOpen && props.duration && props.duration < Infinity) {
-      autoHideTimeout = setTimeout(() => hide(), props.duration);
     }
   };
 

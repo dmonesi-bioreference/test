@@ -17,6 +17,10 @@ test('Loading the shell adds css variables to the document', () => {
   ).toEqual(tokens.colorBackground);
 });
 
+// background-color: ${tokens.colorWarningHover};
+// background-color: var(--tokens-color-warning-hover);
+// background-color: var(--tokens-color-warning-hover, ${tokens.colorWarningHover});
+
 // This test will fail in a few odd ways, should the theme not be
 // configured correctly.
 //

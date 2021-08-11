@@ -30,7 +30,7 @@ const Radio: React.FC<RadioProps> = (props) => {
 
   useEffect(() => {
     setIsChecked(context.value === props.value);
-  }, [context.value]);
+  }, [context.value, props.value]);
 
   const handleFocus = () => {
     setIsFocused(true);

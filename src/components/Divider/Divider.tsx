@@ -1,6 +1,6 @@
 import DividerStyled from './Divider.styles';
 
-const Divider: React.FC = (props) => {
+const Divider: React.FC = () => {
   return <DividerStyled className="line" />;
 };
 
