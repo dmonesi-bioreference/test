@@ -6,6 +6,8 @@ are discovered.
 
 ## Installation
 
+We use yarn for prototype work.
+
 > `yarn`
 
 ## Starting the Storybook Documentation Site
