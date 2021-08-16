@@ -13,6 +13,10 @@ const HeaderStyled = styled.div`
   box-shadow: 0 4px 16px -10px rgba(27, 33, 50, 0.08);
   height: ${tokens.spacingXxxLarge};
   padding: 0 ${tokens.spacingLarge};
+
+  .header__logo {
+    cursor: pointer;
+  }
 `;
 
 export default HeaderStyled;

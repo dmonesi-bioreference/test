@@ -34,6 +34,7 @@
   "rules": {
     "react/prop-types": "off",
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/require-await": "off",
     "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
@@ -41,6 +42,7 @@
     "security/detect-object-injection": "off",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
+    "react/no-unescaped-entities": "off",
     "no-console": "error",
     "import/no-anonymous-default-export": "off",
     "import/order": [

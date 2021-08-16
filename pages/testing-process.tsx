@@ -1,8 +1,8 @@
 import Head from 'next/head';
 
-import { Main as LandingPage } from 'screens';
+import { TestingProcess } from 'screens';
 
-export default function Home() {
+export default function TestingProcessPage() {
   return (
     <>
       <Head>
@@ -11,7 +11,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <LandingPage />
+        <TestingProcess />;
       </main>
 
       <footer></footer>

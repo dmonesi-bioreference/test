@@ -12,16 +12,19 @@ export type TypographyHeadingLevel =
 
 export type TypographyColor = 'default' | 'primary' | 'minor';
 
-export type TypographyProps =
+interface HeadingProps {
+  level?: TypographyHeadingLevel;
+  color?: TypographyColor;
+}
+
+type TypographyProps =
   | {
       type: 'body' | 'category' | 'label' | 'helper-text';
       color?: TypographyColor;
     }
-  | {
-      level: TypographyHeadingLevel;
+  | ({
       type: 'heading';
-      color?: TypographyColor;
-    };
+    } & HeadingProps);
 
 const Typography: React.FC<TypographyProps> = (props) => {
   const color = props.color || 'default';
@@ -36,16 +39,31 @@ const Typography: React.FC<TypographyProps> = (props) => {
           {props.children}
         </TypographyStyled>
       );
-    case 'heading':
+    case 'heading': {
+      const level = props.level || '2';
+
       return (
         <TypographyStyled
-          as={`h${props.level}`}
-          className={`${props.type}${props.level} ${color}`}
+          as={`h${level}`}
+          className={`${props.type}${level} ${color}`}
         >
           {props.children}
         </TypographyStyled>
       );
+    }
   }
+};
+
+export const Heading = ({
+  level = '2',
+  color = 'default',
+  children,
+}: Props<HeadingProps>) => {
+  return (
+    <Typography type="heading" level={level} color={color}>
+      {children}
+    </Typography>
+  );
 };
 
 export default Typography;

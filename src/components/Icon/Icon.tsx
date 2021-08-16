@@ -1,9 +1,7 @@
 import { pascalCase } from 'change-case';
-import { Suspense, lazy } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import Icons from 'assets/icons/svg/Icons.svg';
-import { tokens } from 'styles';
-
+import { customIcons } from './CustomIcon';
 import IconStyled from './Icon.styles';
 import HeroiconName from './heroicon';
 
@@ -40,45 +38,46 @@ export type IconProps = CustomIconProps | HeroiconProps;
  */
 const Icon: React.FC<IconProps> = (props) => {
   if (props.kind == 'custom') {
-    return <IconStyled>{customIcon(props.name)}</IconStyled>;
+    return <IconStyled>{customIcons[props.name]}</IconStyled>;
   }
 
-  const style = props.style || 'outline';
-  const nameAsPascal = pascalCase(props.name);
-  const Component = lazy(
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    () => import(`icons/heroicons/${style}/${nameAsPascal}`)
-  );
-
-  const size = props.size || 'small';
-  const color = props.color || 'default';
-
-  return (
-    <IconStyled className={`${color} ${size}`}>
-      <Suspense fallback="">
-        <Component
-          height={convertToNumber(size)}
-          width={convertToNumber(size)}
-        />
-      </Suspense>
-    </IconStyled>
-  );
+  return <AsyncHeroIcon {...props} />;
 };
 
 const convertToNumber = (size: string) => {
   return size == 'large' ? 32 : 24;
 };
 
-const customIcon = (name: string) => {
-  return (
-    <svg
-      width={`${tokens.spacingXxxxLarge}`}
-      height={`${tokens.spacingXxxxLarge}`}
-      fill="currentColor"
-    >
-      <use xlinkHref={`${Icons}#icon__${name}`} />
-    </svg>
-  );
+const AsyncHeroIcon: React.FC<HeroiconProps> = ({
+  style = 'outline',
+  size = 'small',
+  color = 'default',
+  name,
+}) => {
+  const [icon, setComponent] = useState<React.ReactNode | null>(null);
+
+  useEffect(() => {
+    if (!icon) {
+      import(`icons/heroicons/${style}/${pascalCase(name)}`)
+        .then((iconModule) =>
+          Reflect.has(iconModule, 'default')
+            ? setComponent(
+                <iconModule.default
+                  height={convertToNumber(size)}
+                  width={convertToNumber(size)}
+                />
+              )
+            : null
+        )
+        .catch(() => undefined);
+    }
+  }, [icon, style, name, size]);
+
+  if (!icon) {
+    return null;
+  }
+
+  return <IconStyled className={`${color} ${size}`}>{icon}</IconStyled>;
 };
 
 export default Icon;
