@@ -29,6 +29,7 @@
     "lint-styles": "stylelint 'src/**/*.ts'",
     "lint:fix": "npm run lint -- --fix",
     "lint:next": "next lint",
+    "lint:all": "yarn lint && yarn lint-styles && yarn lint:next",
     "make-icons": "node make-icons.js",
     "prebuild": "npm run make-icons",
     "plop": "plop",

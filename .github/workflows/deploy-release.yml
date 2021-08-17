@@ -1,0 +1,62 @@
+name: deploy-production
+
+# Begin a release build every time a push to main occurs.
+#
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy-production:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
+
+      - name: Get Yarn
+        run: npm i -g yarn
+
+      - name: Installing
+        run: yarn
+
+      - name: Linting
+        run: yarn lint:all
+
+      - name: Testing
+        run: yarn test:ci
+
+      - name: Start Deployment
+        uses: bobheadxi/deployments@v0.4.3
+        id: deployment
+        with:
+          step: start
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: Preview
+
+      - name: Deploy Preview
+        uses: amondnet/vercel-action@v20
+        id: vercel-action
+        with:
+          scope: ${{ secrets.VERCEL_ORG_ID }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
+          working-directory: .
+
+      - name: Update Deployment Status
+        uses: bobheadxi/deployments@v0.4.3
+        if: always()
+        with:
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: ${{ job.status }}
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+          env_url: ${{ steps.vercel-action.outputs.preview-url }}
