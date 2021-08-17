@@ -11,7 +11,7 @@ export default function TestingProcessPage() {
       </Head>
 
       <main>
-        <TestingProcess />;
+        <TestingProcess />
       </main>
 
       <footer></footer>
