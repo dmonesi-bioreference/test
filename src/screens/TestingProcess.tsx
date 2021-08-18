@@ -25,7 +25,7 @@ export function TestingProcess() {
               gap: tokens.spacingMedium,
             }}
           >
-            <Heading>The genetic testing process</Heading>
+            <Heading>The Genetic Testing Process</Heading>
             <ProgressBar stepsAmount={4} currentStep={2} />
           </div>
         }
@@ -38,11 +38,13 @@ export function TestingProcess() {
           </div>
           <div style={{ marginBottom: tokens.spacingMedium }}>
             <Heading>
-              {t('sections.results.steps.current.two.amplifying')}
+              {t('sections.results.steps.current.two.amplifying.title')}
             </Heading>
           </div>
           <div style={{ marginBottom: tokens.spacingXLarge }}>
-            <Typography type="body">{dummyText}</Typography>
+            <Typography type="body">
+              {t('sections.results.steps.current.two.amplifying.details')}
+            </Typography>
           </div>
           <div style={{ marginBottom: tokens.spacingXxSmall }}>
             <Heading level="4">{t('sections.results.onTrack')}</Heading>
@@ -78,7 +80,9 @@ export function TestingProcess() {
             <Heading>{t('sections.results.process.title')}</Heading>
           </div>
           <div style={{ marginBottom: tokens.spacingMedium }}>
-            <Typography type="body">{dummyText}</Typography>
+            <Typography type="body">
+              {t('sections.results.process.details')}
+            </Typography>
           </div>
           <div style={{ marginBottom: tokens.spacingXLarge }}>
             <Divider />
@@ -90,21 +94,27 @@ export function TestingProcess() {
               gap: tokens.spacingXxLarge,
             }}
           >
-            <Step stage="1" title={t('sections.results.process.one')}>
-              <Typography type="body">{dummyText}</Typography>
+            <Step stage="1" title={t('sections.results.process.one.title')}>
+              <Typography type="body">
+                {t('sections.results.process.one.details')}
+              </Typography>
             </Step>
-            <Step stage="1" title={t('sections.results.process.two.title')}>
-              <SubStep title={t('sections.results.process.two.extracting')}>
-                {dummyText}
+            <Step stage="2" title={t('sections.results.process.two.title')}>
+              <SubStep
+                title={t('sections.results.process.two.extracting.subTitle')}
+              >
+                {t('sections.results.process.two.extracting.details')}
               </SubStep>
               <SubStep
-                title={t('sections.results.process.two.amplifying')}
+                title={t('sections.results.process.two.amplifying.subTitle')}
                 current={true}
               >
-                {dummyText}
+                {t('sections.results.process.two.amplifying.details')}
               </SubStep>
-              <SubStep title={t('sections.results.process.two.sequencing')}>
-                {dummyText}
+              <SubStep
+                title={t('sections.results.process.two.sequencing.subTitle')}
+              >
+                {t('sections.results.process.two.sequencing.details')}
               </SubStep>
             </Step>
           </div>
@@ -115,9 +125,6 @@ export function TestingProcess() {
 }
 
 // -- helpers --
-
-const dummyText =
-  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text.';
 
 const Step = (props: Props<{ stage: string; title: React.ReactNode }>) => {
   return (

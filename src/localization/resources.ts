@@ -42,22 +42,56 @@ export const resources = {
           steps: {
             title: 'Current step',
             current: {
-              one: '1: Samples Delivered',
+              one: {
+                title: '1: Samples Delivered',
+                details:
+                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text.',
+              },
               two: {
-                extracting: '2: Lab steps - Extracting',
-                amplifying: '2: Lab steps - Amplifying',
-                sequencing: '2: Lab steps - Sequencing',
+                extracting: {
+                  title: '2: Lab steps - Extracting',
+                  details:
+                    'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text.',
+                },
+                amplifying: {
+                  title: '2: Lab steps - Amplifying',
+                  details:
+                    'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text.',
+                },
+                sequencing: {
+                  title: '2: Lab steps - Sequencing',
+                  details:
+                    'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text.',
+                },
               },
             },
           },
           process: {
             title: 'Process Breakdown',
-            one: 'Samples Delivered',
+            details:
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text.',
+            one: {
+              title: 'Samples Delivered',
+              details:
+                'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text.',
+            },
             two: {
               title: 'Lab steps',
-              extracting: 'Extracting',
-              amplifying: 'Amplifying',
-              sequencing: 'Sequencing',
+              extracting: {
+                subTitle: 'Extracting',
+                details:
+                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text.',
+              },
+              amplifying: {
+                subTitle: 'Amplifying',
+                details:
+                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text.',
+              },
+              sequencing: {
+                subTitle: 'Sequencing',
+                details:
+                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text.',
+              },
             },
           },
           childsName: "Child's name",
