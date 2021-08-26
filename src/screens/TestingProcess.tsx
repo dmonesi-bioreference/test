@@ -32,7 +32,7 @@ export function TestingProcess() {
       >
         <Card>
           <div style={{ marginBottom: tokens.spacingXxSmall }}>
-            <Typography type="category">
+            <Typography type="label" labelType="title">
               {t('sections.results.steps.title')}
             </Typography>
           </div>
@@ -142,7 +142,9 @@ const Step = (props: Props<{ stage: string; title: React.ReactNode }>) => {
           gap: tokens.spacingXxSmall,
         }}
       >
-        <Typography type="category">Step {props.stage}</Typography>
+        <Typography type="label" labelType="title">
+          Step {props.stage}
+        </Typography>
         <Heading level="3">{props.title}</Heading>
       </div>
       {props.children}
@@ -170,7 +172,7 @@ const SubStep = (
         }}
       >
         {props.current ? (
-          <Typography type="label" color="primary">
+          <Typography type="label" labelType="display" color="primary">
             Current
           </Typography>
         ) : null}

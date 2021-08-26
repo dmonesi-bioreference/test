@@ -22,7 +22,7 @@ export const Main = () => {
         header={
           <div style={{ marginBottom: tokens.spacingXxSmall }}>
             <div style={{ marginBottom: tokens.spacingXxxSmall }}>
-              <Typography type="label" color="minor">
+              <Typography type="label" color="minor" labelType="display">
                 {t('sections.results.childsName')}
               </Typography>
             </div>
@@ -114,7 +114,7 @@ export const Main = () => {
           }
         >
           <div style={{ marginBottom: tokens.spacingXxSmall }}>
-            <Typography type="category" color="primary">
+            <Typography type="label" labelType="title" color="primary">
               {t('sections.resources.story.title')}
             </Typography>
           </div>

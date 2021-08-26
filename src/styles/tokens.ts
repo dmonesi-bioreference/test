@@ -66,7 +66,9 @@ export const colors = {
 };
 
 export const fonts = {
-  fontFamilyOpenSans: "'Inter', 'Helvetica Neue', Arial, sans-serif",
+  fontFamilyRoboto: "'Roboto', 'Helvetica Neue', Arial, sans-serif",
+  fontFamilyPoppins: "'Poppins', 'Helvetica Neue', Arial, sans-serif",
+  fontFamilyEBGaramond: "'EB Garamond', serif",
 };
 
 export const tokens = {
@@ -96,7 +98,10 @@ export const tokens = {
   colorDangerFocus: colors.red[200],
 
   /* font-family */
-  fontFamilyBody: fonts.fontFamilyOpenSans,
+  fontFamilySerif: fonts.fontFamilyEBGaramond,
+  fontFamilySansSerif: fonts.fontFamilyPoppins,
+  fontFamilyLabel: fonts.fontFamilyPoppins,
+  fontFamilyBody: fonts.fontFamilyRoboto,
   fontFamilyMonospace: 'monospace',
 
   /* font-weight */

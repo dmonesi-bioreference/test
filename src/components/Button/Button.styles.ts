@@ -10,7 +10,7 @@ const ButtonStyled = styled.button`
   border-style: solid;
   border-radius: ${tokens.borderRadiusXLarge};
   border-width: ${inputs.borderWidth};
-  font-family: ${tokens.fontFamilyBody};
+  font-family: ${tokens.fontFamilyLabel};
   font-size: ${buttons.fontSize};
   font-weight: ${tokens.fontWeightBold};
   height: ${inputs.heightLarge};

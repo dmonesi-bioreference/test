@@ -20,6 +20,7 @@ export * from './Radio';
 export * from './Select';
 export * from './Shell';
 export * from './Step';
+export * from './StyleLabel';
 export * from './Textarea';
 export * from './Table';
 export * from './Typography';

@@ -19,6 +19,14 @@ const TypographyStyled = styled.div`
     color: ${tokens.colorSecondaryText};
   }
 
+  &.sansSerif {
+    font-family: ${tokens.fontFamilySansSerif};
+  }
+
+  &.serif {
+    font-family: ${tokens.fontFamilySerif};
+  }
+
   &.heading1 {
     font-size: ${tokens.fontSize32};
     font-weight: ${tokens.fontWeightBold};
@@ -60,12 +68,28 @@ const TypographyStyled = styled.div`
   }
 
   &.body {
+    font-family: ${tokens.fontFamilyBody};
     font-size: ${tokens.fontSize14};
     font-weight: ${tokens.fontWeightRegular};
     line-height: ${tokens.lineHeightNormal};
   }
 
-  &.category {
+  &.helper-text {
+    font-family: ${tokens.fontFamilyBody};
+    font-size: ${tokens.fontSize14};
+    font-style: italic;
+    font-weight: ${tokens.fontWeightRegular};
+  }
+
+  &.list {
+    font-family: ${tokens.fontFamilyBody};
+    font-size: ${tokens.fontSize14};
+    font-weight: ${tokens.fontWeightRegular};
+    line-height: ${tokens.lineHeightLoose};
+  }
+
+  &.label--title {
+    font-family: ${tokens.fontFamilyLabel};
     font-size: ${tokens.fontSize14};
     font-weight: ${tokens.fontWeightBold};
     line-height: ${tokens.lineHeightSelf};
@@ -73,17 +97,19 @@ const TypographyStyled = styled.div`
     text-transform: uppercase;
   }
 
-  &.helper-text {
-    font-size: ${tokens.fontSize14};
-    font-style: italic;
-    font-weight: ${tokens.fontWeightRegular};
-  }
-
-  &.label {
+  &.label--display {
+    font-family: ${tokens.fontFamilyLabel};
     font-size: ${tokens.fontSize12};
     font-weight: ${tokens.fontWeightBold};
     letter-spacing: 0.03em;
     text-transform: uppercase;
+  }
+
+  &.label--input {
+    font-family: ${tokens.fontFamilyLabel};
+    font-size: ${tokens.fontSize16};
+    font-weight: ${tokens.fontWeightMedium};
+    line-height: ${tokens.lineHeightSelf};
   }
 `;
 

@@ -1,5 +1,8 @@
 import { Story } from '@storybook/react/types-6-0';
 
+import { StyleLabel } from 'components/StyleLabel';
+import { tokens } from 'styles';
+
 import Typography from './Typography';
 
 export default {
@@ -13,45 +16,123 @@ export default {
 
 export const Headings: Story = () => (
   <div>
-    <Typography type="heading" level="1">
-      This is a primary heading
-    </Typography>
-    <Typography type="heading" level="2">
-      This is a secondary heading
-    </Typography>
-    <Typography type="heading" level="3">
-      This is a tertiary heading
-    </Typography>
-    <Typography type="heading" level="4">
-      This is a quaternary heading
-    </Typography>
-    <Typography type="heading" level="5">
-      This is a quinary heading
-    </Typography>
-    <Typography type="heading" level="6">
-      This is a senary heading
-    </Typography>
-    <Typography type="heading" level="7">
-      This is a septernary heading
-    </Typography>
-    <Typography type="heading" level="8">
-      This is an octonary heading
-    </Typography>
+    <StyleGuideItem label="Primary Heading(h1), Serif">
+      <Typography type="heading" level="1" fontType="serif">
+        Hello, World!
+      </Typography>
+    </StyleGuideItem>
+
+    <StyleGuideItem label="Primary Heading(h1), Sans Serif">
+      <Typography type="heading" level="1" fontType="sansSerif">
+        Hello, World!
+      </Typography>
+    </StyleGuideItem>
+
+    <StyleGuideItem label="Secondary Heading (h2), Serif">
+      <Typography type="heading" level="2" fontType="serif">
+        Hello, World!
+      </Typography>
+    </StyleGuideItem>
+
+    <StyleGuideItem label="Secondary Heading (h2), Sans Serif">
+      <Typography type="heading" level="2" fontType="sansSerif">
+        Hello, World!
+      </Typography>
+    </StyleGuideItem>
+
+    <StyleGuideItem label="Tertiary Heading (h3), Serif">
+      <Typography type="heading" level="3" fontType="serif">
+        Hello, World!
+      </Typography>
+    </StyleGuideItem>
+
+    <StyleGuideItem label="Tertiary Heading (h3), Sans Serif">
+      <Typography type="heading" level="3" fontType="sansSerif">
+        Hello, World!
+      </Typography>
+    </StyleGuideItem>
+
+    <StyleGuideItem label="Quaternary Heading (h4)">
+      <Typography type="heading" level="4">
+        Hello, World!
+      </Typography>
+    </StyleGuideItem>
+
+    <StyleGuideItem label="Quinary Heading (h5)">
+      <Typography type="heading" level="5">
+        Hello, World!
+      </Typography>
+    </StyleGuideItem>
+
+    <StyleGuideItem label="Senary Heading (h6)">
+      <Typography type="heading" level="6">
+        Hello, World!
+      </Typography>
+    </StyleGuideItem>
+
+    <StyleGuideItem label="Septernary Heading (h7)">
+      <Typography type="heading" level="7">
+        Hello, World!
+      </Typography>
+    </StyleGuideItem>
+
+    <StyleGuideItem label="Octonary Heading (h8)">
+      <Typography type="heading" level="8">
+        Hello, World!
+      </Typography>
+    </StyleGuideItem>
   </div>
 );
 
 export const Body: Story = () => (
-  <Typography type="body">This is a body</Typography>
-);
-
-export const Category: Story = () => (
-  <Typography type="category">This is a category</Typography>
-);
-
-export const DisplayLabel: Story = () => (
-  <Typography type="label">This is a display label</Typography>
+  <StyleGuideItem label="Body text">
+    <Typography type="body">Lorem ipsum dolor set amet.</Typography>
+  </StyleGuideItem>
 );
 
 export const HelperText: Story = () => (
-  <Typography type="helper-text">This is a helper text</Typography>
+  <StyleGuideItem label="Helper text">
+    <Typography type="helper-text">Lorem ipsum dolor set amet.</Typography>
+  </StyleGuideItem>
+);
+
+export const List: Story = () => (
+  <StyleGuideItem label="List">
+    <Typography type="list">Lorem ipsum dolor set amet.</Typography>
+  </StyleGuideItem>
+);
+
+export const TitleLabel: Story = () => (
+  <StyleGuideItem label="Label, for title">
+    <Typography type="label" labelType="title">
+      Lorem ipsum
+    </Typography>
+  </StyleGuideItem>
+);
+
+export const DisplayLabel: Story = () => (
+  <StyleGuideItem label="Label, for display label">
+    <Typography type="label" labelType="display">
+      Lorem ipsum
+    </Typography>
+  </StyleGuideItem>
+);
+
+export const InputLabel: Story = () => (
+  <StyleGuideItem label="Label, for an input">
+    <Typography type="label" labelType="input">
+      Lorem ipsum
+    </Typography>
+  </StyleGuideItem>
+);
+
+interface StyleGuideProps {
+  label: string;
+}
+
+const StyleGuideItem: React.FC<StyleGuideProps> = (props) => (
+  <div style={{ display: 'flex', marginBottom: tokens.spacingMedium }}>
+    {props.children}
+    <StyleLabel>{props.label}</StyleLabel>
+  </div>
 );
