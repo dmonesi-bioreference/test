@@ -107,15 +107,15 @@ const InputStyled = styled(FormControl)<FormControlProps>`
 
     .input__control {
       height: calc(${inputs.heightMedium} - ${inputs.borderWidth} * 2);
-      margin: 0 ${inputs.spacingMedium};
+      margin: 0 ${inputs.spacing};
     }
 
     .input__prefix > * {
-      margin-left: ${inputs.spacingMedium};
+      margin-left: ${inputs.spacing};
     }
 
     .input__suffix > * {
-      margin-right: ${inputs.spacingMedium};
+      margin-right: ${inputs.spacing};
     }
   }
 

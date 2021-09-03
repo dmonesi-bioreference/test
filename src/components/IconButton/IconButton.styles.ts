@@ -11,7 +11,7 @@ const IconButtonStyled = styled.button`
   flex: 0 0 auto;
   display: flex;
   align-items: center;
-  border-radius: ${tokens.borderRadiusMedium};
+  border-radius: ${tokens.borderRadius};
   font-size: inherit;
   border: 1px solid transparent;
   color: ${tokens.colorSecondary};

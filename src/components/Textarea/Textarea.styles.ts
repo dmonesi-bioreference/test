@@ -77,7 +77,7 @@ const TextareaStyled = styled(FormControl)<FormControlProps>`
     font-size: ${inputs.fontSizeMedium};
 
     .textarea__control {
-      padding: 0.5em ${inputs.spacingMedium};
+      padding: 0.5em ${inputs.spacing};
     }
   }
 

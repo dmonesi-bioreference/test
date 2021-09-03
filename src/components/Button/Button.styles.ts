@@ -8,7 +8,7 @@ const ButtonStyled = styled.button`
   align-items: center;
   justify-content: center;
   border-style: solid;
-  border-radius: ${tokens.borderRadiusXLarge};
+  border-radius: ${tokens.borderRadius};
   border-width: ${inputs.borderWidth};
   font-family: ${tokens.fontFamilyLabel};
   font-size: ${buttons.fontSize};
@@ -270,11 +270,11 @@ const ButtonStyled = styled.button`
   }
 
   .button__prefix :first-child {
-    margin-right: ${tokens.spacingXxSmall};
+    margin-right: ${tokens.spacingXSmall};
   }
 
   .button__suffix :last-child {
-    margin-left: ${tokens.spacingXxSmall};
+    margin-left: ${tokens.spacingXSmall};
   }
 
   &.button--space-between {

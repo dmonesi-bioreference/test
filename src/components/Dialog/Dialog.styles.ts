@@ -26,7 +26,7 @@ const DialogStyled = styled.div`
     max-width: calc(100% - ${tokens.spacingXxLarge});
     max-height: calc(100% - ${tokens.spacingXxLarge});
     background-color: ${panels.backgroundColor};
-    border-radius: ${tokens.borderRadiusMedium};
+    border-radius: ${tokens.borderRadius};
     box-shadow: ${panels.boxShadow};
     opacity: 0;
     transform: scale(0.9);

@@ -21,7 +21,7 @@ const DataStyled = styled.dl`
 
   &.label-value--vertical {
     .label-value__label {
-      margin-bottom: ${tokens.spacingXxxSmall};
+      margin-bottom: ${tokens.spacingXxSmall};
     }
   }
 
@@ -29,7 +29,7 @@ const DataStyled = styled.dl`
     flex-flow: column-reverse;
 
     .label-value__label {
-      margin-top: ${tokens.spacingXxxSmall};
+      margin-top: ${tokens.spacingXxSmall};
       margin-bottom: 0;
     }
   }
@@ -39,7 +39,7 @@ const DataStyled = styled.dl`
     align-items: center;
 
     .label-value__value {
-      margin-left: ${tokens.spacingXSmall};
+      margin-left: ${tokens.spacingSmall};
     }
   }
 
@@ -53,7 +53,7 @@ const DataStyled = styled.dl`
     }
 
     .label-value__value {
-      margin-right: ${tokens.spacingXSmall};
+      margin-right: ${tokens.spacingSmall};
       margin-left: 0;
     }
   }

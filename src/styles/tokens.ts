@@ -142,17 +142,17 @@ export const tokens = {
   letterSpacingLoose: '0.075rem',
 
   /* spacing */
-  spacingXxxxSmall: rem('2px'),
-  spacingXxxSmall: rem('4px'),
-  spacingXxSmall: rem('8px'),
-  spacingXSmall: rem('10px'),
+  spacingXxxSmall: rem('2px'),
+  spacingXxSmall: rem('4px'),
+  spacingXSmall: rem('8px'),
   spacingSmall: rem('12px'),
-  spacingMedium: rem('16px'),
+  spacing: rem('16px'),
+  spacingMedium: rem('20px'),
   spacingLarge: rem('24px'),
   spacingXLarge: rem('32px'),
   spacingXxLarge: rem('48px'),
   spacingXxxLarge: rem('64px'),
-  spacingXxxxLarge: rem('72px'),
+  spacingXxxxLarge: rem('80px'),
 
   /* border-width */
   borderWidthThin: '1px',
@@ -161,8 +161,8 @@ export const tokens = {
   /* border-radius */
   borderRadiusSmall: '2px',
   borderRadiusMedium: '4px',
-  borderRadiusLarge: '6px',
-  borderRadiusXLarge: '8px',
+  borderRadius: '8px',
+  borderRadiusLarge: '10px',
   borderRadiusCircle: '50%',
   borderRadiusPill: '240px',
 
@@ -200,7 +200,7 @@ export const labels = {
   fontSizeMedium: tokens.fontSize16,
   fontSizeLarge: tokens.fontSize18,
   fontWeight: tokens.fontWeightMedium,
-  spacing: tokens.spacingXxSmall,
+  spacing: tokens.spacingXSmall,
 };
 
 export const panels = {
@@ -208,7 +208,7 @@ export const panels = {
   color: colors.black,
   borderColor: colors.grey[200],
   border: 'none',
-  borderRadius: tokens.borderRadiusLarge,
+  borderRadius: tokens.borderRadius,
   boxShadow:
     '0 0 0 1px rgba(0, 0, 0, 0.05),0 1px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
 };
@@ -224,7 +224,7 @@ export const inputs = {
   border: `${tokens.borderWidthThin} solid ${colors.grey[300]}`,
   borderColor: colors.grey[300],
   borderHoverColor: colors.grey[400],
-  borderRadius: tokens.borderRadiusLarge,
+  borderRadius: tokens.borderRadius,
   borderWidth: tokens.borderWidthThin,
   color: colors.black,
   disabledBackgroundColor: colors.grey[100],
@@ -244,9 +244,9 @@ export const inputs = {
   lineHeight: tokens.lineHeightDense,
   placeholderColor: colors.grey[600],
   shadow: `0 1px 2px rgba(0, 0, 0, 0.05)`,
-  spacingSmall: `${tokens.spacingXSmall}`,
-  spacingMedium: `${tokens.spacingSmall}`,
-  spacingLarge: `${tokens.spacingMedium}`,
+  spacingSmall: `${tokens.spacingSmall}`,
+  spacing: `${tokens.spacingSmall}`,
+  spacingLarge: `${tokens.spacing}`,
   transition: `border-color ${tokens.transitionFast} ease-in-out`,
 };
 

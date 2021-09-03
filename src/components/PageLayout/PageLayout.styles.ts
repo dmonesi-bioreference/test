@@ -15,8 +15,8 @@ const PageLayoutStyled = styled.div`
   }
 
   .page__content {
-    padding: ${tokens.spacingLarge} ${tokens.spacingMedium}
-      ${tokens.spacingXxxxLarge} ${tokens.spacingMedium};
+    padding: ${tokens.spacingLarge} ${tokens.spacing} ${tokens.spacingXxxxLarge}
+      ${tokens.spacing};
   }
 `;
 

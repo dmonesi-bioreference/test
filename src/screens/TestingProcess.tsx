@@ -22,7 +22,7 @@ export function TestingProcess() {
             style={{
               display: 'flex',
               flexDirection: 'column',
-              gap: tokens.spacingMedium,
+              gap: tokens.spacing,
             }}
           >
             <Heading>The Genetic Testing Process</Heading>
@@ -31,12 +31,12 @@ export function TestingProcess() {
         }
       >
         <Card>
-          <div style={{ marginBottom: tokens.spacingXxSmall }}>
+          <div style={{ marginBottom: tokens.spacingXSmall }}>
             <Typography type="label" labelType="title">
               {t('sections.results.steps.title')}
             </Typography>
           </div>
-          <div style={{ marginBottom: tokens.spacingMedium }}>
+          <div style={{ marginBottom: tokens.spacing }}>
             <Heading>
               {t('sections.results.steps.current.two.amplifying.title')}
             </Heading>
@@ -46,7 +46,7 @@ export function TestingProcess() {
               {t('sections.results.steps.current.two.amplifying.details')}
             </Typography>
           </div>
-          <div style={{ marginBottom: tokens.spacingXxSmall }}>
+          <div style={{ marginBottom: tokens.spacingXSmall }}>
             <Heading level="4">{t('sections.results.onTrack')}</Heading>
           </div>
           <div style={{ marginBottom: tokens.spacingXLarge }}>
@@ -54,12 +54,12 @@ export function TestingProcess() {
               {t('sections.results.noUpdates')}
             </Heading>
           </div>
-          <div style={{ marginBottom: tokens.spacingXxxSmall }}>
+          <div style={{ marginBottom: tokens.spacingXxSmall }}>
             <Heading level="5">
               {t('sections.results.estimate', { estimate: '7-10' })}
             </Heading>
           </div>
-          <div style={{ marginBottom: tokens.spacingMedium }}>
+          <div style={{ marginBottom: tokens.spacing }}>
             <Typography type="body">{t('sections.results.caveat')}</Typography>
           </div>
           <div style={{ marginBottom: tokens.spacingXLarge }}>
@@ -76,10 +76,10 @@ export function TestingProcess() {
           </Button>
         </Card>
         <Card>
-          <div style={{ marginBottom: tokens.spacingMedium }}>
+          <div style={{ marginBottom: tokens.spacing }}>
             <Heading>{t('sections.results.process.title')}</Heading>
           </div>
-          <div style={{ marginBottom: tokens.spacingMedium }}>
+          <div style={{ marginBottom: tokens.spacing }}>
             <Typography type="body">
               {t('sections.results.process.details')}
             </Typography>
@@ -139,7 +139,7 @@ const Step = (props: Props<{ stage: string; title: React.ReactNode }>) => {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: tokens.spacingXxSmall,
+          gap: tokens.spacingXSmall,
         }}
       >
         <Typography type="label" labelType="title">
@@ -161,14 +161,14 @@ const SubStep = (
       style={{
         display: 'flex',
         flexDirection: 'column',
-        gap: tokens.spacingXxSmall,
+        gap: tokens.spacingXSmall,
       }}
     >
       <div
         style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: tokens.spacingXxxSmall,
+          gap: tokens.spacingXxSmall,
         }}
       >
         {props.current ? (

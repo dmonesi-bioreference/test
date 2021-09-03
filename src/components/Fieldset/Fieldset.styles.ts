@@ -9,7 +9,7 @@ const FieldsetStyled = styled.fieldset`
   border: none;
 
   .fieldset__legend {
-    margin: 0 0 ${tokens.spacingXSmall} 0;
+    margin: 0 0 ${tokens.spacingSmall} 0;
     padding: 0;
     flex: 0 0 auto;
     color: ${labels.color};
@@ -19,7 +19,7 @@ const FieldsetStyled = styled.fieldset`
 
   .fieldset__invalid-message,
   .fieldset__help-text {
-    margin-bottom: ${tokens.spacingXSmall};
+    margin-bottom: ${tokens.spacingSmall};
   }
 
   .fieldset__help-text {
@@ -38,7 +38,7 @@ const FieldsetStyled = styled.fieldset`
     }
 
     .fieldset__legend {
-      margin-right: ${tokens.spacingMedium};
+      margin-right: ${tokens.spacing};
     }
   }
 
@@ -52,7 +52,7 @@ const FieldsetStyled = styled.fieldset`
     display: flex;
 
     .form-control {
-      margin-right: ${tokens.spacingMedium};
+      margin-right: ${tokens.spacing};
     }
 
     .form-control:not(.form-control--boolean)
@@ -68,7 +68,7 @@ const FieldsetStyled = styled.fieldset`
   .fieldset__inputs--vertical {
     .form-control:not(.form-control--boolean)
       + .form-control:not(.form-control--boolean) {
-      margin-top: ${tokens.spacingXSmall};
+      margin-top: ${tokens.spacingSmall};
     }
   }
 `;

@@ -11,7 +11,7 @@ const TableStyled = styled.table`
   min-width: 100%;
   border-spacing: 0;
   border: 1px solid ${colors.grey[200]};
-  border-radius: ${tokens.borderRadiusLarge};
+  border-radius: ${tokens.borderRadius};
 
   thead tr th {
     letter-spacing: 0.06rem;
@@ -19,7 +19,7 @@ const TableStyled = styled.table`
     font-weight: ${tokens.fontWeightMedium};
     font-size: ${tokens.fontSize13};
     text-align: left;
-    padding: ${tokens.spacingMedium};
+    padding: ${tokens.spacing};
     color: ${colors.grey[500]};
     border-bottom: 1px solid ${colors.grey[200]};
     background-color: rgba(255, 255, 255, 0.97);
@@ -27,21 +27,21 @@ const TableStyled = styled.table`
   }
 
   thead tr th:first-child {
-    border-top-left-radius: ${tokens.borderRadiusLarge};
+    border-top-left-radius: ${tokens.borderRadius};
   }
 
   thead tr th:last-child {
-    border-top-right-radius: ${tokens.borderRadiusLarge};
+    border-top-right-radius: ${tokens.borderRadius};
   }
 
   tbody tr:last-child th:first-child,
   tbody tr:last-child td:first-child {
-    border-bottom-left-radius: ${tokens.borderRadiusLarge};
+    border-bottom-left-radius: ${tokens.borderRadius};
   }
 
   tbody tr:last-child th:last-child,
   tbody tr:last-child td:last-child {
-    border-bottom-right-radius: ${tokens.borderRadiusLarge};
+    border-bottom-right-radius: ${tokens.borderRadius};
   }
 
   tbody tr th,
@@ -51,7 +51,7 @@ const TableStyled = styled.table`
     min-height: 2.25rem;
     text-align: left;
     font-size: ${tokens.fontSize16};
-    padding: ${tokens.spacingMedium};
+    padding: ${tokens.spacing};
     border-bottom: 1px solid ${colors.grey[200]};
   }
 

@@ -9,7 +9,7 @@ const StyleLabelStyled = styled.div`
   flex: 1;
   flex-direction: column;
   justify-content: flex-end;
-  gap: ${tokens.spacingXxSmall};
+  gap: ${tokens.spacingXSmall};
   font-family: ${tokens.fontFamilyMonospace};
 
   .style-label__underline {

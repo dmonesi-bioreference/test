@@ -7,7 +7,7 @@ const StepStyled = styled.div`
   .step__bar {
     border-radius: ${tokens.borderRadiusPill};
     height: ${tokens.spacingSmall};
-    margin-top: ${tokens.spacingXxxSmall};
+    margin-top: ${tokens.spacingXxSmall};
     width: 100%;
   }
 

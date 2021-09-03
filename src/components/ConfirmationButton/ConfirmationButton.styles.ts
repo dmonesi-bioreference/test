@@ -11,12 +11,12 @@ const ConfirmationButtonStyled = styled.div`
   }
 
   .confirmation-button__prompt {
-    margin-right: ${tokens.spacingMedium};
+    margin-right: ${tokens.spacing};
     font-weight: ${tokens.fontWeightMedium};
   }
 
   .confirmation-button__confirm-button {
-    margin-right: ${tokens.spacingMedium};
+    margin-right: ${tokens.spacing};
   }
 `;
 

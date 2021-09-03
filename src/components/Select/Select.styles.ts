@@ -81,7 +81,7 @@ const SelectStyled = styled(FormControl)<FormControlProps>`
     height: ${inputs.heightMedium};
 
     .select__control {
-      padding: 0 ${inputs.spacingMedium};
+      padding: 0 ${inputs.spacing};
     }
   }
 

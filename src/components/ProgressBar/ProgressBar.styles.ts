@@ -6,7 +6,7 @@ const ProgressBarStyled = styled.div`
   ${base}
   display: flex;
   flex-direction: row;
-  gap: ${tokens.spacingXxxSmall};
+  gap: ${tokens.spacingXxSmall};
 `;
 
 export default ProgressBarStyled;

@@ -131,7 +131,7 @@ interface StyleGuideProps {
 }
 
 const StyleGuideItem: React.FC<StyleGuideProps> = (props) => (
-  <div style={{ display: 'flex', marginBottom: tokens.spacingMedium }}>
+  <div style={{ display: 'flex', marginBottom: tokens.spacing }}>
     {props.children}
     <StyleLabel>{props.label}</StyleLabel>
   </div>

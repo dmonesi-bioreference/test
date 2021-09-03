@@ -28,7 +28,7 @@ const MessageStyled = styled.div`
   .message__icon {
     display: flex;
     align-items: center;
-    margin-right: ${tokens.spacingXxxSmall};
+    margin-right: ${tokens.spacingXxSmall};
     font-size: ${tokens.fontSize18};
   }
 `;

@@ -12,7 +12,7 @@ const FormControlStyled = styled.div`
 
   .form-control__invalid-message,
   .form-control__help-text {
-    margin-top: ${tokens.spacingXxxSmall};
+    margin-top: ${tokens.spacingXxSmall};
   }
 
   .form-control__help-text {
@@ -31,17 +31,17 @@ const FormControlStyled = styled.div`
     .form-control__input {
       display: flex;
       align-items: center;
-      margin-right: ${inputs.spacingMedium};
+      margin-right: ${inputs.spacing};
     }
 
     .form-control__invalid-message,
     .form-control__help-text {
-      margin-left: calc(${inputs.spacingMedium} + 1em + 2px);
+      margin-left: calc(${inputs.spacing} + 1em + 2px);
     }
   }
 
   &.form-control--boolean + &.form-control--boolean {
-    margin-top: ${tokens.spacingXxSmall};
+    margin-top: ${tokens.spacingXSmall};
   }
 
   &.form-control--disabled {

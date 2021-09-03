@@ -5,7 +5,7 @@ import { tokens, base } from 'styles';
 const PageSectionStyled = styled.div`
   ${base}
   &.page-section > * {
-    margin-bottom: ${tokens.spacingMedium};
+    margin-bottom: ${tokens.spacing};
     overflow: auto;
   }
 
@@ -14,7 +14,7 @@ const PageSectionStyled = styled.div`
   }
 
   .page-section__header {
-    padding: 0 ${tokens.spacingXxSmall};
+    padding: 0 ${tokens.spacingXSmall};
   }
 `;
 

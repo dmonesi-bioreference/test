@@ -20,8 +20,8 @@ export const Main = () => {
     <PageLayout>
       <PageSection
         header={
-          <div style={{ marginBottom: tokens.spacingXxSmall }}>
-            <div style={{ marginBottom: tokens.spacingXxxSmall }}>
+          <div style={{ marginBottom: tokens.spacingXSmall }}>
+            <div style={{ marginBottom: tokens.spacingXxSmall }}>
               <Typography type="label" color="minor" labelType="display">
                 {t('sections.results.childsName')}
               </Typography>
@@ -31,27 +31,27 @@ export const Main = () => {
         }
       >
         <Card>
-          <div style={{ marginBottom: tokens.spacingMedium }}>
-            <div style={{ marginBottom: tokens.spacingXxSmall }}>
+          <div style={{ marginBottom: tokens.spacing }}>
+            <div style={{ marginBottom: tokens.spacingXSmall }}>
               <Heading>{t('sections.results.inProcess')}</Heading>
             </div>
             <Heading level="4">{t('sections.results.onTrack')}</Heading>
           </div>
-          <div style={{ marginBottom: tokens.spacingMedium }}>
+          <div style={{ marginBottom: tokens.spacing }}>
             {/* Note: This was a heading "7" */}
             <Heading level="6" color="minor">
               {t('sections.results.noUpdates')}
             </Heading>
           </div>
           <div style={{ marginBottom: tokens.spacingLarge }}>
-            <div style={{ marginBottom: tokens.spacingXxxSmall }}>
+            <div style={{ marginBottom: tokens.spacingXxSmall }}>
               <Heading level="5">
                 {t('sections.results.estimate', { estimate: '7-10' })}
               </Heading>
             </div>
             <Heading level="6">{t('sections.results.mayVary')}</Heading>
           </div>
-          <div style={{ marginBottom: tokens.spacingMedium }}>
+          <div style={{ marginBottom: tokens.spacing }}>
             <Button
               kind="tertiary"
               href="#"
@@ -87,7 +87,7 @@ export const Main = () => {
             <div style={{ flexDirection: 'row', display: 'flex' }}>
               <div
                 style={{
-                  marginRight: tokens.spacingXxxSmall,
+                  marginRight: tokens.spacingXxSmall,
                   display: 'flex',
                   flexDirection: 'row',
                 }}
@@ -113,12 +113,12 @@ export const Main = () => {
             />
           }
         >
-          <div style={{ marginBottom: tokens.spacingXxSmall }}>
+          <div style={{ marginBottom: tokens.spacingXSmall }}>
             <Typography type="label" labelType="title" color="primary">
               {t('sections.resources.story.title')}
             </Typography>
           </div>
-          <div style={{ marginBottom: tokens.spacingMedium }}>
+          <div style={{ marginBottom: tokens.spacing }}>
             <Heading>
               How other parents have coped with this time of uncertainty.
             </Heading>
@@ -174,7 +174,7 @@ export const Main = () => {
           <div style={{ marginBottom: tokens.spacingXLarge }}>
             <Heading>{t('sections.careTeam.wereHere')}</Heading>
           </div>
-          <div style={{ marginBottom: tokens.spacingMedium }}>
+          <div style={{ marginBottom: tokens.spacing }}>
             <Button kind="primary">{t('sections.careTeam.callUs')}</Button>
           </div>
           <div style={{ display: 'flex', justifyContent: 'center' }}>

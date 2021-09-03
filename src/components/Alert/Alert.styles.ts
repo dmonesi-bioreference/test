@@ -9,7 +9,7 @@ const AlertStyled = styled.div`
   background-color: ${colors.white};
   border: 1px solid ${colors.grey[200]};
   border-top-width: 3px;
-  border-radius: ${tokens.borderRadiusMedium};
+  border-radius: ${tokens.borderRadius};
   font-size: ${tokens.fontSize14};
   line-height: 1.6;
   color: ${tokens.colorSecondaryText};
@@ -81,7 +81,7 @@ const AlertStyled = styled.div`
     display: flex;
     align-items: center;
     font-size: ${tokens.fontSize18};
-    padding-right: ${tokens.spacingMedium};
+    padding-right: ${tokens.spacing};
   }
 `;
 
