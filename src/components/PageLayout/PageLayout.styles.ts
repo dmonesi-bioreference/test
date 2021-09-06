@@ -15,8 +15,13 @@ const PageLayoutStyled = styled.div`
   }
 
   .page__content {
-    padding: ${tokens.spacingLarge} ${tokens.spacing} ${tokens.spacingXxxxLarge}
-      ${tokens.spacing};
+    padding: ${tokens.spacingXxLarge} ${tokens.spacingXLarge} ${tokens.spacingXxxxLarge}
+      ${tokens.spacingXLarge};
+  }
+
+  .page__content--with-cards {
+    padding: ${tokens.spacingLarge} ${tokens.spacing}
+      ${tokens.spacingXxxxLarge} ${tokens.spacing};
   }
 `;
 

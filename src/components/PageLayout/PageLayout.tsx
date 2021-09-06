@@ -2,11 +2,16 @@ import { Header } from 'components/Header';
 
 import PageLayoutStyled from './PageLayout.styles';
 
-const PageLayout: React.FC = (props) => {
+export interface PageLayoutProps {
+  containsCards?: boolean;
+}
+
+const PageLayout: React.FC<PageLayoutProps> = (props) => {
+  const withCards = props.containsCards ? 'page__content--with-cards' : '';
   return (
     <PageLayoutStyled>
       <Header />
-      <div className="page__content">{props.children}</div>
+      <div className={`page__content ${withCards}`}>{props.children}</div>
     </PageLayoutStyled>
   );
 };

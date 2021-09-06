@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Project Pandas</title>
+        <title>GeneDX</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

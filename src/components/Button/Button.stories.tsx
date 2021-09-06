@@ -3,6 +3,8 @@ import { Story } from '@storybook/react/types-6-0';
 
 import { Icon } from 'components/Icon';
 
+import { Logo } from '../Logo';
+
 import Button, { ButtonProps } from './Button';
 
 export default {
@@ -36,6 +38,9 @@ export const Kinds: Story = () => (
     <Button kind="warning">Warning</Button>
     <Button kind="danger">Danger</Button>
     <Button kind="text">Text</Button>
+    <Button kind="image">
+      <Logo type="color" width={130} />
+    </Button>
   </div>
 );
 

@@ -1,13 +1,13 @@
-import { Icon, AppLink, Logo } from 'components';
+import { Icon, Logo, Button } from 'components';
 
 import HeaderStyled from './Header.styles';
 
 const Header: React.FC = () => {
   return (
     <HeaderStyled>
-      <AppLink href="/">
+      <Button kind="image" href="/">
         <Logo type="color" width={130} />
-      </AppLink>
+      </Button>
       <Icon name="menu" kind="heroicon" size="large" />
     </HeaderStyled>
   );

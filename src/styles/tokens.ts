@@ -98,7 +98,7 @@ export const colors = {
     700: 'hsl(17, 33.6%, 42%)',
     800: 'hsl(16, 50.3%, 31.6%)',
     900: 'hsl(14, 97.9%, 18.6%)',
-  }
+  },
 };
 
 export const fonts = {
@@ -276,7 +276,6 @@ export const inputs = {
   helpFontSizeSmall: tokens.fontSize12,
   helpFontSizeMedium: tokens.fontSize14,
   helpFontSizeLarge: tokens.fontSize16,
-  iconColor: colors.grey[400],
   lineHeight: tokens.lineHeightDense,
   placeholderColor: colors.grey[600],
   shadow: `0 1px 2px rgba(0, 0, 0, 0.05)`,

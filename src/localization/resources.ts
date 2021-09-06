@@ -107,6 +107,25 @@ export const resources = {
           mayVary: 'Timing may vary',
           estimate: 'Expect results in {{estimate}} days',
         },
+        authentication: {
+          title: 'Welcome, Barbara & Lisa',
+          subTitle:
+            'To make sure we keep your child’s information safe, we have a few details to confirm.',
+          form: {
+            zipCode: {
+              label: "Lisa's Zip Code",
+              placeholder: 'e.g. 123456',
+            },
+            dateOfBirth: {
+              label: "Lisa's Date of Birth",
+            },
+            email: {
+              label: 'Your Email Address',
+              placeholder: 'e.g. a.onymous@email.com',
+            },
+            confirm: 'Confirm',
+          },
+        },
       },
       pages: {
         home: {},

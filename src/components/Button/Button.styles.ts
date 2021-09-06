@@ -211,6 +211,29 @@ const ButtonStyled = styled.button`
     }
   }
 
+  &.button--image {
+    background-color: transparent;
+    border-color: transparent;
+    width: auto;
+    padding: 0;
+
+    &:hover:not(.button--disabled) {
+      background-color: transparent;
+      border-color: transparent;
+    }
+
+    &:focus:not(.button--disabled) {
+      background-color: transparent;
+      border-color: transparent;
+      box-shadow: 0 0 0 3px ${tokens.colorPrimaryFocus};
+    }
+
+    &:active:not(.button--disabled) {
+      background-color: transparent;
+      border-color: transparent;
+    }
+  }
+
   &.button--link {
     background-color: transparent;
     border-color: transparent;

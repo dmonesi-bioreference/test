@@ -12,7 +12,8 @@ export type ButtonKind =
   | 'info'
   | 'warning'
   | 'danger'
-  | 'text';
+  | 'text'
+  | 'image';
 
 export interface ButtonProps {
   /** Set to true to render the button in a disabled state. */
@@ -59,6 +60,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     'button--warning': props.kind === 'warning',
     'button--danger': props.kind === 'danger',
     'button--text': props.kind === 'text',
+    'button--image': props.kind === 'image',
     'button--link': props.kind === 'secondary' || props.kind === 'tertiary',
 
     // Modifiers

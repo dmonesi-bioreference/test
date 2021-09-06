@@ -17,7 +17,7 @@ import { tokens } from 'styles';
 export const Main = () => {
   const t = useAppTranslation();
   return (
-    <PageLayout>
+    <PageLayout containsCards={true}>
       <PageSection
         header={
           <div style={{ marginBottom: tokens.spacingXSmall }}>
@@ -110,7 +110,6 @@ export const Main = () => {
               alt="In The NICU"
               width={343}
               height={189}
-              objectFit='cover'
             />
           }
         >

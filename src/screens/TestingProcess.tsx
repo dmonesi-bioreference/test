@@ -15,7 +15,7 @@ import { tokens } from 'styles';
 export function TestingProcess() {
   const t = useAppTranslation();
   return (
-    <PageLayout>
+    <PageLayout containsCards={true}>
       <PageSection
         header={
           <div

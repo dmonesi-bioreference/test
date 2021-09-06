@@ -77,10 +77,6 @@ const InputStyled = styled(FormControl)<FormControlProps>`
     flex: 0 0 auto;
     align-items: center;
     cursor: default;
-
-    > * {
-      color: ${inputs.iconColor};
-    }
   }
 
   .input--small {

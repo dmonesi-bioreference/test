@@ -1,8 +1,8 @@
 import Head from 'next/head';
 
-import { TestingProcess } from 'screens';
+import { AuthenticationForm } from 'screens';
 
-export default function TestingProcessPage() {
+export default function AuthenticationFormPage() {
   return (
     <>
       <Head>
@@ -11,7 +11,7 @@ export default function TestingProcessPage() {
       </Head>
 
       <main>
-        <TestingProcess />
+        <AuthenticationForm />
       </main>
 
       <footer></footer>

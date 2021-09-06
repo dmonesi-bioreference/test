@@ -6,6 +6,7 @@ const TypographyStyled = styled.div`
   ${base}
   line-height: ${tokens.lineHeightDense};
   margin: 0;
+  overflow: hidden;
 
   &.default {
     color: ${tokens.colorDefaultText};
