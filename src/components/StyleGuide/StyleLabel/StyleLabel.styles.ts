@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { tokens, base } from 'styles';
+import { tokens, base, colors } from 'styles';
 
 const StyleLabelStyled = styled.div`
   ${base}
@@ -9,11 +9,11 @@ const StyleLabelStyled = styled.div`
   flex: 1;
   flex-direction: column;
   justify-content: flex-end;
-  gap: ${tokens.spacingXSmall};
+  gap: ${tokens.spacingXxSmall};
   font-family: ${tokens.fontFamilyMonospace};
 
   .style-label__underline {
-    border-bottom: dashed ${tokens.colorSecondary} ${tokens.borderWidthThick};
+    border-bottom: solid ${colors.grey[300]} ${tokens.borderWidthThin};
     width: 100%;
   }
 `;

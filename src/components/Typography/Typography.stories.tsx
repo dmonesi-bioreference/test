@@ -1,7 +1,6 @@
 import { Story } from '@storybook/react/types-6-0';
 
-import { StyleLabel } from 'components/StyleLabel';
-import { tokens } from 'styles';
+import { StyleGuideItem } from 'components/StyleGuide/StyleGuideItem';
 
 import Typography from './Typography';
 
@@ -124,15 +123,4 @@ export const InputLabel: Story = () => (
       Lorem ipsum
     </Typography>
   </StyleGuideItem>
-);
-
-interface StyleGuideProps {
-  label: string;
-}
-
-const StyleGuideItem: React.FC<StyleGuideProps> = (props) => (
-  <div style={{ display: 'flex', marginBottom: tokens.spacing }}>
-    {props.children}
-    <StyleLabel>{props.label}</StyleLabel>
-  </div>
 );

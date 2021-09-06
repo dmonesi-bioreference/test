@@ -1,4 +1,5 @@
 import GlobalStyle from '../src/styles/global';
+import * as nextImage from 'next/image';
 
 export const decorators = [
   (Story) => (
@@ -8,6 +9,11 @@ export const decorators = [
     </>
   ),
 ];
+
+Object.defineProperty(nextImage, 'default', {
+    configurable: true,
+      value: (props) => <img {...props} />
+    });
 
 export const parameters = {
   backgrounds: {

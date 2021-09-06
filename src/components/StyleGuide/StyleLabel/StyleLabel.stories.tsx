@@ -4,7 +4,7 @@ import StyleLabel from './StyleLabel';
 
 export default {
   component: StyleLabel,
-  title: 'Components/StyleLabel',
+  title: 'Storybook/StyleLabel',
   parameters: {
     componentSubtitle: 'Label for a component or token within our style guide.',
   },

@@ -110,6 +110,7 @@ export const Main = () => {
               alt="In The NICU"
               width={343}
               height={189}
+              objectFit='cover'
             />
           }
         >

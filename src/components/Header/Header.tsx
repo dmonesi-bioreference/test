@@ -1,7 +1,4 @@
-import GeneDxLogo from 'assets/images/png/Logo.png';
-import { AppImage } from 'components/AppImage';
-import { AppLink } from 'components/AppLink';
-import { Icon } from 'components/Icon';
+import { Icon, AppLink, Logo } from 'components';
 
 import HeaderStyled from './Header.styles';
 
@@ -9,13 +6,7 @@ const Header: React.FC = () => {
   return (
     <HeaderStyled>
       <AppLink href="/">
-        <AppImage
-          src={GeneDxLogo}
-          alt="GeneDx Logo"
-          width={90.24}
-          height={28.13}
-          className="header__logo"
-        />
+        <Logo type="color" width={130} />
       </AppLink>
       <Icon name="menu" kind="heroicon" size="large" />
     </HeaderStyled>

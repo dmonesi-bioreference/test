@@ -12,6 +12,7 @@ const CardStyled = styled.div`
   .card__header {
     img {
       width: 100%;
+      object-fit: cover;
     }
   }
 
