@@ -1,0 +1,23 @@
+Requirements:
+    - terraform v0.12.24
+    - azure-cli  2.0.76
+
+$> cd /infrastructure/terraform/web
+
+Login into Azure using Azure CLI
+$> az login
+
+Set sandbox subscription. For production we will use enterprise subscription
+$> az account set --subscription=c4857fbc-f824-444e-adde-85a667a72737
+
+Initialize terraform modules and backend state
+$> terraform init
+
+List all workspaces
+$> terraform workspace list
+
+Select development workspace
+$> terraform workspace select development
+
+$> terraform plan -var-file=[location of the file containing environment variables including subscription_id, client_id, client_secret and tenant_id]
+
