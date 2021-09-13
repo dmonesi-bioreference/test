@@ -208,6 +208,7 @@ export const tokens = {
   shadowMedium: `0 2px 4px rgba(0, 0, 0, 0.1)`,
   shadowLarge: `0 2px 8px rgba(0, 0, 0, 0.1)`,
   shadowXLarge: `0 4px 16px rgba(0, 0, 0, 0.1)`,
+  shadowXxLarge: `0 10px 20px -10px rgba(27, 33, 50, 0.08)`,
 
   /* transition */
   transitionXSlow: '1000ms',

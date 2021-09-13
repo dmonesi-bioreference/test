@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { tokens, base } from 'styles';
+import { tokens, base, colors } from 'styles';
 
 const TypographyStyled = styled.div`
   ${base}
@@ -18,6 +18,10 @@ const TypographyStyled = styled.div`
 
   &.minor {
     color: ${tokens.colorSecondaryText};
+  }
+
+  &.white {
+    color: ${colors.white};
   }
 
   &.sansSerif {

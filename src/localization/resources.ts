@@ -126,6 +126,52 @@ export const resources = {
             confirm: 'Confirm',
           },
         },
+        furtherRegistration: {
+          title: 'Thank you!',
+          firstSubTitle: 'We have confirmed your identity.',
+          secondSubTitle:
+            'We just need a couple more details to set your account up.',
+          form: {
+            firstName: {
+              label: 'Your First Name',
+              placeholder: 'e.g. Ann',
+            },
+            lastName: {
+              label: 'Your Last Name',
+              placeholder: 'e.g. Onymous',
+            },
+            email: {
+              label: 'Your Email Address',
+              placeholder: 'barb.jackson@example.com',
+            },
+            password: {
+              label: 'Password',
+            },
+            confirmPassword: {
+              label: 'Confirm Password',
+            },
+            number: {
+              label: 'Your Mobile Number',
+              placeholder: 'e.g. 212-345-6789',
+              toolTipHelperMessage:
+                'We’ll also use this to send you notifications.',
+              toolTipTitle: 'Why do we ask for your mobile number?',
+              toolTipContent: ' We’ll send SMS notifications to you here.',
+              toolTipLink: 'Use your email address instead',
+            },
+          },
+          inputValidation: {
+            title: 'Your strong password must include:',
+            characters: 'At least 9 characters in total.',
+            letters: 'At least 1 letter (a - z)',
+            numbers: 'At least 1 number (0 - 9)',
+          },
+          checkbox: {
+            termsAndConditionsLink: 'Terms & Conditions',
+            label: 'I agree to the',
+          },
+          setUpAccount: 'Set up account',
+        },
       },
       pages: {
         home: {},

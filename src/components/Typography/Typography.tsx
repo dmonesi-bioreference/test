@@ -10,7 +10,7 @@ export type TypographyHeadingLevel =
   | '7'
   | '8';
 
-export type TypographyColor = 'default' | 'primary' | 'minor';
+export type TypographyColor = 'default' | 'primary' | 'minor' | 'white';
 
 interface HeadingProps {
   level?: TypographyHeadingLevel;

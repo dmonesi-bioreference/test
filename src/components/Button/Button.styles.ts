@@ -275,6 +275,16 @@ const ButtonStyled = styled.button`
     line-height: ${tokens.lineHeightSelf};
   }
 
+  &.button--small {
+    font-size: ${tokens.fontSize14};
+    font-weight: ${tokens.fontWeightMedium};
+    line-height: ${tokens.lineHeightSelf};
+  }
+
+  &.light {
+    color: ${colors.blue[200]};
+  }
+
   &[disabled] {
     background-color: ${colors.grey[300]};
     border-color: ${colors.grey[300]};

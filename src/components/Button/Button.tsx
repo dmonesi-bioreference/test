@@ -13,7 +13,8 @@ export type ButtonKind =
   | 'warning'
   | 'danger'
   | 'text'
-  | 'image';
+  | 'image'
+  | 'small';
 
 export interface ButtonProps {
   /** Set to true to render the button in a disabled state. */
@@ -40,6 +41,7 @@ export interface ButtonProps {
   spreadContent?: boolean;
   /** Tells the browser where to open the link. Used only if `href` is set. */
   target?: '_blank' | '_parent' | '_self' | '_top';
+  color?: 'light' | 'default';
 }
 
 const defaultProps: ButtonProps = {
@@ -47,6 +49,7 @@ const defaultProps: ButtonProps = {
 };
 
 const Button: React.FC<ButtonProps> = (props) => {
+  const color = props.color || 'default';
   const className = clsx({
     button: true,
 
@@ -61,7 +64,11 @@ const Button: React.FC<ButtonProps> = (props) => {
     'button--danger': props.kind === 'danger',
     'button--text': props.kind === 'text',
     'button--image': props.kind === 'image',
-    'button--link': props.kind === 'secondary' || props.kind === 'tertiary',
+    'button--small': props.kind === 'small',
+    'button--link':
+      props.kind === 'secondary' ||
+      props.kind === 'tertiary' ||
+      props.kind === 'small',
 
     // Modifiers
     'button--disabled': props.disabled,
@@ -72,7 +79,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     <Link href={props.href} passHref>
       <ButtonStyled
         as="a"
-        className={className}
+        className={`${color} ${className}`}
         target={props.target}
         download={props.download}
         onClick={props.onClick}
@@ -85,7 +92,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     </Link>
   ) : (
     <ButtonStyled
-      className={className}
+      className={`${color} ${className}`}
       disabled={props.disabled}
       name={props.name}
       value={props.value}

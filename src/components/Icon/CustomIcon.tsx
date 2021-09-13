@@ -138,8 +138,20 @@ const Atom: React.FC = () => {
   );
 };
 
+const ToolTipPoint: React.FC = () => {
+  return (
+    <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 13">
+      <path
+        d="M6.31 1.782c1.163-2.067 4.151-2.031 5.264.063L17.5 13H0L6.31 1.782Z"
+        fill="#0d5473"
+      />
+    </svg>
+  );
+};
+
 export const customIcons: { [key: string]: React.ReactNode } = {
   helix: <Helix />,
   'healthcare-provider': <HealthCareProvider />,
   atom: <Atom />,
+  toolTipPoint: <ToolTipPoint />,
 };
