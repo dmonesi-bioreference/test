@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { t } from 'localization';
 
 import { AppEventContext, AppServiceContext } from './context';
-import { AppState } from './state';
+import { AppService, AppStates } from './state';
 
 /**
  * In order to access app state, we use the `useAppSelector` hook. This
@@ -13,11 +13,11 @@ import { AppState } from './state';
  * `useSelector`. This adds a change listener to the state, and only triggers
  * updates / renders when necessary.
  *
- * @param selector A function that takes an `AppState` and returns anything
+ * @param selector A function that takes an `AppService.state` and returns anything
  * @returns The selected state content
  */
 export function useAppSelector<ReturnValue>(
-  selector: (state: AppState) => ReturnValue
+  selector: (state: AppService['state']) => ReturnValue
 ) {
   const appService = useContext(AppServiceContext);
 
@@ -36,7 +36,13 @@ export function useAppSelector<ReturnValue>(
  * @returns an object of functions which trigger app events
  */
 export function useAppEvents() {
-  return useContext(AppEventContext);
+  const events = useContext(AppEventContext);
+
+  if (!events) {
+    throw new Error('useAppEvents must be used within a Shell');
+  }
+
+  return events;
 }
 
 /**
@@ -53,4 +59,27 @@ export function useAppTranslation() {
     t(key, { ...options, lng });
 
   return appTranslation;
+}
+
+/**
+ * useAppState is a shorthand function which should help make checking
+ * the app state a little easier. With useAppState, you can invoke the
+ * current state of the app like so:
+ *
+ *     useAppState('app.target-state');
+ *
+ *  Versus the longer approach:
+ *
+ *     useAppSelector(state => state.matches('app.target-state'));
+ *
+ * As a nice byproduct, useAppState has a typesafety guarantee: whenever
+ * the app machine changes, the signature for useAppState will as well.
+ * This means if meaningful refactors of the app logic occur, the whole
+ * application's type checking will guide you through any refactoring
+ * follow-ups.
+ *
+ * @returns a boolean result of the interior `state.matches` call
+ */
+export function useAppState(path: AppStates | AppStates[]) {
+  return useAppSelector((state) => state.matches(path));
 }

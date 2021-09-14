@@ -11,6 +11,7 @@
   ],
   "dependencies": {
     "@xstate/react": "1.5.1",
+    "@xstate/inspect": "0.4.1",
     "history": "5.0.0",
     "i18next": "20.3.5",
     "lodash": "4.17.21",

@@ -7,8 +7,10 @@ import { themes, tokens } from 'styles';
 import { Shell } from './Shell';
 import { useAppTranslation } from './hooks';
 
-test('Loading the shell adds css variables to the document', () => {
-  render(<Shell />);
+test('Loading the shell adds css variables to the document', async () => {
+  const app = render(<Shell>Loaded</Shell>);
+
+  await app.findByText('Loaded');
 
   expect(
     global.document.documentElement.style.getPropertyValue(

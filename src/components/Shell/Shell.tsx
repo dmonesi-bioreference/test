@@ -1,9 +1,14 @@
-import { AppProvider } from './AppProvider';
+import { AppProvider, AppProviderProps } from './AppProvider';
 import { Theme } from './Theme';
 
-export function Shell(props: Props<unknown>) {
+type ShellProps = AppProviderProps;
+
+export function Shell(props: Props<ShellProps>) {
   return (
-    <AppProvider>
+    <AppProvider
+      onAuthenticate={props.onAuthenticate}
+      onIdentity={props.onIdentity}
+    >
       <Theme>{props.children}</Theme>
     </AppProvider>
   );
