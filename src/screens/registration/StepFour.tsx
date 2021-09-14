@@ -10,13 +10,11 @@ import {
   PageLayout,
   PageSection,
   Typography,
-  ToolTip,
   useAppTranslation,
 } from 'components';
+import { tokens } from 'styles';
 
-import { tokens } from '../styles';
-
-export const FurtherRegistration = () => {
+export const StepFour = () => {
   const t = useAppTranslation();
 
   const [passwordShown, setPasswordShown] = useState(false);
@@ -39,82 +37,15 @@ export const FurtherRegistration = () => {
               textAlign: 'center',
               display: 'flex',
               flexDirection: 'column',
-              gap: tokens.spacingMedium,
-              marginBottom: tokens.spacing,
+              gap: tokens.spacingXLarge,
             }}
           >
-            <Heading level="1">
-              {t('sections.furtherRegistration.stepOne.title')}
-            </Heading>
             <Heading level="4">
-              {t('sections.furtherRegistration.stepOne.subTitle')}
+              {t('sections.furtherRegistration.stepFour.subTitle')}
             </Heading>
           </div>
         }
       >
-        <div style={{ marginBottom: tokens.spacingXxLarge }}>
-          <div style={{ marginBottom: tokens.spacing }}>
-            <Input
-              type="text"
-              label={t('sections.furtherRegistration.form.firstName.label')}
-              name="first-name"
-              placeholder={t(
-                'sections.furtherRegistration.form.firstName.placeholder'
-              )}
-              prefix={<Icon name="user" color="primary" />}
-            />
-          </div>
-          <Input
-            type="text"
-            label={t('sections.furtherRegistration.form.lastName.label')}
-            name="last-name"
-            placeholder={t(
-              'sections.furtherRegistration.form.lastName.placeholder'
-            )}
-            prefix={<Icon name="user" color="primary" />}
-          />
-        </div>
-
-        <div style={{ marginBottom: tokens.spacingXxSmall }}>
-          <div style={{ marginBottom: tokens.spacing }}>
-            <Input
-              type="email"
-              label={t('sections.furtherRegistration.form.email.label')}
-              name="email"
-              prefix={<Icon name="mail" color="primary" />}
-              placeholder={t(
-                'sections.furtherRegistration.form.email.placeholder'
-              )}
-            />
-          </div>
-
-          <Input
-            type="number"
-            label={t('sections.furtherRegistration.form.number.label')}
-            name="mobile"
-            placeholder={t(
-              'sections.furtherRegistration.form.number.placeholder'
-            )}
-            prefix={<Icon name="phone" color="primary" />}
-          />
-        </div>
-
-        <div style={{ marginBottom: tokens.spacingXxLarge }}>
-          <ToolTip
-            helperMessage={t(
-              'sections.furtherRegistration.form.number.toolTipHelperMessage'
-            )}
-            title={t('sections.furtherRegistration.form.number.toolTipTitle')}
-          >
-            <Typography type="helper-text" color="white">
-              {t('sections.furtherRegistration.form.number.toolTipContent')}
-            </Typography>
-            <Button kind="small" color="light">
-              {t('sections.furtherRegistration.form.number.toolTipLink')}
-            </Button>
-          </ToolTip>
-        </div>
-
         <div style={{ marginBottom: tokens.spacingLarge }}>
           <InformationBanner
             title={t('sections.furtherRegistration.inputValidation.title')}
@@ -177,9 +108,7 @@ export const FurtherRegistration = () => {
           </Button>
         </div>
 
-        <Button kind="primary">
-          {t('sections.furtherRegistration.setUpAccount')}
-        </Button>
+        <Button kind="primary">{t('sections.furtherRegistration.next')}</Button>
       </PageSection>
     </PageLayout>
   );

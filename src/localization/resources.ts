@@ -127,10 +127,23 @@ export const resources = {
           },
         },
         furtherRegistration: {
-          title: 'Thank you!',
-          firstSubTitle: 'We have confirmed your identity.',
-          secondSubTitle:
-            'We just need a couple more details to set your account up.',
+          stepOne: {
+            title: 'Thank you!',
+            subTitle:
+              'We have confirmed your identity - we just need a couple more details to set up your account.',
+          },
+          stepTwo: {
+            subTitle:
+              'Please let us know how we can notify you of your child’s genetic test results.',
+          },
+          stepThree: {
+            subTitle:
+              'Giving us some extra information about you can help us to tailor your experience with us.',
+          },
+          stepFour: {
+            subTitle:
+              'Lastly, create a strong password to help keep your account and your child’s information safe.',
+          },
           form: {
             firstName: {
               label: 'Your First Name',
@@ -149,6 +162,21 @@ export const resources = {
             },
             confirmPassword: {
               label: 'Confirm Password',
+            },
+            relationshipToPatient: {
+              label: 'Relationship to Patient',
+              toolTipHelperMessage: 'Why do we ask for this?',
+              toolTipTitle:
+                'Why do we ask for your relationship to the patient?',
+              toolTipContent:
+                'This will help us to communicate with you better and make your experience more personalized.',
+            },
+            dob: {
+              label: 'Your Date of Birth',
+              toolTipHelperMessage: 'Why do we ask for this?',
+              toolTipTitle: 'Why do we ask for your date of birth?',
+              toolTipContent:
+                'This provides us with an extra identifier unique to you - we can use it to help you to recover your account if you get locked out.',
             },
             number: {
               label: 'Your Mobile Number',
@@ -171,6 +199,7 @@ export const resources = {
             label: 'I agree to the',
           },
           setUpAccount: 'Set up account',
+          next: 'Next',
         },
       },
       pages: {
