@@ -5,12 +5,15 @@ import {
   Input,
   PageLayout,
   PageSection,
+  useAppEvents,
   useAppTranslation,
 } from 'components';
 import { tokens } from 'styles';
 
 export const StepOne = () => {
   const t = useAppTranslation();
+  const events = useAppEvents();
+
   return (
     <PageLayout>
       <PageSection
@@ -55,7 +58,9 @@ export const StepOne = () => {
           />
         </div>
 
-        <Button kind="primary">{t('sections.furtherRegistration.next')}</Button>
+        <Button onClick={events.nextStep} kind="primary">
+          {t('sections.furtherRegistration.next')}
+        </Button>
       </PageSection>
     </PageLayout>
   );

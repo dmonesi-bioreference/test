@@ -1,23 +1,29 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
-import { StepOne, StepTwo, StepThree, StepFour } from 'screens';
+import { useAppEvents, useAppState } from 'components';
+import { RegistrationWizard } from 'screens';
+
+/**
+ * This hook is a pure convenience step to let us test registration's
+ * setup wizard while the rest of the app is being built. It has no
+ * purpose once registration itself is fully wired up.
+ */
+function useBeginRegistration() {
+  const onboarding = useAppState('app.authenticating.onboarding');
+  const events = useAppEvents();
+
+  useEffect(() => {
+    if (onboarding) {
+      events.register();
+      events.confirm();
+    }
+  }, [events, onboarding]);
+}
 
 export default function RegistrationPage() {
-  const router = useRouter();
-  const { step } = router.query;
-  const page = () => {
-    switch (step) {
-      case '2':
-        return <StepTwo />;
-      case '3':
-        return <StepThree />;
-      case '4':
-        return <StepFour />;
-      default:
-        return <StepOne />;
-    }
-  };
+  // Please remove this hook once registration is fully integrated.
+  useBeginRegistration();
 
   return (
     <>
@@ -25,7 +31,9 @@ export default function RegistrationPage() {
         <title>GeneDX</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>{page()}</main>
+      <main>
+        <RegistrationWizard />
+      </main>
 
       <footer />
     </>

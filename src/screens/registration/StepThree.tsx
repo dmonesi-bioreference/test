@@ -7,12 +7,15 @@ import {
   Select,
   ToolTip,
   Typography,
+  useAppEvents,
   useAppTranslation,
 } from 'components';
 import { tokens } from 'styles';
 
 export const StepThree = () => {
   const t = useAppTranslation();
+  const events = useAppEvents();
+
   return (
     <PageLayout>
       <PageSection
@@ -87,7 +90,9 @@ export const StepThree = () => {
           </div>
         </div>
 
-        <Button kind="primary">{t('sections.furtherRegistration.next')}</Button>
+        <Button onClick={events.nextStep} kind="primary">
+          {t('sections.furtherRegistration.next')}
+        </Button>
       </PageSection>
     </PageLayout>
   );

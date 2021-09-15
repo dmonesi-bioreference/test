@@ -7,12 +7,15 @@ import {
   PageSection,
   ToolTip,
   Typography,
+  useAppEvents,
   useAppTranslation,
 } from 'components';
 import { tokens } from 'styles';
 
 export const StepTwo = () => {
   const t = useAppTranslation();
+  const events = useAppEvents();
+
   return (
     <PageLayout>
       <PageSection
@@ -70,7 +73,9 @@ export const StepTwo = () => {
           </ToolTip>
         </div>
 
-        <Button kind="primary">{t('sections.furtherRegistration.next')}</Button>
+        <Button onClick={events.nextStep} kind="primary">
+          {t('sections.furtherRegistration.next')}
+        </Button>
       </PageSection>
     </PageLayout>
   );
