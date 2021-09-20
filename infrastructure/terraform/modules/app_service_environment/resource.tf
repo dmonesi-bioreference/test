@@ -10,3 +10,6 @@ output "id" {
   value = azurerm_app_service_environment.main.id
 }
 
+output "internal_ip_address" {
+  value = azurerm_app_service_environment.main.internal_ip_address
+}

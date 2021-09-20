@@ -47,7 +47,7 @@ resource "azurerm_application_gateway" "main" {
   
 	backend_address_pool {
 		name 								= "${var.app_short_name}-beap"
-		ip_addresses 						= var.backend_pool_ips
+		fqdns 								= var.backend_pool_fqdns
 	}
 	
 	backend_http_settings {

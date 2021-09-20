@@ -54,7 +54,7 @@ variable "probe_unhealthy_threshold" {
 variable "backend_address_pool_name" {
   default = ""
 }
-variable "backend_pool_ips" {
+variable "backend_pool_fqdns" {
     type = list
 }
 variable "http_setting_name" {
@@ -92,7 +92,8 @@ variable "cipher_suites" {
   default = [
               "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384", 
 							"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", 
-							"TLS_RSA_WITH_AES_256_CBC_SHA256"
+							"TLS_RSA_WITH_AES_256_CBC_SHA256",
+              "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
   ]
 }
 variable "ssl_cert_name" {}

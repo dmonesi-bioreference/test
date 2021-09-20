@@ -54,7 +54,6 @@ module "pandas_ase" {
   subnet_id                         = module.pandas_ase_subnet.id
 }
 
-
 # Application Service
 module "pandas_app_service" {
   source                            = "../modules/app_service"
@@ -62,19 +61,21 @@ module "pandas_app_service" {
   client_secret   							    = var.client_secret
   tenant_id       							    = var.tenant_id
   app_name                          = var.app_name[local.env_name]
+  kind                              = var.app_kind[local.env_name]
   rg_name                           = module.pandas_resource_group.name
   location                          = module.pandas_resource_group.location
   ase_id                            = module.pandas_ase.id
   host_name                         = var.app_host_name[local.env_name]
+  iase_host_name                    = var.iase_host_name[local.env_name]
   sku_tier                          = var.app_sku_config[local.env_name].tier
   sku_size                          = var.app_sku_config[local.env_name].size
   sku_capacity                      = var.app_sku_config[local.env_name].capacity
 	ssl_cert_file								      = var.app_ssl_cert_file[local.env_name]
 	ssl_cert_name								      = var.app_ssl_cert_name[local.env_name]
-  ssl_cert_pwd                      = var.app_ssl_cert_pwd[local.env_name]
+  ssl_cert_pwd                      = var.app_ssl_cert_pwd
 }
 
-/*
+
 # Application Gateway Subnet
 module "pandas_agw_subnet" {
   source                            = "../modules/agw_subnet"
@@ -87,9 +88,8 @@ module "pandas_agw_subnet" {
 }
 
 # Application Gateway
-# AGW backend pool IP is currently coming from config. It should instead come from ASE module
-module "testkits_agw" {
-  source                            = "../modules/agw"
+module "pandas_agw" {
+  source                            = "../modules/agw_with_public_ip"
   env_prefix                        = var.env_prefix[local.env_name]
   rg_name                           = module.pandas_resource_group.name
   location                          = module.pandas_resource_group.location
@@ -98,12 +98,21 @@ module "testkits_agw" {
 	agw_sku_tier								      = var.agw_sku_config[local.env_name].tier
 	agw_sku_capacity							    = var.agw_sku_config[local.env_name].capacity
 	subnet_id 									      = module.pandas_agw_subnet.id
-  backend_pool_ips                  = var.agw_backend_pool_ip[local.env_name] # TODO: We should get this IP from the ASE module
+  backend_pool_fqdns                = var.agw_backend_pool_fqdns[local.env_name]
 	probe_host_name						        = var.agw_probe_hostname[local.env_name]
 	ssl_cert_file								      = var.app_ssl_cert_file[local.env_name]
 	ssl_cert_name								      = var.app_ssl_cert_name[local.env_name]
-  ssl_cert_pwd                      = var.app_ssl_cert_pwd[local.env_name]
-	backend_auth_cert							    = var.agw_ase_ilb_cert_file[local.env_name]
-	backend_auth_cert_name						= var.agw_ase_ilb_cert_name[local.env_name]
+  ssl_cert_pwd                      = var.app_ssl_cert_pwd
+	backend_auth_cert							    = var.agw_backend_cert_file[local.env_name]
+	backend_auth_cert_name						= var.agw_backend_cert_name[local.env_name]
 }
-*/
+
+# Private DNS Zone
+module "pandas_private_dns_zone" {
+  source                            = "../modules/private_dns_zone"
+  domain_name                       = var.iase_domain_name[local.env_name]
+  subdomain_name                    = var.app_short_name[local.env_name]
+  subdomain_backend_records         = module.pandas_ase.internal_ip_address
+  rg_name                           = module.pandas_resource_group.name
+  vnet_id                           = module.ent_virtual_network.id
+}

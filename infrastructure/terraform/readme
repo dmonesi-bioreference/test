@@ -1,6 +1,6 @@
 Requirements:
-    - terraform v0.12.24
-    - azure-cli  2.0.76
+    - terraform v1.0.6
+    - azure-cli 2.28.0
 
 $> cd /infrastructure/terraform/web
 

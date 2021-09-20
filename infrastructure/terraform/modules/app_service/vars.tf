@@ -12,11 +12,15 @@ variable "sku_size" {
 variable "sku_capacity" {
   default = "1"
 }
+variable "kind" {
+  default = "Windows"
+}
 variable "ssl_cert_name" {}
-
 variable "ssl_cert_file" {}
 variable "ssl_cert_pwd" {}
 variable "host_name" {}
+variable "iase_host_name" {}
+
 variable "client_id" {}
 variable "client_secret" {}
 variable "tenant_id" {}

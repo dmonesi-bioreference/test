@@ -53,7 +53,7 @@ resource "azurerm_application_gateway" "main" {
   
 	backend_address_pool {
 		name 								= "${var.app_short_name}-beap"
-		ip_addresses 						= var.backend_pool_ips
+		fqdns 								= var.backend_pool_fqdns
 	}
 	
 	backend_http_settings {
@@ -61,6 +61,7 @@ resource "azurerm_application_gateway" "main" {
 		cookie_based_affinity 				= var.cookie_based_affinity
 		port                  				= var.backend_http_port
 		protocol              				= var.backend_http_protocol
+		request_timeout						= var.backend_request_timeout
 	}
 		
 	backend_http_settings {
@@ -69,6 +70,8 @@ resource "azurerm_application_gateway" "main" {
 		port                  				= var.backend_https_port
 		protocol              				= var.backend_https_protocol
 		probe_name 							= "http_${var.app_short_name}"
+		request_timeout						= var.backend_request_timeout
+		
 		authentication_certificate {
 			name 	                        = var.backend_auth_cert_name
 		}

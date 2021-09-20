@@ -3,6 +3,10 @@ data "azurerm_virtual_network" "main" {
 	resource_group_name     = var.vnet_rg_name
 }
 
+output "id" {
+  value = data.azurerm_virtual_network.main.id
+}
+
 output "name" {
   value = data.azurerm_virtual_network.main.name
 }
