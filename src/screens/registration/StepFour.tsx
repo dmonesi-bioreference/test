@@ -9,6 +9,7 @@ import {
   Input,
   PageLayout,
   PageSection,
+  StepTitle,
   Typography,
   useAppTranslation,
 } from 'components';
@@ -40,6 +41,7 @@ export const StepFour = () => {
               gap: tokens.spacingXLarge,
             }}
           >
+            <StepTitle number="4" />
             <Heading level="4">
               {t('sections.furtherRegistration.stepFour.subTitle')}
             </Heading>

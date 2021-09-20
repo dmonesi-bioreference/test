@@ -23,6 +23,7 @@ export * from './Radio';
 export * from './Select';
 export * from './Shell';
 export * from './Step';
+export * from './StepTitle';
 export * from './StyleGuide/StyleLabel';
 export * from './Table';
 export * from './Textarea';

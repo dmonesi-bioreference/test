@@ -12,14 +12,15 @@ export default {
   },
 };
 
-const Template: Story = (args) => (
+const Template: Story = () => (
   <div style={{ width: 375 }}>
     <Typography type="body">Above</Typography>
-    <Divider {...args} />
+    <Divider />
+    <Typography type="body">Below</Typography>
+    <Typography type="body">Above</Typography>
+    <Divider color="coral" thickness="thick" />
     <Typography type="body">Below</Typography>
   </div>
 );
 
 export const Primary = Template.bind({});
-
-Primary.args = {};

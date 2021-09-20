@@ -5,6 +5,7 @@ import {
   PageLayout,
   PageSection,
   Select,
+  StepTitle,
   ToolTip,
   Typography,
   useAppEvents,
@@ -28,6 +29,7 @@ export const StepThree = () => {
               gap: tokens.spacingXLarge,
             }}
           >
+            <StepTitle number="3" />
             <Heading level="4">
               {t('sections.furtherRegistration.stepThree.subTitle')}
             </Heading>

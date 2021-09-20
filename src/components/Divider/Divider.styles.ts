@@ -6,10 +6,24 @@ const DividerStyled = styled.div`
   ${base}
 
   &.line {
-    height: ${tokens.borderWidthThin};
-    width: 100%;
-    background-color: ${colors.grey[400]};
     border-radius: ${tokens.borderRadiusPill};
+    width: 100%;
+  }
+
+  &.line--thick {
+    height: ${tokens.borderWidthThick};
+  }
+
+  &.line--thin {
+    height: ${tokens.borderWidthThin};
+  }
+
+  &.line--coral {
+    background-color: ${colors.coral[200]};
+  }
+
+  &.line--neutral {
+    background-color: ${colors.grey[400]};
   }
 `;
 

@@ -118,7 +118,7 @@ export const tokens = {
   colorPrimaryFocus: colors.blue[200],
   colorSecondary: colors.grey[600],
   colorSecondaryHover: colors.grey[500],
-  colorSecondaryText: colors.grey[700],
+  colorSecondaryText: colors.grey[800],
   colorSecondaryFocus: colors.grey[200],
   colorSuccess: colors.green[600],
   colorSuccessHover: colors.green[500],
@@ -192,7 +192,7 @@ export const tokens = {
 
   /* border-width */
   borderWidthThin: '1px',
-  borderWidthThick: '2px',
+  borderWidthThick: '3px',
 
   /* border-radius */
   borderRadiusSmall: '2px',
