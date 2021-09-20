@@ -4,14 +4,14 @@ import InformationBannerStyled from './InformationBanner.styles';
 
 export interface InformationBannerProps {
   title?: string;
-  color?: 'default' | 'major';
+  type?: 'default' | 'tooltip';
 }
 
 const InformationBanner: React.FC<InformationBannerProps> = (props) => {
-  const color = props.color || 'default';
-  const titleColor = props.color == 'major' ? 'white' : 'default';
+  const titleColor = props.type == 'tooltip' ? 'white' : 'default';
+  const type = props.type || 'default';
   return (
-    <InformationBannerStyled className={`${color}`}>
+    <InformationBannerStyled className={`information-banner--${type}`}>
       <div className="information-banner__title">
         <Heading level="8" color={titleColor}>
           {props.title}

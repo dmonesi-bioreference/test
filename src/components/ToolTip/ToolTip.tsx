@@ -23,16 +23,23 @@ const ToolTip: React.FC<ToolTipProps> = (props) => {
   return (
     <ToolTipStyled>
       <div className="tooltip__helper">
-        <Typography type="helper-text" color="minor">
-          {props.helperMessage}
-        </Typography>
+        <div className="tooltip__helper-message">
+          <Typography type="helper-text" color="minor">
+            {props.helperMessage}
+          </Typography>
+        </div>
         <div
           onMouseOver={handleMouseOver}
           onMouseOut={handleMouseOut}
           onFocus={handleMouseOver}
           onBlur={handleMouseOut}
         >
-          <Icon name="question-mark-circle" color="primary" size="small" />
+          <div className="tooltip__icon">
+            <Icon name="question-mark-circle" color="primary" size="small" />
+            <div style={tooltipStyle} className={`tooltip__tip`}>
+              <Icon name="toolTipPoint" kind="custom" />
+            </div>
+          </div>
         </div>
       </div>
       <div
@@ -43,10 +50,7 @@ const ToolTip: React.FC<ToolTipProps> = (props) => {
         onFocus={handleMouseOver}
         onBlur={handleMouseOut}
       >
-        <div className="tip">
-          <Icon name="toolTipPoint" kind="custom" />
-        </div>
-        <InformationBanner title={props.title} color="major">
+        <InformationBanner title={props.title} type="tooltip">
           {props.children}
         </InformationBanner>
       </div>

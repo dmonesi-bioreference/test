@@ -140,9 +140,15 @@ const Atom: React.FC = () => {
 
 const ToolTipPoint: React.FC = () => {
   return (
-    <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 13">
+    <svg
+      width="22"
+      height="20"
+      viewBox="0 0 22 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
-        d="M6.31 1.782c1.163-2.067 4.151-2.031 5.264.063L17.5 13H0L6.31 1.782Z"
+        d="M7.5359 2C9.0755 -0.66667 12.9245 -0.666667 14.4641 2L21.3923 14C22.9319 16.6667 21.0074 20 17.9282 20H4.07179C0.992592 20 -0.931905 16.6667 0.607696 14L7.5359 2Z"
         fill="#0d5473"
       />
     </svg>

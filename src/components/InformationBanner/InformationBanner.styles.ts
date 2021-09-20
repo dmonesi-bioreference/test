@@ -20,15 +20,15 @@ const InformationBannerStyled = styled.div`
     margin-bottom: ${tokens.spacingXSmall};
   }
 
-  &.default {
+  &.information-banner--default {
     background: ${colors.blue[50]};
     border: ${tokens.borderWidthThin} solid ${colors.blue[600]};
     color: ${colors.blue[900]};
   }
 
-  &.major {
+  &.information-banner--tooltip {
+    max-width: 300px;
     background: ${colors.blue[800]};
-    border-radius: ${tokens.borderRadius};
     color: white;
   }
 `;

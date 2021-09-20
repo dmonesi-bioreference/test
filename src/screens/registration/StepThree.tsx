@@ -37,7 +37,7 @@ export const StepThree = () => {
         }
       >
         <div style={{ marginBottom: tokens.spacingXxSmall }}>
-          <div style={{ marginBottom: tokens.spacing }}>
+          <div style={{ marginBottom: tokens.spacingXxSmall }}>
             <Select
               label={t(
                 'sections.furtherRegistration.form.relationshipToPatient.label'
@@ -70,7 +70,7 @@ export const StepThree = () => {
         </div>
 
         <div style={{ marginBottom: tokens.spacingXxSmall }}>
-          <div style={{ marginBottom: tokens.spacing }}>
+          <div style={{ marginBottom: tokens.spacingXxSmall }}>
             <Input
               type="date"
               label={t('sections.furtherRegistration.form.dob.label')}
