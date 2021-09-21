@@ -4,6 +4,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 module.exports = {
   reactStrictMode: true,
+  images: {
+    loader: 'custom',
+  },
   webpack(config, options) {
     config.module.rules.push({
       test: /\.svg$/,
