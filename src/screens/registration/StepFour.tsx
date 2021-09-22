@@ -9,6 +9,7 @@ import {
   Input,
   PageLayout,
   PageSection,
+  ProcessBar,
   StepTitle,
   Typography,
   useAppTranslation,
@@ -39,12 +40,14 @@ export const StepFour = () => {
               display: 'flex',
               flexDirection: 'column',
               gap: tokens.spacingXLarge,
+              marginBottom: tokens.spacingXxLarge,
             }}
           >
             <StepTitle number="4" />
             <Heading level="4">
               {t('sections.furtherRegistration.stepFour.subTitle')}
             </Heading>
+            <ProcessBar stepsAmount={4} currentStep={4} />
           </div>
         }
       >

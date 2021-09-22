@@ -18,6 +18,7 @@ export * from './Logo';
 export * from './Message';
 export * from './PageLayout';
 export * from './PageSection';
+export * from './ProcessBar';
 export * from './ProgressBar';
 export * from './Radio';
 export * from './Select';

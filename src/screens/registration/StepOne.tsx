@@ -5,6 +5,7 @@ import {
   Input,
   PageLayout,
   PageSection,
+  ProcessBar,
   useAppEvents,
   useAppTranslation,
 } from 'components';
@@ -24,6 +25,7 @@ export const StepOne = () => {
               display: 'flex',
               flexDirection: 'column',
               gap: tokens.spacingXLarge,
+              marginBottom: tokens.spacingXxLarge,
             }}
           >
             <Heading level="1">
@@ -32,6 +34,7 @@ export const StepOne = () => {
             <Heading level="4">
               {t('sections.furtherRegistration.stepOne.subTitle')}
             </Heading>
+            <ProcessBar stepsAmount={4} currentStep={1} />
           </div>
         }
       >

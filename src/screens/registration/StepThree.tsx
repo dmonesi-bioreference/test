@@ -4,6 +4,7 @@ import {
   Input,
   PageLayout,
   PageSection,
+  ProcessBar,
   Select,
   StepTitle,
   ToolTip,
@@ -27,12 +28,14 @@ export const StepThree = () => {
               display: 'flex',
               flexDirection: 'column',
               gap: tokens.spacingXLarge,
+              marginBottom: tokens.spacingXxLarge,
             }}
           >
             <StepTitle number="3" />
             <Heading level="4">
               {t('sections.furtherRegistration.stepThree.subTitle')}
             </Heading>
+            <ProcessBar stepsAmount={4} currentStep={3} />
           </div>
         }
       >
