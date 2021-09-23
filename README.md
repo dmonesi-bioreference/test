@@ -44,6 +44,28 @@ import GlobalStyle from '../src/styles/global';
 </App>;
 ```
 
+## Building the container image
+
+In order to build the Dockerfile bundled with this project:
+
+```sh
+docker build . -t pandas
+```
+
+This will create a production-ready build of the interior Next app and expose it within the docker container.
+Afterwards, you can run the image with this command:
+
+```sh
+docker run -dp 80:3000 pandas:latest
+```
+
+Once that loads, visit `http://localhost` to access the app.
+
+### Troubleshooting: Build complains about a stale lockfile
+
+This can happen sometimes if yarn's detected some dependencies which are out of sync.
+You can fix it locally by running yarn and then re-attempting the above commands.
+
 ## Colophon & Attribution
 
 - Documentation is powered by [Storybook](https://storybook.js.org).
