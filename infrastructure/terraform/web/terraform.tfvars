@@ -182,3 +182,8 @@ iase_domain_name = {
     production  = "internalase.genedx.com"
 }
 
+container_repository = {
+    development = "genedx01.azurecr.io/pandas:latest"
+    qa          = "genedx01.azurecr.io/pandas:latest"
+    production  = "genedx01.azurecr.io/pandas:latest"
+}

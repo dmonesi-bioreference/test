@@ -1,7 +1,6 @@
 variable "app_name" {}
 variable "rg_name" {}
 variable "location" {}
-
 variable "ase_id" {}
 variable "sku_tier" {
   default = "Isolated"
@@ -20,6 +19,10 @@ variable "ssl_cert_file" {}
 variable "ssl_cert_pwd" {}
 variable "host_name" {}
 variable "iase_host_name" {}
+variable "docker_registry_server_url" {}
+variable "docker_registry_server_username" {}
+variable "docker_registry_server_password" {}
+variable "container_repository" {}
 
 variable "client_id" {}
 variable "client_secret" {}

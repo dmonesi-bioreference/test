@@ -54,6 +54,14 @@ module "pandas_ase" {
   subnet_id                         = module.pandas_ase_subnet.id
 }
 
+# Azure Container Registry
+module "genedx_acr" {
+  source                            = "../modules/container_registry"
+  acr_name                          = "genedx01"
+  rg_name                           = module.pandas_resource_group.name
+  location                          = module.pandas_resource_group.location
+}
+
 # Application Service
 module "pandas_app_service" {
   source                            = "../modules/app_service"
@@ -70,6 +78,10 @@ module "pandas_app_service" {
   sku_tier                          = var.app_sku_config[local.env_name].tier
   sku_size                          = var.app_sku_config[local.env_name].size
   sku_capacity                      = var.app_sku_config[local.env_name].capacity
+  docker_registry_server_url        = module.genedx_acr.login_server
+  docker_registry_server_username   = module.genedx_acr.admin_username
+  docker_registry_server_password   = module.genedx_acr.admin_password
+  container_repository              = var.container_repository[local.env_name]
 	ssl_cert_file								      = var.app_ssl_cert_file[local.env_name]
 	ssl_cert_name								      = var.app_ssl_cert_name[local.env_name]
   ssl_cert_pwd                      = var.app_ssl_cert_pwd
@@ -116,3 +128,4 @@ module "pandas_private_dns_zone" {
   rg_name                           = module.pandas_resource_group.name
   vnet_id                           = module.ent_virtual_network.id
 }
+

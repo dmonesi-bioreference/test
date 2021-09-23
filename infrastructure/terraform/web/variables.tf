@@ -44,6 +44,9 @@ variable iase_domain_name {}
 variable env_prefix {}
 variable app_short_name {}
 
+##### Container Registry ######
+variable container_repository {}
+
 #############################################################################
 # LOCALS
 #############################################################################

@@ -38,6 +38,8 @@ resource "azurerm_app_service" "main" {
 	app_settings = {
 		WEBSITE_TIME_ZONE									= "US Eastern Standard Time"
 		WEBSITE_NODE_DEFAULT_VERSION						= "14.17.6"
+
+		# Settings for Application Insights
 		APPINSIGHTS_INSTRUMENTATIONKEY 						= azurerm_application_insights.main.instrumentation_key
 		APPINSIGHTS_PROFILERFEATURE_VERSION             	= "1.0.0"
         APPINSIGHTS_SNAPSHOTFEATURE_VERSION             	= "1.0.0"
@@ -48,10 +50,15 @@ resource "azurerm_app_service" "main" {
         SnapshotDebugger_EXTENSION_VERSION              	= "~1"
         XDT_MicrosoftApplicationInsights_BaseExtensions 	= "~1"
         XDT_MicrosoftApplicationInsights_Mode           	= "recommended"
+
+		# Settings for private Container Registry  
+    	DOCKER_REGISTRY_SERVER_URL      					= "https://${var.docker_registry_server_url}"
+    	DOCKER_REGISTRY_SERVER_USERNAME 					= var.docker_registry_server_username 
+    	DOCKER_REGISTRY_SERVER_PASSWORD 					= var.docker_registry_server_password
 	}
 
 	site_config {
-		linux_fx_version 									= "NODE|14-lts"
+    	linux_fx_version 									= "DOCKER|${var.container_repository}"
 	}
 
 	depends_on												= [azurerm_application_insights.main]
