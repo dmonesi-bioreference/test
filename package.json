@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@xstate/inspect": "0.4.1",
+    "@tippyjs/react": "^4.2.5",
     "@xstate/react": "1.5.1",
     "clsx": "^1.1.1",
     "history": "5.0.0",

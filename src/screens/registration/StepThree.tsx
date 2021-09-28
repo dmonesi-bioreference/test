@@ -2,6 +2,7 @@ import {
   Button,
   Heading,
   Input,
+  InputHelper,
   PageLayout,
   PageSection,
   ProcessBar,
@@ -48,51 +49,59 @@ export const StepThree = () => {
               name="select-relationship"
               size="medium"
               labelPosition="top"
+              inputHelper={
+                <InputHelper
+                  helperText={t(
+                    'sections.furtherRegistration.form.relationshipToPatient.toolTipHelperMessage'
+                  )}
+                  toolTip={
+                    <ToolTip
+                      title={t(
+                        'sections.furtherRegistration.form.relationshipToPatient.toolTipTitle'
+                      )}
+                    >
+                      <Typography type="helper-text" color="white">
+                        {t(
+                          'sections.furtherRegistration.form.relationshipToPatient.toolTipContent'
+                        )}
+                      </Typography>
+                    </ToolTip>
+                  }
+                />
+              }
             >
               <option value="option1">Caregiver</option>
               <option value="option2">Parent</option>
             </Select>
           </div>
-
-          <div style={{ marginBottom: tokens.spacing }}>
-            <ToolTip
-              helperMessage={t(
-                'sections.furtherRegistration.form.relationshipToPatient.toolTipHelperMessage'
-              )}
-              title={t(
-                'sections.furtherRegistration.form.relationshipToPatient.toolTipTitle'
-              )}
-            >
-              <Typography type="helper-text" color="white">
-                {t(
-                  'sections.furtherRegistration.form.relationshipToPatient.toolTipContent'
-                )}
-              </Typography>
-            </ToolTip>
-          </div>
         </div>
 
-        <div style={{ marginBottom: tokens.spacingXxSmall }}>
-          <div style={{ marginBottom: tokens.spacingXxSmall }}>
-            <Input
-              type="date"
-              label={t('sections.furtherRegistration.form.dob.label')}
-              name="dob"
-            />
-          </div>
-
-          <div style={{ marginBottom: tokens.spacing }}>
-            <ToolTip
-              helperMessage={t(
-                'sections.furtherRegistration.form.dob.toolTipHelperMessage'
-              )}
-              title={t('sections.furtherRegistration.form.dob.toolTipTitle')}
-            >
-              <Typography type="helper-text" color="white">
-                {t('sections.furtherRegistration.form.dob.toolTipContent')}
-              </Typography>
-            </ToolTip>
-          </div>
+        <div style={{ marginBottom: tokens.spacingXxxLarge }}>
+          <Input
+            type="date"
+            label={t('sections.furtherRegistration.form.dob.label')}
+            name="dob"
+            inputHelper={
+              <InputHelper
+                helperText={t(
+                  'sections.furtherRegistration.form.dob.toolTipHelperMessage'
+                )}
+                toolTip={
+                  <ToolTip
+                    title={t(
+                      'sections.furtherRegistration.form.dob.toolTipTitle'
+                    )}
+                  >
+                    <Typography type="helper-text" color="white">
+                      {t(
+                        'sections.furtherRegistration.form.dob.toolTipContent'
+                      )}
+                    </Typography>
+                  </ToolTip>
+                }
+              />
+            }
+          />
         </div>
 
         <Button onClick={events.nextStep} kind="primary">

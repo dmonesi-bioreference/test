@@ -1,35 +1,25 @@
 import styled from 'styled-components';
 
-import { base, tokens } from 'styles';
+import { base, colors, tokens } from 'styles';
 
 const ToolTipStyled = styled.div`
   ${base}
-  .tooltip__helper {
-    display: flex;
-  }
+  display: flex;
+  margin-left: ${tokens.spacingXxSmall};
 
   .tooltip__content {
-    position: absolute;
-    z-index: 1;
-    margin-top: 6px;
+    background-color: transparent;
   }
 
-  .tooltip__helper-message {
-    margin-top: ${tokens.spacingXxSmall};
+  .tippy-content {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
-  .tooltip__tip {
-    margin-top: ${tokens.spacingLarge};
-    position: absolute;
-    width: 23px;
-    z-index: 1;
-  }
-
-  .tooltip__icon {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    margin-left: ${tokens.spacingXxSmall};
+  [class*='arrow'] {
+    svg {
+      fill: ${colors.blue[800]};
+    }
   }
 `;
 

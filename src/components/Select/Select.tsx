@@ -5,7 +5,9 @@ import { InputBaseProps } from 'components/FormControl';
 
 import SelectStyled from './Select.styles';
 
-export type SelectProps = InputBaseProps;
+export interface SelectProps extends InputBaseProps {
+  inputHelper?: React.ReactNode;
+}
 
 let idCount = 0;
 
@@ -85,6 +87,7 @@ const Select: React.FC<SelectProps> = (props) => {
           {props.children}
         </select>
       </div>
+      {props.inputHelper}
     </SelectStyled>
   );
 };

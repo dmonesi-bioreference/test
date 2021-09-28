@@ -28,6 +28,8 @@ export interface InputProps extends InputTextBaseProps {
     | 'url'
     | 'text'
     | 'date';
+  /** Used to provide further input information. */
+  inputHelper?: React.ReactNode;
 }
 
 let idCount = 0;
@@ -115,6 +117,7 @@ const Input: React.FC<InputProps> = (props) => {
 
         <span className="input__suffix">{props.suffix}</span>
       </div>
+      {props.inputHelper}
     </InputStyled>
   );
 };

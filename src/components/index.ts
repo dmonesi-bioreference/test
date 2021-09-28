@@ -12,6 +12,7 @@ export * from './Icon';
 export * from './IconButton';
 export * from './InformationBanner';
 export * from './Input';
+export * from './InputHelper';
 export * from './Header';
 export * from './List';
 export * from './Logo';

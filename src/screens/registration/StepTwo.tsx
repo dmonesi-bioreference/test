@@ -3,6 +3,7 @@ import {
   Heading,
   Icon,
   Input,
+  InputHelper,
   PageLayout,
   PageSection,
   ProcessBar,
@@ -39,7 +40,7 @@ export const StepTwo = () => {
           </div>
         }
       >
-        <div style={{ marginBottom: tokens.spacingXxSmall }}>
+        <div style={{ marginBottom: tokens.spacingXxxLarge }}>
           <div style={{ marginBottom: tokens.spacing }}>
             <Input
               type="email"
@@ -60,22 +61,32 @@ export const StepTwo = () => {
               'sections.furtherRegistration.form.number.placeholder'
             )}
             prefix={<Icon name="phone" color="primary" />}
+            inputHelper={
+              <InputHelper
+                helperText={t(
+                  'sections.furtherRegistration.form.number.toolTipHelperMessage'
+                )}
+                toolTip={
+                  <ToolTip
+                    title={t(
+                      'sections.furtherRegistration.form.number.toolTipTitle'
+                    )}
+                  >
+                    <Typography type="helper-text" color="white">
+                      {t(
+                        'sections.furtherRegistration.form.number.toolTipContent'
+                      )}
+                    </Typography>
+                    <Button kind="small" color="light">
+                      {t(
+                        'sections.furtherRegistration.form.number.toolTipLink'
+                      )}
+                    </Button>
+                  </ToolTip>
+                }
+              />
+            }
           />
-        </div>
-        <div style={{ marginBottom: tokens.spacingXxLarge }}>
-          <ToolTip
-            helperMessage={t(
-              'sections.furtherRegistration.form.number.toolTipHelperMessage'
-            )}
-            title={t('sections.furtherRegistration.form.number.toolTipTitle')}
-          >
-            <Typography type="helper-text" color="white">
-              {t('sections.furtherRegistration.form.number.toolTipContent')}
-            </Typography>
-            <Button kind="small" color="light">
-              {t('sections.furtherRegistration.form.number.toolTipLink')}
-            </Button>
-          </ToolTip>
         </div>
 
         <Button onClick={events.nextStep} kind="primary">

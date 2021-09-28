@@ -29,6 +29,5 @@ const Template: Story<ToolTipProps> = (args) => (
 export const Primary = Template.bind({});
 
 Primary.args = {
-  helperMessage: 'We’ll also use this to send you notifications.',
   title: 'Why do we ask for your mobile number?',
 };
