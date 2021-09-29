@@ -5,6 +5,7 @@ import { base, colors, tokens } from 'styles';
 const IconStyled = styled.div`
   ${base}
   fill: currentColor;
+  display: grid;
 
   &.default {
     color: ${colors.grey[700]};

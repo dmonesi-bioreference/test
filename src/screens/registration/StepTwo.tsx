@@ -71,6 +71,7 @@ export const StepTwo = () => {
                     title={t(
                       'sections.furtherRegistration.form.number.toolTipTitle'
                     )}
+                    placement="bottom"
                   >
                     <Typography type="helper-text" color="white">
                       {t(

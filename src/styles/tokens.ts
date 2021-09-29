@@ -281,7 +281,7 @@ export const inputs = {
   placeholderColor: colors.grey[600],
   shadow: `0 1px 2px rgba(0, 0, 0, 0.05)`,
   spacingSmall: `${tokens.spacingSmall}`,
-  spacingXSmall: `${tokens.spacingXxSmall}`,
+  spacingXSmall: `${tokens.spacingXSmall}`,
   spacing: `${tokens.spacingSmall}`,
   spacingLarge: `${tokens.spacing}`,
   transition: `border-color ${tokens.transitionFast} ease-in-out`,

@@ -10,11 +10,9 @@ export interface InputHelperProps {
 const InputHelper: React.FC<InputHelperProps> = (props) => {
   return (
     <InputHelperStyled>
-      <div className="input__helper--text">
-        <Typography type="helper-text" color="minor">
-          {props.helperText}
-        </Typography>
-      </div>
+      <Typography type="helper-text" color="minor">
+        {props.helperText}
+      </Typography>
       {props.toolTip}
     </InputHelperStyled>
   );

@@ -59,6 +59,7 @@ export const StepThree = () => {
                       title={t(
                         'sections.furtherRegistration.form.relationshipToPatient.toolTipTitle'
                       )}
+                      placement="bottom"
                     >
                       <Typography type="helper-text" color="white">
                         {t(
@@ -91,6 +92,7 @@ export const StepThree = () => {
                     title={t(
                       'sections.furtherRegistration.form.dob.toolTipTitle'
                     )}
+                    placement="bottom"
                   >
                     <Typography type="helper-text" color="white">
                       {t(

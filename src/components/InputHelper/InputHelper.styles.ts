@@ -5,10 +5,8 @@ import { inputs, base } from 'styles';
 const InputHelperStyled = styled.div`
   ${base}
   display: flex;
-
-  .input__helper--text {
-    margin-top: ${inputs.spacingXSmall};
-  }
+  align-items: center;
+  margin-top: ${inputs.spacingXSmall};
 `;
 
 export default InputHelperStyled;
