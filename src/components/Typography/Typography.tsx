@@ -11,10 +11,13 @@ export type TypographyHeadingLevel =
   | '8';
 
 export type TypographyColor = 'default' | 'primary' | 'minor' | 'white';
+export type TypographyAlignment = 'left' | 'center' | 'right';
+
 
 interface HeadingProps {
   level?: TypographyHeadingLevel;
   color?: TypographyColor;
+  alignment?: TypographyAlignment;
   fontType?: 'serif' | 'sansSerif';
 }
 
@@ -22,11 +25,13 @@ type TypographyProps =
   | {
       type: 'body' | 'list' | 'helper-text';
       color?: TypographyColor;
+      alignment?: TypographyAlignment;
     }
   | {
       type: 'label';
       labelType: 'display' | 'title' | 'input';
       color?: TypographyColor;
+      alignment?: TypographyAlignment;
     }
   | ({
       type: 'heading';
@@ -34,20 +39,20 @@ type TypographyProps =
 
 const Typography: React.FC<TypographyProps> = (props) => {
   const color = props.color || 'default';
-
+  const alignment = props.alignment || 'left';
   switch (props.type) {
     case 'body':
     case 'list':
     case 'helper-text':
       return (
-        <TypographyStyled className={`${props.type} ${color}`}>
+        <TypographyStyled className={`${props.type} ${color} ${alignment}`}>
           {props.children}
         </TypographyStyled>
       );
     case 'label': {
       return (
         <TypographyStyled
-          className={`${props.type} ${color} label--${props.labelType}`}
+          className={`${props.type} ${color} label--${props.labelType} ${alignment}`}
         >
           {props.children}
         </TypographyStyled>
@@ -61,7 +66,7 @@ const Typography: React.FC<TypographyProps> = (props) => {
       return (
         <TypographyStyled
           as={`h${level}`}
-          className={`${props.type}${level} ${color} ${fontType}`}
+          className={`${props.type}${level} ${color} ${fontType} ${alignment}`}
         >
           {props.children}
         </TypographyStyled>

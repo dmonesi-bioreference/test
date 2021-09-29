@@ -116,6 +116,18 @@ const TypographyStyled = styled.div`
     font-weight: ${tokens.fontWeightMedium};
     line-height: ${tokens.lineHeightSelf};
   }
+
+  &.center {
+    text-align: center;
+  }
+
+  &.left {
+    text-align: left;
+  }
+
+  &.right {
+    text-align: right;
+  }
 `;
 
 export default TypographyStyled;

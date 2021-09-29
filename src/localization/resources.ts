@@ -106,6 +106,14 @@ export const resources = {
             'NOTE: time is not an indicator of case difficulty or a positive test result. Please allow time for your child’s genetic test to process before calling the lab or your doctor’s office.',
           mayVary: 'Timing may vary',
           estimate: 'Expect results in {{estimate}} days',
+          locationCheck:{
+            where: 'Where are you now?',
+            report: 'It’s been 2 weeks since your genetic test report was generated. Help us deliver the most accurate resources and connections.',
+            nicu: 'In the NICU',
+            home: 'Newly home and adjusting',
+            while: 'We\'ve been home for a while',
+            continue: 'Continue',
+          }
         },
         authentication: {
           title: 'Welcome, Barbara & Lisa',
