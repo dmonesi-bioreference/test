@@ -5,6 +5,7 @@
 module.exports = {
   reactStrictMode: true,
   images: {
+    domains: ['genedx2020.local', 'qa.genedx.com'],
     loader: 'custom',
   },
   webpack(config, options) {

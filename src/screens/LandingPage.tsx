@@ -129,7 +129,7 @@ export const Main = () => {
               my life. But when Jonas was born with complications I struggled..
             </Typography>
           </div>
-          <Button kind="primary">
+          <Button kind="primary" href="/resources/real-family-story-81707">
             {t('sections.resources.story.readMore')}
           </Button>
         </Card>
@@ -153,7 +153,7 @@ export const Main = () => {
             </Button>
           </div>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Button kind="tertiary" href="#">
+            <Button kind="tertiary" href="/nicu-faqs">
               {t('sections.resources.faq.viewAll')}
             </Button>
           </div>

@@ -29,6 +29,8 @@
     "test:ci": "SKIP_PREFLIGHT_CHECK=true CI=true react-scripts test --env=jsdom"
   },
   "dependencies": {
+    "@apollo/client": "^3.4.10",
+    "graphql": "^15.5.3",
     "@xstate/inspect": "0.4.1",
     "@tippyjs/react": "^4.2.5",
     "@xstate/react": "1.5.1",

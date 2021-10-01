@@ -23,6 +23,7 @@ export * from './ProcessBar';
 export * from './ProgressBar';
 export * from './Radio';
 export * from './Select';
+export * from './Spinner';
 export * from './Shell';
 export * from './Step';
 export * from './StepTitle';
