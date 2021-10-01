@@ -8,4 +8,5 @@ export * from './registration/StepTwo';
 export * from './registration/StepThree';
 export * from './registration/StepFour';
 export * from './registration';
+export * from './DataConsent';
 export * from './LocationCheck';

@@ -134,6 +134,16 @@ export const resources = {
             confirm: 'Confirm',
           },
         },
+        dataConsent:{
+          resources: 'PERSONALIZED RESOURCES',
+          similar: 'SIMILAR FAMILY MATCHES',
+          child: 'Personalize for my child',
+          para: 'We can provide more fine-tuned resources and  help connect with other parents like you by giving consent to use your child\'s data',
+          yes: 'Yes please!',
+          no: 'No thanks',
+          continue: 'Continue',
+          footer: 'You can always change data sharing settings at any time from your child’s health profile.',
+        },
         furtherRegistration: {
           stepOne: {
             title: 'Thank you!',

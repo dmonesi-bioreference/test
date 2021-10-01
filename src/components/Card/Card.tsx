@@ -6,7 +6,7 @@ export interface CardProps {
 
 const Card: React.FC<CardProps> = (props) => {
   return (
-    <CardStyled className="card">
+    <CardStyled >
       <div className="card__header">{props.header}</div>
       <div className="card__content">{props.children}</div>
     </CardStyled>
