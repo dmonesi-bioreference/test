@@ -10,6 +10,11 @@ export const AppImage = (props: Props<NextImageProps>) => {
     <img {...props} alt={props.alt} src={props.src as string} />
   ) : (
     // eslint-disable-next-line jsx-a11y/alt-text
-    <Image {...props} loader={({ src }) => src} objectFit="cover" />
+    <Image
+      {...props}
+      layout="responsive"
+      loader={({ src }) => src}
+      objectFit="cover"
+    />
   );
 };
