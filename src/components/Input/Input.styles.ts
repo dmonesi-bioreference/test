@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { FormControl, FormControlProps } from 'components/FormControl';
-import { base, inputs, focus } from 'styles';
+import { base, colors, inputs, focus, tokens } from 'styles';
 
 /* stylelint-disable no-descending-specificity */
 
@@ -131,6 +131,10 @@ const InputStyled = styled(FormControl)<FormControlProps>`
     .input__suffix > * {
       margin-right: ${inputs.spacingLarge};
     }
+  }
+
+  .input--invalid {
+    border: ${tokens.borderWidthMedium} solid ${colors.coral[400]};
   }
 `;
 

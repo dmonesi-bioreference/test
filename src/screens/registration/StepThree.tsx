@@ -33,7 +33,7 @@ export const StepThree = () => {
             }}
           >
             <StepTitle number="3" />
-            <Heading level="4">
+            <Heading level="4" alignment="center">
               {t('sections.furtherRegistration.stepThree.subTitle')}
             </Heading>
             <ProcessBar stepsAmount={4} currentStep={3} />

@@ -14,7 +14,7 @@ export interface HeroiconProps {
   name: HeroiconName;
   style?: 'solid' | 'outline';
   kind?: 'heroicon';
-  color?: 'default' | 'primary' | 'danger';
+  color?: 'default' | 'primary' | 'danger' | 'white';
   size?: 'large' | 'small';
 }
 

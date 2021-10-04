@@ -68,7 +68,7 @@ export function TestingProcess() {
             </Typography>
           </div>
           <Button
-            kind="tertiary"
+            kind="link-medium"
             href="#"
             prefix={<Icon name="device-mobile" color="primary" />}
           >

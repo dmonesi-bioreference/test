@@ -28,10 +28,10 @@ export const StepOne = () => {
               marginBottom: tokens.spacingXxLarge,
             }}
           >
-            <Heading level="1">
+            <Heading level="1" alignment="center">
               {t('sections.furtherRegistration.stepOne.title')}
             </Heading>
-            <Heading level="4">
+            <Heading level="4" alignment="center">
               {t('sections.furtherRegistration.stepOne.subTitle')}
             </Heading>
             <ProcessBar stepsAmount={4} currentStep={1} />

@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { Message } from 'components/Message';
+import { Typography } from 'components/Typography';
 
 import FormControlStyled from './FormControl.styles';
 import { LabelPosition } from './props';
@@ -75,7 +75,14 @@ const FormControl: React.FC<FormControlProps> = (props) => {
           <div className="form-control__input">{props.children}</div>
         )}
 
-        {props.label}
+        <Typography type="label" labelType="input">
+          {props.label}
+        </Typography>
+        {props.invalid && props.invalidMessage && (
+          <Typography type="validation" color="error">
+            - {props.invalidMessage}
+          </Typography>
+        )}
       </label>
 
       {!props.booleanInput && (
@@ -89,12 +96,6 @@ const FormControl: React.FC<FormControlProps> = (props) => {
           aria-hidden={props.helpText ? false : true}
         >
           {props.helpText}
-        </div>
-      )}
-
-      {props.invalid && props.invalidMessage && (
-        <div className="form-control__invalid-message">
-          <Message type="danger">{props.invalidMessage}</Message>
         </div>
       )}
     </FormControlStyled>

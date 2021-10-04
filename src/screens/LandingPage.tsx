@@ -53,7 +53,7 @@ export const Main = () => {
           </div>
           <div style={{ marginBottom: tokens.spacing }}>
             <Button
-              kind="tertiary"
+              kind="link-medium"
               href="#"
               prefix={<Icon name="device-mobile" color="primary" />}
             >
@@ -64,7 +64,7 @@ export const Main = () => {
             <Divider />
           </div>
           <Button
-            kind="tertiary"
+            kind="link-medium"
             href="/testing-process"
             suffix={<Icon name="chevron-right" color="primary" />}
             spreadContent={true}
@@ -138,22 +138,22 @@ export const Main = () => {
             <Heading>{t('sections.resources.faq.title')}</Heading>
           </div>
           <div style={{ marginBottom: tokens.spacingXLarge }}>
-            <Button kind="secondary" href="#">
+            <Button kind="link-large" href="#">
               {t('sections.resources.faq.afterCare')}
             </Button>
           </div>
           <div style={{ marginBottom: tokens.spacingXLarge }}>
-            <Button kind="secondary" href="#">
+            <Button kind="link-large" href="#">
               {t('sections.resources.faq.noDiagnosis')}
             </Button>
           </div>
           <div style={{ marginBottom: tokens.spacingXLarge }}>
-            <Button kind="secondary" href="#">
+            <Button kind="link-large" href="#">
               {t('sections.resources.faq.moreChildren')}
             </Button>
           </div>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Button kind="tertiary" href="/nicu-faqs">
+            <Button kind="link-medium" href="#">
               {t('sections.resources.faq.viewAll')}
             </Button>
           </div>
@@ -178,7 +178,7 @@ export const Main = () => {
             <Button kind="primary">{t('sections.careTeam.callUs')}</Button>
           </div>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Button kind="tertiary" href="#">
+            <Button kind="link-medium" href="#">
               {t('sections.careTeam.learnMore')}
             </Button>
           </div>

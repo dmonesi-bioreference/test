@@ -6,15 +6,14 @@ import ButtonStyled from './Button.styles';
 export type ButtonKind =
   | 'default'
   | 'primary'
-  | 'secondary'
-  | 'tertiary'
   | 'success'
   | 'info'
   | 'warning'
   | 'danger'
   | 'text'
-  | 'image'
-  | 'small';
+  | 'image';
+
+export type LinkKind = 'link-small' | 'link-medium' | 'link-large';
 
 export interface ButtonProps {
   /** Set to true to render the button in a disabled state. */
@@ -24,7 +23,7 @@ export interface ButtonProps {
   /** Passing `href` will override the `as` prop, rendering this button as an `a` element. */
   href?: string;
   /** The button's visual style. */
-  kind?: ButtonKind;
+  kind?: ButtonKind | LinkKind;
   /** An optional name for the button. Ignore if `href` is set. */
   name?: string;
   /** An optional value for the button. Ignore if `href` is set. */
@@ -56,19 +55,19 @@ const Button: React.FC<ButtonProps> = (props) => {
     // Kinds
     'button--default': props.kind === 'default',
     'button--primary': props.kind === 'primary',
-    'button--secondary': props.kind === 'secondary',
-    'button--tertiary': props.kind === 'tertiary',
     'button--success': props.kind === 'success',
     'button--info': props.kind === 'info',
     'button--warning': props.kind === 'warning',
     'button--danger': props.kind === 'danger',
     'button--text': props.kind === 'text',
     'button--image': props.kind === 'image',
-    'button--small': props.kind === 'small',
+    'link--small': props.kind == 'link-small',
+    'link--medium': props.kind == 'link-medium',
+    'link--large': props.kind == 'link-large',
     'button--link':
-      props.kind === 'secondary' ||
-      props.kind === 'tertiary' ||
-      props.kind === 'small',
+      props.kind === 'link-small' ||
+      props.kind === 'link-medium' ||
+      props.kind === 'link-large',
 
     // Modifiers
     'button--disabled': props.disabled,

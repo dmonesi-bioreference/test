@@ -79,7 +79,7 @@ const Checkbox: React.FC<CheckboxProps> = (props) => {
         <span className="checkbox__control">
           {isChecked && (
             <span className="checkbox__icon">
-              <Icon name="check" />
+              <Icon name="check" color="white" />
             </span>
           )}
           <input

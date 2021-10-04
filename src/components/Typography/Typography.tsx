@@ -10,9 +10,14 @@ export type TypographyHeadingLevel =
   | '7'
   | '8';
 
-export type TypographyColor = 'default' | 'primary' | 'minor' | 'white';
 export type TypographyAlignment = 'left' | 'center' | 'right';
 
+export type TypographyColor =
+  | 'default'
+  | 'primary'
+  | 'minor'
+  | 'white'
+  | 'error';
 
 interface HeadingProps {
   level?: TypographyHeadingLevel;
@@ -23,7 +28,7 @@ interface HeadingProps {
 
 type TypographyProps =
   | {
-      type: 'body' | 'list' | 'helper-text';
+      type: 'body' | 'list' | 'helper-text' | 'validation';
       color?: TypographyColor;
       alignment?: TypographyAlignment;
     }
@@ -44,6 +49,7 @@ const Typography: React.FC<TypographyProps> = (props) => {
     case 'body':
     case 'list':
     case 'helper-text':
+    case 'validation':
       return (
         <TypographyStyled className={`${props.type} ${color} ${alignment}`}>
           {props.children}
@@ -79,10 +85,17 @@ export const Heading = ({
   level = '2',
   color = 'default',
   fontType = 'sansSerif',
+  alignment = 'left',
   children,
 }: Props<HeadingProps>) => {
   return (
-    <Typography type="heading" level={level} color={color} fontType={fontType}>
+    <Typography
+      type="heading"
+      level={level}
+      color={color}
+      fontType={fontType}
+      alignment={alignment}
+    >
       {children}
     </Typography>
   );

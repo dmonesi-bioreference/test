@@ -236,7 +236,7 @@ const ButtonStyled = styled.button`
 
   &.button--link {
     background-color: transparent;
-    border-color: transparent;
+    border: none;
     color: ${tokens.colorPrimary};
     height: fit-content;
     padding: 0;
@@ -263,22 +263,23 @@ const ButtonStyled = styled.button`
     }
   }
 
-  &.button--secondary {
-    font-size: ${tokens.fontSize20};
+  &.link--small {
+    font-size: ${tokens.fontSize14};
     font-weight: ${tokens.fontWeightMedium};
+    line-height: ${tokens.lineHeightDense};
+    text-decoration: underline;
+  }
+
+  &.link--medium {
+    font-size: ${tokens.fontSize16};
+    font-weight: ${tokens.fontWeightSemibold};
     line-height: ${tokens.lineHeightDense};
   }
 
-  &.button--tertiary {
-    font-size: ${tokens.fontSize16};
-    font-weight: ${tokens.fontWeightSemibold};
-    line-height: ${tokens.lineHeightSelf};
-  }
-
-  &.button--small {
-    font-size: ${tokens.fontSize14};
+  &.link--large {
+    font-size: ${tokens.fontSize20};
     font-weight: ${tokens.fontWeightMedium};
-    line-height: ${tokens.lineHeightSelf};
+    line-height: ${tokens.lineHeightDense};
   }
 
   &.light {

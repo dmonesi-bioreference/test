@@ -19,6 +19,10 @@ const IconStyled = styled.div`
     color: ${tokens.colorDanger};
   }
 
+  &.white {
+    color: ${colors.white};
+  }
+
   &.small {
     width: ${tokens.spacingLarge};
   }

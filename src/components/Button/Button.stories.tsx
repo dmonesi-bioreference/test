@@ -59,11 +59,14 @@ export const Links: Story = () => (
       gap: '1rem',
     }}
   >
-    <Button kind="secondary" href="https://example.com">
-      Secondary
+    <Button kind="link-large" href="https://example.com">
+      Large
     </Button>
-    <Button kind="tertiary" href="https://example.com">
-      Tertiary
+    <Button kind="link-medium" href="https://example.com">
+      Medium
+    </Button>
+    <Button kind="link-small" href="https://example.com">
+      Small
     </Button>
     <Button kind="danger" href="https://example.com" target="_blank">
       Opens in a new tab

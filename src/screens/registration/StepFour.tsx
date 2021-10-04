@@ -44,7 +44,7 @@ export const StepFour = () => {
             }}
           >
             <StepTitle number="4" />
-            <Heading level="4">
+            <Heading level="4" alignment="center">
               {t('sections.furtherRegistration.stepFour.subTitle')}
             </Heading>
             <ProcessBar stepsAmount={4} currentStep={4} />
@@ -74,7 +74,7 @@ export const StepFour = () => {
               label={t('sections.furtherRegistration.form.password.label')}
               name="password"
               suffix={
-                <Button kind="small" onClick={togglePasswordVisibility}>
+                <Button kind="link-small" onClick={togglePasswordVisibility}>
                   {passwordShown ? 'Hide' : 'Show'}
                 </Button>
               }
@@ -87,7 +87,10 @@ export const StepFour = () => {
             label={t('sections.furtherRegistration.form.confirmPassword.label')}
             name="confirm-password"
             suffix={
-              <Button kind="small" onClick={toggleConfirmPasswordVisibility}>
+              <Button
+                kind="link-small"
+                onClick={toggleConfirmPasswordVisibility}
+              >
                 {confirmPasswordShown ? 'Hide' : 'Show'}
               </Button>
             }
@@ -98,17 +101,18 @@ export const StepFour = () => {
         <div
           style={{
             display: 'flex',
-            alignItems: 'center',
-            gap: tokens.spacingXxxSmall,
+            gap: tokens.spacingXxSmall,
             marginBottom: tokens.spacingXLarge,
+            flexWrap: 'wrap',
+            overflow: 'hidden',
           }}
         >
           <Checkbox
             label={t('sections.furtherRegistration.checkbox.label')}
             name="checkbox"
-            size="medium"
+            size="large"
           />
-          <Button kind="small">
+          <Button kind="link-medium">
             {t('sections.furtherRegistration.checkbox.termsAndConditionsLink')}
           </Button>
         </div>

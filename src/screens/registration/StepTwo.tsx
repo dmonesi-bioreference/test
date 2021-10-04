@@ -33,7 +33,7 @@ export const StepTwo = () => {
             }}
           >
             <StepTitle number="2" />
-            <Heading level="4">
+            <Heading level="4" alignment="center">
               {t('sections.furtherRegistration.stepTwo.subTitle')}
             </Heading>
             <ProcessBar stepsAmount={4} currentStep={2} />
@@ -78,7 +78,7 @@ export const StepTwo = () => {
                         'sections.furtherRegistration.form.number.toolTipContent'
                       )}
                     </Typography>
-                    <Button kind="small" color="light">
+                    <Button kind="link-small" color="light">
                       {t(
                         'sections.furtherRegistration.form.number.toolTipLink'
                       )}
@@ -89,7 +89,6 @@ export const StepTwo = () => {
             }
           />
         </div>
-
         <Button onClick={events.nextStep} kind="primary">
           {t('sections.furtherRegistration.next')}
         </Button>

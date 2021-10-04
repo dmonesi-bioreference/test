@@ -24,6 +24,10 @@ const TypographyStyled = styled.div`
     color: ${colors.white};
   }
 
+  &.error {
+    color: ${colors.coral[600]};
+  }
+
   &.sansSerif {
     font-family: ${tokens.fontFamilySansSerif};
   }
@@ -86,6 +90,14 @@ const TypographyStyled = styled.div`
     font-weight: ${tokens.fontWeightRegular};
   }
 
+  &.validation {
+    font-size: ${tokens.fontSize14};
+    font-style: italic;
+    font-weight: ${tokens.fontWeightRegular};
+    font-family: ${tokens.fontFamilyBody};
+    margin-left: ${tokens.spacingXxSmall};
+  }
+
   &.list {
     font-family: ${tokens.fontFamilyBody};
     font-size: ${tokens.fontSize14};
@@ -111,10 +123,11 @@ const TypographyStyled = styled.div`
   }
 
   &.label--input {
+    flex-shrink: 0;
     font-family: ${tokens.fontFamilyLabel};
     font-size: ${tokens.fontSize16};
     font-weight: ${tokens.fontWeightMedium};
-    line-height: ${tokens.lineHeightSelf};
+    line-height: ${tokens.lineHeightDense};
   }
 
   &.center {

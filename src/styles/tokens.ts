@@ -192,6 +192,7 @@ export const tokens = {
 
   /* border-width */
   borderWidthThin: '1px',
+  borderWidthMedium: '2px',
   borderWidthThick: '3px',
 
   /* border-radius */

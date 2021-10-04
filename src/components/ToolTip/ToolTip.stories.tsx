@@ -19,7 +19,7 @@ const Template: Story<ToolTipProps> = (args) => (
       <Typography type="helper-text" color="white">
         We’ll send SMS notifications to you here.
       </Typography>
-      <Button kind="small" color="light">
+      <Button kind="link-small" color="light">
         Use your email address instead
       </Button>
     </ToolTip>

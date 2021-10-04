@@ -56,7 +56,7 @@ export const FAQs = () => {
             faqItems.map((question, index) => {
               return (
                 <div style={{ marginBottom: tokens.spacingXLarge }} key={index}>
-                  <Button kind="secondary" href="#">
+                  <Button kind="link-large" href="#">
                     {question.node.question}
                   </Button>
                   <Typography type="helper-text">

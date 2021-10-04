@@ -4,10 +4,9 @@ import { inputs, labels, tokens, visuallyHidden } from 'styles';
 
 const FormControlStyled = styled.div`
   .form-control__label {
+    display: flex;
     flex: 0 0 auto;
-    color: ${labels.color};
-    font-weight: ${labels.fontWeight};
-    line-height: 1.8;
+    margin-bottom: ${tokens.spacingXSmall};
   }
 
   .form-control__invalid-message,
@@ -24,14 +23,13 @@ const FormControlStyled = styled.div`
       display: inline-flex;
       align-items: center;
       cursor: pointer;
-      font-weight: ${tokens.fontWeightRegular};
       user-select: none;
     }
 
     .form-control__input {
       display: flex;
       align-items: center;
-      margin-right: ${inputs.spacing};
+      margin-right: ${inputs.spacingXSmall};
     }
 
     .form-control__invalid-message,
