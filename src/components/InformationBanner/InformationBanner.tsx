@@ -4,7 +4,7 @@ import InformationBannerStyled from './InformationBanner.styles';
 
 export interface InformationBannerProps {
   title?: string;
-  type?: 'default' | 'tooltip';
+  type?: 'default' | 'tooltip' | 'error';
 }
 
 const InformationBanner: React.FC<InformationBannerProps> = (props) => {
