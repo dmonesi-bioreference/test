@@ -9,6 +9,8 @@ import CheckboxStyled from './Checkbox.styles';
 interface CheckboxInterface extends InputBaseProps {
   /** Set to `true` to render the checkbox in a checked state. */
   checked?: boolean;
+  /** Appends a link to the label. */
+  linkMessage?: string;
 }
 
 export type CheckboxProps = Omit<
@@ -59,6 +61,7 @@ const Checkbox: React.FC<CheckboxProps> = (props) => {
       invalid={props.invalid}
       invalidMessage={props.invalidMessage}
       size={props.size || 'medium'}
+      linkMessage={props.linkMessage}
     >
       <div
         className={clsx({
@@ -73,10 +76,16 @@ const Checkbox: React.FC<CheckboxProps> = (props) => {
           'checkbox--checked': isChecked,
           'checkbox--disabled': props.disabled,
           'checkbox--focused': isFocused,
-          'checkbox--invalid': props.invalid,
         })}
       >
-        <span className="checkbox__control">
+        <span
+          className={clsx({
+            checkbox__control: true,
+
+            // Modifiers
+            'checkbox--invalid': props.invalid,
+          })}
+        >
           {isChecked && (
             <span className="checkbox__icon">
               <Icon name="check" color="white" />

@@ -95,7 +95,6 @@ const TypographyStyled = styled.div`
     font-style: italic;
     font-weight: ${tokens.fontWeightRegular};
     font-family: ${tokens.fontFamilyBody};
-    margin-left: ${tokens.spacingXxSmall};
   }
 
   &.list {

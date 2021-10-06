@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { FormControl, FormControlProps } from 'components/FormControl';
-import { base, inputs, focus } from 'styles';
+import { base, colors, inputs, focus } from 'styles';
 
 /* stylelint-disable no-descending-specificity */
 
@@ -93,6 +93,10 @@ const SelectStyled = styled(FormControl)<FormControlProps>`
     .select__control {
       padding: 0 ${inputs.spacingLarge};
     }
+  }
+
+  .select--invalid {
+    border-color: ${colors.coral[400]};
   }
 `;
 

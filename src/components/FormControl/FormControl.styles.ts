@@ -3,19 +3,35 @@ import styled from 'styled-components';
 import { inputs, labels, tokens, visuallyHidden } from 'styles';
 
 const FormControlStyled = styled.div`
+  .form-control {
+    overflow: hidden;
+  }
+
   .form-control__label {
+    align-items: center;
     display: flex;
     flex: 0 0 auto;
+    flex-wrap: wrap;
     margin-bottom: ${tokens.spacingXSmall};
   }
 
-  .form-control__invalid-message,
-  .form-control__help-text {
-    margin-top: ${tokens.spacingXxSmall};
+  .form-control__label-with-link {
+    flex-wrap: wrap;
+    gap: ${tokens.spacingXxSmall};
+    overflow: hidden;
+  }
+
+  .form-control__invalid-message {
+    margin-left: ${tokens.spacingXxSmall};
+  }
+
+  .form-control__invalid-message--boolean {
+    margin-bottom: ${tokens.spacingXSmall};
   }
 
   .form-control__help-text {
     color: ${inputs.helpColor};
+    margin-top: ${tokens.spacingXxSmall};
   }
 
   &.form-control--boolean {
@@ -29,10 +45,9 @@ const FormControlStyled = styled.div`
     .form-control__input {
       display: flex;
       align-items: center;
-      margin-right: ${inputs.spacingXSmall};
+      margin-right: ${inputs.spacingXxSmall};
     }
 
-    .form-control__invalid-message,
     .form-control__help-text {
       margin-left: calc(${inputs.spacing} + 1em + 2px);
     }
@@ -99,8 +114,7 @@ const FormControlStyled = styled.div`
       margin-left: ${labels.spacing};
     }
 
-    .form-control__help-text,
-    .form-control__invalid-message {
+    .form-control__help-text {
       flex: 0 0 100%;
     }
   }
@@ -127,10 +141,6 @@ const FormControlStyled = styled.div`
     .form-control__help-text {
       grid-area: help-text;
     }
-
-    .form-control__invalid-message {
-      grid-area: invalid-message;
-    }
   }
 
   &.form-control--bottom {
@@ -139,10 +149,6 @@ const FormControlStyled = styled.div`
 
     .form-control__help-text {
       order: -1;
-    }
-
-    .form-control__invalid-message {
-      order: -2;
     }
   }
 
@@ -159,8 +165,7 @@ const FormControlStyled = styled.div`
     display: grid;
     grid-template-columns: auto min-content;
 
-    .form-control__help-text,
-    .form-control__invalid-message {
+    .form-control__help-text {
       text-align: right;
     }
   }

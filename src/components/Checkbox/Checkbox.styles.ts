@@ -23,6 +23,7 @@ const CheckboxStyled = styled(FormControl)<FormControlProps>`
     width: 1em;
     height: 1em;
     border: ${inputs.border};
+    border-radius: ${tokens.borderRadiusMedium};
     color: ${colors.white};
     transition: ${inputs.transition},
       background-color ${tokens.transitionFast} ease-in-out,
@@ -85,6 +86,10 @@ const CheckboxStyled = styled(FormControl)<FormControlProps>`
   .checkbox--disabled {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+
+  .checkbox--invalid {
+    border-color: ${colors.coral[400]};
   }
 `;
 

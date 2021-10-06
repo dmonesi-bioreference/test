@@ -100,21 +100,17 @@ export const StepFour = () => {
 
         <div
           style={{
-            display: 'flex',
-            gap: tokens.spacingXxSmall,
             marginBottom: tokens.spacingXLarge,
-            flexWrap: 'wrap',
-            overflow: 'hidden',
           }}
         >
           <Checkbox
             label={t('sections.furtherRegistration.checkbox.label')}
             name="checkbox"
             size="large"
+            linkMessage={t(
+              'sections.furtherRegistration.checkbox.termsAndConditionsLink'
+            )}
           />
-          <Button kind="link-medium">
-            {t('sections.furtherRegistration.checkbox.termsAndConditionsLink')}
-          </Button>
         </div>
 
         <Button kind="primary">{t('sections.furtherRegistration.next')}</Button>

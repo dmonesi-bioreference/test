@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useState } from 'react';
 
-import { Message } from 'components/Message';
+import { Typography } from 'components';
 
 import FieldsetStyled from './Fieldset.styles';
 
@@ -68,7 +68,9 @@ const Fieldset: React.FC<FieldsetProps> = (props) => {
 
           {props.invalid && props.invalidMessage && (
             <div className="fieldset__invalid-message">
-              <Message type="danger">{props.invalidMessage}</Message>
+              <Typography type="validation" color="error">
+                {props.invalidMessage}
+              </Typography>
             </div>
           )}
         </span>

@@ -9,7 +9,7 @@ const FieldsetStyled = styled.fieldset`
   border: none;
 
   .fieldset__legend {
-    margin: 0 0 ${tokens.spacingSmall} 0;
+    margin: 0 0 ${tokens.spacingXxSmall} 0;
     padding: 0;
     flex: 0 0 auto;
     color: ${labels.color};
@@ -19,7 +19,7 @@ const FieldsetStyled = styled.fieldset`
 
   .fieldset__invalid-message,
   .fieldset__help-text {
-    margin-bottom: ${tokens.spacingSmall};
+    margin-bottom: ${tokens.spacing};
   }
 
   .fieldset__help-text {

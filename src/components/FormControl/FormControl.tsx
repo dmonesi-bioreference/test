@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 
+import { Button } from 'components/Button';
 import { Typography } from 'components/Typography';
 
 import FormControlStyled from './FormControl.styles';
@@ -30,6 +31,8 @@ export interface FormControlProps {
   helpTextId?: string;
   /** Optional help text to display with the input. */
   helpText?: string;
+  /** Appends link to label. */
+  linkMessage?: string;
 }
 
 const defaultProps: Partial<FormControlProps> = {
@@ -37,6 +40,7 @@ const defaultProps: Partial<FormControlProps> = {
 };
 
 const FormControl: React.FC<FormControlProps> = (props) => {
+  const isInvalid = props.invalid && props.invalidMessage;
   return (
     <FormControlStyled
       className={clsx(
@@ -66,8 +70,21 @@ const FormControl: React.FC<FormControlProps> = (props) => {
         props.className
       )}
     >
+      {isInvalid && props.booleanInput && (
+        <div className="form-control__invalid-message--boolean">
+          <Typography type="validation" color="error">
+            {props.invalidMessage}
+          </Typography>
+        </div>
+      )}
       <label
-        className="form-control__label"
+        className={clsx(
+          {
+            'form-control__label': true,
+            'form-control__label-with-link': props.linkMessage,
+          },
+          props.className
+        )}
         id={props.labelId}
         htmlFor={props.inputId}
       >
@@ -78,10 +95,16 @@ const FormControl: React.FC<FormControlProps> = (props) => {
         <Typography type="label" labelType="input">
           {props.label}
         </Typography>
-        {props.invalid && props.invalidMessage && (
-          <Typography type="validation" color="error">
-            - {props.invalidMessage}
-          </Typography>
+        {props.linkMessage && (
+          <Button kind="link-medium">{props.linkMessage}</Button>
+        )}
+
+        {isInvalid && !props.booleanInput && (
+          <div className="form-control__invalid-message">
+            <Typography type="validation" color="error">
+              - {props.invalidMessage}
+            </Typography>
+          </div>
         )}
       </label>
 
