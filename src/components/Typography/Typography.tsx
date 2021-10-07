@@ -69,6 +69,16 @@ const Typography: React.FC<TypographyProps> = (props) => {
       const fontType =
         props.fontType && parseInt(level) <= 3 ? props.fontType : 'sansSerif';
 
+      if (level === '7' || level === '8') {
+        return (
+          <TypographyStyled
+            className={`${props.type}${level} ${color} ${fontType} ${alignment}`}
+          >
+            {props.children}
+          </TypographyStyled>
+        );
+      }
+
       return (
         <TypographyStyled
           as={`h${level}`}
