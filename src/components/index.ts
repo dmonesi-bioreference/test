@@ -31,4 +31,5 @@ export * from './StyleGuide/StyleLabel';
 export * from './Table';
 export * from './Textarea';
 export * from './ToolTip';
+export * from './Toggle';
 export * from './Typography';

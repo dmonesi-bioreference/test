@@ -307,3 +307,17 @@ export const fontPairs = {
     font-weight: ${tokens.fontWeightBold};
   `,
 };
+
+
+
+const toggleHandle = {
+  size: tokens.spacingMedium,
+  margin: tokens.spacingXxxSmall
+}
+
+
+export const toggle = {
+  width: `calc((${toggleHandle.size} * 2) + (${toggleHandle.margin} * 2))`,
+  handleSize: toggleHandle.size,
+  handleMargin: toggleHandle.margin
+}

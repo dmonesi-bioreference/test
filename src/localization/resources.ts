@@ -134,6 +134,17 @@ export const resources = {
             confirm: 'Confirm',
           },
         },
+        dataSharingSettings:{
+          content: 'Ipsum Dolor set amit lorem',
+          dataSharingHeadingOne: 'Allow Families to see my Child’s:',
+          headData: 'Data Sharing Settings',
+          titleOne: 'Conditions & Disorders',          
+          titleTwo: 'Medications',         
+          titleThree: 'Reported Symptoms',         
+          titleFour: 'Lorem Ipsum Dolor set amit',         
+          titleFive: 'Lorem Ipsum Dolor set amit',
+          titleSix: 'Lorem ipsum share'
+        },
         dataConsent:{
           resources: 'PERSONALIZED RESOURCES',
           similar: 'SIMILAR FAMILY MATCHES',
