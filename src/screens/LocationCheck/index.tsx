@@ -36,7 +36,7 @@ export const LocationCheckPage = () => {
       <Radio value={t('sections.results.locationCheck.while')}  label= {t('sections.results.locationCheck.while')} />
     </RadioGroup>
           </div>
-            <Button kind="primary"  href="/">
+            <Button kind="primary"  href="/data-sharing-settings">
             {t('sections.results.locationCheck.continue')}
             </Button>
      </Card>

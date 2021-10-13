@@ -1,35 +1,21 @@
-import { useState } from 'react';
-
 import {
   Button,
   Checkbox,
   Heading,
-  Icon,
   InformationBanner,
-  Input,
   PageLayout,
   PageSection,
   ProcessBar,
   StepTitle,
   Typography,
   useAppTranslation,
+  PasswordInput
 } from 'components';
 import { tokens } from 'styles';
 
 export const StepFour = () => {
   const t = useAppTranslation();
 
-  const [passwordShown, setPasswordShown] = useState(false);
-  const [confirmPasswordShown, setConfirmPasswordShown] = useState(false);
-
-  const togglePasswordVisibility = () => {
-    setPasswordShown((latestPasswordShownValue) => !latestPasswordShownValue);
-  };
-  const toggleConfirmPasswordVisibility = () => {
-    setConfirmPasswordShown(
-      (latestConfirmPasswordShownValue) => !latestConfirmPasswordShownValue
-    );
-  };
   return (
     <PageLayout>
       <PageSection
@@ -69,33 +55,15 @@ export const StepFour = () => {
 
         <div style={{ marginBottom: tokens.spacingLarge }}>
           <div style={{ marginBottom: tokens.spacing }}>
-            <Input
-              type={passwordShown ? 'text' : 'password'}
-              label={t('sections.furtherRegistration.form.password.label')}
+          <PasswordInput 
+          label={t('sections.furtherRegistration.form.password.label')}
               name="password"
-              suffix={
-                <Button kind="link-small" onClick={togglePasswordVisibility}>
-                  {passwordShown ? 'Hide' : 'Show'}
-                </Button>
-              }
-              prefix={<Icon name="lock-closed" color="primary" />}
-            />
+                  />
           </div>
-
-          <Input
-            type={confirmPasswordShown ? 'text' : 'password'}
-            label={t('sections.furtherRegistration.form.confirmPassword.label')}
-            name="confirm-password"
-            suffix={
-              <Button
-                kind="link-small"
-                onClick={toggleConfirmPasswordVisibility}
-              >
-                {confirmPasswordShown ? 'Hide' : 'Show'}
-              </Button>
-            }
-            prefix={<Icon name="lock-closed" color="primary" />}
-          />
+          <PasswordInput 
+           label={t('sections.furtherRegistration.form.confirmPassword.label')}
+           name="confirm-password"
+                  />
         </div>
 
         <div

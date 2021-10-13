@@ -19,6 +19,7 @@ export * from './Logo';
 export * from './Message';
 export * from './PageLayout';
 export * from './PageSection';
+export * from './PasswordInput';
 export * from './ProcessBar';
 export * from './ProgressBar';
 export * from './Radio';
@@ -33,3 +34,4 @@ export * from './Textarea';
 export * from './ToolTip';
 export * from './Toggle';
 export * from './Typography';
+

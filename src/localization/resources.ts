@@ -134,6 +134,14 @@ export const resources = {
             confirm: 'Confirm',
           },
         },
+        login:{
+          welcome: 'Welcome back, Barbara & Lisa',
+          journey: 'We’re here to support you and your child’s condition along every step of the journey together.',
+          username: 'Username',
+          password: 'Password',
+          login: 'Login',
+          trouble: 'Having trouble logging in?',
+        },
         dataSharingSettings:{
           content: 'Ipsum Dolor set amit lorem',
           dataSharingHeadingOne: 'Allow Families to see my Child’s:',
