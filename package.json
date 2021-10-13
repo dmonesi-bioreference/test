@@ -25,8 +25,13 @@
     "start": "npm run make-icons && next dev",
     "start:next": "npm run build && next start",
     "storybook": "npm run make-icons && start-storybook -s ./public -p 9009",
+    "cypress": "cypress run",
+    "cypress:app": "cypress open",
     "test": "SKIP_PREFLIGHT_CHECK=true react-scripts test --env=jsdom",
-    "test:ci": "SKIP_PREFLIGHT_CHECK=true CI=true react-scripts test --env=jsdom"
+    "test:ci": "npm run test:once && npm run test:e2e",
+    "test:once": "SKIP_PREFLIGHT_CHECK=true CI=true react-scripts test --env=jsdom",
+    "test:e2e": "start-server-and-test http://localhost:3000 cypress",
+    "test:e2e:app": "start-server-and-test http://localhost:3000 cypress:app"
   },
   "dependencies": {
     "@apollo/client": "^3.4.15",
@@ -72,6 +77,7 @@
     "@svgr/core": "^5.5.0",
     "@svgr/plugin-prettier": "^5.5.0",
     "@svgr/webpack": "5.5.0",
+    "@testing-library/cypress": "8.0.1",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.0",
@@ -91,6 +97,7 @@
     "bluebird": "^3.7.2",
     "chalk": "^4.1.1",
     "change-case": "^4.1.2",
+    "cypress": "8.6.0",
     "del": "^6.0.0",
     "download": "^8.0.0",
     "eslint": "7.32.0",
@@ -112,6 +119,7 @@
     "prettier": "^2.2.1",
     "react-scripts": "4.0.3",
     "recursive-copy": "^2.0.11",
+    "start-server-and-test": "1.14.0",
     "stylelint": "^13.8.0",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^22.0.0",

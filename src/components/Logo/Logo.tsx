@@ -9,7 +9,7 @@ export interface LogoProps {
 const Logo: React.FC<LogoProps> = (props) => {
   if (props.type == 'dark' || props.type == 'light') {
     return (
-      <LogoStyled type={props.type}>
+      <LogoStyled aria-label="logo" type={props.type}>
         <svg
           fill="currentColor"
           xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +26,7 @@ const Logo: React.FC<LogoProps> = (props) => {
   }
 
   return (
-    <LogoStyled>
+    <LogoStyled aria-label="logo">
       <svg
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

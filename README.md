@@ -10,6 +10,26 @@ We use yarn for prototype work.
 
 > `yarn`
 
+## Testing
+
+This project uses two kinds of test environments: a unit/integration test environment, where we make sure that components, services, and other things in `src/` are sound, and an end to end test environment, which gives us full testing of our entire app.
+
+In order to start the server and run E2E tests:
+
+```shell
+yarn test:e2e:app
+```
+
+This will start the server, and boot up cypress itself, which will monitor tests as you make changes.
+
+For the unit tests, in a separate tab, run:
+
+```shell
+yarn test
+```
+
+This will kick off Jest, which is a slimmer test suite that doesn't leverage the entire app and all of its backing services.
+
 ## Starting the Storybook Documentation Site
 
 Much of the work done developing components is done through a Storybook environment,

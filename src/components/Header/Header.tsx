@@ -1,4 +1,6 @@
-import { Icon, Logo, Button } from 'components';
+import { Button } from 'components/Button';
+import { Icon } from 'components/Icon';
+import { Logo } from 'components/Logo';
 
 import HeaderStyled from './Header.styles';
 
