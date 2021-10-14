@@ -1,25 +1,15 @@
 import userEvent from '@testing-library/user-event';
 
-import { useAppEvents } from 'components';
 import * as TestUtils from 'test-utils';
 
 import { RegistrationWizard } from './index';
 
 function RegistrationControls(props: Props<unknown>) {
-  const events = useAppEvents();
-
   return (
     <>
       {props.children}
       <section>
         <header>State info</header>
-      </section>
-      <section>
-        <header>Controls</header>
-        <section>
-          <button onClick={events.register}>Register</button>
-          <button onClick={events.confirm}>Confirm</button>
-        </section>
       </section>
     </>
   );
@@ -35,18 +25,12 @@ const renderRegistrationWizard = async (ui: any) => {
     { onAuthenticate: failedAuth }
   );
 
-  const travelToWizard = async () => {
-    userEvent.click(await page.findByText('Register'));
-    userEvent.click(await page.findByText('Confirm'));
-  };
-
-  return { ...page, travelToWizard };
+  return page;
 };
 
 describe('Registration steps', () => {
   it('begins with a first and last name prompt', async () => {
     const page = await renderRegistrationWizard(<RegistrationWizard />);
-    await page.travelToWizard();
 
     await page.findByText('Thank you!');
     await page.findByText('First Name', { exact: false });
@@ -56,8 +40,6 @@ describe('Registration steps', () => {
 
   it('collects mobile number or email on step two', async () => {
     const page = await renderRegistrationWizard(<RegistrationWizard />);
-
-    await page.travelToWizard();
 
     userEvent.click(await page.findByText('Next'));
 
@@ -74,8 +56,6 @@ describe('Registration steps', () => {
   it('collects relation to patient and dob on step three', async () => {
     const page = await renderRegistrationWizard(<RegistrationWizard />);
 
-    await page.travelToWizard();
-
     userEvent.click(await page.findByText('Next'));
     userEvent.click(await page.findByText('Next'));
 
@@ -89,8 +69,6 @@ describe('Registration steps', () => {
 
   it('collects password info on the fourth step', async () => {
     const page = await renderRegistrationWizard(<RegistrationWizard />);
-
-    await page.travelToWizard();
 
     userEvent.click(await page.findByText('Next'));
     userEvent.click(await page.findByText('Next'));

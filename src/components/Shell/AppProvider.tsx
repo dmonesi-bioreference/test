@@ -5,16 +5,18 @@ import { AppEventContext, AppServiceContext } from './context';
 import { app, AppDispatchMap, AppEventFn } from './state';
 
 export interface AppProviderProps {
+  onSession?: AppEventFn<unknown>;
   onAuthenticate?: AppEventFn<unknown>;
   onIdentity?: AppEventFn<unknown>;
 }
 
 export function AppProvider({
   children,
-  onAuthenticate: handleAuthentication = async () => undefined,
+  onSession: handleSession = async () => undefined,
+  onAuthenticate: handleAuth = async () => undefined,
   onIdentity: handleIdentityCheck = async () => undefined,
 }: Props<AppProviderProps>) {
-  const services = { handleAuthentication, handleIdentityCheck };
+  const services = { handleAuth, handleIdentityCheck, handleSession };
 
   const service = useInterpret(app.withConfig({ services }), {
     devTools: true,
@@ -24,10 +26,6 @@ export function AppProvider({
   const events = useMemo(
     () => {
       const appDispatchMap: AppDispatchMap = {
-        register: () => send('register'),
-        confirm: () => send('confirm'),
-        consent: () => send('consent'),
-        accept: () => send('accept'),
         nextStep: () => send('nextStep'),
       };
 

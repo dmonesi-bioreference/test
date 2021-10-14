@@ -1,20 +1,19 @@
 import Head from 'next/head';
 
-import { DataSharingSettings } from 'screens';
+import { RegistrationWizard } from 'screens';
 
-export default function dataSharingSettings(){
+export default function RegistrationPage() {
   return (
     <>
       <Head>
         <title>GeneDX</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <main>
-        <DataSharingSettings />
+        <RegistrationWizard />
       </main>
 
-      <footer></footer>
+      <footer />
     </>
   );
 }

@@ -1,14 +1,14 @@
 import { Shell } from 'components/Shell';
 
-import { Main } from './LandingPage';
+import { LandingPage } from './LandingPage';
 
 export default {
-  component: Main,
+  component: LandingPage,
   title: 'Templates/Main',
 };
 
-export const LandingPage = () => (
+export const LandingPageScreen = () => (
   <Shell>
-    <Main />
+    <LandingPage />
   </Shell>
 );

@@ -5,6 +5,10 @@ import { Shell } from 'components/Shell';
 
 type ShellProps = Parameters<typeof Shell>[0];
 
+export const delay = async (timeInMillis = 300) => {
+  await new Promise((resolve) => setTimeout(resolve, timeInMillis));
+};
+
 export const renderWithShell = async (
   ui: any,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -13,8 +17,10 @@ export const renderWithShell = async (
   const component = render(<Shell {...props}>{ui}</Shell>);
 
   await act(async () => {
-    await new Promise((resolve) => setTimeout(resolve, 16));
+    await delay(16);
   });
 
   return component;
 };
+
+export * from './pages';

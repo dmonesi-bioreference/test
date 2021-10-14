@@ -1,8 +1,8 @@
 import Head from 'next/head';
 
-import { Home } from 'screens/Home';
+import { Resources } from 'screens';
 
-export default function Index() {
+export default function ResourcesPage() {
   return (
     <>
       <Head>
@@ -11,7 +11,7 @@ export default function Index() {
       </Head>
 
       <main>
-        <Home />
+        <Resources></Resources>
       </main>
 
       <footer></footer>

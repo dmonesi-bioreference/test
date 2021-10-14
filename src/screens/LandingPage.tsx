@@ -14,7 +14,7 @@ import {
 } from 'components';
 import { tokens } from 'styles';
 
-export const Main = () => {
+export const LandingPage = () => {
   const t = useAppTranslation();
   return (
     <PageLayout containsCards={true}>

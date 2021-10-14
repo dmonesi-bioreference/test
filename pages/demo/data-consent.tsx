@@ -1,8 +1,8 @@
 import Head from 'next/head';
 
-import { LocationCheckPage } from 'screens';
+import { DataConsent } from 'screens';
 
-export default function LocationCheck(){
+export default function dataConsent() {
   return (
     <>
       <Head>
@@ -11,7 +11,7 @@ export default function LocationCheck(){
       </Head>
 
       <main>
-        <LocationCheckPage />
+        <DataConsent />
       </main>
 
       <footer></footer>

@@ -2,7 +2,7 @@ import { createContext } from 'react';
 
 import * as Tokens from 'styles/tokens';
 
-import { AppDispatchMap, AppService } from './state';
+import { AppService, AppDispatchMap } from './state';
 
 export const AppServiceContext = createContext<AppService | null>(null);
 export const AppEventContext = createContext<AppDispatchMap | null>(null);

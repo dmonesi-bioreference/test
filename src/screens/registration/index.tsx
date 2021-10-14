@@ -8,16 +8,16 @@ import { StepTwo } from './StepTwo';
 export function RegistrationWizard() {
   return (
     <>
-      <OnState matches="app.authenticating.signup.one">
+      <OnState matches="app.registration.one">
         <StepOne />
       </OnState>
-      <OnState matches="app.authenticating.signup.two">
+      <OnState matches="app.registration.two">
         <StepTwo />
       </OnState>
-      <OnState matches="app.authenticating.signup.three">
+      <OnState matches="app.registration.three">
         <StepThree />
       </OnState>
-      <OnState matches="app.authenticating.signup.four">
+      <OnState matches="app.registration.four">
         <StepFour />
       </OnState>
     </>

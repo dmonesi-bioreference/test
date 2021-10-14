@@ -10,14 +10,11 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-export function Shell(props: Props<ShellProps>) {
+export function Shell({ children, ...props }: Props<ShellProps>) {
   return (
-    <AppProvider
-      onAuthenticate={props.onAuthenticate}
-      onIdentity={props.onIdentity}
-    >
+    <AppProvider {...props}>
       <Theme>
-        <ApolloProvider client={client}>{props.children}</ApolloProvider>
+        <ApolloProvider client={client}>{children}</ApolloProvider>
       </Theme>
     </AppProvider>
   );

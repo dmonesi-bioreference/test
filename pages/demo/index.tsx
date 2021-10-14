@@ -1,17 +1,17 @@
 import Head from 'next/head';
 
-import { FAQs } from 'screens';
+import { LandingPage } from 'screens';
 
-export default function TestingProcessPage() {
+export default function Home() {
   return (
     <>
       <Head>
-        <title>Project Pandas</title>
+        <title>GeneDX</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
-          <FAQs />
+        <LandingPage />
       </main>
 
       <footer></footer>

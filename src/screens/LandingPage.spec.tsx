@@ -1,22 +1,22 @@
 import { renderWithShell } from 'test-utils';
 
-import { Main } from './LandingPage';
+import { LandingPage } from './LandingPage';
 
 describe('The home page', () => {
   it('does not explode', async () => {
-    await renderWithShell(<Main />);
+    await renderWithShell(<LandingPage />);
   });
 
   describe('results section', () => {
     it("features the child's name", async () => {
-      const page = await renderWithShell(<Main />);
+      const page = await renderWithShell(<LandingPage />);
 
       await page.findByText("Child's name");
       await page.findByText('Lisa Consuela Jackson');
     });
 
     it('has test result updates', async () => {
-      const page = await renderWithShell(<Main />);
+      const page = await renderWithShell(<LandingPage />);
 
       await page.findByText('Test in process');
       await page.findByText('Expect results in 7-10 days');
@@ -26,7 +26,7 @@ describe('The home page', () => {
     });
 
     it('has a CTA to see more about results', async () => {
-      const page = await renderWithShell(<Main />);
+      const page = await renderWithShell(<LandingPage />);
 
       await page.findByText('Receive progress updates');
       await page.findByText('See where you are in the process');
@@ -35,7 +35,7 @@ describe('The home page', () => {
 
   describe('resources section', () => {
     it('has a title and copy', async () => {
-      const page = await renderWithShell(<Main />);
+      const page = await renderWithShell(<LandingPage />);
 
       await page.findByText('Resources');
       await page.findByText('(In the NICU)');
@@ -44,7 +44,7 @@ describe('The home page', () => {
     });
 
     it('has a FAQ section', async () => {
-      const page = await renderWithShell(<Main />);
+      const page = await renderWithShell(<LandingPage />);
 
       await page.findByText('NICU FAQs');
       await page.findByText('How do I care for my baby after the NICU?');
@@ -58,7 +58,7 @@ describe('The home page', () => {
 
   describe('care team section', () => {
     it('has a header, copy, and calls to action', async () => {
-      const page = await renderWithShell(<Main />);
+      const page = await renderWithShell(<LandingPage />);
 
       await page.findByText('Care team');
       await page.findByText('Call');
@@ -73,7 +73,7 @@ describe('The home page', () => {
 
   describe('science section', () => {
     it('has a title subsection titles', async () => {
-      const page = await renderWithShell(<Main />);
+      const page = await renderWithShell(<LandingPage />);
 
       await page.findByText('The science');
       await page.findByText('101 on Genetics');

@@ -1,8 +1,8 @@
 import Head from 'next/head';
 
-import { Home } from 'screens/Home';
+import { DataSharingSettings } from 'screens';
 
-export default function Index() {
+export default function dataSharingSettings() {
   return (
     <>
       <Head>
@@ -11,7 +11,7 @@ export default function Index() {
       </Head>
 
       <main>
-        <Home />
+        <DataSharingSettings />
       </main>
 
       <footer></footer>
