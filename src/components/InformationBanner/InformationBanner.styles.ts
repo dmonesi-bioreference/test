@@ -30,6 +30,7 @@ const InformationBannerStyled = styled.div`
     max-width: 300px;
     background: ${colors.blue[800]};
     color: white;
+    border: none;
   }
 
   &.information-banner--error {
