@@ -8,14 +8,36 @@ type DispatchMap<GivenType> = {
 };
 
 const NextStep = 'nextStep' as const;
+const CheckIdentity = 'checkIdentity' as const;
+const IdentityChange = 'identityChange' as const;
 
 interface AppEventMap {
   [NextStep]: { type: typeof NextStep };
+  [CheckIdentity]: { type: typeof CheckIdentity };
+  [IdentityChange]: {
+    type: typeof IdentityChange;
+    field: keyof FormsContext['identity'];
+    value: string;
+  };
+}
+
+interface FormsContext {
+  identity: {
+    email: string;
+    phone: string;
+    zip: string;
+  };
+}
+
+interface AuthContext {
+  identityCheckAttempts: number;
 }
 
 export interface AppContext {
   language: SupportedLanguages;
   theme: Themes;
+  auth: AuthContext;
+  forms: FormsContext;
 }
 
 export type AppEventTypes = keyof AppEventMap;
@@ -33,11 +55,20 @@ export interface AppSchema {
   states: {
     app: {
       states: {
+        forms: {
+          states: {
+            identity: {};
+          };
+        };
         auth: {
           states: {
             checkingSession: {};
-            validSession: {};
-            invalidSession: {};
+            knownCaregiver: {};
+            checkingIdentity: {};
+            checkingMagicLink: {};
+            verifyingIdentity: {};
+            identityUnverified: {};
+            requestingLogin: {};
           };
         };
         registration: {

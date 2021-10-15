@@ -1,31 +1,76 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import userEvents from '@testing-library/user-event';
+
 import * as TestUtils from 'test-utils';
 
 import { OnState } from './OnState';
-import { useAppSelector } from './hooks';
+import { useAppEvents, useAppSelector } from './hooks';
 
-function AuthDiagnostics() {
+function AuthDiagnostics(props: Props<unknown>) {
   const states = useAppSelector((state) =>
     JSON.stringify(state.toStrings().join(' '))
   );
 
+  const attempts = useAppSelector(
+    (state) => state.context.auth.identityCheckAttempts
+  );
+
+  const attemptsExhausted = attempts >= 4;
+
+  const events = useAppEvents();
+
   return (
     <section>
-      <header>Current state</header>
-      <pre>{states}</pre>
-      <OnState matches="app.auth.checkingSession">Checking session</OnState>
-      <OnState matches="app.auth.validSession">Valid session</OnState>
-      <OnState matches="app.auth.invalidSession">Invalid session</OnState>
+      <section>
+        <header>Current state</header>
+        <pre>{states}</pre>
+        <div>
+          <span>
+            {attemptsExhausted
+              ? 'No more checks allowed'
+              : `${attempts} attempts left`}
+          </span>
+        </div>
+        <div>
+          <OnState matches="app.auth.checkingSession">Checking session</OnState>
+          <OnState matches="app.auth.knownCaregiver">Known caregiver</OnState>
+          <OnState matches="app.auth.requestingLogin">Requesting login</OnState>
+          <OnState matches="app.auth.identityUnverified">
+            Unable to verify identity
+          </OnState>
+          <OnState matches="app.auth.verifyingIdentity">
+            Verifying identity
+          </OnState>
+          <OnState matches="app.auth.checkingIdentity">
+            Checking identity
+          </OnState>
+          <OnState matches="app.auth.checkingMagicLink">
+            Checking magic link
+          </OnState>
+        </div>
+      </section>
+      <section>
+        <header>Controls</header>
+        <button onClick={events.checkIdentity}>Check identity</button>
+      </section>
+      {props.children}
     </section>
   );
 }
 
+const neverResolves = async () => {
+  await TestUtils.delay(10_000_000);
+  await new Promise((resolve) => setTimeout(resolve, 10_000_000));
+};
+
+const asyncSuccess = async () => undefined;
+
+const asyncFailure = async () => {
+  throw new Error('Explosions!');
+};
+
 describe('Auth model', () => {
   it('begins in a checking session state', async () => {
-    const neverResolves = async () => {
-      await TestUtils.delay(10_000_000);
-      await new Promise((resolve) => setTimeout(resolve, 10_000_000));
-    };
-
     const app = await TestUtils.renderWithShell(<AuthDiagnostics />, {
       onSession: neverResolves,
     });
@@ -43,21 +88,141 @@ describe('Auth model', () => {
     expect(listener).toHaveBeenCalled();
   });
 
-  it('transitions to validSession if the session check succeeds', async () => {
+  it('transitions to known caregiver if the session check succeeds', async () => {
     const app = await TestUtils.renderWithShell(<AuthDiagnostics />);
 
-    await app.findByText('Valid session');
+    await app.findByText('Known caregiver');
   });
 
-  it('transitions to invalidSession if the session check fails', async () => {
-    const sessionCheckFailure = async () => {
-      throw new Error('Explosions!');
-    };
-
+  it('begins checking for a magic link if the session check fails', async () => {
     const app = await TestUtils.renderWithShell(<AuthDiagnostics />, {
-      onSession: sessionCheckFailure,
+      onSession: asyncFailure,
+      onMagicLink: neverResolves,
     });
 
-    await app.findByText('Invalid session');
+    await app.findByText('Checking magic link');
+  });
+
+  it('calls the onMagicLink handler when checking the magic link', async () => {
+    const listener = jest.fn(neverResolves);
+    const app = await TestUtils.renderWithShell(<AuthDiagnostics />, {
+      onSession: asyncFailure,
+      onMagicLink: listener,
+    });
+
+    await app.findByText('Checking magic link');
+
+    expect(listener).toHaveBeenCalled();
+  });
+
+  it('begins verifying identity when onMagicLink succeeds', async () => {
+    const app = await TestUtils.renderWithShell(<AuthDiagnostics />, {
+      onSession: asyncFailure,
+      onMagicLink: async () => undefined,
+    });
+
+    await app.findByText('Verifying identity');
+  });
+
+  it('prompts for login if onMagicLink fails', async () => {
+    const app = await TestUtils.renderWithShell(<AuthDiagnostics />, {
+      onSession: asyncFailure,
+      onMagicLink: asyncFailure,
+    });
+
+    await app.findByText('Requesting login');
+  });
+
+  describe('the identity check process', () => {
+    it('calls onIdentity when an identity check occurs', async () => {
+      const listener = jest.fn(asyncSuccess);
+
+      const app = await TestUtils.renderWithShell(<AuthDiagnostics />, {
+        onSession: asyncFailure,
+        onMagicLink: asyncSuccess,
+        onIdentity: listener,
+      });
+
+      userEvents.click(await app.findByText('Check identity'));
+      await app.findByText('Checking identity');
+
+      expect(listener).toHaveBeenCalled();
+    });
+
+    it('calls onIdentity with identity info', async () => {
+      function IdentityForm() {
+        const identity = useAppSelector(
+          (state) => state.context.forms.identity
+        );
+
+        const fields = Object.keys(identity) as (keyof typeof identity)[];
+        const events = useAppEvents();
+
+        return (
+          <form>
+            {fields.map((field) => (
+              <input
+                key={field}
+                value={identity[field]}
+                placeholder={field}
+                onChange={(event) =>
+                  events.identityChange({ field, value: event.target.value })
+                }
+              />
+            ))}
+          </form>
+        );
+      }
+
+      const listener = jest.fn(asyncSuccess);
+      const phone = '1 234 567 8910';
+      const email = 'someone@example.com';
+      const zip = '12345';
+
+      const app = await TestUtils.renderWithShell(
+        <AuthDiagnostics>
+          <IdentityForm />
+        </AuthDiagnostics>,
+        {
+          onSession: asyncFailure,
+          onMagicLink: asyncSuccess,
+          onIdentity: listener,
+        }
+      );
+
+      userEvents.type(await app.findByPlaceholderText('email'), email);
+      userEvents.type(await app.findByPlaceholderText('phone'), phone);
+      userEvents.type(await app.findByPlaceholderText('zip'), zip);
+
+      userEvents.click(await app.findByText('Check identity'));
+
+      await app.findByText('Checking identity');
+
+      expect(listener).toHaveBeenCalledWith(
+        expect.objectContaining({
+          forms: expect.objectContaining({ identity: { phone, email, zip } }),
+        }),
+        expect.anything(),
+        expect.anything()
+      );
+    });
+
+    it('allows five attempted identity checks', async () => {
+      const app = await TestUtils.renderWithShell(<AuthDiagnostics />, {
+        onSession: asyncFailure,
+        onMagicLink: asyncSuccess,
+        onIdentity: asyncFailure,
+      });
+
+      userEvents.click(await app.findByText('Check identity'));
+      userEvents.click(await app.findByText('Check identity'));
+      userEvents.click(await app.findByText('Check identity'));
+      userEvents.click(await app.findByText('Check identity'));
+      userEvents.click(await app.findByText('Check identity'));
+      userEvents.click(await app.findByText('Check identity'));
+
+      await app.findByText('No more checks allowed');
+      await app.findByText('Unable to verify identity');
+    });
   });
 });
