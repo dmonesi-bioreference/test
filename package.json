@@ -54,7 +54,9 @@
     "typeface-eb-garamond": "^1.1.13",
     "typeface-poppins": "^1.1.13",
     "typeface-roboto": "^1.1.13",
-    "xstate": "4.23.0"
+    "xstate": "4.23.0",
+    "yup": "0.32.11",
+    "yup-phone": "1.2.19"
   },
   "devDependencies": {
     "@babel/cli": "7.14.8",

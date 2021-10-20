@@ -152,7 +152,7 @@ describe('Auth model', () => {
     it('calls onIdentity with identity info', async () => {
       function IdentityForm() {
         const identity = useAppSelector(
-          (state) => state.context.forms.identity
+          (state) => state.context.forms.identity.values
         );
 
         const fields = Object.keys(identity) as (keyof typeof identity)[];
@@ -200,7 +200,11 @@ describe('Auth model', () => {
 
       expect(listener).toHaveBeenCalledWith(
         expect.objectContaining({
-          forms: expect.objectContaining({ identity: { phone, email, zip } }),
+          forms: expect.objectContaining({
+            identity: expect.objectContaining({
+              values: { phone, email, zip },
+            }),
+          }),
         }),
         expect.anything(),
         expect.anything()

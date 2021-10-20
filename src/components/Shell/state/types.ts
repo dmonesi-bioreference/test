@@ -1,4 +1,5 @@
 import { SupportedLanguages } from 'localization';
+import { Identity, ValidationFailure } from 'models';
 import { Themes } from 'styles';
 
 import { GetStates } from './paths';
@@ -11,22 +12,23 @@ const NextStep = 'nextStep' as const;
 const CheckIdentity = 'checkIdentity' as const;
 const IdentityChange = 'identityChange' as const;
 
-interface AppEventMap {
+export interface AppEventMap {
   [NextStep]: { type: typeof NextStep };
   [CheckIdentity]: { type: typeof CheckIdentity };
   [IdentityChange]: {
     type: typeof IdentityChange;
-    field: keyof FormsContext['identity'];
+    field: keyof Identity;
     value: string;
   };
 }
 
+interface FormDetail<GivenType extends object> {
+  values: GivenType;
+  errors: ValidationFailure[];
+}
+
 interface FormsContext {
-  identity: {
-    email: string;
-    phone: string;
-    zip: string;
-  };
+  identity: FormDetail<Identity>;
 }
 
 interface AuthContext {
@@ -51,13 +53,22 @@ export type AppEventFn<ReturnValue = any> = (
 
 export type AppStates = GetStates<AppSchema>;
 
+export interface FormSchema {
+  states: {
+    active: {};
+    validating: {};
+    valid: {};
+    invalid: {};
+  };
+}
+
 export interface AppSchema {
   states: {
     app: {
       states: {
         forms: {
           states: {
-            identity: {};
+            identity: FormSchema;
           };
         };
         auth: {
