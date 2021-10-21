@@ -2,6 +2,28 @@ export const resources = {
   en: {
     translation: {
       application: 'GeneDx',
+      forms: {
+        identity: {
+          email: {
+            errors: {
+              required: 'Email address is required.',
+              invalid: 'Email address is invalid.',
+            },
+          },
+          phone: {
+            errors: {
+              required: 'Phone number is required.',
+              invalid: 'Phone number is invalid.',
+            },
+            zip: {
+              errors: {
+                required: 'Zipcode is required.',
+                invalid: 'Zipcode is invalid.',
+              },
+            },
+          },
+        },
+      },
       sections: {
         careTeam: {
           title: 'Care team',
@@ -106,14 +128,15 @@ export const resources = {
             'NOTE: time is not an indicator of case difficulty or a positive test result. Please allow time for your child’s genetic test to process before calling the lab or your doctor’s office.',
           mayVary: 'Timing may vary',
           estimate: 'Expect results in {{estimate}} days',
-          locationCheck:{
+          locationCheck: {
             where: 'Where are you now?',
-            report: 'It’s been 2 weeks since your genetic test report was generated. Help us deliver the most accurate resources and connections.',
+            report:
+              'It’s been 2 weeks since your genetic test report was generated. Help us deliver the most accurate resources and connections.',
             nicu: 'In the NICU',
             home: 'Newly home and adjusting',
-            while: 'We\'ve been home for a while',
+            while: "We've been home for a while",
             continue: 'Continue',
-          }
+          },
         },
         authentication: {
           title: 'Welcome, Barbara & Lisa',
@@ -134,34 +157,36 @@ export const resources = {
             confirm: 'Confirm',
           },
         },
-        login:{
+        login: {
           welcome: 'Welcome back, Barbara & Lisa',
-          journey: 'We’re here to support you and your child’s condition along every step of the journey together.',
+          journey:
+            'We’re here to support you and your child’s condition along every step of the journey together.',
           username: 'Username',
           password: 'Password',
           login: 'Login',
           trouble: 'Having trouble logging in?',
         },
-        dataSharingSettings:{
+        dataSharingSettings: {
           content: 'Ipsum Dolor set amit lorem',
           dataSharingHeadingOne: 'Allow Families to see my Child’s:',
           headData: 'Data Sharing Settings',
-          titleOne: 'Conditions & Disorders',          
-          titleTwo: 'Medications',         
-          titleThree: 'Reported Symptoms',         
-          titleFour: 'Lorem Ipsum Dolor set amit',         
+          titleOne: 'Conditions & Disorders',
+          titleTwo: 'Medications',
+          titleThree: 'Reported Symptoms',
+          titleFour: 'Lorem Ipsum Dolor set amit',
           titleFive: 'Lorem Ipsum Dolor set amit',
-          titleSix: 'Lorem ipsum share'
+          titleSix: 'Lorem ipsum share',
         },
-        dataConsent:{
+        dataConsent: {
           resources: 'PERSONALIZED RESOURCES',
           similar: 'SIMILAR FAMILY MATCHES',
           child: 'Personalize for my child',
-          para: 'We can provide more fine-tuned resources and  help connect with other parents like you by giving consent to use your child\'s data',
+          para: "We can provide more fine-tuned resources and  help connect with other parents like you by giving consent to use your child's data",
           yes: 'Yes please!',
           no: 'No thanks',
           continue: 'Continue',
-          footer: 'You can always change data sharing settings at any time from your child’s health profile.',
+          footer:
+            'You can always change data sharing settings at any time from your child’s health profile.',
         },
         furtherRegistration: {
           stepOne: {
