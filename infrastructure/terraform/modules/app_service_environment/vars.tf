@@ -7,5 +7,5 @@ variable "front_end_scale_factor" {
   default = 15
 }
 variable "internal_load_balancing_mode" {
-  default = "Web, Publishing"  
+  default = "Web, Publishing"
 }

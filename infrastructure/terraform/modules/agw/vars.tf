@@ -18,13 +18,13 @@ variable "frontend_http_port_name" {
   default = ""
 }
 variable "frontend_http_port" {
-    default = 80
+  default = 80
 }
 variable "frontend_https_port_name" {
   default = ""
 }
 variable "frontend_https_port" {
-    default = 443
+  default = 443
 }
 variable "frontend_ip_config_name" {
   default = ""
@@ -55,7 +55,7 @@ variable "backend_address_pool_name" {
   default = ""
 }
 variable "backend_pool_fqdns" {
-    type = list
+  type = list(any)
 }
 variable "http_setting_name" {
   default = ""
@@ -88,12 +88,12 @@ variable "min_protocol_version" {
   default = "TLSv1_2"
 }
 variable "cipher_suites" {
-  type = list
+  type = list(any)
   default = [
-              "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384", 
-							"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", 
-							"TLS_RSA_WITH_AES_256_CBC_SHA256",
-              "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
+    "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+    "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+    "TLS_RSA_WITH_AES_256_CBC_SHA256",
+    "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
   ]
 }
 variable "ssl_cert_name" {}
@@ -124,10 +124,10 @@ variable "request_http_routing_rule_name" {
   default = ""
 }
 variable "request_http_routing_rule_type" {
-  default ="Basic"
+  default = "Basic"
 }
 variable "request_https_routing_rule_type" {
-  default ="Basic"
+  default = "Basic"
 }
 
 

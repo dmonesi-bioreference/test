@@ -1,5 +1,5 @@
 data "azurerm_resource_group" "main" {
-	name = var.rg_name
+  name = var.rg_name
 }
 
 output "name" {

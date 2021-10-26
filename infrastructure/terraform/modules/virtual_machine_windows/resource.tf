@@ -24,7 +24,7 @@ resource "azurerm_virtual_machine" "main" {
   storage_image_reference {
     id = var.vm_image_reference
   }
-  
+
   storage_os_disk {
     name          = "${var.vm_name}-osdisk1"
     os_type       = "Windows"
@@ -33,8 +33,8 @@ resource "azurerm_virtual_machine" "main" {
   }
 
   boot_diagnostics {
-      enabled     = true
-      storage_uri = var.boot_diagnostics_storage_uri 
+    enabled     = true
+    storage_uri = var.boot_diagnostics_storage_uri
   }
 
   os_profile {
@@ -44,8 +44,8 @@ resource "azurerm_virtual_machine" "main" {
   }
 
   os_profile_windows_config {
-    provision_vm_agent  = var.provision_vm_agent
-    timezone            = var.timezone
+    provision_vm_agent = var.provision_vm_agent
+    timezone           = var.timezone
   }
 }
 

@@ -8,7 +8,7 @@ variable "mi_name" {}
 variable "adminlogin" {}
 variable "adminpwd" {}
 variable "deployment_mode" {
-    default = "Incremental"
+  default = "Incremental"
 }
 variable "arm_template_file" {}
 

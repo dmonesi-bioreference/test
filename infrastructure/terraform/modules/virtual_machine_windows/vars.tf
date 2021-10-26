@@ -9,11 +9,11 @@ variable "private_ip_address_allocation" {
   default = "Dynamic"
 }
 variable "dns_servers" {
-  type = list
+  type = list(any)
   default = [
-        "10.61.8.4",
-        "10.61.8.5"
-    ]
+    "10.61.8.4",
+    "10.61.8.5"
+  ]
 }
 variable "vm_size" {}
 variable "vm_image_reference" {}
