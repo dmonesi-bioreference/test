@@ -15,7 +15,7 @@ function AuthDiagnostics(props: Props<unknown>) {
     (state) => state.context.auth.identityCheckAttempts
   );
 
-  const attemptsExhausted = attempts >= 4;
+  const attemptsExhausted = attempts === 0;
 
   const events = useAppEvents();
 
@@ -25,6 +25,7 @@ function AuthDiagnostics(props: Props<unknown>) {
         <header>Current state</header>
         <pre>{states}</pre>
         <div>
+          <span>{attempts} attempts remaining</span>
           <span>
             {attemptsExhausted
               ? 'No more checks allowed'
@@ -175,7 +176,7 @@ describe('Auth model', () => {
       }
 
       const listener = jest.fn(asyncSuccess);
-      const phone = '1 234 567 8910';
+      const dob = '10/22/2021';
       const email = 'someone@example.com';
       const zip = '12345';
 
@@ -190,8 +191,8 @@ describe('Auth model', () => {
         }
       );
 
+      userEvents.type(await app.findByPlaceholderText('dob'), dob);
       userEvents.type(await app.findByPlaceholderText('email'), email);
-      userEvents.type(await app.findByPlaceholderText('phone'), phone);
       userEvents.type(await app.findByPlaceholderText('zip'), zip);
 
       userEvents.click(await app.findByText('Check identity'));
@@ -202,7 +203,7 @@ describe('Auth model', () => {
         expect.objectContaining({
           forms: expect.objectContaining({
             identity: expect.objectContaining({
-              values: { phone, email, zip },
+              values: { dob, email, zip },
             }),
           }),
         }),
@@ -211,19 +212,21 @@ describe('Auth model', () => {
       );
     });
 
-    it('allows five attempted identity checks', async () => {
+    fit('allows five attempted identity checks', async () => {
       const app = await TestUtils.renderWithShell(<AuthDiagnostics />, {
         onSession: asyncFailure,
         onMagicLink: asyncSuccess,
         onIdentity: asyncFailure,
       });
 
+      await app.findByText('5 attempts remaining');
       userEvents.click(await app.findByText('Check identity'));
       userEvents.click(await app.findByText('Check identity'));
       userEvents.click(await app.findByText('Check identity'));
       userEvents.click(await app.findByText('Check identity'));
       userEvents.click(await app.findByText('Check identity'));
       userEvents.click(await app.findByText('Check identity'));
+      await app.findByText('0 attempts remaining');
 
       await app.findByText('No more checks allowed');
       await app.findByText('Unable to verify identity');

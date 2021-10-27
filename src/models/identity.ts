@@ -1,45 +1,25 @@
 import * as yup from 'yup';
-import 'yup-phone';
 
 import { isValidationError } from './validation-failure';
 
-const US_ZIP_CODE = /(^\d{5}$)|(^\d{5}-\d{4}$)/;
-const schema = yup.object().shape(
-  {
-    phone: yup
-      .string()
-      .phone('US', false, 'forms.identity.phone.errors.invalid')
-      .when('email', {
-        is: (email: string) => !email || email.length === 0,
-        then: yup
-          .string()
-          .trim()
-          .required('forms.identity.phone.errors.required'),
-      }),
-    zip: yup
-      .string()
-      .trim()
-      .required('forms.identity.zip.errors.required')
-      .matches(US_ZIP_CODE, { message: 'forms.identity.zip.errors.invalid' }),
-    email: yup
-      .string()
-      .email('forms.identity.email.errors.invalid')
-      .when('phone', {
-        is: (phone: string) => !phone || phone.length === 0,
-        then: yup
-          .string()
-          .trim()
-          .required('forms.identity.email.errors.required'),
-      }),
-  },
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  ['email', 'phone']
-);
+const US_ZIP_CODE = /(^\d{5}$)|(^\d{5}-\d{4}$)|^$/;
+const schema = yup.object().shape({
+  zip: yup
+    .string()
+    .trim()
+    .required('forms.identity.zip.errors.required')
+    .matches(US_ZIP_CODE, { message: 'forms.identity.zip.errors.invalid' }),
+  dob: yup.string().trim().required('forms.identity.dob.errors.required'),
+  email: yup
+    .string()
+    .trim()
+    .email('forms.identity.email.errors.invalid')
+    .required('forms.identity.email.errors.required'),
+});
 
 export interface Identity {
+  dob: string;
   email: string;
-  phone: string;
   zip: string;
 }
 

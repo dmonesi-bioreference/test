@@ -45,14 +45,14 @@ const Input: React.FC<InputProps> = (props) => {
   const helpTextId = `input-help-text-${id}`;
   const [isFocused, setIsFocused] = useState(false);
 
-  const handleFocus = () => {
+  const handleFocus = (e) => {
     setIsFocused(true);
-    props.onFocus;
+    props.onFocus && props.onFocus(e);
   };
 
-  const handleBlur = () => {
+  const handleBlur = (e) => {
     setIsFocused(false);
-    props.onBlur;
+    props.onBlur && props.onBlur(e);
   };
 
   return (

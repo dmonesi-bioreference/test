@@ -12,10 +12,6 @@ const PageSectionStyled = styled.div`
   &.page-section :last-child {
     margin-bottom: 0;
   }
-
-  .page-section__header {
-    padding: 0 ${tokens.spacingXSmall};
-  }
 `;
 
 export default PageSectionStyled;

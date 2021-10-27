@@ -4,22 +4,27 @@ export const resources = {
       application: 'GeneDx',
       forms: {
         identity: {
+          dob: {
+            label: 'Date of birth',
+            placeholder: 'mm / dd / yyyy',
+            errors: {
+              required: 'Date of birth is required.',
+            },
+          },
           email: {
+            label: 'Email address',
+            placeholder: 'e.g. a.onymous@email.com',
             errors: {
               required: 'Email address is required.',
               invalid: 'Email address is invalid.',
             },
           },
-          phone: {
+          zip: {
+            label: 'Zip code',
+            placeholder: 'e.g. 123456',
             errors: {
-              required: 'Phone number is required.',
-              invalid: 'Phone number is invalid.',
-            },
-            zip: {
-              errors: {
-                required: 'Zipcode is required.',
-                invalid: 'Zipcode is invalid.',
-              },
+              required: 'Zipcode is required.',
+              invalid: 'Zipcode is invalid.',
             },
           },
         },
@@ -138,10 +143,15 @@ export const resources = {
             continue: 'Continue',
           },
         },
-        authentication: {
+        identity: {
           title: 'Welcome, Barbara & Lisa',
           subTitle:
             'To make sure we keep your child’s information safe, we have a few details to confirm.',
+          errors: {
+            title: 'Those details don’t match our records.',
+            attemptsStart: 'Please check them over and try again. You have',
+            attemptsEnd: 'authentication attempts left.',
+          },
           form: {
             zipCode: {
               label: "Lisa's Zip Code",
@@ -155,6 +165,7 @@ export const resources = {
               placeholder: 'e.g. a.onymous@email.com',
             },
             confirm: 'Confirm',
+            checkingIdentity: 'Checking identity',
           },
         },
         login: {

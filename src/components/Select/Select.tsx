@@ -79,6 +79,8 @@ const Select: React.FC<SelectProps> = (props) => {
           aria-describedby={helpTextId}
           aria-invalid={props.invalid ? 'true' : 'false'}
           onChange={handleChange}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           onInvalid={props.onInvalid}
           onFocus={handleFocus}
           onBlur={handleBlur}

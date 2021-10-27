@@ -9,7 +9,7 @@ describe('Home page', () => {
   describe('with a valid session', () => {
     it('it lands a caregiver on the landing page', () => {
       homePage.open();
-      homePage.hasText("Child's name");
+      homePage.hasText('Welcome, Barbara & Lisa');
     });
   });
 

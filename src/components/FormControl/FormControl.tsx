@@ -16,7 +16,7 @@ export interface FormControlProps {
   /** Set to true to render the input in an invalid state. */
   invalid?: boolean;
   /** Message to show if the input is invalid. */
-  invalidMessage?: string;
+  invalidMessage?: React.ReactNode;
   /** Set to true for radio or checkbox elements to change the DOM structure and positioning. */
   booleanInput?: boolean;
   /** The size of the input. */

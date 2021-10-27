@@ -12,7 +12,7 @@ const FormControlStyled = styled.div`
     display: flex;
     flex: 0 0 auto;
     flex-wrap: wrap;
-    margin-bottom: ${tokens.spacingXSmall};
+    margin-bottom: ${tokens.spacingXxSmall};
   }
 
   .form-control__label-with-link {

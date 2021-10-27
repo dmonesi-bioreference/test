@@ -55,10 +55,20 @@ export type AppStates = GetStates<AppSchema>;
 
 export interface FormSchema {
   states: {
-    active: {};
-    validating: {};
-    valid: {};
-    invalid: {};
+    activity: {
+      states: {
+        active: {};
+        idle: {};
+      };
+    };
+    validation: {
+      states: {
+        pristine: {};
+        validating: {};
+        valid: {};
+        invalid: {};
+      };
+    };
   };
 }
 

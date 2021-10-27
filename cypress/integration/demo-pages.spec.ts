@@ -5,7 +5,7 @@ describe('Demo pages', () => {
   describe('route verifications', () => {
     const validRoutes = [
       '',
-      'authentication-form',
+      'identity-form',
       'data-consent',
       'data-sharing-settings',
       'location-check',

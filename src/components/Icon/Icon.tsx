@@ -57,10 +57,12 @@ const AsyncHeroIcon: React.FC<HeroiconProps> = ({
   const [icon, setComponent] = useState<React.ReactNode | null>(null);
 
   useEffect(() => {
+    let mounted = true;
+
     if (!icon) {
       import(`icons/heroicons/${style}/${pascalCase(name)}`)
         .then((iconModule) =>
-          Reflect.has(iconModule, 'default')
+          mounted && Reflect.has(iconModule, 'default')
             ? setComponent(
                 <iconModule.default
                   height={convertToNumber(size)}
@@ -71,6 +73,10 @@ const AsyncHeroIcon: React.FC<HeroiconProps> = ({
         )
         .catch(() => undefined);
     }
+
+    return () => {
+      mounted = false;
+    };
   }, [icon, style, name, size]);
 
   if (!icon) {

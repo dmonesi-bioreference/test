@@ -3,7 +3,9 @@ import { AppStates } from './state';
 
 interface OnStateProps {
   // A string or list of strings which describe any valid states for the children components to render in.
-  matches: AppStates | AppStates[];
+  matches: AppStates;
+  // An exception handler in the event that the state doesn't match. Defaults to `null`.
+  fallback?: React.ReactNode;
 }
 
 /**
@@ -23,10 +25,14 @@ interface OnStateProps {
  * and if any of the given strings match the current application state, the
  * interior components will render.
  *
- * @param props object `{ matches: AppStates | AppStates[] }`
+ * @param props object `{ matches: AppStates, fallback?: React.ReactNode }`
  * @returns JSX.Element which short-circuits renders on invalid match.
  */
-export function OnState(props: Props<OnStateProps>) {
-  const isMatch = useAppState(props.matches);
-  return isMatch ? <>{props.children}</> : null;
+export function OnState({
+  children,
+  fallback = null,
+  matches,
+}: Props<OnStateProps>) {
+  const isMatch = useAppState(matches);
+  return isMatch ? <>{children}</> : <>{fallback}</>;
 }

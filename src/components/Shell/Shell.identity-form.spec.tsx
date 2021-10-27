@@ -17,8 +17,10 @@ function IdentityFormDiagnostics() {
   return (
     <form>
       <section>
-        <OnState matches="app.forms.identity.valid">Form valid</OnState>
-        <OnState matches="app.forms.identity.invalid">
+        <OnState matches="app.forms.identity.validation.valid">
+          Form valid
+        </OnState>
+        <OnState matches="app.forms.identity.validation.invalid">
           <header>There were some problems.</header>
           {errors.map((error) => (
             <div key={error.message} aria-label="error-message">
@@ -46,38 +48,25 @@ function IdentityFormDiagnostics() {
 }
 
 describe('Identity form model', () => {
-  const phone = '1 234 567 8910';
+  const dob = '10/22/2021';
   const email = 'someone@example.com';
   const zip = '90210';
 
   it('recognizes valid data', async () => {
     const app = await TestUtils.renderWithShell(<IdentityFormDiagnostics />);
 
+    userEvents.type(await app.findByPlaceholderText('dob'), dob);
     userEvents.type(await app.findByPlaceholderText('email'), email);
-    userEvents.type(await app.findByPlaceholderText('phone'), phone);
     userEvents.type(await app.findByPlaceholderText('zip'), zip);
 
     await app.findByText('Form valid');
   });
 
-  it('recognizes invalid phone numbers', async () => {
-    const app = await TestUtils.renderWithShell(<IdentityFormDiagnostics />);
-
-    userEvents.type(await app.findByPlaceholderText('email'), email);
-    userEvents.type(
-      await app.findByPlaceholderText('phone'),
-      'a clearly wrong phone number'
-    );
-    userEvents.type(await app.findByPlaceholderText('zip'), zip);
-
-    expect(await app.findAllByLabelText('error-message')).toHaveLength(1);
-  });
-
   it('recognizes invalid zip codes', async () => {
     const app = await TestUtils.renderWithShell(<IdentityFormDiagnostics />);
 
+    userEvents.type(await app.findByPlaceholderText('dob'), dob);
     userEvents.type(await app.findByPlaceholderText('email'), email);
-    userEvents.type(await app.findByPlaceholderText('phone'), phone);
     userEvents.type(
       await app.findByPlaceholderText('zip'),
       "this isn't the right zip code format"
@@ -89,11 +78,11 @@ describe('Identity form model', () => {
   it('recognizes invalid email addresses', async () => {
     const app = await TestUtils.renderWithShell(<IdentityFormDiagnostics />);
 
+    userEvents.type(await app.findByPlaceholderText('dob'), dob);
     userEvents.type(
       await app.findByPlaceholderText('email'),
       "email addresses don't work like this"
     );
-    userEvents.type(await app.findByPlaceholderText('phone'), phone);
     userEvents.type(await app.findByPlaceholderText('zip'), zip);
 
     expect(await app.findAllByLabelText('error-message')).toHaveLength(1);

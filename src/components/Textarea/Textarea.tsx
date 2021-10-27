@@ -77,8 +77,12 @@ const Textarea: React.FC<TextareaProps> = (props) => {
           aria-labelledby={labelId}
           aria-describedby={helpTextId}
           aria-invalid={props.invalid ? 'true' : 'false'}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           onChange={props.onChange}
           onInput={props.onInput}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           onInvalid={props.onInvalid}
           onFocus={handleFocus}
           onBlur={handleBlur}

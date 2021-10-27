@@ -1,8 +1,8 @@
 import Head from 'next/head';
 
-import { AuthenticationForm } from 'screens';
+import { IdentityForm } from 'screens';
 
-export default function AuthenticationFormPage() {
+export default function IdentityFormPage() {
   return (
     <>
       <Head>
@@ -11,7 +11,7 @@ export default function AuthenticationFormPage() {
       </Head>
 
       <main>
-        <AuthenticationForm />
+        <IdentityForm />
       </main>
 
       <footer></footer>

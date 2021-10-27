@@ -7,6 +7,8 @@ export type LabelPosition =
   | 'left'
   | 'left-apart';
 
+type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
+
 export interface InputBaseProps {
   /** Set to `true` to render the input in a disabled state. */
   disabled?: boolean;
@@ -23,15 +25,15 @@ export interface InputBaseProps {
   /** The name of the input. */
   name: string;
   /** Function to run when the input's onBlur is triggered. */
-  onBlur?: (e) => void;
+  onBlur?: InputProps['onBlur'];
   /** Function to run when the input's onChange is triggered. */
-  onChange?: (e) => void;
+  onChange?: InputProps['onChange'];
   /** Function to run when the input's onClick is triggered. */
-  onClick?: (e) => void;
+  onClick?: InputProps['onClick'];
   /** Function to run when the input's onInvalid is triggered. */
-  onInvalid?: (e) => void;
+  onInvalid?: InputProps['onInvalid'];
   /** Function to run when the input's onFocus is triggered. */
-  onFocus?: (e) => void;
+  onFocus?: InputProps['onFocus'];
   /** Optional placeholder to display when the input is empty. */
   placeholder?: string;
   /** Set to `true` to make the input required.. */

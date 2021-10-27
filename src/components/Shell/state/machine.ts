@@ -9,10 +9,10 @@ import { AppEventMap, AppContext, AppEvents, AppSchema } from './types';
 export const initialContext: AppContext = {
   language: 'en',
   theme: 'light',
-  auth: { identityCheckAttempts: 0 },
+  auth: { identityCheckAttempts: 5 },
   forms: {
     identity: {
-      values: { email: '', phone: '', zip: '' },
+      values: { dob: '', email: '', zip: '' },
       errors: [],
     },
   },
@@ -47,20 +47,30 @@ const appConfig: MachineConfig<AppContext, AppSchema, AppEvents> = {
             },
             knownCaregiver: {},
             verifyingIdentity: {
-              on: { checkIdentity: 'checkingIdentity' },
+              on: {
+                checkIdentity: [
+                  {
+                    target: 'checkingIdentity',
+                    cond: (context) => context.auth.identityCheckAttempts > 0,
+                  },
+                  { target: 'identityUnverified' },
+                ],
+              },
             },
             requestingLogin: {},
             identityUnverified: {},
             checkingIdentity: {
               invoke: {
                 src: 'handleIdentityCheck',
+                // Not the intended done target for this.
+                onDone: 'knownCaregiver',
                 onError: [
                   {
                     target: 'verifyingIdentity',
-                    cond: (context) => context.auth.identityCheckAttempts < 5,
+                    cond: (context) => context.auth.identityCheckAttempts > 0,
                     actions: [
                       assign((context) => {
-                        context.auth.identityCheckAttempts++;
+                        context.auth.identityCheckAttempts--;
                       }),
                     ],
                   },
@@ -81,51 +91,57 @@ const appConfig: MachineConfig<AppContext, AppSchema, AppEvents> = {
           type: 'parallel',
           states: {
             identity: {
-              initial: 'valid',
+              id: 'identity',
+              type: 'parallel',
               states: {
-                active: {
-                  after: { 300: 'validating' },
-                  on: {
-                    identityChange: {
-                      target: 'active',
-                      actions: [updateIdentity],
+                activity: {
+                  initial: 'idle',
+                  states: {
+                    idle: {
+                      on: {
+                        identityChange: {
+                          target: 'active',
+                          actions: [updateIdentity],
+                        },
+                      },
+                    },
+                    active: {
+                      after: { 300: '#identity.validation.validating' },
+                      on: {
+                        identityChange: {
+                          target: 'active',
+                          actions: [updateIdentity],
+                        },
+                      },
                     },
                   },
                 },
-                validating: {
-                  invoke: {
-                    src: (context) =>
-                      validateIdentity(context.forms.identity.values),
-                    onDone: {
-                      target: 'valid',
-                      actions: assign((context) => {
-                        context.forms.identity.errors = [];
-                      }),
+                validation: {
+                  initial: 'pristine',
+                  states: {
+                    pristine: {},
+                    validating: {
+                      invoke: {
+                        src: (context) =>
+                          validateIdentity(context.forms.identity.values),
+                        onDone: {
+                          target: 'valid',
+                          actions: assign((context) => {
+                            context.forms.identity.errors = [];
+                          }),
+                        },
+                        onError: {
+                          target: 'invalid',
+                          actions: assign((context, event) => {
+                            if (isValidationFailurePayload(event.data)) {
+                              context.forms.identity.errors = event.data;
+                            }
+                          }),
+                        },
+                      },
                     },
-                    onError: {
-                      target: 'invalid',
-                      actions: assign((context, event) => {
-                        if (isValidationFailurePayload(event.data)) {
-                          context.forms.identity.errors = event.data;
-                        }
-                      }),
-                    },
-                  },
-                },
-                valid: {
-                  on: {
-                    identityChange: {
-                      target: 'active',
-                      actions: [updateIdentity],
-                    },
-                  },
-                },
-                invalid: {
-                  on: {
-                    identityChange: {
-                      target: 'active',
-                      actions: [updateIdentity],
-                    },
+                    valid: {},
+                    invalid: {},
                   },
                 },
               },
