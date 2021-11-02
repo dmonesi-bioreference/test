@@ -1,27 +1,20 @@
 import { useAppEvents, useAppSelector } from 'app/components/Shell';
 import { Identity } from 'models';
 
-type Fields = keyof Identity;
+export function useIdentityField(field: keyof Identity) {
+  const { identityChange } = useAppEvents();
+  const identity = useAppSelector((state) => state.context.forms.identity);
 
-export function useIdentityForm() {
-  const errorMap = {} as Record<Fields, string[]>;
-  const events = useAppEvents();
-
-  const { values, errors } = useAppSelector(
-    (state) => state.context.forms.identity
-  );
-
-  for (const field of Object.keys(values)) {
-    errorMap[field] = errors
+  const state = {
+    errors: identity.errors
       .filter((error) => error.field === field)
-      .map((error) => error.message);
-  }
-
-  const formEvents = {
-    check: () => events.checkIdentity(),
-    update: (field: Fields, value: string) =>
-      events.identityChange({ field, value }),
+      .map((error) => error.message),
+    value: identity.values[field],
   };
 
-  return [{ values, errors: errorMap }, formEvents] as const;
+  const events = {
+    update: (value: string) => identityChange({ field, value }),
+  };
+
+  return [state, events] as const;
 }
