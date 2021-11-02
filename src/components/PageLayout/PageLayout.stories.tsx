@@ -1,6 +1,6 @@
 import { Story } from '@storybook/react/types-6-0';
 
-import Typography from '../Typography/Typography';
+import { Typography } from 'components/Typography';
 
 import PageLayout from './PageLayout';
 

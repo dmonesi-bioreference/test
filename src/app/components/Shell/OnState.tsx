@@ -1,5 +1,4 @@
 import { useAppState } from './hooks';
-import { AppStates } from './state';
 
 interface OnStateProps {
   // A string or list of strings which describe any valid states for the children components to render in.
@@ -17,7 +16,7 @@ interface OnStateProps {
  * For example, to render a component when the app is checking for
  * identity info:
  *
- *     <OnState matches="app.checking">
+ *     <OnState matches="checking">
  *       <Spinner />
  *     </OnState>
  *

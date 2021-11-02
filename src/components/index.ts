@@ -1,7 +1,4 @@
 export * from './Alert';
-export * from './AppImage';
-export * from './AppElements';
-export * from './AppLink';
 export * from './Button';
 export * from './Card';
 export * from './Checkbox';
@@ -26,7 +23,6 @@ export * from './ProgressBar';
 export * from './Radio';
 export * from './Select';
 export * from './Spinner';
-export * from './Shell';
 export * from './Step';
 export * from './StepTitle';
 export * from './StyleGuide/StyleLabel';

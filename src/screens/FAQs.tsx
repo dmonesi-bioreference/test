@@ -1,5 +1,6 @@
 import { useQuery, gql } from '@apollo/client';
 
+import { useAppTranslation } from 'app/components';
 import {
   PageLayout,
   PageSection,
@@ -7,7 +8,6 @@ import {
   Card,
   Typography,
   Heading,
-  useAppTranslation,
   Spinner,
 } from 'components';
 import { tokens } from 'styles';

@@ -1,3 +1,4 @@
+import { useAppTranslation } from 'app';
 import {
   Button,
   Checkbox,
@@ -8,8 +9,7 @@ import {
   ProcessBar,
   StepTitle,
   Typography,
-  useAppTranslation,
-  PasswordInput
+  PasswordInput,
 } from 'components';
 import { tokens } from 'styles';
 
@@ -55,15 +55,15 @@ export const StepFour = () => {
 
         <div style={{ marginBottom: tokens.spacingLarge }}>
           <div style={{ marginBottom: tokens.spacing }}>
-          <PasswordInput 
-          label={t('sections.furtherRegistration.form.password.label')}
+            <PasswordInput
+              label={t('sections.furtherRegistration.form.password.label')}
               name="password"
-                  />
+            />
           </div>
-          <PasswordInput 
-           label={t('sections.furtherRegistration.form.confirmPassword.label')}
-           name="confirm-password"
-                  />
+          <PasswordInput
+            label={t('sections.furtherRegistration.form.confirmPassword.label')}
+            name="confirm-password"
+          />
         </div>
 
         <div

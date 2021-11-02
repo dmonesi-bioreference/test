@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 
-import { Shell } from 'components/Shell';
+import { Shell } from 'app/components/Shell';
 
 type ShellProps = Parameters<typeof Shell>[0];
 

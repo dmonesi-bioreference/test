@@ -1,4 +1,4 @@
-import { Shell } from 'components/Shell';
+import { Shell } from 'app/components/Shell';
 
 import { LandingPage } from './LandingPage';
 

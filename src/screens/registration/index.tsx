@@ -1,4 +1,4 @@
-import { OnState } from 'components';
+import { OnState } from 'app';
 
 import { StepFour } from './StepFour';
 import { StepOne } from './StepOne';
@@ -8,16 +8,16 @@ import { StepTwo } from './StepTwo';
 export function RegistrationWizard() {
   return (
     <>
-      <OnState matches="app.registration.one">
+      <OnState matches="registration.one">
         <StepOne />
       </OnState>
-      <OnState matches="app.registration.two">
+      <OnState matches="registration.two">
         <StepTwo />
       </OnState>
-      <OnState matches="app.registration.three">
+      <OnState matches="registration.three">
         <StepThree />
       </OnState>
-      <OnState matches="app.registration.four">
+      <OnState matches="registration.four">
         <StepFour />
       </OnState>
     </>

@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app';
 
-import { Shell } from 'components/Shell';
+import { Shell } from 'app/components/Shell';
 
 import 'inspect';
 

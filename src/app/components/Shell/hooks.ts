@@ -1,10 +1,10 @@
 import { useSelector } from '@xstate/react';
 import { useContext } from 'react';
 
+import { AppService } from 'app/state';
 import { t } from 'localization';
 
 import { AppEventContext, AppServiceContext } from './context';
-import { AppService, AppStates } from './state';
 
 /**
  * In order to access app state, we use the `useAppSelector` hook. This
@@ -66,11 +66,11 @@ export function useAppTranslation() {
  * the app state a little easier. With useAppState, you can invoke the
  * current state of the app like so:
  *
- *     useAppState('app.target-state');
+ *     useAppState('target-state');
  *
  *  Versus the longer approach:
  *
- *     useAppSelector(state => state.matches('app.target-state'));
+ *     useAppSelector(state => state.matches('target-state'));
  *
  * As a nice byproduct, useAppState has a typesafety guarantee: whenever
  * the app machine changes, the signature for useAppState will as well.

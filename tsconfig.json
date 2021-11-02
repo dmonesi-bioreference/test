@@ -25,7 +25,7 @@
       "node",
       "jest"
     ],
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "noFallthroughCasesInSwitch": true
   },
   "include": [

@@ -1,3 +1,4 @@
+import { useAppEvents, useAppTranslation } from 'app';
 import {
   Button,
   Heading,
@@ -10,8 +11,6 @@ import {
   StepTitle,
   ToolTip,
   Typography,
-  useAppEvents,
-  useAppTranslation,
 } from 'components';
 import { tokens } from 'styles';
 

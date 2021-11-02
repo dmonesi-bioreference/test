@@ -1,6 +1,5 @@
 /// <reference types="cypress" />
 /// <reference types="@testing-library/cypress" />
-
 describe('Demo pages', () => {
   describe('route verifications', () => {
     const validRoutes = [
@@ -22,3 +21,5 @@ describe('Demo pages', () => {
     }
   });
 });
+
+export {};

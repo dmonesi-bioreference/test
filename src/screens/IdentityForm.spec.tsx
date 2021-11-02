@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
 
-import { useAppEvents } from 'components';
+import { useAppEvents } from 'app';
 import { act, delay, renderWithShell } from 'test-utils';
 
 import { IdentityForm } from './IdentityForm';

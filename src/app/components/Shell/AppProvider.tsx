@@ -1,8 +1,9 @@
 import { useActor, useInterpret } from '@xstate/react';
 import { useMemo } from 'react';
 
+import { app } from 'app/state';
+
 import { AppEventContext, AppServiceContext } from './context';
-import { app, AppDispatchMap, AppEventFn } from './state';
 
 export interface AppProviderProps {
   onSession?: AppEventFn<unknown>;

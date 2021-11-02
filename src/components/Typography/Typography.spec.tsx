@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react';
 
 import * as TestUtils from 'test-utils';
 
-import { Typography } from '.';
+import { Typography } from './Typography';
 
 it('renders a div for heading 7 and 8', async () => {
   await TestUtils.renderWithShell(

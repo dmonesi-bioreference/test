@@ -1,9 +1,7 @@
-import { ReactNode } from 'react';
-
 import PageSectionStyled from './PageSection.styles';
 
 export interface PageSectionProps {
-  header: ReactNode;
+  header: React.ReactNode;
 }
 
 const PageSection: React.FC<PageSectionProps> = (props) => {

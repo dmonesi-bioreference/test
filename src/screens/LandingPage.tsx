@@ -1,6 +1,6 @@
+import { AppImage, useAppTranslation } from 'app';
 import InTheNICUImage from 'assets/images/jpg/InTheNICU.jpg';
 import {
-  AppImage,
   Button,
   Card,
   Divider,
@@ -10,7 +10,6 @@ import {
   PageLayout,
   PageSection,
   Typography,
-  useAppTranslation,
 } from 'components';
 import { tokens } from 'styles';
 

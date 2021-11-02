@@ -1,24 +1,26 @@
 import {
-  Button,
-  Heading,
   IdentityElements,
-  InformationBanner,
   OnState,
-  PageLayout,
-  PageSection,
-  Spinner,
-  Typography,
   useAppEvents,
   useAppSelector,
   useAppState,
   useAppTranslation,
+} from 'app/components';
+import {
+  Button,
+  Heading,
+  InformationBanner,
+  PageLayout,
+  PageSection,
+  Spinner,
+  Typography,
 } from 'components';
 import { tokens } from 'styles';
 
 export const IdentityForm = () => {
   const t = useAppTranslation();
   const events = useAppEvents();
-  const isValid = useAppState('app.forms.identity.validation.valid');
+  const isValid = useAppState('forms.identity.validation.valid');
   const numberOfAttemptsRemaining = useAppSelector(
     (state) => state.context.auth.identityCheckAttempts
   );
@@ -78,7 +80,7 @@ export const IdentityForm = () => {
           />
         </div>
         <OnState
-          matches="app.auth.checkingIdentity"
+          matches="auth.checkingIdentity"
           fallback={
             <Button
               kind="primary"

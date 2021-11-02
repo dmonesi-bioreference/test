@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import { Home } from 'screens/Home';
+import { Home } from 'screens';
 
 export default function Index() {
   return (

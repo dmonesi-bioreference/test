@@ -1,8 +1,8 @@
 import { useQuery, gql } from '@apollo/client';
 import { useRouter } from 'next/router';
 
+import { AppImage } from 'app';
 import {
-  AppImage,
   PageLayout,
   PageSection,
   Card,

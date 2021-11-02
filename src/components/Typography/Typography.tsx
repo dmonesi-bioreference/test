@@ -42,7 +42,7 @@ type TypographyProps =
       type: 'heading';
     } & HeadingProps);
 
-const Typography: React.FC<TypographyProps> = (props) => {
+export const Typography: React.FC<TypographyProps> = (props) => {
   const color = props.color || 'default';
   const alignment = props.alignment || 'left';
   switch (props.type) {
@@ -110,5 +110,3 @@ export const Heading = ({
     </Typography>
   );
 };
-
-export default Typography;

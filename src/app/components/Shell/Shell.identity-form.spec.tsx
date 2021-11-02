@@ -17,10 +17,8 @@ function IdentityFormDiagnostics() {
   return (
     <form>
       <section>
-        <OnState matches="app.forms.identity.validation.valid">
-          Form valid
-        </OnState>
-        <OnState matches="app.forms.identity.validation.invalid">
+        <OnState matches="forms.identity.validation.valid">Form valid</OnState>
+        <OnState matches="forms.identity.validation.invalid">
           <header>There were some problems.</header>
           {errors.map((error) => (
             <div key={error.message} aria-label="error-message">

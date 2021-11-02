@@ -1,14 +1,13 @@
-
 import { useState } from 'react';
 
+import { useAppTranslation } from 'app';
 import {
   Button,
   Card,
   PageLayout,
-  useAppTranslation,
   Typography,
   Radio,
-  RadioGroup
+  RadioGroup,
 } from 'components';
 import { tokens } from 'styles';
 
@@ -21,25 +20,37 @@ export const LocationCheckPage = () => {
   };
   return (
     <PageLayout containsCards={true}>
-        <Card>
-          <div style={{ marginBottom: tokens.spacingMedium }}>
-              <Typography type="heading"  level= '2' >{t('sections.results.locationCheck.where')}
-              </Typography>
-          </div>
-          <div style={{ marginBottom: tokens.spacingXLarge }}>
-          <Typography type="body" >{t('sections.results.locationCheck.report')}</Typography>
-          </div>
-          <div style={{ marginBottom: tokens.spacingXLarge }}>
+      <Card>
+        <div style={{ marginBottom: tokens.spacingMedium }}>
+          <Typography type="heading" level="2">
+            {t('sections.results.locationCheck.where')}
+          </Typography>
+        </div>
+        <div style={{ marginBottom: tokens.spacingXLarge }}>
+          <Typography type="body">
+            {t('sections.results.locationCheck.report')}
+          </Typography>
+        </div>
+        <div style={{ marginBottom: tokens.spacingXLarge }}>
           <RadioGroup onChange={handleChange} value={value} name="radio">
-      <Radio value={t('sections.results.locationCheck.nicu')}  label= {t('sections.results.locationCheck.nicu')} />
-      <Radio value={t('sections.results.locationCheck.home')}  label={t('sections.results.locationCheck.home')} />
-      <Radio value={t('sections.results.locationCheck.while')}  label= {t('sections.results.locationCheck.while')} />
-    </RadioGroup>
-          </div>
-            <Button kind="primary"  href="/data-sharing-settings">
-            {t('sections.results.locationCheck.continue')}
-            </Button>
-     </Card>
+            <Radio
+              value={t('sections.results.locationCheck.nicu')}
+              label={t('sections.results.locationCheck.nicu')}
+            />
+            <Radio
+              value={t('sections.results.locationCheck.home')}
+              label={t('sections.results.locationCheck.home')}
+            />
+            <Radio
+              value={t('sections.results.locationCheck.while')}
+              label={t('sections.results.locationCheck.while')}
+            />
+          </RadioGroup>
+        </div>
+        <Button kind="primary" href="/data-sharing-settings">
+          {t('sections.results.locationCheck.continue')}
+        </Button>
+      </Card>
     </PageLayout>
   );
 };

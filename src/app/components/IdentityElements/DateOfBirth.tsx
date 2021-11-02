@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
+import { useAppTranslation } from 'app/components/Shell';
 import { Input } from 'components/Input';
-import { useAppTranslation } from 'components/Shell';
 
 import { useIdentityForm } from './hooks';
 import { AppInputProps } from './types';

@@ -33,19 +33,15 @@ function AuthDiagnostics(props: Props<unknown>) {
           </span>
         </div>
         <div>
-          <OnState matches="app.auth.checkingSession">Checking session</OnState>
-          <OnState matches="app.auth.knownCaregiver">Known caregiver</OnState>
-          <OnState matches="app.auth.requestingLogin">Requesting login</OnState>
-          <OnState matches="app.auth.identityUnverified">
+          <OnState matches="auth.checkingSession">Checking session</OnState>
+          <OnState matches="auth.knownCaregiver">Known caregiver</OnState>
+          <OnState matches="auth.requestingLogin">Requesting login</OnState>
+          <OnState matches="auth.identityUnverified">
             Unable to verify identity
           </OnState>
-          <OnState matches="app.auth.verifyingIdentity">
-            Verifying identity
-          </OnState>
-          <OnState matches="app.auth.checkingIdentity">
-            Checking identity
-          </OnState>
-          <OnState matches="app.auth.checkingMagicLink">
+          <OnState matches="auth.verifyingIdentity">Verifying identity</OnState>
+          <OnState matches="auth.checkingIdentity">Checking identity</OnState>
+          <OnState matches="auth.checkingMagicLink">
             Checking magic link
           </OnState>
         </div>
@@ -212,7 +208,7 @@ describe('Auth model', () => {
       );
     });
 
-    fit('allows five attempted identity checks', async () => {
+    it('allows five attempted identity checks', async () => {
       const app = await TestUtils.renderWithShell(<AuthDiagnostics />, {
         onSession: asyncFailure,
         onMagicLink: asyncSuccess,

@@ -2,7 +2,7 @@ import { Story } from '@storybook/react/types-6-0';
 
 import { StyleGuideItem } from 'components/StyleGuide/StyleGuideItem';
 
-import Typography from './Typography';
+import { Typography } from './Typography';
 
 export default {
   component: Typography,

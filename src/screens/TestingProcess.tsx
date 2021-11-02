@@ -1,3 +1,4 @@
+import { useAppTranslation } from 'app';
 import {
   Button,
   Card,
@@ -8,7 +9,6 @@ import {
   PageSection,
   ProgressBar,
   Typography,
-  useAppTranslation,
 } from 'components';
 import { tokens } from 'styles';
 

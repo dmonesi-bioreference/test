@@ -1,3 +1,4 @@
+import { useAppEvents, useAppTranslation } from 'app';
 import {
   Button,
   Heading,
@@ -6,8 +7,6 @@ import {
   PageLayout,
   PageSection,
   ProcessBar,
-  useAppEvents,
-  useAppTranslation,
 } from 'components';
 import { tokens } from 'styles';
 

@@ -17,10 +17,10 @@ function RegistrationDiagnostics() {
       <section>
         <header>Current state</header>
         <pre>{states}</pre>
-        <OnState matches="app.registration.one">(step 1)</OnState>
-        <OnState matches="app.registration.two">(step 2)</OnState>
-        <OnState matches="app.registration.three">(step 3)</OnState>
-        <OnState matches="app.registration.four">(step 4)</OnState>
+        <OnState matches="registration.one">(step 1)</OnState>
+        <OnState matches="registration.two">(step 2)</OnState>
+        <OnState matches="registration.three">(step 3)</OnState>
+        <OnState matches="registration.four">(step 4)</OnState>
       </section>
       <section>
         <header>Control panel</header>

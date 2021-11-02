@@ -1,4 +1,4 @@
-import { useAppEvents, useAppSelector } from 'components/Shell';
+import { useAppEvents, useAppSelector } from 'app/components/Shell';
 import { Identity } from 'models';
 
 type Fields = keyof Identity;
