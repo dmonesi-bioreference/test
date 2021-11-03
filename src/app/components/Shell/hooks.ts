@@ -1,7 +1,6 @@
 import { useSelector } from '@xstate/react';
 import { useContext } from 'react';
 
-import { AppService } from 'app/state';
 import { t } from 'localization';
 
 import { AppEventContext, AppServiceContext } from './context';

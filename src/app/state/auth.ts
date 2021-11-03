@@ -1,5 +1,30 @@
-export const auth = {
-  initial: 'checkingSession' as const,
+import { assign } from '@xstate/immer';
+
+const CheckIdentity = 'checkIdentity' as const;
+
+declare global {
+  interface AppEventMap {
+    [CheckIdentity]: { type: typeof CheckIdentity };
+  }
+}
+
+export const actions = {
+  reduceIdentityAttempts: assign((context: AppContext) => {
+    context.auth.identityCheckAttempts--;
+  }),
+};
+
+export const guards = {
+  canCheckIdentity: (context: AppContext) =>
+    context.auth.identityCheckAttempts > 0,
+};
+
+export const context = {
+  identityCheckAttempts: 5,
+};
+
+export const machine = {
+  initial: 'checkingSession',
   states: {
     checkingSession: {
       invoke: {

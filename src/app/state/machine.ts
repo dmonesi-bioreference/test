@@ -1,28 +1,40 @@
-import { createMachine, InterpreterFrom, MachineConfig } from 'xstate';
+import { InterpreterFrom } from 'xstate';
 
-import * as actions from './actions';
-import { initialContext } from './context';
-import * as guards from './guards';
-import * as machines from './machines';
-import * as services from './services';
+import { SupportedLanguages } from 'localization';
+import { Themes } from 'styles';
 
-const config = {
-  actions,
-  guards,
-  services,
+import * as auth from './auth';
+import * as forms from './forms';
+import * as registration from './registration';
+import { createAppMachine, GetStates } from './utils';
+
+export const initialContext = {
+  language: 'en' as SupportedLanguages,
+  theme: 'light' as Themes,
+  auth: auth.context,
+  forms: forms.context,
 };
 
-const appConfig: MachineConfig<AppContext, AppSchema, AppEvents> = {
+const { init, schema } = createAppMachine({
   id: 'app',
   type: 'parallel',
   context: initialContext,
   states: {
-    auth: machines.auth,
-    forms: machines.forms,
-    registration: machines.registration,
+    auth: auth.machine,
+    forms: forms.machine,
+    registration: registration.machine,
   },
-};
+});
 
-export const app = createMachine<AppContext, AppEvents>(appConfig, config);
+export const app = init({
+  actions: Object.assign(auth.actions, forms.actions),
+  guards: Object.assign(auth.guards),
+  services: Object.assign(forms.services),
+});
 
-export type AppService = InterpreterFrom<typeof app>;
+declare global {
+  type AppSchema = typeof schema;
+  type AppStates = GetStates<AppSchema>;
+  type AppService = InterpreterFrom<typeof app>;
+  type AppContext = typeof initialContext;
+}

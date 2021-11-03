@@ -36,6 +36,15 @@ export function AppProvider({
       const appDispatchMap: AppDispatchMap = {
         checkIdentity: () => send('checkIdentity'),
         nextStep: () => send('nextStep'),
+        loginChange: (payload) => {
+          if (payload && 'field' in payload && 'value' in payload) {
+            send({
+              type: 'loginChange',
+              field: payload.field,
+              value: payload.value,
+            });
+          }
+        },
         identityChange: (payload) => {
           if (payload && 'field' in payload && 'value' in payload) {
             send({

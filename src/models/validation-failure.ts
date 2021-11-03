@@ -17,3 +17,14 @@ export const isValidationFailurePayload = (
 export const isValidationError = (
   candidate: Error
 ): candidate is ValidationError => candidate.name === 'ValidationError';
+
+export const toErrorList = (errors: Error) => {
+  if (isValidationError(errors)) {
+    return Promise.reject(
+      errors.inner.map((error) => ({
+        field: error.path,
+        message: error.message,
+      }))
+    );
+  }
+};

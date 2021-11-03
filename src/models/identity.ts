@@ -1,6 +1,18 @@
 import * as yup from 'yup';
 
-import { isValidationError } from './validation-failure';
+import { toErrorList } from './validation-failure';
+
+export interface Identity {
+  dob: string;
+  email: string;
+  zip: string;
+}
+
+declare global {
+  interface ModelMap {
+    identity: Identity;
+  }
+}
 
 const US_ZIP_CODE = /(^\d{5}$)|(^\d{5}-\d{4}$)|^$/;
 const schema = yup.object().shape({
@@ -17,22 +29,11 @@ const schema = yup.object().shape({
     .required('forms.identity.email.errors.required'),
 });
 
-export interface Identity {
-  dob: string;
-  email: string;
-  zip: string;
-}
-
 export const validateIdentity = async (identity: Partial<Identity>) =>
-  await schema
-    .validate(identity, { abortEarly: false })
-    .catch((errors: Error) => {
-      if (isValidationError(errors)) {
-        return Promise.reject(
-          errors.inner.map((error) => ({
-            field: error.path,
-            message: error.message,
-          }))
-        );
-      }
-    });
+  await schema.validate(identity, { abortEarly: false }).catch(toErrorList);
+
+export const identity: Models['identity'] = {
+  key: 'identity',
+  init: { dob: '', email: '', zip: '' },
+  validate: validateIdentity,
+};
