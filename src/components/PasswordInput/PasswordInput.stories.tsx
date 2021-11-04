@@ -1,6 +1,8 @@
 import { Story } from '@storybook/react/types-6-0';
 
-import PasswordInput, { PasswordInputProps } from './PasswordInput';
+import { InputProps } from 'components/Input/Input';
+
+import PasswordInput from './PasswordInput';
 
 export default {
   component: PasswordInput,
@@ -8,11 +10,10 @@ export default {
   parameters: {
     componentSubtitle: 'Reusable password component',
   },
-}
+};
 
-const Template: Story<PasswordInputProps> = (args) => (
-  <PasswordInput {...args}>
-  </PasswordInput>
+const Template: Story<InputProps> = (args) => (
+  <PasswordInput {...args}></PasswordInput>
 );
 
 export const Primary = Template.bind({});

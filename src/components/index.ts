@@ -15,6 +15,8 @@ export * from './Header';
 export * from './List';
 export * from './Logo';
 export * from './Message';
+export * from './AppLink';
+export * from './AppImage';
 export * from './PageLayout';
 export * from './PageSection';
 export * from './PasswordInput';

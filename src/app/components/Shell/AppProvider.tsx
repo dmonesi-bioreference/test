@@ -34,8 +34,10 @@ export function AppProvider({
   const events = useMemo(
     () => {
       const appDispatchMap: AppDispatchMap = {
+        authenticate: () => send('authenticate'),
         checkIdentity: () => send('checkIdentity'),
         nextStep: () => send('nextStep'),
+        login: () => send('login'),
         loginChange: (payload) => {
           if (payload && 'field' in payload && 'value' in payload) {
             send({

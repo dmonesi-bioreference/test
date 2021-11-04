@@ -28,6 +28,23 @@ export const resources = {
             },
           },
         },
+        login: {
+          email: {
+            label: 'Email',
+            placeholder: 'e.g. a.onymous@email.com',
+            errors: {
+              required: 'Email address is required.',
+              invalid: 'Email address is invalid.',
+            },
+          },
+          password: {
+            label: 'Password',
+            placeholder: 'Password',
+            errors: {
+              required: 'Password is required.',
+            },
+          },
+        },
       },
       sections: {
         careTeam: {
@@ -172,10 +189,19 @@ export const resources = {
           welcome: 'Welcome back, Barbara & Lisa',
           journey:
             'We’re here to support you and your child’s condition along every step of the journey together.',
-          username: 'Username',
-          password: 'Password',
-          login: 'Login',
           trouble: 'Having trouble logging in?',
+          form: {
+            password: {
+              label: 'Password',
+              placeholder: 'Password',
+            },
+            email: {
+              label: 'Email',
+              placeholder: 'e.g. a.onymous@email.com',
+            },
+            login: 'Login',
+            checkingLogin: 'Authenticating',
+          },
         },
         dataSharingSettings: {
           content: 'Ipsum Dolor set amit lorem',

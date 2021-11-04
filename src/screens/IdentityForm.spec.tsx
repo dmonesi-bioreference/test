@@ -18,6 +18,7 @@ function SetCustomDateInOrderToGetAroundDatePickerMarkupComplexity(
     </button>
   );
 }
+
 describe('The identity form page', () => {
   it('does not explode', async () => {
     await renderWithShell(<IdentityForm />);

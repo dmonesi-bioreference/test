@@ -1,10 +1,14 @@
 import { assign } from '@xstate/immer';
 
+const Authenticate = 'authenticate' as const;
 const CheckIdentity = 'checkIdentity' as const;
+const Login = 'login' as const;
 
 declare global {
   interface AppEventMap {
+    [Authenticate]: { type: typeof Authenticate };
     [CheckIdentity]: { type: typeof CheckIdentity };
+    [Login]: { type: typeof Login };
   }
 }
 
@@ -26,6 +30,13 @@ export const context = {
 export const machine = {
   initial: 'checkingSession',
   states: {
+    authenticating: {
+      invoke: {
+        src: 'handleAuth',
+        onDone: 'knownCaregiver',
+        onError: 'requestingLogin',
+      },
+    },
     checkingSession: {
       invoke: {
         src: 'handleSession',
@@ -42,8 +53,8 @@ export const machine = {
         ],
       },
     },
-    requestingLogin: {},
-    identityUnverified: {},
+    requestingLogin: { on: { authenticate: 'authenticating' } },
+    identityUnverified: { on: { login: 'requestingLogin' } },
     checkingIdentity: {
       invoke: {
         src: 'handleIdentityCheck',

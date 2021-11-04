@@ -8,12 +8,14 @@ function WebApp({ Component, pageProps }: AppProps) {
   // For now, we are using an auto-failure placeholder in order to test
   // our registration flow.
   //
-  const failedAuthentication = () => Promise.reject('401 Unauthorized');
   const failedSession = () => Promise.reject('No session found');
 
   return (
     <Shell
-      onAuthenticate={failedAuthentication}
+      onAuthenticate={async () => {
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        return Promise.reject('401 Unauthorized');
+      }}
       onSession={failedSession}
       onIdentity={async () => {
         await new Promise((resolve) => setTimeout(resolve, 2000));

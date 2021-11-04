@@ -36,6 +36,7 @@ function AuthDiagnostics(props: Props<unknown>) {
           <OnState matches="auth.checkingSession">Checking session</OnState>
           <OnState matches="auth.knownCaregiver">Known caregiver</OnState>
           <OnState matches="auth.requestingLogin">Requesting login</OnState>
+          <OnState matches="auth.authenticating">Authenticating</OnState>
           <OnState matches="auth.identityUnverified">
             Unable to verify identity
           </OnState>
@@ -49,6 +50,7 @@ function AuthDiagnostics(props: Props<unknown>) {
       <section>
         <header>Controls</header>
         <button onClick={events.checkIdentity}>Check identity</button>
+        <button onClick={events.authenticate}>Login</button>
       </section>
       {props.children}
     </section>
@@ -226,6 +228,86 @@ describe('Auth model', () => {
 
       await app.findByText('No more checks allowed');
       await app.findByText('Unable to verify identity');
+    });
+  });
+
+  describe('the auth check process', () => {
+    it('sends rejected logins back to requesting login', async () => {
+      const app = await TestUtils.renderWithShell(<AuthDiagnostics />, {
+        onSession: asyncFailure,
+        onMagicLink: asyncFailure,
+        onAuthenticate: asyncFailure,
+      });
+
+      await app.findByText('Requesting login');
+
+      userEvents.click(await app.findByText('Login'));
+
+      await app.findByText('Authenticating');
+      await app.findByText('Requesting login');
+    });
+
+    it('sends login credentials to onAuthenticate on login', async () => {
+      function LoginForm() {
+        const login = useAppSelector(
+          (state) => state.context.forms.login.values
+        );
+
+        const fields = Object.keys(login) as (keyof typeof login)[];
+        const events = useAppEvents();
+
+        return (
+          <form>
+            {fields.map((field) => (
+              <input
+                key={field}
+                value={login[field]}
+                placeholder={field}
+                onChange={(event) =>
+                  events.loginChange({ field, value: event.target.value })
+                }
+              />
+            ))}
+          </form>
+        );
+      }
+
+      const listener = jest.fn(asyncSuccess);
+
+      const app = await TestUtils.renderWithShell(
+        <AuthDiagnostics>
+          <LoginForm />
+        </AuthDiagnostics>,
+        {
+          onSession: asyncFailure,
+          onMagicLink: asyncFailure,
+          onAuthenticate: listener,
+        }
+      );
+
+      const email = 'someone@example.com';
+      const password = 'super secret passphrase';
+
+      userEvents.type(await app.findByPlaceholderText('email'), email);
+      userEvents.type(await app.findByPlaceholderText('password'), password);
+
+      await app.findByText('Requesting login');
+
+      userEvents.click(await app.findByText('Login'));
+
+      await app.findByText('Authenticating');
+
+      expect(listener).toHaveBeenCalledWith(
+        expect.objectContaining({
+          forms: expect.objectContaining({
+            login: expect.objectContaining({
+              values: { email, password },
+            }),
+          }),
+        }),
+        expect.anything(),
+        expect.anything()
+      );
     });
   });
 });
