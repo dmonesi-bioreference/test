@@ -5,6 +5,7 @@
     "es6": true,
     "jest/globals": true
   },
+  "root": true,
   "extends": [
     "next",
     "next/core-web-vitals",
@@ -23,8 +24,7 @@
     "jest",
     "prettier",
     "jsx-a11y",
-    "security",
-    "import"
+    "security"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {

@@ -1,3 +1,5 @@
+
+export * from './AuthenticationToken'
 export * from './DataConsent';
 export * from './DataSharingSettings';
 export * from './FAQs';
