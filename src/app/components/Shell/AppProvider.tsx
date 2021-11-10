@@ -38,6 +38,22 @@ export function AppProvider({
         checkIdentity: () => send('checkIdentity'),
         nextStep: () => send('nextStep'),
         login: () => send('login'),
+        caregiverNameChange: (payload) => {
+          if (payload && 'field' in payload && 'value' in payload) {
+            send('caregiverNameChange', {
+              field: payload.field,
+              value: payload.value,
+            });
+          }
+        },
+        caregiverRelationshipChange: (payload) => {
+          if (payload && 'field' in payload && 'value' in payload) {
+            send('caregiverRelationshipChange', {
+              field: payload.field,
+              value: payload.value,
+            });
+          }
+        },
         loginChange: (payload) => {
           if (payload && 'field' in payload && 'value' in payload) {
             send({

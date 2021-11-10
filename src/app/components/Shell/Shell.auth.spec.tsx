@@ -201,7 +201,7 @@ describe('Auth model', () => {
         expect.objectContaining({
           forms: expect.objectContaining({
             identity: expect.objectContaining({
-              values: { dob, email, zip },
+              values: { dob, email, zip, phone: '' },
             }),
           }),
         }),

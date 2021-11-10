@@ -1,5 +1,5 @@
 import { useAppEvents, useAppSelector } from 'app/components/Shell';
-import { Identity } from 'models';
+import { Identity } from 'app/state';
 
 export function useIdentityField(field: keyof Identity) {
   const { identityChange } = useAppEvents();

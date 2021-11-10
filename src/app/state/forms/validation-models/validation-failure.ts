@@ -1,7 +1,7 @@
 import { ValidationError } from 'yup';
 
-export interface ValidationFailure {
-  field: string;
+export interface ValidationFailure<Field extends string = string> {
+  field: Field;
   message: string;
 }
 

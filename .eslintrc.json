@@ -39,6 +39,7 @@
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-empty-interface": "off",
     "jsx-a11y/no-noninteractive-tabindex": "off",
     "security/detect-object-injection": "off",
     "react/jsx-uses-react": "off",

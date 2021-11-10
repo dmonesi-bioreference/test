@@ -1,5 +1,5 @@
 import { useAppEvents, useAppSelector } from 'app/components/Shell';
-import { Login } from 'models';
+import { Login } from 'app/state';
 
 export function useLoginField(field: keyof Login) {
   const { loginChange } = useAppEvents();

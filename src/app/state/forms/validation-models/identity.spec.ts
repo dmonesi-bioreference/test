@@ -6,6 +6,14 @@ describe('identity validations', () => {
   const validate = async (identity: Partial<Identity>) =>
     await validateIdentity(identity).catch((error) => error);
 
+  it('allows empty phones', async () => {
+    const result = await validate({});
+
+    expect(result).not.toContainEqual(
+      expect.objectContaining({ field: 'phone' })
+    );
+  });
+
   it('requires date of birth, email, and zip', async () => {
     const result = await validate({});
 
@@ -33,6 +41,17 @@ describe('identity validations', () => {
     expect(result).toContainEqual({
       field: 'email',
       message: 'forms.identity.email.errors.invalid',
+    });
+  });
+
+  it('rejects invalid phone numbers', async () => {
+    const result = await validate({
+      phone: 'arglebargle',
+    });
+
+    expect(result).toContainEqual({
+      field: 'phone',
+      message: 'forms.identity.phone.errors.invalid',
     });
   });
 

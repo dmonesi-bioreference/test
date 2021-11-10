@@ -153,7 +153,7 @@ describe('The identity form page', () => {
         expect.objectContaining({
           forms: expect.objectContaining({
             identity: expect.objectContaining({
-              values: { dob, email, zip },
+              values: { dob, email, zip, phone: '' },
             }),
           }),
         }),

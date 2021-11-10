@@ -1,4 +1,5 @@
 import { InterpreterFrom } from 'xstate';
+import { DoneInvokeEvent } from 'xstate';
 
 import { SupportedLanguages } from 'localization';
 import { Themes } from 'styles';
@@ -33,8 +34,26 @@ export const app = init({
 });
 
 declare global {
+  type DispatchMap<GivenType> = {
+    [Key in keyof GivenType]: (payload?: Omit<GivenType[Key], 'type'>) => void;
+  };
+
   type AppSchema = typeof schema;
   type AppStates = GetStates<AppSchema>;
   type AppService = InterpreterFrom<typeof app>;
   type AppContext = typeof initialContext;
+
+  interface AppEventMap {}
+
+  type AppEventTypes = keyof AppEventMap;
+  type ChangeEventTypes = keyof ChangeEventMap;
+  type AppEvents =
+    | AppEventMap[AppEventTypes]
+    | ChangeEventMap[ChangeEventTypes]
+    | DoneInvokeEvent<unknown>;
+  type AppDispatchMap = DispatchMap<AppEventMap & ChangeEventMap>;
+  type AppEventFn<ReturnValue = any> = (
+    context: AppContext,
+    event: AppEvents
+  ) => Promise<ReturnValue>;
 }

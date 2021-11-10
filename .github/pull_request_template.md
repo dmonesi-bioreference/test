@@ -25,3 +25,8 @@ Please also list any relevant details for your test configuration.
 
 - [ ] Test A
 - [ ] Test B
+
+## Before Merge
+
+- [ ] E2E tests pass
+- [ ] Storybook builds successfully
