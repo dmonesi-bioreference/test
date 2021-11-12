@@ -1,7 +1,7 @@
 import { useActor, useInterpret } from '@xstate/react';
 import { useMemo } from 'react';
 
-import { app } from 'app/state';
+import { app, setupDispatchMap } from 'app/state';
 
 import { AppEventContext, AppServiceContext } from './context';
 
@@ -34,44 +34,11 @@ export function AppProvider({
   const events = useMemo(
     () => {
       const appDispatchMap: AppDispatchMap = {
+        ...setupDispatchMap(send),
         authenticate: () => send('authenticate'),
         checkIdentity: () => send('checkIdentity'),
         nextStep: () => send('nextStep'),
         login: () => send('login'),
-        caregiverNameChange: (payload) => {
-          if (payload && 'field' in payload && 'value' in payload) {
-            send('caregiverNameChange', {
-              field: payload.field,
-              value: payload.value,
-            });
-          }
-        },
-        caregiverRelationshipChange: (payload) => {
-          if (payload && 'field' in payload && 'value' in payload) {
-            send('caregiverRelationshipChange', {
-              field: payload.field,
-              value: payload.value,
-            });
-          }
-        },
-        loginChange: (payload) => {
-          if (payload && 'field' in payload && 'value' in payload) {
-            send({
-              type: 'loginChange',
-              field: payload.field,
-              value: payload.value,
-            });
-          }
-        },
-        identityChange: (payload) => {
-          if (payload && 'field' in payload && 'value' in payload) {
-            send({
-              type: 'identityChange',
-              field: payload.field,
-              value: payload.value,
-            });
-          }
-        },
       };
 
       return appDispatchMap;

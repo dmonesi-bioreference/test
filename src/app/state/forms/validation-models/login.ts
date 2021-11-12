@@ -8,7 +8,7 @@ export interface Login {
 }
 
 declare global {
-  interface ModelMap {
+  interface ValidationModelMap {
     login: Login;
   }
 }
@@ -28,7 +28,7 @@ const schema = yup.object().shape({
 export const validateLogin = async (login: Partial<Login>) =>
   await schema.validate(login, { abortEarly: false }).catch(toErrorList);
 
-export const login: Models['login'] = {
+export const login: ValidationModels['login'] = {
   key: 'login',
   init: { email: '', password: '' },
   validate: validateLogin,

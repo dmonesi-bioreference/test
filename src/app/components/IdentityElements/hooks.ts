@@ -1,7 +1,6 @@
 import { useAppEvents, useAppSelector } from 'app/components/Shell';
-import { Identity } from 'app/state';
 
-export function useIdentityField(field: keyof Identity) {
+export function useIdentityField(field: keyof ValidationModelMap['identity']) {
   const { identityChange } = useAppEvents();
   const identity = useAppSelector((state) => state.context.forms.identity);
 

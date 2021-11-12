@@ -1,123 +1,200 @@
 import { assign } from '@xstate/immer';
-import capitalize from 'lodash/capitalize';
 
+import { CreateDispatchEvent } from './create-dispatch-event';
+import { KeyNames } from './key-names';
 import {
   isValidationFailurePayload,
   ValidationFailure,
 } from './validation-models';
 
-// What follows is a convolution of types that results from Typescript not
-// presently offering support for this notation:
-//
-//     type FormChart<GivenKey extends ModelKeys> =
-//       ReturnType<typeof createFormChart<GivenKey>>
-//
-// (Try it out yourself, if it works, you can use that instead of the following.)
-//
-// We create an intermediate class type to serve as a function wrapper, or else
-// we can't get an inference on the return type off of our function.
-//
-// This is never actually invoked, it's simply to inform Typescript's checker.
-//
-class CreateFormChart<GivenKey extends ModelKeys> {
+/**
+ * This abstract class is never instantiated or inherited. Instead, it exists
+ * in order to facilitate a workaround that lets us get return types of a
+ * function with a generic type parameter.
+ *
+ * Consider the following:
+ *
+ *     type FormChart<GivenKey extends ModelKeys> =
+ *       ReturnType<typeof createFormChart<GivenKey>>
+ *
+ * The above type signature is attempting to pull the return value off of a
+ * function, and passing in a generic parameter to narrow the type. This sort
+ * of syntax just doesn't work (as of the time of writing, at least).
+ *
+ * Enter the CreateFormChart. This abstract class takes a generic parameter,
+ * and then has an instance method that gives back the guaranteed return type
+ * of the function we want to derive a type from.
+ *
+ * If at the time of reading this, the simpler type notation (or some other
+ * alternative) works, feel free to throw this out.
+ *
+ * @class CreateFormChart
+ */
+abstract class CreateFormChart<GivenKey extends ValidationModelKey> {
   result(givenModelKey: GivenKey) {
     return createFormMachine<GivenKey>(givenModelKey);
   }
 }
 
 declare global {
-  // Now that we're putting the type in a spot where we know Typescript offers
-  // type syntax, we can get a derived generic.
-  type FormChart<GivenKey extends ModelKeys> = ReturnType<
+  /**
+   * FormChart is a derived type that accepts a ValidationModelKey, and predicts
+   * the exact schema of the form in our app chart. We use this to create type-
+   * safe keypaths throughout the application, generated from validation models.
+   */
+  type FormChart<GivenKey extends ValidationModelKey> = ReturnType<
     CreateFormChart<GivenKey>['result']
   >;
 
-  // This one is simple enough: A repeated structure we use for all form contexts.
-  // No type wizardry here.
-  //
-  interface FormDetail<GivenType extends object> {
+  /**
+   * FormDetail is a repeated structure used for storing form values and validation
+   * errors in the app state. It accepts a validation model type and creates a
+   * type-restricted wrapper that contains the data which the model guarantees, and
+   * any error messages related to that model's validation.
+   */
+  interface FormDetail<
+    GivenType extends ValidationModelMap[ValidationModelKey]
+  > {
     values: GivenType;
     errors: ValidationFailure[];
   }
 
-  // We formally declare our form context shape. Every time we add a validator
-  // model to the system, it expands our context type to anticipate the
-  // inclusion of that model.
-  //
+  /**
+   * FormContext is a derived type that creates a mapping of each of the validation
+   * models to the app context. This lets us dynamically expand selectors to include
+   * data from all validation models, and informs intellisense about where the context
+   * is.
+   *
+   * FormContext does this work in order to prevent circular references in our types.
+   * In other words, we formally derive our app data here, explicitly linking it to our
+   * validation models, in order to prevent Typescript from running in (lengthy) circles
+   * trying to infer it all.
+   */
   type FormContext = {
-    [Key in ModelKeys]: FormDetail<ModelMap[Key]>;
+    [Key in ValidationModelKey]: FormDetail<ValidationModelMap[Key]>;
   };
 
-  // The machine type payoff: a derived type that tells us what the form schema
-  // ought to be, without a circular reference. This lets us automate things
-  // enough elsewhere to allow for us to spit out new form models in a small
-  // loop.
-  //
+  /**
+   * FormSchema is the final derived type of the validation-model-and-form family,
+   * it says "here are all the form schemas you can expect". This works with our
+   * state.matches() keypath types in much the same way the {FormContext} does
+   * with our app state selectors.
+   */
   type FormSchema = {
-    [GivenKey in ModelKeys]: FormChart<GivenKey>;
+    [GivenKey in ValidationModelKey]: FormChart<GivenKey>;
   };
 }
 
-function createFormActions<GivenKey extends ModelKeys>(key: GivenKey) {
-  const id = capitalize(key) as Capitalize<GivenKey>;
-
-  const assignErrors = `assign${id}Errors` as const;
-  const clearErrors = `clear${id}Errors` as const;
-  const update = `update${id}` as const;
-  const changeEvent = `${key}Change` as const;
+/**
+ * createFormActions is a type-safe factory designed to create the exact
+ * set of actions needed for a given validation model key. It creates
+ * an error assign, an error clear, and a form value update action, and
+ * produces them in an object with the correct names for the form chart
+ * to consume.
+ *
+ * In most cases (and definitely this one), the factory function is meant
+ * mostly to create a single point of change, and then govern that with
+ * as strong a typing as we can manage.
+ *
+ * @param givenKey {ValidationModelKey} - The key of a validation model from
+ * the validation model map.
+ * @returns - An object containing the actions needed for a form chart.
+ */
+export function createFormActions<GivenKey extends ValidationModelKey>(
+  givenKey: GivenKey
+) {
+  const key = KeyNames.from(givenKey);
 
   return {
-    [assignErrors]: assign((context: AppContext, event: AppEvents) => {
+    [key.errors]: assign((context: AppContext, event: AppEvents) => {
       const data = 'data' in event ? event?.data : {};
 
       if (isValidationFailurePayload(data)) {
-        context.forms[key].errors = data;
+        context.forms[givenKey].errors = data;
       }
     }),
-    [clearErrors]: assign((context: AppContext) => {
-      context.forms[key].errors = [];
+    [key.clear]: assign((context: AppContext) => {
+      context.forms[givenKey].errors = [];
     }),
-    [update]: assign((context: AppContext, event: AppEvents) => {
-      if (event.type === changeEvent && 'field' in event && 'value' in event) {
-        context.forms[key].values[event.field] = event.value;
+    [key.update]: assign((context: AppContext, event: AppEvents) => {
+      if (event.type === key.change && 'field' in event && 'value' in event) {
+        context.forms[givenKey].values[event.field] = event.value;
       }
     }),
   } as const;
 }
 
-function createFormContext<GivenModel extends ModelKeys>(
-  model: Models[GivenModel]
-): FormDetail<ModelMap[GivenModel]> {
+/**
+ * createFormContext is a thin wrapper taking a validation model, and
+ * returning that model in a strongly typed payload, fit for inclusion
+ * in a state chart context.
+ *
+ * @param model {ValidationModel} - A validation model with at minimum
+ * an `init` property with its starting values.
+ * @returns A payload containing the starting values of the given model,
+ * and an empty list where validation and form errors can go.
+ */
+export function createFormContext<GivenKey extends ValidationModelKey>(
+  model: ValidationModels[GivenKey]
+): FormDetail<ValidationModelMap[GivenKey]> {
   return {
-    values: model.init as ModelMap[GivenModel],
+    values: model.init as ValidationModelMap[GivenKey],
     errors: [],
   };
 }
 
-function createFormServices<GivenModel extends ModelKeys>(
-  model: Models[GivenModel]
+/**
+ * createFormServices is a factory function that handles the
+ * establishment of a services object, containing the validation
+ * handler that the form charts use to ensure data contained is
+ * ready for use.
+ *
+ * @param model {ValidationModel} - A validation model with a key
+ * value, which must be a `ValidationModelKey`, and a validation
+ * property, which must be some kind of validation function..
+ * @returns An object containing a validation service, that sets
+ * up the validator to execute whenever a form chart validates
+ * its current values.
+ */
+export function createFormServices<GivenModel extends ValidationModelKey>(
+  model: ValidationModels[GivenModel]
 ) {
-  const key = model.key as GivenModel;
-  const validateKey = `validate${capitalize(
-    key
-  )}` as `validate${Capitalize<GivenModel>}`;
+  const key = KeyNames.from(model.key);
 
   return {
-    [validateKey]: (context: AppContext) =>
-      model.validate(context.forms[key].values),
+    [key.validate]: (context: AppContext) =>
+      model.validate(context.forms[model.key].values),
   } as const;
 }
 
-export function createFormMachine<GivenKey extends ModelKeys>(key: GivenKey) {
-  const id = capitalize(key);
-  const validation = `#${key}.validation.validating` as const;
-  const change = `${key}Change` as const;
-  const update = `update${id}` as `update${Capitalize<GivenKey>}`;
-  const validate = `validate${id}` as `validate${Capitalize<GivenKey>}`;
-  const clearErrors =
-    `clear${id}Errors` as `clear${Capitalize<GivenKey>}Errors`;
-  const assignErrors =
-    `assign${id}Errors` as `assign${Capitalize<GivenKey>}Errors`;
+/**
+ * createFormMachine handles the actual behavior modeling of the form
+ * states surrounding all of the validation models.
+ *
+ * These charts do the following:
+ *
+ *  - The chart is pristine if it has not yet been changed.
+ *  - If the chart has been changed, activity.active is true.
+ *  - After 300 ms, the chart attempts to validate the changes.
+ *  - If the validation succeeds, the chart becomes idle and valid.
+ *  - Else, the chart becomes idle and invalid.
+ *
+ * All of these steps are governed by xstate, and the bulk of the logic
+ * is encapsulated here. Like most of the factory functions, the main
+ * purpose here is type safety amidst repetition. However, the generated
+ * text for all of the functions is in the service of lining things up
+ * with this function.
+ *
+ * If you ever need to change form logic, that journey begins here.
+ *
+ * @param key {ValidationModelKey} - A key of the validation model map
+ * @returns A state chart which models out the workflows surrounding
+ * the validation and activity of the given form.
+ */
+export function createFormMachine<GivenKey extends ValidationModelKey>(
+  givenKey: GivenKey
+) {
+  const key = KeyNames.from(givenKey);
 
   return {
     id: key,
@@ -127,10 +204,12 @@ export function createFormMachine<GivenKey extends ModelKeys>(key: GivenKey) {
         initial: 'idle' as const,
         states: {
           active: {
-            after: { 300: validation },
-            on: { [change]: { target: 'active', actions: update } },
+            after: { 300: `#${key}.validation.validating` },
+            on: { [key.change]: { target: 'active', actions: key.update } },
           },
-          idle: { on: { [change]: { target: 'active', actions: update } } },
+          idle: {
+            on: { [key.change]: { target: 'active', actions: key.update } },
+          },
         },
       },
       validation: {
@@ -141,9 +220,9 @@ export function createFormMachine<GivenKey extends ModelKeys>(key: GivenKey) {
           invalid: {},
           validating: {
             invoke: {
-              src: validate,
-              onDone: { target: 'valid', actions: clearErrors },
-              onError: { target: 'invalid', actions: assignErrors },
+              src: key.validate,
+              onDone: { target: 'valid', actions: key.clear },
+              onError: { target: 'invalid', actions: key.errors },
             },
           },
         },
@@ -152,8 +231,24 @@ export function createFormMachine<GivenKey extends ModelKeys>(key: GivenKey) {
   };
 }
 
-export function createFormChart<GivenKey extends ModelKeys>(
-  model: Models[GivenKey]
+/**
+ * createFormChart is the all-in-one factory function which combines
+ * all of the above factory functions into one single function call.
+ * Again, the design of all of this is merely to create a typesafe
+ * context and schema for the rest of the app to use, and to do so in
+ * a deterministic and automated fashion.
+ *
+ * Given a validation model, you can produce a valid state chart using
+ * this function.
+ *
+ * @param model {ValidationModel} - A validation model to use for the
+ * construction of form chart content.
+ * @returns A payload of objects generated by internal factory functions,
+ * designed to be a typesafe thing to include in automatically generated
+ * charts.
+ */
+export function createFormChart<GivenKey extends ValidationModelKey>(
+  model: ValidationModels[GivenKey]
 ) {
   const key = model.key as GivenKey;
 
@@ -166,7 +261,19 @@ export function createFormChart<GivenKey extends ModelKeys>(
   } as const;
 }
 
-export function composeFormModels(...models: Models[ModelKeys][]) {
+/**
+ * composeFormModels takes a list of validation models, turns each of
+ * them into a form chart, and aggregates them into a single list. This
+ * list can then be used to construct a full, parallel chart for each
+ * validation model, as exported from the `app/state/forms` package.
+ *
+ * @param models {ValidationModel[]} - A list of validation models
+ * @returns A payload object with an actions, services, context, and
+ * machine property, each as typesafe as we can manage at this point.
+ */
+export function composeFormModels(
+  ...models: ValidationModels[ValidationModelKey][]
+) {
   const initial = {
     actions: {},
     services: {},
@@ -183,4 +290,34 @@ export function composeFormModels(...models: Models[ModelKeys][]) {
       machine: { ...modelChartsSoFar.machine, ...modelChart.machine },
     };
   }, initial);
+}
+
+/**
+ * createChangeDispatchMap is a wrapper around the boilerplate of creating
+ * change events from validation models. In the end, these events are all
+ * going to work the same, and so we can guarantee a typesafe derived set
+ * of event handlers that permit the app to change form data, simply by
+ * knowing a list of the models which can change.
+ *
+ * @param models {ValidationModel[]} - A number of validation models which
+ * you want to turn into a dispatch map.
+ * @returns {function} A function that takes the send function of an app
+ * chart actor, and returns a dispatch map of change events, auto-generated
+ * from given validation models.
+ */
+export function createChangeDispatchMap(
+  ...models: ValidationModels[ValidationModelKey][]
+): (send: AppService['send']) => DispatchMap<ChangeEventMap> {
+  return (send) => {
+    const event = CreateDispatchEvent.from(send);
+
+    return models.reduce((dispatchMapSoFar, model) => {
+      const key = KeyNames.from(model.key);
+
+      return Object.assign(dispatchMapSoFar, {
+        [key.change]: (payload: unknown) =>
+          event.perform(model, Object.assign(payload, { type: key.change })),
+      });
+    }, {} as DispatchMap<ChangeEventMap>);
+  };
 }

@@ -1,7 +1,6 @@
 import { useAppEvents, useAppSelector } from 'app/components/Shell';
-import { Login } from 'app/state';
 
-export function useLoginField(field: keyof Login) {
+export function useLoginField(field: keyof ValidationModelMap['login']) {
   const { loginChange } = useAppEvents();
   const login = useAppSelector((state) => state.context.forms.login);
 

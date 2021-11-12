@@ -11,7 +11,7 @@ export interface Identity {
 }
 
 declare global {
-  interface ModelMap {
+  interface ValidationModelMap {
     identity: Identity;
   }
 }
@@ -46,7 +46,7 @@ export const validateIdentity = async (identity: Partial<Identity>) => {
     .catch(toErrorList);
 };
 
-export const identity: Models['identity'] = {
+export const identity: ValidationModels['identity'] = {
   key: 'identity',
   init: { dob: '', email: '', zip: '', phone: '' },
   validate: validateIdentity,

@@ -40,6 +40,7 @@
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-unsafe-assignment": "off",
     "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
     "jsx-a11y/no-noninteractive-tabindex": "off",
     "security/detect-object-injection": "off",
     "react/jsx-uses-react": "off",

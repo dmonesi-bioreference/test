@@ -19,7 +19,7 @@ export interface ArticleCardProps {
 const ArticleCard: React.FC<ArticleCardProps> = (props) => {
   return (
     <ArticleCardStyled>
-      <div key={props.key}>
+      <div>
         <Card
           header={
             <AppImage

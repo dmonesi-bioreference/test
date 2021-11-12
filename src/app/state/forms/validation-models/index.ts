@@ -5,24 +5,26 @@ import { identity } from './identity';
 import { login } from './login';
 
 declare global {
-  interface ModelMap {}
+  interface ValidationModelMap {}
 
-  type ModelKeys = keyof ModelMap;
-  type Model<GivenKey extends ModelKeys> = {
+  type ValidationModelKey = keyof ValidationModelMap;
+  type ValidationModel<GivenKey extends ValidationModelKey> = {
     key: GivenKey;
-    init: ModelMap[GivenKey];
-    validate: (model: Partial<ModelMap[GivenKey]>) => PromiseLike<any>;
-    values?: Partial<Record<keyof ModelMap[GivenKey], string[]>>;
+    init: ValidationModelMap[GivenKey];
+    validate: (
+      model: Partial<ValidationModelMap[GivenKey]>
+    ) => PromiseLike<any>;
+    values?: Partial<Record<keyof ValidationModelMap[GivenKey], string[]>>;
   };
 
-  type Models = { [Key in ModelKeys]: Model<Key> };
+  type ValidationModels = { [Key in ValidationModelKey]: ValidationModel<Key> };
 
-  type ChangeType<GivenKey extends ModelKeys> = `${GivenKey}Change`;
+  type ChangeType<GivenKey extends ValidationModelKey> = `${GivenKey}Change`;
 
   type ChangeEventMap = {
-    [Key in ModelKeys as ChangeType<Key>]: {
+    [Key in ValidationModelKey as ChangeType<Key>]: {
       type: ChangeType<Key>;
-      field: keyof ModelMap[Key];
+      field: keyof ValidationModelMap[Key];
       value: string;
     };
   };
@@ -33,8 +35,4 @@ declare global {
 //
 export const all = [caregiverName, caregiverRelationship, identity, login];
 
-export type { Identity } from './identity';
-export type { CaregiverName } from './caregiver-name';
-export type { CaregiverRelationship } from './caregiver-relationship';
-export type { Login } from './login';
 export * from './validation-failure';

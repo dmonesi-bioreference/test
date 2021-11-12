@@ -1,14 +1,10 @@
 import { assign } from '@xstate/immer';
 
-const Authenticate = 'authenticate' as const;
-const CheckIdentity = 'checkIdentity' as const;
-const Login = 'login' as const;
-
 declare global {
   interface AppEventMap {
-    [Authenticate]: { type: typeof Authenticate };
-    [CheckIdentity]: { type: typeof CheckIdentity };
-    [Login]: { type: typeof Login };
+    authenticate: { type: 'authenticate' };
+    checkIdentity: { type: 'checkIdentity' };
+    login: { type: 'login' };
   }
 }
 

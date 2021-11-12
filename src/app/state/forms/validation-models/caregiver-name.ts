@@ -8,7 +8,7 @@ export interface CaregiverName {
 }
 
 declare global {
-  interface ModelMap {
+  interface ValidationModelMap {
     caregiverName: CaregiverName;
   }
 }
@@ -31,7 +31,7 @@ export const validateCaregiverName = async (
     .validate(caregiverName, { abortEarly: false })
     .catch(toErrorList);
 
-export const caregiverName: Models['caregiverName'] = {
+export const caregiverName: ValidationModels['caregiverName'] = {
   key: 'caregiverName',
   init: { firstName: '', lastName: '' },
   validate: validateCaregiverName,
