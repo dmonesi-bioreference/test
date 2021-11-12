@@ -1,7 +1,11 @@
 resource "azurerm_application_gateway" "main" {
-  name                = "agw-use2-ext-${var.env_prefix}-${var.app_short_name}-web"
+  name                = "agw-use2-ext-${var.env_prefix}-${var.app_name}-web"
   resource_group_name = var.rg_name
   location            = var.location
+
+  lifecycle {
+    ignore_changes = [tags]
+  }
 
   sku {
     name     = var.agw_sku_name

@@ -6,6 +6,10 @@ resource "azurerm_app_service_plan" "main" {
   kind                       = var.kind
   reserved                   = var.kind == "Linux" ? true : false
 
+  lifecycle {
+    ignore_changes = [tags]
+  }
+
   sku {
     tier     = var.sku_tier
     size     = var.sku_size
@@ -17,8 +21,12 @@ resource "azurerm_application_insights" "main" {
   name                = "${var.app_name}-appinsights"
   location            = var.location
   resource_group_name = var.rg_name
-  application_type    = "web"
+  application_type    = "other"
   retention_in_days   = 90
+
+  lifecycle {
+    ignore_changes = [tags]
+  }
 }
 
 resource "azurerm_app_service" "main" {
@@ -32,24 +40,12 @@ resource "azurerm_app_service" "main" {
   # For now we are going to ignore this attribute in order to keep terraform plan/apply clean
   # TODO: Need to figure out the root cause 
   lifecycle {
-    ignore_changes = [app_service_plan_id]
+    ignore_changes = [app_service_plan_id, tags, app_settings, site_config]
   }
 
   app_settings = {
-    WEBSITE_TIME_ZONE            = "US Eastern Standard Time"
-    WEBSITE_NODE_DEFAULT_VERSION = "14.17.6"
-
     # Settings for Application Insights
     APPINSIGHTS_INSTRUMENTATIONKEY                  = azurerm_application_insights.main.instrumentation_key
-    APPINSIGHTS_PROFILERFEATURE_VERSION             = "1.0.0"
-    APPINSIGHTS_SNAPSHOTFEATURE_VERSION             = "1.0.0"
-    APPLICATIONINSIGHTS_CONNECTION_STRING           = "InstrumentationKey=${azurerm_application_insights.main.instrumentation_key}"
-    ApplicationInsightsAgent_EXTENSION_VERSION      = "~2"
-    DiagnosticServices_EXTENSION_VERSION            = "~3"
-    InstrumentationEngine_EXTENSION_VERSION         = "~1"
-    SnapshotDebugger_EXTENSION_VERSION              = "~1"
-    XDT_MicrosoftApplicationInsights_BaseExtensions = "~1"
-    XDT_MicrosoftApplicationInsights_Mode           = "recommended"
 
     # Settings for private Container Registry  
     DOCKER_REGISTRY_SERVER_URL      = "https://${var.docker_registry_server_url}"
@@ -58,20 +54,60 @@ resource "azurerm_app_service" "main" {
   }
 
   site_config {
-    linux_fx_version = "DOCKER|${var.container_repository}"
+    linux_fx_version  = "DOCKER|${var.container_repository}:${var.container_tag_prod}"
+    default_documents = []
   }
 
   depends_on = [azurerm_application_insights.main]
 }
 
-resource "azurerm_app_service_custom_hostname_binding" "main" {
-  hostname            = var.host_name
+resource "azurerm_app_service_custom_hostname_binding" "internalase" {
+  hostname            = var.iase_host_name_prod
   app_service_name    = azurerm_app_service.main.name
   resource_group_name = var.rg_name
 }
 
-resource "azurerm_app_service_custom_hostname_binding" "internalase" {
-  hostname            = var.iase_host_name
+resource "azurerm_app_service_custom_hostname_binding" "main" {
+  hostname            = var.host_name_prod
   app_service_name    = azurerm_app_service.main.name
   resource_group_name = var.rg_name
 }
+
+module "app_service_slot_stage" {
+  source                            = "../app_service_slot"
+  slot_name                         = "stage"
+  rg_name                           = var.rg_name
+  location                          = var.location
+  app_service_name                  = azurerm_app_service.main.name
+  app_service_plan_id               = azurerm_app_service_plan.main.id
+  docker_registry_server_url        = var.docker_registry_server_url
+  docker_registry_server_username   = var.docker_registry_server_username
+  docker_registry_server_password   = var.docker_registry_server_password
+  container_repository              = var.container_repository
+  container_tag                     = var.container_tag_stage
+  app_insights_instrumentation_key  = azurerm_application_insights.main.instrumentation_key
+
+  depends_on = [
+    azurerm_app_service.main
+  ]
+}
+
+module "app_service_slot_dev" {
+  source                            = "../app_service_slot"
+  slot_name                         = "dev"
+  rg_name                           = var.rg_name
+  location                          = var.location
+  app_service_name                  = azurerm_app_service.main.name
+  app_service_plan_id               = azurerm_app_service_plan.main.id
+  docker_registry_server_url        = var.docker_registry_server_url
+  docker_registry_server_username   = var.docker_registry_server_username
+  docker_registry_server_password   = var.docker_registry_server_password
+  container_repository              = var.container_repository
+  container_tag                     = var.container_tag_dev
+  app_insights_instrumentation_key  = azurerm_application_insights.main.instrumentation_key
+
+  depends_on = [
+    azurerm_app_service.main
+  ]
+}
+

@@ -4,7 +4,7 @@ name: deploy-production
 #
 on:
   push:
-    branches: [main]
+    branches: [main, stage, dev]
 
 jobs:
   deploy-vercel-production:

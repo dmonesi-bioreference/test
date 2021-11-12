@@ -4,6 +4,10 @@ resource "azurerm_container_registry" "main" {
   location            = var.location
   sku                 = var.sku
   admin_enabled       = var.admin_enabled
+
+  lifecycle {
+    ignore_changes = [tags]
+  }
 }
 
 output "login_server" {

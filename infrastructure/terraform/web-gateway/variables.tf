@@ -9,7 +9,7 @@ variable "rg_name" {}
 
 ##### Virtual Network ######
 variable "vnet_name" {}
-variable "vnet_cidr" {}
+
 
 ##### Application Gateway ######
 variable "agw_subnet_name" {}
@@ -26,26 +26,12 @@ variable "app_ssl_cert_file" {}
 variable "app_ssl_cert_name" {}
 variable "app_ssl_cert_pwd" {}
 
-##### Application Service ######
-variable "app_name" {}
-variable "app_host_name" {}
-variable "iase_host_name" {}
-variable "app_sku_config" {}
-variable "app_kind" {}
-variable "ase_subnet_name" {}
-variable "ase_subnet_cidr" {}
-variable "ase_subnet_nsg_name" {}
-variable "ase_name" {}
-
-##### Private DNS Zone ######
-variable "iase_domain_name" {}
+variable "app_short_name" {}
 
 ##### Environment Settings ######
 variable "env_prefix" {}
-variable "app_short_name" {}
 
-##### Container Registry ######
-variable "container_repository" {}
+variable "app_name" {}
 
 #############################################################################
 # LOCALS

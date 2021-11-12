@@ -4,13 +4,24 @@ name: deploy-container
 #
 on:
   push:
-    branches: [main]
+    # Branch names must match with app service slot names
+    branches: [dev, stage]
 
 jobs:
   deploy-docker-container:
     runs-on: ubuntu-20.04
 
     steps:
+      - name: Get branch name
+        shell: bash
+        run: echo "##[set-output name=branch_name;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: get_branch_name
+
+      - name: Generate image tag
+        shell: bash
+        run: echo "##[set-output name=tag;]$(echo ${GITHUB_REF#refs/heads/}-${GITHUB_SHA::8})"
+        id: generate_tag
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
 
@@ -24,14 +35,19 @@ jobs:
           username: ${{ secrets.ACR_USER }}
           password: ${{ secrets.ACR_PASS }}
 
-      - name: Build and push
+      - name: Build and push (tag = ${{ steps.generate_tag.outputs.tag }})
         id: docker_build
         uses: docker/build-push-action@v2
         with:
           push: true
           tags: |
-            ${{ secrets.ACR_HOST }}/pandas:dev
-            ${{ secrets.ACR_HOST }}/pandas:qa
-            ${{ secrets.ACR_HOST }}/pandas:prod
-            ${{ secrets.ACR_HOST }}/pandas:${{ github.sha }}
-            ${{ secrets.ACR_HOST }}/pandas:latest
+            ${{ secrets.ACR_HOST }}/pandas:${{ steps.generate_tag.outputs.tag }}
+
+      - name: Azure login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Update image tag on webapp
+        run: |
+          az webapp config set -g "${{ secrets.AZURE_RESOURCE_GROUP_NAME }}" -n "${{ secrets.AZURE_WEBAPP_NAME }}" -s "${{ steps.get_branch_name.outputs.branch_name }}" --linux-fx-version "DOCKER|genedxacr.azurecr.io/pandas:${{ steps.generate_tag.outputs.tag }}"

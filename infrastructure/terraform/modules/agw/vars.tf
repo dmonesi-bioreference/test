@@ -1,3 +1,4 @@
+variable "app_name" {}
 variable "app_short_name" {}
 variable "env_prefix" {}
 variable "agw_name" {

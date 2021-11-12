@@ -1,4 +1,5 @@
 variable "ase_name" {}
+variable "rg_name" {}
 variable "subnet_id" {}
 variable "pricing_tier" {
   default = "I1"

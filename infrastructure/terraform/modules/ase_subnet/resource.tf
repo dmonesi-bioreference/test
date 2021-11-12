@@ -3,12 +3,20 @@ resource "azurerm_subnet" "main" {
   resource_group_name  = var.rg_name
   virtual_network_name = var.vnet_name
   address_prefixes     = [var.subnet_cidr]
+
+  service_endpoints    = [ 
+    "Microsoft.Storage" 
+  ]
 }
 
 resource "azurerm_network_security_group" "main" {
   name                = var.subnet_nsg_name
   location            = var.location
   resource_group_name = var.rg_name
+
+  lifecycle {
+    ignore_changes = [tags]
+  }
 
   # Inbound Security Rules
   security_rule {

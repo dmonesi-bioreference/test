@@ -14,15 +14,19 @@ variable "sku_capacity" {
 variable "kind" {
   default = "Windows"
 }
-variable "ssl_cert_name" {}
-variable "ssl_cert_file" {}
-variable "ssl_cert_pwd" {}
-variable "host_name" {}
-variable "iase_host_name" {}
+variable "host_name_prod" {}
+variable "host_name_stage" {}
+variable "host_name_dev" {}
+variable "iase_host_name_prod" {}
+variable "iase_host_name_stage" {}
+variable "iase_host_name_dev" {}
 variable "docker_registry_server_url" {}
 variable "docker_registry_server_username" {}
 variable "docker_registry_server_password" {}
 variable "container_repository" {}
+variable "container_tag_prod" {}
+variable "container_tag_stage" {}
+variable "container_tag_dev" {}
 
 variable "client_id" {}
 variable "client_secret" {}
