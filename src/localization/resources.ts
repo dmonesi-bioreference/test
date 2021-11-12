@@ -45,6 +45,22 @@ export const resources = {
             },
           },
         },
+        caregiverName: {
+          firstName: {
+            label: 'Your First Name',
+            placeholder: 'e.g. Ann',
+            errors: {
+              required: 'First Name is required.',
+            },
+          },
+          lastName: {
+            label: 'Your Last Name',
+            placeholder: 'e.g. Onymous',
+            errors: {
+              required: 'Last Name is required.',
+            },
+          },
+        },
       },
       sections: {
         careTeam: {
@@ -225,30 +241,31 @@ export const resources = {
           footer:
             'You can always change data sharing settings at any time from your child’s health profile.',
         },
-        authenticationToken:{
-          slides:{
-            1:{
-              title:'Results & Resources',
-              overView:'View and learn about your child’s genetic test results.',
-              content:'We provide you with easy access to your child’s genetic test results, as well as with the resources to learn what it means for your family. Understand the challenges of the present and prepare for your child’s future.',
-              
+        authenticationToken: {
+          slides: {
+            1: {
+              title: 'Results & Resources',
+              overView:
+                'View and learn about your child’s genetic test results.',
+              content:
+                'We provide you with easy access to your child’s genetic test results, as well as with the resources to learn what it means for your family. Understand the challenges of the present and prepare for your child’s future.',
             },
-            2:{
-              title:'Records',
-              overView:'Keep all records in one place.',
-              content:'Along with your child’s genetic test results, easily keep record of their symptoms, allergies, medications and any health incidents in preparation for appointments and hospital visits. ',
-              
+            2: {
+              title: 'Records',
+              overView: 'Keep all records in one place.',
+              content:
+                'Along with your child’s genetic test results, easily keep record of their symptoms, allergies, medications and any health incidents in preparation for appointments and hospital visits. ',
             },
-            3:{
-              title:'Community',
-              overView:'Feel the support of others who truly understand.',
-              content:'Living with a rare or unknown genetic condition can be feel isolating. Connect and communicate with other families that have shared conditions, symptoms and experiences. You are not alone!' 
-          
-            }
+            3: {
+              title: 'Community',
+              overView: 'Feel the support of others who truly understand.',
+              content:
+                'Living with a rare or unknown genetic condition can be feel isolating. Connect and communicate with other families that have shared conditions, symptoms and experiences. You are not alone!',
+            },
           },
-          
-  buttonText:'Register Now',
-  },
+
+          buttonText: 'Register Now',
+        },
         furtherRegistration: {
           stepOne: {
             title: 'Thank you!',
@@ -268,14 +285,6 @@ export const resources = {
               'Lastly, create a strong password to help keep your account and your child’s information safe.',
           },
           form: {
-            firstName: {
-              label: 'Your First Name',
-              placeholder: 'e.g. Ann',
-            },
-            lastName: {
-              label: 'Your Last Name',
-              placeholder: 'e.g. Onymous',
-            },
             email: {
               label: 'Your Email Address',
               placeholder: 'barb.jackson@example.com',

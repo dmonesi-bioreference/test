@@ -1,9 +1,12 @@
-import { useAppEvents, useAppTranslation } from 'app';
+import {
+  CaregiverNameElements,
+  useAppEvents,
+  useAppState,
+  useAppTranslation,
+} from 'app';
 import {
   Button,
   Heading,
-  Icon,
-  Input,
   PageLayout,
   PageSection,
   ProcessBar,
@@ -13,6 +16,7 @@ import { tokens } from 'styles';
 export const StepOne = () => {
   const t = useAppTranslation();
   const events = useAppEvents();
+  const isValid = useAppState('forms.caregiverName.validation.valid');
 
   return (
     <PageLayout>
@@ -39,28 +43,17 @@ export const StepOne = () => {
       >
         <div style={{ marginBottom: tokens.spacingXxLarge }}>
           <div style={{ marginBottom: tokens.spacing }}>
-            <Input
-              type="text"
-              label={t('sections.furtherRegistration.form.firstName.label')}
-              name="first-name"
-              placeholder={t(
-                'sections.furtherRegistration.form.firstName.placeholder'
-              )}
-              prefix={<Icon name="user" color="primary" />}
-            />
+            <CaregiverNameElements.FirstName />
           </div>
-          <Input
-            type="text"
-            label={t('sections.furtherRegistration.form.lastName.label')}
-            name="last-name"
-            placeholder={t(
-              'sections.furtherRegistration.form.lastName.placeholder'
-            )}
-            prefix={<Icon name="user" color="primary" />}
-          />
+          <CaregiverNameElements.LastName />
         </div>
 
-        <Button onClick={events.nextStep} kind="primary">
+        <Button
+          kind="primary"
+          onClick={events.nextStep}
+          submit={true}
+          disabled={!isValid}
+        >
           {t('sections.furtherRegistration.next')}
         </Button>
       </PageSection>

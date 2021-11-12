@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
 
-import * as TestUtils from 'test-utils';
+import { act, delay, renderWithShell } from 'test-utils';
 
 import { RegistrationWizard } from './index';
 
@@ -20,7 +20,7 @@ const renderRegistrationWizard = async (ui: any) => {
     throw new Error('401 Unauthorized');
   };
 
-  const page = await TestUtils.renderWithShell(
+  const page = await renderWithShell(
     <RegistrationControls>{ui}</RegistrationControls>,
     { onAuthenticate: failedAuth }
   );
@@ -41,6 +41,13 @@ describe('Registration steps', () => {
   it('collects mobile number or email on step two', async () => {
     const page = await renderRegistrationWizard(<RegistrationWizard />);
 
+    userEvent.type(await page.findByLabelText('Your First Name'), 'Lisa');
+    userEvent.type(await page.findByLabelText('Your Last Name'), 'Jackson');
+
+    await act(async () => {
+      await delay(300);
+    });
+
     userEvent.click(await page.findByText('Next'));
 
     await page.findByText(
@@ -56,6 +63,13 @@ describe('Registration steps', () => {
   it('collects relation to patient and dob on step three', async () => {
     const page = await renderRegistrationWizard(<RegistrationWizard />);
 
+    userEvent.type(await page.findByLabelText('Your First Name'), 'Lisa');
+    userEvent.type(await page.findByLabelText('Your Last Name'), 'Jackson');
+
+    await act(async () => {
+      await delay(300);
+    });
+
     userEvent.click(await page.findByText('Next'));
     userEvent.click(await page.findByText('Next'));
 
@@ -69,6 +83,13 @@ describe('Registration steps', () => {
 
   it('collects password info on the fourth step', async () => {
     const page = await renderRegistrationWizard(<RegistrationWizard />);
+
+    userEvent.type(await page.findByLabelText('Your First Name'), 'Lisa');
+    userEvent.type(await page.findByLabelText('Your Last Name'), 'Jackson');
+
+    await act(async () => {
+      await delay(300);
+    });
 
     userEvent.click(await page.findByText('Next'));
     userEvent.click(await page.findByText('Next'));
