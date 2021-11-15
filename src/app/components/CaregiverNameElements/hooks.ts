@@ -4,13 +4,15 @@ export function useCaregiverNameField(
   field: keyof ValidationModelMap['caregiverName']
 ) {
   const { caregiverNameChange } = useAppEvents();
-  const login = useAppSelector((state) => state.context.forms.caregiverName);
+  const caregiverName = useAppSelector(
+    (state) => state.context.forms.caregiverName
+  );
 
   const state = {
-    errors: login.errors
+    errors: caregiverName.errors
       .filter((error) => error.field === field)
       .map((error) => error.message),
-    value: login.values[field],
+    value: caregiverName.values[field],
   };
 
   const events = {

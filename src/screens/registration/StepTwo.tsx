@@ -1,22 +1,23 @@
-import { useAppEvents, useAppTranslation } from 'app';
+import {
+  CaregiverContactElements,
+  useAppEvents,
+  useAppState,
+  useAppTranslation,
+} from 'app';
 import {
   Button,
   Heading,
-  Icon,
-  Input,
-  InputHelper,
   PageLayout,
   PageSection,
   ProcessBar,
   StepTitle,
-  ToolTip,
-  Typography,
 } from 'components';
 import { tokens } from 'styles';
 
 export const StepTwo = () => {
   const t = useAppTranslation();
   const events = useAppEvents();
+  const isValid = useAppState('forms.caregiverContact.validation.valid');
 
   return (
     <PageLayout>
@@ -41,54 +42,16 @@ export const StepTwo = () => {
       >
         <div style={{ marginBottom: tokens.spacingXxxLarge }}>
           <div style={{ marginBottom: tokens.spacing }}>
-            <Input
-              type="email"
-              label={t('sections.furtherRegistration.form.email.label')}
-              name="email"
-              prefix={<Icon name="mail" color="primary" />}
-              placeholder={t(
-                'sections.furtherRegistration.form.email.placeholder'
-              )}
-            />
+            <CaregiverContactElements.EmailAddress />
           </div>
-
-          <Input
-            type="number"
-            label={t('sections.furtherRegistration.form.number.label')}
-            name="mobile"
-            placeholder={t(
-              'sections.furtherRegistration.form.number.placeholder'
-            )}
-            prefix={<Icon name="phone" color="primary" />}
-            inputHelper={
-              <InputHelper
-                helperText={t(
-                  'sections.furtherRegistration.form.number.toolTipHelperMessage'
-                )}
-                toolTip={
-                  <ToolTip
-                    title={t(
-                      'sections.furtherRegistration.form.number.toolTipTitle'
-                    )}
-                    placement="bottom"
-                  >
-                    <Typography type="helper-text" color="white">
-                      {t(
-                        'sections.furtherRegistration.form.number.toolTipContent'
-                      )}
-                    </Typography>
-                    <Button kind="link-small" color="light">
-                      {t(
-                        'sections.furtherRegistration.form.number.toolTipLink'
-                      )}
-                    </Button>
-                  </ToolTip>
-                }
-              />
-            }
-          />
+          <CaregiverContactElements.PhoneNumber />
         </div>
-        <Button onClick={events.nextStep} kind="primary">
+        <Button
+          kind="primary"
+          onClick={events.nextStep}
+          submit={true}
+          disabled={!isValid}
+        >
           {t('sections.furtherRegistration.next')}
         </Button>
       </PageSection>

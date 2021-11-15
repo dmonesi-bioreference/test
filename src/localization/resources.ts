@@ -61,6 +61,24 @@ export const resources = {
             },
           },
         },
+        caregiverContact: {
+          phone: {
+            label: 'Your Mobile Number',
+            placeholder: 'e.g. 212-345-6789',
+            errors: {
+              required: 'Phone number is required.',
+              invalid: 'Phone number is invalid.',
+            },
+          },
+          email: {
+            label: 'Your Email Address',
+            placeholder: 'barb.jackson@example.com',
+            errors: {
+              required: 'Email address is required.',
+              invalid: 'Email address is invalid.',
+            },
+          },
+        },
       },
       sections: {
         careTeam: {
@@ -285,10 +303,6 @@ export const resources = {
               'Lastly, create a strong password to help keep your account and your child’s information safe.',
           },
           form: {
-            email: {
-              label: 'Your Email Address',
-              placeholder: 'barb.jackson@example.com',
-            },
             password: {
               label: 'Password',
             },
@@ -311,8 +325,6 @@ export const resources = {
                 'This provides us with an extra identifier unique to you - we can use it to help you to recover your account if you get locked out.',
             },
             number: {
-              label: 'Your Mobile Number',
-              placeholder: 'e.g. 212-345-6789',
               toolTipHelperMessage:
                 'We’ll also use this to send you notifications.',
               toolTipTitle: 'Why do we ask for your mobile number?',

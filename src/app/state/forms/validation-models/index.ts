@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
+import { caregiverContact } from './caregiver-contact';
 import { caregiverName } from './caregiver-name';
 import { caregiverRelationship } from './caregiver-relationship';
 import { identity } from './identity';
@@ -40,6 +41,7 @@ export const all = [
   identity,
   login,
   password,
+  caregiverContact,
 ];
 
 export * from './validation-failure';

@@ -55,7 +55,7 @@ describe('Registration steps', () => {
     );
 
     page.getByRole('textbox', { name: 'Your Email Address' });
-    page.getByRole('spinbutton', { name: 'Your Mobile Number' });
+    page.getByRole('textbox', { name: 'Your Mobile Number' });
 
     await page.findByText('Next');
   });
@@ -71,6 +71,20 @@ describe('Registration steps', () => {
     });
 
     userEvent.click(await page.findByText('Next'));
+
+    userEvent.type(
+      await page.findByLabelText('Your Mobile Number'),
+      '212-345-6789'
+    );
+    userEvent.type(
+      await page.findByLabelText('Your Email Address'),
+      'lisa@jackson.com'
+    );
+
+    await act(async () => {
+      await delay(300);
+    });
+
     userEvent.click(await page.findByText('Next'));
 
     await page.findByText(
@@ -92,6 +106,20 @@ describe('Registration steps', () => {
     });
 
     userEvent.click(await page.findByText('Next'));
+
+    userEvent.type(
+      await page.findByLabelText('Your Mobile Number'),
+      '2123456789'
+    );
+    userEvent.type(
+      await page.findByLabelText('Your Email Address'),
+      'lisa@jackson.com'
+    );
+
+    await act(async () => {
+      await delay(300);
+    });
+
     userEvent.click(await page.findByText('Next'));
     userEvent.click(await page.findByText('Next'));
 
