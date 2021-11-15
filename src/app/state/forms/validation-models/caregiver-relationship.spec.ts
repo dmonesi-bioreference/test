@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import {
-  CaregiverRelationship,
   caregiverRelationshipValues,
   validateCaregiverRelationship,
 } from './caregiver-relationship';
 
 describe('caregiver relationship validations', () => {
   const validate = async (
-    caregiverRelationship: Partial<CaregiverRelationship>
+    caregiverRelationship: Partial<ValidationModelMap['caregiverRelationship']>
   ) =>
     await validateCaregiverRelationship(caregiverRelationship).catch(
       (error) => error

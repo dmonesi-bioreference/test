@@ -3,16 +3,14 @@ import 'yup-phone';
 
 import { toErrorList } from './validation-failure';
 
-export interface Identity {
-  dob: string;
-  email: string;
-  zip: string;
-  phone: string;
-}
-
 declare global {
   interface ValidationModelMap {
-    identity: Identity;
+    identity: {
+      dob: string;
+      email: string;
+      zip: string;
+      phone: string;
+    };
   }
 }
 
@@ -36,7 +34,9 @@ const phone = yup
   .trim()
   .phone('US', false, 'forms.identity.phone.errors.invalid');
 
-export const validateIdentity = async (identity: Partial<Identity>) => {
+export const validateIdentity = async (
+  identity: Partial<ValidationModelMap['identity']>
+) => {
   const schema = identity.phone
     ? yup.object().shape({ zip, dob, email, phone })
     : yup.object().shape({ zip, dob, email });

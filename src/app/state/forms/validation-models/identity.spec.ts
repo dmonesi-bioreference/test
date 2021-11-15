@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { Identity, validateIdentity } from './identity';
+import { validateIdentity } from './identity';
 
 describe('identity validations', () => {
-  const validate = async (identity: Partial<Identity>) =>
+  const validate = async (identity: Partial<ValidationModelMap['identity']>) =>
     await validateIdentity(identity).catch((error) => error);
 
   it('allows empty phones', async () => {

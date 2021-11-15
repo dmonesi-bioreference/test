@@ -2,14 +2,12 @@ import * as yup from 'yup';
 
 import { toErrorList } from './validation-failure';
 
-export interface Login {
-  email: string;
-  password: string;
-}
-
 declare global {
   interface ValidationModelMap {
-    login: Login;
+    login: {
+      email: string;
+      password: string;
+    };
   }
 }
 
@@ -25,8 +23,9 @@ const schema = yup.object().shape({
     .required('forms.login.password.errors.required'),
 });
 
-export const validateLogin = async (login: Partial<Login>) =>
-  await schema.validate(login, { abortEarly: false }).catch(toErrorList);
+export const validateLogin = async (
+  login: Partial<ValidationModelMap['login']>
+) => await schema.validate(login, { abortEarly: false }).catch(toErrorList);
 
 export const login: ValidationModels['login'] = {
   key: 'login',

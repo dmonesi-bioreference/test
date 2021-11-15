@@ -2,14 +2,12 @@ import * as yup from 'yup';
 
 import { toErrorList } from './validation-failure';
 
-export interface CaregiverName {
-  firstName: string;
-  lastName: string;
-}
-
 declare global {
   interface ValidationModelMap {
-    caregiverName: CaregiverName;
+    caregiverName: {
+      firstName: string;
+      lastName: string;
+    };
   }
 }
 
@@ -25,7 +23,7 @@ const schema = yup.object().shape({
 });
 
 export const validateCaregiverName = async (
-  caregiverName: Partial<CaregiverName>
+  caregiverName: Partial<ValidationModelMap['caregiverName']>
 ) =>
   await schema
     .validate(caregiverName, { abortEarly: false })

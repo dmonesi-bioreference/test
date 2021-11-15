@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { Login, validateLogin } from './login';
+import { validateLogin } from './login';
 
 describe('Login validations', () => {
-  const validate = async (identity: Partial<Login>) =>
-    await validateLogin(identity).catch((error) => error);
+  const validate = async (login: Partial<ValidationModelMap['login']>) =>
+    await validateLogin(login).catch((error) => error);
 
   it('requires email and password', async () => {
     const result = await validate({});

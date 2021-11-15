@@ -3,6 +3,7 @@ import { caregiverName } from './caregiver-name';
 import { caregiverRelationship } from './caregiver-relationship';
 import { identity } from './identity';
 import { login } from './login';
+import { password } from './password';
 
 declare global {
   interface ValidationModelMap {}
@@ -33,6 +34,12 @@ declare global {
 // Add a validation model to this export to incorporate it into the forms
 // state chart automatically.
 //
-export const all = [caregiverName, caregiverRelationship, identity, login];
+export const all = [
+  caregiverName,
+  caregiverRelationship,
+  identity,
+  login,
+  password,
+];
 
 export * from './validation-failure';

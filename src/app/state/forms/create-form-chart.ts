@@ -2,10 +2,7 @@ import { assign } from '@xstate/immer';
 
 import { CreateDispatchEvent } from './create-dispatch-event';
 import { KeyNames } from './key-names';
-import {
-  isValidationFailurePayload,
-  ValidationFailure,
-} from './validation-models';
+import { isValidationFailurePayload } from './validation-models';
 
 /**
  * This abstract class is never instantiated or inherited. Instead, it exists

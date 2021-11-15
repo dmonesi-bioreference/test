@@ -1,10 +1,11 @@
 import { ValidationError } from 'yup';
 
-export interface ValidationFailure<Field extends string = string> {
-  field: Field;
-  message: string;
+declare global {
+  interface ValidationFailure<Field extends string = string> {
+    field: Field;
+    message: string;
+  }
 }
-
 export const isValidationFailurePayload = (
   candidate: unknown
 ): candidate is ValidationFailure[] => {

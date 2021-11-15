@@ -26,7 +26,10 @@ export const LandingPage = () => {
                 {t('sections.results.childsName')}
               </Typography>
             </div>
-            <Heading level="5">Lisa Consuela Jackson (dev)</Heading>
+            <Heading level="5">
+              <span>Lisa Consuela Jackson</span>
+              <span>&nbsp;(dev)</span>
+            </Heading>
           </div>
         }
       >

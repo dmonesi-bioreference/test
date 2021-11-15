@@ -7,14 +7,12 @@ const grandparent = 'grandparent' as const;
 const sibling = 'sibling' as const;
 export const caregiverRelationshipValues = [parent, grandparent, sibling];
 
-export interface CaregiverRelationship {
-  dob: string;
-  relationship: typeof parent | typeof grandparent | typeof sibling | '';
-}
-
 declare global {
   interface ValidationModelMap {
-    caregiverRelationship: CaregiverRelationship;
+    caregiverRelationship: {
+      dob: string;
+      relationship: typeof parent | typeof grandparent | typeof sibling | '';
+    };
   }
 }
 
@@ -33,7 +31,7 @@ const schema = yup.object().shape({
 });
 
 export const validateCaregiverRelationship = async (
-  caregiverRelationship: Partial<CaregiverRelationship>
+  caregiverRelationship: Partial<ValidationModelMap['caregiverRelationship']>
 ) =>
   await schema
     .validate(caregiverRelationship, { abortEarly: false })

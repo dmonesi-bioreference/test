@@ -34,8 +34,12 @@ export const app = init({
 });
 
 declare global {
+  type DispatchFn<GivenPayload> = (
+    payload?: Omit<GivenPayload, 'type'>
+  ) => void;
+
   type DispatchMap<GivenType> = {
-    [Key in keyof GivenType]: (payload?: Omit<GivenType[Key], 'type'>) => void;
+    [Key in keyof GivenType]: DispatchFn<GivenType[Key]>;
   };
 
   type AppSchema = typeof schema;
