@@ -3,8 +3,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-
 module.exports = {
   reactStrictMode: true,
   images: {
@@ -20,6 +18,7 @@ module.exports = {
     });
 
     if (dev && isServer) {
+      const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
       config.plugins.push(new ForkTsCheckerWebpackPlugin());
     }
 
