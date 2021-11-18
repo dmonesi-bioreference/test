@@ -33,12 +33,6 @@ const Select: React.FC<SelectProps> = (props) => {
     props.onBlur;
   };
 
-  const handleChange = (e: React.ChangeEvent) => {
-    const option = e.currentTarget as HTMLOptionElement;
-    setValue(option.value);
-    props.onChange;
-  };
-
   return (
     <SelectStyled
       inputId={inputId}
@@ -78,7 +72,9 @@ const Select: React.FC<SelectProps> = (props) => {
           aria-labelledby={labelId}
           aria-describedby={helpTextId}
           aria-invalid={props.invalid ? 'true' : 'false'}
-          onChange={handleChange}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          onChange={props.onChange}
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           onInvalid={props.onInvalid}

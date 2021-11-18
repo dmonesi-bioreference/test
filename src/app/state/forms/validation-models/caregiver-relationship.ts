@@ -2,9 +2,9 @@ import * as yup from 'yup';
 
 import { toErrorList } from './validation-failure';
 
-const parent = 'parent' as const;
-const grandparent = 'grandparent' as const;
-const sibling = 'sibling' as const;
+const parent = 'Parent' as const;
+const grandparent = 'Grandparent' as const;
+const sibling = 'Sibling' as const;
 export const caregiverRelationshipValues = [parent, grandparent, sibling];
 
 declare global {
@@ -40,7 +40,7 @@ export const validateCaregiverRelationship = async (
 export const caregiverRelationship: ValidationModels['caregiverRelationship'] =
   {
     key: 'caregiverRelationship',
-    init: { dob: '', relationship: '' },
+    init: { dob: '', relationship: 'Parent' },
     values: { relationship: caregiverRelationshipValues },
     validate: validateCaregiverRelationship,
   };

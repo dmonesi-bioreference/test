@@ -1,8 +1,25 @@
 import userEvent from '@testing-library/user-event';
 
+import { useAppEvents } from 'app';
 import { act, delay, renderWithShell } from 'test-utils';
 
 import { RegistrationWizard } from './index';
+
+function SetCustomDateInOrderToGetAroundDatePickerMarkupComplexity(
+  props: Props<{ date: string }>
+) {
+  const events = useAppEvents();
+
+  return (
+    <button
+      onClick={() =>
+        events.caregiverRelationshipChange({ field: 'dob', value: props.date })
+      }
+    >
+      Date of birth workaround
+    </button>
+  );
+}
 
 function RegistrationControls(props: Props<unknown>) {
   return (
@@ -11,6 +28,7 @@ function RegistrationControls(props: Props<unknown>) {
       <section>
         <header>State info</header>
       </section>
+      <SetCustomDateInOrderToGetAroundDatePickerMarkupComplexity date="01/01/2021" />
     </>
   );
 }
@@ -121,6 +139,13 @@ describe('Registration steps', () => {
     });
 
     userEvent.click(await page.findByText('Next'));
+
+    userEvent.click(await page.findByText('Date of birth workaround'));
+
+    await act(async () => {
+      await delay(300);
+    });
+
     userEvent.click(await page.findByText('Next'));
 
     await page.findByText(

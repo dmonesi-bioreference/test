@@ -1,22 +1,23 @@
-import { useAppEvents, useAppTranslation } from 'app';
+import {
+  CaregiverRelationshipElements,
+  useAppEvents,
+  useAppState,
+  useAppTranslation,
+} from 'app';
 import {
   Button,
   Heading,
-  Input,
-  InputHelper,
   PageLayout,
   PageSection,
   ProcessBar,
-  Select,
   StepTitle,
-  ToolTip,
-  Typography,
 } from 'components';
 import { tokens } from 'styles';
 
 export const StepThree = () => {
   const t = useAppTranslation();
   const events = useAppEvents();
+  const isValid = useAppState('forms.caregiverRelationship.validation.valid');
 
   return (
     <PageLayout>
@@ -41,71 +42,20 @@ export const StepThree = () => {
       >
         <div style={{ marginBottom: tokens.spacingXxSmall }}>
           <div style={{ marginBottom: tokens.spacingXxSmall }}>
-            <Select
-              label={t(
-                'sections.furtherRegistration.form.relationshipToPatient.label'
-              )}
-              name="select-relationship"
-              size="medium"
-              labelPosition="top"
-              inputHelper={
-                <InputHelper
-                  helperText={t(
-                    'sections.furtherRegistration.form.relationshipToPatient.toolTipHelperMessage'
-                  )}
-                  toolTip={
-                    <ToolTip
-                      title={t(
-                        'sections.furtherRegistration.form.relationshipToPatient.toolTipTitle'
-                      )}
-                      placement="bottom"
-                    >
-                      <Typography type="helper-text" color="white">
-                        {t(
-                          'sections.furtherRegistration.form.relationshipToPatient.toolTipContent'
-                        )}
-                      </Typography>
-                    </ToolTip>
-                  }
-                />
-              }
-            >
-              <option value="option1">Caregiver</option>
-              <option value="option2">Parent</option>
-            </Select>
+            <CaregiverRelationshipElements.Relationship />
           </div>
         </div>
 
         <div style={{ marginBottom: tokens.spacingXxxLarge }}>
-          <Input
-            type="date"
-            label={t('sections.furtherRegistration.form.dob.label')}
-            name="dob"
-            inputHelper={
-              <InputHelper
-                helperText={t(
-                  'sections.furtherRegistration.form.dob.toolTipHelperMessage'
-                )}
-                toolTip={
-                  <ToolTip
-                    title={t(
-                      'sections.furtherRegistration.form.dob.toolTipTitle'
-                    )}
-                    placement="bottom"
-                  >
-                    <Typography type="helper-text" color="white">
-                      {t(
-                        'sections.furtherRegistration.form.dob.toolTipContent'
-                      )}
-                    </Typography>
-                  </ToolTip>
-                }
-              />
-            }
-          />
+          <CaregiverRelationshipElements.DateOfBirth />
         </div>
 
-        <Button onClick={events.nextStep} kind="primary">
+        <Button
+          kind="primary"
+          onClick={events.nextStep}
+          submit={true}
+          disabled={!isValid}
+        >
           {t('sections.furtherRegistration.next')}
         </Button>
       </PageSection>

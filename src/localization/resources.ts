@@ -79,6 +79,30 @@ export const resources = {
             },
           },
         },
+        caregiverRelationship: {
+          dob: {
+            label: 'Your Date of Birth',
+            toolTipHelperMessage: 'Why do we ask for this?',
+            toolTipTitle: 'Why do we ask for your date of birth?',
+            toolTipContent:
+              'This provides us with an extra identifier unique to you - we can use it to help you to recover your account if you get locked out.',
+            errors: {
+              required: 'Date of Birth is required.',
+              invalid: 'Date of Birth is invalid.',
+            },
+          },
+          relationship: {
+            label: 'Relationship to Patient',
+            toolTipHelperMessage: 'Why do we ask for this?',
+            toolTipTitle: 'Why do we ask for your relationship to the patient?',
+            toolTipContent:
+              'This will help us to communicate with you better and make your experience more personalized.',
+            errors: {
+              required: 'Relationship to Patient is required.',
+              invalid: 'Relationship to Patient is invalid.',
+            },
+          },
+        },
       },
       sections: {
         careTeam: {
@@ -308,21 +332,6 @@ export const resources = {
             },
             confirmPassword: {
               label: 'Confirm Password',
-            },
-            relationshipToPatient: {
-              label: 'Relationship to Patient',
-              toolTipHelperMessage: 'Why do we ask for this?',
-              toolTipTitle:
-                'Why do we ask for your relationship to the patient?',
-              toolTipContent:
-                'This will help us to communicate with you better and make your experience more personalized.',
-            },
-            dob: {
-              label: 'Your Date of Birth',
-              toolTipHelperMessage: 'Why do we ask for this?',
-              toolTipTitle: 'Why do we ask for your date of birth?',
-              toolTipContent:
-                'This provides us with an extra identifier unique to you - we can use it to help you to recover your account if you get locked out.',
             },
             number: {
               toolTipHelperMessage:
