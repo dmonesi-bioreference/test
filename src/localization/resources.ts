@@ -103,6 +103,29 @@ export const resources = {
             },
           },
         },
+        password: {
+          password: {
+            errors: {
+              required: 'Password is required.',
+              invalid: 'Password is invalid.',
+            },
+            label: 'Password',
+          },
+          confirmation: {
+            errors: {
+              required: 'Password is required.',
+              invalid: 'Password is invalid.',
+            },
+            label: 'Confirm Password',
+          },
+          termsAndConditions: {
+            errors: {
+              required: '',
+            },
+            link: 'Terms & Conditions',
+            label: 'I agree to the',
+          },
+        },
       },
       sections: {
         careTeam: {
@@ -327,12 +350,6 @@ export const resources = {
               'Lastly, create a strong password to help keep your account and your child’s information safe.',
           },
           form: {
-            password: {
-              label: 'Password',
-            },
-            confirmPassword: {
-              label: 'Confirm Password',
-            },
             number: {
               toolTipHelperMessage:
                 'We’ll also use this to send you notifications.',
@@ -346,10 +363,6 @@ export const resources = {
             characters: 'At least 9 characters in total.',
             letters: 'At least 1 letter (a - z)',
             numbers: 'At least 1 number (0 - 9)',
-          },
-          checkbox: {
-            termsAndConditionsLink: 'Terms & Conditions',
-            label: 'I agree to the',
           },
           setUpAccount: 'Set up account',
           next: 'Next',

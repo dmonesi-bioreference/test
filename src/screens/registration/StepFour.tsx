@@ -1,7 +1,11 @@
-import { useAppTranslation } from 'app';
+import {
+  CaregiverPasswordElements,
+  useAppEvents,
+  useAppState,
+  useAppTranslation,
+} from 'app';
 import {
   Button,
-  Checkbox,
   Heading,
   InformationBanner,
   PageLayout,
@@ -9,12 +13,13 @@ import {
   ProcessBar,
   StepTitle,
   Typography,
-  PasswordInput,
 } from 'components';
 import { tokens } from 'styles';
 
 export const StepFour = () => {
   const t = useAppTranslation();
+  const events = useAppEvents();
+  const isValid = useAppState('forms.password.validation.valid');
 
   return (
     <PageLayout>
@@ -55,15 +60,9 @@ export const StepFour = () => {
 
         <div style={{ marginBottom: tokens.spacingLarge }}>
           <div style={{ marginBottom: tokens.spacing }}>
-            <PasswordInput
-              label={t('sections.furtherRegistration.form.password.label')}
-              name="password"
-            />
+            <CaregiverPasswordElements.Password />
           </div>
-          <PasswordInput
-            label={t('sections.furtherRegistration.form.confirmPassword.label')}
-            name="confirm-password"
-          />
+          <CaregiverPasswordElements.Confirmation />
         </div>
 
         <div
@@ -71,17 +70,17 @@ export const StepFour = () => {
             marginBottom: tokens.spacingXLarge,
           }}
         >
-          <Checkbox
-            label={t('sections.furtherRegistration.checkbox.label')}
-            name="checkbox"
-            size="large"
-            linkMessage={t(
-              'sections.furtherRegistration.checkbox.termsAndConditionsLink'
-            )}
-          />
+          <CaregiverPasswordElements.TermsAndConditions />
         </div>
 
-        <Button kind="primary">{t('sections.furtherRegistration.next')}</Button>
+        <Button
+          kind="primary"
+          onClick={events.nextStep}
+          submit={true}
+          disabled={!isValid}
+        >
+          {t('sections.furtherRegistration.next')}
+        </Button>
       </PageSection>
     </PageLayout>
   );

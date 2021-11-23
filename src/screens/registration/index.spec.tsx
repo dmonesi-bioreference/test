@@ -151,9 +151,18 @@ describe('Registration steps', () => {
     await page.findByText(
       'Lastly, create a strong password to help keep your account and your child’s information safe.'
     );
-    page.getByLabelText('Password');
-    page.getByLabelText('Confirm Password');
 
-    await page.findByText('Next');
+    userEvent.type(await page.findByLabelText('Password'), 'thisisapassword');
+    userEvent.type(
+      await page.findByLabelText('Confirm Password'),
+      'thisisapassword'
+    );
+    userEvent.click(await page.findByText('I agree to the'));
+
+    await act(async () => {
+      await delay(300);
+    });
+
+    userEvent.click(await page.findByText('Next'));
   });
 });

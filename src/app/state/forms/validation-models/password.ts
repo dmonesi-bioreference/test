@@ -7,6 +7,7 @@ declare global {
     password: {
       password: string;
       confirmation: string;
+      termsAndConditions: string;
     };
   }
 }
@@ -24,6 +25,10 @@ const schema = yup.object().shape({
     .string()
     .trim()
     .required('forms.password.password.errors.required'),
+  termsAndConditions: yup
+    .string()
+    .oneOf(['accepted'], 'forms.password.termsAndConditions.errors.required')
+    .required('forms.password.termsAndConditions.errors.required'),
 });
 
 export const validatePassword = async (
@@ -32,6 +37,6 @@ export const validatePassword = async (
 
 export const password: ValidationModels['password'] = {
   key: 'password',
-  init: { confirmation: '', password: '' },
+  init: { confirmation: '', password: '', termsAndConditions: '' },
   validate: validatePassword,
 };

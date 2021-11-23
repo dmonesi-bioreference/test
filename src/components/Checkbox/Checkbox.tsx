@@ -106,6 +106,7 @@ const Checkbox: React.FC<CheckboxProps> = (props) => {
             onClick={handleClick}
             onBlur={handleBlur}
             onFocus={handleFocus}
+            onChange={props.onChange}
           />
         </span>
       </div>
