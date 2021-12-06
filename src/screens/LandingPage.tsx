@@ -1,3 +1,5 @@
+import { gql, useQuery } from '@apollo/client';
+
 import { useAppTranslation } from 'app';
 import InTheNICUImage from 'assets/images/jpg/InTheNICU.jpg';
 import {
@@ -14,8 +16,52 @@ import {
 } from 'components';
 import { tokens } from 'styles';
 
+import { ArticleQuery } from '../mocks/handlers';
+
+const FETCH_ARTICLE = gql`
+  query GetTestStatusArticles {
+    articles {
+      id
+      title
+      content
+    }
+  }
+`;
+
 export const LandingPage = () => {
   const t = useAppTranslation();
+  const { data } = useQuery<ArticleQuery>(FETCH_ARTICLE);
+  const articles = data?.articles.map((article) => {
+    return (
+      <Card
+        key={article.id}
+        header={
+          <AppImage
+            src={InTheNICUImage}
+            alt="In The NICU"
+            width={343}
+            height={189}
+          />
+        }
+      >
+        <div style={{ marginBottom: tokens.spacingXSmall }}>
+          <Typography type="label" labelType="title" color="primary">
+            {t('sections.resources.story.title')}
+          </Typography>
+        </div>
+        <div style={{ marginBottom: tokens.spacing }}>
+          <Heading>{article.title}</Heading>
+        </div>
+        <div style={{ marginBottom: tokens.spacingLarge }}>
+          <Typography type="body">{article.content.join()}</Typography>
+        </div>
+        <Button kind="primary" href="/resources/real-family-story-81707">
+          {t('sections.resources.story.readMore')}
+        </Button>
+      </Card>
+    );
+  });
+
   return (
     <PageLayout containsCards={true}>
       <PageSection
@@ -106,36 +152,7 @@ export const LandingPage = () => {
           </div>
         }
       >
-        <Card
-          header={
-            <AppImage
-              src={InTheNICUImage}
-              alt="In The NICU"
-              width={343}
-              height={189}
-            />
-          }
-        >
-          <div style={{ marginBottom: tokens.spacingXSmall }}>
-            <Typography type="label" labelType="title" color="primary">
-              {t('sections.resources.story.title')}
-            </Typography>
-          </div>
-          <div style={{ marginBottom: tokens.spacing }}>
-            <Heading>
-              How other parents have coped with this time of uncertainty.
-            </Heading>
-          </div>
-          <div style={{ marginBottom: tokens.spacingLarge }}>
-            <Typography type="body">
-              They said it was supposed to be the most wonderful experience of
-              my life. But when Jonas was born with complications I struggled..
-            </Typography>
-          </div>
-          <Button kind="primary" href="/resources/real-family-story-81707">
-            {t('sections.resources.story.readMore')}
-          </Button>
-        </Card>
+        {articles}
         <Card>
           <div style={{ marginBottom: tokens.spacingLarge }}>
             <Heading>{t('sections.resources.faq.title')}</Heading>

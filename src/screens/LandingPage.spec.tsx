@@ -39,6 +39,12 @@ describe('The home page', () => {
 
       await page.findByText('Resources');
       await page.findByText('(In the NICU)');
+      await page.findByText(
+        'How other parents have coped with this time of uncertainty.'
+      );
+      await page.findByText(
+        'They said it was supposed to be the most wonderful experience of my life.'
+      );
       await page.findByText('Real family story');
       await page.findByText('Read Story');
     });

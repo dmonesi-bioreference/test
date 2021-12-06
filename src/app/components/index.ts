@@ -5,3 +5,4 @@ export * from './CaregiverNameElements';
 export * from './CaregiverContactElements';
 export * from './CaregiverRelationshipElements';
 export * from './CaregiverPasswordElements';
+export * from './Content';

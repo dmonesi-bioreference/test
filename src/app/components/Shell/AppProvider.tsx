@@ -10,6 +10,7 @@ export interface AppProviderProps {
   onAuthenticate?: AppEventFn<unknown>;
   onIdentity?: AppEventFn<unknown>;
   onMagicLink?: AppEventFn<unknown>;
+  onFetchTestStatusArticles?: AppEventFn<unknown>;
 }
 
 export function AppProvider({
@@ -39,6 +40,7 @@ export function AppProvider({
         checkIdentity: () => send('checkIdentity'),
         nextStep: () => send('nextStep'),
         login: () => send('login'),
+        fetchTestStatusArticles: () => send('fetchTestStatusArticles'),
       };
 
       return appDispatchMap;
