@@ -3,6 +3,7 @@ export * from './ArticleCard';
 export * from './Button';
 export * from './Card';
 export * from './Checkbox';
+export * from './CircularProgress';
 export * from './Data';
 export * from './Divider';
 export * from './Fieldset';

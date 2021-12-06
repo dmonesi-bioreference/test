@@ -220,17 +220,22 @@ export const resources = {
             },
           },
           childsName: "Child's name",
-          seeMore: 'See where you are in the process',
           getUpdates: 'Receive progress updates',
           noUpdates: 'No updates since your last login',
           onTrack: 'Everything is on track',
           inProcess: 'Test in process',
+          inProgress: 'Test in progress',
+          updated: 'Updated {{lastUpdated}}',
+          ready: 'Results Ready',
+          doctorShared: 'And shared with your doctor',
+          doctorAppointment: 'Your doctor will soon arrange an appointment to discuss them with you',
           caveat:
             'Results typically are returned in 7 days, but can take up to 5 weeks',
           expectation:
             'NOTE: time is not an indicator of case difficulty or a positive test result. Please allow time for your child’s genetic test to process before calling the lab or your doctor’s office.',
-          mayVary: 'Timing may vary',
+          mayVary: 'Please keep in mind that processing time may vary',
           estimate: 'Expect results in {{estimate}} days',
+          expected: 'Results expected {{expectedResultsDate}}',
           locationCheck: {
             where: 'Where are you now?',
             report:

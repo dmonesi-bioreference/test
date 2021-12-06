@@ -12,6 +12,9 @@
   ],
   "rules": {
     "value-keyword-case": ["lower", { ignoreKeywords: ['dummyValue'] }],
+    "selector-type-case": ["lower", {
+      "ignoreTypes": ["foreignObject"]
+    }],
     "at-rule-no-unknown": null,
     "prettier/prettier": true
   }

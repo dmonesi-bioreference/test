@@ -1,12 +1,11 @@
 import { gql, useQuery } from '@apollo/client';
 
-import { useAppTranslation } from 'app';
+import { useAppTranslation, TestStatus } from 'app';
 import InTheNICUImage from 'assets/images/jpg/InTheNICU.jpg';
 import {
   AppImage,
   Button,
   Card,
-  Divider,
   Flag,
   Heading,
   Icon,
@@ -79,48 +78,11 @@ export const LandingPage = () => {
           </div>
         }
       >
-        <Card>
-          <div style={{ marginBottom: tokens.spacing }}>
-            <div style={{ marginBottom: tokens.spacingXSmall }}>
-              <Heading>{t('sections.results.inProcess')}</Heading>
-            </div>
-            <Heading level="4">{t('sections.results.onTrack')}</Heading>
-          </div>
-          <div style={{ marginBottom: tokens.spacing }}>
-            {/* Note: This was a heading "7" */}
-            <Heading level="6" color="minor">
-              {t('sections.results.noUpdates')}
-            </Heading>
-          </div>
-          <div style={{ marginBottom: tokens.spacingLarge }}>
-            <div style={{ marginBottom: tokens.spacingXxSmall }}>
-              <Heading level="5">
-                {t('sections.results.estimate', { estimate: '7-10' })}
-              </Heading>
-            </div>
-            <Heading level="6">{t('sections.results.mayVary')}</Heading>
-          </div>
-          <div style={{ marginBottom: tokens.spacing }}>
-            <Button
-              kind="link-medium"
-              href="#"
-              prefix={<Icon name="device-mobile" color="primary" />}
-            >
-              {t('sections.results.getUpdates')}
-            </Button>
-          </div>
-          <div style={{ marginBottom: tokens.spacingLarge }}>
-            <Divider />
-          </div>
-          <Button
-            kind="link-medium"
-            href="/testing-process"
-            suffix={<Icon name="chevron-right" color="primary" />}
-            spreadContent={true}
-          >
-            {t('sections.results.seeMore')}
-          </Button>
-        </Card>
+        <TestStatus
+          labState='in lab'
+          expectedResultsDate='Nov 11, 2022'
+          lastUpdated='11:12am today'
+        />
       </PageSection>
 
       <PageSection

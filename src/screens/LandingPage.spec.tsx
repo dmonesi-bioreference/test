@@ -18,18 +18,10 @@ describe('The home page', () => {
     it('has test result updates', async () => {
       const page = await renderWithShell(<LandingPage />);
 
-      await page.findByText('Test in process');
-      await page.findByText('Expect results in 7-10 days');
-      await page.findByText('Timing may vary');
-      await page.findByText('Everything is on track');
-      await page.findByText('No updates since your last login');
-    });
-
-    it('has a CTA to see more about results', async () => {
-      const page = await renderWithShell(<LandingPage />);
-
-      await page.findByText('Receive progress updates');
-      await page.findByText('See where you are in the process');
+      await page.findByText('Test in progress');
+      await page.findByText('Results expected Nov 11, 2022');
+      await page.findByText('Please keep in mind that processing time may vary.');
+      await page.findByText('Updated 11:12am today');
     });
   });
 
