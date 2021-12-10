@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 import TypographyStyled from './Typography.styles';
 
 export type TypographyHeadingLevel =
@@ -24,6 +26,7 @@ interface HeadingProps {
   color?: TypographyColor;
   alignment?: TypographyAlignment;
   fontType?: 'serif' | 'sansSerif';
+  objectToWrap?: ReactNode;
 }
 
 type TypographyProps =
@@ -84,6 +87,11 @@ export const Typography: React.FC<TypographyProps> = (props) => {
           as={`h${level}`}
           className={`${props.type}${level} ${color} ${fontType} ${alignment}`}
         >
+          {props.objectToWrap ? (
+            <div className="floated">{props.objectToWrap}</div>
+          ) : (
+            ''
+          )}
           {props.children}
         </TypographyStyled>
       );

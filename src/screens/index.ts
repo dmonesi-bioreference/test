@@ -1,5 +1,4 @@
-
-export * from './AuthenticationToken'
+export * from './AuthenticationToken';
 export * from './DataConsent';
 export * from './DataSharingSettings';
 export * from './FAQs';
@@ -8,6 +7,7 @@ export * from './IdentityForm';
 export * from './LandingPage';
 export * from './LocationCheck';
 export * from './LoginPage';
+export * from './PreResultsPause';
 export * from './registration';
 export * from './registration/StepFour';
 export * from './registration/StepOne';

@@ -140,6 +140,11 @@ const TypographyStyled = styled.div`
   &.right {
     text-align: right;
   }
+
+  .floated {
+    float: left;
+    margin-right: ${tokens.spacingXSmall};
+  }
 `;
 
 export default TypographyStyled;

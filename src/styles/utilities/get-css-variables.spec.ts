@@ -7,8 +7,8 @@ describe('getCssVariables', () => {
     const cssVars = getCssVariables(Tokens);
 
     expect(cssVars).toContainEqual({
-      name: 'tokens-color-background',
-      value: Tokens.tokens.colorBackground,
+      name: 'tokens-color-background-default',
+      value: Tokens.tokens.colorBackgroundDefault,
     });
   });
 });

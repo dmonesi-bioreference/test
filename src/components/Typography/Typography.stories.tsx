@@ -1,5 +1,6 @@
 import { Story } from '@storybook/react/types-6-0';
 
+import { Avatar } from 'components';
 import { StyleGuideItem } from 'components/StyleGuide/StyleGuideItem';
 
 import { Typography } from './Typography';
@@ -25,6 +26,19 @@ export const Headings: Story = () => (
       <Typography type="heading" level="1" fontType="sansSerif">
         Hello, World!
       </Typography>
+    </StyleGuideItem>
+
+    <StyleGuideItem label="Primary Heading(h1), Serif, Wrapped around Image">
+      <div style={{ width: 375 }}>
+        <Typography
+          type="heading"
+          level="1"
+          fontType="serif"
+          objectToWrap={<Avatar shape="circular" size="small" />}
+        >
+          Here is a much longer title than the others, to demonstrate wrapping.
+        </Typography>
+      </div>
     </StyleGuideItem>
 
     <StyleGuideItem label="Secondary Heading (h2), Serif">

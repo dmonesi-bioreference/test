@@ -109,7 +109,10 @@ export const fonts = {
 
 export const tokens = {
   /* color presets */
-  colorBackground: colors.grey[100],
+  colorBackgroundDefault: colors.sand[50],
+  colorBackgroundCare: colors.blue[50],
+  colorBackgroundCommunity: colors.sand[50],
+  colorBackgroundResources: colors.grey[100],
   colorDefaultText: colors.black,
   colorPrimary: colors.blue[600],
   colorPrimaryActive: colors.blue[800],
@@ -308,16 +311,13 @@ export const fontPairs = {
   `,
 };
 
-
-
 const toggleHandle = {
   size: tokens.spacingMedium,
-  margin: tokens.spacingXxxSmall
-}
-
+  margin: tokens.spacingXxxSmall,
+};
 
 export const toggle = {
   width: `calc((${toggleHandle.size} * 2) + (${toggleHandle.margin} * 2))`,
   handleSize: toggleHandle.size,
-  handleMargin: toggleHandle.margin
-}
+  handleMargin: toggleHandle.margin,
+};

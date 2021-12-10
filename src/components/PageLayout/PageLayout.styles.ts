@@ -4,24 +4,32 @@ import { tokens, base } from 'styles';
 
 const PageLayoutStyled = styled.div`
   ${base}
-  background-color: ${tokens.colorBackground};
+  background-color: ${tokens.colorBackgroundDefault};
 
-  .page__content > * {
-    margin-bottom: ${tokens.spacingXxLarge};
+  .page-layout--care {
+    background-color: ${tokens.colorBackgroundCare};
   }
 
-  .page__content :last-child {
-    margin-bottom: 0;
+  .page-layout--community {
+    background-color: ${tokens.colorBackgroundCommunity};
+  }
+
+  .page-layout--resources {
+    background-color: ${tokens.colorBackgroundResources};
+  }
+
+  .page__content > * :not(:last-child) {
+    margin-bottom: ${tokens.spacingXLarge};
   }
 
   .page__content {
-    padding: ${tokens.spacingXxLarge} ${tokens.spacingXLarge} ${tokens.spacingXxxxLarge}
-      ${tokens.spacingXLarge};
+    padding: ${tokens.spacingXxLarge} ${tokens.spacingXLarge}
+      ${tokens.spacingXxxxLarge} ${tokens.spacingXLarge};
   }
 
   .page__content--with-cards {
-    padding: ${tokens.spacingLarge} ${tokens.spacing}
-      ${tokens.spacingXxxxLarge} ${tokens.spacing};
+    padding: ${tokens.spacingLarge} ${tokens.spacing} ${tokens.spacingXxxxLarge}
+      ${tokens.spacing};
   }
 `;
 

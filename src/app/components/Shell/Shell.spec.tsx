@@ -14,9 +14,9 @@ test('Loading the shell adds css variables to the document', async () => {
 
   expect(
     global.document.documentElement.style.getPropertyValue(
-      '--tokens-color-background'
+      '--tokens-color-background-default'
     )
-  ).toEqual(tokens.colorBackground);
+  ).toEqual(tokens.colorBackgroundDefault);
 });
 
 // background-color: ${tokens.colorWarningHover};
@@ -35,13 +35,13 @@ test('Loading the shell adds css variables to the document', async () => {
 //
 test('Shell themes are provided to styled components', async () => {
   const FancyButton = styled.button`
-    background-color: ${(props) => props.theme.tokens.colorBackground};
+    background-color: ${(props) => props.theme.tokens.colorBackgroundDefault};
   `;
 
   function ThemeDiagnostics() {
     const theme = useTheme();
 
-    return <FancyButton>{theme.tokens.colorBackground}</FancyButton>;
+    return <FancyButton>{theme.tokens.colorBackgroundDefault}</FancyButton>;
   }
 
   const app = render(
@@ -50,7 +50,7 @@ test('Shell themes are provided to styled components', async () => {
     </Shell>
   );
 
-  await app.findByText(themes.light.tokens.colorBackground);
+  await app.findByText(themes.light.tokens.colorBackgroundDefault);
 });
 
 test('Shell wrappers provide access to i18n helpers', async () => {

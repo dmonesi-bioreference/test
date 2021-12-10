@@ -2,6 +2,57 @@ export const resources = {
   en: {
     translation: {
       application: 'GeneDx',
+      pages: {
+        home: {},
+        preResultsPause: {
+          title: 'Let’s take a moment together before viewing results',
+          description: {
+            paragraph1:
+              'For some people, receiving test results can be difficult to understand and may cause anxiety, regardless of the results.',
+            paragraph2:
+              'Genetic test reports have some limitations that are important to understand, therefore reviewing results with a doctor is necessary to properly understand and plan next steps.',
+          },
+          audio: {
+            title: 'Genetic Counselor Support',
+            description:
+              'Laura explains why it’s important to be in the right space and mind to review results.',
+            transcript: {
+              1: {
+                title: 'Are you in the right setting?',
+                description:
+                  'Would you rather be at home, in the hospital, at work, etc.?',
+              },
+              2: {
+                title: 'Are you with the right people?',
+                description:
+                  'Would you prefer to have your partner, another family member, or a friend present?',
+              },
+              3: {
+                title: 'Are you okay waiting to ask questions?',
+                description:
+                  "You might be viewing your child's results before your doctor sees them. Would you prefer to wait and look at results together with your doctor so you can ask questions right away?",
+              },
+            },
+          },
+          actions: {
+            primary: 'Continue to report',
+            secondary: 'Not now, go back',
+          },
+        },
+      },
+      components: {
+        audio: {
+          actions: {
+            showTranscript: 'Read transcript',
+            hideTranscript: 'Close transcript',
+          },
+        },
+        avatar: {
+          geneticCounselor: {
+            altText: 'Photograph of our genetic counselor, Laura.',
+          },
+        },
+      },
       forms: {
         identity: {
           dob: {
@@ -336,6 +387,7 @@ export const resources = {
 
           buttonText: 'Register Now',
         },
+
         furtherRegistration: {
           stepOne: {
             title: 'Thank you!',
@@ -372,9 +424,6 @@ export const resources = {
           setUpAccount: 'Set up account',
           next: 'Next',
         },
-      },
-      pages: {
-        home: {},
       },
     },
   },

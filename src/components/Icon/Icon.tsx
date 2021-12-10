@@ -1,5 +1,5 @@
 import { pascalCase } from 'change-case';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import { customIcons } from './CustomIcon';
 import IconStyled from './Icon.styles';
@@ -56,10 +56,14 @@ const AsyncHeroIcon: React.FC<HeroiconProps> = ({
 }) => {
   const [icon, setComponent] = useState<React.ReactNode | null>(null);
 
+  const nameRef = useRef(name);
+
   useEffect(() => {
     let mounted = true;
+    const currentName = nameRef.current;
 
-    if (!icon) {
+    if (!icon || currentName !== name) {
+      nameRef.current = name;
       import(`icons/heroicons/${style}/${pascalCase(name)}`)
         .then((iconModule) =>
           mounted && Reflect.has(iconModule, 'default')
