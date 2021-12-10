@@ -25,7 +25,7 @@ export const colors = {
     600: 'hsl(207, 53%, 51%)',
     700: 'hsl(207, 51%, 40%)',
     800: 'hsl(202, 76%, 25%)',
-    900: 'hsl(205, 53%, 17%)'
+    900: 'hsl(205, 53%, 17%)',
   },
   yellow: {
     50: 'hsl(48, 100%, 96%)',
@@ -309,6 +309,11 @@ export const fontPairs = {
     font-family: ${tokens.fontFamilyBody};
     font-weight: ${tokens.fontWeightBold};
   `,
+};
+
+export const containers = {
+  headerHeight: tokens.spacingXxxLarge,
+  maxNavWidth: '500px',
 };
 
 const toggleHandle = {

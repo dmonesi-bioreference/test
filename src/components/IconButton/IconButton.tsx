@@ -11,6 +11,8 @@ export interface IconButtonProps extends HeroiconProps {
   disabled?: boolean;
   /** Specify the onClick event for the button. */
   onClick?: () => void;
+  /** Should this look for a custom icon instead? */
+  customIcon?: boolean;
 }
 
 const defaultProps: Partial<IconButtonProps> = {
@@ -41,7 +43,13 @@ const IconButton: React.FC<IconButtonProps> = (props) => {
       aria-label={props.label}
       onClick={props.onClick}
     >
-      <Icon name={props.name} style={props.style} aria-hidden="true" />
+      {props.customIcon ? (
+        <Icon kind="custom" name={props.name} />
+      ) : (
+        <Icon name={props.name} style={props.style} aria-hidden="true" />
+      )}
+
+      {props.children}
     </IconButtonStyled>
   );
 };

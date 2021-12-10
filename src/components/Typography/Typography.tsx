@@ -31,7 +31,7 @@ interface HeadingProps {
 
 type TypographyProps =
   | {
-      type: 'body' | 'list' | 'helper-text' | 'validation';
+      type: 'body' | 'list' | 'helper-text' | 'validation' | 'menu-item';
       color?: TypographyColor;
       alignment?: TypographyAlignment;
     }
@@ -53,11 +53,17 @@ export const Typography: React.FC<TypographyProps> = (props) => {
     case 'list':
     case 'helper-text':
     case 'validation':
+    case 'menu-item': {
+      // adds specific class for menu-item to style like h2 without the heading element
+      const prefixClass = props.type === 'menu-item' ? 'heading2' : '';
       return (
-        <TypographyStyled className={`${props.type} ${color} ${alignment}`}>
+        <TypographyStyled
+          className={`${prefixClass} ${props.type} ${color} ${alignment}`}
+        >
           {props.children}
         </TypographyStyled>
       );
+    }
     case 'label': {
       return (
         <TypographyStyled

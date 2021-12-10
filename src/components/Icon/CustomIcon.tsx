@@ -138,8 +138,33 @@ const Atom: React.FC = () => {
   );
 };
 
+const Home: React.FC = () => {
+  return (
+    <svg width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="1" width="38" height="38" rx="19" fill="#fff" />
+      <path
+        d="M11 20l2-2m0 0l7-7 7 7m-14 0v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+        stroke="#408AC5"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <rect
+        x="1"
+        y="1"
+        width="38"
+        height="38"
+        rx="19"
+        stroke="#E4E5E7"
+        strokeWidth="2"
+      />
+    </svg>
+  );
+};
+
 export const customIcons: { [key: string]: React.ReactNode } = {
   helix: <Helix />,
   'healthcare-provider': <HealthCareProvider />,
   atom: <Atom />,
+  home: <Home />,
 };

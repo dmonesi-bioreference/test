@@ -1,4 +1,5 @@
 import { Header } from 'components/Header';
+import { GlobalStyle } from 'index';
 
 import PageLayoutStyled from './PageLayout.styles';
 
@@ -11,6 +12,7 @@ const PageLayout: React.FC<PageLayoutProps> = (props) => {
   const withCards = props.containsCards ? 'page__content--with-cards' : '';
   return (
     <PageLayoutStyled className={`page-layout--${props.theme}`}>
+      <GlobalStyle />
       <Header />
       <div className={`page__content ${withCards}`}>{props.children}</div>
     </PageLayoutStyled>
