@@ -51,3 +51,25 @@ jobs:
       - name: Update image tag on webapp
         run: |
           az webapp config set -g "${{ secrets.AZURE_RESOURCE_GROUP_NAME }}" -n "${{ secrets.AZURE_WEBAPP_NAME }}" -s "${{ steps.get_branch_name.outputs.branch_name }}" --linux-fx-version "DOCKER|genedxacr.azurecr.io/pandas:${{ steps.generate_tag.outputs.tag }}"
+
+      # Wait for the site to be restarted before we start vulnerability scan
+      - name: Wait for 30 seconds...
+        shell: bash
+        run: sleep 30s
+
+      # Run vulnerability scan only when the code is merged into stage branch
+      - name: Start vulnerability scan
+        if: ${{ steps.get_branch_name.outputs.branch_name == 'stage' }}
+        id: netsparker-enterprise-scan-step
+        uses: netsparker/Netsparker-Cloud-GitHub-Actions@v0.0.1
+        with:
+          website-id: ${{ secrets.NETSPARKER_WEBSITE_ID }}
+          scan-type: 'FullWithPrimaryProfile'
+          profile-id: ${{ secrets.NETSPARKER_PROFILE_ID }}
+          user-id: ${{ secrets.NETSPARKER_USER_ID }}
+          api-token: ${{ secrets.NETSPARKER_TOKEN }}
+          base-url: 'https://www.netsparkercloud.com'
+
+      - name: Vulnerability Scan output
+        if: ${{ steps.get_branch_name.outputs.branch_name == 'stage' }}
+        run: echo "${{ steps.netsparker-enterprise-scan-step.outputs.scan-message }}"    
