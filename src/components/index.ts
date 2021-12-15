@@ -38,6 +38,7 @@ export * from './StepTitle';
 export * from './StyleGuide/StyleLabel';
 export * from './Table';
 export * from './Textarea';
+export * from './TimelineItem';
 export * from './Toggle';
 export * from './ToolTip';
 export * from './Typography';

@@ -7,6 +7,7 @@ import { Themes } from 'styles';
 import * as auth from './auth';
 import * as forms from './forms';
 import * as registration from './registration';
+import * as test from './test';
 import { createAppMachine, GetStates } from './utils';
 
 export const initialContext = {
@@ -14,6 +15,7 @@ export const initialContext = {
   theme: 'light' as Themes,
   auth: auth.context,
   forms: forms.context,
+  test: test.context,
 };
 
 const { init, schema } = createAppMachine({
@@ -24,11 +26,12 @@ const { init, schema } = createAppMachine({
     auth: auth.machine,
     forms: forms.machine,
     registration: registration.machine,
+    test: test.machine,
   },
 });
 
 export const app = init({
-  actions: Object.assign(auth.actions, forms.actions),
+  actions: Object.assign(auth.actions, forms.actions, test.actions),
   guards: Object.assign(auth.guards),
   services: Object.assign(forms.services),
 });

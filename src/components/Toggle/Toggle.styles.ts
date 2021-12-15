@@ -17,7 +17,7 @@ const ToggleStyled = styled.div`
     padding: 0;
     position: absolute;
     top: 0;
-    transition: all .2s ease-in-out;
+    transition: all ${tokens.transitionMedium} ease-in-out;
     transition-property: transform;
     width: ${toggle.handleSize};
   }

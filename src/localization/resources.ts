@@ -270,6 +270,31 @@ export const resources = {
               },
             },
           },
+          timeline: {
+            title: "Your Timeline",
+            subTitle: "What's coming next?",
+            waiting: {
+              heading: "Waiting for Results",
+              body: "We're working on processing your test sample. Meanwhile, let's get your health profile setup.",
+              linkLabel: "Set up your Health Profile"
+            },
+            testResultsReady: {
+              heading: "Test Results Ready",
+              body: "Now that your results are ready, your doctor will get in touch to arrange an appointment to discuss the results with you.",
+              bodyPast: "When your results are ready, your doctor will get in touch to arrange an appointment to discuss the results with you.",
+              linkLabel: "Prepare for your appointment"
+            },
+            atAppointment: {
+              heading: "At Your Appointment",
+              body: "You will be able to discuss he results with your doctor and ask any questions that you may have.",
+              linkLabel: "I've spoken with my doctor"
+            },
+            afterAppointment: {
+              heading: "After Your Appointment",
+              body: "You may also have a follow up discussion with a genetic counselor, a healthcare professional with expertise in genetics.",
+              linkLabel: "Focus on your child's care"
+            }
+          },
           childsName: "Child's name",
           getUpdates: 'Receive progress updates',
           noUpdates: 'No updates since your last login',

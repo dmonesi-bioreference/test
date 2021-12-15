@@ -1,19 +1,20 @@
 import { ReactNode, useState } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 
-import { useAppTranslation } from 'app';
-import { Avatar, Button, Icon, Typography } from 'components';
+import { Button, Icon, Typography } from 'components';
 
 import AudioStyled from './Audio.styles';
 
 export interface AudioProps {
   title: string;
   src: string;
+  avatar?: ReactNode;
+  showTranscriptLabel: string;
+  hideTranscriptLabel: string;
   transcript: ReactNode[];
 }
 
 const Audio: React.FC<AudioProps> = (props) => {
-  const t = useAppTranslation();
   const [transcriptHidden, toggleTranscript] = useState(true);
   const iconName = transcriptHidden ? 'book-open' : 'x';
 
@@ -32,7 +33,7 @@ const Audio: React.FC<AudioProps> = (props) => {
 
       <div className="audio__content">
         <div className="audio__description-container">
-          <Avatar shape="square" size="large" />
+          {props.avatar}
 
           <Typography type="body" color="primary" alignment="left">
             {props.children}
@@ -52,8 +53,8 @@ const Audio: React.FC<AudioProps> = (props) => {
           onClick={() => toggleTranscript(!transcriptHidden)}
         >
           {transcriptHidden
-            ? t('components.audio.actions.showTranscript')
-            : t('components.audio.actions.hideTranscript')}
+            ? props.showTranscriptLabel
+            : props.hideTranscriptLabel}
         </Button>
       </div>
 

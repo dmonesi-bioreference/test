@@ -1,21 +1,20 @@
-import { useAppTranslation } from 'app';
-import geneticCounselor from 'assets/images/png/geneticCounselor.png';
 import { AppImage } from 'components';
 
 import AvatarStyled from './Avatar.styles';
 
 export interface AvatarProps {
+  src?: string;
+  alt?: string;
   shape: 'circular' | 'square';
   size: 'small' | 'large';
 }
 
 const Avatar: React.FC<AvatarProps> = (props) => {
-  const t = useAppTranslation();
   return (
     <AvatarStyled className={`${props.shape} ${props.size}`}>
       <AppImage
-        src={geneticCounselor}
-        alt={t('components.avatar.geneticCounselor.altText')}
+        src={props.src ? props.src : ''}
+        alt={props.alt ? props.alt : ''}
         width={85}
         height={85}
       />

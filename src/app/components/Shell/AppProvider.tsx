@@ -11,6 +11,8 @@ export interface AppProviderProps {
   onIdentity?: AppEventFn<unknown>;
   onMagicLink?: AppEventFn<unknown>;
   onFetchTestStatusArticles?: AppEventFn<unknown>;
+  onTestStatus?: AppEventFn<{ labStatus: 'in transit' | 'specimen received' | 'hold for bi' | 'in lab' | 'finished' | 'report ready' | 'canceled' }>;
+  onAppointmentStatus?: AppEventFn<{ appointmentStatus: 'at appointment' | 'after appointment' | undefined }>;
 }
 
 export function AppProvider({
@@ -19,12 +21,16 @@ export function AppProvider({
   onIdentity: handleIdentityCheck = async () => undefined,
   onMagicLink: handleMagicLink = async () => undefined,
   onSession: handleSession = async () => undefined,
+  onTestStatus: handleTestStatus = async () => ({ labStatus: 'in lab' }),
+  onAppointmentStatus: handleAppointmentStatus = async () => ({ appointmentStatus: undefined }),
 }: Props<AppProviderProps>) {
   const services = {
     handleAuth,
     handleIdentityCheck,
     handleSession,
     handleMagicLink,
+    handleTestStatus,
+    handleAppointmentStatus,
   };
 
   const service = useInterpret(app.withConfig({ services }), {
@@ -41,6 +47,8 @@ export function AppProvider({
         nextStep: () => send('nextStep'),
         login: () => send('login'),
         fetchTestStatusArticles: () => send('fetchTestStatusArticles'),
+        getTestStatus: () => send('getTestStatus'),
+        getAppointmentStatus: () => send('getAppointmentStatus'),
       };
 
       return appDispatchMap;

@@ -12,7 +12,7 @@ const TestStatusStyled = styled.div`
   ${base}
 
   ${CircularProgressStyled} {
-    margin-bottom: -58px;
+    margin-bottom: calc(${tokens.spacing} * -3.625);
     margin-left: ${tokens.spacingLarge};
   }
 
@@ -29,7 +29,7 @@ const TestStatusStyled = styled.div`
   }
 
   header {
-    margin: 72px ${tokens.spacingXLarge} ${tokens.spacing};
+    margin: calc(${tokens.spacing} * 4.5) ${tokens.spacingXLarge} ${tokens.spacing};
     ${ButtonStyled} {
       width: 100%;
       justify-content: space-between;

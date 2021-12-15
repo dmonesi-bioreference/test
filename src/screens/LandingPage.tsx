@@ -1,6 +1,6 @@
 import { gql, useQuery } from '@apollo/client';
 
-import { useAppTranslation, TestStatus } from 'app';
+import { useAppTranslation, TestStatus, Timeline } from 'app';
 import InTheNICUImage from 'assets/images/jpg/InTheNICU.jpg';
 import {
   AppImage,
@@ -78,11 +78,8 @@ export const LandingPage = () => {
           </div>
         }
       >
-        <TestStatus
-          labState='in lab'
-          expectedResultsDate='Nov 11, 2022'
-          lastUpdated='11:12am today'
-        />
+        <TestStatus />
+        <Timeline />
       </PageSection>
 
       <PageSection

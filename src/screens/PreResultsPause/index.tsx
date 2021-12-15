@@ -1,4 +1,5 @@
 import { useAppTranslation } from 'app';
+import geneticCounselor from 'assets/images/png/geneticCounselor.png';
 import {
   Audio,
   Avatar,
@@ -8,6 +9,7 @@ import {
   PageLayout,
   Typography,
 } from 'components';
+
 
 import ContentAudioStyledDiv from './PreResultsPause.styles';
 
@@ -20,7 +22,14 @@ export const PreResultsPause = () => {
           type="heading"
           level="1"
           fontType="serif"
-          objectToWrap={<Avatar shape="circular" size="small" />}
+          objectToWrap={
+            <Avatar
+              src={geneticCounselor}
+              alt={t('components.avatar.geneticCounselor.altText')}
+              shape="circular"
+              size="small"
+            />
+          }
         >
           {t('pages.preResultsPause.title')}
         </Typography>
@@ -38,6 +47,16 @@ export const PreResultsPause = () => {
         <Audio
           title={t('pages.preResultsPause.audio.title')}
           src=""
+          avatar={
+            <Avatar
+              src={geneticCounselor}
+              alt={t('components.avatar.geneticCounselor.altText')}
+              shape="square"
+              size="large"
+            />
+          }
+          showTranscriptLabel={t('components.audio.actions.showTranscript')}
+          hideTranscriptLabel={t('components.audio.actions.hideTranscript')}
           transcript={[
             <BulletItem
               icon={<Icon name="home" color="primary" aria-hidden="true" />}

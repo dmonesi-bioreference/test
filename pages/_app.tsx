@@ -21,6 +21,14 @@ function WebApp({ Component, pageProps }: AppProps) {
         await new Promise((resolve) => setTimeout(resolve, 2000));
         return Promise.reject('Explosions!');
       }}
+      onTestStatus={async () => {
+        // API call goes here
+        return { labStatus: 'in lab' };
+      }}
+      onAppointmentStatus={async () => {
+        // API call goes here
+        return { appointmentStatus: 'after appointment' };
+      }}
     >
       <Component {...pageProps} />
     </Shell>

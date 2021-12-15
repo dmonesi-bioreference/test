@@ -15,13 +15,74 @@ describe('The home page', () => {
       await page.findByText('Lisa Consuela Jackson');
     });
 
-    it('has test result updates', async () => {
-      const page = await renderWithShell(<LandingPage />);
+    it('has test results on waiting', async () => {
+      const page = await renderWithShell(
+        <LandingPage />,
+        {
+          onTestStatus: async () => ({ labStatus: 'in lab' })
+        }
+      );
 
       await page.findByText('Test in progress');
       await page.findByText('Results expected Nov 11, 2022');
       await page.findByText('Please keep in mind that processing time may vary.');
       await page.findByText('Updated 11:12am today');
+
+      await page.findByText("We're working on processing your test sample. Meanwhile, let's get your health profile setup.");
+      await page.findByText("Set up your Health Profile");
+    });
+
+    it('has test results ready', async () => {
+      const page = await renderWithShell(
+        <LandingPage />,
+        {
+          onTestStatus: async () => ({ labStatus: 'report ready' })
+        }
+      );
+
+      await page.findByText('Results Ready');
+      await page.findByText('and shared with your doctor.');
+      await page.findByText('Your doctor will soon arrange an appointment to discuss them with you.');
+      await page.findByText('Updated 11:12am today');
+
+      await page.findByText("Now that your results are ready, your doctor will get in touch to arrange an appointment to discuss the results with you.");
+      await page.findByText("Prepare for your appointment");
+    });
+
+    it('has test results ready and user at appointment', async () => {
+      const page = await renderWithShell(
+        <LandingPage />,
+        {
+          onTestStatus: async () => ({ labStatus: 'report ready' }),
+          onAppointmentStatus: async () => ({ appointmentStatus: 'at appointment' })
+        }
+      );
+
+      await page.findByText('Results Ready');
+      await page.findByText('and shared with your doctor.');
+      await page.findByText('Your doctor will soon arrange an appointment to discuss them with you.');
+      await page.findByText('Updated 11:12am today');
+
+      await page.findByText("You will be able to discuss he results with your doctor and ask any questions that you may have.");
+      await page.findByText("I've spoken with my doctor");
+    });
+
+    it('has test results ready and user after appointment', async () => {
+      const page = await renderWithShell(
+        <LandingPage />,
+        {
+          onTestStatus: async () => ({ labStatus: 'report ready' }),
+          onAppointmentStatus: async () => ({ appointmentStatus: 'after appointment' })
+        }
+      );
+
+      await page.findByText('Results Ready');
+      await page.findByText('and shared with your doctor.');
+      await page.findByText('Your doctor will soon arrange an appointment to discuss them with you.');
+      await page.findByText('Updated 11:12am today');
+
+      await page.findByText("You may also have a follow up discussion with a genetic counselor, a healthcare professional with expertise in genetics.");
+      await page.findByText("Focus on your child's care");
     });
   });
 

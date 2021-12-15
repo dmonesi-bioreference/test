@@ -29,14 +29,14 @@ export interface CircularProgressProps {
 
 export const CircularProgress: React.FC<CircularProgressProps> = (props) => {
   props = {
-    strokeWidth: 25.5,
+    strokeWidth: parseInt(remToPx(tokens.spacing), 10) * 1.6,
     trackColor: colors.white,
     indicatorColor: colors.teal[700],
     indicatorShadowColor: colors.black,
     containerThickness: parseInt(remToPx(tokens.spacingXxSmall), 10),
     containerColor: colors.black,
     containerBottomCut: 0,
-    radius: 37,
+    radius: parseInt(remToPx(tokens.spacing), 10) * 2.3,
     ...props
   }
 

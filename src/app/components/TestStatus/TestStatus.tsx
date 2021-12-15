@@ -1,6 +1,3 @@
-
-import { useState, useEffect } from 'react';
-
 import { useAppTranslation } from 'app/components/Shell';
 import {
   Card,
@@ -13,27 +10,17 @@ import {
 import { colors, tokens } from 'styles';
 
 import TestStatusStyled from './TestStatus.styles';
-import { LabStates, TestStatusProps } from './types';
+import { useTestStatus } from './hooks';
 
-export function TestStatus(p: Props<TestStatusProps>) {
+export const TestStatus: React.FC = () => {
+  const [{ isWaiting, percentComplete, lastUpdated, expectedResultsDate }] = useTestStatus();
+
   const t = useAppTranslation();
-  const [percent, setPercent] = useState(0);
-
-  const isWaiting = p.labState != 'canceled' && p.labState != 'report ready' && p.labState != 'updated report';
-
-  useEffect(() => {
-    if (!isWaiting) setPercent(100);
-    else {
-      LabStates.find((e, index) => {
-        if (e === p.labState) setPercent((100 / (LabStates.length - 2)) * (index + 1));
-      });
-    }
-  }, [isWaiting, p.labState]);
 
   return (
       <TestStatusStyled>
         <CircularProgress
-          percent={percent}
+          percent={percentComplete}
           indicatorColor={isWaiting ? [colors.teal[700], colors.teal[800]] : colors.teal[700]}
           containerColor={colors.white}
           containerBottomCut={58}
@@ -64,7 +51,7 @@ export function TestStatus(p: Props<TestStatusProps>) {
               <div className='header-minor'>
                 <Heading level='8'>
                   {isWaiting ? (
-                      t('sections.results.expected', { expectedResultsDate: p.expectedResultsDate })
+                      t('sections.results.expected', { expectedResultsDate })
                     ) : (
                       `${t('sections.results.doctorShared').toLowerCase()}.`
                     )
@@ -87,7 +74,7 @@ export function TestStatus(p: Props<TestStatusProps>) {
           <div className="last-updated">
             <Icon name="refresh" />
             <Typography type="body">
-              {t('sections.results.updated', { lastUpdated: p.lastUpdated })}
+              {t('sections.results.updated', { lastUpdated })}
             </Typography>
           </div>
         </Card>
