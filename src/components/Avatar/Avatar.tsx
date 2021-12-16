@@ -3,7 +3,7 @@ import { AppImage } from 'components';
 import AvatarStyled from './Avatar.styles';
 
 export interface AvatarProps {
-  src?: string;
+  src?: StaticImageData | string;
   alt?: string;
   shape: 'circular' | 'square';
   size: 'small' | 'large';
