@@ -10,6 +10,8 @@
     "dist/"
   ],
   "scripts": {
+    "auth:build-and-analyze": "node ./infrastructure/auth/scripts/build-and-analyze.js",
+    "auth:deploy": "node ./infrastructure/auth/scripts/deploy.js",
     "build": "next build && next export",
     "build:next": "yarn make-icons && next build",
     "build:storybook": "build-storybook",
@@ -37,12 +39,15 @@
   },
   "dependencies": {
     "@apollo/client": "^3.4.15",
+    "@auth0/nextjs-auth0": "1.6.1",
     "@storybook/addon-docs": "^6.3.12",
     "@tippyjs/react": "^4.2.5",
     "@xstate/immer": "0.2.0",
     "@xstate/inspect": "0.5.1",
     "@xstate/react": "1.5.1",
+    "auth0-js": "9.18.0",
     "clsx": "^1.1.1",
+    "cross-env": "7.0.3",
     "fork-ts-checker-webpack-plugin": "6.4.0",
     "graphql": "^15.5.3",
     "history": "5.0.0",
@@ -63,8 +68,7 @@
     "typeface-poppins": "^1.1.13",
     "typeface-roboto": "^1.1.13",
     "xstate": "4.23.0",
-    "yup": "0.32.11",
-    "yup-phone": "1.2.19"
+    "yup": "0.32.11"
   },
   "devDependencies": {
     "@babel/cli": "7.14.8",
@@ -93,6 +97,7 @@
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.0",
+    "@types/auth0-js": "9.14.5",
     "@types/history": "4.7.9",
     "@types/jest": "^26.0.24",
     "@types/lodash": "4.14.171",
@@ -104,6 +109,7 @@
     "@types/styled-components": "^5.1.7",
     "@typescript-eslint/eslint-plugin": "^4.10.0",
     "@typescript-eslint/parser": "^4.10.0",
+    "auth0-deploy-cli": "7.3.1",
     "babel-loader": "8.2.2",
     "babel-plugin-styled-components": "^1.12.0",
     "bluebird": "^3.7.2",
@@ -112,6 +118,10 @@
     "cypress": "8.6.0",
     "del": "^6.0.0",
     "download": "^8.0.0",
+    "dotenv": "10.0.0",
+    "esbuild": "0.14.2",
+    "esbuild-plugin-svgr": "0.0.3",
+    "handlebars": "4.7.7",
     "eslint": "7.32.0",
     "eslint-config-next": "11.0.1",
     "eslint-config-prettier": "^8.3.0",

@@ -1,6 +1,6 @@
 import * as yup from 'yup';
-import 'yup-phone';
 
+import { PHONE } from './expressions';
 import { toErrorList } from './validation-failure';
 
 export interface CaregiverContact {
@@ -23,7 +23,9 @@ const schema = yup.object().shape({
   phone: yup
     .string()
     .trim()
-    .phone('US', false, 'forms.caregiverContact.phone.errors.invalid')
+    .matches(PHONE, {
+      message: 'forms.caregiverContact.phone.errors.invalid',
+    })
     .required('forms.caregiverContact.phone.errors.required'),
 });
 

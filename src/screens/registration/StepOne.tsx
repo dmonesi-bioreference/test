@@ -41,21 +41,23 @@ export const StepOne = () => {
           </div>
         }
       >
-        <div style={{ marginBottom: tokens.spacingXxLarge }}>
-          <div style={{ marginBottom: tokens.spacing }}>
-            <CaregiverNameElements.FirstName />
+        <form onSubmit={(event) => event.preventDefault()}>
+          <div style={{ marginBottom: tokens.spacingXxLarge }}>
+            <div style={{ marginBottom: tokens.spacing }}>
+              <CaregiverNameElements.FirstName />
+            </div>
+            <CaregiverNameElements.LastName />
           </div>
-          <CaregiverNameElements.LastName />
-        </div>
 
-        <Button
-          kind="primary"
-          onClick={events.nextStep}
-          submit={true}
-          disabled={!isValid}
-        >
-          {t('sections.furtherRegistration.next')}
-        </Button>
+          <Button
+            kind="primary"
+            onClick={events.nextStep}
+            submit={true}
+            disabled={!isValid}
+          >
+            {t('sections.furtherRegistration.next')}
+          </Button>
+        </form>
       </PageSection>
     </PageLayout>
   );

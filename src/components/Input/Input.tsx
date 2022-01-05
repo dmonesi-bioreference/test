@@ -32,14 +32,12 @@ export interface InputProps extends InputTextBaseProps {
   inputHelper?: React.ReactNode;
 }
 
-let idCount = 0;
-
 const defaultProps: Partial<InputProps> = {
   size: 'medium',
 };
 
 const Input: React.FC<InputProps> = (props) => {
-  const [id] = useState(++idCount);
+  const id = props.name;
   const inputId = `input-${id}`;
   const labelId = `input-label-${id}`;
   const helpTextId = `input-help-text-${id}`;

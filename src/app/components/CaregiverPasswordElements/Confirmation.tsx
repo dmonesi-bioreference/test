@@ -16,7 +16,7 @@ export function Confirmation({ label: givenLabel }: Props<AppInputProps>) {
 
   return (
     <PasswordInput
-      name="password"
+      name="password-confirmation"
       label={label}
       invalid={errors.length > 0 && !isPristine}
       invalidMessage={errors.map(t).join(' ')}

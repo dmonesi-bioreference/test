@@ -24,6 +24,11 @@ const schema = yup.object().shape({
   password: yup
     .string()
     .trim()
+    .min(8, 'forms.password.password.errors.short')
+    .matches(
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+      'forms.password.password.errors.invalid'
+    )
     .required('forms.password.password.errors.required'),
   termsAndConditions: yup
     .string()

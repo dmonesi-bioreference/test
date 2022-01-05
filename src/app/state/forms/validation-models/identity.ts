@@ -1,6 +1,7 @@
 import * as yup from 'yup';
-import 'yup-phone';
 
+import { dob } from './date-of-birth';
+import { PHONE } from './expressions';
 import { toErrorList } from './validation-failure';
 
 declare global {
@@ -22,7 +23,6 @@ const zip = yup
   .required('forms.identity.zip.errors.required')
   .matches(US_ZIP_CODE, { message: 'forms.identity.zip.errors.invalid' });
 
-const dob = yup.string().trim().required('forms.identity.dob.errors.required');
 const email = yup
   .string()
   .trim()
@@ -32,14 +32,29 @@ const email = yup
 const phone = yup
   .string()
   .trim()
-  .phone('US', false, 'forms.identity.phone.errors.invalid');
+  .matches(PHONE, { message: 'forms.identity.phone.errors.invalid' });
 
 export const validateIdentity = async (
   identity: Partial<ValidationModelMap['identity']>
 ) => {
   const schema = identity.phone
-    ? yup.object().shape({ zip, dob, email, phone })
-    : yup.object().shape({ zip, dob, email });
+    ? yup.object().shape({
+        zip,
+        dob: dob({
+          future: 'forms.identity.dob.errors.future',
+          required: 'forms.identity.dob.errors.required',
+        }),
+        email,
+        phone,
+      })
+    : yup.object().shape({
+        zip,
+        dob: dob({
+          future: 'forms.identity.dob.errors.future',
+          required: 'forms.identity.dob.errors.required',
+        }),
+        email,
+      });
 
   return await schema
     .validate(identity, { abortEarly: false })

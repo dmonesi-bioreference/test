@@ -40,20 +40,22 @@ export const StepTwo = () => {
           </div>
         }
       >
-        <div style={{ marginBottom: tokens.spacingXxxLarge }}>
-          <div style={{ marginBottom: tokens.spacing }}>
-            <CaregiverContactElements.EmailAddress />
+        <form onSubmit={(event) => event.preventDefault()}>
+          <div style={{ marginBottom: tokens.spacingXxxLarge }}>
+            <div style={{ marginBottom: tokens.spacing }}>
+              <CaregiverContactElements.EmailAddress />
+            </div>
+            <CaregiverContactElements.PhoneNumber />
           </div>
-          <CaregiverContactElements.PhoneNumber />
-        </div>
-        <Button
-          kind="primary"
-          onClick={events.nextStep}
-          submit={true}
-          disabled={!isValid}
-        >
-          {t('sections.furtherRegistration.next')}
-        </Button>
+          <Button
+            kind="primary"
+            onClick={events.nextStep}
+            submit={true}
+            disabled={!isValid}
+          >
+            {t('sections.furtherRegistration.next')}
+          </Button>
+        </form>
       </PageSection>
     </PageLayout>
   );

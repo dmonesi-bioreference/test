@@ -1,6 +1,5 @@
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/svg-arrow.css';
-import React from 'react';
 import 'tippy.js/dist/tippy.css';
 import { roundArrow } from 'tippy.js';
 

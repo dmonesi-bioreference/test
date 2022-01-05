@@ -1,15 +1,14 @@
 import { OnState } from 'app';
-import { LoginPage } from 'screens';
 
 import { IdentityForm } from './IdentityForm';
-import { LandingPage } from './LandingPage';
+import { LoginPage } from './LoginPage';
 import { RegistrationWizard } from './registration';
 
-export function Home() {
+export function Auth0Registration() {
   return (
     <>
-      <OnState matches="auth.knownCaregiver">
-        <LandingPage />
+      <OnState matches="auth.authenticating">
+        <LoginPage />
       </OnState>
       <OnState matches="auth.requestingLogin">
         <LoginPage />
@@ -18,6 +17,9 @@ export function Home() {
         <IdentityForm />
       </OnState>
       <OnState matches="auth.registration">
+        <RegistrationWizard />
+      </OnState>
+      <OnState matches="auth.registering">
         <RegistrationWizard />
       </OnState>
     </>

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Helix: React.FC = () => {
   return (
     <svg

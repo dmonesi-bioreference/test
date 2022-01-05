@@ -152,10 +152,13 @@ describe('Registration steps', () => {
       'Lastly, create a strong password to help keep your account and your child’s information safe.'
     );
 
-    userEvent.type(await page.findByLabelText('Password'), 'thisisapassword');
+    userEvent.type(
+      await page.findByLabelText('Password'),
+      '1 this is So Secure'
+    );
     userEvent.type(
       await page.findByLabelText('Confirm Password'),
-      'thisisapassword'
+      '1 this is So Secure'
     );
     userEvent.click(await page.findByText('I agree to the'));
 

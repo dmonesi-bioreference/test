@@ -1,5 +1,6 @@
 import * as yup from 'yup';
 
+import { dob } from './date-of-birth';
 import { toErrorList } from './validation-failure';
 
 const parent = 'Parent' as const;
@@ -17,10 +18,10 @@ declare global {
 }
 
 const schema = yup.object().shape({
-  dob: yup
-    .string()
-    .trim()
-    .required('forms.caregiverRelationship.dob.errors.required'),
+  dob: dob({
+    future: 'forms.caregiverRelationship.dob.errors.future',
+    required: 'forms.caregiverRelationship.dob.errors.required',
+  }),
   relationship: yup
     .mixed()
     .oneOf(

@@ -8,10 +8,9 @@ import { Article, mockArticle } from '../Content';
 import { AppEventContext, AppServiceContext } from './context';
 
 export interface AppProviderProps {
-  onSession?: AppEventFn<unknown>;
+  onSession?: AppEventFn<AuthenticatedSession>;
   onAuthenticate?: AppEventFn<unknown>;
   onIdentity?: AppEventFn<unknown>;
-  onMagicLink?: AppEventFn<unknown>;
   onFetchTestStatusArticles?: AppEventFn<unknown>;
   onTestStatus?: AppEventFn<{
     labStatus:
@@ -26,30 +25,46 @@ export interface AppProviderProps {
   onAppointmentStatus?: AppEventFn<{
     appointmentStatus: 'at appointment' | 'after appointment' | undefined;
   }>;
-  onReport?: AppEventFn<{ src: string, thumbnail: string } | undefined>;
+  onReport?: AppEventFn<{ src: string; thumbnail: string } | undefined>;
   onFetchAllArticles?: AppEventFn<Article[]>;
+  onPatientGuid?: AppEventFn<unknown>;
+  onRegistration?: AppEventFn<unknown>;
 }
+
+const emptySession: AuthenticatedSession = {
+  nickname: '',
+  name: '',
+  picture: '',
+  updated_at: '',
+  email: '',
+  email_verified: false,
+  sub: '',
+};
 
 export function AppProvider({
   children,
   onAuthenticate: handleAuth = async () => undefined,
   onIdentity: handleIdentityCheck = async () => undefined,
-  onMagicLink: handleMagicLink = async () => undefined,
-  onSession: handleSession = async () => undefined,
   onTestStatus: handleTestStatus = async () => ({ labStatus: 'in lab' }),
-  onAppointmentStatus: handleAppointmentStatus = async () => ({ appointmentStatus: undefined }),
+  onAppointmentStatus: handleAppointmentStatus = async () => ({
+    appointmentStatus: undefined,
+  }),
   onReport: handleReport = async () => undefined,
   onFetchAllArticles: handleFetchAllArticles = async () => [mockArticle],
+  onPatientGuid: handlePatientGuid = async () => undefined,
+  onSession: handleSession = async () => emptySession,
+  onRegistration: handleRegistration = async () => undefined,
 }: Props<AppProviderProps>) {
   const services = {
     handleAuth,
     handleIdentityCheck,
     handleSession,
-    handleMagicLink,
     handleTestStatus,
     handleAppointmentStatus,
     handleReport,
     handleFetchAllArticles,
+    handlePatientGuid,
+    handleRegistration,
   };
 
   const service = useInterpret(app.withConfig({ services }), {
@@ -69,6 +84,7 @@ export function AppProvider({
         getAppointmentStatus: () => send('getAppointmentStatus'),
         viewTestResults: () => send('VIEW_TEST_RESULTS'),
         fetchAllArticles: () => send('fetchAllArticles'),
+        register: () => send('register'),
       };
 
       return appDispatchMap;

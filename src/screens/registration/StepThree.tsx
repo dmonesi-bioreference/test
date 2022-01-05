@@ -40,24 +40,26 @@ export const StepThree = () => {
           </div>
         }
       >
-        <div style={{ marginBottom: tokens.spacingXxSmall }}>
+        <form onSubmit={(event) => event.preventDefault()}>
           <div style={{ marginBottom: tokens.spacingXxSmall }}>
-            <CaregiverRelationshipElements.Relationship />
+            <div style={{ marginBottom: tokens.spacingXxSmall }}>
+              <CaregiverRelationshipElements.Relationship />
+            </div>
           </div>
-        </div>
 
-        <div style={{ marginBottom: tokens.spacingXxxLarge }}>
-          <CaregiverRelationshipElements.DateOfBirth />
-        </div>
+          <div style={{ marginBottom: tokens.spacingXxxLarge }}>
+            <CaregiverRelationshipElements.DateOfBirth />
+          </div>
 
-        <Button
-          kind="primary"
-          onClick={events.nextStep}
-          submit={true}
-          disabled={!isValid}
-        >
-          {t('sections.furtherRegistration.next')}
-        </Button>
+          <Button
+            kind="primary"
+            onClick={events.nextStep}
+            submit={true}
+            disabled={!isValid}
+          >
+            {t('sections.furtherRegistration.next')}
+          </Button>
+        </form>
       </PageSection>
     </PageLayout>
   );

@@ -7,7 +7,7 @@ const homePage = Pages.Home.from(cy);
 
 describe('Home page', () => {
   describe('with a valid session', () => {
-    it('it lands a caregiver on the landing page', () => {
+    xit('it lands a caregiver on the landing page', () => {
       homePage.open();
       homePage.hasText('Welcome, Barbara & Lisa');
     });

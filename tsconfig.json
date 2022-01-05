@@ -33,7 +33,8 @@
     "*.config.js",
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "infrastructure/auth/scripts"
   ],
   "exclude": [
     "node_modules",

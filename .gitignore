@@ -11,7 +11,8 @@
 
 # testing
 /coverage
-/video
+/cypress/videos
+/videos
 /downloads
 
 # production
@@ -20,6 +21,8 @@
 
 # misc
 .DS_Store
+.env
+.env.auth
 .env.local
 .env.development.local
 .env.test.local
@@ -40,5 +43,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-# terraform
+# infrastructure
 /infrastructure/terraform/**/.terraform
+/infrastructure/auth/deployment

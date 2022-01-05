@@ -8,13 +8,17 @@ export interface PageLayoutProps {
   theme?: 'care' | 'community' | 'resources';
 }
 
-const PageLayout: React.FC<PageLayoutProps> = (props) => {
-  const withCards = props.containsCards ? 'page__content--with-cards' : '';
+const PageLayout: React.FC<PageLayoutProps> = ({
+  containsCards,
+  children,
+  ...props
+}) => {
+  const withCards = containsCards ? 'page__content--with-cards' : '';
   return (
     <PageLayoutStyled className={`page-layout--${props.theme}`}>
       <GlobalStyle />
       <Header />
-      <div className={`page__content ${withCards}`}>{props.children}</div>
+      <div className={`page__content ${withCards}`}>{children}</div>
     </PageLayoutStyled>
   );
 };

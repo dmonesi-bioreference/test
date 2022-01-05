@@ -1,9 +1,9 @@
-import React from 'react';
+import { Children } from 'react';
 
 import ListStyled from './List.styles';
 
 const List: React.FC = (props) => {
-  const children = React.Children.toArray(props.children);
+  const children = Children.toArray(props.children);
   return (
     <ListStyled>
       <ul className="list">{buildList(children)}</ul>

@@ -66,36 +66,38 @@ export const IdentityForm = () => {
             </div>
           </InformationBanner>
         ) : null}
-        <IdentityElements.DateOfBirth
-          label={t('sections.identity.form.dateOfBirth.label')}
-        />
-        <IdentityElements.ZipCode
-          label={t('sections.identity.form.zipCode.label')}
-          placeholder={t('sections.identity.form.zipCode.placeholder')}
-        />
-        <div style={{ marginBottom: tokens.spacingXxLarge }}>
-          <IdentityElements.EmailAddress
-            label={t('sections.identity.form.email.label')}
-            placeholder={t('sections.identity.form.email.placeholder')}
+        <form onSubmit={(event) => event.preventDefault()}>
+          <IdentityElements.DateOfBirth
+            label={t('sections.identity.form.dateOfBirth.label')}
           />
-        </div>
-        <OnState
-          matches="auth.checkingIdentity"
-          fallback={
-            <Button
-              kind="primary"
-              submit={true}
-              disabled={!isValid || attemptsExhausted}
-              onClick={events.checkIdentity}
-            >
-              {t('sections.identity.form.confirm')}
+          <IdentityElements.ZipCode
+            label={t('sections.identity.form.zipCode.label')}
+            placeholder={t('sections.identity.form.zipCode.placeholder')}
+          />
+          <div style={{ marginBottom: tokens.spacingXxLarge }}>
+            <IdentityElements.EmailAddress
+              label={t('sections.identity.form.email.label')}
+              placeholder={t('sections.identity.form.email.placeholder')}
+            />
+          </div>
+          <OnState
+            matches="auth.checkingIdentity"
+            fallback={
+              <Button
+                kind="primary"
+                submit={true}
+                disabled={!isValid || attemptsExhausted}
+                onClick={events.checkIdentity}
+              >
+                {t('sections.identity.form.confirm')}
+              </Button>
+            }
+          >
+            <Button kind="primary" submit={true} disabled prefix={<Spinner />}>
+              {t('sections.identity.form.checkingIdentity')}
             </Button>
-          }
-        >
-          <Button kind="primary" submit={true} disabled prefix={<Spinner />}>
-            {t('sections.identity.form.checkingIdentity')}
-          </Button>
-        </OnState>
+          </OnState>
+        </form>
       </PageSection>
     </PageLayout>
   );

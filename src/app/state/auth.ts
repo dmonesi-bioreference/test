@@ -5,12 +5,66 @@ declare global {
     authenticate: { type: 'authenticate' };
     checkIdentity: { type: 'checkIdentity' };
     login: { type: 'login' };
+    register: { type: 'register' };
   }
+
+  interface AuthenticatedSession {
+    nickname: string;
+    name: string;
+    picture: string;
+    updated_at: string;
+    email: string;
+    email_verified: boolean;
+    sub: string;
+  }
+}
+
+function isAuthenticatedSession(
+  candidate: any
+): candidate is AuthenticatedSession {
+  return (
+    typeof candidate === 'object' &&
+    'nickname' in candidate &&
+    'name' in candidate &&
+    'picture' in candidate &&
+    'updated_at' in candidate &&
+    'email' in candidate &&
+    'email_verified' in candidate &&
+    'sub' in candidate
+  );
 }
 
 export const actions = {
   reduceIdentityAttempts: assign((context: AppContext) => {
     context.auth.identityCheckAttempts--;
+  }),
+  collectPatientGuid: assign((context: AppContext, event: AppEvents) => {
+    const data = 'data' in event ? event?.data : {};
+
+    if (typeof data === 'string') {
+      context.auth.patientGuid = data;
+    }
+  }),
+  clearAuthErrors: assign((context: AppContext) => {
+    context.auth.errors = [];
+  }),
+  collectLoginErrors: assign((context: AppContext, event: AppEvents) => {
+    const data = 'data' in event ? (event?.data as {}) : {};
+
+    if ('description' in data) {
+      context.auth.errors = [data['description'] as string];
+    }
+
+    if ('error_description' in data) {
+      context.auth.errors = [data['error_description'] as string];
+    }
+  }),
+  collectSession: assign((context: AppContext, event: AppEvents) => {
+    const data = 'data' in event ? event?.data : {};
+
+    if (isAuthenticatedSession(data)) {
+      context.auth.session = data;
+    }
   }),
 };
 
@@ -21,23 +75,39 @@ export const guards = {
 
 export const context = {
   identityCheckAttempts: 5,
+  patientGuid: '',
+  session: null as AuthenticatedSession | null,
+  errors: [] as string[],
 };
 
 export const machine = {
-  initial: 'checkingSession',
+  initial: 'checkingPatientGuid',
   states: {
-    authenticating: {
+    checkingPatientGuid: {
       invoke: {
-        src: 'handleAuth',
-        onDone: 'knownCaregiver',
+        src: 'handlePatientGuid',
+        onDone: { target: 'checkingSession', actions: 'collectPatientGuid' },
         onError: 'requestingLogin',
       },
     },
+    requestingLogin: {
+      on: {
+        authenticate: { target: 'authenticating', actions: 'clearAuthErrors' },
+      },
+    },
+    authenticating: {
+      invoke: {
+        src: 'handleAuth',
+        onDone: { target: 'knownCaregiver', actions: 'clearAuthErrors' },
+        onError: { target: 'requestingLogin', actions: 'collectLoginErrors' },
+      },
+    },
+
     checkingSession: {
       invoke: {
         src: 'handleSession',
-        onDone: 'knownCaregiver',
-        onError: 'checkingMagicLink',
+        onDone: { target: 'knownCaregiver', actions: 'collectSession' },
+        onError: 'verifyingIdentity',
       },
     },
     knownCaregiver: {},
@@ -49,13 +119,10 @@ export const machine = {
         ],
       },
     },
-    requestingLogin: { on: { authenticate: 'authenticating' } },
-    identityUnverified: { on: { login: 'requestingLogin' } },
     checkingIdentity: {
       invoke: {
         src: 'handleIdentityCheck',
-        // Not the intended done target for this.
-        onDone: 'knownCaregiver',
+        onDone: 'registration',
         onError: [
           {
             target: 'verifyingIdentity',
@@ -66,12 +133,16 @@ export const machine = {
         ],
       },
     },
-    checkingMagicLink: {
+    registration: { on: { register: 'registering' } },
+    registering: {
       invoke: {
-        src: 'handleMagicLink',
-        onDone: 'verifyingIdentity',
-        onError: 'requestingLogin',
+        src: 'handleRegistration',
+        onDone: 'knownCaregiver',
+        onError: {
+          target: 'registration',
+        },
       },
     },
+    identityUnverified: { on: { login: 'requestingLogin' } },
   },
 };

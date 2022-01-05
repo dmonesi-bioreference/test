@@ -58,29 +58,31 @@ export const StepFour = () => {
           </InformationBanner>
         </div>
 
-        <div style={{ marginBottom: tokens.spacingLarge }}>
-          <div style={{ marginBottom: tokens.spacing }}>
-            <CaregiverPasswordElements.Password />
+        <form onSubmit={(event) => event.preventDefault()}>
+          <div style={{ marginBottom: tokens.spacingLarge }}>
+            <div style={{ marginBottom: tokens.spacing }}>
+              <CaregiverPasswordElements.Password />
+            </div>
+            <CaregiverPasswordElements.Confirmation />
           </div>
-          <CaregiverPasswordElements.Confirmation />
-        </div>
 
-        <div
-          style={{
-            marginBottom: tokens.spacingXLarge,
-          }}
-        >
-          <CaregiverPasswordElements.TermsAndConditions />
-        </div>
+          <div
+            style={{
+              marginBottom: tokens.spacingXLarge,
+            }}
+          >
+            <CaregiverPasswordElements.TermsAndConditions />
+          </div>
 
-        <Button
-          kind="primary"
-          onClick={events.nextStep}
-          submit={true}
-          disabled={!isValid}
-        >
-          {t('sections.furtherRegistration.next')}
-        </Button>
+          <Button
+            kind="primary"
+            onClick={events.register}
+            submit={true}
+            disabled={!isValid}
+          >
+            {t('sections.furtherRegistration.next')}
+          </Button>
+        </form>
       </PageSection>
     </PageLayout>
   );

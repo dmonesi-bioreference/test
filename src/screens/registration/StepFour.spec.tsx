@@ -19,10 +19,13 @@ describe('Step four page', () => {
 
       expect((await page.findByText('Next')).parentElement).toBeDisabled();
 
-      userEvent.type(await page.findByLabelText('Password'), 'thisisapassword');
+      userEvent.type(
+        await page.findByLabelText('Password'),
+        '1 this is So Secure'
+      );
       userEvent.type(
         await page.findByLabelText('Confirm Password'),
-        'thisisapassword'
+        '1 this is So Secure'
       );
       userEvent.click(await page.findByText('I agree to the'));
 

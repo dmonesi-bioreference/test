@@ -1,5 +1,3 @@
-import React from 'react';
-
 import ProcessBarStyled from './ProcessBar.styles';
 
 export interface ProcessBarProps {

@@ -111,6 +111,7 @@ export const resources = {
             label: 'Date of birth',
             placeholder: 'mm / dd / yyyy',
             errors: {
+              future: 'Date of birth cannot be in the future',
               required: 'Date of birth is required.',
             },
           },
@@ -191,6 +192,7 @@ export const resources = {
               'This provides us with an extra identifier unique to you - we can use it to help you to recover your account if you get locked out.',
             errors: {
               required: 'Date of Birth is required.',
+              future: 'Date of birth cannot be in the future',
               invalid: 'Date of Birth is invalid.',
             },
           },
@@ -211,13 +213,14 @@ export const resources = {
             errors: {
               required: 'Password is required.',
               invalid: 'Password is invalid.',
+              short: 'Password is too short.',
             },
             label: 'Password',
           },
           confirmation: {
             errors: {
-              required: 'Password is required.',
-              invalid: 'Password is invalid.',
+              required: 'Password confirmation is required.',
+              invalid: 'Confirmation and password must match.',
             },
             label: 'Confirm Password',
           },

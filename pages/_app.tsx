@@ -4,22 +4,58 @@ import { mockArticle } from 'app';
 import { Shell } from 'app/components/Shell';
 import 'inspect';
 
-function WebApp({ Component, pageProps }: AppProps) {
-  // For now, we are using an auto-failure placeholder in order to test
-  // our registration flow.
-  //
-  const failedSession = () => Promise.reject('No session found');
+const explosions = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+  return Promise.reject('Explosions!');
+};
 
+const log = (...args: any[]) => {
+  if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
+    console.log(...args);
+  }
+};
+
+async function getAuth0SessionForNonDemoPages() {
+  log('Checking session');
+
+  if (
+    typeof window !== 'undefined' &&
+    window.location.pathname.startsWith('/demo')
+  ) {
+    return Promise.reject('No sessions in demo routes.');
+  }
+
+  const result = await fetch('/api/auth/me');
+
+  if (!result.ok) {
+    if (typeof window !== 'undefined') {
+      window.location.href = '/api/auth/login';
+      await new Promise((resolve) => setTimeout(resolve, 10_000_000));
+    } else {
+      throw new Error(result.status.toString());
+    }
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+  return (await result.json()) as AuthenticatedSession;
+}
+
+async function checkForPatientGuid() {
+  log('Checking patient GUID');
+}
+
+function WebApp({ Component, pageProps }: AppProps) {
   return (
     <Shell
+      onPatientGuid={checkForPatientGuid}
+      onSession={getAuth0SessionForNonDemoPages}
       onAuthenticate={async () => {
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-        return Promise.reject('401 Unauthorized');
+        log('Authenticating');
       }}
-      onSession={failedSession}
       onIdentity={async () => {
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-        return Promise.reject('Explosions!');
+        log('Checking identity');
+        await explosions();
       }}
       onTestStatus={async () => {
         // API call goes here

@@ -33,6 +33,52 @@ describe('identity validations', () => {
     });
   });
 
+  it('rejects future dates of birth', async () => {
+    const dateToDobString = (date: Date) => {
+      const year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(
+        date
+      );
+      const month = new Intl.DateTimeFormat('en', { month: 'numeric' }).format(
+        date
+      );
+      const day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(
+        date
+      );
+
+      return `${year}-${month}-${day}`;
+    };
+
+    const nextYear = new Date().getFullYear() + 1;
+    const lastYear = new Date().getFullYear() - 1;
+
+    const future = await validate({
+      dob: `${nextYear}-12-28`,
+    });
+
+    expect(future).toContainEqual({
+      field: 'dob',
+      message: 'forms.identity.dob.errors.future',
+    });
+
+    const past = await validate({
+      dob: `${lastYear}-12-28`,
+    });
+
+    expect(past).not.toContainEqual({
+      field: 'dob',
+      message: 'forms.identity.dob.errors.future',
+    });
+
+    const today = await validate({
+      dob: dateToDobString(new Date()),
+    });
+
+    expect(today).not.toContainEqual({
+      field: 'dob',
+      message: 'forms.identity.dob.errors.future',
+    });
+  });
+
   it('rejects invalid email addresses', async () => {
     const result = await validate({
       email: 'arglebargle',

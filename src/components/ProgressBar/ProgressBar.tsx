@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Step, { StepPosition } from 'components/Step/Step';
 
 import ProgressBarStyled from './ProgressBar.styles';
