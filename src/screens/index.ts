@@ -14,4 +14,5 @@ export * from './registration/StepOne';
 export * from './registration/StepThree';
 export * from './registration/StepTwo';
 export * from './Resources';
+export * from './ResourcesPage';
 export * from './TestingProcess';

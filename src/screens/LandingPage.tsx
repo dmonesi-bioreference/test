@@ -23,6 +23,7 @@ const FETCH_ARTICLE = gql`
       id
       title
       content
+      label
     }
   }
 `;
@@ -30,6 +31,7 @@ const FETCH_ARTICLE = gql`
 export const LandingPage = () => {
   const t = useAppTranslation();
   const { data } = useQuery<ArticleQuery>(FETCH_ARTICLE);
+
   const articles = data?.articles.map((article) => {
     return (
       <Card
@@ -45,14 +47,16 @@ export const LandingPage = () => {
       >
         <div style={{ marginBottom: tokens.spacingXSmall }}>
           <Typography type="label" labelType="title" color="primary">
-            {t('sections.resources.story.title')}
+            {article.label}
           </Typography>
         </div>
         <div style={{ marginBottom: tokens.spacing }}>
           <Heading>{article.title}</Heading>
         </div>
         <div style={{ marginBottom: tokens.spacingLarge }}>
-          <Typography type="body">{article.content.join()}</Typography>
+          <Typography type="body">
+            {article.content.map((textBlock) => textBlock.content).join()}
+          </Typography>
         </div>
         <Button kind="primary" href="/resources/real-family-story-81707">
           {t('sections.resources.story.readMore')}

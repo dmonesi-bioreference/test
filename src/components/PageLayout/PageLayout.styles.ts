@@ -6,15 +6,15 @@ const PageLayoutStyled = styled.div`
   ${base}
   background-color: ${tokens.colorBackgroundDefault};
 
-  .page-layout--care {
+  &.page-layout--care {
     background-color: ${tokens.colorBackgroundCare};
   }
 
-  .page-layout--community {
+  &.page-layout--community {
     background-color: ${tokens.colorBackgroundCommunity};
   }
 
-  .page-layout--resources {
+  &.page-layout--resources {
     background-color: ${tokens.colorBackgroundResources};
   }
 

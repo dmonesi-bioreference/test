@@ -25,7 +25,9 @@ describe('The home page', () => {
 
       await page.findByText('Test in progress');
       await page.findByText('Results expected Nov 11, 2022');
-      await page.findByText('Please keep in mind that processing time may vary.');
+      await page.findByText(
+        'Please keep in mind that processing time may vary.'
+      );
       await page.findByText('Updated 11:12am today');
 
       await page.findByText("We're working on processing your test sample. Meanwhile, let's get your health profile setup.");
@@ -92,13 +94,11 @@ describe('The home page', () => {
 
       await page.findByText('Resources');
       await page.findByText('(In the NICU)');
+      await page.findByText('Preparing For Results');
+      await page.findByText('What to expect from the test results');
       await page.findByText(
-        'How other parents have coped with this time of uncertainty.'
+        'A genetic test report contains a lot of important information. We’ll break down the key terms for you so you can understand them better.'
       );
-      await page.findByText(
-        'They said it was supposed to be the most wonderful experience of my life.'
-      );
-      await page.findByText('Real family story');
       await page.findByText('Read Story');
     });
 

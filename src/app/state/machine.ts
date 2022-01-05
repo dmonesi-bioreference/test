@@ -1,10 +1,12 @@
-import { InterpreterFrom } from 'xstate';
-import { DoneInvokeEvent } from 'xstate';
+import { DoneInvokeEvent, InterpreterFrom } from 'xstate';
 
 import { SupportedLanguages } from 'localization';
 import { Themes } from 'styles';
 
+import { Article } from '../components';
+
 import * as auth from './auth';
+import * as content from './content';
 import * as forms from './forms';
 import * as registration from './registration';
 import * as test from './test';
@@ -16,6 +18,9 @@ export const initialContext = {
   auth: auth.context,
   forms: forms.context,
   test: test.context,
+  content: {
+    articles: { data: [] as Article[], errors: [] as ContentFailure[] },
+  },
 };
 
 const { init, schema } = createAppMachine({
@@ -27,11 +32,17 @@ const { init, schema } = createAppMachine({
     forms: forms.machine,
     registration: registration.machine,
     test: test.machine,
+    content: content.machine,
   },
 });
 
 export const app = init({
-  actions: Object.assign(auth.actions, forms.actions, test.actions),
+  actions: Object.assign(
+    auth.actions,
+    forms.actions,
+    test.actions,
+    content.actions
+  ),
   guards: Object.assign(auth.guards),
   services: Object.assign(forms.services),
 });

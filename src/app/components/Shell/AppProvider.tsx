@@ -3,6 +3,8 @@ import { useMemo } from 'react';
 
 import { app, setupDispatchMap } from 'app/state';
 
+import { Article, mockArticle } from '../Content';
+
 import { AppEventContext, AppServiceContext } from './context';
 
 export interface AppProviderProps {
@@ -10,9 +12,20 @@ export interface AppProviderProps {
   onAuthenticate?: AppEventFn<unknown>;
   onIdentity?: AppEventFn<unknown>;
   onMagicLink?: AppEventFn<unknown>;
-  onFetchTestStatusArticles?: AppEventFn<unknown>;
-  onTestStatus?: AppEventFn<{ labStatus: 'in transit' | 'specimen received' | 'hold for bi' | 'in lab' | 'finished' | 'report ready' | 'canceled' }>;
-  onAppointmentStatus?: AppEventFn<{ appointmentStatus: 'at appointment' | 'after appointment' | undefined }>;
+  onTestStatus?: AppEventFn<{
+    labStatus:
+      | 'in transit'
+      | 'specimen received'
+      | 'hold for bi'
+      | 'in lab'
+      | 'finished'
+      | 'report ready'
+      | 'canceled';
+  }>;
+  onAppointmentStatus?: AppEventFn<{
+    appointmentStatus: 'at appointment' | 'after appointment' | undefined;
+  }>;
+  onFetchAllArticles?: AppEventFn<Article[]>;
 }
 
 export function AppProvider({
@@ -22,7 +35,10 @@ export function AppProvider({
   onMagicLink: handleMagicLink = async () => undefined,
   onSession: handleSession = async () => undefined,
   onTestStatus: handleTestStatus = async () => ({ labStatus: 'in lab' }),
-  onAppointmentStatus: handleAppointmentStatus = async () => ({ appointmentStatus: undefined }),
+  onAppointmentStatus: handleAppointmentStatus = async () => ({
+    appointmentStatus: undefined,
+  }),
+  onFetchAllArticles: handleFetchAllArticles = async () => [mockArticle],
 }: Props<AppProviderProps>) {
   const services = {
     handleAuth,
@@ -31,6 +47,7 @@ export function AppProvider({
     handleMagicLink,
     handleTestStatus,
     handleAppointmentStatus,
+    handleFetchAllArticles,
   };
 
   const service = useInterpret(app.withConfig({ services }), {
@@ -46,9 +63,9 @@ export function AppProvider({
         checkIdentity: () => send('checkIdentity'),
         nextStep: () => send('nextStep'),
         login: () => send('login'),
-        fetchTestStatusArticles: () => send('fetchTestStatusArticles'),
         getTestStatus: () => send('getTestStatus'),
         getAppointmentStatus: () => send('getAppointmentStatus'),
+        fetchAllArticles: () => send('fetchAllArticles'),
       };
 
       return appDispatchMap;

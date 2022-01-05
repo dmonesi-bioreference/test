@@ -6,6 +6,7 @@ declare global {
     message: string;
   }
 }
+
 export const isValidationFailurePayload = (
   candidate: unknown
 ): candidate is ValidationFailure[] => {

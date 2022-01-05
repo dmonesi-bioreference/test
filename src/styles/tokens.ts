@@ -5,7 +5,7 @@ export const colors = {
   white: '#FFFFFF',
   black: '#1B2132',
   grey: {
-    100: 'hsl(240, 6.7%, 97.1%)',
+    100: 'hsl(60, 2%, 92%, 1)',
     200: 'hsl(220, 5.9%, 90%)',
     300: 'hsl(225, 5.3%, 85.1%)',
     400: 'hsl(220, 4.7%, 74.9%)',
@@ -99,6 +99,10 @@ export const colors = {
     800: 'hsl(16, 50.3%, 31.6%)',
     900: 'hsl(14, 97.9%, 18.6%)',
   },
+  slatePurple: {
+    100: 'hsl(228, 48%, 94%, 1)',
+    900: 'hsla(229, 14%, 16%, 1)',
+  },
 };
 
 export const fonts = {
@@ -114,10 +118,10 @@ export const tokens = {
   colorBackgroundCommunity: colors.sand[50],
   colorBackgroundResources: colors.grey[100],
   colorDefaultText: colors.black,
-  colorPrimary: colors.blue[600],
+  colorPrimary: colors.slatePurple[900],
   colorPrimaryActive: colors.blue[800],
   colorPrimaryHover: colors.blue[700],
-  colorPrimaryText: colors.blue[600],
+  colorPrimaryText: colors.slatePurple[900],
   colorPrimaryFocus: colors.blue[200],
   colorSecondary: colors.grey[600],
   colorSecondaryHover: colors.grey[500],
