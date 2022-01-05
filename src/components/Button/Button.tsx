@@ -84,9 +84,9 @@ const Button: React.FC<ButtonProps> = (props) => {
         onClick={props.onClick}
         href={props.href}
       >
-        <span className="button__prefix">{props.prefix}</span>
+        {renderIfExists(props.prefix, 'button__prefix')}
         <span className="button__label">{props.children}</span>
-        <span className="button__suffix">{props.suffix}</span>
+        {renderIfExists(props.suffix, 'button__suffix')}
       </ButtonStyled>
     </Link>
   ) : (

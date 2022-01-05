@@ -1,10 +1,13 @@
 import { assign } from '@xstate/immer';
 import { send } from 'xstate';
 
+import geneticTestReportTemplate from 'assets/images/png/geneticTestReportTemplate.png';
+
 declare global {
   interface AppEventMap {
     getTestStatus: { type: 'getTestStatus' };
     getAppointmentStatus: { type: 'getAppointmentStatus' };
+    viewTestResults: { type: 'VIEW_TEST_RESULTS' };
   }
 }
 
@@ -77,13 +80,25 @@ export const actions = {
       default:
         return { type: 'UNKNOWN' };
     }
+  }),
+  resolveReport: assign((context: AppContext, event: AppEvents) => {
+    const data = ('data' in event ? event?.data : {}) as { src: string, thumbnail: string };
+
+    if (!data) return;
+
+    context.test.report.src = data.src;
+    context.test.report.thumbnail = data.thumbnail;
   })
 };
 
 export const context = {
   percentComplete: 0,
   lastUpdated: '11:12am today',
-  expectedResultsDate: 'Nov 11, 2022'
+  expectedResultsDate: 'Nov 11, 2022',
+  report: {
+    src: '',
+    thumbnail: geneticTestReportTemplate
+  }
 }
 
 export const machine = {
@@ -117,33 +132,72 @@ export const machine = {
     },
     waiting: {},
     resultsReady: {
-      type: 'compound',
-      initial: 'gettingAppointmentStatus',
+      type: 'parallel',
       states: {
-        gettingAppointmentStatus: {
-          invoke: {
-            src: 'handleAppointmentStatus',
-            onDone: {
-              target: 'knownAppointmentStatus',
-              actions: 'getAppointmentStatus'
+        view: {
+          type: 'compound',
+          initial: 'notViewed',
+          states: {
+            notViewed: {
+              on: {
+                VIEW_TEST_RESULTS: 'viewed'
+              }
             },
-            onError: 'unknownAppointmentStatus',
+            viewed: {}
           }
         },
-        knownAppointmentStatus: {
-          on: {
-            UNKNOWN: 'unknownAppointmentStatus',
-            AT_APPOINTMENT: 'atAppointment',
-            AFTER_APPOINTMENT: 'afterAppointment'
+        appointment: {
+          type: 'compound',
+          initial: 'gettingAppointmentStatus',
+          states: {
+            gettingAppointmentStatus: {
+              invoke: {
+                src: 'handleAppointmentStatus',
+                onDone: {
+                  target: 'knownAppointmentStatus',
+                  actions: 'getAppointmentStatus'
+                },
+                onError: 'unknownAppointmentStatus',
+              }
+            },
+            knownAppointmentStatus: {
+              on: {
+                UNKNOWN: 'unknownAppointmentStatus',
+                AT_APPOINTMENT: 'atAppointment',
+                AFTER_APPOINTMENT: 'afterAppointment'
+              }
+            },
+            unknownAppointmentStatus: {
+              on: {
+                GET_APPOINTMENT_STATUS: 'gettingAppointmentStatus'
+              }
+            },
+            atAppointment: {},
+            afterAppointment: {}
           }
         },
-        unknownAppointmentStatus: {
-          on: {
-            GET_APPOINTMENT_STATUS: 'gettingAppointmentStatus'
-          }
+        report: {
+          type: 'compound',
+          initial: 'gettingReport',
+          states: {
+            gettingReport: {
+              invoke: {
+                src: 'handleReport',
+                onDone: {
+                  target: 'reportLoaded',
+                  actions: 'resolveReport',
+                },
+                onError: 'reportNotLoaded',
+              },
+            },
+            reportLoaded: {},
+            reportNotLoaded: {
+              on: {
+                GET_REPORT: 'gettingReport'
+              },
+            },
+          },
         },
-        atAppointment: {},
-        afterAppointment: {}
       }
     },
     canceled: {}

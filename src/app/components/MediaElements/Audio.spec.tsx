@@ -10,8 +10,6 @@ describe('The Audio component', () => {
       <Audio
         title="title"
         src=""
-        showTranscriptLabel="Read transcript"
-        hideTranscriptLabel="Close transcript"
         transcript={['itemOne']}
       />
     );
@@ -25,8 +23,6 @@ describe('The Audio component', () => {
       <Audio
         title="title"
         src=""
-        showTranscriptLabel="Read transcript"
-        hideTranscriptLabel="Close transcript"
         transcript={['itemOne']}
       />
     );
@@ -41,8 +37,6 @@ describe('The Audio component', () => {
       <Audio
         title="title"
         src=""
-        showTranscriptLabel="Read transcript"
-        hideTranscriptLabel="Close transcript"
         transcript={['itemOne']}
       />
     );
@@ -57,8 +51,6 @@ describe('The Audio component', () => {
       <Audio
         title="title"
         src=""
-        showTranscriptLabel="Read transcript"
-        hideTranscriptLabel="Close transcript"
         transcript={['itemOne']}
       />
     );

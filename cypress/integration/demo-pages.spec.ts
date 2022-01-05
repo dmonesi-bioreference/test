@@ -11,7 +11,7 @@ describe('Demo pages', () => {
       'data-sharing-settings',
       'location-check',
       'nicu-faqs',
-      'pre-results-pause',
+      'results',
       'testing-process',
       'resources/any-given-slug-1234',
       'registration',

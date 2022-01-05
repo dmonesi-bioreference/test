@@ -1,6 +1,6 @@
 import { renderWithShell } from 'test-utils';
 
-import { PreResultsPause } from './index';
+import { PreResultsPause } from './PreResultsPause';
 
 describe('The Pre Results Pause page', () => {
   it('does not explode', async () => {

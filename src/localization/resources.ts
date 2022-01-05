@@ -27,39 +27,63 @@ export const resources = {
           },
         },
         home: {},
-        preResultsPause: {
-          title: 'Let’s take a moment together before viewing results',
-          description: {
-            paragraph1:
-              'For some people, receiving test results can be difficult to understand and may cause anxiety, regardless of the results.',
-            paragraph2:
-              'Genetic test reports have some limitations that are important to understand, therefore reviewing results with a doctor is necessary to properly understand and plan next steps.',
-          },
-          audio: {
-            title: 'Genetic Counselor Support',
-            description:
-              'Laura explains why it’s important to be in the right space and mind to review results.',
-            transcript: {
-              1: {
-                title: 'Are you in the right setting?',
-                description:
-                  'Would you rather be at home, in the hospital, at work, etc.?',
-              },
-              2: {
-                title: 'Are you with the right people?',
-                description:
-                  'Would you prefer to have your partner, another family member, or a friend present?',
-              },
-              3: {
-                title: 'Are you okay waiting to ask questions?',
-                description:
-                  "You might be viewing your child's results before your doctor sees them. Would you prefer to wait and look at results together with your doctor so you can ask questions right away?",
+        results: {
+          preResultsPause: {
+            title: 'Let’s take a moment together before viewing results',
+            description: {
+              paragraph1:
+                'For some people, receiving test results can be difficult to understand and may cause anxiety, regardless of the results.',
+              paragraph2:
+                'Genetic test reports have some limitations that are important to understand, therefore reviewing results with a doctor is necessary to properly understand and plan next steps.',
+            },
+            audio: {
+              title: 'Genetic Counselor Support',
+              description:
+                'Laura explains why it’s important to be in the right space and mind to review results.',
+              transcript: {
+                1: {
+                  title: 'Are you in the right setting?',
+                  description:
+                    'Would you rather be at home, in the hospital, at work, etc.?',
+                },
+                2: {
+                  title: 'Are you with the right people?',
+                  description:
+                    'Would you prefer to have your partner, another family member, or a friend present?',
+                },
+                3: {
+                  title: 'Are you okay waiting to ask questions?',
+                  description:
+                    "You might be viewing your child's results before your doctor sees them. Would you prefer to wait and look at results together with your doctor so you can ask questions right away?",
+                },
               },
             },
+            actions: {
+              primary: 'Continue to report',
+              secondary: 'Not now, go back',
+            },
           },
-          actions: {
-            primary: 'Continue to report',
-            secondary: 'Not now, go back',
+          waiting: {
+            title: "Prepare to View Your Test Results",
+            indicatorCard: {
+              heading: 'Your genetic test is currently:',
+              title: 'In Progress',
+              subTitle: 'Results expected {{expectedResultsDate}}' 
+            },
+            article: {
+              heading: 'You can prepare and learn about the results while you wait',
+            },
+          },
+          ready: {
+            home: 'Return Home',
+            title: 'Your Full Test Results',
+            report: {
+              attention: 'Medical language ahead',
+              description: 'This report is designed with health care providers in mind and contains many medically-oriented details. Talk to your provider to understand what the results mean for your family.',
+              pdfLink: 'Open PDF',
+              pdfPages: '{{pageNumber}} pages',
+              pdfThumbnailAlt: 'Your report in PDF',
+            },
           },
         },
       },
@@ -73,6 +97,11 @@ export const resources = {
         avatar: {
           geneticCounselor: {
             altText: 'Photograph of our genetic counselor, Laura.',
+          },
+        },
+        pdf: {
+          actions: {
+            openPdf: 'Open PDF',
           },
         },
       },

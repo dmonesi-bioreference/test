@@ -1,7 +1,5 @@
-import { useAppTranslation } from 'app';
-import geneticCounselor from 'assets/images/png/geneticCounselor.png';
+import { MediaElements, useAppEvents, useAppSelector, useAppTranslation } from 'app';
 import {
-  Audio,
   Avatar,
   BulletItem,
   Button,
@@ -15,6 +13,9 @@ import ContentAudioStyledDiv from './PreResultsPause.styles';
 
 export const PreResultsPause = () => {
   const t = useAppTranslation();
+  const { viewTestResults } = useAppEvents();
+  const photo = useAppSelector((state) => state.context.geneticCounselor.photo);
+
   return (
     <ContentAudioStyledDiv>
       <PageLayout containsCards={true}>
@@ -24,56 +25,46 @@ export const PreResultsPause = () => {
           fontType="serif"
           objectToWrap={
             <Avatar
-              src={geneticCounselor}
+              src={photo}
               alt={t('components.avatar.geneticCounselor.altText')}
               shape="circular"
               size="small"
             />
           }
         >
-          {t('pages.preResultsPause.title')}
+          {t('pages.results.preResultsPause.title')}
         </Typography>
 
         <div className="pre-results-pause__details">
           <Typography type="heading" level="7">
-            {t('pages.preResultsPause.description.paragraph1')}
+            {t('pages.results.preResultsPause.description.paragraph1')}
           </Typography>
 
           <Typography type="heading" level="7">
-            {t('pages.preResultsPause.description.paragraph2')}
+            {t('pages.results.preResultsPause.description.paragraph2')}
           </Typography>
         </div>
 
-        <Audio
-          title={t('pages.preResultsPause.audio.title')}
+        <MediaElements.Audio
+          title={t('pages.results.preResultsPause.audio.title')}
           src=""
-          avatar={
-            <Avatar
-              src={geneticCounselor}
-              alt={t('components.avatar.geneticCounselor.altText')}
-              shape="square"
-              size="large"
-            />
-          }
-          showTranscriptLabel={t('components.audio.actions.showTranscript')}
-          hideTranscriptLabel={t('components.audio.actions.hideTranscript')}
           transcript={[
             <BulletItem
               icon={<Icon name="home" color="primary" aria-hidden="true" />}
-              title={t('pages.preResultsPause.audio.transcript.1.title')}
+              title={t('pages.results.preResultsPause.audio.transcript.1.title')}
               key={1}
             >
-              {t('pages.preResultsPause.audio.transcript.1.description')}
+              {t('pages.results.preResultsPause.audio.transcript.1.description')}
             </BulletItem>,
 
             <BulletItem
               icon={
                 <Icon name="user-group" color="primary" aria-hidden="true" />
               }
-              title={t('pages.preResultsPause.audio.transcript.2.title')}
+              title={t('pages.results.preResultsPause.audio.transcript.2.title')}
               key={2}
             >
-              {t('pages.preResultsPause.audio.transcript.2.description')}
+              {t('pages.results.preResultsPause.audio.transcript.2.description')}
             </BulletItem>,
 
             <BulletItem
@@ -84,22 +75,20 @@ export const PreResultsPause = () => {
                   aria-hidden="true"
                 />
               }
-              title={t('pages.preResultsPause.audio.transcript.3.title')}
+              title={t('pages.results.preResultsPause.audio.transcript.3.title')}
               key={3}
             >
-              {t('pages.preResultsPause.audio.transcript.3.description')}
+              {t('pages.results.preResultsPause.audio.transcript.3.description')}
             </BulletItem>,
           ]}
-        >
-          {t('pages.preResultsPause.audio.description')}
-        </Audio>
+        />
 
         <div className="pre-results-pause__actions">
-          <Button kind="primary">
-            {t('pages.preResultsPause.actions.primary')}
+          <Button kind="primary" onClick={viewTestResults}>
+            {t('pages.results.preResultsPause.actions.primary')}
           </Button>
-          <Button kind="default">
-            {t('pages.preResultsPause.actions.secondary')}
+          <Button kind="default" href="/demo">
+            {t('pages.results.preResultsPause.actions.secondary')}
           </Button>
         </div>
       </PageLayout>

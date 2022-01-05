@@ -1,42 +1,42 @@
-import { remToPx } from 'polished';
-
-import { colors, tokens } from 'styles/tokens';
+import { colors } from 'styles/tokens';
 
 import CircularProgressStyled from './CircularProgress.styles';
 
 export interface CircularProgressProps {
   /** Percent completion of operation in progress */
   percent: number;
-  /** Width of progress */
-  strokeWidth?: number;
-  /** The color of the progress track */
-  trackColor?: string;
-  /** The color of the progress indicator r */
-  indicatorColor?: string | [string, string];
-  /** The color of the progress indicator's shadow */
-  indicatorShadowColor?: string;
-  /** The thickness of the container surrounding progress */
-  containerThickness?: number;
-  /** The color of the container surrounding progress */
-  containerColor?: string;
-  /** Container offset in the x and y */
-  containerBottomCut?: number
   /** Radius */
   radius?: number;
+  /** Width of progress */
+  strokeWidth?: number;
   /** React element at the center */
   icon?: JSX.Element;
+  /** With or without an outer shadow */
+  withOuterShadow?: boolean;
+  /** With or without an inset shadow */
+  withInsetShadow?: boolean;
+  /** The color of the progress indicator r */
+  indicatorColor?: string | [string, string];
+  /** The color of the progress track */
+  trackColor?: string;
+  /** The thickness of the progress indicator's padding */
+  strokePadding?: number;
+  /** The color of the progress indicator's padding */
+  strokePaddingColor?: string;
+  /** Cut the progress padding in the x or y (-ve values hide from left or bottom respectively) */
+  strokePaddingCut?: {
+    x: number;
+    y: number;
+  }
 }
 
 export const CircularProgress: React.FC<CircularProgressProps> = (props) => {
   props = {
-    strokeWidth: parseInt(remToPx(tokens.spacing), 10) * 1.6,
+    withOuterShadow: false,
+    withInsetShadow: false,
     trackColor: colors.white,
-    indicatorColor: colors.teal[700],
-    indicatorShadowColor: colors.black,
-    containerThickness: parseInt(remToPx(tokens.spacingXxSmall), 10),
-    containerColor: colors.black,
-    containerBottomCut: 0,
-    radius: parseInt(remToPx(tokens.spacing), 10) * 2.3,
+    indicatorColor: colors.grey[700],
+    strokePaddingColor: colors.white,
     ...props
   }
 
@@ -44,16 +44,26 @@ export const CircularProgress: React.FC<CircularProgressProps> = (props) => {
     <CircularProgressStyled {...props}>
       <svg className="progress">
         <filter id="inset-shadow" x="-50%" y="-50%" width="200%" height="200%">
-          <feFlood floodColor={props.indicatorShadowColor} />
+          {props.withInsetShadow && <feFlood floodColor={colors.black} />}
           <feComposite operator="out" in2="SourceGraphic" />
           <feGaussianBlur stdDeviation="3" />
           <feComposite operator="atop" in2="SourceGraphic" />
         </filter>
-        
+
         <filter
           id="shadow-filter" filterUnits="userSpaceOnUse"
-          x="-102px"
-          y={`-${102 + (props.containerBottomCut ?? 0)}px`}
+          x={
+            `${!props.strokePaddingCut ?
+                -102 :
+                (props.strokePaddingCut.x > 0 ? '+' : '-') + (102 + (Math.abs(props.strokePaddingCut.x))).toString()
+              }px`
+            }
+          y={
+            `${!props.strokePaddingCut ?
+                -102 :
+                (props.strokePaddingCut.y > 0 ? '+' : '-') + (102 + (Math.abs(props.strokePaddingCut.y))).toString()
+              }px`
+            }
           width="200%" height="200%"
         >
           <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"/>
@@ -84,7 +94,7 @@ export const CircularProgress: React.FC<CircularProgressProps> = (props) => {
           )}
         </linearGradient>
 
-        <circle className="container" filter="url(#shadow-filter)" />
+        {props.strokePadding && <circle className="container" filter="url(#shadow-filter)" />}
         <circle className="bg" filter="url(#inset-shadow)" />
         <circle className="indicator" filter="url(#inset-shadow)" stroke="url(#linear)" />
 

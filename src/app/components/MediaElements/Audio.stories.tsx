@@ -1,14 +1,14 @@
 import { Story } from '@storybook/react/types-6-0';
 
-import geneticCounselor from 'assets/images/png/geneticCounselor.png';
-import { Avatar, BulletItem, Icon } from 'components';
+import { Shell } from 'app';
+import { BulletItem, Icon } from 'components';
 
 import Audio, { AudioProps } from './Audio';
 
 
 export default {
   component: Audio,
-  title: 'Components/Audio',
+  title: 'App/Audio',
   parameters: {
     componentSubtitle:
       'An Audio component describes a playable audio file, as well as providing a transcript.',
@@ -16,12 +16,14 @@ export default {
 };
 
 const Template: Story<AudioProps> = (args) => (
-  <div style={{ width: '343px' }}>
-    <Audio {...args}>
-      Here is an enlightening description of what to expect from this audio
-      file.
-    </Audio>
-  </div>
+  <Shell>
+    <div style={{ width: '343px' }}>
+      <Audio {...args}>
+        Here is an enlightening description of what to expect from this audio
+        file.
+      </Audio>
+    </div>
+  </Shell>
 );
 
 export const Primary = Template.bind({});
@@ -29,16 +31,6 @@ export const Primary = Template.bind({});
 Primary.args = {
   title: 'Genetic Counselor Support',
   src: 'https://www2.cs.uic.edu/~i101/SoundFiles/PinkPanther30.wav',
-  avatar: (
-    <Avatar
-      src={geneticCounselor}
-      alt="Photograph of our genetic counselor, Laura."
-      shape="square"
-      size="large"
-    />
-  ),
-  showTranscriptLabel: 'Read transcript',
-  hideTranscriptLabel: 'Close transcript',
   transcript: [
     <BulletItem
       key={1}

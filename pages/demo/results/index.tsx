@@ -1,8 +1,8 @@
 import Head from 'next/head';
 
-import { PreResultsPause } from 'screens/PreResultsPause';
+import { TestResults } from 'screens';
 
-export default function PreResultsPausePage() {
+export default function ResultsPage() {
   return (
     <>
       <Head>
@@ -11,10 +11,10 @@ export default function PreResultsPausePage() {
       </Head>
 
       <main>
-        <PreResultsPause />
+        <TestResults />
       </main>
 
-      <footer></footer>
+      <footer />
     </>
   );
 }

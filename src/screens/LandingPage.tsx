@@ -12,6 +12,7 @@ import {
   PageLayout,
   PageSection,
   Typography,
+  UserHeader
 } from 'components';
 import { tokens } from 'styles';
 
@@ -69,17 +70,10 @@ export const LandingPage = () => {
     <PageLayout containsCards={true}>
       <PageSection
         header={
-          <div style={{ marginBottom: tokens.spacingXSmall }}>
-            <div style={{ marginBottom: tokens.spacingXxSmall }}>
-              <Typography type="label" color="minor" labelType="display">
-                {t('sections.results.childsName')}
-              </Typography>
-            </div>
-            <Heading level="5">
-              <span>Lisa Consuela Jackson</span>
-              <span>&nbsp;(dev)</span>
-            </Heading>
-          </div>
+          <UserHeader
+            title={t('sections.results.childsName')}
+            name="Lisa Consuela Jackson"
+          />
         }
       >
         <TestStatus />

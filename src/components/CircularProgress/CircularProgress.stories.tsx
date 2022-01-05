@@ -1,6 +1,8 @@
 import { Story } from '@storybook/react/types-6-0';
+import { remToPx } from 'polished';
 
 import { CircularProgress } from 'components';
+import { colors, tokens } from 'styles';
 
 import { CircularProgressProps } from './CircularProgress';
 
@@ -14,4 +16,12 @@ export default {
 
 const Template: Story<CircularProgressProps> = () => <CircularProgress percent={70} />
 
-export const Circular = Template.bind({});
+export const Primary = Template.bind({});
+
+Primary.args = {
+  radius: parseInt(remToPx(tokens.spacing), 10) * 2.3,
+  strokeWidth: parseInt(remToPx(tokens.spacing), 10) * 1.6,
+  withInsetShadow: true,
+  strokePadding: parseInt(remToPx(tokens.spacingXxSmall), 10),
+  strokePaddingColor: colors.black
+};

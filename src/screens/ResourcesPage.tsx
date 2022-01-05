@@ -1,10 +1,8 @@
 import { useEffect } from 'react';
 
-import { useAppEvents, useAppSelector, useAppTranslation } from 'app';
+import { useAppEvents, useAppSelector, useAppTranslation, MediaElements } from 'app';
 import {
   AppImage,
-  Audio,
-  Avatar,
   BulletItem,
   Button,
   Card,
@@ -15,8 +13,6 @@ import {
   Typography,
 } from 'components';
 import { tokens } from 'styles';
-
-import geneticCounselor from '../assets/images/png/geneticCounselor.png';
 
 export const ResourcesPage = () => {
   const t = useAppTranslation();
@@ -75,17 +71,9 @@ export const ResourcesPage = () => {
           </div>
         }
       >
-        <Audio
+        <MediaElements.Audio
           src="https://www2.cs.uic.edu/~i101/SoundFiles/PinkPanther30.wav"
           title={t('pages.resources.section.audio.title')}
-          avatar={
-            <Avatar
-              src={geneticCounselor}
-              alt="Photograph of our genetic counselor, Laura."
-              shape="square"
-              size="large"
-            />
-          }
           transcript={[
             <BulletItem
               key={1}
@@ -104,15 +92,9 @@ export const ResourcesPage = () => {
               {t('pages.resources.section.audio.bulletTwoDescription')}{' '}
             </BulletItem>,
           ]}
-          hideTranscriptLabel={t(
-            'pages.resources.section.audio.hideTranscriptLabel'
-          )}
-          showTranscriptLabel={t(
-            'pages.resources.section.audio.showTranscriptLabel'
-          )}
         >
           {t('pages.resources.description')}
-        </Audio>
+        </MediaElements.Audio>
         <Heading>{t('pages.resources.section.articles.title')}</Heading>
         {articleCards}
       </PageSection>

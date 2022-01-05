@@ -1,5 +1,4 @@
 import { useAppTranslation } from 'app/components/Shell';
-import geneticCounselor from 'assets/images/png/geneticCounselor.png';
 import { Avatar, Heading, Typography } from "components";
 
 import { IsAfterAppointment } from "./IsAfterAppointment";
@@ -12,13 +11,13 @@ import { useTestStatus } from './hooks';
 export const Timeline: React.FC = () => {
   const t = useAppTranslation();
 
-  const [{ isWaiting, isResultsReady, isAtAppointment, isAfterAppointment }] = useTestStatus();
+  const [{ photo, isWaiting, isResultsReady, isAtAppointment, isAfterAppointment }] = useTestStatus();
 
   return (
     <TimelineStyled>
       <div className="timeline-heading">
         <Avatar
-          src={geneticCounselor}
+          src={photo}
           alt={t('components.avatar.geneticCounselor.altText')}
           shape="circular"
           size="small"

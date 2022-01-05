@@ -1,22 +1,24 @@
 import { ReactNode, useState } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 
-import { Button, Icon, Typography } from 'components';
+import { useAppTranslation } from 'app/components/Shell';
+import { Avatar, Button, Icon, Typography } from "components";
 
 import AudioStyled from './Audio.styles';
+import { useAudioMetadata } from './hooks';
 
 export interface AudioProps {
   title: string;
   src: string;
-  avatar?: ReactNode;
-  showTranscriptLabel: string;
-  hideTranscriptLabel: string;
-  transcript: ReactNode[];
+  transcript: ReactNode;
 }
 
 const Audio: React.FC<AudioProps> = (props) => {
   const [transcriptHidden, toggleTranscript] = useState(true);
   const iconName = transcriptHidden ? 'book-open' : 'x';
+
+  const t = useAppTranslation();
+  const [{ photo }] = useAudioMetadata();
 
   return (
     <AudioStyled>
@@ -33,16 +35,21 @@ const Audio: React.FC<AudioProps> = (props) => {
 
       <div className="audio__content">
         <div className="audio__description-container">
-          {props.avatar}
+          <Avatar
+            src={photo}
+            alt={t('components.avatar.geneticCounselor.altText')}
+            shape="square"
+            size="large"
+          />
 
           <Typography type="body" color="primary" alignment="left">
-            {props.children}
+            {t('pages.results.preResultsPause.audio.description')}
           </Typography>
         </div>
 
         <ReactAudioPlayer
           className="audio__player"
-          src={props.src}
+          src=""
           autoPlay={false}
           controls
         />
@@ -53,8 +60,9 @@ const Audio: React.FC<AudioProps> = (props) => {
           onClick={() => toggleTranscript(!transcriptHidden)}
         >
           {transcriptHidden
-            ? props.showTranscriptLabel
-            : props.hideTranscriptLabel}
+            ? t('components.audio.actions.showTranscript')
+            : t('components.audio.actions.hideTranscript')
+          }
         </Button>
       </div>
 
@@ -67,6 +75,6 @@ const Audio: React.FC<AudioProps> = (props) => {
       </div>
     </AudioStyled>
   );
-};
+}
 
 export default Audio;

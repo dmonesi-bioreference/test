@@ -12,6 +12,7 @@ export interface AppProviderProps {
   onAuthenticate?: AppEventFn<unknown>;
   onIdentity?: AppEventFn<unknown>;
   onMagicLink?: AppEventFn<unknown>;
+  onFetchTestStatusArticles?: AppEventFn<unknown>;
   onTestStatus?: AppEventFn<{
     labStatus:
       | 'in transit'
@@ -25,6 +26,7 @@ export interface AppProviderProps {
   onAppointmentStatus?: AppEventFn<{
     appointmentStatus: 'at appointment' | 'after appointment' | undefined;
   }>;
+  onReport?: AppEventFn<{ src: string, thumbnail: string } | undefined>;
   onFetchAllArticles?: AppEventFn<Article[]>;
 }
 
@@ -35,9 +37,8 @@ export function AppProvider({
   onMagicLink: handleMagicLink = async () => undefined,
   onSession: handleSession = async () => undefined,
   onTestStatus: handleTestStatus = async () => ({ labStatus: 'in lab' }),
-  onAppointmentStatus: handleAppointmentStatus = async () => ({
-    appointmentStatus: undefined,
-  }),
+  onAppointmentStatus: handleAppointmentStatus = async () => ({ appointmentStatus: undefined }),
+  onReport: handleReport = async () => undefined,
   onFetchAllArticles: handleFetchAllArticles = async () => [mockArticle],
 }: Props<AppProviderProps>) {
   const services = {
@@ -47,6 +48,7 @@ export function AppProvider({
     handleMagicLink,
     handleTestStatus,
     handleAppointmentStatus,
+    handleReport,
     handleFetchAllArticles,
   };
 
@@ -65,6 +67,7 @@ export function AppProvider({
         login: () => send('login'),
         getTestStatus: () => send('getTestStatus'),
         getAppointmentStatus: () => send('getAppointmentStatus'),
+        viewTestResults: () => send('VIEW_TEST_RESULTS'),
         fetchAllArticles: () => send('fetchAllArticles'),
       };
 

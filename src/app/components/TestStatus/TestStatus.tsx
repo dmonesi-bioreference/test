@@ -21,9 +21,13 @@ export const TestStatus: React.FC = () => {
       <TestStatusStyled>
         <CircularProgress
           percent={percentComplete}
+          radius={97 / 2}
+          strokeWidth={23.25}
+          withOuterShadow={true}
+          withInsetShadow={true}
           indicatorColor={isWaiting ? [colors.teal[700], colors.teal[800]] : colors.teal[700]}
-          containerColor={colors.white}
-          containerBottomCut={58}
+          strokePadding={4}
+          strokePaddingCut={{x: 0, y: -58}}
           icon={
             isWaiting ? (
               <Icon name="search" size="large" />
@@ -37,6 +41,7 @@ export const TestStatus: React.FC = () => {
             <Button
               kind='link-medium'
               suffix={<Icon name="chevron-right" size="large" />}
+              href='/demo/results'
             >
               <div className='header-main'>
                 <Heading level='2'>

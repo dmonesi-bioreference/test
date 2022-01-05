@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 
-import { tokens, colors, base } from 'styles';
 
-const AudioStyled = styled.div`
+import { base, tokens, colors } from 'styles';
+
+interface AudioStyledProps {
+  linearGradient?: string;
+}
+
+const AudioStyled = styled.div<AudioStyledProps>`
   ${base}
   background-color: ${colors.slatePurple[100]};
   border-radius: ${tokens.borderRadius};

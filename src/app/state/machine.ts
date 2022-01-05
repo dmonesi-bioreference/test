@@ -1,5 +1,6 @@
 import { DoneInvokeEvent, InterpreterFrom } from 'xstate';
 
+import geneticCounselor from 'assets/images/png/geneticCounselor.png';
 import { SupportedLanguages } from 'localization';
 import { Themes } from 'styles';
 
@@ -20,6 +21,9 @@ export const initialContext = {
   test: test.context,
   content: {
     articles: { data: [] as Article[], errors: [] as ContentFailure[] },
+  },
+  geneticCounselor: {
+    photo: geneticCounselor
   },
 };
 
