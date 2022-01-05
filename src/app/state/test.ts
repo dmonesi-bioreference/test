@@ -16,9 +16,9 @@ export const actions = {
     const data = ('data' in event ? event?.data : {}) as { labStatus: string };
 
     if (!data) return { type: 'UNKNOWN' };
-    
+
     const { labStatus } = data;
-    
+
     switch (labStatus) {
       case 'in transit':
       case 'specimen received':
@@ -66,10 +66,12 @@ export const actions = {
     }
   }),
   getAppointmentStatus: send((context: AppContext, event: AppEvents) => {
-    const data = ('data' in event ? event?.data : {}) as { appointmentStatus: string };
+    const data = ('data' in event ? event?.data : {}) as {
+      appointmentStatus: string;
+    };
 
     if (!data) return { type: 'UNKNOWN' };
-    
+
     const { appointmentStatus } = data;
 
     switch (appointmentStatus) {
@@ -82,13 +84,16 @@ export const actions = {
     }
   }),
   resolveReport: assign((context: AppContext, event: AppEvents) => {
-    const data = ('data' in event ? event?.data : {}) as { src: string, thumbnail: string };
+    const data = ('data' in event ? event?.data : {}) as {
+      src: string;
+      thumbnail: string;
+    };
 
     if (!data) return;
 
     context.test.report.src = data.src;
     context.test.report.thumbnail = data.thumbnail;
-  })
+  }),
 };
 
 export const context = {
@@ -97,9 +102,9 @@ export const context = {
   expectedResultsDate: 'Nov 11, 2022',
   report: {
     src: '',
-    thumbnail: geneticTestReportTemplate
-  }
-}
+    thumbnail: geneticTestReportTemplate as StaticImageData | string,
+  },
+};
 
 export const machine = {
   initial: 'gettingUserStatus',
@@ -109,7 +114,7 @@ export const machine = {
         src: 'handleTestStatus',
         onDone: {
           target: 'knownUserStatus',
-          actions: ['mapTestStatus', 'calculatePercent']
+          actions: ['mapTestStatus', 'calculatePercent'],
         },
         onError: 'unknownUserStatus',
       },
@@ -120,15 +125,15 @@ export const machine = {
         WAITING: 'waiting',
         RESULTS_READY: {
           target: 'resultsReady',
-          actions: ['getAppointmentStatus']
+          actions: ['getAppointmentStatus'],
         },
         CANCELED: 'canceled',
-      }
+      },
     },
     unknownUserStatus: {
       on: {
-        GET_USER_STATUS: 'gettingUserStatus'
-      }
+        GET_USER_STATUS: 'gettingUserStatus',
+      },
     },
     waiting: {},
     resultsReady: {
@@ -140,11 +145,11 @@ export const machine = {
           states: {
             notViewed: {
               on: {
-                VIEW_TEST_RESULTS: 'viewed'
-              }
+                VIEW_TEST_RESULTS: 'viewed',
+              },
             },
-            viewed: {}
-          }
+            viewed: {},
+          },
         },
         appointment: {
           type: 'compound',
@@ -155,26 +160,26 @@ export const machine = {
                 src: 'handleAppointmentStatus',
                 onDone: {
                   target: 'knownAppointmentStatus',
-                  actions: 'getAppointmentStatus'
+                  actions: 'getAppointmentStatus',
                 },
                 onError: 'unknownAppointmentStatus',
-              }
+              },
             },
             knownAppointmentStatus: {
               on: {
                 UNKNOWN: 'unknownAppointmentStatus',
                 AT_APPOINTMENT: 'atAppointment',
-                AFTER_APPOINTMENT: 'afterAppointment'
-              }
+                AFTER_APPOINTMENT: 'afterAppointment',
+              },
             },
             unknownAppointmentStatus: {
               on: {
-                GET_APPOINTMENT_STATUS: 'gettingAppointmentStatus'
-              }
+                GET_APPOINTMENT_STATUS: 'gettingAppointmentStatus',
+              },
             },
             atAppointment: {},
-            afterAppointment: {}
-          }
+            afterAppointment: {},
+          },
         },
         report: {
           type: 'compound',
@@ -193,13 +198,13 @@ export const machine = {
             reportLoaded: {},
             reportNotLoaded: {
               on: {
-                GET_REPORT: 'gettingReport'
+                GET_REPORT: 'gettingReport',
               },
             },
           },
         },
-      }
+      },
     },
-    canceled: {}
+    canceled: {},
   },
 };

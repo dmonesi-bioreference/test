@@ -1,6 +1,11 @@
 import { useEffect } from 'react';
 
-import { MediaElements, useAppEvents, useAppTranslation, useAppSelector } from 'app';
+import {
+  MediaElements,
+  useAppEvents,
+  useAppTranslation,
+  useAppSelector,
+} from 'app';
 import {
   Button,
   Heading,
@@ -8,7 +13,7 @@ import {
   Typography,
   PageLayout,
   PageSection,
-  UserHeader
+  UserHeader,
 } from 'components';
 
 import ResultsReadyStyled from './ResultsReady.styles';
@@ -33,30 +38,30 @@ export const ResultsReady = () => {
         }
       >
         <ResultsReadyStyled>
-          <div className='results-ready__nav'>
-            <Button href='/demo' prefix={<Icon name='chevron-left' />}>
-              <Typography type='body'>
+          <div className="results-ready__nav">
+            <Button href="/demo" prefix={<Icon name="chevron-left" />}>
+              <Typography type="body">
                 {t('pages.results.ready.home')}
               </Typography>
             </Button>
           </div>
-          
-          <div className='results-ready__heading'>
-            <Heading level='1' color='minor'>
+
+          <div className="results-ready__heading">
+            <Heading level="1" color="minor">
               {t('pages.results.ready.title')}
             </Heading>
-            <Icon name='share' style='solid' />
+            <Icon name="share" style="solid" />
           </div>
 
-          <div className='results-ready__attention'>
-            <Icon name='exclamation-circle' />
-            <Heading level='3' color='minor'>
+          <div className="results-ready__attention">
+            <Icon name="exclamation-circle" />
+            <Heading level="3" color="minor">
               {t('pages.results.ready.report.attention')}
             </Heading>
           </div>
-          
-          <div className='results-ready__description'>
-            <Typography type='body'>
+
+          <div className="results-ready__description">
+            <Typography type="body">
               {t('pages.results.ready.report.description')}
             </Typography>
           </div>
@@ -65,7 +70,7 @@ export const ResultsReady = () => {
             src={report.src}
             thumbnail={{
               src: report.thumbnail,
-              alt: t('pages.results.ready.report.pdfThumbnailAlt')
+              alt: t('pages.results.ready.report.pdfThumbnailAlt'),
             }}
           />
         </ResultsReadyStyled>
