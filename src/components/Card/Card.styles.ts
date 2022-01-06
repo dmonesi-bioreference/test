@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 import { base, colors, tokens } from 'styles';
 
-const CardStyled = styled.div`
+import { CardProps } from './Card';
+
+const CardStyled = styled.div<CardProps>`
   ${base}
   background-color: ${colors.white};
   border-radius: ${tokens.borderRadius};
@@ -10,8 +12,10 @@ const CardStyled = styled.div`
   overflow: hidden;
 
   .card__header {
+    max-height: ${(props) => props.maxHeaderHeight}px;
+    overflow: hidden;
+
     img {
-      height: auto;
       object-fit: cover;
       width: 100%;
     }

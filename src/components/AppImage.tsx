@@ -12,9 +12,9 @@ export const AppImage = (props: Props<NextImageProps>) => {
     // eslint-disable-next-line jsx-a11y/alt-text
     <Image
       {...props}
-      layout="responsive"
+      layout={props.layout || 'responsive'}
       loader={({ src }) => src}
-      objectFit="cover"
+      objectFit={props.objectFit || 'cover'}
     />
   );
 };

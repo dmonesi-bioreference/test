@@ -4,7 +4,7 @@ import { useAppTranslation } from 'app/components';
 import AcademicResearch from 'assets/images/png/AcademicResearch.png';
 import ResultsProvider1 from 'assets/images/png/ResultsProvider1.png';
 import ResultsToProvider1_4 from 'assets/images/png/ResultsToProvider1_4.png';
-import { PageLayout, Button, ArticleCard } from 'components';
+import { PageLayout, Button, LinkCard } from 'components';
 
 import AuthenticationTokenStyledDiv from './AuthenticationTokenStyledDiv.styles';
 import 'react-multi-carousel/lib/styles.css';
@@ -76,11 +76,12 @@ export const AuthenticationToken = () => {
           itemClass="carousel-item-padding-40-px"
         >
           {articleCardSpecs.map((articleCardSpec, i) => (
-            <ArticleCard
+            <LinkCard
+              variant="article"
               key={i}
               imageSrc={articleCardSpec.imageSrc}
-              imageTitle={articleCardSpec.imageTitle}
-              title={articleCardSpec.title}
+              imageAlt={articleCardSpec.imageTitle}
+              label={articleCardSpec.title}
               heading={articleCardSpec.heading}
               body={articleCardSpec.body}
             />

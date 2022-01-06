@@ -3,7 +3,7 @@ export * from './AppImage';
 export * from './AppImage';
 export * from './AppLink';
 export * from './AppLink';
-export * from './ArticleCard';
+export * from './LinkCard';
 export * from './Avatar';
 export * from './BulletItem';
 export * from './Button';

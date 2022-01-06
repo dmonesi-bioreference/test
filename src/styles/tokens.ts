@@ -115,6 +115,7 @@ export const tokens = {
   /* color presets */
   colorBackgroundDefault: colors.sand[50],
   colorBackgroundCare: colors.blue[50],
+  colorCommunity: colors.sand[800],
   colorBackgroundCommunity: colors.sand[50],
   colorBackgroundResources: colors.grey[100],
   colorDefaultText: colors.black,

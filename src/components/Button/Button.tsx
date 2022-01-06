@@ -41,6 +41,8 @@ export interface ButtonProps {
   /** Tells the browser where to open the link. Used only if `href` is set. */
   target?: '_blank' | '_parent' | '_self' | '_top';
   color?: 'light' | 'default';
+  /** Used to pass className down to component */
+  className?: string;
 }
 
 const defaultProps: ButtonProps = {
@@ -78,7 +80,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     <Link href={props.href} passHref>
       <ButtonStyled
         as="a"
-        className={`${color} ${className}`}
+        className={`${color} ${className} ${props.className}`}
         target={props.target}
         download={props.download}
         onClick={props.onClick}
@@ -91,7 +93,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     </Link>
   ) : (
     <ButtonStyled
-      className={`${color} ${className}`}
+      className={`${color} ${className} ${props.className}`}
       disabled={props.disabled}
       name={props.name}
       value={props.value}
@@ -106,7 +108,7 @@ const Button: React.FC<ButtonProps> = (props) => {
 };
 
 const renderIfExists = (component: React.ReactNode, className: string) => {
-  return component ? <span className={className}>{component}</span> : null;
+  return component && <span className={className}>{component}</span>;
 };
 
 Button.defaultProps = defaultProps;

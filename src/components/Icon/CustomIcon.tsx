@@ -160,9 +160,75 @@ const Home: React.FC = () => {
   );
 };
 
+const Community: React.FC = () => {
+  return (
+    <svg
+      width="35"
+      height="35"
+      viewBox="0 0 35 35"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect width="35" height="35" rx="17.5" fill="currentColor" />
+      <path
+        d="M22.5 25.5H27.5V23.5C27.5 21.8431 26.1569 20.5 24.5 20.5C23.5444 20.5 22.6931 20.9468 22.1438 21.6429M22.5 25.5H12.5M22.5 25.5V23.5C22.5 22.8438 22.3736 22.217 22.1438 21.6429M12.5 25.5H7.5V23.5C7.5 21.8431 8.84315 20.5 10.5 20.5C11.4556 20.5 12.3069 20.9468 12.8562 21.6429M12.5 25.5V23.5C12.5 22.8438 12.6264 22.217 12.8562 21.6429M12.8562 21.6429C13.5935 19.801 15.3948 18.5 17.5 18.5C19.6052 18.5 21.4065 19.801 22.1438 21.6429M20.5 12.5C20.5 14.1569 19.1569 15.5 17.5 15.5C15.8431 15.5 14.5 14.1569 14.5 12.5C14.5 10.8431 15.8431 9.5 17.5 9.5C19.1569 9.5 20.5 10.8431 20.5 12.5ZM26.5 15.5C26.5 16.6046 25.6046 17.5 24.5 17.5C23.3954 17.5 22.5 16.6046 22.5 15.5C22.5 14.3954 23.3954 13.5 24.5 13.5C25.6046 13.5 26.5 14.3954 26.5 15.5ZM12.5 15.5C12.5 16.6046 11.6046 17.5 10.5 17.5C9.39543 17.5 8.5 16.6046 8.5 15.5C8.5 14.3954 9.39543 13.5 10.5 13.5C11.6046 13.5 12.5 14.3954 12.5 15.5Z"
+        stroke="#ffffff"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+const Resources: React.FC = () => {
+  return (
+    <svg
+      width="35"
+      height="35"
+      viewBox="0 0 35 35"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect width="35" height="35" rx="17.5" fill="currentColor" />
+      <path
+        d="M17.5 19.5L26.5 14.5L17.5 9.5L8.5 14.5L17.5 19.5ZM17.5 19.5L23.6591 16.0783C24.2017 17.4466 24.5 18.9384 24.5 20.4999C24.5 21.2013 24.4398 21.8885 24.3244 22.5569C21.7143 22.8106 19.349 23.9006 17.5 25.5555C15.651 23.9006 13.2857 22.8106 10.6756 22.5569C10.5602 21.8885 10.5 21.2012 10.5 20.4999C10.5 18.9384 10.7982 17.4466 11.3409 16.0782L17.5 19.5ZM13.5 25.4999V18L17.5 15.7778"
+        stroke="#F2F3FA"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+const HealthProfile: React.FC = () => {
+  return (
+    <svg
+      width="35"
+      height="35"
+      viewBox="0 0 35 35"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect width="35" height="35" rx="17.5" fill="currentColor" />
+      <path
+        d="M9.81802 11.818C8.06066 13.5754 8.06066 16.4246 9.81802 18.182L17.5001 25.864L25.182 18.182C26.9393 16.4246 26.9393 13.5754 25.182 11.818C23.4246 10.0607 20.5754 10.0607 18.818 11.818L17.5001 13.1361L16.182 11.818C14.4246 10.0607 11.5754 10.0607 9.81802 11.818Z"
+        stroke="#EDF4FD"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
 export const customIcons: { [key: string]: React.ReactNode } = {
   helix: <Helix />,
   'healthcare-provider': <HealthCareProvider />,
   atom: <Atom />,
   home: <Home />,
+  community: <Community />,
+  resources: <Resources />,
+  'health-profile': <HealthProfile />,
 };

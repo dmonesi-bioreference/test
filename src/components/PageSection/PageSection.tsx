@@ -7,7 +7,7 @@ export interface PageSectionProps {
 const PageSection: React.FC<PageSectionProps> = (props) => {
   return (
     <PageSectionStyled className="page-section">
-      <div>{props.header}</div>
+      <header>{props.header}</header>
       {props.children}
     </PageSectionStyled>
   );

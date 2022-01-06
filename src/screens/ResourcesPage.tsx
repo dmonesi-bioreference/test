@@ -1,11 +1,15 @@
 import { useEffect } from 'react';
 
-import { useAppEvents, useAppSelector, useAppTranslation, MediaElements } from 'app';
 import {
-  AppImage,
+  useAppEvents,
+  useAppSelector,
+  useAppTranslation,
+  MediaElements,
+} from 'app';
+import {
   BulletItem,
   Button,
-  Card,
+  LinkCard,
   Heading,
   Icon,
   PageLayout,
@@ -28,25 +32,15 @@ export const ResourcesPage = () => {
 
   const articleCards = articles.map((article) => {
     return (
-      <Card
+      <LinkCard
         key={article.id}
-        header={
-          <AppImage
-            src={article.bannerImage.srcUrl}
-            alt={article.bannerImage.altText}
-            width={343}
-            height={189}
-          />
-        }
+        variant="article"
+        imageSrc={article.bannerImage.srcUrl}
+        imageAlt={article.bannerImage.altText}
+        label={article.label}
+        heading={article.title}
+        themeColor={tokens.colorPrimary}
       >
-        <div style={{ marginBottom: tokens.spacingXSmall }}>
-          <Typography type="label" labelType="title" color="primary">
-            {article.label}
-          </Typography>
-        </div>
-        <div style={{ marginBottom: tokens.spacing }}>
-          <Heading>{article.title}</Heading>
-        </div>
         <div style={{ marginBottom: tokens.spacingLarge }}>
           <Typography type="body">
             {article.content.map((textBlock) => textBlock.content).join()}
@@ -55,7 +49,7 @@ export const ResourcesPage = () => {
         <Button kind="primary" href="/resources/real-family-story-81707">
           {t('sections.resources.story.readMore')}
         </Button>
-      </Card>
+      </LinkCard>
     );
   });
 
