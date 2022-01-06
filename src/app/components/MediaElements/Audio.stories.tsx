@@ -5,7 +5,6 @@ import { BulletItem, Icon } from 'components';
 
 import Audio, { AudioProps } from './Audio';
 
-
 export default {
   component: Audio,
   title: 'App/Audio',

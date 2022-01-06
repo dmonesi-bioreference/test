@@ -21,14 +21,14 @@ Primary.args = {
   type: 'info',
 };
 
-export const hideIcon = Template.bind({});
+export const HideIcon = Template.bind({});
 
-hideIcon.args = {
+HideIcon.args = {
   type: 'danger',
   hideIcon: true,
 };
 
-hideIcon.parameters = {
+HideIcon.parameters = {
   docs: {
     storyDescription:
       'Set `hideIcon` to true to hide the associated icon. (This is generally discouraged for accessibility reasons.)',

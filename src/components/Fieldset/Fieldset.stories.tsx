@@ -27,14 +27,14 @@ Primary.args = {
   legend: 'Fieldset Legend',
 };
 
-export const withCheckboxes = () => (
+export const WithCheckboxes = () => (
   <Fieldset legend="Check all that apply.">
     <Checkbox name="checkbox1" label="Checkbox One" />
     <Checkbox name="checkbox2" label="Checkbox Two" />
   </Fieldset>
 );
 
-export const withHorizontalLayoutRadio = () => (
+export const WithHorizontalLayoutRadio = () => (
   <Fieldset legend="Favorite Mobile OS" orientation="horizontal">
     <RadioGroup name="radio1">
       <Radio value="android" label="Android" />
@@ -43,7 +43,7 @@ export const withHorizontalLayoutRadio = () => (
   </Fieldset>
 );
 
-export const withHorizontalApartLayoutRadio = () => (
+export const WithHorizontalApartLayoutRadio = () => (
   <Fieldset
     legend="What&#8217;s your favorite ice cream flavor?"
     orientation="horizontal-apart"
@@ -56,7 +56,7 @@ export const withHorizontalApartLayoutRadio = () => (
   </Fieldset>
 );
 
-export const withHorizontalChildren = () => (
+export const WithHorizontalChildren = () => (
   <Fieldset legend="Cats or dogs?" inputOrientation="horizontal">
     <RadioGroup name="radio1">
       <Radio value="cat" label="😸" />
@@ -65,7 +65,7 @@ export const withHorizontalChildren = () => (
   </Fieldset>
 );
 
-export const withHiddenLegend = () => (
+export const WithHiddenLegend = () => (
   <Fieldset legend="Fieldset Label" hideLegend={true}>
     <RadioGroup name="radio1">
       <Radio value="one" label="Radio One" />

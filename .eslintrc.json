@@ -16,6 +16,7 @@
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:security/recommended",
     "plugin:jsx-a11y/recommended",
+    "plugin:storybook/recommended",
     "prettier"
   ],
   "plugins": [

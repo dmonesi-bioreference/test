@@ -14,7 +14,7 @@ export default {
   },
 };
 
-export const prompt = () => (
+export const Prompt = () => (
   <ConfirmationButton
     type="inline"
     prompt="Are you sure?"
@@ -26,7 +26,7 @@ export const prompt = () => (
   </ConfirmationButton>
 );
 
-export const modal = () => (
+export const Modal = () => (
   <ConfirmationButton
     type="dialog"
     prompt="Are you sure?"
@@ -38,7 +38,7 @@ export const modal = () => (
   </ConfirmationButton>
 );
 
-modal.parameters = {
+Modal.parameters = {
   docs: {
     storyDescription:
       'Set `type` to `dialog` to display the confirmation as a modal dialog.',

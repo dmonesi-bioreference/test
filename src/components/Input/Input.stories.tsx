@@ -24,17 +24,17 @@ Primary.args = {
   name: 'input',
 };
 
-export const withIcons = Template.bind({});
+export const WithIcons = Template.bind({});
 
-withIcons.args = {
+WithIcons.args = {
   ...Primary.args,
   prefix: <Icon name="key" />,
   suffix: <Icon name="light-bulb" />,
 };
 
-export const withInputHelper = Template.bind({});
+export const WithInputHelper = Template.bind({});
 
-withInputHelper.args = {
+WithInputHelper.args = {
   ...Primary.args,
   inputHelper: (
     <InputHelper helperText="We’ll also use this to send you notifications." />

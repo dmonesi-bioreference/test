@@ -9,6 +9,14 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-storysource',
   ],
+  babel: async (options) => ({
+    ...options,
+    plugins: [
+      '@babel/plugin-proposal-class-properties',
+      '@babel/plugin-proposal-private-methods',
+      ['@babel/plugin-proposal-private-property-in-object', { loose: false }],
+    ],
+  }),
   core: {
     builder: 'webpack5',
   },

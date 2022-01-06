@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+// @ts-ignore
 import React from 'react';
 import ReactDOM from 'react-dom';
 

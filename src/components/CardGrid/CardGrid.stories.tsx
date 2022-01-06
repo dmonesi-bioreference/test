@@ -22,8 +22,8 @@ const Template: Story<CardGridProps> = (args) => (
   </CardGrid>
 );
 
-export const withTwoColumns = Template.bind({});
+export const WithTwoColumns = Template.bind({});
 
-withTwoColumns.args = {
+WithTwoColumns.args = {
   columns: 2,
 };

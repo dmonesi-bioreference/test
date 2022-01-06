@@ -81,22 +81,22 @@ Links.parameters = {
   },
 };
 
-export const withPrefixIcon = Template.bind({});
+export const WithPrefixIcon = Template.bind({});
 
-withPrefixIcon.args = {
+WithPrefixIcon.args = {
   prefix: <Icon name="download" />,
   href: 'https://example.com',
 };
 
-withPrefixIcon.parameters = {
+WithPrefixIcon.parameters = {
   docs: {
     storyDescription: 'Use the `prefix` and `suffix` props to add an icon.',
   },
 };
 
-export const withSuffixIcon = Template.bind({});
+export const WithSuffixIcon = Template.bind({});
 
-withSuffixIcon.args = {
+WithSuffixIcon.args = {
   suffix: <Icon name="arrow-right" />,
   href: 'https://example.com',
 };
