@@ -34,6 +34,9 @@ function AuthDiagnostics(props: Props<unknown>) {
   );
 
   const patientGuid = useAppSelector((state) => state.context.auth.patientGuid);
+  const patientSource = useAppSelector(
+    (state) => state.context.auth.patientSource
+  );
 
   const attemptsExhausted = attempts === 0;
 
@@ -65,6 +68,7 @@ function AuthDiagnostics(props: Props<unknown>) {
           </div>
         ) : null}
         <div>Patient guid: {patientGuid}</div>
+        <div>Patient source: {patientSource}</div>
         <div>{caregiverEmail}</div>
         <div>
           <OnState matches="auth.checkingSession">Checking session</OnState>
@@ -94,9 +98,13 @@ function AuthDiagnostics(props: Props<unknown>) {
 const neverResolves = async () => {
   await TestUtils.delay(10_000_000);
   await new Promise((resolve) => setTimeout(resolve, 10_000_000));
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+  return {} as any;
 };
 
-const asyncSuccess = async () => undefined;
+// eslint-disable-next-line @typescript-eslint/no-unsafe-return
+const asyncSuccess = async () => undefined as any;
 
 const asyncFailure = async () => {
   throw new Error('Explosions!');
@@ -123,12 +131,27 @@ describe('Auth model', () => {
   });
 
   it('caches patient guid details', async () => {
-    const patientGuid = '12345-45321';
+    const guid = '12345-45321';
+    const source = 'Email';
     const app = await TestUtils.renderWithShell(<AuthDiagnostics />, {
-      onPatientGuid: async () => patientGuid,
+      onPatientGuid: async () => ({ guid, source }),
     });
 
-    await app.findByText(`Patient guid: ${patientGuid}`);
+    await app.findByText(`Patient guid: ${guid}`);
+    await app.findByText(`Patient source: ${source}`);
+  });
+
+  it('looks for patient guid details in url by default', async () => {
+    const guid = '12345-45321';
+    const source = 'Email';
+    const url = `/?${new URLSearchParams({ Guid: guid, Source: source })}`;
+
+    window.history.pushState({}, '', url);
+
+    const app = await TestUtils.renderWithShell(<AuthDiagnostics />);
+
+    await app.findByText(`Patient guid: ${guid}`);
+    await app.findByText(`Patient source: ${source}`);
   });
 
   it('calls the session handler after confirming a patient guid', async () => {

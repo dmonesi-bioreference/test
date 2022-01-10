@@ -160,15 +160,6 @@ async function register({
 
 ReactDOM.render(
   <Shell
-    onPatientGuid={async () => {
-      const params = new URLSearchParams(window.location.search);
-
-      if (params.get('register')) {
-        return Promise.resolve('1234');
-      } else {
-        return Promise.reject('no patient found');
-      }
-    }}
     onSession={async () => Promise.reject('No session available')}
     onAuthenticate={async ({ forms }) => {
       const { email, password } = forms.login.values;

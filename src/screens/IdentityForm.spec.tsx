@@ -94,6 +94,7 @@ describe('The identity form page', () => {
           />
         </>,
         {
+          onPatientGuid: async () => ({ guid: '1234', source: '' }),
           onIdentity: listener,
           onSession: () => Promise.reject('no session found'),
         }
@@ -128,6 +129,7 @@ describe('The identity form page', () => {
           />
         </>,
         {
+          onPatientGuid: async () => ({ guid: '1234', source: '' }),
           onIdentity: listener,
           onSession: () => Promise.reject('no session found'),
         }

@@ -1,5 +1,7 @@
 import { assign } from '@xstate/immer';
 
+import { isAuthenticatedSession, isPatientInfo } from './models';
+
 declare global {
   interface AppEventMap {
     authenticate: { type: 'authenticate' };
@@ -19,30 +21,16 @@ declare global {
   }
 }
 
-function isAuthenticatedSession(
-  candidate: any
-): candidate is AuthenticatedSession {
-  return (
-    typeof candidate === 'object' &&
-    'nickname' in candidate &&
-    'name' in candidate &&
-    'picture' in candidate &&
-    'updated_at' in candidate &&
-    'email' in candidate &&
-    'email_verified' in candidate &&
-    'sub' in candidate
-  );
-}
-
 export const actions = {
   reduceIdentityAttempts: assign((context: AppContext) => {
     context.auth.identityCheckAttempts--;
   }),
-  collectPatientGuid: assign((context: AppContext, event: AppEvents) => {
+  collectPatientGuidDetails: assign((context: AppContext, event: AppEvents) => {
     const data = 'data' in event ? event?.data : {};
 
-    if (typeof data === 'string') {
-      context.auth.patientGuid = data;
+    if (isPatientInfo(data)) {
+      context.auth.patientGuid = data.guid;
+      context.auth.patientSource = data.source;
     }
   }),
   clearAuthErrors: assign((context: AppContext) => {
@@ -76,6 +64,7 @@ export const guards = {
 export const context = {
   identityCheckAttempts: 5,
   patientGuid: '',
+  patientSource: '',
   session: null as AuthenticatedSession | null,
   errors: [] as string[],
 };
@@ -86,7 +75,10 @@ export const machine = {
     checkingPatientGuid: {
       invoke: {
         src: 'handlePatientGuid',
-        onDone: { target: 'checkingSession', actions: 'collectPatientGuid' },
+        onDone: {
+          target: 'checkingSession',
+          actions: 'collectPatientGuidDetails',
+        },
         onError: 'requestingLogin',
       },
     },

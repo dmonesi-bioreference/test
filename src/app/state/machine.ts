@@ -23,7 +23,7 @@ export const initialContext = {
     articles: { data: [] as Article[], errors: [] as ContentFailure[] },
   },
   geneticCounselor: {
-    photo: geneticCounselor
+    photo: geneticCounselor,
   },
 };
 

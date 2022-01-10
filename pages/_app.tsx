@@ -41,14 +41,9 @@ async function getAuth0SessionForNonDemoPages() {
   return (await result.json()) as AuthenticatedSession;
 }
 
-async function checkForPatientGuid() {
-  log('Checking patient GUID');
-}
-
 function WebApp({ Component, pageProps }: AppProps) {
   return (
     <Shell
-      onPatientGuid={checkForPatientGuid}
       onSession={getAuth0SessionForNonDemoPages}
       onAuthenticate={async () => {
         log('Authenticating');

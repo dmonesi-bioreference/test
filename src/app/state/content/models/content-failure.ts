@@ -1,7 +1,7 @@
 import { Article } from 'app';
 
 declare global {
-  interface ContentFailure<Field extends string = string> {
+  interface ContentFailure {
     message: string;
   }
 }

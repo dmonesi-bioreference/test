@@ -2,6 +2,7 @@ import { useActor, useInterpret } from '@xstate/react';
 import { useMemo } from 'react';
 
 import { app, setupDispatchMap } from 'app/state';
+import { getPatientInfo } from 'app/web';
 
 import { Article, mockArticle } from '../Content';
 
@@ -27,7 +28,7 @@ export interface AppProviderProps {
   }>;
   onReport?: AppEventFn<{ src: string; thumbnail: string } | undefined>;
   onFetchAllArticles?: AppEventFn<Article[]>;
-  onPatientGuid?: AppEventFn<unknown>;
+  onPatientGuid?: AppEventFn<{ guid: string; source: string }>;
   onRegistration?: AppEventFn<unknown>;
 }
 
@@ -51,7 +52,7 @@ export function AppProvider({
   }),
   onReport: handleReport = async () => undefined,
   onFetchAllArticles: handleFetchAllArticles = async () => [mockArticle],
-  onPatientGuid: handlePatientGuid = async () => undefined,
+  onPatientGuid: handlePatientGuid = getPatientInfo,
   onSession: handleSession = async () => emptySession,
   onRegistration: handleRegistration = async () => undefined,
 }: Props<AppProviderProps>) {
