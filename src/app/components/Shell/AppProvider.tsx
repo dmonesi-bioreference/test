@@ -18,7 +18,7 @@ export interface AppProviderProps {
   onAppointmentStatus?: AppEventFn<{
     appointmentStatus: 'at appointment' | 'after appointment' | undefined;
   }>;
-  onReport?: AppEventFn<{ src: string; thumbnail: string } | undefined>;
+  onReport?: AppEventFn<{ src: string; thumbnail: string | StaticImageData } | undefined>;
   onFetchAllArticles?: AppEventFn<Article[]>;
   onPatientGuid?: AppEventFn<{ guid: string; source: string }>;
   onRegistration?: AppEventFn<unknown>;

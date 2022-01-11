@@ -77,7 +77,7 @@ export const actions = {
     }
   }),
   resolveReport: assign((context: AppContext, event: AppEvents) => {
-    const data = ('data' in event ? event?.data : {}) as { src: string, thumbnail: string };
+    const data = ('data' in event ? event?.data : {}) as { src: string, thumbnail: string | StaticImageData };
 
     if (!data) return;
 
@@ -89,7 +89,7 @@ export const actions = {
 export const context: {
   actors: ActorRef<EventObject, State<TestContext, EventObject, any, { value: any; context: TestContext; }>>[],
   tests: { id: string, percentComplete: number, expectedResultsDate: string, lastUpdated: string }[],
-  report: { src: string, thumbnail: string },
+  report: { src: string, thumbnail: string | StaticImageData },
 } = {
   actors: [],
   tests: [],
