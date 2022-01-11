@@ -32,7 +32,6 @@ const FETCH_ARTICLE = gql`
 export const LandingPage = () => {
   const t = useAppTranslation();
   const { data } = useQuery<ArticleQuery>(FETCH_ARTICLE);
-
   const articles = data?.articles.map((article) => {
     return (
       <Card

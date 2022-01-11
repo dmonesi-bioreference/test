@@ -1,3 +1,4 @@
+import { mockTest } from 'mocks/test';
 import { renderWithShell } from 'test-utils';
 
 import { ResultsReady } from './ResultsReady';
@@ -17,7 +18,7 @@ describe('The results ready page', () => {
 
     it('has the report', async () => {
       const page = await renderWithShell(<ResultsReady />, {
-        onTestStatus: async () => ({ labStatus: 'in lab' }),
+        onLoadTests: async () => ([{ ...mockTest, LabStatus: 'Report Ready' }]),
         onReport: async () => ({ src: '', thumbnail: '' })
       });
 

@@ -21,7 +21,7 @@ import ResultsReadyStyled from './ResultsReady.styles';
 export const ResultsReady = () => {
   const t = useAppTranslation();
   const { viewTestResults } = useAppEvents();
-  const report = useAppSelector((state) => state.context.test.report);
+  const report = useAppSelector((state) => state.context.tests.report);
 
   useEffect(() => {
     viewTestResults();

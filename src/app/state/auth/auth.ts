@@ -1,4 +1,5 @@
 import { assign } from '@xstate/immer';
+import { send } from 'xstate';
 
 import { isAuthenticatedSession, isPatientInfo } from './models';
 
@@ -102,7 +103,9 @@ export const machine = {
         onError: 'verifyingIdentity',
       },
     },
-    knownCaregiver: {},
+    knownCaregiver: {
+      entry: [send('LOAD_TESTS')],
+    },
     verifyingIdentity: {
       on: {
         checkIdentity: [

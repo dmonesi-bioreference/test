@@ -1,3 +1,4 @@
+import { mockTest } from 'mocks/test';
 import { renderWithShell } from 'test-utils';
 
 import { WaitingForResults } from './WaitingForResults';
@@ -16,11 +17,13 @@ describe('The waiting for results page', () => {
 
     it('has the correct indicator', async () => {
       const page = await renderWithShell(<WaitingForResults />, {
-        onTestStatus: async () => ({ labStatus: 'in lab' }),
+        onLoadTests: async () => ([{ ...mockTest, DueDate: '2021-11-11T00:00:00.000', LabStatus: 'In Lab' }]),
+        onPatientGuid: async () => ({ guid: '1234', source: '' }),
       });
       
       await page.findByText('Your genetic test is currently:');
       await page.findByText('In Progress');
+      await page.findByText('Results expected Nov 11, 2021');
       await page.findByText('You can prepare and learn about the results while you wait.');
     });
   });

@@ -1,8 +1,11 @@
+import { mockTest } from 'mocks/test';
 import { renderWithShell } from 'test-utils';
 
 import { LandingPage } from './LandingPage';
 
 describe('The home page', () => {
+  const today = new Date();
+
   it('does not explode', async () => {
     await renderWithShell(<LandingPage />);
   });
@@ -16,18 +19,23 @@ describe('The home page', () => {
     });
 
     it('has test results on waiting', async () => {
-      const page = await renderWithShell(
-        <LandingPage />,
-        {
-          onTestStatus: async () => ({ labStatus: 'in lab' })
-        }
-      );
+      const page = await renderWithShell(<LandingPage />, {
+        onLoadTests: async () => {
+          return [
+            {
+              ...mockTest,
+              DueDate: '2021-11-11T00:00:00.000',
+              LabStatus: 'In Lab',
+              UpdatedDate: `${today.getFullYear()}-${today.getMonth() + 1 < 10 ? '0' : ''}${today.getMonth() + 1}-${today.getDate() < 10 ? '0' : ''}${today.getDate()}T11:12:00.000`
+            }
+          ]
+        },
+        onPatientGuid: async () => ({ guid: '1234', source: '' }),
+      });
 
       await page.findByText('Test in progress');
-      await page.findByText('Results expected Nov 11, 2022');
-      await page.findByText(
-        'Please keep in mind that processing time may vary.'
-      );
+      await page.findByText('Results expected Nov 11, 2021');
+      await page.findByText('Please keep in mind that processing time may vary.');
       await page.findByText('Updated 11:12am today');
 
       await page.findByText("We're working on processing your test sample. Meanwhile, let's get your health profile setup.");
@@ -35,12 +43,18 @@ describe('The home page', () => {
     });
 
     it('has test results ready', async () => {
-      const page = await renderWithShell(
-        <LandingPage />,
-        {
-          onTestStatus: async () => ({ labStatus: 'report ready' })
-        }
-      );
+      const page = await renderWithShell(<LandingPage />, {
+        onLoadTests: async () => {
+          return [
+            {
+              ...mockTest,
+              LabStatus: 'Report Ready',
+              UpdatedDate: `${today.getFullYear()}-${today.getMonth() + 1 < 10 ? '0' : ''}${today.getMonth() + 1}-${today.getDate() < 10 ? '0' : ''}${today.getDate()}T11:12:00.000`
+            }
+          ]
+        },
+        onPatientGuid: async () => ({ guid: '1234', source: '' }),
+      });
 
       await page.findByText('Results Ready');
       await page.findByText('and shared with your doctor.');
@@ -52,13 +66,19 @@ describe('The home page', () => {
     });
 
     it('has test results ready and user at appointment', async () => {
-      const page = await renderWithShell(
-        <LandingPage />,
-        {
-          onTestStatus: async () => ({ labStatus: 'report ready' }),
-          onAppointmentStatus: async () => ({ appointmentStatus: 'at appointment' })
-        }
-      );
+      const page = await renderWithShell(<LandingPage />, {
+        onLoadTests: async () => {
+          return [
+            {
+              ...mockTest,
+              LabStatus: 'Report Ready',
+              UpdatedDate: `${today.getFullYear()}-${today.getMonth() + 1 < 10 ? '0' : ''}${today.getMonth() + 1}-${today.getDate() < 10 ? '0' : ''}${today.getDate()}T11:12:00.000`
+            }
+          ]
+        },
+        onAppointmentStatus: async () => ({ appointmentStatus: 'at appointment' }),
+        onPatientGuid: async () => ({ guid: '1234', source: '' }),
+      });
 
       await page.findByText('Results Ready');
       await page.findByText('and shared with your doctor.');
@@ -70,13 +90,19 @@ describe('The home page', () => {
     });
 
     it('has test results ready and user after appointment', async () => {
-      const page = await renderWithShell(
-        <LandingPage />,
-        {
-          onTestStatus: async () => ({ labStatus: 'report ready' }),
-          onAppointmentStatus: async () => ({ appointmentStatus: 'after appointment' })
-        }
-      );
+      const page = await renderWithShell(<LandingPage />, {
+        onLoadTests: async () => {
+          return [
+            {
+              ...mockTest,
+              LabStatus: 'Report Ready',
+              UpdatedDate: `${today.getFullYear()}-${today.getMonth() + 1 < 10 ? '0' : ''}${today.getMonth() + 1}-${today.getDate() < 10 ? '0' : ''}${today.getDate()}T11:12:00.000`
+            }
+          ]
+        },
+        onAppointmentStatus: async () => ({ appointmentStatus: 'after appointment' }),
+        onPatientGuid: async () => ({ guid: '1234', source: '' }),
+      });
 
       await page.findByText('Results Ready');
       await page.findByText('and shared with your doctor.');

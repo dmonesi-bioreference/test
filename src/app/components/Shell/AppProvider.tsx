@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 
 import { app, setupDispatchMap } from 'app/state';
 import { getPatientInfo } from 'app/web';
+import { getTests } from 'client';
 
 import { Article, mockArticle } from '../Content';
 
@@ -13,16 +14,7 @@ export interface AppProviderProps {
   onAuthenticate?: AppEventFn<unknown>;
   onIdentity?: AppEventFn<unknown>;
   onFetchTestStatusArticles?: AppEventFn<unknown>;
-  onTestStatus?: AppEventFn<{
-    labStatus:
-      | 'in transit'
-      | 'specimen received'
-      | 'hold for bi'
-      | 'in lab'
-      | 'finished'
-      | 'report ready'
-      | 'canceled';
-  }>;
+  onLoadTests?: AppEventFn<Test[]>;
   onAppointmentStatus?: AppEventFn<{
     appointmentStatus: 'at appointment' | 'after appointment' | undefined;
   }>;
@@ -46,7 +38,7 @@ export function AppProvider({
   children,
   onAuthenticate: handleAuth = async () => undefined,
   onIdentity: handleIdentityCheck = async () => undefined,
-  onTestStatus: handleTestStatus = async () => ({ labStatus: 'in lab' }),
+  onLoadTests: handleLoadTests = async (context: AppContext) => await getTests(context.auth.patientGuid),
   onAppointmentStatus: handleAppointmentStatus = async () => ({
     appointmentStatus: undefined,
   }),
@@ -60,7 +52,7 @@ export function AppProvider({
     handleAuth,
     handleIdentityCheck,
     handleSession,
-    handleTestStatus,
+    handleLoadTests,
     handleAppointmentStatus,
     handleReport,
     handleFetchAllArticles,

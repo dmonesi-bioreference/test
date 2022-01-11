@@ -10,7 +10,7 @@ import * as auth from './auth';
 import * as content from './content';
 import * as forms from './forms';
 import * as registration from './registration';
-import * as test from './test';
+import * as tests from './tests/testsMachine';
 import { createAppMachine, GetStates } from './utils';
 
 export const initialContext = {
@@ -18,7 +18,7 @@ export const initialContext = {
   theme: 'light' as Themes,
   auth: auth.context,
   forms: forms.context,
-  test: test.context,
+  tests: tests.context,
   content: {
     articles: { data: [] as Article[], errors: [] as ContentFailure[] },
   },
@@ -35,7 +35,7 @@ const { init, schema } = createAppMachine({
     auth: auth.machine,
     forms: forms.machine,
     registration: registration.machine,
-    test: test.machine,
+    tests: tests.machine,
     content: content.machine,
   },
 });
@@ -44,7 +44,7 @@ export const app = init({
   actions: Object.assign(
     auth.actions,
     forms.actions,
-    test.actions,
+    tests.actions,
     content.actions
   ),
   guards: Object.assign(auth.guards),

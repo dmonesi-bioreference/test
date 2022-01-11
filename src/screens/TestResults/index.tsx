@@ -7,13 +7,13 @@ import { WaitingForResults } from './WaitingForResults';
 export function TestResults() {
   return (
     <>
-      <OnState matches="test.waiting">
+      <OnState matches="tests.waitingOnTests">
         <WaitingForResults />
       </OnState>
-      <OnState matches="test.resultsReady.view.notViewed">
+      <OnState matches="tests.testsReady.view.notViewed">
         <PreResultsPause />
       </OnState>
-      <OnState matches="test.resultsReady.view.viewed">
+      <OnState matches="tests.testsReady.view.viewed">
         <ResultsReady />
       </OnState>
     </>

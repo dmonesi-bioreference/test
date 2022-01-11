@@ -52,10 +52,6 @@ function WebApp({ Component, pageProps }: AppProps) {
         log('Checking identity');
         await explosions();
       }}
-      onTestStatus={async () => {
-        // API call goes here
-        return { labStatus: 'in lab' };
-      }}
       onAppointmentStatus={async () => {
         // API call goes here
         return { appointmentStatus: 'after appointment' };

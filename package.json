@@ -26,7 +26,7 @@
     "make-icons": "node make-icons.js",
     "prebuild": "npm run make-icons",
     "plop": "plop",
-    "start": "npm run make-icons && next dev",
+    "start": "npm run make-icons && cross-env NODE_OPTIONS='--insecure-http-parser' next dev",
     "start:next": "npm run build && next start",
     "storybook": "npm run make-icons && start-storybook -s ./public -p 9009",
     "cypress": "cypress run",

@@ -1,4 +1,4 @@
-import { useAppSelector, useAppTranslation } from 'app';
+import { useAppTranslation } from 'app';
 import {
   Card,
   CircularProgress,
@@ -10,11 +10,12 @@ import {
 import { colors } from 'styles';
 
 import WaitingForResultsStyled from './WaitingForResults.styles';
+import { useTestResults } from './hooks';
+
 
 export const WaitingForResults = () => {
   const t = useAppTranslation();
-  const percentComplete = useAppSelector((state) => state.context.test.percentComplete);
-  const expectedResultsDate = useAppSelector((state) => state.context.test.expectedResultsDate);
+  const [{ percentComplete, expectedResultsDate }] = useTestResults();
 
   return (
     <PageLayout containsCards={true}>

@@ -12,7 +12,7 @@ import { colors, tokens } from 'styles';
 import TestStatusStyled from './TestStatus.styles';
 import { useTestStatus } from './hooks';
 
-export const TestStatus: React.FC = () => {
+export const TestStatus = () => {
   const [{ isWaiting, percentComplete, lastUpdated, expectedResultsDate }] = useTestStatus();
 
   const t = useAppTranslation();
