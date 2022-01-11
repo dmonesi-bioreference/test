@@ -68,9 +68,9 @@ jobs:
               AUTH0_ISSUER_BASE_URL=https://${{ secrets.AUTH0_DOMAIN }} \
               AUTH0_CLIENT_ID="${{ secrets.AUTH0_CLIENT_ID }}" \
               AUTH0_CLIENT_SECRET="${{ secrets.AUTH0_CLIENT_SECRET }}" \
-              PROVIDER_PORTAL_API_BASIC_AUTH_USERNAME="${{ secrets.PROVIDER_PORTAL_API_BASIC_AUTH_USERNAME }}" \ \
-              PROVIDER_PORTAL_API_BASIC_AUTH_PASSWORD="${{ secrets.PROVIDER_PORTAL_API_BASIC_AUTH_PASSWORD }}" \ \
-              PROVIDER_PORTAL_API_REFERER="${{ secrets.PROVIDER_PORTAL_API_REFERER }}" \ \
+              PROVIDER_PORTAL_API_BASIC_AUTH_USERNAME="${{ secrets.PROVIDER_PORTAL_API_BASIC_AUTH_USERNAME }}" \
+              PROVIDER_PORTAL_API_BASIC_AUTH_PASSWORD="${{ secrets.PROVIDER_PORTAL_API_BASIC_AUTH_PASSWORD }}" \
+              PROVIDER_PORTAL_API_REFERER="${{ secrets.PROVIDER_PORTAL_API_REFERER }}" \
               PROVIDER_PORTAL_API_TESTS_URL="${{ secrets.PROVIDER_PORTAL_API_TESTS_URL }}"
 
       # Wait for the site to be restarted before we start vulnerability scan
