@@ -15,7 +15,9 @@ describe('Home', () => {
 
   it('displays the registration page for visitors with a guid', async () => {
     const page = await TestUtils.renderWithShell(<Home />, {
-      onPatientGuid: async () => '1234',
+      onPatientGuid: async () => {
+        return { guid: '1234', source: 'blah' };
+      },
     });
 
     await page.findByText("Child's name");
