@@ -22,7 +22,7 @@
     "lint:fix": "npm run lint -- --fix",
     "lint:next": "next lint",
     "lint:typecheck": "tsc",
-    "lint:all": "yarn lint && yarn lint-styles && yarn lint:next",
+    "lint:all": "yarn lint && yarn lint-styles && yarn lint:next && yarn lint:typecheck",
     "make-icons": "node make-icons.js",
     "prebuild": "npm run make-icons",
     "plop": "plop",
