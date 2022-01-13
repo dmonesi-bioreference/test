@@ -1,18 +1,13 @@
-import { graphql } from 'msw';
+import { rest } from 'msw';
 
-import { Article, mockArticle } from 'app';
+import { mockArticle } from 'app/state/content/models';
 
 export interface ArticleQuery {
   articles: Array<Article>;
 }
 
 export const handlers = [
-  // Handles a "GetTestStatusArticles" query
-  graphql.query<ArticleQuery>('GetTestStatusArticles', (req, res, ctx) => {
-    return res(
-      ctx.data({
-        articles: [mockArticle],
-      })
-    );
+  rest.get('/api/content/articles', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json([mockArticle]));
   }),
 ];

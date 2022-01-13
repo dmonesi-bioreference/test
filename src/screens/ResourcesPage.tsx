@@ -1,11 +1,14 @@
 import { useEffect } from 'react';
+import ReactHtmlParser from 'react-html-parser';
 
 import {
   useAppEvents,
   useAppSelector,
   useAppTranslation,
   MediaElements,
+  useAppState,
 } from 'app';
+import InTheNICUImage from 'assets/images/jpg/InTheNICU.jpg';
 import {
   BulletItem,
   Button,
@@ -15,6 +18,7 @@ import {
   PageLayout,
   PageSection,
   Typography,
+  Spinner,
 } from 'components';
 import { tokens } from 'styles';
 
@@ -29,24 +33,27 @@ export const ResourcesPage = () => {
   const articles = useAppSelector(
     (state) => state.context.content.articles.data
   );
+  const loading = useAppState('content.articles.requesting');
+  const error = useAppState('content.articles.failure');
 
+  /* eslint-disable @typescript-eslint/no-unsafe-call */
   const articleCards = articles.map((article) => {
     return (
       <LinkCard
         key={article.id}
         variant="article"
-        imageSrc={article.bannerImage.srcUrl}
-        imageAlt={article.bannerImage.altText}
+        imageSrc={InTheNICUImage}
+        imageAlt="alt-text"
         label={article.label}
         heading={article.title}
         themeColor={tokens.colorPrimary}
       >
         <div style={{ marginBottom: tokens.spacingLarge }}>
           <Typography type="body">
-            {article.content.map((textBlock) => textBlock.content).join()}
+            <div>{ReactHtmlParser(article.blurb)}</div>
           </Typography>
         </div>
-        <Button kind="primary" href="/resources/real-family-story-81707">
+        <Button kind="primary" href="#">
           {t('sections.resources.story.readMore')}
         </Button>
       </LinkCard>
@@ -90,7 +97,15 @@ export const ResourcesPage = () => {
           {t('pages.resources.description')}
         </MediaElements.Audio>
         <Heading>{t('pages.resources.section.articles.title')}</Heading>
-        {articleCards}
+        {loading ? (
+          <Spinner />
+        ) : error ? (
+          <Typography color="error" level="7" type="heading">
+            Error fetching content.
+          </Typography>
+        ) : (
+          articleCards
+        )}
       </PageSection>
     </PageLayout>
   );

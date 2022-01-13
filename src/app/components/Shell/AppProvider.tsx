@@ -4,8 +4,7 @@ import { useMemo } from 'react';
 import { app, setupDispatchMap } from 'app/state';
 import { getPatientInfo } from 'app/web';
 import { getTests } from 'client';
-
-import { Article, mockArticle } from '../Content';
+import { fetchAllArticles } from 'client';
 
 import { AppEventContext, AppServiceContext } from './context';
 
@@ -18,7 +17,9 @@ export interface AppProviderProps {
   onAppointmentStatus?: AppEventFn<{
     appointmentStatus: 'at appointment' | 'after appointment' | undefined;
   }>;
-  onReport?: AppEventFn<{ src: string; thumbnail: string | StaticImageData } | undefined>;
+  onReport?: AppEventFn<
+    { src: string; thumbnail: string | StaticImageData } | undefined
+  >;
   onFetchAllArticles?: AppEventFn<Article[]>;
   onPatientGuid?: AppEventFn<{ guid: string; source: string }>;
   onRegistration?: AppEventFn<unknown>;
@@ -38,13 +39,16 @@ export function AppProvider({
   children,
   onAuthenticate: handleAuth = async () => undefined,
   onIdentity: handleIdentityCheck = async () => undefined,
-  onLoadTests: handleLoadTests = async (context: AppContext) => await getTests(context.auth.patientGuid),
+  onLoadTests: handleLoadTests = async (context: AppContext) =>
+    await getTests(context.auth.patientGuid),
   onAppointmentStatus: handleAppointmentStatus = async () => ({
     appointmentStatus: undefined,
   }),
   onReport: handleReport = async () => undefined,
-  onFetchAllArticles: handleFetchAllArticles = async () => [mockArticle],
   onPatientGuid: handlePatientGuid = getPatientInfo,
+  onFetchAllArticles: handleFetchAllArticles = async () => {
+    return await fetchAllArticles();
+  },
   onSession: handleSession = async () => emptySession,
   onRegistration: handleRegistration = async () => undefined,
 }: Props<AppProviderProps>) {

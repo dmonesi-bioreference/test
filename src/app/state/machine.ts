@@ -4,8 +4,6 @@ import geneticCounselor from 'assets/images/png/geneticCounselor.png';
 import { SupportedLanguages } from 'localization';
 import { Themes } from 'styles';
 
-import { Article } from '../components';
-
 import * as auth from './auth';
 import * as content from './content';
 import * as forms from './forms';
@@ -19,9 +17,7 @@ export const initialContext = {
   auth: auth.context,
   forms: forms.context,
   tests: tests.context,
-  content: {
-    articles: { data: [] as Article[], errors: [] as ContentFailure[] },
-  },
+  content: content.context,
   geneticCounselor: {
     photo: geneticCounselor,
   },

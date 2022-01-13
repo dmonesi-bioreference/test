@@ -1,9 +1,6 @@
 import { assign } from '@xstate/immer';
 
-import {
-  isArticleFailurePayload,
-  isArticlePayload,
-} from './content/models/content-failure';
+import { isArticleFailurePayload, isArticlePayload } from './models';
 
 declare global {
   interface AppEventMap {
@@ -12,6 +9,10 @@ declare global {
     };
   }
 }
+
+export const context = {
+  articles: { data: [] as Article[], errors: [] as ContentFailure[] },
+};
 
 export const actions = {
   articlesUpdate: assign((context: AppContext, event: AppEvents) => {
@@ -54,5 +55,3 @@ export const machine = {
     },
   },
 };
-
-export {};

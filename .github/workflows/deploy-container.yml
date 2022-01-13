@@ -71,7 +71,9 @@ jobs:
               PROVIDER_PORTAL_API_BASIC_AUTH_USERNAME="${{ secrets.PROVIDER_PORTAL_API_BASIC_AUTH_USERNAME }}" \
               PROVIDER_PORTAL_API_BASIC_AUTH_PASSWORD="${{ secrets.PROVIDER_PORTAL_API_BASIC_AUTH_PASSWORD }}" \
               PROVIDER_PORTAL_API_REFERER="${{ secrets.PROVIDER_PORTAL_API_REFERER }}" \
-              PROVIDER_PORTAL_API_TESTS_URL="${{ secrets.PROVIDER_PORTAL_API_TESTS_URL }}"
+              PROVIDER_PORTAL_API_TESTS_URL="${{ secrets.PROVIDER_PORTAL_API_TESTS_URL }}" \
+              PIMCORE_URL="${{ secrets.PIMCORE_URL }}" \
+              PIMCORE_KEY="${{ secrets.PIMCORE_KEY }}"
 
       # Wait for the site to be restarted before we start vulnerability scan
       - name: Wait for 30 seconds...

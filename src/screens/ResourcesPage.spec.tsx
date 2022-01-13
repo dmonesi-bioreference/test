@@ -23,7 +23,7 @@ describe('The resources page', () => {
     const page = await renderWithShell(<ResourcesPage />);
 
     await page.findByText('Read');
-    await page.findByText('Preparing For Results');
+    await page.findByText('Preparing For Results (Mock Article)');
     await page.findByText('What to expect from the test results');
     await page.findByText(
       'A genetic test report contains a lot of important information. We’ll break down the key terms for you so you can understand them better.'

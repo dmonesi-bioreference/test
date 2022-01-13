@@ -1,6 +1,5 @@
 import type { AppProps } from 'next/app';
 
-import { mockArticle } from 'app';
 import { Shell } from 'app/components/Shell';
 import 'inspect';
 
@@ -55,9 +54,6 @@ function WebApp({ Component, pageProps }: AppProps) {
       onAppointmentStatus={async () => {
         // API call goes here
         return { appointmentStatus: 'after appointment' };
-      }}
-      onFetchAllArticles={async () => {
-        return [mockArticle];
       }}
     >
       <Component {...pageProps} />

@@ -10,10 +10,8 @@ describe('Demo pages', () => {
       'data-consent',
       'data-sharing-settings',
       'location-check',
-      'nicu-faqs',
       'results',
       'testing-process',
-      'resources/any-given-slug-1234',
       'registration',
     ];
 
