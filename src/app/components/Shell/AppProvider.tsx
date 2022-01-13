@@ -2,9 +2,9 @@ import { useActor, useInterpret } from '@xstate/react';
 import { useMemo } from 'react';
 
 import { app, setupDispatchMap } from 'app/state';
+import { mockArticle } from 'app/state/content/models';
 import { getPatientInfo } from 'app/web';
 import { getTests } from 'client';
-import { fetchAllArticles } from 'client';
 
 import { AppEventContext, AppServiceContext } from './context';
 
@@ -47,7 +47,7 @@ export function AppProvider({
   onReport: handleReport = async () => undefined,
   onPatientGuid: handlePatientGuid = getPatientInfo,
   onFetchAllArticles: handleFetchAllArticles = async () => {
-    return await fetchAllArticles();
+    return [mockArticle];
   },
   onSession: handleSession = async () => emptySession,
   onRegistration: handleRegistration = async () => undefined,

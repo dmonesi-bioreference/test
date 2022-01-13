@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app';
 
 import { Shell } from 'app/components/Shell';
 import 'inspect';
+import { fetchAllArticles } from 'client';
 
 const explosions = async () => {
   await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -54,6 +55,9 @@ function WebApp({ Component, pageProps }: AppProps) {
       onAppointmentStatus={async () => {
         // API call goes here
         return { appointmentStatus: 'after appointment' };
+      }}
+      onFetchAllArticles={async () => {
+        return await fetchAllArticles();
       }}
     >
       <Component {...pageProps} />
