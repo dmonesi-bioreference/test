@@ -1,20 +1,19 @@
 {
-  "processors": [
-    "stylelint-processor-styled-components"
-  ],
+  "processors": ["stylelint-processor-styled-components"],
   "extends": [
     "stylelint-config-standard",
     "stylelint-config-prettier",
     "stylelint-config-styled-components"
   ],
-  "plugins": [
-    "stylelint-prettier"
-  ],
+  "plugins": ["stylelint-prettier"],
   "rules": {
-    "value-keyword-case": ["lower", { ignoreKeywords: ['dummyValue'] }],
-    "selector-type-case": ["lower", {
-      "ignoreTypes": ["foreignObject"]
-    }],
+    "value-keyword-case": ["lower", { "ignoreKeywords": ["dummyValue"] }],
+    "selector-type-case": [
+      "lower",
+      {
+        "ignoreTypes": ["foreignObject"]
+      }
+    ],
     "at-rule-no-unknown": null,
     "prettier/prettier": true
   }

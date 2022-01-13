@@ -42,3 +42,4 @@ export * from './Toggle';
 export * from './ToolTip';
 export * from './Typography';
 export * from './UserHeader';
+export * from './Loading';
