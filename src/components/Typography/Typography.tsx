@@ -49,7 +49,17 @@ export const Typography: React.FC<TypographyProps> = (props) => {
   const color = props.color || 'default';
   const alignment = props.alignment || 'left';
   switch (props.type) {
-    case 'body':
+    case 'body': {
+      return (
+        <TypographyStyled
+          as="p"
+          role="paragraph"
+          className={`${props.type} ${color} ${alignment}`}
+        >
+          {props.children}
+        </TypographyStyled>
+      );
+    }
     case 'list':
     case 'helper-text':
     case 'validation':
