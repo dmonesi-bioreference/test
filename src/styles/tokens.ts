@@ -202,6 +202,7 @@ export const tokens = {
   borderWidthThin: '1px',
   borderWidthMedium: '2px',
   borderWidthThick: '3px',
+  borderWidthExtraThick: '8px',
 
   /* border-radius */
   borderRadiusSmall: '2px',

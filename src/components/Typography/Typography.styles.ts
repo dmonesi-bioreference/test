@@ -129,6 +129,14 @@ const TypographyStyled = styled.div`
     line-height: ${tokens.lineHeightDense};
   }
 
+  &.label--data {
+    flex-shrink: 0;
+    font-family: ${tokens.fontFamilyLabel};
+    font-size: ${tokens.fontSize16};
+    font-weight: ${tokens.fontWeightBold};
+    line-height: ${tokens.lineHeightDense};
+  }
+
   &.center {
     text-align: center;
   }

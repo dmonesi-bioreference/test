@@ -37,7 +37,7 @@ type TypographyProps =
     }
   | {
       type: 'label';
-      labelType: 'display' | 'title' | 'input';
+      labelType: 'display' | 'title' | 'input' | 'data';
       color?: TypographyColor;
       alignment?: TypographyAlignment;
     }

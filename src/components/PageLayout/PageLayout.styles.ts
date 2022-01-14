@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { tokens, base } from 'styles';
 
 const PageLayoutStyled = styled.div`
-  ${base}
+  ${base};
   background-color: ${tokens.colorBackgroundDefault};
 
   &.page-layout--care {
@@ -23,6 +23,9 @@ const PageLayoutStyled = styled.div`
   }
 
   .page__content {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
     padding: ${tokens.spacingXxLarge} ${tokens.spacingXLarge}
       ${tokens.spacingXxxxLarge} ${tokens.spacingXLarge};
   }

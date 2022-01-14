@@ -16,7 +16,7 @@ export default {
 const Template: Story<InformationBannerProps> = (args) => (
   <div style={{ width: 300 }}>
     <InformationBanner {...args}>
-      <List>
+      <List kind="bulleted">
         <Typography type="list">Lorem ipsum dolor set amet.</Typography>
         <Typography type="list">Lorem ipsum dolor set amet.</Typography>
         <Typography type="list">Lorem ipsum dolor set amet.</Typography>

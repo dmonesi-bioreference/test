@@ -11,7 +11,7 @@ export default {
 };
 
 const Template: Story = (args) => (
-  <List {...args}>
+  <List kind="bulleted" {...args}>
     <div>One.</div>
     <div>Two.</div>
     <div>Three.</div>

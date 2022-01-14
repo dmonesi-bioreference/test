@@ -26,6 +26,45 @@ export const resources = {
             },
           },
         },
+        settings: {
+          title: 'Settings',
+          accountDetails: {
+            title: 'My Account',
+            fields: {
+              1: {
+                label: 'First Name',
+              },
+              2: {
+                label: 'Last Name',
+              },
+            },
+          },
+          contactDetails: {
+            title: 'Contact Details',
+            fields: {
+              1: {
+                label: 'Email Address',
+              },
+              2: {
+                label: 'Phone Number',
+              },
+              3: {
+                label: 'Preferred Contact Method',
+              },
+            },
+          },
+          actions: {
+            1: {
+              label: 'Review Data Sharing Consent',
+            },
+            2: {
+              label: 'Review Patient Portal User Agreement',
+            },
+            3: {
+              label: 'Delete My Account',
+            },
+          },
+        },
         home: {},
         results: {
           preResultsPause: {
@@ -64,14 +103,15 @@ export const resources = {
             },
           },
           waiting: {
-            title: "Prepare to View Your Test Results",
+            title: 'Prepare to View Your Test Results',
             indicatorCard: {
               heading: 'Your genetic test is currently:',
               title: 'In Progress',
-              subTitle: 'Results expected {{expectedResultsDate}}' 
+              subTitle: 'Results expected {{expectedResultsDate}}',
             },
             article: {
-              heading: 'You can prepare and learn about the results while you wait',
+              heading:
+                'You can prepare and learn about the results while you wait',
             },
           },
           ready: {
@@ -79,7 +119,8 @@ export const resources = {
             title: 'Your Full Test Results',
             report: {
               attention: 'Medical language ahead',
-              description: 'This report is designed with health care providers in mind and contains many medically-oriented details. Talk to your provider to understand what the results mean for your family.',
+              description:
+                'This report is designed with health care providers in mind and contains many medically-oriented details. Talk to your provider to understand what the results mean for your family.',
               pdfLink: 'Open PDF',
               pdfPages: '{{pageNumber}} pages',
               pdfThumbnailAlt: 'Your report in PDF',
@@ -98,6 +139,9 @@ export const resources = {
           geneticCounselor: {
             altText: 'Photograph of our genetic counselor, Laura.',
           },
+        },
+        displayField: {
+          defaultValue: 'Not Available',
         },
         pdf: {
           actions: {

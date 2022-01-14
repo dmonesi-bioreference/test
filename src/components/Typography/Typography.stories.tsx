@@ -6,7 +6,6 @@ import { StyleGuideItem } from 'components/StyleGuide/StyleGuideItem';
 
 import { Typography } from './Typography';
 
-
 export default {
   component: Typography,
   title: 'Components/Typography',
@@ -143,6 +142,14 @@ export const DisplayLabel: Story = () => (
 export const InputLabel: Story = () => (
   <StyleGuideItem label="Label, for an input">
     <Typography type="label" labelType="input">
+      Lorem ipsum
+    </Typography>
+  </StyleGuideItem>
+);
+
+export const DataLabel: Story = () => (
+  <StyleGuideItem label="Label, for data">
+    <Typography type="label" labelType="data">
       Lorem ipsum
     </Typography>
   </StyleGuideItem>

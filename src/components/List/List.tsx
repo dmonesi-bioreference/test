@@ -2,18 +2,28 @@ import { Children } from 'react';
 
 import ListStyled from './List.styles';
 
-const List: React.FC = (props) => {
+export interface ListProps {
+  kind: 'bulleted' | 'divided';
+}
+
+const List: React.FC<ListProps> = (props) => {
   const children = Children.toArray(props.children);
   return (
     <ListStyled>
-      <ul className="list">{buildList(children)}</ul>
+      <ul className={`list list--${props.kind}`}>
+        {buildList(props.kind, children)}
+      </ul>
     </ListStyled>
   );
 };
 
-const buildList = (children: React.ReactNodeArray) => {
+const buildList = (kind, children: React.ReactNodeArray) => {
   return children.map((item, index) => {
-    return <li key={index}>{item}</li>;
+    return (
+      <li className={`list__item list__item--${kind}`} key={index}>
+        {item}
+      </li>
+    );
   });
 };
 
