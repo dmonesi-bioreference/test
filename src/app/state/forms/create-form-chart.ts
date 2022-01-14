@@ -1,7 +1,7 @@
 import { assign } from '@xstate/immer';
 
 import { CreateDispatchEvent } from './create-dispatch-event';
-import { KeyNames } from './key-names';
+import { FormKeys } from './form-keys';
 import { isValidationFailurePayload } from './validation-models';
 
 /**
@@ -100,7 +100,7 @@ declare global {
 export function createFormActions<GivenKey extends ValidationModelKey>(
   givenKey: GivenKey
 ) {
-  const key = KeyNames.from(givenKey);
+  const key = FormKeys.from(givenKey);
 
   return {
     [key.errors]: assign((context: AppContext, event: AppEvents) => {
@@ -114,8 +114,11 @@ export function createFormActions<GivenKey extends ValidationModelKey>(
       context.forms[givenKey].errors = [];
     }),
     [key.update]: assign((context: AppContext, event: AppEvents) => {
-      if (event.type === key.change && 'field' in event && 'value' in event) {
-        context.forms[givenKey].values[event.field] = event.value;
+      const empty = { field: '', value: '' };
+      if (event.type === key.commit) {
+        const { field, value } = { ...empty, ...event };
+
+        context.forms[givenKey].values[field] = value;
       }
     }),
   } as const;
@@ -156,7 +159,7 @@ export function createFormContext<GivenKey extends ValidationModelKey>(
 export function createFormServices<GivenModel extends ValidationModelKey>(
   model: ValidationModels[GivenModel]
 ) {
-  const key = KeyNames.from(model.key);
+  const key = FormKeys.from(model.key);
 
   return {
     [key.validate]: (context: AppContext) =>
@@ -191,7 +194,7 @@ export function createFormServices<GivenModel extends ValidationModelKey>(
 export function createFormMachine<GivenKey extends ValidationModelKey>(
   givenKey: GivenKey
 ) {
-  const key = KeyNames.from(givenKey);
+  const key = FormKeys.from(givenKey);
 
   return {
     id: key,
@@ -202,10 +205,20 @@ export function createFormMachine<GivenKey extends ValidationModelKey>(
         states: {
           active: {
             after: { 300: `#${key}.validation.validating` },
-            on: { [key.change]: { target: 'active', actions: key.update } },
+            on: {
+              [key.commit]: {
+                target: 'active',
+                actions: [key.update],
+              },
+            },
           },
           idle: {
-            on: { [key.change]: { target: 'active', actions: key.update } },
+            on: {
+              [key.commit]: {
+                target: 'active',
+                actions: [key.update],
+              },
+            },
           },
         },
       },
@@ -304,17 +317,18 @@ export function composeFormModels(
  */
 export function createChangeDispatchMap(
   ...models: ValidationModels[ValidationModelKey][]
-): (send: AppService['send']) => DispatchMap<ChangeEventMap> {
+): (send: AppService['send']) => DispatchMap<FormDispatchMap> {
   return (send) => {
     const event = CreateDispatchEvent.from(send);
 
     return models.reduce((dispatchMapSoFar, model) => {
-      const key = KeyNames.from(model.key);
+      const key = FormKeys.from(model.key);
 
       return Object.assign(dispatchMapSoFar, {
-        [key.change]: (payload: unknown) =>
-          event.perform(model, Object.assign(payload, { type: key.change })),
+        [key.change]: (payload: unknown) => {
+          event.perform(model, Object.assign(payload, { type: key.commit }));
+        },
       });
-    }, {} as DispatchMap<ChangeEventMap>);
+    }, {} as DispatchMap<FormDispatchMap>);
   };
 }

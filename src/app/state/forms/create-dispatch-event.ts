@@ -1,6 +1,6 @@
 import isObject from 'lodash/isObject';
 
-import { KeyNames } from './key-names';
+import { FormKeys } from './form-keys';
 
 /**
  * CreateDispatchEvent is a class handler meant to wrap around a model,
@@ -35,13 +35,13 @@ export class CreateDispatchEvent<
    * @param payload {unknown} You could give this literally anything, safely.
    */
   perform(payload: unknown) {
-    if (this.isChangePayload(payload)) {
+    if (this.isCommit(payload)) {
       this.send(payload);
     }
   }
 
   /**
-   * isChangePayload is a type guard, meant to take a look at the hard code
+   * isCommit is a type guard, meant to take a look at the hard code
    * structure of a given payload and assert that it has the correct type.
    * It checks that the object shape is correct, makes sure the field is
    * appropriate for the given model of the instance, and makes sure that the
@@ -53,9 +53,9 @@ export class CreateDispatchEvent<
    * @returns {boolean} If the given payload matches a change payload, then
    * true; else, false.
    */
-  private isChangePayload(
+  private isCommit(
     givenPayload: unknown
-  ): givenPayload is ChangeEventMap[keyof ChangeEventMap] {
+  ): givenPayload is FormDispatchMap[keyof FormDispatchMap] {
     const validFields = Object.keys(this.contents.init);
     const isPotentialPayload =
       typeof givenPayload !== 'undefined' &&
@@ -67,7 +67,7 @@ export class CreateDispatchEvent<
     const fieldName = Reflect.get(givenPayload as object, 'field');
     const typeName = Reflect.get(givenPayload as object, 'type');
 
-    const hasChangeType = typeName === KeyNames.from(this.contents.key).change;
+    const hasChangeType = typeName === FormKeys.from(this.contents.key).commit;
     const hasValidField = validFields.includes(fieldName);
 
     return isPotentialPayload && hasValidField && hasChangeType;

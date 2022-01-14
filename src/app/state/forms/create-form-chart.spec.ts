@@ -6,26 +6,26 @@ import {
   createFormContext,
   createFormServices,
 } from './create-form-chart';
-import { KeyNames } from './key-names';
+import { FormKeys } from './form-keys';
 import * as Models from './validation-models';
 
 describe('createFormActions', () => {
   const assert = it.each(Models.all.map((model) => model.key));
 
   assert('returns an error assign action for %s', (key) => {
-    const keyNames = KeyNames.from(key);
+    const keyNames = FormKeys.from(key);
 
     expect(createFormActions(key)).toHaveProperty(keyNames.errors);
   });
 
   assert('returns an clear errors action for %s', (key) => {
-    const keyNames = KeyNames.from(key);
+    const keyNames = FormKeys.from(key);
 
     expect(createFormActions(key)).toHaveProperty(keyNames.clear);
   });
 
   assert('returns a value update action for %s', (key) => {
-    const keyNames = KeyNames.from(key);
+    const keyNames = FormKeys.from(key);
 
     expect(createFormActions(key)).toHaveProperty(keyNames.update);
   });
@@ -50,7 +50,7 @@ describe('createFormServices', () => {
   );
 
   assert('creates a validation service for %s', (key, model) => {
-    const keyNames = KeyNames.from(key);
+    const keyNames = FormKeys.from(key);
 
     expect(createFormServices(model)).toHaveProperty(keyNames.validate);
   });
@@ -148,15 +148,15 @@ describe('createChangeDispatchMap', () => {
   );
 
   assert('creates handlers for %s', (key) => {
-    const keyName = KeyNames.from(key);
+    const keyName = FormKeys.from(key);
     const empty: any = () => undefined;
     const map = produceMap(empty);
 
     expect(map).toHaveProperty(keyName.change);
   });
 
-  assert('creates handlers for %s', (key, model) => {
-    const keyName = KeyNames.from(key);
+  assert('invokes commits for %s handlers', (key, model) => {
+    const keyName = FormKeys.from(key);
     const listener = jest.fn();
     const [field] = Object.keys(model.init);
     const payload = { value: '', field };
@@ -165,7 +165,7 @@ describe('createChangeDispatchMap', () => {
     map[keyName.change](payload as any);
 
     expect(listener).toHaveBeenCalledWith(
-      Object.assign(payload, { type: keyName.change })
+      Object.assign(payload, { type: keyName.commit })
     );
   });
 });

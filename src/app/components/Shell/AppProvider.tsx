@@ -9,6 +9,7 @@ import { getTests } from 'client';
 import { AppEventContext, AppServiceContext } from './context';
 
 export interface AppProviderProps {
+  requests?: AppEventFnMap<RequestModelMap>;
   onSession?: AppEventFn<AuthenticatedSession>;
   onAuthenticate?: AppEventFn<unknown>;
   onIdentity?: AppEventFn<unknown>;
@@ -37,6 +38,7 @@ const emptySession: AuthenticatedSession = {
 
 export function AppProvider({
   children,
+  requests = {},
   onAuthenticate: handleAuth = async () => undefined,
   onIdentity: handleIdentityCheck = async () => undefined,
   onLoadTests: handleLoadTests = async (context: AppContext) =>
@@ -52,6 +54,11 @@ export function AppProvider({
   onSession: handleSession = async () => emptySession,
   onRegistration: handleRegistration = async () => undefined,
 }: Props<AppProviderProps>) {
+  const requestHandlers = {
+    handleVerifyPatientGuidRequest:
+      requests.verifyPatientGuid || (async () => ({})),
+  };
+
   const services = {
     handleAuth,
     handleIdentityCheck,
@@ -62,6 +69,7 @@ export function AppProvider({
     handleFetchAllArticles,
     handlePatientGuid,
     handleRegistration,
+    ...requestHandlers,
   };
 
   const service = useInterpret(app.withConfig({ services }), {

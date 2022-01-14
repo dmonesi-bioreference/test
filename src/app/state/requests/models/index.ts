@@ -1,0 +1,26 @@
+import { verifyPatientGuid } from './verify-patient-guid';
+
+declare global {
+  interface RequestModelMap {}
+
+  type RequestModelKey = keyof RequestModelMap;
+  type RequestModel<GivenKey extends RequestModelKey> = {
+    key: GivenKey;
+    init: RequestModelMap[GivenKey];
+  };
+
+  type RequestModels = { [Key in RequestModelKey]: RequestModel<Key> };
+
+  type InitRequest<GivenKey extends RequestModelKey> = `${GivenKey}Request`;
+
+  type RequestDispatchMap = {
+    [Key in RequestModelKey as InitRequest<Key>]: {
+      type: InitRequest<Key>;
+    };
+  };
+}
+
+// Add a request model to this export to incorporate it into the forms
+// state chart automatically.
+//
+export const all = [verifyPatientGuid];

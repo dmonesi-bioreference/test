@@ -5,7 +5,7 @@ import {
 import * as Models from './validation-models';
 
 const compiledModels = composeFormModels(...Models.all);
-export const setupDispatchMap = createChangeDispatchMap(...Models.all);
+export const setupFormDispatchMap = createChangeDispatchMap(...Models.all);
 export const actions = compiledModels.actions;
 export const services = compiledModels.services;
 export const context: FormContext = compiledModels.context;
@@ -16,4 +16,4 @@ export const machine = {
 };
 
 export * from './validation-models';
-export * from './key-names';
+export * from './form-keys';

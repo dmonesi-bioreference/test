@@ -21,12 +21,12 @@ declare global {
 
   type ValidationModels = { [Key in ValidationModelKey]: ValidationModel<Key> };
 
-  type ChangeType<GivenKey extends ValidationModelKey> = `${GivenKey}Change`;
+  type FormChange<GivenKey extends ValidationModelKey> = `${GivenKey}Change`;
 
-  type ChangeEventMap = {
-    [Key in ValidationModelKey as ChangeType<Key>]: {
-      type: ChangeType<Key>;
-      field: keyof ValidationModelMap[Key];
+  type FormDispatchMap = {
+    [GivenKey in ValidationModelKey as FormChange<GivenKey>]: {
+      type: FormChange<GivenKey>;
+      field: keyof ValidationModelMap[GivenKey];
       value: string;
     };
   };
