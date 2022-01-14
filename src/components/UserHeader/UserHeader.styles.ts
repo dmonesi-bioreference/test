@@ -7,7 +7,7 @@ const UserHeaderStyled = styled.div`
   display: inline-flex;
   margin-bottom: ${tokens.spacingXSmall};
 
-  .user-header--title {
+  .user-header__title {
     margin-bottom: ${tokens.spacingXxSmall};
   }
 

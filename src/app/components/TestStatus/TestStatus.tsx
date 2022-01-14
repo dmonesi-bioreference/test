@@ -1,3 +1,5 @@
+import { remToPx } from 'polished';
+
 import { useAppTranslation } from 'app/components/Shell';
 import {
   Card,
@@ -21,13 +23,13 @@ export const TestStatus = () => {
       <TestStatusStyled>
         <CircularProgress
           percent={percentComplete}
-          radius={97 / 2}
-          strokeWidth={23.25}
+          radius={parseInt(remToPx(tokens.spacingXxLarge), 10)}
+          strokeWidth={parseInt(remToPx(tokens.spacingLarge), 10)}
           withOuterShadow={true}
           withInsetShadow={true}
           indicatorColor={isWaiting ? [colors.teal[700], colors.teal[800]] : colors.teal[700]}
-          strokePadding={4}
-          strokePaddingCut={{x: 0, y: -58}}
+          strokePadding={parseInt(remToPx(tokens.spacingXxSmall), 10)}
+          strokePaddingCut={{x: 0, y: -(parseInt(remToPx(tokens.spacingXxLarge), 10) * 1.2)}}
           icon={
             isWaiting ? (
               <Icon name="search" size="large" />
@@ -43,7 +45,7 @@ export const TestStatus = () => {
               suffix={<Icon name="chevron-right" size="large" />}
               href='/demo/results'
             >
-              <div className='header-main'>
+              <div className='test-status__header-main'>
                 <Heading level='2'>
                   {isWaiting ? (
                       t('sections.results.inProgress')
@@ -53,7 +55,7 @@ export const TestStatus = () => {
                   }
                 </Heading>
               </div>
-              <div className='header-minor'>
+              <div className='test-status__header-minor'>
                 <Heading level='8'>
                   {isWaiting ? (
                       t('sections.results.expected', { expectedResultsDate })
@@ -76,7 +78,7 @@ export const TestStatus = () => {
             </Typography>
           </div>
 
-          <div className="last-updated">
+          <div className="test-status__last-updated">
             <Icon name="refresh" />
             <Typography type="body">
               {t('sections.results.updated', { lastUpdated })}

@@ -2,24 +2,24 @@ import { useAppTranslation } from 'app/components/Shell';
 import { Icon, TimelineItem } from 'components';
 import { colors } from 'styles';
 
-import IsAtAppointmentStyled from './IsAtAppointment.styles';
+import AtAppointmentStageStyled from './AtAppointmentStage.styles';
 
-interface IsAtAppointmentProps {
+interface AtAppointmentStageProps {
   status: 'present' | 'past' | 'future';
 }
 
-export const IsAtAppointment: React.FC<IsAtAppointmentProps> = (props) => {
+export const AtAppointmentStage: React.FC<AtAppointmentStageProps> = (props) => {
   const t = useAppTranslation();
 
   return (
-    <IsAtAppointmentStyled
+    <AtAppointmentStageStyled
       key={props.status}
       className={props.status}
-      linearGradient='isAtAppointmentLinearGradient'
+      linearGradient='AtAppointmentStageLinearGradient'
     >
       <svg className='linearGradientSvg'>
         <defs>
-          <linearGradient id='isAtAppointmentLinearGradient' gradientTransform="rotate(90)">
+          <linearGradient id='AtAppointmentStageLinearGradient' gradientTransform="rotate(90)">
             {props.status === 'past' ? (
               <>
                 <stop offset="0%" stopColor={colors.blue[500]} />
@@ -43,6 +43,6 @@ export const IsAtAppointment: React.FC<IsAtAppointmentProps> = (props) => {
         isCollapseEnabled={props.status === 'present' ? false : true}
         isSmall={props.status === 'past' ? true : false}
       />
-    </IsAtAppointmentStyled>
+    </AtAppointmentStageStyled>
   );
 }

@@ -2,17 +2,17 @@ import { useAppTranslation } from 'app/components/Shell';
 import { Icon, TimelineItem } from 'components';
 import { colors } from 'styles';
 
-import IsWaitingStyled from './IsWaiting.styles';
+import WaitingStageStyled from './WaitingStage.styles';
 
-interface IsWaitingProps {
+interface WaitingStageProps {
   status: 'present' | 'past' | 'future';
 }
 
-export const IsWaiting: React.FC<IsWaitingProps> = (props) => {
+export const WaitingStage: React.FC<WaitingStageProps> = (props) => {
   const t = useAppTranslation();
 
   return (
-    <IsWaitingStyled
+    <WaitingStageStyled
       key={props.status}
       className={props.status}
       linearGradient='isWaitingLinearGradient'
@@ -48,6 +48,6 @@ export const IsWaiting: React.FC<IsWaitingProps> = (props) => {
         isCollapseEnabled={props.status === 'present' ? false : true}
         isSmall={props.status === 'past' ? true : false}
       />
-    </IsWaitingStyled>
+    </WaitingStageStyled>
   );
 }

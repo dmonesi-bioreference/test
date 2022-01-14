@@ -1,4 +1,4 @@
-import { mockTest } from 'mocks/test';
+import { mockTest } from 'app/state/tests/models';
 import { renderWithShell } from 'test-utils';
 
 import { LandingPage } from './LandingPage';

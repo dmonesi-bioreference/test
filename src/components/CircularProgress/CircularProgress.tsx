@@ -1,4 +1,7 @@
-import { colors } from 'styles/tokens';
+import { remToPx } from 'polished';
+import { useState } from 'react';
+
+import { colors, tokens } from 'styles/tokens';
 
 import CircularProgressStyled from './CircularProgress.styles';
 
@@ -40,9 +43,24 @@ export const CircularProgress: React.FC<CircularProgressProps> = (props) => {
     ...props
   }
 
+  const [grid] = useState(() => {
+    const outerShadowWidth = props.withOuterShadow ? parseInt(remToPx(tokens.spacingXxSmall), 10) : 0;
+  
+    if (!props.radius || !props.strokeWidth) return ({ radius: 0, width: 0, height: 0, origin: { x: 0, y: 0 }});
+    return ({
+      radius: props.radius - props.strokeWidth / 2,
+      width: props.radius * 2 + outerShadowWidth * 2,
+      height: props.radius * 2 + outerShadowWidth * 2,
+      origin: {
+        x: props.radius + outerShadowWidth,
+        y: props.radius + outerShadowWidth
+      }
+    });
+  });
+
   return (
-    <CircularProgressStyled {...props}>
-      <svg className="progress">
+    <CircularProgressStyled {...props} grid={grid}>
+      <svg className="circular-progress__progress">
         <filter id="inset-shadow" x="-50%" y="-50%" width="200%" height="200%">
           {props.withInsetShadow && <feFlood floodColor={colors.black} />}
           <feComposite operator="out" in2="SourceGraphic" />
@@ -54,14 +72,14 @@ export const CircularProgress: React.FC<CircularProgressProps> = (props) => {
           id="shadow-filter" filterUnits="userSpaceOnUse"
           x={
             `${!props.strokePaddingCut ?
-                -102 :
-                (props.strokePaddingCut.x > 0 ? '+' : '-') + (102 + (Math.abs(props.strokePaddingCut.x))).toString()
+                -grid.width :
+                (props.strokePaddingCut.x > 0 ? '+' : '-') + (grid.width + (Math.abs(props.strokePaddingCut.x))).toString()
               }px`
             }
           y={
             `${!props.strokePaddingCut ?
-                -102 :
-                (props.strokePaddingCut.y > 0 ? '+' : '-') + (102 + (Math.abs(props.strokePaddingCut.y))).toString()
+                -grid.height :
+                (props.strokePaddingCut.y > 0 ? '+' : '-') + (grid.height + (Math.abs(props.strokePaddingCut.y))).toString()
               }px`
             }
           width="200%" height="200%"
@@ -94,9 +112,9 @@ export const CircularProgress: React.FC<CircularProgressProps> = (props) => {
           )}
         </linearGradient>
 
-        {props.strokePadding && <circle className="container" filter="url(#shadow-filter)" />}
-        <circle className="bg" filter="url(#inset-shadow)" />
-        <circle className="indicator" filter="url(#inset-shadow)" stroke="url(#linear)" />
+        {props.strokePadding && <circle className="circular-progress__container" filter="url(#shadow-filter)" />}
+        <circle className="circular-progress__bg" filter="url(#inset-shadow)" />
+        <circle className="circular-progress__indicator" filter="url(#inset-shadow)" stroke="url(#linear)" />
 
         <foreignObject>
           {props.icon}

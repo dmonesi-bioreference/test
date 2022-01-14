@@ -7,11 +7,11 @@ import TimelineItemStyled from 'components/TimelineItem/TimelineItem.styles';
 import TypographyStyled from 'components/Typography/Typography.styles';
 import { base, colors } from 'styles';
 
-interface IsWaitingStyledProps {
+interface TestResultsReadyStageStyledProps {
   linearGradient?: string;
 }
 
-const IsWaitingStyled = styled.div<IsWaitingStyledProps>`
+const TestResultsReadyStageStyled = styled.div<TestResultsReadyStageStyledProps>`
   ${base}
 
   .linearGradientSvg {
@@ -20,15 +20,12 @@ const IsWaitingStyled = styled.div<IsWaitingStyledProps>`
     height: 0px;
   }
 
+
   &.present {
     ${TimelineItemStyled} {
       .icon > svg {
         circle {
           stroke: ${colors.teal[500]};
-        }
-
-        .bg {
-          stroke: ${colors.teal[50]};
         }
 
         rect {
@@ -60,16 +57,16 @@ const IsWaitingStyled = styled.div<IsWaitingStyledProps>`
     ${TimelineItemStyled} {
       .icon > svg {
         circle {
-          stroke: ${colors.teal[800]};
+          stroke: ${colors.sand[900]};
         }
 
         rect {
           fill: ${p => `url(#${p.linearGradient})`};
         }
-        
+
         foreignObject {
           ${IconStyled} > * {
-            color: ${colors.teal[700]};
+            color: ${colors.sand[700]};
           }
         }
       }
@@ -87,6 +84,38 @@ const IsWaitingStyled = styled.div<IsWaitingStyledProps>`
       }
     }
   }
+
+  &.future {
+    ${TimelineItemStyled} {
+      .icon > svg {
+        circle {
+          stroke: ${colors.sand[400]};
+        }
+
+        rect {
+          fill: ${p => `url(#${p.linearGradient})`};
+        }
+
+        foreignObject {
+          ${IconStyled} > * {
+            color: ${colors.sand[600]};
+          }
+        }
+      }
+
+      .timeline-item-content {
+        ${ButtonStyled} {
+          ${TypographyStyled} {
+            color: ${colors.sand[700]};
+          }
+
+          ${IconStyled} {
+            color: ${colors.sand[700]};
+          }
+        }
+      }
+    }
+  }
 `;
 
-export default IsWaitingStyled;
+export default TestResultsReadyStageStyled;

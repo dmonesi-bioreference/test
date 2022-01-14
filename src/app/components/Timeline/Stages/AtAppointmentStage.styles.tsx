@@ -7,11 +7,11 @@ import TimelineItemStyled from 'components/TimelineItem/TimelineItem.styles';
 import TypographyStyled from 'components/Typography/Typography.styles';
 import { base, colors } from 'styles';
 
-interface IsAtAppointmentStyledProps {
+interface AtAppointmentStageStyledProps {
   linearGradient?: string;
 }
 
-const IsAtAppointmentStyled = styled.div<IsAtAppointmentStyledProps>`
+const AtAppointmentStageStyled = styled.div<AtAppointmentStageStyledProps>`
   ${base}
 
   .linearGradientSvg {
@@ -118,4 +118,4 @@ const IsAtAppointmentStyled = styled.div<IsAtAppointmentStyledProps>`
   }
 `;
 
-export default IsAtAppointmentStyled;
+export default AtAppointmentStageStyled;

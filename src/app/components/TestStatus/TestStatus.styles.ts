@@ -55,20 +55,20 @@ const TestStatusStyled = styled.div`
       color: ${colors.teal[800]};
     }
 
-    .header-main {
+    .test-status__header-main {
       ${TypographyStyled} {
         color: ${colors.teal[700]};
       }
     }
 
-    .header-minor {
+    .test-status__header-minor {
       ${TypographyStyled} {
         color: ${colors.teal[800]};
       }
     }
   }
 
-  .last-updated {
+  .test-status__last-updated {
     display: flex;
     align-items: center;
     margin: 0 0 ${tokens.spacingXLarge} ${tokens.spacingXLarge};

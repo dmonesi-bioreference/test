@@ -15,7 +15,7 @@ const UserHeader: React.FC<UserHeaderProps> = (props) => {
     <UserHeaderStyled>
       {props.avatar}
       <div>
-        <div className='user-header--title'>
+        <div className='user-header__title'>
           <Typography type="label" color="minor" labelType="display">
             {props.title}
           </Typography>

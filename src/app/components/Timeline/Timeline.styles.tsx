@@ -10,7 +10,7 @@ const TimelineStyled = styled.div`
 
   background-color: ${colors.sand[50]};
 
-  .timeline-heading {
+  .timeline__heading {
     display: inline-flex;
     width: 100%;
     padding: ${tokens.spacing};
@@ -26,7 +26,7 @@ const TimelineStyled = styled.div`
     }
   }
 
-  .timeline-body {
+  .timeline__body {
     margin-left: ${tokens.spacingLarge};
   }
 `;

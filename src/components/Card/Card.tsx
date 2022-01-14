@@ -10,7 +10,7 @@ export interface CardProps {
 const Card: React.FC<CardProps> = (props) => {
   return (
     <CardStyled {...props}>
-      <header className="card__header">{props.header}</header>
+      {props.header && <header className="card__header">{props.header}</header>}
       <div className="card__content">{props.children}</div>
     </CardStyled>
   );

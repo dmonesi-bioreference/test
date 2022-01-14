@@ -2,24 +2,24 @@ import { useAppTranslation } from 'app/components/Shell';
 import { Icon, TimelineItem } from 'components';
 import { colors } from 'styles';
 
-import IsTestResultsReadyStyled from './IsTestResultsReady.styles';
+import TestResultsReadyStageStyled from './TestResultsReadyStage.styles';
 
-interface IsTestResultsReadyProps {
+interface TestResultsReadyStageProps {
   status: 'present' | 'past' | 'future';
 }
 
-export const IsTestResultsReady: React.FC<IsTestResultsReadyProps> = (props) => {
+export const TestResultsReadyStage: React.FC<TestResultsReadyStageProps> = (props) => {
   const t = useAppTranslation();
 
   return (
-    <IsTestResultsReadyStyled
+    <TestResultsReadyStageStyled
       key={props.status}
       className={props.status}
-      linearGradient='isTestResultsReadyLinearGradient'
+      linearGradient='TestResultsReadyStageLinearGradient'
     >
       <svg className='linearGradientSvg'>
         <defs>
-          <linearGradient id='isTestResultsReadyLinearGradient' gradientTransform="rotate(90)">
+          <linearGradient id='TestResultsReadyStageLinearGradient' gradientTransform="rotate(90)">
             {props.status === 'past' ? (
               <>
                 <stop offset="0%" stopColor={colors.sand[900]} />
@@ -47,6 +47,6 @@ export const IsTestResultsReady: React.FC<IsTestResultsReadyProps> = (props) => 
         isCollapseEnabled={props.status === 'present' ? false : true}
         isSmall={props.status === 'past' ? true : false}
       />
-    </IsTestResultsReadyStyled>
+    </TestResultsReadyStageStyled>
   );
 }

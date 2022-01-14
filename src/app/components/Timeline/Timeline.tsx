@@ -1,10 +1,10 @@
 import { useAppTranslation } from 'app/components/Shell';
 import { Avatar, Heading, Typography } from "components";
 
-import { IsAfterAppointment } from "./IsAfterAppointment";
-import { IsAtAppointment } from "./IsAtAppointment";
-import { IsTestResultsReady } from "./IsTestResultsReady";
-import { IsWaiting } from "./IsWaiting";
+import { AfterAppointmentStage } from "./Stages/AfterAppointmentStage";
+import { AtAppointmentStage } from "./Stages/AtAppointmentStage";
+import { TestResultsReadyStage } from "./Stages/TestResultsReadyStage";
+import { WaitingStage } from "./Stages/WaitingStage";
 import TimelineStyled from './Timeline.styles';
 import { useTestStatus } from './hooks';
 
@@ -15,7 +15,7 @@ export const Timeline: React.FC = () => {
 
   return (
     <TimelineStyled>
-      <div className="timeline-heading">
+      <div className="timeline__heading">
         <Avatar
           src={photo}
           alt={t('components.avatar.geneticCounselor.altText')}
@@ -30,17 +30,17 @@ export const Timeline: React.FC = () => {
         </div>
       </div>
 
-      <div className="timeline-body">
-        <IsWaiting
+      <div className="timeline__body">
+        <WaitingStage
           status={isWaiting ? 'present' : 'past'}
         />
-        <IsTestResultsReady
+        <TestResultsReadyStage
           status={isResultsReady ? 'present' : (isWaiting ? 'future' : 'past')}
         />
-        <IsAtAppointment
+        <AtAppointmentStage
           status={isAtAppointment ? 'present' : (isAfterAppointment ? 'past' : 'future')}
         />
-        <IsAfterAppointment
+        <AfterAppointmentStage
           status={isAfterAppointment ? 'present' : 'future'}
         />
       </div>

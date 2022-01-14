@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 
 import IconStyled from 'components/Icon/Icon.styles';
-import { base } from 'styles';
+import { base, colors } from 'styles';
 
 const PdfStyled = styled.div`
   ${base}
@@ -24,7 +24,17 @@ const PdfStyled = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(0deg, rgba(15, 78, 113, 0.64) 49.86%, rgba(0, 74, 115, 0.0128) 100%);
+    background: linear-gradient(
+        0deg,
+        ${() => {
+          const color = colors.blue[800];
+          return color.includes('hsl(') ? color.replace(/\)/, ', 64%)') : color;
+        }} 49.86%,
+        ${() => {
+          const color = colors.grey[200];
+          return color.includes('hsl(') ? color.replace(/\)/, ', 64%)') : color;
+        }} 100%
+    );
   }
 
   .pdf__actions {

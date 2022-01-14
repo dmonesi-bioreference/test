@@ -1,17 +1,17 @@
 import { useAppTranslation } from 'app/components/Shell';
 import { Icon, TimelineItem } from 'components';
 
-import IsAfterAppointmentStyled from './IsAfterAppointment.styles';
+import AfterAppointmentStageStyled from './AfterAppointmentStage.styles';
 
-interface IsAfterAppointmentProps {
+interface AfterAppointmentStageProps {
   status: 'present' | 'past' | 'future';
 }
 
-export const IsAfterAppointment: React.FC<IsAfterAppointmentProps> = (props) => {
+export const AfterAppointmentStage: React.FC<AfterAppointmentStageProps> = (props) => {
   const t = useAppTranslation();
   
   return (
-    <IsAfterAppointmentStyled
+    <AfterAppointmentStageStyled
       key={props.status}
       className={props.status}
     >
@@ -26,6 +26,6 @@ export const IsAfterAppointment: React.FC<IsAfterAppointmentProps> = (props) => 
         isCollapseEnabled={props.status === 'present' ? false : true}
         isTail={true}
       />
-    </IsAfterAppointmentStyled>
+    </AfterAppointmentStageStyled>
   );
 }

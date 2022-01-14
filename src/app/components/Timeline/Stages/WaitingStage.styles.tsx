@@ -7,14 +7,32 @@ import TimelineItemStyled from 'components/TimelineItem/TimelineItem.styles';
 import TypographyStyled from 'components/Typography/Typography.styles';
 import { base, colors } from 'styles';
 
-const IsAfterAppointmentStyled = styled.div`
+interface WaitingStageStyledProps {
+  linearGradient?: string;
+}
+
+const WaitingStageStyled = styled.div<WaitingStageStyledProps>`
   ${base}
+
+  .linearGradientSvg {
+    display: flex;
+    width: 0px;
+    height: 0px;
+  }
 
   &.present {
     ${TimelineItemStyled} {
       .icon > svg {
         circle {
           stroke: ${colors.teal[500]};
+        }
+
+        .bg {
+          stroke: ${colors.teal[50]};
+        }
+
+        rect {
+          fill: ${p => `url(#${p.linearGradient})`};
         }
 
         foreignObject {
@@ -38,16 +56,20 @@ const IsAfterAppointmentStyled = styled.div`
     }
   }
 
-  &.future {
+  &.past {
     ${TimelineItemStyled} {
       .icon > svg {
         circle {
-          stroke: ${colors.sand[400]};
+          stroke: ${colors.teal[800]};
         }
 
+        rect {
+          fill: ${p => `url(#${p.linearGradient})`};
+        }
+        
         foreignObject {
           ${IconStyled} > * {
-            color: ${colors.sand[600]};
+            color: ${colors.teal[700]};
           }
         }
       }
@@ -55,11 +77,11 @@ const IsAfterAppointmentStyled = styled.div`
       .timeline-item-content {
         ${ButtonStyled} {
           ${TypographyStyled} {
-            color: ${colors.sand[700]};
+            color: ${colors.teal[800]};
           }
 
           ${IconStyled} {
-            color: ${colors.sand[700]};
+            color: ${colors.teal[800]};
           }
         }
       }
@@ -67,4 +89,4 @@ const IsAfterAppointmentStyled = styled.div`
   }
 `;
 
-export default IsAfterAppointmentStyled;
+export default WaitingStageStyled;
