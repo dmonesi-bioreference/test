@@ -12,7 +12,7 @@
   "scripts": {
     "auth:build-and-analyze": "node ./infrastructure/auth/scripts/build-and-analyze.js",
     "auth:deploy": "node ./infrastructure/auth/scripts/deploy.js",
-    "build": "next build && next export",
+    "build": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider --insecure-http-parser\" next build && next export",
     "build:next": "yarn make-icons && next build",
     "build:storybook": "build-storybook",
     "build:components": "rm -rf dist && mkdir -p dist/components && babel -d dist src",

@@ -8,7 +8,6 @@ RUN yarn install --frozen-lockfile
 
 # Rebuild the source code only when needed
 FROM node:alpine AS builder
-ENV NODE_OPTIONS --openssl-legacy-provider --insecure-http-parser
 WORKDIR /app
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
