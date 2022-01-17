@@ -1,4 +1,4 @@
-import { isTest, mockTest } from "app/state/tests/models";
+import { isTestsJsonPayload, mockTest } from "app/state/tests/models";
 
 export async function getTestsFromContext(context: AppContext): Promise<Test[]> {
   const patientGuid = context.auth.patientGuid;
@@ -7,7 +7,9 @@ export async function getTestsFromContext(context: AppContext): Promise<Test[]> 
   
   const res = await (await fetch(`/api/tests/${patientGuid}`)).json();
 
-  if (Array.isArray(res) && res.every(e => isTest(e))) return Promise.resolve(res as Test[]);
+  if (isTestsJsonPayload(res)) {
+    return Promise.resolve(res.Data[0].Tests);
+  }
 
-  return Promise.reject();
+  return Promise.reject(res);
 }

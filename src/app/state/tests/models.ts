@@ -41,23 +41,13 @@ declare global {
     InsuranceEnabled: boolean;
   }
 
-  interface TestsJsonPayload_200 {
+  interface TestsJsonPayload {
     Data: WithWildCards<{ Tests: Test[] }>[],
     IsSuccess: boolean,
     ValidationResult: {
       IsValid: boolean,
       Errors: unknown
     }
-  }
-
-  interface TestsJsonPayload_401 {
-    Data: {
-      IsAuthorized: boolean,
-      Code: string,
-      ErrorMessage: string
-    },
-    IsSuccess: boolean,
-    ValidationResult: unknown
   }
 }
 
@@ -199,9 +189,9 @@ export function isTestsData(
   );
 }
 
-export function isTestsJsonPayload_200(
+export function isTestsJsonPayload(
   candidate: unknown
-): candidate is TestsJsonPayload_200 {
+): candidate is TestsJsonPayload {
   const props = [
     'Data',
     'IsSuccess',
@@ -217,23 +207,4 @@ export function isTestsJsonPayload_200(
       Object.keys((candidate as object)[key] as object).every((e) => ['IsValid', 'Errors'].includes(e))
     )
   ));
-}
-
-export function isTestsJsonPayload_401(
-  candidate: unknown
-): candidate is TestsJsonPayload_401 {
-  const props = [
-    'Data',
-    'IsSuccess',
-    'ValidationResult'
-  ];
-
-  return (
-    Object.keys(candidate as object).every((key) => (
-      props.includes(key) &&
-      (key !== 'Data' ? true :
-        Object.keys((candidate as object)[key] as object).every((e) => ['IsAuthorized', 'Code', 'ErrorMessage'].includes(e))
-      )
-    ))
-  );
 }
