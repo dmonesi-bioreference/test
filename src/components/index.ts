@@ -12,6 +12,7 @@ export * from './Checkbox';
 export * from './CircularProgress';
 export * from './Data';
 export * from './Divider';
+export * from './FaqCard';
 export * from './Fieldset';
 export * from './Flag';
 export * from './Header';

@@ -2,7 +2,6 @@ import { useActor, useInterpret } from '@xstate/react';
 import { useMemo } from 'react';
 
 import { app, setupDispatchMap } from 'app/state';
-import { mockArticle } from 'app/state/content/models';
 import { getPatientInfo } from 'app/web';
 import { getTests } from 'client';
 
@@ -22,6 +21,7 @@ export interface AppProviderProps {
     { src: string; thumbnail: string | StaticImageData } | undefined
   >;
   onFetchAllArticles?: AppEventFn<Article[]>;
+  onFetchAllFAQs?: AppEventFn<FAQ[]>;
   onPatientGuid?: AppEventFn<{ guid: string; source: string }>;
   onRegistration?: AppEventFn<unknown>;
 }
@@ -49,7 +49,10 @@ export function AppProvider({
   onReport: handleReport = async () => undefined,
   onPatientGuid: handlePatientGuid = getPatientInfo,
   onFetchAllArticles: handleFetchAllArticles = async () => {
-    return [mockArticle];
+    return [];
+  },
+  onFetchAllFAQs: handleFetchAllFAQs = async () => {
+    return [];
   },
   onSession: handleSession = async () => emptySession,
   onRegistration: handleRegistration = async () => undefined,
@@ -67,6 +70,7 @@ export function AppProvider({
     handleAppointmentStatus,
     handleReport,
     handleFetchAllArticles,
+    handleFetchAllFAQs,
     handlePatientGuid,
     handleRegistration,
     ...requestHandlers,
@@ -89,6 +93,7 @@ export function AppProvider({
         getAppointmentStatus: () => send('getAppointmentStatus'),
         viewTestResults: () => send('VIEW_TEST_RESULTS'),
         fetchAllArticles: () => send('fetchAllArticles'),
+        fetchAllFAQs: () => send('fetchAllFAQs'),
         register: () => send('register'),
       };
 

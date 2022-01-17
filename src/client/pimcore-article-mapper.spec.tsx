@@ -23,6 +23,7 @@ describe('Pimcore article mapper', () => {
               published: 1,
               reviewByDate: 1,
               owner: '',
+              introduceAt: 'WAITING' as IntroduceAt,
             },
           },
           {
@@ -43,6 +44,7 @@ describe('Pimcore article mapper', () => {
               published: 1,
               reviewByDate: 1,
               owner: '',
+              introduceAt: 'WAITING' as IntroduceAt,
             },
           },
         ],

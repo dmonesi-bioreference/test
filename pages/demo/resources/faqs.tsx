@@ -1,8 +1,8 @@
 import Head from 'next/head';
 
-import { ResourcesPage } from 'screens';
+import { FAQsPage } from 'screens';
 
-export default function Resources() {
+export default function FAQs() {
   return (
     <>
       <Head>
@@ -11,10 +11,10 @@ export default function Resources() {
       </Head>
 
       <main>
-        <ResourcesPage />
+        <FAQsPage />
       </main>
 
-      <footer></footer>
+      <footer />
     </>
   );
 }

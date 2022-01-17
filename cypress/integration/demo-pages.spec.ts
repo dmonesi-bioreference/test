@@ -13,6 +13,8 @@ describe('Demo pages', () => {
       'results',
       'testing-process',
       'registration',
+      'resources',
+      'resources/faqs',
     ];
 
     for (const route of validRoutes) {

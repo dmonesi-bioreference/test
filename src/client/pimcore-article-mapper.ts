@@ -24,6 +24,7 @@ export const transformToArticles = (
       published: articleNode.node.published,
       reviewByDate: articleNode.node.reviewByDate,
       owner: articleNode.node.owner,
+      introduceAt: articleNode.node.introduceAt,
     };
   });
 };

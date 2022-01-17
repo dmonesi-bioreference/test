@@ -19,6 +19,7 @@ import {
   PageSection,
   Typography,
   Spinner,
+  FaqCard,
 } from 'components';
 import { tokens } from 'styles';
 
@@ -30,11 +31,24 @@ export const ResourcesPage = () => {
     events.fetchAllArticles();
   }, [events]);
 
+  useEffect(() => {
+    events.fetchAllFAQs();
+  }, [events]);
+
   const articles = useAppSelector(
     (state) => state.context.content.articles.data
   );
-  const loading = useAppState('content.articles.requesting');
-  const error = useAppState('content.articles.failure');
+
+  const faqs = useAppSelector((state) => state.context.content.FAQs.data);
+
+  const loadingArticles = useAppState('content.articles.requesting');
+  const errorFetchingArticles = useAppState('content.articles.failure');
+  const loadingFAQs = useAppState('content.faqs.requesting');
+  const errorFetchingFAQs = useAppState('content.faqs.failure');
+
+  const FAQs = faqs.map((faq) => {
+    return faq.title;
+  });
 
   /* eslint-disable @typescript-eslint/no-unsafe-call */
   const articleCards = articles.map((article) => {
@@ -96,12 +110,25 @@ export const ResourcesPage = () => {
         >
           {t('pages.resources.description')}
         </MediaElements.Audio>
-        <Heading>{t('pages.resources.section.articles.title')}</Heading>
-        {loading ? (
+        {loadingFAQs ? (
           <Spinner />
-        ) : error ? (
+        ) : errorFetchingFAQs ? (
           <Typography color="error" level="7" type="heading">
-            Error fetching content.
+            {t('pages.resources.section.faqs.error')}
+          </Typography>
+        ) : (
+          <FaqCard
+            title={t('pages.resources.section.faqs.title')}
+            label={t('pages.resources.section.faqs.label')}
+            questions={FAQs}
+          />
+        )}
+        <Heading>{t('pages.resources.section.articles.title')}</Heading>
+        {loadingArticles ? (
+          <Spinner />
+        ) : errorFetchingArticles ? (
+          <Typography color="error" level="7" type="heading">
+            {t('pages.resources.section.articles.error')}
           </Typography>
         ) : (
           articleCards

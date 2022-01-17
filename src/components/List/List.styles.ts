@@ -33,6 +33,18 @@ const ListStyled = styled.div`
   .list__item--divided {
     list-style-type: none;
   }
+
+  .list--non-bulleted {
+    padding: 0;
+  }
+
+  .list__item--non-bulleted {
+    list-style-type: none;
+  }
+
+  .list--non-bulleted > * :not(:last-child) {
+    padding-bottom: ${tokens.spacing};
+  }
 `;
 
 export default ListStyled;

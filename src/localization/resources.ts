@@ -23,8 +23,20 @@ export const resources = {
             },
             articles: {
               title: 'Read',
+              error: 'Error fetching articles.',
+            },
+            faqs: {
+              error: 'Error fetching FAQs.',
+              title: 'Genetic Testing FAQs',
+              label:
+                'Here are some frequently asked questions about genetic testing:',
             },
           },
+        },
+        geneticTestingFAQs: {
+          title: 'Genetic Testing FAQs',
+          subTitle:
+            'Understanding the basic elements of genetics and the language used by clinicians will help you have a more productive conversation when your results are ready.',
         },
         settings: {
           title: 'Settings',

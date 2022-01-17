@@ -7,19 +7,31 @@ declare global {
 
   interface Article {
     id: string;
-    bannerImage: Image;
+    bannerImage?: Image;
     label: string;
     title: string;
     blurb: string;
-    content: string;
-    slug: Slug;
+    content?: string;
+    slug?: Slug;
     author?: string;
     published: number;
     unpublishDate?: number;
-    reviewByDate: number;
+    reviewByDate?: number;
     introduceAt?: IntroduceAt;
-    owner: string;
+    owner?: string;
     priority?: number;
+  }
+
+  interface FAQ {
+    id: string;
+    slug?: Slug;
+    label: string;
+    title: string;
+    blurb: string;
+    content?: string;
+    introduceAt: IntroduceAt;
+    author?: string;
+    bannerImage?: Image;
   }
 
   interface Slug {
@@ -75,6 +87,43 @@ export const mockArticle: Article = {
   owner: '',
 };
 
+export const mockFAQs: FAQ[] = [
+  {
+    id: '1',
+    bannerImage: {
+      id: '1',
+      filename: 'In The NICU',
+      altText: 'In The NICU',
+      fullpath: InTheNICUImage,
+    },
+    slug: { slug: 'slug' },
+    label: 'label',
+    title: 'What is Genetic Testing?',
+    blurb: 'blurb',
+    content:
+      'Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.',
+    introduceAt: 'WAITING',
+    author: 'author',
+  },
+  {
+    id: '2',
+    bannerImage: {
+      id: '1',
+      filename: 'In The NICU',
+      altText: 'In The NICU',
+      fullpath: InTheNICUImage,
+    },
+    slug: { slug: 'slug' },
+    label: 'label',
+    title: 'What is DNA?',
+    blurb: 'blurb',
+    content:
+      'Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.',
+    introduceAt: 'WAITING',
+    author: 'author',
+  },
+];
+
 export const isArticlePayload = (
   candidate: unknown
 ): candidate is Article[] => {
@@ -98,7 +147,27 @@ export const isArticlePayload = (
   );
 };
 
-export const isArticleFailurePayload = (
+export const isFAQPayload = (candidate: unknown): candidate is FAQ[] => {
+  const FAQProperties = [
+    'id',
+    'bannerImage',
+    'label',
+    'title',
+    'blurb',
+    'content',
+    'slug',
+    'author',
+    'introduceAt',
+  ];
+  return (
+    Array.isArray(candidate) &&
+    candidate.every((member) =>
+      FAQProperties.every((property) => property in member)
+    )
+  );
+};
+
+export const isContentFailurePayload = (
   candidate: unknown
 ): candidate is ContentFailure[] => {
   return (

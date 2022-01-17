@@ -1,8 +1,10 @@
-import { createClient, gql } from '@urql/core';
+import { gql } from '@urql/core';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { mockArticle } from 'app/state/content/models';
 import { transformToArticles } from 'client';
+
+import { client } from './client';
 
 const ArticlesQuery = gql`
   query {
@@ -37,10 +39,6 @@ const ArticlesQuery = gql`
     }
   }
 `;
-
-const client = createClient({
-  url: `${process.env.PIMCORE_URL}?apikey=${process.env.PIMCORE_KEY}`,
-});
 
 export default async function handler(
   req: NextApiRequest,
