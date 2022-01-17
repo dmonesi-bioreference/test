@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 
 import { app, setupDispatchMap } from 'app/state';
 import { getPatientInfo } from 'app/web';
-import { getTests } from 'client';
+import { getTestsFromContext, fetchSingleArticleFromContext } from 'client';
 
 import { AppEventContext, AppServiceContext } from './context';
 
@@ -20,6 +20,7 @@ export interface AppProviderProps {
   onReport?: AppEventFn<
     { src: string; thumbnail: string | StaticImageData } | undefined
   >;
+  onFetchArticle?: AppEventFn<Article>;
   onFetchAllArticles?: AppEventFn<Article[]>;
   onFetchAllFAQs?: AppEventFn<FAQ[]>;
   onPatientGuid?: AppEventFn<{ guid: string; source: string }>;
@@ -41,13 +42,13 @@ export function AppProvider({
   requests = {},
   onAuthenticate: handleAuth = async () => undefined,
   onIdentity: handleIdentityCheck = async () => undefined,
-  onLoadTests: handleLoadTests = async (context: AppContext) =>
-    await getTests(context.auth.patientGuid),
+  onLoadTests: handleLoadTests = getTestsFromContext,
   onAppointmentStatus: handleAppointmentStatus = async () => ({
     appointmentStatus: undefined,
   }),
   onReport: handleReport = async () => undefined,
   onPatientGuid: handlePatientGuid = getPatientInfo,
+  onFetchArticle: handleFetchArticle = fetchSingleArticleFromContext,
   onFetchAllArticles: handleFetchAllArticles = async () => {
     return [];
   },
@@ -69,6 +70,7 @@ export function AppProvider({
     handleLoadTests,
     handleAppointmentStatus,
     handleReport,
+    handleFetchArticle,
     handleFetchAllArticles,
     handleFetchAllFAQs,
     handlePatientGuid,
@@ -89,9 +91,13 @@ export function AppProvider({
         checkIdentity: () => send('checkIdentity'),
         nextStep: () => send('nextStep'),
         login: () => send('login'),
-        getTestStatus: () => send('getTestStatus'),
-        getAppointmentStatus: () => send('getAppointmentStatus'),
+        getTestStatus: () => send('CHECK_TESTS'),
+        getAppointmentStatus: () => send('GET_APPOINTMENT_STATUS'),
         viewTestResults: () => send('VIEW_TEST_RESULTS'),
+        fetchSingleArticle: (payload?: { articleId: string }) => send({
+          type: 'FETCH_SINGLE_ARTICLE',
+          articleId: payload ? payload.articleId : ''
+        }),
         fetchAllArticles: () => send('fetchAllArticles'),
         fetchAllFAQs: () => send('fetchAllFAQs'),
         register: () => send('register'),

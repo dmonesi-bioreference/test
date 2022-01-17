@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import ReactHtmlParser from 'react-html-parser';
 
 import {
+  Content,
   useAppEvents,
   useAppSelector,
   useAppState,
@@ -37,9 +37,9 @@ export const FAQsPage = () => {
             {faq.title}
           </Typography>
         </div>
-        <Typography type="body">
-          <div>{ReactHtmlParser(faq.content)}</div>
-        </Typography>
+        <Content>
+          {faq.content}
+        </Content>
       </div>
     );
   });

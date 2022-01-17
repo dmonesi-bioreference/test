@@ -33,6 +33,10 @@ export const resources = {
             },
           },
         },
+        articles: {
+          return: 'Return',
+          errorFetchingArticle: 'Error fetching article',
+        },
         geneticTestingFAQs: {
           title: 'Genetic Testing FAQs',
           subTitle:

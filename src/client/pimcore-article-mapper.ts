@@ -1,4 +1,8 @@
 export interface ArticleQueryResponse {
+  getArticle: Article;
+}
+
+export interface ArticlesQueryResponse {
   getArticleListing: {
     edges: ArticleNode[];
   };
@@ -8,8 +12,14 @@ export interface ArticleNode {
   node: Article;
 }
 
-export const transformToArticles = (
+export const transformToArticle = (
   response: ArticleQueryResponse
+): Article => {
+  return { ...response.getArticle };
+}
+
+export const transformToArticles = (
+  response: ArticlesQueryResponse
 ): Article[] => {
   const edges = response.getArticleListing.edges;
   return edges.map((articleNode) => {

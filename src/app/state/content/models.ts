@@ -126,7 +126,7 @@ export const mockFAQs: FAQ[] = [
 
 export const isArticlePayload = (
   candidate: unknown
-): candidate is Article[] => {
+): candidate is Article => {
   const articleProperties = [
     'id',
     'bannerImage',
@@ -139,11 +139,16 @@ export const isArticlePayload = (
     'reviewByDate',
     'owner',
   ];
+
+  return articleProperties.every((property) => property in (candidate as object));
+};
+
+export const isMultiArticlePayload = (
+  candidate: unknown
+): candidate is Article[] => {
   return (
     Array.isArray(candidate) &&
-    candidate.every((member) =>
-      articleProperties.every((property) => property in member)
-    )
+    candidate.every((member) => isArticlePayload(member))
   );
 };
 

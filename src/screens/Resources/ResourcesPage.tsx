@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import ReactHtmlParser from 'react-html-parser';
 
 import {
   useAppEvents,
@@ -7,6 +6,7 @@ import {
   useAppTranslation,
   MediaElements,
   useAppState,
+  Content,
 } from 'app';
 import InTheNICUImage from 'assets/images/jpg/InTheNICU.jpg';
 import {
@@ -41,7 +41,7 @@ export const ResourcesPage = () => {
 
   const faqs = useAppSelector((state) => state.context.content.FAQs.data);
 
-  const loadingArticles = useAppState('content.articles.requesting');
+  const loadingArticles = useAppState('content.articles.fetchingAllArticles');
   const errorFetchingArticles = useAppState('content.articles.failure');
   const loadingFAQs = useAppState('content.faqs.requesting');
   const errorFetchingFAQs = useAppState('content.faqs.failure');
@@ -50,7 +50,6 @@ export const ResourcesPage = () => {
     return faq.title;
   });
 
-  /* eslint-disable @typescript-eslint/no-unsafe-call */
   const articleCards = articles.map((article) => {
     return (
       <LinkCard
@@ -63,11 +62,11 @@ export const ResourcesPage = () => {
         themeColor={tokens.colorPrimary}
       >
         <div style={{ marginBottom: tokens.spacingLarge }}>
-          <Typography type="body">
-            <div>{ReactHtmlParser(article.blurb)}</div>
-          </Typography>
+          <Content>
+            {article.blurb}
+          </Content>
         </div>
-        <Button kind="primary" href="#">
+        <Button kind="primary" href={`/demo/article/${article.id}`}>
           {t('sections.resources.story.readMore')}
         </Button>
       </LinkCard>

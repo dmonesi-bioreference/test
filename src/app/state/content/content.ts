@@ -2,12 +2,17 @@ import { assign } from '@xstate/immer';
 
 import {
   isArticlePayload,
+  isMultiArticlePayload,
   isContentFailurePayload,
   isFAQPayload,
 } from './models';
 
 declare global {
   interface AppEventMap {
+    fetchSingleArticle: {
+      type: 'FETCH_SINGLE_ARTICLE',
+      articleId: string,
+    };
     fetchAllArticles: {
       type: 'fetchAllArticles';
     };
@@ -17,15 +22,26 @@ declare global {
   }
 }
 
-export const context = {
-  articles: { data: [] as Article[], errors: [] as ContentFailure[] },
-  FAQs: { data: [] as FAQ[], errors: [] as ContentFailure[] },
+export const context: {
+  currentArticleId?: string,
+  articles: { data: Article[], errors: ContentFailure[] },
+  FAQs: { data: FAQ[], errors: ContentFailure[] },
+} = {
+  articles: { data: [], errors: [] },
+  FAQs: { data: [], errors: [] },
 };
 
 export const actions = {
+  collectArticleId: assign((context: AppContext, event: AppEvents) => {
+    const articleId = 'articleId' in event ? event?.articleId : '';
+    context.content.currentArticleId = articleId;
+  }),
   articlesUpdate: assign((context: AppContext, event: AppEvents) => {
     const data = 'data' in event ? event?.data : [];
     if (isArticlePayload(data)) {
+      context.content.articles.data = [data];
+    }
+    if (isMultiArticlePayload(data)) {
       context.content.articles.data = data;
     }
   }),
@@ -55,8 +71,29 @@ export const machine = {
     articles: {
       initial: 'idle',
       states: {
-        idle: { on: { fetchAllArticles: 'requesting' } },
-        requesting: {
+        idle: {
+          on: {
+            FETCH_SINGLE_ARTICLE: {
+              target: 'fetchingSingleArticle',
+              actions: ['collectArticleId'],
+            },
+            fetchAllArticles: 'fetchingAllArticles',
+          },
+        },
+        fetchingSingleArticle: {
+          invoke: {
+            src: 'handleFetchArticle',
+            onDone: {
+              target: 'idle',
+              actions: 'articlesUpdate'
+            },
+            onError: {
+              target: 'failure',
+              actions: 'articlesError',
+            },
+          },
+        },
+        fetchingAllArticles: {
           invoke: {
             src: 'handleFetchAllArticles',
             onDone: {
@@ -70,7 +107,15 @@ export const machine = {
           },
         },
         success: {},
-        failure: { on: { fetchAllArticles: 'requesting' } },
+        failure: {
+          on: {
+            FETCH_SINGLE_ARTICLE: {
+              target: 'fetchingSingleArticle',
+              actions: ['collectArticleId'],
+            },
+            fetchAllArticles: 'fetchingAllArticles',
+          },
+        },
       },
     },
     faqs: {
