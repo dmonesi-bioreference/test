@@ -12,7 +12,7 @@
   "scripts": {
     "auth:build-and-analyze": "node ./infrastructure/auth/scripts/build-and-analyze.js",
     "auth:deploy": "node ./infrastructure/auth/scripts/deploy.js",
-    "build": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider --insecure-http-parser\" next build && next export",
+    "build": "next build && next export",
     "build:next": "yarn make-icons && next build",
     "build:storybook": "build-storybook",
     "build:components": "rm -rf dist && mkdir -p dist/components && babel -d dist src",
@@ -46,6 +46,7 @@
     "@xstate/inspect": "0.5.1",
     "@xstate/react": "1.5.1",
     "auth0-js": "9.18.0",
+    "axios": "^0.25.0",
     "change-case": "4.1.2",
     "clsx": "1.1.1",
     "cross-env": "7.0.3",

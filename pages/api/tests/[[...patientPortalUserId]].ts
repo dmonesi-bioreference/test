@@ -1,13 +1,20 @@
+import axios, { AxiosRequestHeaders } from 'axios';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 async function getTests(
   url: string,
-  headers: Headers,
+  headers: AxiosRequestHeaders,
 ): Promise<unknown> {
-  const response = await fetch(url, { method: 'GET', headers });
+  const response = await axios({
+    url,
+    method: 'get',
+    headers,
+    insecureHTTPParser: true
+  });
+
   try {
-    if (!response.ok) throw response;
-    return await response.json() as Promise<unknown>;
+    if (response.status !== 200) throw response;
+    return response.data as Promise<unknown>;
   }
   catch (error) {
     return error as unknown;
@@ -35,11 +42,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       try {
         const payload = await getTests(
           process.env.PROVIDER_PORTAL_API_TESTS_URL.replace('{patientPortalUserId}', (query['patientPortalUserId'] as string[])[0]),
-          new Headers({
+          {
             'Authorization': `Basic ${basicAuth}`,
             'Referer': `${process.env.PROVIDER_PORTAL_API_REFERER}`,
             'X-Frame-Options': 'Deny',
-          })
+          }
         );
 
         if (payload instanceof Response) {
