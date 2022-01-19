@@ -1,30 +1,11 @@
-import axios, { AxiosRequestHeaders } from 'axios';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-async function getTests(
-  url: string,
-  headers: AxiosRequestHeaders,
-): Promise<unknown> {
-  const response = await axios({
-    url,
-    method: 'get',
-    headers,
-    insecureHTTPParser: true
-  });
-
-  try {
-    if (response.status !== 200) throw response;
-    return response.data as Promise<unknown>;
-  }
-  catch (error) {
-    return error as unknown;
-  }
-}
+import ProviderPortal from 'client/provider-portal';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, query } = req;
 
-  if (!process.env.PROVIDER_PORTAL_API_TESTS_URL) {
+  if (!process.env.PROVIDER_PORTAL_BASE_URL) {
     return res.status(400).json({ message: 'Bad request - Url not found' })
   };
 
@@ -32,22 +13,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(400).json({ message: 'Bad request - missing patient Guid' });
   }
 
-  const basicAuth = Buffer.from(
-    `${process.env.PROVIDER_PORTAL_API_BASIC_AUTH_USERNAME}:${process.env.PROVIDER_PORTAL_API_BASIC_AUTH_PASSWORD}`,
-    'binary'
-  ).toString('base64');
-
   switch(method) {
     case "GET":
       try {
-        const payload = await getTests(
-          process.env.PROVIDER_PORTAL_API_TESTS_URL.replace('{patientPortalUserId}', (query['patientPortalUserId'] as string[])[0]),
-          {
-            'Authorization': `Basic ${basicAuth}`,
-            'Referer': `${process.env.PROVIDER_PORTAL_API_REFERER}`,
-            'X-Frame-Options': 'Deny',
-          }
-        );
+        const payload = await ProviderPortal.Tests.get((query['patientPortalUserId'] as string[])[0]);
 
         if (payload instanceof Response) {
           return res.status(400).json({

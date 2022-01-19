@@ -1,55 +1,14 @@
-import { gql } from '@urql/core';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { mockArticle } from 'app/state/content/models';
 import { transformToArticles } from 'client';
-
-import { client } from './client';
-
-const ArticlesQuery = gql`
-  query {
-    getArticleListing {
-      edges {
-        node {
-          id
-          bannerImage {
-            id
-            filename
-            fullpath
-            mimetype
-            type
-            filesize
-          }
-          label
-          title
-          blurb
-          content
-          slug {
-            slug
-          }
-          author
-          published
-          unpublishDate
-          reviewByDate
-          owner
-          priority
-          introduceAt
-        }
-      }
-    }
-  }
-`;
+import Pimcore from 'client/pimcore';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   if (!process.env.PIMCORE_KEY) return res.status(200).json([mockArticle]);
-  const result = await client
-    .query(ArticlesQuery)
-    .toPromise()
-    .then((result) => {
-      return transformToArticles(result.data);
-    });
-  res.status(200).json(result);
+  const result = await Pimcore.Resources.articles();
+  res.status(200).json(transformToArticles(result.data));
 }
