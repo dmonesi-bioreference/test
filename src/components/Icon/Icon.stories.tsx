@@ -17,4 +17,6 @@ export const Heroicons = Template.bind({});
 Heroicons.args = {
   name: 'academic-cap',
   style: 'solid',
+  size: 'small',
+  encircled: false,
 };

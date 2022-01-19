@@ -16,6 +16,7 @@ export interface HeroiconProps {
   kind?: 'heroicon';
   color?: 'default' | 'primary' | 'danger' | 'white';
   size?: 'large' | 'small';
+  encircled?: boolean;
 }
 
 export type IconProps = CustomIconProps | HeroiconProps;
@@ -53,6 +54,7 @@ const AsyncHeroIcon: React.FC<HeroiconProps> = ({
   size = 'small',
   color = 'default',
   name,
+  encircled = false,
 }) => {
   const [icon, setComponent] = useState<React.ReactNode | null>(null);
 
@@ -85,6 +87,14 @@ const AsyncHeroIcon: React.FC<HeroiconProps> = ({
 
   if (!icon) {
     return null;
+  }
+
+  if (encircled) {
+    return (
+      <IconStyled className="encircled">
+        <div className={`${color} ${size}`}>{icon}</div>
+      </IconStyled>
+    );
   }
 
   return <IconStyled className={`${color} ${size}`}>{icon}</IconStyled>;

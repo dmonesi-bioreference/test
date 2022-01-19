@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import Link from 'next/link';
 
 import { HeroiconProps, Icon } from 'components/Icon';
 
@@ -11,8 +12,12 @@ export interface IconButtonProps extends HeroiconProps {
   disabled?: boolean;
   /** Specify the onClick event for the button. */
   onClick?: () => void;
+  /** Passing `href` will wrap this button in an `a` element. */
+  href?: string;
   /** Should this look for a custom icon instead? */
   customIcon?: boolean;
+  /** Set to true if icon is encircled */
+  encircled?: boolean;
 }
 
 const defaultProps: Partial<IconButtonProps> = {
@@ -33,7 +38,30 @@ const defaultProps: Partial<IconButtonProps> = {
  * Search the available icons at https://heroicons.com.
  */
 const IconButton: React.FC<IconButtonProps> = (props) => {
-  return (
+  return props.href ? (
+    <Link href={props.href} passHref>
+      <IconButtonStyled
+        className={clsx({
+          'icon-button': true,
+          'icon-button--disabled': props.disabled,
+        })}
+        type="button"
+        aria-label={props.label}
+        onClick={props.onClick}
+      >
+        {props.customIcon ? (
+          <Icon name={props.name} kind="custom" />
+        ) : (
+          <Icon
+            name={props.name}
+            encircled={props.encircled}
+            style={props.style}
+          />
+        )}
+        {props.children}
+      </IconButtonStyled>
+    </Link>
+  ) : (
     <IconButtonStyled
       className={clsx({
         'icon-button': true,
@@ -44,11 +72,14 @@ const IconButton: React.FC<IconButtonProps> = (props) => {
       onClick={props.onClick}
     >
       {props.customIcon ? (
-        <Icon kind="custom" name={props.name} />
+        <Icon name={props.name} kind="custom" />
       ) : (
-        <Icon name={props.name} style={props.style} aria-hidden="true" />
+        <Icon
+          name={props.name}
+          encircled={props.encircled}
+          style={props.style}
+        />
       )}
-
       {props.children}
     </IconButtonStyled>
   );

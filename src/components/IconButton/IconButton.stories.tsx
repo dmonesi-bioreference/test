@@ -16,9 +16,18 @@ const Template: Story<IconButtonProps> = (args) => <IconButton {...args} />;
 
 export const Primary = Template.bind({});
 
+export const Encircled = Template.bind({});
+
 Primary.args = {
   name: 'chat',
   label: 'Chat',
   style: 'solid',
   onClick: action('button clicked'),
+};
+
+Encircled.args = {
+  name: 'cog',
+  label: 'Settings',
+  style: 'outline',
+  encircled: true,
 };
