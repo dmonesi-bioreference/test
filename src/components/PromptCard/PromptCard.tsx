@@ -21,7 +21,11 @@ const PromptCard: React.FC<PromptCardProps> = (props) => {
           <Icon name="user-group" />
         </div>
 
-        <div className="label__prompt">{props.prompt}</div>
+        <div className="label__prompt">
+          <Typography type="heading" level="3">
+            {props.prompt}
+          </Typography>
+        </div>
       </div>
 
       <div className="label__right">
@@ -36,7 +40,7 @@ const PromptCard: React.FC<PromptCardProps> = (props) => {
     <PromptCardStyled {...props}>
       <Card maxHeaderHeight={189} header={promptFragment}>
         <div className="heading">
-          <Typography type="heading" level="3">
+          <Typography type="heading" level="2">
             {props.heading}
           </Typography>
         </div>

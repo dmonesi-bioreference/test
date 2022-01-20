@@ -4,6 +4,7 @@ import { tokens, base, colors } from 'styles';
 
 const TypographyStyled = styled.div`
   ${base}
+  word-break: break-word;
   line-height: ${tokens.lineHeightDense};
   margin: 0;
   overflow: hidden;
