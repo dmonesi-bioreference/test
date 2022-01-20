@@ -27,12 +27,12 @@ const ProcessBarStyled = styled.div`
   }
 
   .process-bar__step--complete {
-    background: ${colors.teal[500]};
-    border: ${tokens.borderWidthThick} solid ${colors.teal[500]};
+    background: ${colors.powderBlue[500]};
+    border: ${tokens.borderWidthThick} solid ${colors.powderBlue[500]};
   }
 
   .process-bar__link--complete {
-    background-color: ${colors.teal[700]};
+    background-color: ${colors.powderBlue[700]};
   }
 
   .process-bar__step--incomplete {

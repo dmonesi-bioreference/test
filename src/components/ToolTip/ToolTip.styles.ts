@@ -18,7 +18,7 @@ const ToolTipStyled = styled.div`
 
   [class*='arrow'] {
     svg {
-      fill: ${colors.blue[800]};
+      fill: ${colors.indigo[800]};
     }
   }
 `;

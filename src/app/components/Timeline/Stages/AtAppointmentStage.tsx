@@ -8,25 +8,30 @@ interface AtAppointmentStageProps {
   status: 'present' | 'past' | 'future';
 }
 
-export const AtAppointmentStage: React.FC<AtAppointmentStageProps> = (props) => {
+export const AtAppointmentStage: React.FC<AtAppointmentStageProps> = (
+  props
+) => {
   const t = useAppTranslation();
 
   return (
     <AtAppointmentStageStyled
       key={props.status}
       className={props.status}
-      linearGradient='AtAppointmentStageLinearGradient'
+      linearGradient="AtAppointmentStageLinearGradient"
     >
-      <svg className='linearGradientSvg'>
+      <svg className="linearGradientSvg">
         <defs>
-          <linearGradient id='AtAppointmentStageLinearGradient' gradientTransform="rotate(90)">
+          <linearGradient
+            id="AtAppointmentStageLinearGradient"
+            gradientTransform="rotate(90)"
+          >
             {props.status === 'past' ? (
               <>
-                <stop offset="0%" stopColor={colors.blue[500]} />
-                <stop offset="100%" stopColor={colors.teal[500]} />
+                <stop offset="0%" stopColor={colors.indigo[500]} />
+                <stop offset="100%" stopColor={colors.powderBlue[500]} />
               </>
             ) : (
-              <stop offset="100%" stopColor={colors.sand[100]} />
+              <stop offset="100%" stopColor={colors.violet[100]} />
             )}
           </linearGradient>
         </defs>
@@ -35,14 +40,18 @@ export const AtAppointmentStage: React.FC<AtAppointmentStageProps> = (props) => 
       <TimelineItem
         heading={t('sections.results.timeline.atAppointment.heading')}
         body={t('sections.results.timeline.atAppointment.body')}
-        link={props.status == 'present' ? {
-            label: t('sections.results.timeline.atAppointment.linkLabel'),
-            onClick: () => null
-        } : undefined}
-        icon={<Icon name='chat-alt-2' style='solid' />}
+        link={
+          props.status == 'present'
+            ? {
+                label: t('sections.results.timeline.atAppointment.linkLabel'),
+                onClick: () => null,
+              }
+            : undefined
+        }
+        icon={<Icon name="chat-alt-2" style="solid" />}
         isCollapseEnabled={props.status === 'present' ? false : true}
         isSmall={props.status === 'past' ? true : false}
       />
     </AtAppointmentStageStyled>
   );
-}
+};

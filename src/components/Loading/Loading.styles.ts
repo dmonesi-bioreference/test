@@ -77,7 +77,7 @@ const LoadingStyled = styled.div<LoadingProps>`
     animation-name: upwards;
   }
   .opposing-set li {
-    background-color: ${colors.blue[800]};
+    background-color: ${colors.indigo[800]};
     animation-name: downwards;
   }
   li:nth-child(2) {

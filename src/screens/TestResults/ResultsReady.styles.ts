@@ -5,7 +5,6 @@ import IconStyled from 'components/Icon/Icon.styles';
 import TypographyStyled from 'components/Typography/Typography.styles';
 import { colors, tokens } from 'styles';
 
-
 const ResultsStyled = styled.div`
   .results-ready__nav {
     padding-bottom: ${tokens.spacingSmall};
@@ -23,12 +22,12 @@ const ResultsStyled = styled.div`
       }
 
       ${TypographyStyled} {
-        color: ${colors.blue[700]};
+        color: ${colors.indigo[700]};
       }
 
       ${IconStyled} {
         width: ${tokens.spacingSmall};
-        color: ${colors.blue[700]};
+        color: ${colors.indigo[700]};
       }
     }
   }
@@ -44,7 +43,8 @@ const ResultsStyled = styled.div`
 
   .results-ready__attention {
     display: flex;
-    padding: ${tokens.spacing} ${tokens.spacingXxxLarge} ${tokens.spacing} ${tokens.spacingMedium};
+    padding: ${tokens.spacing} ${tokens.spacingXxxLarge} ${tokens.spacing}
+      ${tokens.spacingMedium};
     background-color: ${colors.yellow[100]};
 
     ${IconStyled} {
@@ -53,7 +53,8 @@ const ResultsStyled = styled.div`
   }
 
   .results-ready__description {
-    padding: ${tokens.spacing} ${tokens.spacing} ${tokens.spacingLarge} ${tokens.spacing};
+    padding: ${tokens.spacing} ${tokens.spacing} ${tokens.spacingLarge}
+      ${tokens.spacing};
     background-color: ${colors.yellow[50]};
   }
 `;

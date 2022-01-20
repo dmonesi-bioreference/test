@@ -18,7 +18,7 @@ const Template: Story = () => (
     <Divider />
     <Typography type="body">Below</Typography>
     <Typography type="body">Above</Typography>
-    <Divider color="coral" thickness="thick" />
+    <Divider color="lime" thickness="thick" />
     <Typography type="body">Below</Typography>
   </div>
 );

@@ -283,7 +283,7 @@ const ButtonStyled = styled.button`
   }
 
   &.light {
-    color: ${colors.blue[600]};
+    color: ${colors.indigo[600]};
   }
 
   &[disabled] {

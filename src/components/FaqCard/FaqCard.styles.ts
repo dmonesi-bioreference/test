@@ -11,7 +11,7 @@ const FaqCardStyled = styled.div`
   width: 100%;
 
   .faq-card__header {
-    background-color: ${colors.slatePurple[100]};
+    background-color: ${colors.violet[100]};
     overflow: hidden;
     padding: ${tokens.spacing} ${tokens.spacingXLarge} ${tokens.spacing}
       ${tokens.spacing};

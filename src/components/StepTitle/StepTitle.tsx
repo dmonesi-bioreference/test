@@ -15,7 +15,7 @@ const StepTitle: React.FC<StepTitleProps> = (props) => {
             Step {props.number}
           </Typography>
         </div>
-        <Divider color="coral" thickness="thick" />
+        <Divider color="lime" thickness="thick" />
       </div>
     </StepTitleStyled>
   );

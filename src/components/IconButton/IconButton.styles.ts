@@ -30,7 +30,7 @@ const IconButtonStyled = styled.button`
   }
 
   &:active:not(.icon-button--disabled) {
-    color: ${colors.blue[800]};
+    color: ${colors.indigo[800]};
   }
 
   &.icon-button--disabled {

@@ -89,7 +89,7 @@ const CheckboxStyled = styled(FormControl)<FormControlProps>`
   }
 
   .checkbox--invalid {
-    border-color: ${colors.coral[400]};
+    border-color: ${colors.red[400]};
   }
 `;
 

@@ -8,25 +8,30 @@ interface TestResultsReadyStageProps {
   status: 'present' | 'past' | 'future';
 }
 
-export const TestResultsReadyStage: React.FC<TestResultsReadyStageProps> = (props) => {
+export const TestResultsReadyStage: React.FC<TestResultsReadyStageProps> = (
+  props
+) => {
   const t = useAppTranslation();
 
   return (
     <TestResultsReadyStageStyled
       key={props.status}
       className={props.status}
-      linearGradient='TestResultsReadyStageLinearGradient'
+      linearGradient="TestResultsReadyStageLinearGradient"
     >
-      <svg className='linearGradientSvg'>
+      <svg className="linearGradientSvg">
         <defs>
-          <linearGradient id='TestResultsReadyStageLinearGradient' gradientTransform="rotate(90)">
+          <linearGradient
+            id="TestResultsReadyStageLinearGradient"
+            gradientTransform="rotate(90)"
+          >
             {props.status === 'past' ? (
               <>
-                <stop offset="0%" stopColor={colors.sand[900]} />
-                <stop offset="100%" stopColor={colors.coral[300]} />
+                <stop offset="0%" stopColor={colors.violet[900]} />
+                <stop offset="100%" stopColor={colors.violet[300]} />
               </>
             ) : (
-              <stop offset="100%" stopColor={colors.sand[100]} />
+              <stop offset="100%" stopColor={colors.violet[100]} />
             )}
           </linearGradient>
         </defs>
@@ -34,19 +39,25 @@ export const TestResultsReadyStage: React.FC<TestResultsReadyStageProps> = (prop
 
       <TimelineItem
         heading={t('sections.results.timeline.testResultsReady.heading')}
-        body={props.status === 'past' ? (
-            t('sections.results.timeline.testResultsReady.bodyPast')
-          ) : (
-            t('sections.results.timeline.testResultsReady.body')
-        )}
-        link={props.status == 'present' ? {
-          label: t('sections.results.timeline.testResultsReady.linkLabel'),
-          onClick: () => null
-        } : undefined}
-        icon={<Icon name='phone' style='solid' />}
+        body={
+          props.status === 'past'
+            ? t('sections.results.timeline.testResultsReady.bodyPast')
+            : t('sections.results.timeline.testResultsReady.body')
+        }
+        link={
+          props.status == 'present'
+            ? {
+                label: t(
+                  'sections.results.timeline.testResultsReady.linkLabel'
+                ),
+                onClick: () => null,
+              }
+            : undefined
+        }
+        icon={<Icon name="phone" style="solid" />}
         isCollapseEnabled={props.status === 'present' ? false : true}
         isSmall={props.status === 'past' ? true : false}
       />
     </TestResultsReadyStageStyled>
   );
-}
+};

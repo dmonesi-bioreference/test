@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
-
 import { base, tokens, colors } from 'styles';
 
 const AudioStyled = styled.div`
   ${base}
-  background-color: ${colors.slatePurple[100]};
+  background-color: ${colors.violet[100]};
   border-radius: ${tokens.borderRadius};
   box-shadow: ${tokens.shadowXxLarge};
   width: 100%;

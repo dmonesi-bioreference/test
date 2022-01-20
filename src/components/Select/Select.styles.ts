@@ -96,7 +96,7 @@ const SelectStyled = styled(FormControl)<FormControlProps>`
   }
 
   .select--invalid {
-    border-color: ${colors.coral[400]};
+    border-color: ${colors.red[400]};
   }
 `;
 

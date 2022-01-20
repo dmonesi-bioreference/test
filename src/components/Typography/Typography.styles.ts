@@ -25,7 +25,7 @@ const TypographyStyled = styled.div`
   }
 
   &.error {
-    color: ${colors.coral[600]};
+    color: ${colors.red[600]};
   }
 
   &.sansSerif {

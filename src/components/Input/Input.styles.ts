@@ -134,7 +134,7 @@ const InputStyled = styled(FormControl)<FormControlProps>`
   }
 
   .input--invalid {
-    border-color: ${colors.coral[400]};
+    border-color: ${colors.red[400]};
   }
 `;
 

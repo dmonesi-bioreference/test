@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 import ButtonStyled from 'components/Button/Button.styles';
 import IconStyled from 'components/Icon/Icon.styles';
 import TimelineItemStyled from 'components/TimelineItem/TimelineItem.styles';
@@ -14,12 +13,12 @@ const AfterAppointmentStageStyled = styled.div`
     ${TimelineItemStyled} {
       .icon > svg {
         circle {
-          stroke: ${colors.teal[500]};
+          stroke: ${colors.powderBlue[500]};
         }
 
         foreignObject {
           ${IconStyled} > * {
-            color: ${colors.blue[700]};
+            color: ${colors.indigo[700]};
           }
         }
       }
@@ -27,11 +26,11 @@ const AfterAppointmentStageStyled = styled.div`
       .timeline-item-content {
         ${ButtonStyled} {
           ${TypographyStyled} {
-            color: ${colors.teal[700]};
+            color: ${colors.powderBlue[700]};
           }
 
           ${IconStyled} {
-            color: ${colors.teal[700]};
+            color: ${colors.powderBlue[700]};
           }
         }
       }
@@ -42,12 +41,12 @@ const AfterAppointmentStageStyled = styled.div`
     ${TimelineItemStyled} {
       .icon > svg {
         circle {
-          stroke: ${colors.sand[400]};
+          stroke: ${colors.violet[400]};
         }
 
         foreignObject {
           ${IconStyled} > * {
-            color: ${colors.sand[600]};
+            color: ${colors.violet[600]};
           }
         }
       }
@@ -55,11 +54,11 @@ const AfterAppointmentStageStyled = styled.div`
       .timeline-item-content {
         ${ButtonStyled} {
           ${TypographyStyled} {
-            color: ${colors.sand[700]};
+            color: ${colors.violet[700]};
           }
 
           ${IconStyled} {
-            color: ${colors.sand[700]};
+            color: ${colors.violet[700]};
           }
         }
       }

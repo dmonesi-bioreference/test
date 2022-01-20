@@ -11,7 +11,7 @@ const WaitingForResultsStyled = styled.div`
   }
 
   ${CardStyled} {
-    border: ${tokens.spacingXxxSmall} solid ${colors.teal[200]};
+    border: ${tokens.spacingXxxSmall} solid ${colors.powderBlue[200]};
     margin-top: ${tokens.spacing};
     margin-bottom: ${tokens.spacingLarge};
 

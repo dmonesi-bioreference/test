@@ -6,7 +6,6 @@ import IconStyled from 'components/Icon/Icon.styles';
 import TypographyStyled from 'components/Typography/Typography.styles';
 import { colors, tokens } from 'styles';
 
-
 const ArticlePageStyled = styled.div`
   .results-ready__nav {
     padding-bottom: ${tokens.spacingSmall};
@@ -24,16 +23,16 @@ const ArticlePageStyled = styled.div`
       }
 
       ${TypographyStyled} {
-        color: ${colors.blue[700]};
+        color: ${colors.indigo[700]};
       }
 
       ${IconStyled} {
         width: ${tokens.spacingSmall};
-        color: ${colors.blue[700]};
+        color: ${colors.indigo[700]};
       }
     }
   }
-      
+
   ${ContentStyled} {
     ${TypographyStyled} {
       &.heading1 {

@@ -7,7 +7,7 @@ const InformationBannerStyled = styled.div`
   border-radius: ${tokens.borderRadius};
   box-shadow: ${tokens.shadowXxLarge};
   padding: ${tokens.spacingSmall} ${tokens.spacing} ${tokens.spacing};
-  border: ${tokens.borderWidthThin} solid ${colors.blue[600]};
+  border: ${tokens.borderWidthThin} solid ${colors.indigo[600]};
 
   .information-banner__content > * {
     margin-bottom: ${tokens.spacingXSmall};
@@ -22,20 +22,20 @@ const InformationBannerStyled = styled.div`
   }
 
   &.information-banner--default {
-    background: ${colors.blue[50]};
-    color: ${colors.blue[900]};
+    background: ${colors.indigo[50]};
+    color: ${colors.indigo[900]};
   }
 
   &.information-banner--tooltip {
     max-width: 300px;
-    background: ${colors.blue[800]};
+    background: ${colors.indigo[800]};
     color: white;
     border: none;
   }
 
   &.information-banner--error {
-    background: ${colors.coral[50]};
-    border-color: ${colors.coral[400]};
+    background: ${colors.red[50]};
+    border-color: ${colors.red[400]};
   }
 `;
 

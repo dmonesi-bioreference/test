@@ -18,8 +18,8 @@ const DividerStyled = styled.div`
     height: ${tokens.borderWidthThin};
   }
 
-  &.line--coral {
-    background-color: ${colors.coral[200]};
+  &.line--lime {
+    background-color: ${colors.lime[200]};
   }
 
   &.line--neutral {

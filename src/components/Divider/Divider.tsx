@@ -1,7 +1,7 @@
 import DividerStyled from './Divider.styles';
 
 export interface DividerProps {
-  color?: 'neutral' | 'coral';
+  color?: 'neutral' | 'lime';
   thickness?: 'thick' | 'thin';
 }
 

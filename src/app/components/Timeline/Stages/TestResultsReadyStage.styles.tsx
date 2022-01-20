@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 import ButtonStyled from 'components/Button/Button.styles';
 import IconStyled from 'components/Icon/Icon.styles';
 import TimelineItemStyled from 'components/TimelineItem/TimelineItem.styles';
@@ -16,25 +15,24 @@ const TestResultsReadyStageStyled = styled.div<TestResultsReadyStageStyledProps>
 
   .linearGradientSvg {
     display: flex;
-    width: 0px;
-    height: 0px;
+    width: 0;
+    height: 0;
   }
-
 
   &.present {
     ${TimelineItemStyled} {
       .icon > svg {
         circle {
-          stroke: ${colors.teal[500]};
+          stroke: ${colors.powderBlue[500]};
         }
 
         rect {
-          fill: ${p => `url(#${p.linearGradient})`};
+          fill: ${(p) => `url(#${p.linearGradient})`};
         }
 
         foreignObject {
           ${IconStyled} > * {
-            color: ${colors.blue[700]};
+            color: ${colors.indigo[700]};
           }
         }
       }
@@ -42,11 +40,11 @@ const TestResultsReadyStageStyled = styled.div<TestResultsReadyStageStyledProps>
       .timeline-item-content {
         ${ButtonStyled} {
           ${TypographyStyled} {
-            color: ${colors.teal[700]};
+            color: ${colors.powderBlue[700]};
           }
 
           ${IconStyled} {
-            color: ${colors.teal[700]};
+            color: ${colors.powderBlue[700]};
           }
         }
       }
@@ -57,16 +55,16 @@ const TestResultsReadyStageStyled = styled.div<TestResultsReadyStageStyledProps>
     ${TimelineItemStyled} {
       .icon > svg {
         circle {
-          stroke: ${colors.sand[900]};
+          stroke: ${colors.violet[900]};
         }
 
         rect {
-          fill: ${p => `url(#${p.linearGradient})`};
+          fill: ${(p) => `url(#${p.linearGradient})`};
         }
 
         foreignObject {
           ${IconStyled} > * {
-            color: ${colors.sand[700]};
+            color: ${colors.violet[700]};
           }
         }
       }
@@ -74,11 +72,11 @@ const TestResultsReadyStageStyled = styled.div<TestResultsReadyStageStyledProps>
       .timeline-item-content {
         ${ButtonStyled} {
           ${TypographyStyled} {
-            color: ${colors.teal[800]};
+            color: ${colors.powderBlue[800]};
           }
 
           ${IconStyled} {
-            color: ${colors.teal[800]};
+            color: ${colors.powderBlue[800]};
           }
         }
       }
@@ -89,16 +87,16 @@ const TestResultsReadyStageStyled = styled.div<TestResultsReadyStageStyledProps>
     ${TimelineItemStyled} {
       .icon > svg {
         circle {
-          stroke: ${colors.sand[400]};
+          stroke: ${colors.violet[400]};
         }
 
         rect {
-          fill: ${p => `url(#${p.linearGradient})`};
+          fill: ${(p) => `url(#${p.linearGradient})`};
         }
 
         foreignObject {
           ${IconStyled} > * {
-            color: ${colors.sand[600]};
+            color: ${colors.violet[600]};
           }
         }
       }
@@ -106,11 +104,11 @@ const TestResultsReadyStageStyled = styled.div<TestResultsReadyStageStyledProps>
       .timeline-item-content {
         ${ButtonStyled} {
           ${TypographyStyled} {
-            color: ${colors.sand[700]};
+            color: ${colors.violet[700]};
           }
 
           ${IconStyled} {
-            color: ${colors.sand[700]};
+            color: ${colors.violet[700]};
           }
         }
       }

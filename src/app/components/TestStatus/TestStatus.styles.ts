@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 import ButtonStyled from 'components/Button/Button.styles';
 import CardStyled from 'components/Card/Card.styles';
 import CircularProgressStyled from 'components/CircularProgress/CircularProgress.styles';
@@ -25,11 +24,12 @@ const TestStatusStyled = styled.div`
   }
 
   ${IconStyled} {
-    color: ${colors.teal[700]};
+    color: ${colors.powderBlue[700]};
   }
 
   header {
-    margin: calc(${tokens.spacing} * 4.5) ${tokens.spacingXLarge} ${tokens.spacing};
+    margin: calc(${tokens.spacing} * 4.5) ${tokens.spacingXLarge}
+      ${tokens.spacing};
     ${ButtonStyled} {
       width: 100%;
       justify-content: space-between;
@@ -39,12 +39,12 @@ const TestStatusStyled = styled.div`
         box-shadow: none;
         text-decoration: none;
       }
-  
+
       &:focus:not(.button--disabled) {
         box-shadow: none;
         text-decoration: none;
       }
-  
+
       &:active:not(.button--disabled) {
         box-shadow: none;
         text-decoration: none;
@@ -52,18 +52,18 @@ const TestStatusStyled = styled.div`
     }
 
     ${IconStyled} {
-      color: ${colors.teal[800]};
+      color: ${colors.powderBlue[800]};
     }
 
     .test-status__header-main {
       ${TypographyStyled} {
-        color: ${colors.teal[700]};
+        color: ${colors.powderBlue[700]};
       }
     }
 
     .test-status__header-minor {
       ${TypographyStyled} {
-        color: ${colors.teal[800]};
+        color: ${colors.powderBlue[800]};
       }
     }
   }
@@ -75,7 +75,7 @@ const TestStatusStyled = styled.div`
 
     * {
       display: inline-flex;
-      color: ${colors.blue[600]};
+      color: ${colors.indigo[600]};
     }
 
     ${TypographyStyled} {
@@ -90,7 +90,6 @@ const TestStatusStyled = styled.div`
         width: ${tokens.spacingSmall};
         height: ${tokens.spacingSmall};
       }
-
     }
   }
 `;

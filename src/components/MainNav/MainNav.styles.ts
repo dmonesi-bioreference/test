@@ -49,7 +49,7 @@ const MainNavStyled = styled.nav`
     width: 100%;
 
     &:hover {
-      background-color: ${colors.blue[50]};
+      background-color: ${colors.indigo[50]};
     }
   }
 `;

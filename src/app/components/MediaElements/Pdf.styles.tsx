@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 import IconStyled from 'components/Icon/Icon.styles';
 import { base, colors } from 'styles';
 
@@ -25,21 +24,23 @@ const PdfStyled = styled.div`
     align-items: center;
     justify-content: center;
     background: linear-gradient(
-        0deg,
-        ${() => {
-          const color = colors.blue[800];
+      0deg,
+      ${() => {
+          const color = colors.indigo[800];
           return color.includes('hsl(') ? color.replace(/\)/, ', 64%)') : color;
-        }} 49.86%,
-        ${() => {
+        }}
+        49.86%,
+      ${() => {
           const color = colors.grey[200];
           return color.includes('hsl(') ? color.replace(/\)/, ', 64%)') : color;
-        }} 100%
+        }}
+        100%
     );
   }
 
   .pdf__actions {
     transform: scale(1.5);
-    
+
     * {
       display: flex;
       justify-content: center;

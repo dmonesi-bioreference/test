@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 import ButtonStyled from 'components/Button/Button.styles';
 import IconStyled from 'components/Icon/Icon.styles';
 import TimelineItemStyled from 'components/TimelineItem/TimelineItem.styles';
@@ -16,28 +15,28 @@ const WaitingStageStyled = styled.div<WaitingStageStyledProps>`
 
   .linearGradientSvg {
     display: flex;
-    width: 0px;
-    height: 0px;
+    width: 0;
+    height: 0;
   }
 
   &.present {
     ${TimelineItemStyled} {
       .icon > svg {
         circle {
-          stroke: ${colors.teal[500]};
+          stroke: ${colors.powderBlue[500]};
         }
 
         .bg {
-          stroke: ${colors.teal[50]};
+          stroke: ${colors.powderBlue[50]};
         }
 
         rect {
-          fill: ${p => `url(#${p.linearGradient})`};
+          fill: ${(p) => `url(#${p.linearGradient})`};
         }
 
         foreignObject {
           ${IconStyled} > * {
-            color: ${colors.blue[700]};
+            color: ${colors.indigo[700]};
           }
         }
       }
@@ -45,11 +44,11 @@ const WaitingStageStyled = styled.div<WaitingStageStyledProps>`
       .timeline-item-content {
         ${ButtonStyled} {
           ${TypographyStyled} {
-            color: ${colors.teal[700]};
+            color: ${colors.powderBlue[700]};
           }
 
           ${IconStyled} {
-            color: ${colors.teal[700]};
+            color: ${colors.powderBlue[700]};
           }
         }
       }
@@ -60,16 +59,16 @@ const WaitingStageStyled = styled.div<WaitingStageStyledProps>`
     ${TimelineItemStyled} {
       .icon > svg {
         circle {
-          stroke: ${colors.teal[800]};
+          stroke: ${colors.powderBlue[800]};
         }
 
         rect {
-          fill: ${p => `url(#${p.linearGradient})`};
+          fill: ${(p) => `url(#${p.linearGradient})`};
         }
-        
+
         foreignObject {
           ${IconStyled} > * {
-            color: ${colors.teal[700]};
+            color: ${colors.powderBlue[700]};
           }
         }
       }
@@ -77,11 +76,11 @@ const WaitingStageStyled = styled.div<WaitingStageStyledProps>`
       .timeline-item-content {
         ${ButtonStyled} {
           ${TypographyStyled} {
-            color: ${colors.teal[800]};
+            color: ${colors.powderBlue[800]};
           }
 
           ${IconStyled} {
-            color: ${colors.teal[800]};
+            color: ${colors.powderBlue[800]};
           }
         }
       }
