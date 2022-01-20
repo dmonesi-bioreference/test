@@ -25,7 +25,8 @@ const FaqCardStyled = styled.div`
   }
 
   .faq-card__body {
-    padding: ${tokens.spacing};
+    padding: ${tokens.spacing} ${tokens.spacing} ${tokens.spacingMedium}
+      ${tokens.spacing};
   }
 
   .faq-card__label {

@@ -34,16 +34,16 @@ const ListStyled = styled.div`
     list-style-type: none;
   }
 
-  .list--non-bulleted {
+  .list--plain {
     padding: 0;
   }
 
-  .list__item--non-bulleted {
+  .list__item--plain {
     list-style-type: none;
   }
 
-  .list--non-bulleted > * :not(:last-child) {
-    padding-bottom: ${tokens.spacing};
+  .list--plain > * :not(:last-child) {
+    padding-bottom: ${tokens.spacingMedium};
   }
 `;
 

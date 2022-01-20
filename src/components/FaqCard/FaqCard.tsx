@@ -16,7 +16,7 @@ const FaqCard: React.FC<FaqCardProps> = (props) => {
         color="light"
         kind="link-medium"
         href="resources/faqs"
-        suffix={<Icon name="chevron-right" size="large" />}
+        suffix={<Icon name="chevron-right" size="small" />}
         spreadContent={true}
       >
         {item}
@@ -35,7 +35,7 @@ const FaqCard: React.FC<FaqCardProps> = (props) => {
         <div className="faq-card__label">
           <Typography type="body">{props.label}</Typography>
         </div>
-        <List kind="non-bulleted">{questions}</List>
+        <List kind="plain">{questions}</List>
       </div>
       <div className="faq-card__view-all">
         <Button href="resources/faqs" kind="link-small">

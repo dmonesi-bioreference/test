@@ -15,6 +15,7 @@ export interface HeroiconProps {
   style?: 'solid' | 'outline';
   kind?: 'heroicon';
   color?: 'default' | 'primary' | 'danger' | 'white';
+  /* large = 32px, small = 24px */
   size?: 'large' | 'small';
   encircled?: boolean;
 }
