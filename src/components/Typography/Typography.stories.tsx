@@ -17,24 +17,17 @@ export default {
 
 export const Headings: Story = () => (
   <div>
-    <StyleGuideItem label="Primary Heading(h1), Serif">
-      <Typography type="heading" level="1" fontType="serif">
-        Hello, World!
-      </Typography>
-    </StyleGuideItem>
-
     <StyleGuideItem label="Primary Heading(h1), Sans Serif">
-      <Typography type="heading" level="1" fontType="sansSerif">
+      <Typography type="heading" level="1">
         Hello, World!
       </Typography>
     </StyleGuideItem>
 
-    <StyleGuideItem label="Primary Heading(h1), Serif, Wrapped around Image">
+    <StyleGuideItem label="Primary Heading(h1), Wrapped around Image">
       <div style={{ width: 375 }}>
         <Typography
           type="heading"
           level="1"
-          fontType="serif"
           objectToWrap={
             <Avatar
               src={geneticCounselor}
@@ -50,25 +43,19 @@ export const Headings: Story = () => (
     </StyleGuideItem>
 
     <StyleGuideItem label="Secondary Heading (h2), Serif">
-      <Typography type="heading" level="2" fontType="serif">
+      <Typography type="heading" level="2">
         Hello, World!
       </Typography>
     </StyleGuideItem>
 
     <StyleGuideItem label="Secondary Heading (h2), Sans Serif">
-      <Typography type="heading" level="2" fontType="sansSerif">
-        Hello, World!
-      </Typography>
-    </StyleGuideItem>
-
-    <StyleGuideItem label="Tertiary Heading (h3), Serif">
-      <Typography type="heading" level="3" fontType="serif">
+      <Typography type="heading" level="2">
         Hello, World!
       </Typography>
     </StyleGuideItem>
 
     <StyleGuideItem label="Tertiary Heading (h3), Sans Serif">
-      <Typography type="heading" level="3" fontType="sansSerif">
+      <Typography type="heading" level="3">
         Hello, World!
       </Typography>
     </StyleGuideItem>

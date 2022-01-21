@@ -2,15 +2,7 @@ import { ReactNode } from 'react';
 
 import TypographyStyled from './Typography.styles';
 
-export type TypographyHeadingLevel =
-  | '1'
-  | '2'
-  | '3'
-  | '4'
-  | '5'
-  | '6'
-  | '7'
-  | '8';
+export type TypographyLevel = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8';
 
 export type TypographyAlignment = 'left' | 'center' | 'right';
 
@@ -22,10 +14,9 @@ export type TypographyColor =
   | 'error';
 
 interface HeadingProps {
-  level?: TypographyHeadingLevel;
+  level?: TypographyLevel;
   color?: TypographyColor;
   alignment?: TypographyAlignment;
-  fontType?: 'serif' | 'sansSerif';
   objectToWrap?: ReactNode;
 }
 
@@ -34,6 +25,7 @@ type TypographyProps =
       type: 'body' | 'list' | 'helper-text' | 'validation' | 'menu-item';
       color?: TypographyColor;
       alignment?: TypographyAlignment;
+      level?: TypographyLevel;
     }
   | {
       type: 'label';
@@ -51,10 +43,13 @@ export const Typography: React.FC<TypographyProps> = (props) => {
   switch (props.type) {
     case 'body': {
       return (
+        /* Providing a level prop will override the default body styling */
         <TypographyStyled
           as="p"
           role="paragraph"
-          className={`${props.type} ${color} ${alignment}`}
+          className={`${
+            props.level ? 'level' + props.level : props.type
+          } ${color} ${alignment}`}
         >
           {props.children}
         </TypographyStyled>
@@ -64,11 +59,9 @@ export const Typography: React.FC<TypographyProps> = (props) => {
     case 'helper-text':
     case 'validation':
     case 'menu-item': {
-      // adds specific class for menu-item to style like h2 without the heading element
-      const prefixClass = props.type === 'menu-item' ? 'heading2' : '';
       return (
         <TypographyStyled
-          className={`${prefixClass} ${props.type} ${color} ${alignment}`}
+          className={`level2 ${props.type} ${color} ${alignment}`}
         >
           {props.children}
         </TypographyStyled>
@@ -85,14 +78,10 @@ export const Typography: React.FC<TypographyProps> = (props) => {
     }
     case 'heading': {
       const level = props.level || '2';
-      const fontType =
-        props.fontType && parseInt(level) <= 3 ? props.fontType : 'sansSerif';
 
       if (level === '7' || level === '8') {
         return (
-          <TypographyStyled
-            className={`${props.type}${level} ${color} ${fontType} ${alignment}`}
-          >
+          <TypographyStyled className={`level${level} ${color} ${alignment}`}>
             {props.children}
           </TypographyStyled>
         );
@@ -101,7 +90,7 @@ export const Typography: React.FC<TypographyProps> = (props) => {
       return (
         <TypographyStyled
           as={`h${level}`}
-          className={`${props.type}${level} ${color} ${fontType} ${alignment}`}
+          className={`level${level} ${color} ${alignment}`}
         >
           {props.objectToWrap ? (
             <div className="floated">{props.objectToWrap}</div>
@@ -118,7 +107,6 @@ export const Typography: React.FC<TypographyProps> = (props) => {
 export const Heading = ({
   level = '2',
   color = 'default',
-  fontType = 'sansSerif',
   alignment = 'left',
   children,
 }: Props<HeadingProps>) => {
@@ -127,7 +115,6 @@ export const Heading = ({
       type="heading"
       level={level}
       color={color}
-      fontType={fontType}
       alignment={alignment}
     >
       {children}

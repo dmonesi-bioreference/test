@@ -1,4 +1,9 @@
-import { MediaElements, useAppEvents, useAppSelector, useAppTranslation } from 'app';
+import {
+  MediaElements,
+  useAppEvents,
+  useAppSelector,
+  useAppTranslation,
+} from 'app';
 import {
   Avatar,
   BulletItem,
@@ -7,7 +12,6 @@ import {
   PageLayout,
   Typography,
 } from 'components';
-
 
 import ContentAudioStyledDiv from './PreResultsPause.styles';
 
@@ -22,7 +26,6 @@ export const PreResultsPause = () => {
         <Typography
           type="heading"
           level="1"
-          fontType="serif"
           objectToWrap={
             <Avatar
               src={photo}
@@ -51,20 +54,28 @@ export const PreResultsPause = () => {
           transcript={[
             <BulletItem
               icon={<Icon name="home" color="primary" aria-hidden="true" />}
-              title={t('pages.results.preResultsPause.audio.transcript.1.title')}
+              title={t(
+                'pages.results.preResultsPause.audio.transcript.1.title'
+              )}
               key={1}
             >
-              {t('pages.results.preResultsPause.audio.transcript.1.description')}
+              {t(
+                'pages.results.preResultsPause.audio.transcript.1.description'
+              )}
             </BulletItem>,
 
             <BulletItem
               icon={
                 <Icon name="user-group" color="primary" aria-hidden="true" />
               }
-              title={t('pages.results.preResultsPause.audio.transcript.2.title')}
+              title={t(
+                'pages.results.preResultsPause.audio.transcript.2.title'
+              )}
               key={2}
             >
-              {t('pages.results.preResultsPause.audio.transcript.2.description')}
+              {t(
+                'pages.results.preResultsPause.audio.transcript.2.description'
+              )}
             </BulletItem>,
 
             <BulletItem
@@ -75,10 +86,14 @@ export const PreResultsPause = () => {
                   aria-hidden="true"
                 />
               }
-              title={t('pages.results.preResultsPause.audio.transcript.3.title')}
+              title={t(
+                'pages.results.preResultsPause.audio.transcript.3.title'
+              )}
               key={3}
             >
-              {t('pages.results.preResultsPause.audio.transcript.3.description')}
+              {t(
+                'pages.results.preResultsPause.audio.transcript.3.description'
+              )}
             </BulletItem>,
           ]}
         />

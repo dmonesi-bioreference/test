@@ -32,7 +32,7 @@ export const ResultsReady = () => {
       <PageSection
         header={
           <UserHeader
-            title={t('sections.results.childsName')}
+            title={t('sections.results.patient')}
             name="Lisa Consuela Jackson"
           />
         }

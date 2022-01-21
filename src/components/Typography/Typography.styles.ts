@@ -5,6 +5,7 @@ import { tokens, base, colors } from 'styles';
 const TypographyStyled = styled.div`
   ${base}
   word-break: break-word;
+  font-family: ${tokens.fontFamilySansSerif};
   line-height: ${tokens.lineHeightDense};
   margin: 0;
   overflow: hidden;
@@ -29,50 +30,42 @@ const TypographyStyled = styled.div`
     color: ${colors.red[600]};
   }
 
-  &.sansSerif {
-    font-family: ${tokens.fontFamilySansSerif};
-  }
-
-  &.serif {
-    font-family: ${tokens.fontFamilySerif};
-  }
-
-  &.heading1 {
+  &.level1 {
     font-size: ${tokens.fontSize32};
     font-weight: ${tokens.fontWeightBold};
   }
 
-  &.heading2 {
+  &.level2 {
     font-size: ${tokens.fontSize24};
     font-weight: ${tokens.fontWeightBold};
   }
 
-  &.heading3 {
+  &.level3 {
     font-size: ${tokens.fontSize20};
     font-weight: ${tokens.fontWeightBold};
   }
 
-  &.heading4 {
+  &.level4 {
     font-size: ${tokens.fontSize20};
     font-weight: ${tokens.fontWeightRegular};
   }
 
-  &.heading5 {
+  &.level5 {
     font-size: ${tokens.fontSize16};
     font-weight: ${tokens.fontWeightBold};
   }
 
-  &.heading6 {
+  &.level6 {
     font-size: ${tokens.fontSize16};
     font-weight: ${tokens.fontWeightMedium};
   }
 
-  &.heading7 {
+  &.level7 {
     font-size: ${tokens.fontSize16};
     font-weight: ${tokens.fontWeightRegular};
   }
 
-  &.heading8 {
+  &.level8 {
     font-size: ${tokens.fontSize14};
     font-weight: ${tokens.fontWeightBold};
   }

@@ -475,7 +475,7 @@ export const resources = {
               linkLabel: "Focus on your child's care",
             },
           },
-          childsName: "Child's name",
+          patient: 'Patient',
           getUpdates: 'Receive progress updates',
           noUpdates: 'No updates since your last login',
           onTrack: 'Everything is on track',

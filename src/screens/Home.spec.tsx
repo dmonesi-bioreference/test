@@ -19,6 +19,6 @@ describe('Home', () => {
       },
     });
 
-    await page.findByText("Child's name");
+    await page.findByText('Patient');
   });
 });

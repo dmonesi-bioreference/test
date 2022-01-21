@@ -10,10 +10,10 @@ describe('The home page', () => {
   });
 
   describe('results section', () => {
-    it("features the child's name", async () => {
+    it("features the patient's name", async () => {
       const page = await renderWithShell(<LandingPage />);
 
-      await page.findByText("Child's name");
+      await page.findByText('Patient');
       await page.findByText('Lisa Consuela Jackson');
     });
 

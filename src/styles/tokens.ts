@@ -116,7 +116,7 @@ export const colors = {
 };
 
 export const fonts = {
-  fontFamilyRoboto: "'Roboto', 'Helvetica Neue', Arial, sans-serif",
+  fontFamilyRoboto: 'Arial, sans-serif',
   fontFamilyPoppins: "'Poppins', 'Helvetica Neue', Arial, sans-serif",
   fontFamilyEBGaramond: "'EB Garamond', serif",
 };
@@ -152,7 +152,6 @@ export const tokens = {
   colorDangerFocus: colors.red[200],
 
   /* font-family */
-  fontFamilySerif: fonts.fontFamilyEBGaramond,
   fontFamilySansSerif: fonts.fontFamilyPoppins,
   fontFamilyLabel: fonts.fontFamilyPoppins,
   fontFamilyBody: fonts.fontFamilyRoboto,
