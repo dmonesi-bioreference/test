@@ -4270,10 +4270,10 @@
   resolved "https://registry.yarnpkg.com/@xstate/immer/-/immer-0.2.0.tgz#4f128947c3cbb3e68357b886485a36852d4e06b3"
   integrity sha512-ZKwAwS84kfmN108lEtVHw8jztKDiFeaQsTxkOlOghpK1Lr7+13G8HhZZXyN1/pVkplloUUOPMH5EXVtitZDr8w==
 
-"@xstate/inspect@0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@xstate/inspect/-/inspect-0.5.1.tgz#12dbed78e6123e407458fde322273e7a64650f1e"
-  integrity sha512-m1zKFzyV/skUfpdiO/52w9o5EUporqIYEevryjcPpUEiIjVXKgti3EXl8TfXxggeNmsa2H9P0M0wZ5alM8M3Ng==
+"@xstate/inspect@0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@xstate/inspect/-/inspect-0.6.1.tgz#610a7ce014ab3e4586923befd0ff77040b1a1506"
+  integrity sha512-JXvTwnZVxdjXWWOr4v/D30aZYjrgOa6r3iGRd4/r/H7HpvjxDw5/OrPuYDOg6AZBxXJOQ6FBrais9JD/jNP1PQ==
   dependencies:
     fast-safe-stringify "^2.0.7"
 

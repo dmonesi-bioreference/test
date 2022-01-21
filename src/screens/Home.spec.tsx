@@ -3,11 +3,10 @@ import * as TestUtils from 'test-utils';
 import { Home } from './Home';
 
 describe('Home', () => {
-  it('displays the login page if there is no guid', async () => {
+  it('displays the login page if there is no session or guid', async () => {
     const page = await TestUtils.renderWithShell(<Home />, {
-      onPatientGuid: async () => {
-        return Promise.reject('401 Unauthorized');
-      },
+      onSession: async () => Promise.reject('No session'),
+      onPatientGuid: async () => Promise.reject('401 Unauthorized'),
     });
 
     await page.findByText('Login');

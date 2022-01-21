@@ -1,5 +1,4 @@
-import { mockTest } from 'app/state/tests/models';
-import { renderWithShell } from 'test-utils';
+import { renderWithShell, Mocks } from 'test-utils';
 
 import { LandingPage } from './LandingPage';
 
@@ -20,20 +19,16 @@ describe('The home page', () => {
 
     it('has test results on waiting', async () => {
       const page = await renderWithShell(<LandingPage />, {
-        onLoadTests: async () => {
-          return [
-            {
-              ...mockTest,
-              DueDate: '2021-11-11T00:00:00.000',
-              LabStatus: 'In Lab',
-              UpdatedDate: `${today.getFullYear()}-${
-                today.getMonth() + 1 < 10 ? '0' : ''
-              }${today.getMonth() + 1}-${
-                today.getDate() < 10 ? '0' : ''
-              }${today.getDate()}T11:12:00.000`,
-            },
-          ];
-        },
+        onLoadTests: async () =>
+          Mocks.tests.createMany({
+            DueDate: '2021-11-11T00:00:00.000',
+            LabStatus: 'In Lab',
+            UpdatedDate: `${today.getFullYear()}-${
+              today.getMonth() + 1 < 10 ? '0' : ''
+            }${today.getMonth() + 1}-${
+              today.getDate() < 10 ? '0' : ''
+            }${today.getDate()}T11:12:00.000`,
+          }),
         onPatientGuid: async () => ({ guid: '1234', source: '' }),
       });
 
@@ -52,19 +47,15 @@ describe('The home page', () => {
 
     it('has test results ready', async () => {
       const page = await renderWithShell(<LandingPage />, {
-        onLoadTests: async () => {
-          return [
-            {
-              ...mockTest,
-              LabStatus: 'Report Ready',
-              UpdatedDate: `${today.getFullYear()}-${
-                today.getMonth() + 1 < 10 ? '0' : ''
-              }${today.getMonth() + 1}-${
-                today.getDate() < 10 ? '0' : ''
-              }${today.getDate()}T11:12:00.000`,
-            },
-          ];
-        },
+        onLoadTests: async () =>
+          Mocks.tests.createMany({
+            LabStatus: 'Report Ready',
+            UpdatedDate: `${today.getFullYear()}-${
+              today.getMonth() + 1 < 10 ? '0' : ''
+            }${today.getMonth() + 1}-${
+              today.getDate() < 10 ? '0' : ''
+            }${today.getDate()}T11:12:00.000`,
+          }),
         onPatientGuid: async () => ({ guid: '1234', source: '' }),
       });
 
@@ -83,19 +74,15 @@ describe('The home page', () => {
 
     it('has test results ready and user at appointment', async () => {
       const page = await renderWithShell(<LandingPage />, {
-        onLoadTests: async () => {
-          return [
-            {
-              ...mockTest,
-              LabStatus: 'Report Ready',
-              UpdatedDate: `${today.getFullYear()}-${
-                today.getMonth() + 1 < 10 ? '0' : ''
-              }${today.getMonth() + 1}-${
-                today.getDate() < 10 ? '0' : ''
-              }${today.getDate()}T11:12:00.000`,
-            },
-          ];
-        },
+        onLoadTests: async () =>
+          Mocks.tests.createMany({
+            LabStatus: 'Report Ready',
+            UpdatedDate: `${today.getFullYear()}-${
+              today.getMonth() + 1 < 10 ? '0' : ''
+            }${today.getMonth() + 1}-${
+              today.getDate() < 10 ? '0' : ''
+            }${today.getDate()}T11:12:00.000`,
+          }),
         onAppointmentStatus: async () => ({
           appointmentStatus: 'at appointment',
         }),
@@ -117,19 +104,15 @@ describe('The home page', () => {
 
     it('has test results ready and user after appointment', async () => {
       const page = await renderWithShell(<LandingPage />, {
-        onLoadTests: async () => {
-          return [
-            {
-              ...mockTest,
-              LabStatus: 'Report Ready',
-              UpdatedDate: `${today.getFullYear()}-${
-                today.getMonth() + 1 < 10 ? '0' : ''
-              }${today.getMonth() + 1}-${
-                today.getDate() < 10 ? '0' : ''
-              }${today.getDate()}T11:12:00.000`,
-            },
-          ];
-        },
+        onLoadTests: async () =>
+          Mocks.tests.createMany({
+            LabStatus: 'Report Ready',
+            UpdatedDate: `${today.getFullYear()}-${
+              today.getMonth() + 1 < 10 ? '0' : ''
+            }${today.getMonth() + 1}-${
+              today.getDate() < 10 ? '0' : ''
+            }${today.getDate()}T11:12:00.000`,
+          }),
         onAppointmentStatus: async () => ({
           appointmentStatus: 'after appointment',
         }),

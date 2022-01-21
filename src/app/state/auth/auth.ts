@@ -71,13 +71,21 @@ export const context = {
 };
 
 export const machine = {
-  initial: 'checkingPatientGuid',
+  initial: 'checkingSession',
   states: {
+    checkingSession: {
+      invoke: {
+        src: 'handleSession',
+        onDone: { target: 'knownCaregiver', actions: 'collectSession' },
+        onError: 'checkingPatientGuid',
+      },
+    },
+
     checkingPatientGuid: {
       invoke: {
         src: 'handlePatientGuid',
         onDone: {
-          target: 'checkingSession',
+          target: 'verifyingIdentity',
           actions: 'collectPatientGuidDetails',
         },
         onError: 'requestingLogin',
@@ -96,13 +104,6 @@ export const machine = {
       },
     },
 
-    checkingSession: {
-      invoke: {
-        src: 'handleSession',
-        onDone: { target: 'knownCaregiver', actions: 'collectSession' },
-        onError: 'verifyingIdentity',
-      },
-    },
     knownCaregiver: {
       entry: [send('LOAD_TESTS')],
     },

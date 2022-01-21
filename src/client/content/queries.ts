@@ -1,6 +1,6 @@
-export const ArticleQuery = `
+export const article = (id: String) => `
   query {
-    getArticle(id: $id) {
+    getArticle(id: ${id}) {
       id
       bannerImage {
         id
@@ -28,41 +28,41 @@ export const ArticleQuery = `
   }
 `;
 
-export const ArticlesQuery = `
-query {
-  getArticleListing {
-    edges {
-      node {
-        id
-        bannerImage {
+export const articles = () => `
+  query {
+    getArticleListing {
+      edges {
+        node {
           id
-          filename
-          fullpath
-          mimetype
-          type
-          filesize
+          bannerImage {
+            id
+            filename
+            fullpath
+            mimetype
+            type
+            filesize
+          }
+          label
+          title
+          blurb
+          content
+          slug {
+            slug
+          }
+          author
+          published
+          unpublishDate
+          reviewByDate
+          owner
+          priority
+          introduceAt
         }
-        label
-        title
-        blurb
-        content
-        slug {
-          slug
-        }
-        author
-        published
-        unpublishDate
-        reviewByDate
-        owner
-        priority
-        introduceAt
       }
     }
   }
-}
 `;
 
-export const FAQQuery = `
+export const faqs = () => `
   query {
     getPatientFAQListing {
       edges {

@@ -7,16 +7,6 @@ import * as TestUtils from 'test-utils';
 import { OnState } from './OnState';
 import { useAppEvents, useAppSelector } from './hooks';
 
-const mockSession: AuthenticatedSession = {
-  nickname: '',
-  name: '',
-  picture: '',
-  updated_at: '',
-  email: 'someone@example.com',
-  email_verified: false,
-  sub: '',
-};
-
 function AuthDiagnostics(props: Props<unknown>) {
   const states = useAppSelector((state) =>
     JSON.stringify(state.toStrings().join(' '))
@@ -111,21 +101,12 @@ const asyncFailure = async () => {
 };
 
 describe('Auth model', () => {
-  it('begins by checking for a patient guid', async () => {
-    const app = await TestUtils.renderWithShell(<AuthDiagnostics />, {
-      onPatientGuid: neverResolves,
+  it('calls the session handler on load', async () => {
+    const listener = jest.fn(async () => TestUtils.Mocks.session.single);
+
+    await TestUtils.renderWithShell(<AuthDiagnostics />, {
+      onSession: listener,
     });
-
-    await app.findByText('Checking patient guid');
-  });
-
-  it('checks the patient guid when the app starts', async () => {
-    const listener = jest.fn(neverResolves);
-    const app = await TestUtils.renderWithShell(<AuthDiagnostics />, {
-      onPatientGuid: listener,
-    });
-
-    await app.findByText('Checking patient guid');
 
     expect(listener).toHaveBeenCalled();
   });
@@ -134,6 +115,7 @@ describe('Auth model', () => {
     const guid = '12345-45321';
     const source = 'Email';
     const app = await TestUtils.renderWithShell(<AuthDiagnostics />, {
+      onSession: asyncFailure,
       onPatientGuid: async () => ({ guid, source }),
     });
 
@@ -141,27 +123,19 @@ describe('Auth model', () => {
     await app.findByText(`Patient source: ${source}`);
   });
 
-  it('looks for patient guid details in url by default', async () => {
+  it('looks for patient guid details in url if session check fails', async () => {
     const guid = '12345-45321';
     const source = 'Email';
     const url = `/?${new URLSearchParams({ Guid: guid, Source: source })}`;
 
     window.history.pushState({}, '', url);
 
-    const app = await TestUtils.renderWithShell(<AuthDiagnostics />);
+    const app = await TestUtils.renderWithShell(<AuthDiagnostics />, {
+      onSession: asyncFailure,
+    });
 
     await app.findByText(`Patient guid: ${guid}`);
     await app.findByText(`Patient source: ${source}`);
-  });
-
-  it('calls the session handler after confirming a patient guid', async () => {
-    const listener = jest.fn(async () => mockSession);
-
-    await TestUtils.renderWithShell(<AuthDiagnostics />, {
-      onSession: listener,
-    });
-
-    expect(listener).toHaveBeenCalled();
   });
 
   it('checks the session when onPatientGuid succeeds', async () => {
@@ -176,7 +150,7 @@ describe('Auth model', () => {
 
   it('transitions to known caregiver after a session check', async () => {
     const app = await TestUtils.renderWithShell(<AuthDiagnostics />, {
-      onSession: async () => mockSession,
+      onSession: async () => TestUtils.Mocks.session.single,
       onPatientGuid: asyncSuccess,
     });
 
@@ -185,11 +159,11 @@ describe('Auth model', () => {
 
   it('records caregiver information from the session check', async () => {
     const app = await TestUtils.renderWithShell(<AuthDiagnostics />, {
-      onSession: async () => mockSession,
+      onSession: async () => TestUtils.Mocks.session.single,
       onPatientGuid: asyncSuccess,
     });
 
-    await app.findByText(mockSession.email);
+    await app.findByText(TestUtils.Mocks.session.single.email);
   });
 
   it('prompts for login if onPatientGuid fails', async () => {

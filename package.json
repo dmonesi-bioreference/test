@@ -42,7 +42,7 @@
     "@storybook/addon-docs": "^6.4.9",
     "@tippyjs/react": "4.2.5",
     "@xstate/immer": "0.2.0",
-    "@xstate/inspect": "0.5.1",
+    "@xstate/inspect": "0.6.1",
     "@xstate/react": "1.5.1",
     "auth0-js": "9.18.0",
     "axios": "^0.25.0",

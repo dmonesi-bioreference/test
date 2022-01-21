@@ -1,5 +1,4 @@
-import { mockTest } from 'app/state/tests/models';
-import { renderWithShell } from 'test-utils';
+import { Mocks, renderWithShell } from 'test-utils';
 
 import { ResultsReady } from './ResultsReady';
 
@@ -18,12 +17,15 @@ describe('The results ready page', () => {
 
     it('has the report', async () => {
       const page = await renderWithShell(<ResultsReady />, {
-        onLoadTests: async () => ([{ ...mockTest, LabStatus: 'Report Ready' }]),
-        onReport: async () => ({ src: '', thumbnail: '' })
+        onLoadTests: async () =>
+          Mocks.tests.createMany({ LabStatus: 'Report Ready' }),
+        onReport: async () => ({ src: '', thumbnail: '' }),
       });
 
       await page.findByText('Medical language ahead');
-      await page.findByText('This report is designed with health care providers in mind and contains many medically-oriented details. Talk to your provider to understand what the results mean for your family.');
+      await page.findByText(
+        'This report is designed with health care providers in mind and contains many medically-oriented details. Talk to your provider to understand what the results mean for your family.'
+      );
       await page.findByText('Open PDF');
     });
   });

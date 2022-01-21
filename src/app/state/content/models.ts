@@ -1,5 +1,3 @@
-import InTheNICUImage from 'assets/images/jpg/InTheNICU.jpg';
-
 declare global {
   interface ContentFailure {
     message: string;
@@ -68,65 +66,7 @@ declare global {
   type Feature = 'RESULTS' | 'COMMUNITY';
 }
 
-export const mockArticle: Article = {
-  id: '1',
-  bannerImage: {
-    id: '1',
-    filename: 'In The NICU',
-    altText: 'In The NICU',
-    fullpath: InTheNICUImage,
-  },
-  label: 'Preparing For Results (Mock Article)',
-  title: 'What to expect from the test results',
-  blurb:
-    'A genetic test report contains a lot of important information. We’ll break down the key terms for you so you can understand them better.',
-  content: 'Content',
-  slug: { slug: 'slug' },
-  published: Date.now(),
-  reviewByDate: Date.now(),
-  owner: '',
-};
-
-export const mockFAQs: FAQ[] = [
-  {
-    id: '1',
-    bannerImage: {
-      id: '1',
-      filename: 'In The NICU',
-      altText: 'In The NICU',
-      fullpath: InTheNICUImage,
-    },
-    slug: { slug: 'slug' },
-    label: 'label',
-    title: 'What is Genetic Testing?',
-    blurb: 'blurb',
-    content:
-      'Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.',
-    introduceAt: 'WAITING',
-    author: 'author',
-  },
-  {
-    id: '2',
-    bannerImage: {
-      id: '1',
-      filename: 'In The NICU',
-      altText: 'In The NICU',
-      fullpath: InTheNICUImage,
-    },
-    slug: { slug: 'slug' },
-    label: 'label',
-    title: 'What is DNA?',
-    blurb: 'blurb',
-    content:
-      'Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.',
-    introduceAt: 'WAITING',
-    author: 'author',
-  },
-];
-
-export const isArticlePayload = (
-  candidate: unknown
-): candidate is Article => {
+export const isArticlePayload = (candidate: unknown): candidate is Article => {
   const articleProperties = [
     'id',
     'bannerImage',
@@ -140,7 +80,9 @@ export const isArticlePayload = (
     'owner',
   ];
 
-  return articleProperties.every((property) => property in (candidate as object));
+  return articleProperties.every(
+    (property) => property in (candidate as object)
+  );
 };
 
 export const isMultiArticlePayload = (

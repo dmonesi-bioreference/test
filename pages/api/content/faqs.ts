@@ -1,14 +1,17 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { mockFAQs } from 'app/state/content/models';
-import { transformToFAQs } from 'client';
-import Pimcore from 'client/pimcore';
+import { Client } from 'client';
+import { config } from 'config';
 
 export default async function handler(
-  req: NextApiRequest,
+  _req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (!process.env.PIMCORE_KEY) return res.status(200).json(mockFAQs);
-  const result = await Pimcore.Resources.faqs();
-  res.status(200).json(transformToFAQs(result.data));
+  if (!config.pimcore.key) {
+    return res.status(500).json(Client.Errors.missingConfig('Content api key'));
+  }
+
+  const faqs = await Client.Services.Content.faqs();
+
+  res.status(200).json(faqs);
 }

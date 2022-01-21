@@ -9,7 +9,7 @@ import * as content from './content';
 import * as forms from './forms';
 import * as registration from './registration';
 import * as requests from './requests';
-import * as tests from './tests/testsMachine';
+import * as tests from './tests';
 import { createAppMachine, GetStates } from './utils';
 
 export const initialContext = {

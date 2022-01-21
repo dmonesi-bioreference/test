@@ -1,13 +1,9 @@
 import type { AppProps } from 'next/app';
 
 import { Shell } from 'app/components/Shell';
-import 'inspect';
-import { fetchAllArticles, fetchAllFAQs } from 'client';
+import { Client } from 'client';
 
-const explosions = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
-  return Promise.reject('Explosions!');
-};
+import 'inspect';
 
 const log = (...args: any[]) => {
   if (process.env.NODE_ENV === 'development') {
@@ -48,16 +44,15 @@ function WebApp({ Component, pageProps }: AppProps) {
       onAuthenticate={async () => {
         log('Authenticating');
       }}
-      onIdentity={async () => {
-        log('Checking identity');
-        await explosions();
-      }}
       onAppointmentStatus={async () => {
         // API call goes here
         return { appointmentStatus: 'after appointment' };
       }}
-      onFetchAllArticles={fetchAllArticles}
-      onFetchAllFAQs={fetchAllFAQs}
+      onIdentity={Client.Api.Identity.validate}
+      onLoadTests={Client.Api.Tests.list}
+      onFetchArticle={Client.Api.Content.article}
+      onFetchAllArticles={Client.Api.Content.articles}
+      onFetchAllFAQs={Client.Api.Content.faqs}
     >
       <Component {...pageProps} />
     </Shell>

@@ -3,7 +3,6 @@ import { useMemo } from 'react';
 
 import { app, setupDispatchMap } from 'app/state';
 import { getPatientInfo } from 'app/web';
-import { getTestsFromContext, fetchSingleArticleFromContext } from 'client';
 
 import { AppEventContext, AppServiceContext } from './context';
 
@@ -42,25 +41,22 @@ export function AppProvider({
   requests = {},
   onAuthenticate: handleAuth = async () => undefined,
   onIdentity: handleIdentityCheck = async () => undefined,
-  onLoadTests: handleLoadTests = getTestsFromContext,
+  onLoadTests: handleLoadTests = async () => [],
   onAppointmentStatus: handleAppointmentStatus = async () => ({
     appointmentStatus: undefined,
   }),
   onReport: handleReport = async () => undefined,
   onPatientGuid: handlePatientGuid = getPatientInfo,
-  onFetchArticle: handleFetchArticle = fetchSingleArticleFromContext,
-  onFetchAllArticles: handleFetchAllArticles = async () => {
-    return [];
-  },
-  onFetchAllFAQs: handleFetchAllFAQs = async () => {
-    return [];
-  },
+  onFetchArticle: handleFetchArticle = async () =>
+    Promise.reject('No article found'),
+  onFetchAllArticles: handleFetchAllArticles = async () => [],
+  onFetchAllFAQs: handleFetchAllFAQs = async () => [],
   onSession: handleSession = async () => emptySession,
   onRegistration: handleRegistration = async () => undefined,
 }: Props<AppProviderProps>) {
-  const requestHandlers = {
-    handleVerifyPatientGuidRequest:
-      requests.verifyPatientGuid || (async () => ({})),
+  const requestHandlers: RequestServiceMap = {
+    handleVerifyPatientInfoRequest:
+      requests.verifyPatientInfo || (async () => ({})),
   };
 
   const services = {
@@ -94,10 +90,11 @@ export function AppProvider({
         getTestStatus: () => send('CHECK_TESTS'),
         getAppointmentStatus: () => send('GET_APPOINTMENT_STATUS'),
         viewTestResults: () => send('VIEW_TEST_RESULTS'),
-        fetchSingleArticle: (payload?: { articleId: string }) => send({
-          type: 'FETCH_SINGLE_ARTICLE',
-          articleId: payload ? payload.articleId : ''
-        }),
+        fetchSingleArticle: (payload?: { articleId: string }) =>
+          send({
+            type: 'FETCH_SINGLE_ARTICLE',
+            articleId: payload ? payload.articleId : '',
+          }),
         fetchAllArticles: () => send('fetchAllArticles'),
         fetchAllFAQs: () => send('fetchAllFAQs'),
         register: () => send('register'),

@@ -1,11 +1,64 @@
 import { assign, createMachine, send, sendParent } from 'xstate';
 
+declare global {
+  interface Test {
+    TestID: string;
+    TestCode: string;
+    ShortDescription: string;
+    ReflexOrderingParentTestCode: string;
+    StartDate?: string;
+    DueDate?: string;
+    LabStatus:
+      | 'In Transit'
+      | 'Specimen Received'
+      | 'Hold For BI'
+      | 'In Lab'
+      | 'On Hold'
+      | 'Canceled'
+      | 'Finished'
+      | 'Report Ready'
+      | 'Updated Report';
+    LabAccessionId?: string;
+    LabStatusUpdateDate?: string;
+    TestCancelledBySystem: string;
+    WasBi: boolean;
+    UserEnteredSliceName: string;
+    PreDefinedSliceNames: string;
+    PhenotypeNames: string;
+    LastBiRunDate?: string;
+    BIStatus?: string;
+    HoldForBI: boolean;
+    BundledBillingQualify: boolean;
+    ReportedDate?: string;
+    ReportUpdatedDate?: string;
+    TestReasonText: string;
+    TestReasonCode: string;
+    TestIssues: string[];
+    CreatedDate: string;
+    UpdatedDate: string;
+    IsTrio: boolean;
+    TestFinishedDate?: string;
+    RevisedDueDate?: string;
+    Indent: number;
+    InsuranceEnabled: boolean;
+  }
+
+  interface TestsJsonPayload {
+    Data: WithWildCards<{ Tests: Test[] }>[];
+    IsSuccess: boolean;
+    ValidationResult: {
+      IsValid: boolean;
+      Errors: unknown;
+    };
+  }
+}
+
 export type TestContext = {
   test: Test;
   percentComplete?: number;
   expectedResultsDate?: string;
   lastUpdated?: string;
-}
+};
 
 export function isTestContext(
   candidate: unknown
@@ -18,9 +71,7 @@ export function isTestContext(
     'lastUpdated',
   ];
 
-  return (
-    Object.keys(candidate as object).every((key) => props.includes(key))
-  );
+  return Object.keys(candidate as object).every((key) => props.includes(key));
 }
 
 const testMachine = createMachine(
@@ -52,9 +103,9 @@ const testMachine = createMachine(
         actions: [
           sendParent((context: TestContext) => ({
             ...context,
-            type: 'SYNC_RESPONSE'
-          }))
-        ]
+            type: 'SYNC_RESPONSE',
+          })),
+        ],
       },
     },
   },
@@ -87,7 +138,7 @@ const testMachine = createMachine(
         const { LabStatus } = context.test;
 
         let { percentComplete } = context;
-    
+
         switch (LabStatus) {
           case 'In Transit':
             percentComplete = (100 / 6) * 1;
@@ -121,12 +172,13 @@ const testMachine = createMachine(
         const date = new Date(DueDate ?? '');
         return {
           ...context,
-          expectedResultsDate: DueDate && date ? (
-            `${date.toLocaleString('default', { month: 'short' })} ${date.getDate()}, ${date.getFullYear()}`
-          ) : (
-            ''
-          )
-        }
+          expectedResultsDate:
+            DueDate && date
+              ? `${date.toLocaleString('default', {
+                  month: 'short',
+                })} ${date.getDate()}, ${date.getFullYear()}`
+              : '',
+        };
       }),
       getLastUpdatedDate: assign((context: TestContext) => {
         if (!context.test) return { ...context };
@@ -138,20 +190,23 @@ const testMachine = createMachine(
 
         if (!date) return { ...context };
 
-        const isToday = date.getDate() === today.getDate() &&
+        const isToday =
+          date.getDate() === today.getDate() &&
           date.getMonth() === today.getMonth() &&
           date.getFullYear() === today.getFullYear();
 
-        const day = isToday ? (
-          'today'
-        ) : (
-          `${date.toLocaleString('default', { month: 'short' })} ${date.getDate()}, ${date.getFullYear()}`
-        );
+        const day = isToday
+          ? 'today'
+          : `${date.toLocaleString('default', {
+              month: 'short',
+            })} ${date.getDate()}, ${date.getFullYear()}`;
 
         return {
           ...context,
-          lastUpdated: `${date.getHours()}:${date.getMinutes()}${date.getHours() > 12 ? 'pm' : 'am'} ${day}`
-        }
+          lastUpdated: `${date.getHours()}:${date.getMinutes()}${
+            date.getHours() > 12 ? 'pm' : 'am'
+          } ${day}`,
+        };
       }),
     },
   }

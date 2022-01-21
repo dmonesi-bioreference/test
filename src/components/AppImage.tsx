@@ -2,7 +2,10 @@ import Image from 'next/image';
 
 type NextImageProps = Parameters<typeof Image>[0];
 
-export const AppImage = (props: Props<NextImageProps>) => {
+export const AppImage = ({
+  objectPosition,
+  ...props
+}: Props<NextImageProps>) => {
   const isTest = process.env.NODE_ENV === 'test';
 
   return isTest ? (
@@ -12,6 +15,7 @@ export const AppImage = (props: Props<NextImageProps>) => {
     // eslint-disable-next-line jsx-a11y/alt-text
     <Image
       {...props}
+      objectPosition={objectPosition}
       layout={props.layout || 'responsive'}
       loader={({ src }) => src}
       objectFit={props.objectFit || 'cover'}
