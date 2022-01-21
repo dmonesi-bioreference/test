@@ -15,12 +15,25 @@ const MainNav: React.FC<MainNavProps> = () => {
         </li>
 
         <li className="menu__item" key="2">
-          <IconButton
-            name="cog"
-            label="Settings"
-            href="demo/settings"
-            encircled
-          >
+          <IconButton name="document-search" label="My Results" href="/demo/results" encircled>
+            <Typography type="menu-item">My Results</Typography>
+          </IconButton>
+        </li>
+
+        <li className="menu__item" key="3">
+          <IconButton name="heart" label="Health Profile" href="/demo/health-profile" encircled>
+            <Typography type="menu-item">Health Profile</Typography>
+          </IconButton>
+        </li>
+
+        <li className="menu__item" key="4">
+          <IconButton name="book-open" label="Resources" href="/demo/resources" encircled>
+            <Typography type="menu-item">Resources</Typography>
+          </IconButton>
+        </li>
+
+        <li className="menu__item" key="5">
+          <IconButton name="cog" label="Settings" href="/demo/settings" encircled>
             <Typography type="menu-item">Settings</Typography>
           </IconButton>
         </li>
