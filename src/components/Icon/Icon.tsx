@@ -15,8 +15,8 @@ export interface HeroiconProps {
   style?: 'solid' | 'outline';
   kind?: 'heroicon';
   color?: 'default' | 'primary' | 'danger' | 'white';
-  /* large = 32px, small = 24px */
-  size?: 'large' | 'small';
+  /* large = 32px, small = 24px, x-small = 16px */
+  size?: 'large' | 'small' | 'x-small';
   encircled?: boolean;
 }
 
@@ -47,7 +47,16 @@ const Icon: React.FC<IconProps> = (props) => {
 };
 
 const convertToNumber = (size: string) => {
-  return size == 'large' ? 32 : 24;
+  switch (size) {
+    case 'small':
+      return 24;
+    case 'large':
+      return 32;
+    case 'x-small':
+      return 16;
+    default:
+      return 24;
+  }
 };
 
 const AsyncHeroIcon: React.FC<HeroiconProps> = ({

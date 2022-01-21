@@ -1,9 +1,21 @@
 import { useEffect, useState } from 'react';
 
-import { Content, useAppEvents, useAppSelector, useAppState, useAppTranslation } from 'app';
-import { Button, Heading, Icon, PageLayout, Spinner, Typography } from 'components';
+import {
+  Content,
+  useAppEvents,
+  useAppSelector,
+  useAppState,
+  useAppTranslation,
+} from 'app';
+import {
+  Heading,
+  PageLayout,
+  ReturnLink,
+  Spinner,
+  Typography,
+} from 'components';
 
-import ArticlePageStyled from './ArticlePage.styles';
+import ContentPageStyled from './ContentPage.styles';
 
 interface ArticlePageProps {
   articleId?: string;
@@ -23,7 +35,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = (props) => {
   const error = useAppState('content.articles.failure');
 
   useEffect(() => {
-    const article = articles.find(e => e.id === props.articleId);
+    const article = articles.find((e) => e.id === props.articleId);
     setArticleTitle(article ? article.title : '');
     setArticleContent(article ? article.content : '');
   }, [articles, props]);
@@ -36,14 +48,8 @@ export const ArticlePage: React.FC<ArticlePageProps> = (props) => {
 
   return (
     <PageLayout containsCards={true} theme="resources">
-      <ArticlePageStyled>
-        <div className="results-ready__nav">
-          <Button href="/demo/resources" prefix={<Icon name="chevron-left" />}>
-            <Typography type="body">
-              {t('pages.articles.return')}
-            </Typography>
-          </Button>
-        </div>
+      <ContentPageStyled>
+        <ReturnLink label="Return" href="/demo/resources" />
         {loading ? (
           <Spinner />
         ) : error ? (
@@ -53,16 +59,12 @@ export const ArticlePage: React.FC<ArticlePageProps> = (props) => {
         ) : (
           articleContent && (
             <>
-              <Heading level='1'>
-                {articleTitle}
-              </Heading>
-              <Content>
-                {articleContent}
-              </Content>
+              <Heading level="1">{articleTitle}</Heading>
+              <Content>{articleContent}</Content>
             </>
           )
         )}
-      </ArticlePageStyled>
+      </ContentPageStyled>
     </PageLayout>
   );
 };

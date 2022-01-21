@@ -11,10 +11,13 @@ import {
   Heading,
   PageLayout,
   PageSection,
+  ReturnLink,
   Spinner,
   Typography,
 } from 'components';
 import { tokens } from 'styles';
+
+import ContentPageStyled from './ContentPage.styles';
 
 export const FAQsPage = () => {
   const t = useAppTranslation();
@@ -37,35 +40,36 @@ export const FAQsPage = () => {
             {faq.title}
           </Typography>
         </div>
-        <Content>
-          {faq.content}
-        </Content>
+        <Content>{faq.content}</Content>
       </div>
     );
   });
 
   return (
     <PageLayout theme="resources">
-      <PageSection
-        header={
-          <div style={{ marginBottom: tokens.spacingXSmall }}>
-            <Heading level="1">{t('pages.geneticTestingFAQs.title')}</Heading>
-          </div>
-        }
-      >
-        <Typography type="body">
-          {t('pages.geneticTestingFAQs.subTitle')}
-        </Typography>
-        {loadingFAQs ? (
-          <Spinner />
-        ) : errorFetchingFAQs ? (
-          <Typography color="error" level="7" type="heading">
-            Error fetching FAQs.
+      <ContentPageStyled>
+        <ReturnLink label="Return" href="/demo/resources" />
+        <PageSection
+          header={
+            <div style={{ marginBottom: tokens.spacingXSmall }}>
+              <Heading level="1">{t('pages.geneticTestingFAQs.title')}</Heading>
+            </div>
+          }
+        >
+          <Typography type="body">
+            {t('pages.geneticTestingFAQs.subTitle')}
           </Typography>
-        ) : (
-          FAQs
-        )}
-      </PageSection>
+          {loadingFAQs ? (
+            <Spinner />
+          ) : errorFetchingFAQs ? (
+            <Typography color="error" level="7" type="heading">
+              Error fetching FAQs.
+            </Typography>
+          ) : (
+            FAQs
+          )}
+        </PageSection>
+      </ContentPageStyled>
     </PageLayout>
   );
 };

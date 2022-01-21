@@ -33,6 +33,7 @@ export * from './PasswordInput';
 export * from './ProcessBar';
 export * from './ProgressBar';
 export * from './Radio';
+export * from './ReturnLink';
 export * from './Select';
 export * from './Spinner';
 export * from './Step';
