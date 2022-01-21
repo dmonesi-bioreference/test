@@ -22,6 +22,11 @@ const PageLayoutStyled = styled.div`
     margin-bottom: ${tokens.spacingXLarge};
   }
 
+  .page__custom-header {
+    padding: ${tokens.spacing};
+    padding-bottom: ${tokens.spacingLarge};
+  }
+
   .page__content {
     display: flex;
     flex-direction: column;

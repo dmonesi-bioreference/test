@@ -3,6 +3,70 @@ export const resources = {
     translation: {
       application: 'GeneDx',
       pages: {
+        healthProfile: {
+          title: 'Health Profile',
+          description:
+            'A detailed overview of {{patientsName}}’s needs for new providers or caregivers.',
+          actions: {
+            1: {
+              label: 'Download print version',
+            },
+          },
+          basicInformation: {
+            title: 'Basic Information',
+            fields: {
+              1: {
+                label: 'Child’s Name',
+              },
+              2: {
+                label: 'Date of Birth',
+              },
+              3: {
+                label: 'Genetic Gender',
+              },
+              4: {
+                label: 'Gender Identification',
+              },
+              5: {
+                label: 'Insurance',
+              },
+              6: {
+                label: 'Relation to Caregiver',
+              },
+            },
+          },
+          primaryIndication: {
+            title: 'Primary Indication',
+            fields: {
+              1: {
+                label: 'Phenotype',
+              },
+            },
+          },
+          yourDetails: {
+            title: 'Your Details',
+            fields: {
+              1: {
+                label: 'Full Name',
+              },
+              2: {
+                label: 'Phone Number',
+              },
+              3: {
+                label: 'Email Address',
+              },
+              4: {
+                label: 'City / Town and State',
+              },
+              5: {
+                label: 'Date of Birth',
+              },
+              6: {
+                label: 'Relation to Patient',
+              },
+            },
+          },
+        },
         resources: {
           title: 'Resources',
           subTitle:
@@ -567,6 +631,11 @@ export const resources = {
           next: 'Next',
         },
       },
+      formatting: {
+        date: "{{- value, date}}",
+        datetime: "{{- value, datetime}}",
+        time: "{{- value, time}}",
+      }
     },
   },
 };
