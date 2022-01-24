@@ -19,7 +19,11 @@ export const TestResultsReadyStage: React.FC<TestResultsReadyStageProps> = (
       className={props.status}
       linearGradient="TestResultsReadyStageLinearGradient"
     >
-      <svg className="linearGradientSvg">
+      <svg
+        className="linearGradientSvg"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <defs>
           <linearGradient
             id="TestResultsReadyStageLinearGradient"
@@ -36,7 +40,6 @@ export const TestResultsReadyStage: React.FC<TestResultsReadyStageProps> = (
           </linearGradient>
         </defs>
       </svg>
-
       <TimelineItem
         heading={t('sections.results.timeline.testResultsReady.heading')}
         body={

@@ -30,7 +30,7 @@ export interface CircularProgressProps {
   strokePaddingCut?: {
     x: number;
     y: number;
-  }
+  };
 }
 
 export const CircularProgress: React.FC<CircularProgressProps> = (props) => {
@@ -40,27 +40,36 @@ export const CircularProgress: React.FC<CircularProgressProps> = (props) => {
     trackColor: colors.white,
     indicatorColor: colors.grey[700],
     strokePaddingColor: colors.white,
-    ...props
-  }
+    ...props,
+  };
 
   const [grid] = useState(() => {
-    const outerShadowWidth = props.withOuterShadow ? parseInt(remToPx(tokens.spacingXxSmall), 10) : 0;
-  
-    if (!props.radius || !props.strokeWidth) return ({ radius: 0, width: 0, height: 0, origin: { x: 0, y: 0 }});
-    return ({
+    const outerShadowWidth = props.withOuterShadow
+      ? parseInt(remToPx(tokens.spacingXxSmall), 10)
+      : 0;
+
+    if (!props.radius || !props.strokeWidth)
+      return { radius: 0, width: 0, height: 0, origin: { x: 0, y: 0 } };
+    return {
       radius: props.radius - props.strokeWidth / 2,
       width: props.radius * 2 + outerShadowWidth * 2,
       height: props.radius * 2 + outerShadowWidth * 2,
       origin: {
         x: props.radius + outerShadowWidth,
-        y: props.radius + outerShadowWidth
-      }
-    });
+        y: props.radius + outerShadowWidth,
+      },
+    };
   });
 
   return (
     <CircularProgressStyled {...props} grid={grid}>
-      <svg className="circular-progress__progress">
+      <svg
+        className="circular-progress__progress"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+        width={`${grid.width}px`}
+        height={`${grid.height}px`}
+      >
         <filter id="inset-shadow" x="-50%" y="-50%" width="200%" height="200%">
           {props.withInsetShadow && <feFlood floodColor={colors.black} />}
           <feComposite operator="out" in2="SourceGraphic" />
@@ -69,39 +78,53 @@ export const CircularProgress: React.FC<CircularProgressProps> = (props) => {
         </filter>
 
         <filter
-          id="shadow-filter" filterUnits="userSpaceOnUse"
-          x={
-            `${!props.strokePaddingCut ?
-                -grid.width :
-                (props.strokePaddingCut.x > 0 ? '+' : '-') + (grid.width + (Math.abs(props.strokePaddingCut.x))).toString()
-              }px`
-            }
-          y={
-            `${!props.strokePaddingCut ?
-                -grid.height :
-                (props.strokePaddingCut.y > 0 ? '+' : '-') + (grid.height + (Math.abs(props.strokePaddingCut.y))).toString()
-              }px`
-            }
-          width="200%" height="200%"
+          id="shadow-filter"
+          filterUnits="userSpaceOnUse"
+          x={`${
+            !props.strokePaddingCut
+              ? -grid.width
+              : (props.strokePaddingCut.x > 0 ? '+' : '-') +
+                (grid.width + Math.abs(props.strokePaddingCut.x)).toString()
+          }px`}
+          y={`${
+            !props.strokePaddingCut
+              ? -grid.height
+              : (props.strokePaddingCut.y > 0 ? '+' : '-') +
+                (grid.height + Math.abs(props.strokePaddingCut.y)).toString()
+          }px`}
+          width="200%"
+          height="200%"
         >
-          <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"/>
-          <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+          <feOffset
+            dx="0"
+            dy="0"
+            in="SourceAlpha"
+            result="shadowOffsetOuter1"
+          />
+          <feGaussianBlur
+            stdDeviation="2"
+            in="shadowOffsetOuter1"
+            result="shadowBlurOuter1"
+          />
           <feColorMatrix
             type="matrix"
             in="shadowBlurOuter1"
             result="shadowMatrixOuter1"
-            values="0 0 0 0 0   
+            values="0 0 0 0 0
                     0 0 0 0 0
                     0 0 0 0 0
                     0 0 0 0.2 0"
           />
           <feMerge>
-            <feMergeNode in="shadowMatrixOuter1"/>
-            <feMergeNode in="SourceGraphic"/>
+            <feMergeNode in="shadowMatrixOuter1" />
+            <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
 
-        <linearGradient id="linear" gradientTransform={`rotate(${180 + props.percent * 3.6} .5 .5)`}>
+        <linearGradient
+          id="linear"
+          gradientTransform={`rotate(${180 + props.percent * 3.6} .5 .5)`}
+        >
           {Array.isArray(props.indicatorColor) ? (
             <>
               <stop offset="0%" stopColor={props.indicatorColor[1]} />
@@ -112,11 +135,37 @@ export const CircularProgress: React.FC<CircularProgressProps> = (props) => {
           )}
         </linearGradient>
 
-        {props.strokePadding && <circle className="circular-progress__container" filter="url(#shadow-filter)" />}
-        <circle className="circular-progress__bg" filter="url(#inset-shadow)" />
-        <circle className="circular-progress__indicator" filter="url(#inset-shadow)" stroke="url(#linear)" />
+        {props.strokePadding && (
+          <circle
+            className="circular-progress__container"
+            filter="url(#shadow-filter)"
+            cx={grid.origin.x}
+            cy={grid.origin.y}
+            r={grid.radius}
+          />
+        )}
+        <circle
+          className="circular-progress__bg"
+          filter="url(#inset-shadow)"
+          cx={grid.origin.x}
+          cy={grid.origin.y}
+          r={grid.radius}
+        />
+        <circle
+          className="circular-progress__indicator"
+          filter="url(#inset-shadow)"
+          stroke="url(#linear)"
+          cx={grid.origin.x}
+          cy={grid.origin.y}
+          r={grid.radius}
+        />
 
-        <foreignObject>
+        <foreignObject
+          x={grid.origin.x - parseInt(remToPx(tokens.spacingXLarge), 10) / 2}
+          y={grid.origin.y - parseInt(remToPx(tokens.spacingXLarge), 10) / 2}
+          width={`${remToPx(tokens.spacingXLarge)}`}
+          height={`${remToPx(tokens.spacingXLarge)}`}
+        >
           {props.icon}
         </foreignObject>
       </svg>

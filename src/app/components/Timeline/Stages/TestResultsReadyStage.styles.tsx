@@ -12,6 +12,7 @@ interface TestResultsReadyStageStyledProps {
 
 const TestResultsReadyStageStyled = styled.div<TestResultsReadyStageStyledProps>`
   ${base}
+  display: flex;
 
   .linearGradientSvg {
     display: flex;

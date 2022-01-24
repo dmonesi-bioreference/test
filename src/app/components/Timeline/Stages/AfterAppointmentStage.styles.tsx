@@ -8,6 +8,7 @@ import { base, colors } from 'styles';
 
 const AfterAppointmentStageStyled = styled.div`
   ${base}
+  display: flex;
 
   &.present {
     ${TimelineItemStyled} {
@@ -16,10 +17,8 @@ const AfterAppointmentStageStyled = styled.div`
           stroke: ${colors.powderBlue[500]};
         }
 
-        foreignObject {
-          ${IconStyled} > * {
-            color: ${colors.indigo[700]};
-          }
+        foreignObject > * {
+          color: ${colors.indigo[700]};
         }
       }
 
@@ -40,6 +39,8 @@ const AfterAppointmentStageStyled = styled.div`
   &.future {
     ${TimelineItemStyled} {
       .icon > svg {
+        color: ${colors.violet[600]};
+
         circle {
           stroke: ${colors.violet[400]};
         }

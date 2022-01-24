@@ -81,8 +81,8 @@ const AsyncHeroIcon: React.FC<HeroiconProps> = ({
           mounted && Reflect.has(iconModule, 'default')
             ? setComponent(
                 <iconModule.default
-                  height={convertToNumber(size)}
-                  width={convertToNumber(size)}
+                  height={`${convertToNumber(size)}px`}
+                  width={`${convertToNumber(size)}px`}
                 />
               )
             : null

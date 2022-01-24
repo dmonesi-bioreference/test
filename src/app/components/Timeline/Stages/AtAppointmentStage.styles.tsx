@@ -12,6 +12,7 @@ interface AtAppointmentStageStyledProps {
 
 const AtAppointmentStageStyled = styled.div<AtAppointmentStageStyledProps>`
   ${base}
+  display: flex;
 
   .linearGradientSvg {
     display: flex;

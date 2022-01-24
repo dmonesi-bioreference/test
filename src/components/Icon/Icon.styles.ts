@@ -1,3 +1,4 @@
+import { remToPx } from 'polished';
 import styled from 'styled-components';
 
 import { base, colors, tokens } from 'styles';
@@ -26,11 +27,11 @@ const IconStyled = styled.div`
   }
 
   &.small {
-    width: ${tokens.spacingLarge};
+    width: ${remToPx(tokens.spacingLarge)};
   }
 
   &.large {
-    width: ${tokens.spacingXLarge};
+    width: ${remToPx(tokens.spacingXLarge)};
   }
 
   &.encircled {
