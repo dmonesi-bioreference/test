@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import {
   Content,
@@ -40,7 +40,12 @@ export const FAQsPage = () => {
             {faq.title}
           </Typography>
         </div>
-        <Content>{faq.content}</Content>
+        {faq.content && faq.content.map((contentBlock, index) => (
+          <React.Fragment key={index}>
+            <Heading level="3">{contentBlock.title}</Heading>
+            <Content>{contentBlock.content}</Content>
+          </React.Fragment>
+        ))}
       </div>
     );
   });

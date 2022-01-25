@@ -12,8 +12,13 @@ export const single: Article = {
   title: 'What to expect from the test results',
   blurb:
     "A genetic test report contains a lot of important information. We'll break down the key terms for you so you can understand them better.",
-  content: 'Content',
-  slug: { slug: 'slug' },
+  contents: [
+    {
+      title: 'Title',
+      content: '<p>Content</p>'
+    }
+  ],
+  slug: 'slug',
   published: Date.now(),
   reviewByDate: Date.now(),
   owner: '',

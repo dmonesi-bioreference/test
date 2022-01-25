@@ -47,7 +47,7 @@ describe('Handlers', () => {
       title: 'Title 1',
       blurb: '',
       content: '',
-      slug: { slug: 'slug' },
+      slug: 'slug',
       published: 1,
       reviewByDate: 1,
       owner: '',
@@ -86,7 +86,7 @@ describe('Handlers', () => {
       title: 'Title 1',
       blurb: '',
       content: '',
-      slug: { slug: 'slug' },
+      slug: 'slug',
       published: 1,
       reviewByDate: 1,
       owner: '',
@@ -106,7 +106,7 @@ describe('Handlers', () => {
       title: 'Title 2',
       blurb: '',
       content: '',
-      slug: { slug: 'slug' },
+      slug: 'slug',
       published: 1,
       reviewByDate: 1,
       owner: '',
@@ -136,7 +136,7 @@ describe('Handlers', () => {
   it('.faqs() maps the given payload into a list of faqs', async () => {
     const faqOne = {
       id: '1',
-      slug: { slug: 'slug' },
+      slug: 'slug',
       label: 'label',
       title: 'Title 1',
       blurb: 'blurb',
@@ -154,7 +154,7 @@ describe('Handlers', () => {
 
     const faqTwo = {
       id: '1',
-      slug: { slug: 'slug' },
+      slug: 'slug' ,
       label: 'label',
       title: 'Title 2',
       blurb: 'blurb',

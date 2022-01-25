@@ -13,10 +13,14 @@ export const article = (id: String) => `
       label
       title
       blurb
-      content
-      slug {
-        slug
+      contents {
+        __typename
+        ... on object_TextBlock {
+          title
+          content
+        }
       }
+      slug
       author
       published
       unpublishDate
@@ -45,10 +49,14 @@ export const articles = () => `
           label
           title
           blurb
-          content
-          slug {
-            slug
+          contents {
+            __typename
+            ... on object_TextBlock {
+              title
+              content
+            }
           }
+          slug
           author
           published
           unpublishDate
@@ -68,10 +76,11 @@ export const faqs = () => `
       edges {
         node {
           id
-          slug {
-            slug
+          slug
+          content {
+            title
+            content
           }
-          content
           introduceAt
           label
           title

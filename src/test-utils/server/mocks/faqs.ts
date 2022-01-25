@@ -8,12 +8,16 @@ export const generic: FAQ = {
     altText: 'In The NICU',
     fullpath: InTheNICUImage,
   },
-  slug: { slug: 'slug' },
+  slug: 'slug',
   label: 'label',
   title: 'What is Genetic Testing?',
   blurb: 'blurb',
-  content:
-    'Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.',
+  content: [
+    {
+      title: 'Title',
+      content: '<p>Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>'
+    }
+  ],
   introduceAt: 'WAITING',
   author: 'author',
 };
@@ -26,12 +30,16 @@ export const dna: FAQ = {
     altText: 'In The NICU',
     fullpath: InTheNICUImage,
   },
-  slug: { slug: 'slug' },
+  slug: 'slug',
   label: 'label',
   title: 'What is DNA?',
   blurb: 'blurb',
-  content:
-    'Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.',
+  content: [
+    {
+      title: 'Title',
+      content: '<p>Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>'
+    }
+  ],
   introduceAt: 'WAITING',
   author: 'author',
 };

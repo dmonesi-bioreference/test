@@ -1,4 +1,9 @@
 declare global {
+  interface Content {
+    title: string;
+    content: string
+  }
+
   interface ContentFailure {
     message: string;
   }
@@ -9,8 +14,8 @@ declare global {
     label: string;
     title: string;
     blurb: string;
-    content?: string;
-    slug?: Slug;
+    contents?: Content[];
+    slug?: string;
     author?: string;
     published: number;
     unpublishDate?: number;
@@ -22,18 +27,14 @@ declare global {
 
   interface FAQ {
     id: string;
-    slug?: Slug;
+    slug?: string;
     label: string;
     title: string;
     blurb: string;
-    content?: string;
+    content?: Content[];
     introduceAt: IntroduceAt;
     author?: string;
     bannerImage?: Image;
-  }
-
-  interface Slug {
-    slug: string;
   }
 
   interface Image {
@@ -73,7 +74,7 @@ export const isArticlePayload = (candidate: unknown): candidate is Article => {
     'label',
     'title',
     'blurb',
-    'content',
+    'contents',
     'slug',
     'published',
     'reviewByDate',

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
   Content,
@@ -26,7 +26,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = (props) => {
   const events = useAppEvents();
 
   const [articleTitle, setArticleTitle] = useState<string>();
-  const [articleContent, setArticleContent] = useState<string>();
+  const [articleContents, setArticleContents] = useState<{ title: string, content: string }[]>([]);
 
   const articles = useAppSelector(
     (state) => state.context.content.articles.data
@@ -37,14 +37,14 @@ export const ArticlePage: React.FC<ArticlePageProps> = (props) => {
   useEffect(() => {
     const article = articles.find((e) => e.id === props.articleId);
     setArticleTitle(article ? article.title : '');
-    setArticleContent(article ? article.content : '');
+    setArticleContents(article && article.contents ? article.contents.map(e => ({ title: e.title, content: e.content })) : []);
   }, [articles, props]);
 
   useEffect(() => {
-    if (!articleContent) {
+    if (articleContents.length == 0) {
       events.fetchSingleArticle({ articleId: props.articleId as string });
     }
-  }, [articleContent, events, props]);
+  }, [articleContents, events, props]);
 
   return (
     <PageLayout containsCards={true} theme="resources">
@@ -57,10 +57,15 @@ export const ArticlePage: React.FC<ArticlePageProps> = (props) => {
             {t('pages.articles.errorFetchingArticle')}
           </Typography>
         ) : (
-          articleContent && (
+          articleContents && (
             <>
               <Heading level="1">{articleTitle}</Heading>
-              <Content>{articleContent}</Content>
+              {articleContents.map((contentBlock, index) => (
+                <React.Fragment key={index}>
+                  <Heading level="2">{contentBlock.title}</Heading>
+                  <Content>{contentBlock.content}</Content>
+                </React.Fragment>
+              ))}
             </>
           )
         )}
