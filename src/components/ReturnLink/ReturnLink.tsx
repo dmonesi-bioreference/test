@@ -12,7 +12,12 @@ const ReturnLink: React.FC<ReturnLinkProps> = (props) => {
     <ReturnLinkStyled>
       <Button kind="link-small" href={props.href}>
         <div className="return-link__label">
-          <Icon name="chevron-left" size="x-small" color="primary" />
+          <Icon
+            name="chevron-left"
+            size="x-small"
+            color="primary"
+            style="solid"
+          />
           <Typography type="body" color="primary">
             {props.label}
           </Typography>
