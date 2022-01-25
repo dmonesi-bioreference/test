@@ -12,7 +12,7 @@ const Header: React.FC = () => {
     <HeaderStyled>
       <header>
         <Button kind="image" href="/">
-          <Logo type="color" width={130} />
+          <Logo width={130} />
         </Button>
         <button
           type="button"

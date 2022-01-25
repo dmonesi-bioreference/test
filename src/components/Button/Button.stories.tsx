@@ -39,7 +39,7 @@ export const Kinds: Story = () => (
     <Button kind="danger">Danger</Button>
     <Button kind="text">Text</Button>
     <Button kind="image">
-      <Logo type="color" width={130} />
+      <Logo width={130} />
     </Button>
   </div>
 );
