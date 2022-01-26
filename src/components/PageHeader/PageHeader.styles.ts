@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { tokens, base } from 'styles';
+import { tokens, base, containers } from 'styles';
 
 const PageHeaderStyled = styled.div`
   ${base};
@@ -10,6 +10,9 @@ const PageHeaderStyled = styled.div`
 
   .page-header__content {
     padding: ${tokens.spacingLarge} ${tokens.spacing};
+    max-width: ${containers.maxPageWidth}px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .page-header__content > * :not(:last-child) {

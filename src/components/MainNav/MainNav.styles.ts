@@ -17,7 +17,7 @@ const MainNavStyled = styled.nav`
 
   ${media.mediumUp} {
     top: calc(${containers.headerHeight} + ${tokens.spacingSmall});
-    max-width: ${containers.maxNavWidth};
+    max-width: ${containers.maxNavWidth}px;
     height: min-content;
     box-shadow: ${tokens.shadowMedium};
     border-radius: ${tokens.borderRadius};

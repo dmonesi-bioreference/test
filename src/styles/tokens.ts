@@ -328,7 +328,8 @@ export const fontPairs = {
 
 export const containers = {
   headerHeight: tokens.spacingXxxLarge,
-  maxNavWidth: '500px',
+  maxNavWidth: '500',
+  maxPageWidth: '960',
 };
 
 const toggleHandle = {

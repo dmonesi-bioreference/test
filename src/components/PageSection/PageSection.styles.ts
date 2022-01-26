@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 
-import { tokens, base } from 'styles';
+import { containers, tokens, base } from 'styles';
 
-const PageSectionStyled = styled.div`
+const PageSectionStyled = styled.section`
   ${base}
+  margin: 0 auto;
+  max-width: ${containers.maxPageWidth}px;
+  width: 100%;
+
   &.page-section > * {
     margin-bottom: ${tokens.spacing};
     overflow: auto;

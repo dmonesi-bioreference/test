@@ -25,7 +25,9 @@ const PageLayout: React.FC<PageLayoutProps> = ({
     <PageLayoutStyled className={`page-layout--${props.theme}`}>
       <GlobalStyle />
       <Header />
-      <div className="page__custom-header">{props.customHeader}</div>
+      {props.customHeader && (
+        <div className="page__custom-header">{props.customHeader}</div>
+      )}
       {withHeader}
       <div className={`page__content ${withCards}`}>{children}</div>
     </PageLayoutStyled>

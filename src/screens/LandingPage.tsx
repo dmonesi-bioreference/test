@@ -20,6 +20,9 @@ export const LandingPage = () => {
           <UserHeader
             title={t('sections.results.patient')}
             name="Lisa Consuela Jackson"
+            variant="patient"
+            foregroundColor={tokens.colorBackgroundCare}
+            backgroundColor={tokens.colorBackgroundDefault}
           />
         }
       >
