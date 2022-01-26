@@ -6,13 +6,10 @@ import {
   useAppTranslation,
   MediaElements,
   useAppState,
-  Content,
+  Articles,
 } from 'app';
-import InTheNICUImage from 'assets/images/jpg/InTheNICU.jpg';
 import {
   BulletItem,
-  Button,
-  LinkCard,
   Heading,
   Icon,
   PageLayout,
@@ -28,16 +25,8 @@ export const ResourcesPage = () => {
   const events = useAppEvents();
 
   useEffect(() => {
-    events.fetchAllArticles();
-  }, [events]);
-
-  useEffect(() => {
     events.fetchAllFAQs();
   }, [events]);
-
-  const articles = useAppSelector(
-    (state) => state.context.content.articles.data
-  );
 
   const faqs = useAppSelector((state) => state.context.content.FAQs.data);
 
@@ -48,29 +37,6 @@ export const ResourcesPage = () => {
 
   const FAQs = faqs.map((faq) => {
     return faq.title;
-  });
-
-  const articleCards = articles.map((article) => {
-    return (
-      <LinkCard
-        key={article.id}
-        variant="article"
-        imageSrc={InTheNICUImage}
-        imageAlt="alt-text"
-        label={article.label}
-        heading={article.title}
-        themeColor={tokens.colorPrimary}
-      >
-        <div style={{ marginBottom: tokens.spacingLarge }}>
-          <Content>
-            {article.blurb}
-          </Content>
-        </div>
-        <Button kind="primary" href={`/demo/article/${article.id}`}>
-          {t('sections.resources.story.readMore')}
-        </Button>
-      </LinkCard>
-    );
   });
 
   return (
@@ -130,7 +96,7 @@ export const ResourcesPage = () => {
             {t('pages.resources.section.articles.error')}
           </Typography>
         ) : (
-          articleCards
+          <Articles />
         )}
       </PageSection>
     </PageLayout>
