@@ -32,7 +32,7 @@ const UserHeader: React.FC<UserHeaderProps> = (props) => {
     <UserHeaderStyled {...props}>
       {props.variant == 'patient' ? patientHeaderBackground : ''}
       {props.avatar}
-      <div>
+      <div className="content">
         <div className="user-header__title">
           <Typography type="label" labelType="display">
             {props.title}

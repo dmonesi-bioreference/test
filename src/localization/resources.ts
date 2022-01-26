@@ -69,10 +69,8 @@ export const resources = {
         },
         resources: {
           title: 'Resources',
-          subTitle:
-            'Here are some educational resources to help you better understand the who, what, and why’s of genetic testing.',
           description:
-            'Here is an enlightening description of what to expect from this audio file.',
+            'Here are some educational resources to help you better understand the who, what, and why’s of genetic testing.',
           section: {
             audio: {
               title: 'Genetic Counselor Support',
@@ -634,10 +632,10 @@ export const resources = {
         },
       },
       formatting: {
-        date: "{{- value, date}}",
-        datetime: "{{- value, datetime}}",
-        time: "{{- value, time}}",
-      }
+        date: '{{- value, date}}',
+        datetime: '{{- value, datetime}}',
+        time: '{{- value, time}}',
+      },
     },
   },
 };

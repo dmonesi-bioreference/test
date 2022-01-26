@@ -9,7 +9,9 @@ describe('The resources page', () => {
 
   it('has a header', async () => {
     const page = await renderWithShell(<ResourcesPage />);
-    await page.findByText('Resources');
+    expect(page.getByRole('heading', { level: 1 })).toHaveTextContent(
+      'Resources'
+    );
   });
 
   it('has an audio section', async () => {

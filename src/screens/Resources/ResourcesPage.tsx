@@ -17,8 +17,8 @@ import {
   Typography,
   Spinner,
   FaqCard,
+  UserHeader,
 } from 'components';
-import { tokens } from 'styles';
 
 export const ResourcesPage = () => {
   const t = useAppTranslation();
@@ -39,18 +39,32 @@ export const ResourcesPage = () => {
     return faq.title;
   });
 
+  const patientData = {
+    shortName: 'Lisa',
+    fullName: 'Lisa Consuela Jackson',
+    dob: new Date(Date.UTC(2012, 1, 14)),
+    genderGenetic: 'Female',
+    genderIdentified: 'Female',
+    insurance: 'Kaiser',
+    relationToCaregiver: 'Child',
+    phenotype: 'Phenotype information here',
+  };
+
   return (
-    <PageLayout containsCards={true} theme="resources">
-      <PageSection
-        header={
-          <div style={{ marginBottom: tokens.spacingXLarge }}>
-            <div style={{ marginBottom: tokens.spacing }}>
-              <Heading>{t('pages.resources.title')}</Heading>
-            </div>
-            <Typography type="body">{t('pages.resources.subTitle')}</Typography>
-          </div>
-        }
-      >
+    <PageLayout
+      containsCards
+      theme="resources"
+      title={t('pages.resources.title')}
+      description={t('pages.resources.description')}
+      customHeader={
+        <UserHeader
+          title={t('sections.results.patient')}
+          name={patientData.fullName}
+          variant="patient"
+        />
+      }
+    >
+      <PageSection>
         <MediaElements.Audio
           src="https://www2.cs.uic.edu/~i101/SoundFiles/PinkPanther30.wav"
           title={t('pages.resources.section.audio.title')}

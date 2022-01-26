@@ -41,16 +41,15 @@ export const HealthProfile = () => {
         description={t('pages.healthProfile.description', {
           patientsName: patientData.shortName,
         })}
+        customHeader={
+          <UserHeader
+            title={t('sections.results.patient')}
+            name={patientData.fullName}
+            variant="patient"
+          />
+        }
       >
-        <PageSection
-          header={
-            <UserHeader
-              title={t('sections.results.patient')}
-              name={patientData.fullName}
-              variant="patient"
-            />
-          }
-        >
+        <PageSection>
           <Button
             className="health-profile__download"
             kind="link-small"

@@ -14,18 +14,17 @@ import { tokens } from 'styles';
 export const LandingPage = () => {
   const t = useAppTranslation();
   return (
-    <PageLayout containsCards={true}>
-      <PageSection
-        header={
-          <UserHeader
-            title={t('sections.results.patient')}
-            name="Lisa Consuela Jackson"
-            variant="patient"
-            foregroundColor={tokens.colorBackgroundCare}
-            backgroundColor={tokens.colorBackgroundDefault}
-          />
-        }
-      >
+    <PageLayout
+      containsCards={true}
+      customHeader={
+        <UserHeader
+          title={t('sections.results.patient')}
+          name="Lisa Consuela Jackson"
+          variant="patient"
+        />
+      }
+    >
+      <PageSection>
         <TestStatus />
         <Timeline />
       </PageSection>

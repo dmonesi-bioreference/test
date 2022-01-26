@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import AvatarStyled from 'components/Avatar/Avatar.styles';
 import TypographyStyled from 'components/Typography/Typography.styles';
-import { tokens } from 'styles';
+import { colors, tokens } from 'styles';
 
 import { UserHeaderProps } from './UserHeader';
 
@@ -25,14 +25,17 @@ const UserHeaderStyled = styled.div<UserHeaderProps>`
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
-    background-color: ${(props) =>
-      props.backgroundColor || tokens.colorBackgroundDefault};
+    background-color: ${(props) => props.backgroundColor || colors.white};
 
     svg {
       width: 90%;
       min-height: 100%;
     }
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
   }
 
   .user-header__title {
