@@ -2,7 +2,10 @@ import { useState } from 'react';
 
 import { useAppTranslation } from 'app/components/Shell';
 import { caregiverRelationshipValues } from 'app/state/forms/validation-models/caregiver-relationship';
-import { InputHelper, Select, ToolTip, Typography } from 'components';
+import { InputHelper } from 'components/InputHelper';
+import { Select } from 'components/Select';
+import { ToolTip } from 'components/ToolTip';
+import { Typography } from 'components/Typography';
 
 import { useCaregiverRelationshipField } from './hooks';
 import { AppInputProps } from './types';

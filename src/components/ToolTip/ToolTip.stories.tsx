@@ -1,6 +1,7 @@
 import { Story } from '@storybook/react/types-6-0';
 
-import { Button, Typography } from 'components';
+import { Button } from 'components/Button';
+import { Typography } from 'components/Typography';
 
 import ToolTip, { ToolTipProps } from './ToolTip';
 

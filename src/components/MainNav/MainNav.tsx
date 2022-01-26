@@ -1,4 +1,5 @@
-import { IconButton, Typography } from 'components';
+import { IconButton } from 'components/IconButton';
+import { Typography } from 'components/Typography';
 
 import MainNavStyled from './MainNav.styles';
 
@@ -15,25 +16,45 @@ const MainNav: React.FC<MainNavProps> = () => {
         </li>
 
         <li className="menu__item" key="2">
-          <IconButton name="document-search" label="My Results" href="/demo/results" encircled>
+          <IconButton
+            name="document-search"
+            label="My Results"
+            href="/demo/results"
+            encircled
+          >
             <Typography type="menu-item">My Results</Typography>
           </IconButton>
         </li>
 
         <li className="menu__item" key="3">
-          <IconButton name="heart" label="Health Profile" href="/demo/health-profile" encircled>
+          <IconButton
+            name="heart"
+            label="Health Profile"
+            href="/demo/health-profile"
+            encircled
+          >
             <Typography type="menu-item">Health Profile</Typography>
           </IconButton>
         </li>
 
         <li className="menu__item" key="4">
-          <IconButton name="book-open" label="Resources" href="/demo/resources" encircled>
+          <IconButton
+            name="book-open"
+            label="Resources"
+            href="/demo/resources"
+            encircled
+          >
             <Typography type="menu-item">Resources</Typography>
           </IconButton>
         </li>
 
         <li className="menu__item" key="5">
-          <IconButton name="cog" label="Settings" href="/demo/settings" encircled>
+          <IconButton
+            name="cog"
+            label="Settings"
+            href="/demo/settings"
+            encircled
+          >
             <Typography type="menu-item">Settings</Typography>
           </IconButton>
         </li>

@@ -1,7 +1,7 @@
 import { Story } from '@storybook/react/types-6-0';
 
-import { InputHelper } from 'components';
 import { Icon } from 'components/Icon';
+import { InputHelper } from 'components/InputHelper';
 
 import Input, { InputProps } from './Input';
 

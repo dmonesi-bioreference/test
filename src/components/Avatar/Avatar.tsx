@@ -1,4 +1,4 @@
-import { AppImage } from 'components';
+import { AppImage } from 'components/AppImage';
 
 import AvatarStyled from './Avatar.styles';
 

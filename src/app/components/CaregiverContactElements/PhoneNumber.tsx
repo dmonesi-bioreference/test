@@ -1,9 +1,12 @@
 import { useState } from 'react';
 
 import { useAppTranslation } from 'app/components/Shell';
-import { Button, InputHelper, ToolTip, Typography } from 'components';
+import { Button } from 'components/Button';
 import { Icon } from 'components/Icon';
 import { Input } from 'components/Input';
+import { InputHelper } from 'components/InputHelper';
+import { ToolTip } from 'components/ToolTip';
+import { Typography } from 'components/Typography';
 
 import { useCaregiverContactField } from './hooks';
 import { AppInputProps } from './types';

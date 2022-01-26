@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { Button, Heading, Icon } from 'components';
+import { Button } from 'components/Button';
+import { Icon } from 'components/Icon';
+import { Heading } from 'components/Typography';
 
 import TimelineItemStyled from './TimelineItem.styles';
 import TimelineItemBody from './TimelineItemBody';

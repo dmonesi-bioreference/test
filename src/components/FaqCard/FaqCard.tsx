@@ -1,4 +1,7 @@
-import { Button, Icon, List, Typography } from 'components';
+import { Button } from 'components/Button';
+import { Icon } from 'components/Icon';
+import { List } from 'components/List';
+import { Typography } from 'components/Typography';
 
 import FaqCardStyled from './FaqCard.styles';
 

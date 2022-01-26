@@ -1,5 +1,6 @@
 import { useAppTranslation } from 'app/components/Shell';
-import { Icon, TimelineItem } from 'components';
+import { Icon } from 'components/Icon';
+import { TimelineItem } from 'components/TimelineItem';
 import { colors } from 'styles';
 
 import AtAppointmentStageStyled from './AtAppointmentStage.styles';

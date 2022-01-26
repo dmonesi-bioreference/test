@@ -1,5 +1,7 @@
 import { useAppTranslation } from 'app/components/Shell';
-import { AppImage, Heading, Icon, Typography } from 'components';
+import { AppImage } from 'components/AppImage';
+import { Icon } from 'components/Icon';
+import { Typography, Heading } from 'components/Typography';
 
 import PdfStyled from './Pdf.styles';
 

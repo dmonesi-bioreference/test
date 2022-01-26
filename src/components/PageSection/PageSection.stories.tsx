@@ -1,6 +1,8 @@
 import { Story } from '@storybook/react/types-6-0';
 
-import { Card, Icon, Typography } from 'components';
+import { Card } from 'components/Card';
+import { Icon } from 'components/Icon';
+import { Typography } from 'components/Typography';
 
 import PageSection from './PageSection';
 

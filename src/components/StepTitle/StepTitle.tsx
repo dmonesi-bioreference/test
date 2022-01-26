@@ -1,4 +1,5 @@
-import { Divider, Typography } from 'components';
+import { Divider } from 'components/Divider';
+import { Typography } from 'components/Typography';
 
 import StepTitleStyled from './StepTitle.styles';
 

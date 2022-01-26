@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { Typography } from 'components';
+import { Typography } from 'components/Typography';
 import { colors } from 'styles';
 
 import UserHeaderStyled from './UserHeader.styles';

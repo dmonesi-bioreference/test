@@ -1,6 +1,8 @@
 import { Story } from '@storybook/react/types-6-0';
 
-import { Button, List, Typography } from 'components';
+import { Button } from 'components/Button';
+import { List } from 'components/List';
+import { Typography } from 'components/Typography';
 import { tokens } from 'styles';
 
 import InformationBanner, { InformationBannerProps } from './InformationBanner';

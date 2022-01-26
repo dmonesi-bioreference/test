@@ -1,4 +1,8 @@
-import { AppImage, Button, Card, Heading, Typography, Icon } from 'components';
+import { AppImage } from 'components/AppImage';
+import { Button } from 'components/Button';
+import { Card } from 'components/Card';
+import { Icon } from 'components/Icon';
+import { Typography, Heading } from 'components/Typography';
 
 import LinkCardStyled from './LinkCard.styles';
 

@@ -1,4 +1,7 @@
-import { Button, Card, Typography, Icon } from 'components';
+import { Button } from 'components/Button';
+import { Card } from 'components/Card';
+import { Icon } from 'components/Icon';
+import { Typography } from 'components/Typography';
 
 import PromptCardStyled from './PromptCard.styles';
 

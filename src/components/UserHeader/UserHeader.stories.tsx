@@ -1,7 +1,7 @@
 import { Story } from '@storybook/react/types-6-0';
 
 import geneticCounselor from 'assets/images/png/geneticCounselor.png';
-import { Avatar } from 'components';
+import { Avatar } from 'components/Avatar';
 
 import UserHeader, { UserHeaderProps } from './UserHeader';
 

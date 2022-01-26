@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useState } from 'react';
 
-import { Typography } from 'components';
+import { Typography } from 'components/Typography';
 
 import FieldsetStyled from './Fieldset.styles';
 

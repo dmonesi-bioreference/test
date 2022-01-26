@@ -1,7 +1,8 @@
 import { Story } from '@storybook/react/types-6-0';
 
 import { Shell } from 'app';
-import { BulletItem, Icon } from 'components';
+import { BulletItem } from 'components/BulletItem';
+import { Icon } from 'components/Icon';
 
 import Audio, { AudioProps } from './Audio';
 

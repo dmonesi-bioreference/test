@@ -3,7 +3,8 @@ import 'tippy.js/dist/svg-arrow.css';
 import 'tippy.js/dist/tippy.css';
 import { roundArrow } from 'tippy.js';
 
-import { Icon, InformationBanner } from 'components';
+import { Icon } from 'components/Icon';
+import { InformationBanner } from 'components/InformationBanner';
 
 import ToolTipStyled from './ToolTip.styles';
 

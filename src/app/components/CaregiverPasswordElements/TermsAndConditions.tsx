@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { useAppTranslation } from 'app/components/Shell';
-import { Checkbox } from 'components';
+import { Checkbox } from 'components/Checkbox';
 
 import { useCaregiverPasswordField } from './hooks';
 import { AppInputProps } from './types';

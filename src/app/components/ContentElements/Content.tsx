@@ -1,13 +1,16 @@
 import { hasChildren, isTag, isText } from 'domhandler';
-import ReactHtmlParser, { convertNodeToElement, Transform } from 'react-html-parser';
+import ReactHtmlParser, {
+  convertNodeToElement,
+  Transform,
+} from 'react-html-parser';
 
-import { Typography } from 'components';
+import { Typography } from 'components/Typography';
 
 import ContentStyled from './Content.styles';
 
 type ContentProps = {
   children?: string;
-}
+};
 
 export const Content = ({ children }: ContentProps) => {
   const transform: Transform = (node, index) => {
@@ -19,7 +22,7 @@ export const Content = ({ children }: ContentProps) => {
       switch (node.name) {
         case 'p':
           return (
-            <Typography key={index} type='body'>
+            <Typography key={index} type="body">
               {node.children.map((child, i) => transform(child, i))}
             </Typography>
           );
@@ -30,9 +33,7 @@ export const Content = ({ children }: ContentProps) => {
             </strong>
           );
         default:
-          return (
-            convertNodeToElement(node, index, transform)
-          );
+          return convertNodeToElement(node, index, transform);
       }
     }
   };
@@ -41,9 +42,7 @@ export const Content = ({ children }: ContentProps) => {
 
   return (
     <ContentStyled>
-      <div>
-        {ReactHtmlParser(children, { transform })}
-      </div>
+      <div>{ReactHtmlParser(children, { transform })}</div>
     </ContentStyled>
   );
-}
+};

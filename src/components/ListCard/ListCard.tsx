@@ -1,5 +1,9 @@
-import { Button, Card, Icon, List, Typography } from 'components';
+import { Button } from 'components/Button';
+import { Card } from 'components/Card';
+import { Icon } from 'components/Icon';
 import HeroiconName from 'components/Icon/heroicon';
+import { List } from 'components/List';
+import { Typography } from 'components/Typography';
 
 import ListCardStyled from './ListCard.styles';
 

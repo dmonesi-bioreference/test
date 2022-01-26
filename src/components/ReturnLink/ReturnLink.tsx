@@ -1,4 +1,6 @@
-import { Button, Icon, Typography } from 'components';
+import { Button } from 'components/Button';
+import { Icon } from 'components/Icon';
+import { Typography } from 'components/Typography';
 
 import ReturnLinkStyled from './ReturnLink.styles';
 

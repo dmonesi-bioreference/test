@@ -1,6 +1,8 @@
 import { Story } from '@storybook/react/types-6-0';
 
-import { Button, Icon, Typography } from 'components';
+import { Button } from 'components/Button';
+import { Icon } from 'components/Icon';
+import { Typography } from 'components/Typography';
 
 import ListCard, { ListCardProps } from './ListCard';
 

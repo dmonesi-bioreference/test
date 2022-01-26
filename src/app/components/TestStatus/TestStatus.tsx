@@ -1,14 +1,11 @@
 import { remToPx } from 'polished';
 
 import { useAppTranslation } from 'app/components/Shell';
-import {
-  Card,
-  Button,
-  Heading,
-  Icon,
-  CircularProgress,
-  Typography,
-} from 'components';
+import { Button } from 'components/Button';
+import { Card } from 'components/Card';
+import { CircularProgress } from 'components/CircularProgress';
+import { Icon } from 'components/Icon';
+import { Typography, Heading } from 'components/Typography';
 import { colors, tokens } from 'styles';
 
 import TestStatusStyled from './TestStatus.styles';
