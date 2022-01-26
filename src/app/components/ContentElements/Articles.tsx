@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { useTestStatus } from 'app/components/Timeline/hooks';
 import InTheNICUImage from 'assets/images/jpg/InTheNICU.jpg';
-import { Button, LinkCard } from 'components';
+import { Button, Carousel, LinkCard } from 'components';
 import { tokens } from 'styles';
 
 import { useAppEvents, useAppSelector, useAppTranslation } from '../Shell';
@@ -59,5 +59,16 @@ export const Articles = () => {
     );
   });
 
-  return <div>{articleCards}</div>;
+  return (
+    <Carousel
+      showIndicator={false}
+      externalControl={{
+        prevText: t('pages.resources.section.articles.prevArticle'),
+        nextText: t('pages.resources.section.articles.nextArticle'),
+      }}
+      enablePeak={true}
+    >
+      {articleCards}
+    </Carousel>
+  );
 };

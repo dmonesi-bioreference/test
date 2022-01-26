@@ -88,6 +88,8 @@ export const resources = {
             articles: {
               title: 'Read',
               error: 'Error fetching articles.',
+              prevArticle: 'Previous Article',
+              nextArticle: 'Next Article',
             },
             faqs: {
               error: 'Error fetching FAQs.',

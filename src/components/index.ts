@@ -8,6 +8,7 @@ export * from './Avatar';
 export * from './BulletItem';
 export * from './Button';
 export * from './Card';
+export * from './Carousel';
 export * from './Checkbox';
 export * from './CircularProgress';
 export * from './Data';
@@ -47,3 +48,5 @@ export * from './ToolTip';
 export * from './Typography';
 export * from './UserHeader';
 export * from './Loading';
+
+export * from './Carousel';
