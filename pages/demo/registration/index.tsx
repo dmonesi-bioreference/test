@@ -9,11 +9,8 @@ export default function RegistrationPage() {
         <title>GeneDX</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <RegistrationWizard />
-      </main>
 
-      <footer />
+      <RegistrationWizard />
     </>
   );
 }

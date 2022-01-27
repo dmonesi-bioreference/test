@@ -10,11 +10,7 @@ export default function settings() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <Settings />
-      </main>
-
-      <footer></footer>
+      <Settings />
     </>
   );
 }

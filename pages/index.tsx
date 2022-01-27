@@ -10,11 +10,7 @@ export default function Index() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <Home />
-      </main>
-
-      <footer></footer>
+      <Home />
     </>
   );
 }

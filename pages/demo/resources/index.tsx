@@ -10,11 +10,7 @@ export default function Resources() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <ResourcesPage />
-      </main>
-
-      <footer />
+      <ResourcesPage />
     </>
   );
 }

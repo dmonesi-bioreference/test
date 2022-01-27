@@ -10,11 +10,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <LandingPage />
-      </main>
-
-      <footer></footer>
+      <LandingPage />
     </>
   );
 }

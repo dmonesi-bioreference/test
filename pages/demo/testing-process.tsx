@@ -10,11 +10,7 @@ export default function TestingProcessPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <TestingProcess />
-      </main>
-
-      <footer></footer>
+      <TestingProcess />
     </>
   );
 }

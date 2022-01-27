@@ -215,6 +215,7 @@ const ButtonStyled = styled.button`
     background-color: transparent;
     border-color: transparent;
     width: auto;
+    height: auto;
     padding: 0;
 
     &:hover:not(.button--disabled) {
@@ -265,6 +266,13 @@ const ButtonStyled = styled.button`
       color: ${tokens.colorPrimaryActive};
       text-decoration: underline;
     }
+  }
+
+  &.link--extra-small {
+    font-size: ${tokens.fontSize12};
+    font-weight: ${tokens.fontWeightMedium};
+    line-height: ${tokens.lineHeightDense};
+    text-decoration: underline;
   }
 
   &.link--small {

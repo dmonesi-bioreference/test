@@ -27,16 +27,12 @@ export default function healthProfile() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <Shell
-          onPatientGuid={async () => patientGuidMock}
-          onSession={async () => sessionMock}
-        >
-          <HealthProfile />
-        </Shell>
-      </main>
-
-      <footer></footer>
+      <Shell
+        onPatientGuid={async () => patientGuidMock}
+        onSession={async () => sessionMock}
+      >
+        <HealthProfile />
+      </Shell>
     </>
   );
 }

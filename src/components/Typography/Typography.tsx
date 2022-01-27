@@ -22,7 +22,13 @@ interface HeadingProps {
 
 type TypographyProps =
   | {
-      type: 'body' | 'list' | 'helper-text' | 'validation' | 'menu-item';
+      type:
+        | 'body'
+        | 'list'
+        | 'helper-text'
+        | 'validation'
+        | 'menu-item'
+        | 'fine-print';
       color?: TypographyColor;
       alignment?: TypographyAlignment;
       level?: TypographyLevel;
@@ -41,6 +47,7 @@ export const Typography: React.FC<TypographyProps> = (props) => {
   const color = props.color || 'default';
   const alignment = props.alignment || 'left';
   switch (props.type) {
+    case 'fine-print':
     case 'body': {
       return (
         /* Providing a level prop will override the default body styling */

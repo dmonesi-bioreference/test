@@ -10,11 +10,7 @@ export default function dataSharingSettings() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <DataSharingSettings />
-      </main>
-
-      <footer></footer>
+      <DataSharingSettings />
     </>
   );
 }

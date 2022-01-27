@@ -71,6 +71,14 @@ const TypographyStyled = styled.div`
     font-weight: ${tokens.fontWeightBold};
   }
 
+  &.fine-print {
+    font-family: ${tokens.fontFamilyBody};
+    font-size: ${tokens.fontSize10};
+    font-weight: ${tokens.fontWeightRegular};
+    line-height: ${tokens.lineHeightNormal};
+    color: ${colors.cornflowerBlue[900]};
+  }
+
   &.body {
     font-family: ${tokens.fontFamilyBody};
     font-size: ${tokens.fontSize14};

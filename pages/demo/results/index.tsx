@@ -10,11 +10,7 @@ export default function ResultsPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <TestResults />
-      </main>
-
-      <footer />
+      <TestResults />
     </>
   );
 }

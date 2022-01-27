@@ -10,11 +10,7 @@ export default function FAQs() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <FAQsPage />
-      </main>
-
-      <footer />
+      <FAQsPage />
     </>
   );
 }

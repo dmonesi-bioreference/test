@@ -10,11 +10,7 @@ export default function IdentityFormPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <IdentityForm />
-      </main>
-
-      <footer></footer>
+      <IdentityForm />
     </>
   );
 }

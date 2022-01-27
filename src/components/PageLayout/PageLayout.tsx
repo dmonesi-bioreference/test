@@ -1,3 +1,4 @@
+import { Footer } from 'app/components/Footer';
 import { Header } from 'components/Header';
 import { PageHeader } from 'components/PageHeader';
 import { GlobalStyle } from 'index';
@@ -33,11 +34,12 @@ const PageLayout: React.FC<PageLayoutProps> = ({
         <div className="page-layout__custom-header">{props.customHeader}</div>
       )}
       {withHeader}
-      <div
+      <main
         className={`page-layout__content page-layout__content${withCards} page-layout__content--${belongsTo}`}
       >
         {children}
-      </div>
+      </main>
+      <Footer />
     </PageLayoutStyled>
   );
 };

@@ -13,7 +13,11 @@ export type ButtonKind =
   | 'text'
   | 'image';
 
-export type LinkKind = 'link-small' | 'link-medium' | 'link-large';
+export type LinkKind =
+  | 'link-small'
+  | 'link-extra-small'
+  | 'link-medium'
+  | 'link-large';
 
 export interface ButtonProps {
   /** Set to true to render the button in a disabled state. */
@@ -63,10 +67,12 @@ const Button: React.FC<ButtonProps> = (props) => {
     'button--danger': props.kind === 'danger',
     'button--text': props.kind === 'text',
     'button--image': props.kind === 'image',
+    'link--extra-small': props.kind == 'link-extra-small',
     'link--small': props.kind == 'link-small',
     'link--medium': props.kind == 'link-medium',
     'link--large': props.kind == 'link-large',
     'button--link':
+      props.kind === 'link-extra-small' ||
       props.kind === 'link-small' ||
       props.kind === 'link-medium' ||
       props.kind === 'link-large',

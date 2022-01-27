@@ -239,6 +239,15 @@ export const resources = {
             openPdf: 'Open PDF',
           },
         },
+        footer: {
+          copyright: `GeneDx, Inc © ${new Date().getFullYear()} | All rights reserved`,
+          links: {
+            contactUs: 'Contact Us',
+            terms: 'Terms & Conditions',
+            privacy: 'Privacy',
+            cookie: 'Cookie Settings',
+          },
+        },
       },
       forms: {
         identity: {

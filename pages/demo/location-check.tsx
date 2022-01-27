@@ -10,11 +10,7 @@ export default function LocationCheck() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <LocationCheckPage />
-      </main>
-
-      <footer></footer>
+      <LocationCheckPage />
     </>
   );
 }

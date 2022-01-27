@@ -10,11 +10,7 @@ export default function dataConsent() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <AuthenticationToken />
-      </main>
-
-      <footer></footer>
+      <AuthenticationToken />
     </>
   );
 }
