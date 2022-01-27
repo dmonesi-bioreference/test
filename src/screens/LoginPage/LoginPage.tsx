@@ -1,11 +1,11 @@
+import { LoginElements } from 'app/components/LoginElements';
 import {
-  LoginElements,
   OnState,
   useAppEvents,
   useAppSelector,
   useAppState,
   useAppTranslation,
-} from 'app';
+} from 'app/components/Shell';
 import { Button } from 'components/Button';
 import { InformationBanner } from 'components/InformationBanner';
 import { PageLayout } from 'components/PageLayout';

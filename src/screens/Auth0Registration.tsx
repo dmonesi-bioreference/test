@@ -1,4 +1,4 @@
-import { OnState } from 'app';
+import { OnState } from 'app/components/Shell';
 
 import { IdentityForm } from './IdentityForm';
 import { LoginPage } from './LoginPage';

@@ -6,7 +6,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Shell } from 'app';
+import { Shell } from 'app/components/Shell';
 import { Auth0Registration } from 'screens/Auth0Registration';
 
 declare namespace auth0 {
@@ -69,15 +69,6 @@ async function login({
         }
       });
     });
-
-    // Our types here are stale, so we're overriding them for
-    // this method invocation. Type definitions are 9.14, we're
-    // using 9.18
-    //
-    // @ts-ignore
-    // webAuth.redirect.loginWithCredentials(options, (error) =>
-    //   console.error('Auth0 Error:', error)
-    // );
   }
 }
 
@@ -85,6 +76,7 @@ async function register({
   firstName,
   lastName,
   mobileNumber,
+  patientGuid,
   relationshipToPatient,
   dateOfBirth,
   email,
@@ -93,6 +85,7 @@ async function register({
   | 'firstName'
   | 'lastName'
   | 'mobileNumber'
+  | 'patientGuid'
   | 'relationshipToPatient'
   | 'dateOfBirth'
   | 'email'
@@ -126,19 +119,21 @@ async function register({
     if ('auth0' in window) {
       // @ts-ignore
       const webAuth = new window.auth0.WebAuth(params);
+      const userMetadata: Partial<AuthenticatedSession> = {
+        terms_version: '0.1',
+        terms_given: 'true',
+        terms_timestamp: new Date().toISOString(),
+        nickname: firstName,
+        name: `${firstName} ${lastName}`,
+        patient_guid: patientGuid,
+        phone_number: mobileNumber,
+        relation_to_patient: relationshipToPatient,
+        dob: dateOfBirth as any,
+      };
 
       webAuth.redirect.signupAndLogin(
         {
-          userMetadata: {
-            termsVersion: '0.1',
-            termsGiven: 'true',
-            termsTimestamp: new Date().toISOString(),
-            firstName,
-            lastName,
-            mobileNumber,
-            relationshipToPatient,
-            dateOfBirth,
-          },
+          userMetadata,
           email,
           password,
           connection: process.env.AUTH0_REALM || '',
@@ -161,6 +156,16 @@ async function register({
 ReactDOM.render(
   <Shell
     onSession={async () => Promise.reject('No session available')}
+    onPatientGuid={async () => {
+      const config = getConfig();
+      const { Guid, Source } = config.extraParams;
+
+      if (Guid) {
+        return { guid: Guid || '', source: Source || '' };
+      } else {
+        return Promise.reject('No GUID found');
+      }
+    }}
     onAuthenticate={async ({ forms }) => {
       const { email, password } = forms.login.values;
 
@@ -169,17 +174,20 @@ ReactDOM.render(
         password,
       });
     }}
-    onRegistration={async ({ forms }) => {
-      const { email, phone: mobileNumber } = forms.caregiverContact.values;
-      const { password } = forms.password.values;
-      const { firstName, lastName } = forms.caregiverName.values;
+    onRegistration={async (context) => {
+      const { email, phone: mobileNumber } =
+        context.forms.caregiverContact.values;
+      const { password } = context.forms.password.values;
+      const { firstName, lastName } = context.forms.caregiverName.values;
+      const { patientGuid } = context.auth;
       const { relationship: relationshipToPatient, dob: dateOfBirth } =
-        forms.caregiverRelationship.values;
+        context.forms.caregiverRelationship.values;
 
       return await register({
         email,
         mobileNumber,
         password,
+        patientGuid,
         firstName,
         lastName,
         relationshipToPatient,

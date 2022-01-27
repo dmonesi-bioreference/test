@@ -9,6 +9,10 @@ export default function healthProfile() {
   const sessionMock: AuthenticatedSession = {
     nickname: 'Barbara',
     name: 'Barbara Jackson',
+    patient_guid: '1234',
+    terms_version: '0.1',
+    terms_given: 'true',
+    terms_timestamp: '',
     picture: '',
     updated_at: '',
     dob: new Date(Date.UTC(1989, 3, 9)),

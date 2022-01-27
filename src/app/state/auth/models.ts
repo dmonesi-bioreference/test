@@ -1,12 +1,20 @@
 declare global {
   interface AuthenticatedSession {
-    nickname: string;
-    name: string;
-    picture: string;
-    updated_at: string;
-    email: string;
+    dob: Date;
     email_verified: boolean;
+    terms_timestamp: string;
+    terms_version: string;
+    terms_given: string;
+    email: string;
+    location: string;
+    name: string;
+    nickname: string;
+    patient_guid: string;
+    phone_number: string;
+    picture: string;
+    relation_to_patient: string;
     sub: string;
+    updated_at: string;
   }
 
   interface PatientInfo {
@@ -22,15 +30,17 @@ export function isAuthenticatedSession(
     return false;
   }
 
-  const sessionProps = [
-    'nickname',
-    'name',
-    'picture',
-    'updated_at',
+  const sessionProps: (keyof AuthenticatedSession)[] = [
+    'dob',
     'email',
-    'email_verified',
+    'name',
+    'nickname',
+    'patient_guid',
+    'picture',
     'sub',
+    'updated_at',
   ];
+
   const keys = Object.keys(candidate as object);
 
   return sessionProps.every((sessionProp) => keys.includes(sessionProp));

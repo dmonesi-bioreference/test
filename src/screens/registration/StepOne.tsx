@@ -1,16 +1,14 @@
+import { CaregiverNameElements } from 'app/components/CaregiverNameElements';
 import {
-  CaregiverNameElements,
   useAppEvents,
   useAppState,
   useAppTranslation,
-} from 'app';
-import {
-  Button,
-  Heading,
-  PageLayout,
-  PageSection,
-  ProcessBar,
-} from 'components';
+} from 'app/components/Shell';
+import { Button } from 'components/Button';
+import { PageLayout } from 'components/PageLayout';
+import { PageSection } from 'components/PageSection';
+import { ProcessBar } from 'components/ProcessBar';
+import { Heading } from 'components/Typography';
 import { tokens } from 'styles';
 
 export const StepOne = () => {

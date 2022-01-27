@@ -1,4 +1,4 @@
-import { OnState } from 'app';
+import { OnState } from 'app/components/Shell';
 
 import { StepFour } from './StepFour';
 import { StepOne } from './StepOne';

@@ -73,6 +73,4 @@ async function main() {
   await buildAndAnalyzeLoginPage();
 }
 
-main()
-  .then(() => console.log('Unable to build and analyze Auth0 files.'))
-  .catch(console.error);
+main().catch(console.error);

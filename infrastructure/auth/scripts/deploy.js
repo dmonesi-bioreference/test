@@ -38,7 +38,8 @@ async function getAuth0Deployment() {
   try {
     await dump({ output_folder: auth('deployment'), config });
   } catch (error) {
-    console.error(`Unable to get tenant from Auth0: ${error}`);
+    console.error(error);
+    throw error;
   }
 }
 
@@ -50,7 +51,7 @@ async function buildLoginPage() {
     treeShaking: true,
     target: ['chrome58', 'firefox57', 'safari11', 'edge18'],
     define: {
-      'process.env.AUTH0_REALM': process.env.AUTH0_REALM,
+      'process.env.AUTH0_REALM': `"${process.env.AUTH0_REALM}"`,
       'process.env.NODE_ENV': '"auth0"',
       'process.env.__NEXT_TRAILING_SLASH': 'false',
       'process.env.__NEXT_ROUTER_BASEPATH': '""',
@@ -92,7 +93,8 @@ async function deployAuth0Content() {
       config,
     });
   } catch (error) {
-    console.error(`Unable to get tenant from Auth0: ${error}`);
+    console.error(error);
+    throw error;
   }
 }
 

@@ -1,17 +1,15 @@
+import { CaregiverContactElements } from 'app/components/CaregiverContactElements';
 import {
-  CaregiverContactElements,
   useAppEvents,
   useAppState,
   useAppTranslation,
-} from 'app';
-import {
-  Button,
-  Heading,
-  PageLayout,
-  PageSection,
-  ProcessBar,
-  StepTitle,
-} from 'components';
+} from 'app/components/Shell';
+import { Button } from 'components/Button';
+import { PageLayout } from 'components/PageLayout';
+import { PageSection } from 'components/PageSection';
+import { ProcessBar } from 'components/ProcessBar';
+import { StepTitle } from 'components/StepTitle';
+import { Heading } from 'components/Typography';
 import { tokens } from 'styles';
 
 export const StepTwo = () => {

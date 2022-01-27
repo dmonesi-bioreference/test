@@ -1,11 +1,11 @@
+import { IdentityElements } from 'app/components/IdentityElements';
 import {
-  IdentityElements,
   OnState,
   useAppEvents,
   useAppSelector,
   useAppState,
   useAppTranslation,
-} from 'app/components';
+} from 'app/components/Shell';
 import {
   Button,
   Heading,

@@ -10,20 +10,6 @@ declare global {
     login: { type: 'login' };
     register: { type: 'register' };
   }
-
-  interface AuthenticatedSession {
-    nickname: string;
-    name: string;
-    picture: string;
-    updated_at: string;
-    dob: Date;
-    location: string;
-    phone_number: string;
-    email: string;
-    email_verified: boolean;
-    relation_to_patient: string;
-    sub: string;
-  }
 }
 
 export const actions = {

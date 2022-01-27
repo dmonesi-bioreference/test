@@ -27,7 +27,7 @@ async function getAuth0SessionForNonDemoPages() {
 
   if (!result.ok) {
     if (typeof window !== 'undefined') {
-      window.location.href = '/api/auth/login';
+      window.location.href = `/api/auth/login${window.location.search}`;
       await new Promise((resolve) => setTimeout(resolve, 10_000_000));
     } else {
       throw new Error(result.status.toString());

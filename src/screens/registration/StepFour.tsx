@@ -1,19 +1,16 @@
+import { CaregiverPasswordElements } from 'app/components/CaregiverPasswordElements';
 import {
-  CaregiverPasswordElements,
   useAppEvents,
   useAppState,
   useAppTranslation,
-} from 'app';
-import {
-  Button,
-  Heading,
-  InformationBanner,
-  PageLayout,
-  PageSection,
-  ProcessBar,
-  StepTitle,
-  Typography,
-} from 'components';
+} from 'app/components/Shell';
+import { Button } from 'components/Button';
+import { InformationBanner } from 'components/InformationBanner';
+import { PageLayout } from 'components/PageLayout';
+import { PageSection } from 'components/PageSection';
+import { ProcessBar } from 'components/ProcessBar';
+import { StepTitle } from 'components/StepTitle';
+import { Heading, Typography } from 'components/Typography';
 import { tokens } from 'styles';
 
 export const StepFour = () => {
