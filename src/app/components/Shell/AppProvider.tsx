@@ -103,10 +103,10 @@ export function AppProvider({
         getTestStatus: () => send('CHECK_TESTS'),
         getAppointmentStatus: () => send('GET_APPOINTMENT_STATUS'),
         viewTestResults: () => send('VIEW_TEST_RESULTS'),
-        fetchSingleArticle: (payload?: { articleId: string }) =>
+        fetchSingleArticle: (payload?: { articleIdentifier: string }) =>
           send({
             type: 'FETCH_SINGLE_ARTICLE',
-            articleId: payload ? payload.articleId : '',
+            articleIdentifier: payload ? payload.articleIdentifier : '',
           }),
         fetchAllArticles: () => send('fetchAllArticles'),
         fetchAllFAQs: () => send('fetchAllFAQs'),

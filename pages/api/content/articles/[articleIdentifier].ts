@@ -22,17 +22,17 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const id = req.query.articleId;
+  const identifier = req.query.articleIdentifier;
 
   if (!config.pimcore.key) return res.status(404).json({});
 
-  if (ensureTypeIsStringBecauseNextJsHasLooseRequestTypes(id)) {
-    const article = await Services.Content.article(id);
-
-    res.status(200).json(article);
-  } else {
-    return res
-      .status(400)
-      .json(Errors.badRequest('unable to parse article ID, multiple options'));
+  if (!ensureTypeIsStringBecauseNextJsHasLooseRequestTypes(identifier)) {
+    return res.status(400).json(Errors.badRequest('unable to parse article ID, multiple options'));
   }
+
+  const article = isNaN(Number(identifier))
+    ? await Services.Content.articleByUrlSlug(identifier)
+    : await Services.Content.articleById(identifier);
+  
+  res.status(200).json(article);
 }

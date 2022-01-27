@@ -11,7 +11,7 @@ declare global {
   interface AppEventMap {
     fetchSingleArticle: {
       type: 'FETCH_SINGLE_ARTICLE',
-      articleId: string,
+      articleIdentifier: string,
     };
     fetchAllArticles: {
       type: 'fetchAllArticles';
@@ -23,7 +23,7 @@ declare global {
 }
 
 export const context: {
-  currentArticleId?: string,
+  currentArticleIdentifier?: string,
   articles: { data: Article[], errors: ContentFailure[] },
   FAQs: { data: FAQ[], errors: ContentFailure[] },
 } = {
@@ -33,8 +33,8 @@ export const context: {
 
 export const actions = {
   collectArticleId: assign((context: AppContext, event: AppEvents) => {
-    const articleId = 'articleId' in event ? event?.articleId : '';
-    context.content.currentArticleId = articleId;
+    const articleIdentifier = 'articleIdentifier' in event ? event?.articleIdentifier : '';
+    context.content.currentArticleIdentifier = articleIdentifier;
   }),
   articlesUpdate: assign((context: AppContext, event: AppEvents) => {
     const data = 'data' in event ? event?.data : [];

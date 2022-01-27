@@ -1,9 +1,9 @@
 export const Content = {
   article: async (context: AppContext): Promise<Article> => {
-    if (!context.content.currentArticleId) return Promise.reject();
+    if (!context.content.currentArticleIdentifier) return Promise.reject();
 
     const result = await fetch(
-      `/api/content/articles/${context.content.currentArticleId}`
+      `/api/content/articles/${context.content.currentArticleIdentifier}`
     );
     return (await result.json()) as Article;
   },

@@ -23,12 +23,22 @@ export function createContentClient(overrides: Partial<Configuration>) {
 
     return requestConfig;
   });
-
+  
   const handlers = {
-    article: async (articleId: string) =>
+    articleByUrlSlug: async (articleUrlSlug: string) =>
+      await client
+        .post<{ data: { getArticleListing: { edges: { node: Article }[] } } }>(
+          GRAPHQL_ENDPOINT,
+          { query: Queries.articleByUrlSlug(`/${articleUrlSlug}`) }
+        )
+        .then(responseBody)
+        .then((response) =>
+          response.data.getArticleListing.edges[0].node
+        ),
+    articleById: async (articleId: string) =>
       await client
         .post<{ data: { getArticle: Article } }>(GRAPHQL_ENDPOINT, {
-          query: Queries.article(articleId),
+          query: Queries.articleById(articleId),
         })
         .then(responseBody)
         .then((response) => response.data.getArticle),

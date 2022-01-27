@@ -5,8 +5,8 @@ import { ArticlePage } from 'screens';
 
 export default function Resources() {
   const router = useRouter();
-  const { articleId } = router.query;
-
+  const { articleIdentifier } = router.query;
+  
   return (
     <>
       <Head>
@@ -14,7 +14,7 @@ export default function Resources() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <ArticlePage articleId={articleId as string} />
+      <ArticlePage articleIdentifier={articleIdentifier as string} />
     </>
   );
 }

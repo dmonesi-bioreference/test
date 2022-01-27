@@ -32,7 +32,53 @@ describe('Client', () => {
 });
 
 describe('Handlers', () => {
-  it('.article(articleId) maps the given payload into an article', async () => {
+  it('.article(articleUrlSlug) maps the given payload into an article', async () => {
+    let givenRequest = {} as RestRequest<DefaultRequestBody, RequestParams>;
+    const article = {
+      id: '1',
+      bannerImage: {
+        id: '',
+        filename: '',
+        fullpath: '',
+        mimetype: '',
+        type: '',
+      },
+      label: '',
+      title: 'Title 1',
+      blurb: '',
+      content: '',
+      slug: 'slug',
+      published: 1,
+      reviewByDate: 1,
+      owner: '',
+      introduceAt: 'WAITING' as IntroduceAt,
+    };
+
+    server.use(
+      rest.post('/gdx-webservices/patient', (request, response, context) => {
+        givenRequest = request;
+        return response(
+          context.status(200),
+          context.json({
+            data: {
+              getArticleListing: {
+                edges: [{ node: article }],
+              },
+            },
+          })
+        );
+      })
+    );
+
+    const result = await handlers.articleByUrlSlug('a-url');
+
+    expect(result).toEqual(article);
+
+    // @ts-ignore
+    expect(givenRequest.body?.query).toContain('getArticleListing(filter: "{\\"slug\\":\\"/a-url\\"}")');
+  });
+  
+  it('.articleById(articleId) maps the given payload into an article', async () => {
     let givenRequest = {} as RestRequest<DefaultRequestBody, RequestParams>;
     const article = {
       id: '1',
@@ -64,7 +110,7 @@ describe('Handlers', () => {
       })
     );
 
-    const result = await handlers.article('1234');
+    const result = await handlers.articleById('1234');
 
     expect(result).toEqual(article);
 

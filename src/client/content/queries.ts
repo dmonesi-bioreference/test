@@ -1,4 +1,69 @@
-export const article = (id: String) => `
+export const articleByUrlSlug = (urlSlug: String) => `
+  query {
+    getArticleListing(filter: "{\\"slug\\":\\"${urlSlug}\\"}") {
+      edges {
+        node {
+          id
+          bannerImage {
+            id
+            filename
+            fullpath
+            mimetype
+            type
+            filesize
+          }
+          label
+          title
+          blurb
+          contents {
+            __typename
+            ... on object_MediaBlock{
+              id
+              title
+              subObject: content{
+                __typename
+                ... on object_Audio{
+                  id
+                  srcUrl
+                }
+                ... on object_Video{
+                  id
+                  srcUrl
+                }
+              }
+            }
+            ... on object_TipBlock{
+              id
+              title
+              subObject: content{
+                __typename
+                ... on object_Tip{
+                  id
+                  content
+                }
+              }
+            }
+            ... on object_TextBlock{
+              id
+              title
+              content
+            }
+          }
+          slug
+          author
+          published
+          unpublishDate
+          reviewByDate
+          owner
+          priority
+          introduceAt
+        }
+      }
+    }
+  }
+`;
+
+export const articleById = (id: String) => `
   query {
     getArticle(id: ${id}) {
       id
@@ -15,7 +80,34 @@ export const article = (id: String) => `
       blurb
       contents {
         __typename
-        ... on object_TextBlock {
+        ... on object_MediaBlock{
+          id
+          title
+          subObject: content{
+            __typename
+            ... on object_Audio{
+              id
+              srcUrl
+            }
+            ... on object_Video{
+              id
+              srcUrl
+            }
+          }
+        }
+        ... on object_TipBlock{
+          id
+          title
+          subObject: content{
+            __typename
+            ... on object_Tip{
+              id
+              content
+            }
+          }
+        }
+        ... on object_TextBlock{
+          id
           title
           content
         }
@@ -51,7 +143,34 @@ export const articles = () => `
           blurb
           contents {
             __typename
-            ... on object_TextBlock {
+            ... on object_MediaBlock{
+              id
+              title
+              subObject: content{
+                __typename
+                ... on object_Audio{
+                  id
+                  srcUrl
+                }
+                ... on object_Video{
+                  id
+                  srcUrl
+                }
+              }
+            }
+            ... on object_TipBlock{
+              id
+              title
+              subObject: content{
+                __typename
+                ... on object_Tip{
+                  id
+                  content
+                }
+              }
+            }
+            ... on object_TextBlock{
+              id
               title
               content
             }

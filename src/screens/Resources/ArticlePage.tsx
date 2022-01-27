@@ -18,7 +18,7 @@ import {
 import ContentPageStyled from './ContentPage.styles';
 
 interface ArticlePageProps {
-  articleId?: string;
+  articleIdentifier?: string;
 }
 
 export const ArticlePage: React.FC<ArticlePageProps> = (props) => {
@@ -35,14 +35,14 @@ export const ArticlePage: React.FC<ArticlePageProps> = (props) => {
   const error = useAppState('content.articles.failure');
 
   useEffect(() => {
-    const article = articles.find((e) => e.id === props.articleId);
+    const article = articles.find((e) => e.id === props.articleIdentifier || e.slug === `/${props.articleIdentifier}`);
     setArticleTitle(article ? article.title : '');
     setArticleContents(article && article.contents ? article.contents.map(e => ({ title: e.title, content: e.content })) : []);
   }, [articles, props]);
 
   useEffect(() => {
     if (articleContents.length == 0) {
-      events.fetchSingleArticle({ articleId: props.articleId as string });
+      events.fetchSingleArticle({ articleIdentifier: props.articleIdentifier as string });
     }
   }, [articleContents, events, props]);
 

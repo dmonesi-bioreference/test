@@ -52,7 +52,7 @@ export const Articles = () => {
         <div style={{ marginBottom: tokens.spacingLarge }}>
           <Content>{article.blurb}</Content>
         </div>
-        <Button kind="primary" href={`/demo/article/${article.id}`}>
+        <Button kind="primary" href={`/demo/article/${article.slug}`}>
           {t('sections.resources.story.readMore')}
         </Button>
       </LinkCard>

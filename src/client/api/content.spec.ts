@@ -19,7 +19,32 @@ describe('Content.articles', () => {
 });
 
 describe('Content.article', () => {
-  it('calls the article api with an articleId', async () => {
+  it('calls the article api with an article url slug', async () => {
+    const articleUrlSlug = 'a-url';
+    const listener = jest.fn();
+
+    server.use(
+      rest.get(
+        '/api/content/articles/:articleUrlSlug',
+        (request, response, context) => {
+          listener(request.params.articleUrlSlug);
+          return response(
+            context.status(200),
+            context.json(Mocks.article.single)
+          );
+        }
+      )
+    );
+
+    const response = await Content.article({
+      content: { currentArticleIdentifier: articleUrlSlug },
+    } as any);
+
+    expect(listener).toHaveBeenCalledWith(articleUrlSlug);
+    expect(response).toEqual(Mocks.article.single);
+  });
+
+  it('calls the article api with an article id', async () => {
     const articleId = '1234';
     const listener = jest.fn();
 
@@ -37,7 +62,7 @@ describe('Content.article', () => {
     );
 
     const response = await Content.article({
-      content: { currentArticleId: articleId },
+      content: { currentArticleIdentifier: articleId },
     } as any);
 
     expect(listener).toHaveBeenCalledWith(articleId);
