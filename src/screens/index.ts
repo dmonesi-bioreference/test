@@ -1,6 +1,7 @@
 export * from './AuthenticationToken';
 export * from './DataConsent';
 export * from './DataSharingSettings';
+export * from './DeleteAccount';
 export * from './HealthProfile';
 export * from './Home';
 export * from './IdentityForm';

@@ -40,7 +40,7 @@ export interface ButtonProps {
   spreadContent?: boolean;
   /** Tells the browser where to open the link. Used only if `href` is set. */
   target?: '_blank' | '_parent' | '_self' | '_top';
-  color?: 'light' | 'default';
+  color?: 'light' | 'default' | 'danger';
   /** Used to pass className down to component */
   className?: string;
 }

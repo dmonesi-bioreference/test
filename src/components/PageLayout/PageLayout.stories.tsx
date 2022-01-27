@@ -14,7 +14,7 @@ export default {
 
 const Template: Story = (args) => (
   <div style={{ width: 375 }}>
-    <PageLayout {...args}>
+    <PageLayout kind="primary" {...args}>
       <Typography type="heading" level="1">
         This is a primary heading
       </Typography>

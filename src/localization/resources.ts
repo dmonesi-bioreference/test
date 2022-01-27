@@ -1,7 +1,11 @@
 export const resources = {
   en: {
     translation: {
-      application: 'GeneDx',
+      application: {
+        title: 'GeneDx',
+        customerServiceEmailAddress: 'zebras@genedx.com',
+        customerServicePhoneNumber: '1-888-XXXX option 3',
+      },
       pages: {
         healthProfile: {
           title: 'Health Profile',
@@ -64,6 +68,31 @@ export const resources = {
               6: {
                 label: 'Relation to Patient',
               },
+            },
+          },
+        },
+        deleteAccount: {
+          title: 'Delete Account',
+          description: {
+            paragraph1:
+              'Your GeneDX Patient Portal account can be deleted by emailing {{ customerServiceEmailAddress }} or by calling {{ customerServicePhoneNumber }}.',
+            paragraph2:
+              'Any information provided by you will be stored securely, and may be used in a de-identified manner for research and/or external partnerships.',
+          },
+          implications: {
+            1: {
+              question: 'If I delete my account, can I still get test results?',
+              answer:
+                'You can still get your test results, but they must be delivered by your care provider or physician.',
+            },
+          },
+          actions: {
+            primary: {
+              label: 'Email Us',
+              emailSubject: 'Delete My Account',
+            },
+            secondary: {
+              label: 'Call Us',
             },
           },
         },

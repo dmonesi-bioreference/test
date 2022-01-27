@@ -16,7 +16,7 @@ const AudioStyled = styled.div`
   .audio__content {
     display: flex;
     flex-direction: column;
-    align-content: center;
+    align-items: center;
     padding: 0 ${tokens.spacingLarge} ${tokens.spacingLarge};
   }
 

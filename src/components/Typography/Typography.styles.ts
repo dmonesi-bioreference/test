@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import { tokens, base, colors } from 'styles';
 
 const TypographyStyled = styled.div`
-  ${base}
+  ${base};
   word-break: break-word;
   font-family: ${tokens.fontFamilySansSerif};
   line-height: ${tokens.lineHeightDense};
   margin: 0;
   overflow: hidden;
+  max-width: 40ch;
 
   &.default {
     color: ${tokens.colorDefaultText};

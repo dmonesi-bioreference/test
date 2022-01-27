@@ -241,10 +241,14 @@ const ButtonStyled = styled.button`
     height: fit-content;
     padding: 0;
     white-space: pre-wrap;
-    width: auto;
+    width: fit-content;
 
     /* Recommended for Internet Explorer 5.5+ */
     word-wrap: break-word;
+
+    &.danger {
+      color: ${tokens.colorDanger};
+    }
 
     &:hover:not(.button--disabled) {
       color: ${tokens.colorPrimaryHover};
@@ -304,11 +308,11 @@ const ButtonStyled = styled.button`
   }
 
   .button__prefix :first-child {
-    margin-right: ${tokens.spacingXSmall};
+    margin-right: ${tokens.spacingXxSmall};
   }
 
   .button__suffix :last-child {
-    margin-left: ${tokens.spacingXSmall};
+    margin-left: ${tokens.spacingXxSmall};
   }
 
   &.button--space-between {

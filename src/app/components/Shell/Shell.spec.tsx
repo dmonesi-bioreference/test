@@ -56,7 +56,7 @@ test('Shell themes are provided to styled components', async () => {
 test('Shell wrappers provide access to i18n helpers', async () => {
   function I18nDiagnostics() {
     const t = useAppTranslation();
-    return <>{t('application')}</>;
+    return <>{t('application.title')}</>;
   }
 
   const app = render(
@@ -65,5 +65,5 @@ test('Shell wrappers provide access to i18n helpers', async () => {
     </Shell>
   );
 
-  await app.findByText(resources.en.translation.application);
+  await app.findByText(resources.en.translation.application.title);
 });

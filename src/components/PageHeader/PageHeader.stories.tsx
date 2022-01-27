@@ -18,5 +18,6 @@ const Template: Story<PageHeaderProps> = (args) => (
 export const Primary = Template.bind({});
 
 Primary.args = {
+  belongsTo: 'primaryPage',
   description: 'And an optional description.',
 };

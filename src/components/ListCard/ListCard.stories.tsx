@@ -23,7 +23,11 @@ const Template: Story<ListCardProps> = (args) => (
     <Typography type="heading" level="5">
       Item Two
     </Typography>
-    <Button kind="link-medium" suffix={<Icon name="chevron-right" />}>
+    <Button
+      kind="link-medium"
+      suffix={<Icon name="chevron-right" />}
+      spreadContent
+    >
       And an action
     </Button>
   </ListCard>

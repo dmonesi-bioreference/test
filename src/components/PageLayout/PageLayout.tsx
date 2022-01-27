@@ -5,6 +5,7 @@ import { GlobalStyle } from 'index';
 import PageLayoutStyled from './PageLayout.styles';
 
 export interface PageLayoutProps {
+  kind?: 'preLogin' | 'home' | 'primary' | 'secondary' | 'content';
   containsCards?: boolean;
   customHeader?: React.ReactNode;
   description?: string;
@@ -17,19 +18,26 @@ const PageLayout: React.FC<PageLayoutProps> = ({
   children,
   ...props
 }) => {
-  const withCards = containsCards ? 'page__content--with-cards' : '';
+  const belongsTo = props.kind || 'primary';
+  const withCards = containsCards ? '--with-cards' : '';
   const withHeader = props.title ? (
-    <PageHeader description={props.description}>{props.title}</PageHeader>
+    <PageHeader belongsTo={`${belongsTo}Page`} description={props.description}>
+      {props.title}
+    </PageHeader>
   ) : null;
   return (
     <PageLayoutStyled className={`page-layout--${props.theme}`}>
       <GlobalStyle />
       <Header />
       {props.customHeader && (
-        <div className="page__custom-header">{props.customHeader}</div>
+        <div className="page-layout__custom-header">{props.customHeader}</div>
       )}
       {withHeader}
-      <div className={`page__content ${withCards}`}>{children}</div>
+      <div
+        className={`page-layout__content page-layout__content${withCards} page-layout__content--${belongsTo}`}
+      >
+        {children}
+      </div>
     </PageLayoutStyled>
   );
 };

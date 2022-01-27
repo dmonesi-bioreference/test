@@ -18,21 +18,25 @@ const PageLayoutStyled = styled.div`
     background-color: ${tokens.colorBackgroundResources};
   }
 
-  .page__content > * :not(:last-child) {
-    margin-bottom: ${tokens.spacingXLarge};
+  .page-layout__content > * :not(:last-child) {
+    margin-bottom: ${tokens.spacingXxLarge};
   }
 
-  .page__content {
+  .page-layout__custom-header {
+    padding: ${tokens.spacing};
+    padding-bottom: ${tokens.spacingLarge};
+  }
+
+  .page-layout__content {
     display: flex;
     flex-direction: column;
     align-content: center;
-    padding: ${tokens.spacingXxLarge} ${tokens.spacingXLarge}
-      ${tokens.spacingXxxxLarge} ${tokens.spacingXLarge};
+    padding: 0 ${tokens.spacingLarge} ${tokens.spacingXxxxLarge}
+      ${tokens.spacingLarge};
   }
 
-  .page__content--with-cards {
-    padding: ${tokens.spacingLarge} ${tokens.spacing} ${tokens.spacingXxxxLarge}
-      ${tokens.spacing};
+  .page-layout__content--with-cards {
+    padding: 0 ${tokens.spacing} ${tokens.spacingXxxxLarge} ${tokens.spacing};
   }
 `;
 

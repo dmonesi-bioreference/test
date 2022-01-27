@@ -8,7 +8,7 @@ const PageSection: React.FC<PageSectionProps> = (props) => {
   return (
     <PageSectionStyled className="page-section">
       {props.header && <header>{props.header}</header>}
-      {props.children}
+      <div className="page-section__content">{props.children}</div>
     </PageSectionStyled>
   );
 };
