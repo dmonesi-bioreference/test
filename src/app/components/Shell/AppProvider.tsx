@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 
 import { app, setupDispatchMap } from 'app/state';
 import { getPatientInfo } from 'app/web';
+import { Errors } from 'client/errors';
 
 import { AppEventContext, AppServiceContext } from './context';
 
@@ -31,8 +32,12 @@ const emptySession: AuthenticatedSession = {
   name: '',
   picture: '',
   updated_at: '',
+  dob: new Date(),
+  location: '',
+  phone_number: '',
   email: '',
   email_verified: false,
+  relation_to_patient: '',
   sub: '',
 };
 
@@ -57,6 +62,10 @@ export function AppProvider({
   const requestHandlers: RequestServiceMap = {
     handleVerifyPatientInfoRequest:
       requests.verifyPatientInfo || (async () => ({})),
+    handleCaregiverProfileRequest:
+      requests.caregiverProfile ||
+      (async () =>
+        Promise.reject(Errors.api('No caregiver profile available'))),
   };
 
   const services = {

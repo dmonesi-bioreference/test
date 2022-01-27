@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { Client } from 'client';
+import { Errors } from 'client/errors';
+import { Services } from 'client/services';
 import { config } from 'config';
 
 /**
@@ -26,14 +27,12 @@ export default async function handler(
   if (!config.pimcore.key) return res.status(404).json({});
 
   if (ensureTypeIsStringBecauseNextJsHasLooseRequestTypes(id)) {
-    const article = await Client.Services.Content.article(id);
+    const article = await Services.Content.article(id);
 
     res.status(200).json(article);
   } else {
     return res
       .status(400)
-      .json(
-        Client.Errors.badRequest('unable to parse article ID, multiple options')
-      );
+      .json(Errors.badRequest('unable to parse article ID, multiple options'));
   }
 }

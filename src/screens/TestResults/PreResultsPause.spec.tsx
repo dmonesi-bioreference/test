@@ -9,7 +9,7 @@ describe('The Pre Results Pause page', () => {
 
   it('has a title', async () => {
     const page = await renderWithShell(<PreResultsPause />);
-    await page.findAllByText('Let’s take a moment', { exact: false });
+    await page.findAllByText("Let's take a moment", { exact: false });
   });
 
   it('has a description', async () => {

@@ -81,7 +81,11 @@ export const Typography: React.FC<TypographyProps> = (props) => {
 
       if (level === '7' || level === '8') {
         return (
-          <TypographyStyled className={`level${level} ${color} ${alignment}`}>
+          <TypographyStyled
+            role="heading"
+            aria-level={parseInt(level)}
+            className={`level${level} ${color} ${alignment}`}
+          >
             {props.children}
           </TypographyStyled>
         );
@@ -91,6 +95,8 @@ export const Typography: React.FC<TypographyProps> = (props) => {
         <TypographyStyled
           as={`h${level}`}
           className={`level${level} ${color} ${alignment}`}
+          role="heading"
+          aria-level={parseInt(level)}
         >
           {props.objectToWrap ? (
             <div className="floated">{props.objectToWrap}</div>

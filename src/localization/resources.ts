@@ -10,41 +10,23 @@ export const resources = {
         healthProfile: {
           title: 'Health Profile',
           description:
-            'A detailed overview of {{patientsName}}’s needs for new providers or caregivers.',
-          actions: {
-            1: {
-              label: 'Download print version',
-            },
-          },
+            "A detailed overview of {{patientsNickname}}'s needs for new providers or caregivers.",
+          actions: { download: { label: 'Download print version' } },
           basicInformation: {
             title: 'Basic Information',
             fields: {
-              1: {
-                label: 'Child’s Name',
-              },
-              2: {
-                label: 'Date of Birth',
-              },
-              3: {
-                label: 'Genetic Gender',
-              },
-              4: {
-                label: 'Gender Identification',
-              },
-              5: {
-                label: 'Insurance',
-              },
-              6: {
-                label: 'Relation to Caregiver',
-              },
+              name: { label: "Child's Name" },
+              dob: { label: 'Date of Birth' },
+              gender: { label: 'Genetic Gender' },
+              genderIdentity: { label: 'Gender Identification' },
+              insurance: { label: 'Insurance' },
+              relationship: { label: 'Relation to Caregiver' },
             },
           },
           primaryIndication: {
             title: 'Primary Indication',
             fields: {
-              1: {
-                label: 'Phenotype',
-              },
+              phenotype: { label: 'Phenotype' },
             },
           },
           yourDetails: {
@@ -98,8 +80,8 @@ export const resources = {
         },
         resources: {
           title: 'Resources',
-          description:
-            'Here are some educational resources to help you better understand the who, what, and why’s of genetic testing.',
+          subTitle:
+            "Here are some educational resources to help you better understand the who, what, and why's of genetic testing.",
           section: {
             audio: {
               title: 'Genetic Counselor Support',
@@ -177,7 +159,7 @@ export const resources = {
         home: {},
         results: {
           preResultsPause: {
-            title: 'Let’s take a moment together before viewing results',
+            title: "Let's take a moment together before viewing results",
             description: {
               paragraph1:
                 'For some people, receiving test results can be difficult to understand and may cause anxiety, regardless of the results.',
@@ -187,7 +169,7 @@ export const resources = {
             audio: {
               title: 'Genetic Counselor Support',
               description:
-                'Laura explains why it’s important to be in the right space and mind to review results.',
+                "Laura explains why it's important to be in the right space and mind to review results.",
               transcript: {
                 1: {
                   title: 'Are you in the right setting?',
@@ -518,14 +500,14 @@ export const resources = {
           caveat:
             'Results typically are returned in 7 days, but can take up to 5 weeks',
           expectation:
-            'NOTE: time is not an indicator of case difficulty or a positive test result. Please allow time for your child’s genetic test to process before calling the lab or your doctor’s office.',
+            "NOTE: time is not an indicator of case difficulty or a positive test result. Please allow time for your child's genetic test to process before calling the lab or your doctor's office.",
           mayVary: 'Please keep in mind that processing time may vary',
           estimate: 'Expect results in {{estimate}} days',
           expected: 'Results expected {{expectedResultsDate}}',
           locationCheck: {
             where: 'Where are you now?',
             report:
-              'It’s been 2 weeks since your genetic test report was generated. Help us deliver the most accurate resources and connections.',
+              "It's been 2 weeks since your genetic test report was generated. Help us deliver the most accurate resources and connections.",
             nicu: 'In the NICU',
             home: 'Newly home and adjusting',
             while: "We've been home for a while",
@@ -535,9 +517,9 @@ export const resources = {
         identity: {
           title: 'Welcome, Barbara & Lisa',
           subTitle:
-            'To make sure we keep your child’s information safe, we have a few details to confirm.',
+            "To make sure we keep your child's information safe, we have a few details to confirm.",
           errors: {
-            title: 'Those details don’t match our records.',
+            title: "Those details don't match our records.",
             attemptsStart: 'Please check them over and try again. You have',
             attemptsEnd: 'authentication attempts left.',
           },
@@ -560,7 +542,7 @@ export const resources = {
         login: {
           welcome: 'Welcome back, Barbara & Lisa',
           journey:
-            'We’re here to support you and your child’s condition along every step of the journey together.',
+            "We're here to support you and your child's condition along every step of the journey together.",
           trouble: 'Having trouble logging in?',
           form: {
             password: {
@@ -577,7 +559,7 @@ export const resources = {
         },
         dataSharingSettings: {
           content: 'Ipsum Dolor set amit lorem',
-          dataSharingHeadingOne: 'Allow Families to see my Child’s:',
+          dataSharingHeadingOne: "Allow Families to see my Child's:",
           headData: 'Data Sharing Settings',
           titleOne: 'Conditions & Disorders',
           titleTwo: 'Medications',
@@ -595,22 +577,22 @@ export const resources = {
           no: 'No thanks',
           continue: 'Continue',
           footer:
-            'You can always change data sharing settings at any time from your child’s health profile.',
+            "You can always change data sharing settings at any time from your child's health profile.",
         },
         authenticationToken: {
           slides: {
             1: {
               title: 'Results & Resources',
               overView:
-                'View and learn about your child’s genetic test results.',
+                "View and learn about your child's genetic test results.",
               content:
-                'We provide you with easy access to your child’s genetic test results, as well as with the resources to learn what it means for your family. Understand the challenges of the present and prepare for your child’s future.',
+                "We provide you with easy access to your child's genetic test results, as well as with the resources to learn what it means for your family. Understand the challenges of the present and prepare for your child's future.",
             },
             2: {
               title: 'Records',
               overView: 'Keep all records in one place.',
               content:
-                'Along with your child’s genetic test results, easily keep record of their symptoms, allergies, medications and any health incidents in preparation for appointments and hospital visits. ',
+                "Along with your child's genetic test results, easily keep record of their symptoms, allergies, medications and any health incidents in preparation for appointments and hospital visits. ",
             },
             3: {
               title: 'Community',
@@ -631,7 +613,7 @@ export const resources = {
           },
           stepTwo: {
             subTitle:
-              'Please let us know how we can notify you of your child’s genetic test results.',
+              "Please let us know how we can notify you of your child's genetic test results.",
           },
           stepThree: {
             subTitle:
@@ -639,14 +621,14 @@ export const resources = {
           },
           stepFour: {
             subTitle:
-              'Lastly, create a strong password to help keep your account and your child’s information safe.',
+              "Lastly, create a strong password to help keep your account and your child's information safe.",
           },
           form: {
             number: {
               toolTipHelperMessage:
-                'We’ll also use this to send you notifications.',
+                "We'll also use this to send you notifications.",
               toolTipTitle: 'Why do we ask for your mobile number?',
-              toolTipContent: ' We’ll send SMS notifications to you here.',
+              toolTipContent: " We'll send SMS notifications to you here.",
               toolTipLink: 'Use your email address instead',
             },
           },

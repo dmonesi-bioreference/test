@@ -3359,6 +3359,11 @@
   resolved "https://registry.yarnpkg.com/@types/auth0-js/-/auth0-js-9.14.5.tgz#f1f51677e8495a56a8052bd094db1efd08361a48"
   integrity sha512-ZIHdtQ6Fkn7C+qAECtiP/+igb/vd0b+lOw018c+xEW2QDQFLSnDjtQAPLkdZopOsVdiXdC4JMS5w8ZHQfRGHtw==
 
+"@types/auth0@2.34.10":
+  version "2.34.10"
+  resolved "https://registry.yarnpkg.com/@types/auth0/-/auth0-2.34.10.tgz#6ad475650f4723986ca11a02f4590a10e8245753"
+  integrity sha512-MgNPL7hEwWTPPmq9zin10kTTpdGvZLgpz7sBVK3YPyqasDGtuqJs6MiLkroKWhQq4W6lVFUQ52Wuo5QUomuOxA==
+
 "@types/babel__core@^7.0.0", "@types/babel__core@^7.1.7":
   version "7.1.18"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.18.tgz#1a29abcc411a9c05e2094c98f9a1b7da6cdf49f8"
@@ -4861,7 +4866,7 @@ auth0-js@9.18.0:
     url-join "^4.0.1"
     winchan "^0.2.2"
 
-auth0@^2.36.2:
+auth0@2.37.0, auth0@^2.36.2:
   version "2.37.0"
   resolved "https://registry.yarnpkg.com/auth0/-/auth0-2.37.0.tgz#7147ead0e6bbbeada96bb4d5113eac3011ba7ea4"
   integrity sha512-6Kz/+7d3PRb1zKR6O7CVt0EHAu+dphLFbJcvCEn7z9mUyjM0kJp/RnkALfFLfVzmSsaWeBqQNi2uZmdjReCjzQ==

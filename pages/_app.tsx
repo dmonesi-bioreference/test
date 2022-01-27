@@ -1,7 +1,8 @@
 import type { AppProps } from 'next/app';
+import { useMemo } from 'react';
 
 import { Shell } from 'app/components/Shell';
-import { Client } from 'client';
+import { Api } from 'client/api';
 
 import 'inspect';
 
@@ -38,8 +39,18 @@ async function getAuth0SessionForNonDemoPages() {
 }
 
 function WebApp({ Component, pageProps }: AppProps) {
+  const requests = useMemo(() => {
+    const requests: AppEventFnMap<RequestModelMap> = {
+      caregiverProfile: Api.Identity.profile,
+      verifyPatientInfo: Api.Identity.validate,
+    };
+
+    return requests;
+  }, []);
+
   return (
     <Shell
+      requests={requests}
       onSession={getAuth0SessionForNonDemoPages}
       onAuthenticate={async () => {
         log('Authenticating');
@@ -48,11 +59,11 @@ function WebApp({ Component, pageProps }: AppProps) {
         // API call goes here
         return { appointmentStatus: 'after appointment' };
       }}
-      onIdentity={Client.Api.Identity.validate}
-      onLoadTests={Client.Api.Tests.list}
-      onFetchArticle={Client.Api.Content.article}
-      onFetchAllArticles={Client.Api.Content.articles}
-      onFetchAllFAQs={Client.Api.Content.faqs}
+      onIdentity={Api.Identity.validate}
+      onLoadTests={Api.Tests.list}
+      onFetchArticle={Api.Content.article}
+      onFetchAllArticles={Api.Content.articles}
+      onFetchAllFAQs={Api.Content.faqs}
     >
       <Component {...pageProps} />
     </Shell>

@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { Client } from 'client';
+import { Errors } from 'client/errors';
+import { Services } from 'client/services';
 import { config } from 'config';
 
 export default async function handler(
@@ -8,12 +9,10 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (!config.services.provider) {
-    return res
-      .status(500)
-      .json(Client.Errors.missingConfig('Provider api endpoint'));
+    return res.status(500).json(Errors.missingConfig('Provider api endpoint'));
   }
 
-  const articles = await Client.Services.Identity.validate(req.body);
+  const articles = await Services.Identity.validate(req.body);
 
   res.status(200).json(articles);
 }

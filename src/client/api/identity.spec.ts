@@ -4,6 +4,49 @@ import { server } from 'test-utils';
 
 import { Identity } from './identity';
 
+describe('Identity.profile', () => {
+  it('calls the local profile api url', async () => {
+    const listener = jest.fn();
+
+    const profile = {
+      termsVersion: '0.1',
+      termsGiven: 'true',
+      termsTimestamp: '2021-12-14T23:22:50.830Z',
+      firstName: 'Person',
+      lastName: 'Example',
+      mobileNumber: '2123459999',
+      relationshipToPatient: 'Parent',
+      dateOfBirth: '2021-12-01',
+    };
+
+    server.use(
+      rest.get('/api/identity/profile', (request, response, context) => {
+        listener();
+        return response(context.status(200), context.json(profile));
+      })
+    );
+
+    const response = await Identity.profile();
+
+    expect(listener).toHaveBeenCalled();
+    expect(response).toEqual(profile);
+  });
+
+  it('rejects 4xx with response body', async () => {
+    const requests = [400, 401, 403] as const;
+
+    for (const status of requests) {
+      server.use(
+        rest.get('/api/identity/profile', (request, response, context) => {
+          return response(context.status(status), context.json({}));
+        })
+      );
+
+      await expect(Identity.profile()).rejects.toEqual({});
+    }
+  });
+});
+
 describe('Identity.validate', () => {
   it('calls the local validation api url', async () => {
     const listener = jest.fn();

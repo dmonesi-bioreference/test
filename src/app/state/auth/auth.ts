@@ -16,8 +16,12 @@ declare global {
     name: string;
     picture: string;
     updated_at: string;
+    dob: Date;
+    location: string;
+    phone_number: string;
     email: string;
     email_verified: boolean;
+    relation_to_patient: string;
     sub: string;
   }
 }

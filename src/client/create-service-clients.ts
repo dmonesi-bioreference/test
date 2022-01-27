@@ -1,8 +1,8 @@
 import { config } from 'config';
 
-import { Api } from './api';
+import * as Auth from './auth';
 import { createContentClient } from './content';
-import { createProviderClient } from './provider';
+import { createProviderClient } from './create-provider-client';
 
 export function createServiceClients(overrides: Partial<Configuration> = {}) {
   const params = { ...config, ...overrides };
@@ -10,9 +10,8 @@ export function createServiceClients(overrides: Partial<Configuration> = {}) {
   const content = createContentClient(params);
 
   return {
+    Auth,
     Content: content.handlers,
     ...provider.handlers,
   };
 }
-
-export const Client = { Services: createServiceClients(), Api };

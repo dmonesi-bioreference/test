@@ -33,7 +33,7 @@ export function isAuthenticatedSession(
   ];
   const keys = Object.keys(candidate as object);
 
-  return keys.every((key) => sessionProps.includes(key));
+  return sessionProps.every((sessionProp) => keys.includes(sessionProp));
 }
 
 export function isPatientInfo(candidate: unknown): candidate is PatientInfo {

@@ -23,14 +23,18 @@ export const HealthProfile = () => {
     relationToCaregiver: 'Child',
     phenotype: 'Phenotype information here',
   };
-  const caregiverData = {
-    shortName: 'Barbara',
-    fullName: 'Barbara Jackson',
-    phoneNumber: '267-190-5214',
-    emailAddress: 'barb.jackson@example.com',
+  const caregiverData: AuthenticatedSession = {
+    nickname: 'Barbara',
+    name: 'Barbara Jackson',
+    phone_number: '267-190-5214',
+    email: 'barb.jackson@example.com',
     location: 'Austin, Texas',
     dob: new Date(Date.UTC(1989, 3, 9)),
-    relationToPatient: 'Parent',
+    relation_to_patient: 'Parent',
+    picture: '',
+    updated_at: '',
+    email_verified: true,
+    sub: 'Is this an ID of some sort?',
   };
 
   return (
@@ -39,7 +43,7 @@ export const HealthProfile = () => {
         containsCards
         title={t('pages.healthProfile.title')}
         description={t('pages.healthProfile.description', {
-          patientsName: patientData.shortName,
+          patientsNickname: patientData.shortName,
         })}
         customHeader={
           <UserHeader
@@ -55,7 +59,7 @@ export const HealthProfile = () => {
             kind="link-small"
             prefix={<Icon name="download" />}
           >
-            {t('pages.healthProfile.actions.1.label')}
+            {t('pages.healthProfile.actions.download.label')}
           </Button>
 
           <ListCard
@@ -112,17 +116,17 @@ export const HealthProfile = () => {
             <DisplayField
               label={t('pages.healthProfile.yourDetails.fields.1.label')}
             >
-              {caregiverData.fullName}
+              {caregiverData.name}
             </DisplayField>
             <DisplayField
               label={t('pages.healthProfile.yourDetails.fields.2.label')}
             >
-              {caregiverData.phoneNumber}
+              {caregiverData.phone_number}
             </DisplayField>
             <DisplayField
               label={t('pages.healthProfile.yourDetails.fields.3.label')}
             >
-              {caregiverData.emailAddress}
+              {caregiverData.email}
             </DisplayField>
             <DisplayField
               label={t('pages.healthProfile.yourDetails.fields.4.label')}
@@ -137,7 +141,7 @@ export const HealthProfile = () => {
             <DisplayField
               label={t('pages.healthProfile.yourDetails.fields.6.label')}
             >
-              {caregiverData.relationToPatient}
+              {caregiverData.relation_to_patient}
             </DisplayField>
           </ListCard>
         </PageSection>

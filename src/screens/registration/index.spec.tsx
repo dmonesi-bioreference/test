@@ -69,7 +69,7 @@ describe('Registration steps', () => {
     userEvent.click(await page.findByText('Next'));
 
     await page.findByText(
-      'Please let us know how we can notify you of your child’s genetic test results.'
+      "Please let us know how we can notify you of your child's genetic test results."
     );
 
     page.getByRole('textbox', { name: 'Your Email Address' });
@@ -149,7 +149,7 @@ describe('Registration steps', () => {
     userEvent.click(await page.findByText('Next'));
 
     await page.findByText(
-      'Lastly, create a strong password to help keep your account and your child’s information safe.'
+      "Lastly, create a strong password to help keep your account and your child's information safe."
     );
 
     userEvent.type(

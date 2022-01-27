@@ -90,13 +90,15 @@ You can fix it locally by running yarn and then re-attempting the above commands
 
 This repo manages several artifacts, one of which is a smaller single-page version of the app meant for deployment into an Auth0 tenant. For Auth0 integration, we require a series of environment variables for public, private, and deploy systems to use.
 
-| Variable name         | Purpose                       | Default                            |
-| --------------------- | ----------------------------- | ---------------------------------- |
-| AUTH0_SECRET          | Encryption secret for cookies |                                    |
-| AUTH0_BASE_URL        | The current app URL           | http://localhost:3000              |
-| AUTH0_ISSUER_BASE_URL | The base URL of the tenant    | https://bioreference-dev.auth0.com |
-| AUTH0_CLIENT_ID       | Our Auth0 tenant ID           |                                    |
-| AUTH0_CLIENT_SECRET   | Secret for the client ID      |                                    |
+| Variable name          | Purpose                          | Default                            |
+| ---------------------- | -------------------------------- | ---------------------------------- |
+| AUTH0_SECRET           | Encryption secret for cookies    |                                    |
+| AUTH0_BASE_URL         | The current app URL              | http://localhost:3000              |
+| AUTH0_ISSUER_BASE_URL  | The base URL of the tenant       | https://bioreference-dev.auth0.com |
+| AUTH0_CLIENT_ID        | Our Auth0 tenant ID              |                                    |
+| AUTH0_CLIENT_SECRET    | Secret for the client ID         |                                    |
+| IDENTITY_CLIENT_ID     | Our Auth0 service client ID      |                                    |
+| IDENTITY_CLIENT_SECRET | Secret for the service client ID |                                    |
 
 You can provide these in `.env.local` when you run the app.
 
