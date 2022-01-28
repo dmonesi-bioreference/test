@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
+import { DefaultTheme, useTheme } from 'styled-components';
 
 import { Typography } from 'components/Typography';
-import { colors } from 'styles';
 
 import UserHeaderStyled from './UserHeader.styles';
 
@@ -11,11 +11,10 @@ export interface UserHeaderProps {
   avatar?: ReactNode;
   variant?: 'default' | 'patient';
   titleColor?: string;
-  foregroundColor?: string;
-  backgroundColor?: string;
 }
 
 const UserHeader: React.FC<UserHeaderProps> = (props) => {
+  const theme: DefaultTheme = useTheme();
   const patientHeaderBackground = (
     <div className="background-panel">
       <svg viewBox="0 0 351 79" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -23,7 +22,7 @@ const UserHeader: React.FC<UserHeaderProps> = (props) => {
           cx="115.5"
           cy="-84.5"
           r="235.5"
-          fill={props.foregroundColor || colors.grey[100]}
+          fill={theme.colors.foreground}
         />
       </svg>
     </div>

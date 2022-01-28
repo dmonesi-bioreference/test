@@ -1,10 +1,11 @@
+import { useContext } from 'react';
 import { useEffect } from 'react';
-import { useTheme } from 'styled-components';
+import { ThemeContext } from 'styled-components';
 
 import { getCssVariables } from 'styles';
 
 export function ApplyThemeRootVariables() {
-  const theme = useTheme();
+  const theme = useContext(ThemeContext);
 
   useEffect(() => {
     for (const definition of getCssVariables(theme)) {

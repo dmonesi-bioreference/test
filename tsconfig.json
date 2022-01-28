@@ -2,11 +2,7 @@
   "compilerOptions": {
     "baseUrl": "src",
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "noImplicitAny": false,
     "noUnusedLocals": true,
     "allowJs": true,
@@ -21,10 +17,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "types": [
-      "node",
-      "jest"
-    ],
+    "types": ["node", "jest"],
     "jsx": "preserve",
     "noFallthroughCasesInSwitch": true
   },
@@ -36,10 +29,5 @@
     "**/*.tsx",
     "infrastructure/auth/scripts"
   ],
-  "exclude": [
-    "node_modules",
-    "public",
-    ".cache",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "public", ".cache", "tmp"]
 }

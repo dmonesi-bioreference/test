@@ -24,6 +24,5 @@ export const renderWithShell = async (
 };
 
 export * from './pages';
-export * from './server'
-
+export * from './server';
 export * from 'react-dom/test-utils';

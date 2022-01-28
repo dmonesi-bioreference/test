@@ -1,14 +1,14 @@
-import * as Tokens from 'styles/tokens';
+import { defaultTheme } from 'styles';
 
 import { getCssVariables, getKeypaths } from './get-css-variables';
 
 describe('getCssVariables', () => {
   it('creates kebab-case names for camelCased ones', () => {
-    const cssVars = getCssVariables(Tokens);
+    const cssVars = getCssVariables(defaultTheme);
 
     expect(cssVars).toContainEqual({
-      name: 'tokens-color-background-default',
-      value: Tokens.tokens.colorBackgroundDefault,
+      name: 'colors-background',
+      value: defaultTheme.colors.background,
     });
   });
 });

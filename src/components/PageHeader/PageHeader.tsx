@@ -20,18 +20,20 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
   ) : null;
   return (
     <PageHeaderStyled className={`page-header page-header--${props.belongsTo}`}>
-      {props.belongsTo === 'secondaryPage' ? (
-        <Button
-          kind="link-small"
-          prefix={<Icon name="chevron-left" style="solid" />}
-        >
-          Return
-        </Button>
-      ) : null}
-      <Typography type="heading" level="1">
-        {props.children}
-      </Typography>
-      {withDescription}
+      <div className="content">
+        {props.belongsTo === 'secondaryPage' ? (
+          <Button
+            kind="link-small"
+            prefix={<Icon name="chevron-left" style="solid" />}
+          >
+            Return
+          </Button>
+        ) : null}
+        <Typography type="heading" level="1">
+          {props.children}
+        </Typography>
+        {withDescription}
+      </div>
     </PageHeaderStyled>
   );
 };

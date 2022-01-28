@@ -4,15 +4,19 @@ import { tokens, base, containers } from 'styles';
 
 const PageHeaderStyled = styled.div`
   ${base};
-  display: flex;
-  flex-direction: column;
-  padding: ${tokens.spacingLarge} ${tokens.spacing};
-  max-width: ${containers.maxPageWidth}px;
-  margin: 0 auto;
-  width: 100%;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    padding: ${tokens.spacingLarge} ${tokens.spacing};
+    max-width: ${containers.maxPageWidth}px;
+    margin: 0 auto;
+    width: 100%;
+  }
 
   &.page-header--primaryPage {
-    border-top: ${tokens.borderWidthExtraThick} solid ${tokens.colorPrimary};
+    border-top: ${tokens.borderWidthExtraThick} solid;
+    border-color: ${({ theme }) => theme.colors.borderHighlight};
     padding: ${tokens.spacingLarge} ${tokens.spacing} ${tokens.spacingXLarge}
       ${tokens.spacing};
   }

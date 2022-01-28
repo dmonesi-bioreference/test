@@ -55,6 +55,7 @@ export const HealthProfile = () => {
         description={t('pages.healthProfile.description', {
           patientsNickname: patientData.nickname,
         })}
+        theme="healthProfileTheme"
         customHeader={
           <UserHeader
             title={t('pages.healthProfile.basicInformation.fields.name.label')}

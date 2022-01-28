@@ -2,7 +2,6 @@ import { DoneInvokeEvent, InterpreterFrom } from 'xstate';
 
 import geneticCounselor from 'assets/images/png/geneticCounselor.png';
 import { SupportedLanguages } from 'localization';
-import { Themes } from 'styles';
 
 import * as auth from './auth';
 import * as content from './content';
@@ -14,7 +13,6 @@ import { createAppMachine, GetStates } from './utils';
 
 export const initialContext = {
   language: 'en' as SupportedLanguages,
-  theme: 'light' as Themes,
   auth: auth.context,
   forms: forms.context,
   tests: tests.context,

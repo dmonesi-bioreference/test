@@ -123,12 +123,14 @@ export const fonts = {
 
 export const tokens = {
   /* color presets */
+  // Following tokens to be replaced with theme tokens
   colorBackgroundDefault: colors.violet[50],
   colorBackgroundCare: colors.indigo[50],
   colorCommunity: colors.green[800],
   colorBackgroundCommunity: colors.green[50],
   colorBackgroundResources: colors.indigo[50],
   colorDefaultText: colors.black,
+  /* End of tokens to be replaced */
   colorPrimary: colors.indigo[900],
   colorPrimaryActive: colors.indigo[800],
   colorPrimaryHover: colors.indigo[700],

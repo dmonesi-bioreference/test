@@ -40,18 +40,19 @@ export const FAQsPage = () => {
             {faq.title}
           </Typography>
         </div>
-        {faq.content && faq.content.map((contentBlock, index) => (
-          <React.Fragment key={index}>
-            <Heading level="3">{contentBlock.title}</Heading>
-            <Content>{contentBlock.content}</Content>
-          </React.Fragment>
-        ))}
+        {faq.content &&
+          faq.content.map((contentBlock, index) => (
+            <React.Fragment key={index}>
+              <Heading level="3">{contentBlock.title}</Heading>
+              <Content>{contentBlock.content}</Content>
+            </React.Fragment>
+          ))}
       </div>
     );
   });
 
   return (
-    <PageLayout theme="resources">
+    <PageLayout theme="resourcesTheme">
       <ContentPageStyled>
         <ReturnLink label="Return" href="/demo/resources" />
         <PageSection

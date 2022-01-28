@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import styled, { useTheme } from 'styled-components';
 
 import { resources } from 'localization/resources';
-import { themes, tokens } from 'styles';
+import { getTheme, themes } from 'styles';
 
 import { Shell } from './Shell';
 import { useAppTranslation } from './hooks';
@@ -14,9 +14,9 @@ test('Loading the shell adds css variables to the document', async () => {
 
   expect(
     global.document.documentElement.style.getPropertyValue(
-      '--tokens-color-background-default'
+      '--colors-background'
     )
-  ).toEqual(tokens.colorBackgroundDefault);
+  ).toEqual(getTheme('defaultTheme').colors.background);
 });
 
 // background-color: ${tokens.colorWarningHover};
@@ -35,13 +35,13 @@ test('Loading the shell adds css variables to the document', async () => {
 //
 test('Shell themes are provided to styled components', async () => {
   const FancyButton = styled.button`
-    background-color: ${(props) => props.theme.tokens.colorBackgroundDefault};
+    background-color: ${({ theme }) => theme.colors.background};
   `;
 
   function ThemeDiagnostics() {
     const theme = useTheme();
 
-    return <FancyButton>{theme.tokens.colorBackgroundDefault}</FancyButton>;
+    return <FancyButton>{theme.colors.background}</FancyButton>;
   }
 
   const app = render(
@@ -50,7 +50,7 @@ test('Shell themes are provided to styled components', async () => {
     </Shell>
   );
 
-  await app.findByText(themes.light.tokens.colorBackgroundDefault);
+  await app.findByText(themes.defaultTheme.colors.background);
 });
 
 test('Shell wrappers provide access to i18n helpers', async () => {

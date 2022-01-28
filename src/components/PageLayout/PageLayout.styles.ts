@@ -4,19 +4,7 @@ import { tokens, base } from 'styles';
 
 const PageLayoutStyled = styled.div`
   ${base};
-  background-color: ${tokens.colorBackgroundDefault};
-
-  &.page-layout--care {
-    background-color: ${tokens.colorBackgroundCare};
-  }
-
-  &.page-layout--community {
-    background-color: ${tokens.colorBackgroundCommunity};
-  }
-
-  &.page-layout--resources {
-    background-color: ${tokens.colorBackgroundResources};
-  }
+  background-color: ${({ theme }) => theme.colors.background};
 
   .page-layout__content > * :not(:last-child) {
     margin-bottom: ${tokens.spacingXxLarge};

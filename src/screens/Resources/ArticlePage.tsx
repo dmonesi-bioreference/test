@@ -26,7 +26,9 @@ export const ArticlePage: React.FC<ArticlePageProps> = (props) => {
   const events = useAppEvents();
 
   const [articleTitle, setArticleTitle] = useState<string>();
-  const [articleContents, setArticleContents] = useState<{ title: string, content: string }[]>([]);
+  const [articleContents, setArticleContents] = useState<
+    { title: string; content: string }[]
+  >([]);
 
   const articles = useAppSelector(
     (state) => state.context.content.articles.data
@@ -37,7 +39,10 @@ export const ArticlePage: React.FC<ArticlePageProps> = (props) => {
   useEffect(() => {
     const article = articles.find((e) => e.id === props.articleIdentifier || e.slug === `/${props.articleIdentifier}`);
     setArticleTitle(article ? article.title : '');
-    setArticleContents(article && article.contents ? article.contents.map(e => ({ title: e.title, content: e.content })) : []);
+    setArticleContents(
+      article?.contents?.map((e) => ({ title: e.title, content: e.content })) ??
+        []
+    );
   }, [articles, props]);
 
   useEffect(() => {
@@ -47,7 +52,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = (props) => {
   }, [articleContents, events, props]);
 
   return (
-    <PageLayout containsCards={true} theme="resources">
+    <PageLayout containsCards={true} theme="resourcesTheme">
       <ContentPageStyled>
         <ReturnLink label="Return" href="/demo/resources" />
         {loading ? (

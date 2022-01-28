@@ -25,7 +25,7 @@ const UserHeaderStyled = styled.div<UserHeaderProps>`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: ${(props) => props.backgroundColor || colors.white};
+    background-color: ${({ theme }) => theme.colors.background || colors.white};
 
     svg {
       width: 90%;

@@ -4,7 +4,7 @@ import isObject from 'lodash/isObject';
 import isString from 'lodash/isString';
 import kebabCase from 'lodash/kebabCase';
 
-import * as Tokens from 'styles/tokens';
+import { defaultTheme } from 'styles';
 
 const DOT_SEPARATOR = '.';
 const DASH_SEPARATOR = '-';
@@ -38,7 +38,7 @@ export function getKeypaths<Value>(
 }
 
 export function getCssVariables(
-  theme: typeof Tokens
+  theme: typeof defaultTheme
 ): Record<'name' | 'value', string>[] {
   const variables = [] as Record<'name' | 'value', string>[];
 

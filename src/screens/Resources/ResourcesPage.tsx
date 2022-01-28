@@ -53,7 +53,7 @@ export const ResourcesPage = () => {
   return (
     <PageLayout
       containsCards
-      theme="resources"
+      theme="resourcesTheme"
       title={t('pages.resources.title')}
       description={t('pages.resources.description')}
       customHeader={
