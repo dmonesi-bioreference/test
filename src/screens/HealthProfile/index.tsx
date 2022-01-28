@@ -60,6 +60,7 @@ export const HealthProfile = () => {
           <UserHeader
             title={t('pages.healthProfile.basicInformation.fields.name.label')}
             name={patientData.name || ''}
+            variant="patient"
           />
         }
       >
