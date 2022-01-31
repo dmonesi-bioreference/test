@@ -11,6 +11,7 @@ export type TypographyColor =
   | 'primary'
   | 'minor'
   | 'white'
+  | 'blue'
   | 'error';
 
 interface HeadingProps {

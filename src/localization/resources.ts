@@ -80,8 +80,8 @@ export const resources = {
         },
         resources: {
           title: 'Resources',
-          subTitle:
-            "Here are some educational resources to help you better understand the who, what, and why's of genetic testing.",
+          description:
+            'Here are some educational resources to help you better understand the who, what, and why’s of genetic testing.',
           section: {
             audio: {
               title: 'Genetic Counselor Support',
@@ -105,17 +105,14 @@ export const resources = {
               title: 'Genetic Testing FAQs',
               label:
                 'Here are some frequently asked questions about genetic testing:',
+              prevFAQ: 'Previous FAQ Topic',
+              nextFAQ: 'Next FAQ Topic',
             },
           },
         },
         articles: {
           return: 'Return',
           errorFetchingArticle: 'Error fetching article',
-        },
-        geneticTestingFAQs: {
-          title: 'Genetic Testing FAQs',
-          subTitle:
-            'Understanding the basic elements of genetics and the language used by clinicians will help you have a more productive conversation when your results are ready.',
         },
         settings: {
           title: 'Settings',

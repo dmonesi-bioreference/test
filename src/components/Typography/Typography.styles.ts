@@ -31,6 +31,10 @@ const TypographyStyled = styled.div`
     color: ${colors.red[600]};
   }
 
+  &.blue {
+    color: ${colors.cornflowerBlue[500]};
+  }
+
   &.level1 {
     font-size: ${tokens.fontSize32};
     font-weight: ${tokens.fontWeightBold};

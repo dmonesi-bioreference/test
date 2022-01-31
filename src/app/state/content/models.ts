@@ -1,7 +1,7 @@
 declare global {
   interface Content {
     title: string;
-    content: string
+    content: string;
   }
 
   interface ContentFailure {
@@ -35,6 +35,7 @@ declare global {
     introduceAt: IntroduceAt;
     author?: string;
     bannerImage?: Image;
+    priority?: number;
   }
 
   interface Image {
@@ -86,16 +87,7 @@ export const isArticlePayload = (candidate: unknown): candidate is Article => {
   );
 };
 
-export const isMultiArticlePayload = (
-  candidate: unknown
-): candidate is Article[] => {
-  return (
-    Array.isArray(candidate) &&
-    candidate.every((member) => isArticlePayload(member))
-  );
-};
-
-export const isFAQPayload = (candidate: unknown): candidate is FAQ[] => {
+export const isFAQPayload = (candidate: unknown): candidate is FAQ => {
   const FAQProperties = [
     'id',
     'bannerImage',
@@ -107,11 +99,23 @@ export const isFAQPayload = (candidate: unknown): candidate is FAQ[] => {
     'author',
     'introduceAt',
   ];
+
+  return FAQProperties.every((property) => property in (candidate as object));
+};
+
+export const isMultiArticlePayload = (
+  candidate: unknown
+): candidate is Article[] => {
   return (
     Array.isArray(candidate) &&
-    candidate.every((member) =>
-      FAQProperties.every((property) => property in member)
-    )
+    candidate.every((member) => isArticlePayload(member))
+  );
+};
+
+export const isMultiFAQPayload = (candidate: unknown): candidate is FAQ[] => {
+  return (
+    Array.isArray(candidate) &&
+    candidate.every((member) => isFAQPayload(member))
   );
 };
 

@@ -19,6 +19,10 @@ const FaqCardStyled = styled.div`
     gap: ${tokens.spacingSmall};
   }
 
+  .faq-card__header-icon {
+    flex: none;
+  }
+
   .faq-card__view-all {
     padding-bottom: ${tokens.spacingLarge};
     text-align: center;

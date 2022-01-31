@@ -1,12 +1,9 @@
-import { useEffect } from 'react';
-
 import {
-  useAppEvents,
-  useAppSelector,
   useAppTranslation,
   MediaElements,
   useAppState,
-  Articles,
+  ArticleCards,
+  FAQCards,
 } from 'app';
 import {
   BulletItem,
@@ -16,28 +13,16 @@ import {
   PageSection,
   Typography,
   Spinner,
-  FaqCard,
   UserHeader,
 } from 'components';
 
 export const ResourcesPage = () => {
   const t = useAppTranslation();
-  const events = useAppEvents();
-
-  useEffect(() => {
-    events.fetchAllFAQs();
-  }, [events]);
-
-  const faqs = useAppSelector((state) => state.context.content.FAQs.data);
 
   const loadingArticles = useAppState('content.articles.fetchingAllArticles');
   const errorFetchingArticles = useAppState('content.articles.failure');
-  const loadingFAQs = useAppState('content.faqs.requesting');
+  const loadingFAQs = useAppState('content.faqs.fetchingAllFAQs');
   const errorFetchingFAQs = useAppState('content.faqs.failure');
-
-  const FAQs = faqs.map((faq) => {
-    return faq.title;
-  });
 
   const patientData = {
     shortName: 'Lisa',
@@ -96,11 +81,7 @@ export const ResourcesPage = () => {
             {t('pages.resources.section.faqs.error')}
           </Typography>
         ) : (
-          <FaqCard
-            title={t('pages.resources.section.faqs.title')}
-            label={t('pages.resources.section.faqs.label')}
-            questions={FAQs}
-          />
+          <FAQCards />
         )}
         <Heading>{t('pages.resources.section.articles.title')}</Heading>
         {loadingArticles ? (
@@ -110,7 +91,7 @@ export const ResourcesPage = () => {
             {t('pages.resources.section.articles.error')}
           </Typography>
         ) : (
-          <Articles />
+          <ArticleCards />
         )}
       </PageSection>
     </PageLayout>

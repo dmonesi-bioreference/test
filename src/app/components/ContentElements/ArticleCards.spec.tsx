@@ -1,15 +1,14 @@
-import { ResourcesPage } from 'screens';
 import { renderWithShell, Mocks } from 'test-utils';
 
-import { Articles } from './Articles';
+import { ArticleCards } from './ArticleCards';
 
-describe('The articles element component', () => {
+describe('The article cards component', () => {
   it('does not explode', async () => {
-    await renderWithShell(<Articles />);
+    await renderWithShell(<ArticleCards />);
   });
 
   it('creates article cards when test status is waiting', async () => {
-    const page = await renderWithShell(<ResourcesPage />, {
+    const page = await renderWithShell(<ArticleCards />, {
       onFetchAllArticles: async () => [
         {
           ...Mocks.article.single,
@@ -31,7 +30,7 @@ describe('The articles element component', () => {
   });
 
   it('creates article cards when test status is ready', async () => {
-    const page = await renderWithShell(<ResourcesPage />, {
+    const page = await renderWithShell(<ArticleCards />, {
       onFetchAllArticles: async () => [
         {
           ...Mocks.article.single,
@@ -49,7 +48,7 @@ describe('The articles element component', () => {
   });
 
   it('creates article cards when test results have been viewed', async () => {
-    const page = await renderWithShell(<ResourcesPage />, {
+    const page = await renderWithShell(<ArticleCards />, {
       onFetchAllArticles: async () => [
         {
           ...Mocks.article.single,
@@ -70,7 +69,7 @@ describe('The articles element component', () => {
   });
 
   it('creates article cards when test results have been discussed', async () => {
-    const page = await renderWithShell(<ResourcesPage />, {
+    const page = await renderWithShell(<ArticleCards />, {
       onFetchAllArticles: async () => [
         {
           ...Mocks.article.single,

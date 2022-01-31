@@ -7,8 +7,9 @@ import FaqCardStyled from './FaqCard.styles';
 
 export interface FaqCardProps {
   title: string;
-  label: string;
+  label: React.ReactNode;
   questions: Array<string>;
+  href: string;
 }
 
 const FaqCard: React.FC<FaqCardProps> = (props) => {
@@ -18,7 +19,7 @@ const FaqCard: React.FC<FaqCardProps> = (props) => {
         key={index}
         color="light"
         kind="link-medium"
-        href="resources/faqs"
+        href={props.href}
         suffix={<Icon name="chevron-right" size="small" />}
         spreadContent={true}
       >
@@ -29,7 +30,9 @@ const FaqCard: React.FC<FaqCardProps> = (props) => {
   return (
     <FaqCardStyled>
       <div className="faq-card__header">
-        <Icon name="puzzle" color="default" />
+        <div className="faq-card__header-icon">
+          <Icon name="puzzle" color="default" />
+        </div>
         <Typography type="heading" level="3" color="primary">
           {props.title}
         </Typography>
@@ -41,7 +44,7 @@ const FaqCard: React.FC<FaqCardProps> = (props) => {
         <List kind="plain">{questions}</List>
       </div>
       <div className="faq-card__view-all">
-        <Button href="resources/faqs" kind="link-small">
+        <Button href={props.href} kind="link-small">
           View all FAQs
         </Button>
       </div>

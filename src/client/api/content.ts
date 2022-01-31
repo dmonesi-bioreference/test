@@ -15,4 +15,12 @@ export const Content = {
     const result = await fetch('/api/content/faqs');
     return (await result.json()) as FAQ[];
   },
+  faq: async (context: AppContext): Promise<FAQ> => {
+    if (!context.content.currentFAQSlug) return Promise.reject();
+
+    const result = await fetch(
+      `/api/content/faqs/${context.content.currentFAQSlug}`
+    );
+    return (await result.json()) as FAQ;
+  },
 };

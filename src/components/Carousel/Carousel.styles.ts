@@ -22,14 +22,7 @@ const CarouselStyled = styled.div`
 
   .slide {
     padding: 0 ${tokens.spacingXSmall} 0;
-  }
-
-  .slide > * {
-    height: 100%;
-  }
-
-  .slide > * > * {
-    height: 100%;
+    text-align: initial;
   }
 `;
 

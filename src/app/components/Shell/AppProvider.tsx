@@ -23,6 +23,7 @@ export interface AppProviderProps {
   onFetchArticle?: AppEventFn<Article>;
   onFetchAllArticles?: AppEventFn<Article[]>;
   onFetchAllFAQs?: AppEventFn<FAQ[]>;
+  onFetchFAQ?: AppEventFn<FAQ>;
   onPatientGuid?: AppEventFn<{ guid: string; source: string }>;
   onRegistration?: AppEventFn<unknown>;
 }
@@ -60,6 +61,7 @@ export function AppProvider({
     Promise.reject('No article found'),
   onFetchAllArticles: handleFetchAllArticles = async () => [],
   onFetchAllFAQs: handleFetchAllFAQs = async () => [],
+  onFetchFAQ: handleFetchFAQ = async () => Promise.reject('No faq found'),
   onSession: handleSession = async () => emptySession,
   onRegistration: handleRegistration = async () => undefined,
 }: Props<AppProviderProps>) {
@@ -80,6 +82,7 @@ export function AppProvider({
     handleAppointmentStatus,
     handleReport,
     handleFetchArticle,
+    handleFetchFAQ,
     handleFetchAllArticles,
     handleFetchAllFAQs,
     handlePatientGuid,
@@ -107,6 +110,11 @@ export function AppProvider({
           send({
             type: 'FETCH_SINGLE_ARTICLE',
             articleIdentifier: payload ? payload.articleIdentifier : '',
+          }),
+        fetchSingleFAQ: (payload?: { FAQSlug: string }) =>
+          send({
+            type: 'FETCH_SINGLE_FAQ',
+            FAQSlug: payload ? payload.FAQSlug : '',
           }),
         fetchAllArticles: () => send('fetchAllArticles'),
         fetchAllFAQs: () => send('fetchAllFAQs'),

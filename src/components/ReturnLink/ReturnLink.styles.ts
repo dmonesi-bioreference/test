@@ -5,6 +5,7 @@ import { base, tokens } from 'styles';
 const ReturnLinkStyled = styled.div`
   ${base}
   padding-bottom: ${tokens.spacingXLarge};
+  padding-top: ${tokens.spacingLarge};
 
   .return-link__label {
     display: flex;

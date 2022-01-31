@@ -201,6 +201,34 @@ export const faqs = () => `
             content
           }
           introduceAt
+          priority
+          label
+          title
+          author
+          classname
+          bannerImage {
+            id
+          }
+          blurb
+        }
+      }
+    }
+  }
+`;
+
+export const faq = (slug: String) => `
+  query {
+    getPatientFAQListing(filter: "{\\"slug\\":\\"/${slug}\\"}") {
+      edges {
+        node {
+          id
+          slug
+          content {
+            title
+            content
+          }
+          introduceAt
+          priority
           label
           title
           author

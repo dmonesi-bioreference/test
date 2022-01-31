@@ -1,2 +1,3 @@
 export { Content } from './Content';
-export { Articles } from './Articles';
+export { ArticleCards } from './ArticleCards';
+export { FAQCards } from './FAQCards';

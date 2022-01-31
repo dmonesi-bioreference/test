@@ -15,8 +15,9 @@ export const generic: FAQ = {
   content: [
     {
       title: 'Title',
-      content: '<p>Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>'
-    }
+      content:
+        '<p>Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>',
+    },
   ],
   introduceAt: 'WAITING',
   author: 'author',
@@ -37,11 +38,17 @@ export const dna: FAQ = {
   content: [
     {
       title: 'Title',
-      content: '<p>Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>'
-    }
+      content:
+        '<p>Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>',
+    },
   ],
   introduceAt: 'WAITING',
   author: 'author',
 };
 
 export const list: FAQ[] = [generic, dna];
+
+export const create = (updates: Partial<FAQ> = {}) => ({
+  ...generic,
+  ...updates,
+});

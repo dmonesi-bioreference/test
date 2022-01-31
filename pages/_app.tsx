@@ -64,6 +64,7 @@ function WebApp({ Component, pageProps }: AppProps) {
       onFetchArticle={Api.Content.article}
       onFetchAllArticles={Api.Content.articles}
       onFetchAllFAQs={Api.Content.faqs}
+      onFetchFAQ={Api.Content.faq}
     >
       <Component {...pageProps} />
     </Shell>

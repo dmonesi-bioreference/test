@@ -9,7 +9,7 @@ import { useAppEvents, useAppSelector, useAppTranslation } from '../Shell';
 
 import { Content } from './Content';
 
-export const Articles = () => {
+export const ArticleCards = () => {
   const t = useAppTranslation();
   const events = useAppEvents();
 

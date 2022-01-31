@@ -1,13 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
+import { Content, useAppEvents, useAppSelector, useAppState } from 'app';
 import {
-  Content,
-  useAppEvents,
-  useAppSelector,
-  useAppState,
-  useAppTranslation,
-} from 'app';
-import {
+  ContentBlock,
   Heading,
   PageLayout,
   PageSection,
@@ -19,37 +14,39 @@ import { tokens } from 'styles';
 
 import ContentPageStyled from './ContentPage.styles';
 
-export const FAQsPage = () => {
-  const t = useAppTranslation();
+interface FAQPageProps {
+  slug?: string;
+}
+
+export const FAQsPage: React.FC<FAQPageProps> = (props) => {
   const events = useAppEvents();
 
-  useEffect(() => {
-    events.fetchAllFAQs();
-  }, [events]);
+  const [faqTitle, setFaqTitle] = useState<string>();
+  const [faqLabel, setFaqLabel] = useState<string>();
+  const [faqContents, setFaqContents] = useState<
+    { title: string; content: string }[]
+  >([]);
 
   const faqs = useAppSelector((state) => state.context.content.FAQs.data);
-  const loadingFAQs = useAppState('content.faqs.requesting');
+  const loadingFAQs = useAppState('content.faqs.fetchingSingleFAQ');
   const errorFetchingFAQs = useAppState('content.faqs.failure');
 
-  /* eslint-disable @typescript-eslint/no-unsafe-call */
-  const FAQs = faqs.map((faq) => {
-    return (
-      <div key={faq.id}>
-        <div style={{ marginBottom: tokens.spacingLarge }}>
-          <Typography type="heading" level="2">
-            {faq.title}
-          </Typography>
-        </div>
-        {faq.content &&
-          faq.content.map((contentBlock, index) => (
-            <React.Fragment key={index}>
-              <Heading level="3">{contentBlock.title}</Heading>
-              <Content>{contentBlock.content}</Content>
-            </React.Fragment>
-          ))}
-      </div>
+  useEffect(() => {
+    const faq = faqs.find((faq) => faq.slug === `/${props.slug}`);
+    setFaqTitle(faq ? faq.title : '');
+    setFaqLabel(faq ? faq.label : '');
+    setFaqContents(
+      faq && faq.content
+        ? faq.content.map((e) => ({ title: e.title, content: e.content }))
+        : []
     );
-  });
+  }, [faqs, props]);
+
+  useEffect(() => {
+    if (faqContents.length == 0) {
+      events.fetchSingleFAQ({ FAQSlug: props.slug as string });
+    }
+  }, [faqContents, events, props]);
 
   return (
     <PageLayout theme="resourcesTheme">
@@ -58,13 +55,15 @@ export const FAQsPage = () => {
         <PageSection
           header={
             <div style={{ marginBottom: tokens.spacingXSmall }}>
-              <Heading level="1">{t('pages.geneticTestingFAQs.title')}</Heading>
+              <div style={{ marginBottom: tokens.spacingXSmall }}>
+                <Typography type="label" labelType="title" color="blue">
+                  {faqLabel}
+                </Typography>
+              </div>
+              <Heading level="1">{faqTitle}</Heading>
             </div>
           }
         >
-          <Typography type="body">
-            {t('pages.geneticTestingFAQs.subTitle')}
-          </Typography>
           {loadingFAQs ? (
             <Spinner />
           ) : errorFetchingFAQs ? (
@@ -72,7 +71,16 @@ export const FAQsPage = () => {
               Error fetching FAQs.
             </Typography>
           ) : (
-            FAQs
+            <>
+              {faqContents &&
+                faqContents.map((contentBlock, index) => (
+                  <React.Fragment key={index}>
+                    <ContentBlock title={contentBlock.title}>
+                      <Content>{contentBlock.content}</Content>
+                    </ContentBlock>
+                  </React.Fragment>
+                ))}
+            </>
           )}
         </PageSection>
       </ContentPageStyled>

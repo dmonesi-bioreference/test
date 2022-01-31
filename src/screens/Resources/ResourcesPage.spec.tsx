@@ -39,11 +39,8 @@ describe('The resources page', () => {
       onFetchAllFAQs: async () => Mocks.faqs.list,
     });
 
-    await page.findByText('Genetic Testing FAQs');
-    await page.findByText(
-      'Here are some frequently asked questions about genetic testing:'
-    );
     await page.findByText('What is Genetic Testing?');
-    await page.findByText('What is DNA?');
+    await page.findAllByText('blurb');
+    await page.findAllByText('Title');
   });
 });
