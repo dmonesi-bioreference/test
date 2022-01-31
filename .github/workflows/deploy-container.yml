@@ -14,7 +14,10 @@ jobs:
     steps:
       - name: Get branch name
         shell: bash
-        run: echo "##[set-output name=branch_name;]$(echo ${GITHUB_REF#refs/heads/})"
+        run: |
+          branch=${GITHUB_REF#refs/heads/}
+          echo "##[set-output name=branch_name;]$(echo ${branch})"
+          echo "##[set-output name=branch_name_uppercase;]$(echo ${branch^^})"
         id: get_branch_name
 
       - name: Generate image tag
@@ -75,7 +78,8 @@ jobs:
               PROVIDER_PORTAL_API_REFERER="${{ secrets.PROVIDER_PORTAL_API_REFERER }}" \
               PROVIDER_PORTAL_API_TESTS_URL="${{ secrets.PROVIDER_PORTAL_API_TESTS_URL }}" \
               PIMCORE_URL="${{ secrets.PIMCORE_URL }}" \
-              PIMCORE_KEY="${{ secrets.PIMCORE_KEY }}"
+              PIMCORE_KEY="${{ secrets.PIMCORE_KEY }}" \
+              NEXT_PUBLIC_GTM_ID="${{ secrets[format('GTM_ID_{0}', steps.get_branch_name.outputs.branch_name_uppercase)] }}"
 
       # Wait for the site to be restarted before we start vulnerability scan
       - name: Wait for 30 seconds...

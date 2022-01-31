@@ -99,6 +99,7 @@ This repo manages several artifacts, one of which is a smaller single-page versi
 | AUTH0_CLIENT_SECRET    | Secret for the client ID         |                                    |
 | IDENTITY_CLIENT_ID     | Our Auth0 service client ID      |                                    |
 | IDENTITY_CLIENT_SECRET | Secret for the service client ID |                                    |
+| NEXT_PUBLIC_GTM_ID     | Google Tag Manager ID            |                                    |
 
 You can provide these in `.env.local` when you run the app.
 

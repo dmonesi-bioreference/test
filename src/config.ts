@@ -18,6 +18,9 @@ export const config = {
     username: process.env.PROVIDER_PORTAL_API_BASIC_AUTH_USERNAME,
     password: process.env.PROVIDER_PORTAL_API_BASIC_AUTH_PASSWORD,
   },
+  gtm: {
+    id: process.env.NEXT_PUBLIC_GTM_ID,
+  },
 };
 
 declare global {
