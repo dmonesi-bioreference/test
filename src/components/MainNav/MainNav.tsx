@@ -30,7 +30,7 @@ const MainNav: React.FC<MainNavProps> = () => {
           <IconButton
             name="heart"
             label="Health Profile"
-            href="/demo/health-profile"
+            href="/health-profile"
             encircled
           >
             <Typography type="menu-item">Health Profile</Typography>

@@ -122,6 +122,125 @@ describe('Handlers', () => {
     }
   });
 
+  it('Patient.profile returns the profile data for the given id', async () => {
+    const id = '1234';
+    const listener = jest.fn();
+
+    const success = {
+      Data: [
+        {
+          Insurances: Mocks.insurance.list,
+          Patient: Mocks.patient.single,
+          Tests: Mocks.tests.list,
+        },
+      ],
+      IsSuccess: true,
+      ValidationResult: {
+        IsValid: true,
+        Errors: null,
+      },
+    };
+
+    server.use(
+      rest.get(
+        'http://localhost/v1.0.1/api/PatientPortal/:id/Tests',
+        (request, response, context) => {
+          listener(request.params.id);
+          return response(context.status(200), context.json(success));
+        }
+      )
+    );
+
+    const response = await handlers.Patient.profile(id);
+
+    expect(listener).toHaveBeenCalledWith(id);
+    expect(response).toEqual({
+      gender_genetic: Mocks.patient.single.Gender,
+      gender_identity: Mocks.patient.single.GenderIdentification,
+      insurance: Mocks.insurance.single.Insurance.Name,
+      phenotype: Mocks.tests.single.PhenotypeNames,
+      patient_dob: Mocks.patient.single.BirthDate,
+      patient_name: `${Mocks.patient.single.FirstName} ${Mocks.patient.single.LastName}`,
+      patient_nickname: Mocks.patient.single.FirstName,
+      caregiver_location: `${Mocks.patient.single.City}, ${Mocks.patient.single.State}`,
+    });
+  });
+
+  it('Patient.profile returns an informative 500 exception on bad data', async () => {
+    const success = {
+      Data: null,
+      IsSuccess: true,
+      ValidationResult: {
+        IsValid: true,
+        Errors: null,
+      },
+    };
+
+    server.use(
+      rest.get(
+        'http://localhost/v1.0.1/api/PatientPortal/:id/Tests',
+        (request, response, context) => {
+          return response(context.status(200), context.json(success));
+        }
+      )
+    );
+
+    await expect(handlers.Patient.profile('1234')).rejects.toEqual({
+      message: 'Patient service returned null payload.',
+    });
+  });
+
+  it('Patient.profile rejects 4xx with response body', async () => {
+    const badRequest = {
+      Data: {
+        IsAuthorized: false,
+        Code: '12345',
+        ErrorMessage: 'Bad Request',
+      },
+      IsSuccess: false,
+      ValidationResult: null,
+    };
+
+    const unauthorized = {
+      Data: {
+        IsAuthorized: false,
+        Code: 'A0004',
+        ErrorMessage: "Basic authentication failed: request isn't authorized.",
+      },
+      IsSuccess: false,
+      ValidationResult: null,
+    };
+
+    const forbidden = {
+      Data: {
+        IsAuthorized: false,
+        Code: '12345',
+        ErrorMessage: 'Patient Portal User identification failed',
+      },
+      IsSuccess: false,
+      ValidationResult: null,
+    };
+
+    const requests = [
+      [400, badRequest],
+      [401, unauthorized],
+      [403, forbidden],
+    ] as const;
+
+    for (const [status, payload] of requests) {
+      server.use(
+        rest.get(
+          'http://localhost/v1.0.1/api/PatientPortal/:id/Tests',
+          (request, response, context) => {
+            return response(context.status(status), context.json(payload));
+          }
+        )
+      );
+
+      await expect(handlers.Patient.profile('1234')).rejects.toEqual(payload);
+    }
+  });
+
   it('Tests.all returns the test data for the given id', async () => {
     const id = '1234';
     const listener = jest.fn();
@@ -173,6 +292,30 @@ describe('Handlers', () => {
     const response = await handlers.Tests.all('1234');
 
     expect(response).toEqual([]);
+  });
+
+  it('Tests.all an informative 500 exception on bad data', async () => {
+    const success = {
+      Data: null,
+      IsSuccess: true,
+      ValidationResult: {
+        IsValid: true,
+        Errors: null,
+      },
+    };
+
+    server.use(
+      rest.get(
+        'http://localhost/v1.0.1/api/PatientPortal/:id/Tests',
+        (request, response, context) => {
+          return response(context.status(200), context.json(success));
+        }
+      )
+    );
+
+    await expect(handlers.Tests.all('1234')).rejects.toEqual({
+      message: 'Patient service returned null payload.',
+    });
   });
 
   it('Tests.all rejects 4xx with response body', async () => {

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import { base } from 'styles';
+import { base, tokens } from 'styles';
 
-const HealthProfileStyled = styled.div`
+export const HealthProfileContainer = styled.div`
   ${base}
 
   .health-profile__download {
@@ -10,4 +10,16 @@ const HealthProfileStyled = styled.div`
   }
 `;
 
-export default HealthProfileStyled;
+export const HealthProfileContent = styled.div`
+  opacity: ${(props: { pending: boolean }) => (props.pending ? 0.4 : 1)};
+  pointer-events: ${(props: { pending: boolean }) =>
+    props.pending ? 'none' : 'default'};
+  transition: 0.3s ease-in-out;
+`;
+
+export const HealthProfileActivity = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: ${tokens.spacingXLarge};
+`;

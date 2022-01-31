@@ -119,16 +119,14 @@ async function register({
     if ('auth0' in window) {
       // @ts-ignore
       const webAuth = new window.auth0.WebAuth(params);
-      const userMetadata: Partial<AuthenticatedSession> = {
+      const userMetadata: Partial<RegistrationProfile> = {
         terms_version: '0.1',
         terms_given: 'true',
         terms_timestamp: new Date().toISOString(),
-        nickname: firstName,
-        name: `${firstName} ${lastName}`,
         patient_guid: patientGuid,
         phone_number: mobileNumber,
         relation_to_patient: relationshipToPatient,
-        dob: dateOfBirth as any,
+        caregiver_dob: dateOfBirth as any,
       };
 
       webAuth.redirect.signupAndLogin(

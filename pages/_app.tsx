@@ -41,7 +41,7 @@ async function getAuth0SessionForNonDemoPages() {
 function WebApp({ Component, pageProps }: AppProps) {
   const requests = useMemo(() => {
     const requests: AppEventFnMap<RequestModelMap> = {
-      caregiverProfile: Api.Identity.profile,
+      identityProfile: Api.Identity.profile,
       verifyPatientInfo: Api.Identity.validate,
     };
 

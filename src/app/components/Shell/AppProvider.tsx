@@ -33,16 +33,8 @@ const emptySession: AuthenticatedSession = {
   name: '',
   picture: '',
   updated_at: '',
-  dob: new Date(),
-  patient_guid: '',
-  terms_timestamp: '',
-  terms_given: '',
-  terms_version: '',
-  location: '',
-  phone_number: '',
   email: '',
   email_verified: false,
-  relation_to_patient: '',
   sub: '',
 };
 
@@ -68,8 +60,8 @@ export function AppProvider({
   const requestHandlers: RequestServiceMap = {
     handleVerifyPatientInfoRequest:
       requests.verifyPatientInfo || (async () => ({})),
-    handleCaregiverProfileRequest:
-      requests.caregiverProfile ||
+    handleIdentityProfileRequest:
+      requests.identityProfile ||
       (async () =>
         Promise.reject(Errors.api('No caregiver profile available'))),
   };

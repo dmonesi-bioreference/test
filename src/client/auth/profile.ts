@@ -1,58 +1,43 @@
-import { getSession } from '@auth0/nextjs-auth0';
-import { ManagementClient } from 'auth0';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { config } from 'config';
 
-type ProfileItem =
-  | 'firstName'
-  | 'lastName'
-  | 'dateOfBirth'
-  | 'mobileNumber'
-  | 'relationshipToPatient'
-  | 'termsGiven'
-  | 'termsTimestamp'
-  | 'termsVersion';
-
-declare global {
-  type Profile = Record<ProfileItem, string>;
-}
+import { IdentityService } from './identity-service';
 
 type ProfileResult =
   | ['not-configured', null]
   | ['no-session', null]
   | ['no-caregiver', null]
-  | ['success', Profile];
+  | ['success', RegistrationProfile];
 
 export async function profile(
   request: NextApiRequest,
-  response: NextApiResponse
+  response: NextApiResponse,
+  overrides: { service?: IdentityService } = {}
 ): Promise<ProfileResult> {
-  if (
-    !config.identity.domain ||
-    !config.identity.id ||
-    !config.identity.secret
-  ) {
+  const service =
+    overrides.service ||
+    new IdentityService({
+      id: config.identity.id,
+      secret: config.identity.secret,
+      domain: config.identity.domain,
+    });
+
+  if (!service.configured) {
     return ['not-configured', null];
   }
 
-  const session = getSession(request, response);
+  const session = service.session(request, response);
 
   if (!session) {
     return ['no-session', null];
   }
 
-  const client = new ManagementClient({
-    domain: config.identity.domain,
-    clientId: config.identity.id,
-    clientSecret: config.identity.secret,
-  });
+  const profile = await service.profile(session.user.sub);
 
-  const { user_metadata } = await client.getUser({ id: session.user.sub });
-
-  if (!user_metadata) {
+  if (!profile) {
     return ['no-caregiver', null];
   }
 
-  return ['success', user_metadata as Profile];
+  return ['success', profile as RegistrationProfile];
 }

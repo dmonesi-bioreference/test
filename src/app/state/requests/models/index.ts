@@ -1,4 +1,4 @@
-import { caregiverProfile } from './caregiver-profile';
+import { identityProfile } from './identity-profile';
 import { verifyPatientInfo } from './verify-patient-info';
 
 declare global {
@@ -30,4 +30,4 @@ declare global {
 // Add a request model to this export to incorporate it into the forms
 // state chart automatically.
 //
-export const all = [caregiverProfile, verifyPatientInfo];
+export const all = [identityProfile, verifyPatientInfo];

@@ -1,6 +1,9 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
+import { Errors } from 'client/errors';
 import { config } from 'config';
+
+const NULL_PAYLOAD = Errors.api('Patient service returned null payload.');
 
 export function createProviderClient(overrides: Partial<Configuration>) {
   const params = { ...config, ...overrides };
@@ -44,6 +47,47 @@ export function createProviderClient(overrides: Partial<Configuration>) {
     return response;
   };
 
+  const patientProfile = async (id: string) => {
+    type TestsResponse = {
+      Data: { Patient: Patient; Insurances: Insurance[]; Tests: Test[] }[];
+    };
+
+    const response = await client
+      .get<TestsResponse>(`/v1.0.1/api/PatientPortal/${id}/Tests`)
+      .catch(
+        (error: AxiosError) => error.response as AxiosResponse<TestsResponse>
+      );
+
+    if (response?.status !== 200) {
+      throw response?.data;
+    }
+
+    if (!Array.isArray(response.data.Data)) {
+      throw NULL_PAYLOAD;
+    }
+
+    const [first] = response.data.Data;
+
+    if (first) {
+      const [firstTest] = first.Tests;
+      const [firstInsurance] = first.Insurances;
+      const patientProfile: PatientProfile = {
+        patient_name: `${first.Patient.FirstName} ${first.Patient.LastName}`,
+        patient_nickname: first.Patient.FirstName,
+        patient_dob: first.Patient.BirthDate,
+        gender_genetic: first.Patient.Gender,
+        gender_identity: first.Patient.GenderIdentification,
+        insurance: firstInsurance.Insurance.Name,
+        phenotype: firstTest.PhenotypeNames,
+        caregiver_location: `${first.Patient.City}, ${first.Patient.State}`,
+      };
+
+      return patientProfile;
+    } else {
+      throw response;
+    }
+  };
+
   const allTests = async (id: string) => {
     const response = await client
       .get<{ Data: { Tests: Test[] }[] }>(
@@ -58,6 +102,10 @@ export function createProviderClient(overrides: Partial<Configuration>) {
       throw response?.data;
     }
 
+    if (!Array.isArray(response.data.Data)) {
+      throw NULL_PAYLOAD;
+    }
+
     const [first] = response.data.Data;
 
     if (first) {
@@ -69,6 +117,7 @@ export function createProviderClient(overrides: Partial<Configuration>) {
 
   const handlers = {
     Identity: { validate: validateIdentity },
+    Patient: { profile: patientProfile },
     Tests: { all: allTests },
   };
 
