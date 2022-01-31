@@ -1,7 +1,7 @@
 import userEvent from '@testing-library/user-event';
 
 import { useAppEvents } from 'app';
-import { act, delay, renderWithShell } from 'test-utils';
+import { act, delay, renderWithShell, roles } from 'test-utils';
 
 import { IdentityForm } from './IdentityForm';
 
@@ -22,6 +22,18 @@ function SetCustomDateInOrderToGetAroundDatePickerMarkupComplexity(
 describe('The identity form page', () => {
   it('does not explode', async () => {
     await renderWithShell(<IdentityForm />);
+  });
+
+  it('displays the email identity page for email registrants', async () => {
+    const page = await roles.auth.emailRegistration(<IdentityForm />);
+
+    await page.findByText('Your Email Address');
+  });
+
+  it('displays the mobile number identity page for sms registrants', async () => {
+    const page = await roles.auth.smsRegistration(<IdentityForm />);
+
+    await page.findByText('Your Mobile Phone');
   });
 
   describe('identity form validation', () => {

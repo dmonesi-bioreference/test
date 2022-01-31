@@ -267,6 +267,14 @@ export const resources = {
               invalid: 'Email address is invalid.',
             },
           },
+          phone: {
+            label: 'Your Mobile Phone',
+            placeholder: '212-345-9298',
+            errors: {
+              required: 'Phone number is required.',
+              invalid: 'Phone number is invalid.',
+            },
+          },
           zip: {
             label: 'Zip code',
             placeholder: 'e.g. 123456',
@@ -539,6 +547,10 @@ export const resources = {
             },
             dateOfBirth: {
               label: "Lisa's Date of Birth",
+            },
+            phone: {
+              label: 'Your Mobile Phone',
+              placeholder: '212-345-9498',
             },
             email: {
               label: 'Your Email Address',

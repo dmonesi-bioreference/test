@@ -21,6 +21,9 @@ export const IdentityForm = () => {
   const t = useAppTranslation();
   const events = useAppEvents();
   const isValid = useAppState('forms.identity.validation.valid');
+  const isSms = useAppSelector(
+    (state) => state.context.auth.patientSource === 'SMS'
+  );
   const numberOfAttemptsRemaining = useAppSelector(
     (state) => state.context.auth.identityCheckAttempts
   );
@@ -75,10 +78,17 @@ export const IdentityForm = () => {
             placeholder={t('sections.identity.form.zipCode.placeholder')}
           />
           <div style={{ marginBottom: tokens.spacingXxLarge }}>
-            <IdentityElements.EmailAddress
-              label={t('sections.identity.form.email.label')}
-              placeholder={t('sections.identity.form.email.placeholder')}
-            />
+            {isSms ? (
+              <IdentityElements.PhoneNumber
+                label={t('sections.identity.form.phone.label')}
+                placeholder={t('sections.identity.form.phone.placeholder')}
+              />
+            ) : (
+              <IdentityElements.EmailAddress
+                label={t('sections.identity.form.email.label')}
+                placeholder={t('sections.identity.form.email.placeholder')}
+              />
+            )}
           </div>
           <OnState
             matches="auth.checkingIdentity"
