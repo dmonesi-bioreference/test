@@ -383,39 +383,9 @@ export const resources = {
         },
       },
       sections: {
-        careTeam: {
-          title: 'Care team',
-          counselor: 'Talk to a Genetic Counselor',
-          callUs: 'Call',
-          getAnswers:
-            'Find peace of mind and get your burning questions answered',
-          wereHere: "Starting today, we're here for you",
-          learnMore: 'Learn about genetic counselling',
-        },
         resources: {
-          title: 'Resources',
-          subtitle: '(In the NICU)',
           story: {
-            title: 'Real family story',
             readMore: 'Read Story',
-          },
-          faq: {
-            title: 'NICU FAQs',
-            noDiagnosis: "What happens if my child doesn't get a diagnosis?",
-            afterCare: 'How do I care for my baby after the NICU?',
-            moreChildren: 'Can I still have more children?',
-            viewAll: 'View all',
-          },
-        },
-        science: {
-          title: 'The science',
-          sequencing: {
-            title: 'Whole Genome Sequencing',
-            body: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text.',
-          },
-          genetics: {
-            title: '101 on Genetics',
-            body: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text.',
           },
         },
         results: {
