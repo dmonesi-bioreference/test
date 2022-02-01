@@ -48,7 +48,7 @@ export const TestStatus = () => {
           <Button
             kind="link-medium"
             suffix={<Icon name="chevron-right" size="large" />}
-            href="/demo/results"
+            href="/results"
           >
             <div className="test-status__header-main">
               <Heading level="2">

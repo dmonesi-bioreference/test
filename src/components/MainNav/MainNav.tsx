@@ -19,7 +19,7 @@ const MainNav: React.FC<MainNavProps> = () => {
           <IconButton
             name="document-search"
             label="My Results"
-            href="/demo/results"
+            href="/results"
             encircled
           >
             <Typography type="menu-item">My Results</Typography>
@@ -41,7 +41,7 @@ const MainNav: React.FC<MainNavProps> = () => {
           <IconButton
             name="book-open"
             label="Resources"
-            href="/demo/resources"
+            href="/resources"
             encircled
           >
             <Typography type="menu-item">Resources</Typography>
@@ -49,13 +49,19 @@ const MainNav: React.FC<MainNavProps> = () => {
         </li>
 
         <li className="menu__item" key="5">
+          <IconButton name="cog" label="Settings" href="/settings" encircled>
+            <Typography type="menu-item">Settings</Typography>
+          </IconButton>
+        </li>
+
+        <li className="menu__item" key="5">
           <IconButton
-            name="cog"
+            name="logout"
             label="Settings"
-            href="/demo/settings"
+            href="/api/auth/logout"
             encircled
           >
-            <Typography type="menu-item">Settings</Typography>
+            <Typography type="menu-item">Log Out</Typography>
           </IconButton>
         </li>
       </ul>

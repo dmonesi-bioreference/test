@@ -73,10 +73,10 @@ jobs:
               AUTH0_CLIENT_SECRET="${{ secrets.AUTH0_CLIENT_SECRET }}" \
               IDENTITY_CLIENT_ID="${{ secrets.IDENTITY_CLIENT_ID }}" \
               IDENTITY_CLIENT_SECRET="${{ secrets.IDENTITY_CLIENT_SECRET }}" \
+              PROVIDER_PORTAL_BASE_URL="${{ secrets.PROVIDER_PORTAL_BASE_URL }}" \
               PROVIDER_PORTAL_API_BASIC_AUTH_USERNAME="${{ secrets.PROVIDER_PORTAL_API_BASIC_AUTH_USERNAME }}" \
               PROVIDER_PORTAL_API_BASIC_AUTH_PASSWORD="${{ secrets.PROVIDER_PORTAL_API_BASIC_AUTH_PASSWORD }}" \
               PROVIDER_PORTAL_API_REFERER="${{ secrets.PROVIDER_PORTAL_API_REFERER }}" \
-              PROVIDER_PORTAL_API_TESTS_URL="${{ secrets.PROVIDER_PORTAL_API_TESTS_URL }}" \
               PIMCORE_URL="${{ secrets.PIMCORE_URL }}" \
               PIMCORE_KEY="${{ secrets.PIMCORE_KEY }}" \
               NEXT_PUBLIC_GTM_ID="${{ secrets[format('GTM_ID_{0}', steps.get_branch_name.outputs.branch_name_uppercase)] }}"
