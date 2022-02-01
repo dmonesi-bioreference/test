@@ -60,6 +60,7 @@
     "immer": "8.0.3",
     "lodash": "4.17.21",
     "next": "11.1.2",
+    "pino": "7.6.5",
     "polished": "4.1.0",
     "react": "17.0.2",
     "react-audio-player": "0.17.0",

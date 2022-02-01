@@ -18,7 +18,7 @@ function ensureTypeIsStringBecauseNextJsHasLooseRequestTypes(
   return !Array.isArray(candidate);
 }
 
-export default async function handler(
+export default Errors.wrap(async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -27,12 +27,19 @@ export default async function handler(
   if (!config.pimcore.key) return res.status(404).json({});
 
   if (!ensureTypeIsStringBecauseNextJsHasLooseRequestTypes(identifier)) {
-    return res.status(400).json(Errors.badRequest('unable to parse article ID, multiple options'));
+    return res
+      .status(400)
+      .json(
+        Errors.badRequest(
+          { identifier },
+          'Unable to parse article ID, multiple options.'
+        )
+      );
   }
 
   const article = isNaN(Number(identifier))
     ? await Services.Content.articleByUrlSlug(identifier)
     : await Services.Content.articleById(identifier);
-  
+
   res.status(200).json(article);
-}
+});

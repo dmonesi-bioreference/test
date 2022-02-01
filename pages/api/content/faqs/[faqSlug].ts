@@ -18,7 +18,7 @@ function ensureTypeIsStringBecauseNextJsHasLooseRequestTypes(
   return !Array.isArray(candidate);
 }
 
-export default async function handler(
+export default Errors.wrap(async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -29,10 +29,15 @@ export default async function handler(
   if (ensureTypeIsStringBecauseNextJsHasLooseRequestTypes(slug)) {
     const faq = await Services.Content.faq(slug);
 
-    res.status(200).json(faq);
+    return res.status(200).json(faq);
   } else {
     return res
       .status(400)
-      .json(Errors.badRequest('unable to parse faq slug, multiple options'));
+      .json(
+        Errors.badRequest(
+          { slug },
+          'Unable to parse faq slug, multiple options.'
+        )
+      );
   }
-}
+});

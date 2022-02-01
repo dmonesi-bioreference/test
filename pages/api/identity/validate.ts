@@ -4,7 +4,7 @@ import { Errors } from 'client/errors';
 import { Services } from 'client/services';
 import { config } from 'config';
 
-export default async function handler(
+export default Errors.wrap(async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -14,5 +14,5 @@ export default async function handler(
 
   const articles = await Services.Identity.validate(req.body);
 
-  res.status(200).json(articles);
-}
+  return res.status(200).json(articles);
+});
