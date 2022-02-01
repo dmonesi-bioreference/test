@@ -24,6 +24,8 @@ export interface LinkCardProps {
   heading?: string;
   /** Body text of card */
   body?: string;
+  /** Footer text of card */
+  footer?: string;
   /** Image alt text */
   imageAlt?: string;
   /** Image source url */
@@ -56,7 +58,6 @@ const LinkCard: React.FC<LinkCardProps> = (props) => {
   return (
     <LinkCardStyled {...props}>
       <Card
-        maxHeaderHeight={189}
         header={
           <AppImage
             src={props.imageSrc}
@@ -66,6 +67,18 @@ const LinkCard: React.FC<LinkCardProps> = (props) => {
             width={343}
             height={189}
           />
+        }
+        footer={props.footer
+          ? <Button
+            color="light"
+            kind="link-medium"
+            href={props.href}
+            suffix={<Icon name="chevron-right" size="small" />}
+            spreadContent={true}
+          >
+            {props.footer}
+          </Button>
+          : undefined
         }
       >
         <div className="label">{labelFragment}</div>

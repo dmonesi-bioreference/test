@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 
 import { useTestStatus } from 'app/components/Timeline/hooks';
-import InTheNICUImage from 'assets/images/jpg/InTheNICU.jpg';
-import { Button, Carousel, LinkCard } from 'components';
+import { Carousel, LinkCard, Spinner, Typography } from 'components';
 import { tokens } from 'styles';
 
-import { useAppEvents, useAppSelector, useAppTranslation } from '../Shell';
+import { useAppEvents, useAppTranslation } from '../Shell';
 
 import { Content } from './Content';
+import { useContent } from './hooks';
 
 export const ArticleCards = () => {
   const t = useAppTranslation();
@@ -17,9 +17,7 @@ export const ArticleCards = () => {
     events.fetchAllArticles();
   }, [events]);
 
-  const articles = useAppSelector(
-    (state) => state.context.content.articles.data
-  );
+  const [{ articles, loadingArticles, errorFetchingArticles }] = useContent();
 
   const [{ isWaiting, isResultsReady, isAfterAppointment, isViewed }] =
     useTestStatus();
@@ -42,33 +40,42 @@ export const ArticleCards = () => {
     return (
       <LinkCard
         key={article.id}
+        href={`/demo/article${article.slug}`}
         variant="article"
-        imageSrc={InTheNICUImage}
+        imageSrc={article.bannerImage?.fullpath as string}
         imageAlt="alt-text"
         label={article.label}
         heading={article.title}
+        footer={t('components.articleCard.actions.primary.label')}
         themeColor={tokens.colorPrimary}
       >
         <div style={{ marginBottom: tokens.spacingLarge }}>
-          <Content>{article.blurb}</Content>
+          <Content>
+            {article.blurb}
+          </Content>
         </div>
-        <Button kind="primary" href={`/demo/article/${article.slug}`}>
-          {t('components.articleCard.actions.primary.label')}
-        </Button>
       </LinkCard>
     );
   });
 
   return (
-    <Carousel
-      showIndicator={false}
-      externalControl={{
-        prevText: t('pages.resources.section.articles.prevArticle'),
-        nextText: t('pages.resources.section.articles.nextArticle'),
-      }}
-      enablePeak={true}
-    >
-      {articleCards}
-    </Carousel>
+    loadingArticles ? (
+      <Spinner />
+    ) : errorFetchingArticles ? (
+      <Typography color="error" level="7" type="heading">
+        {t('pages.resources.section.articles.error')}
+      </Typography>
+    ) : (
+      <Carousel
+        showIndicator={false}
+        externalControl={{
+          prevText: t('pages.resources.section.articles.prevArticle'),
+          nextText: t('pages.resources.section.articles.nextArticle'),
+        }}
+        enablePeak={true}
+      >
+        {articleCards}
+      </Carousel>
+    )
   );
 };

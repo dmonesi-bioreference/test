@@ -8,7 +8,10 @@ export const config = {
     secret: process.env.IDENTITY_CLIENT_SECRET || '',
     scope: process.env.IDENTITY_CLIENT_SCOPE || 'read:users',
   },
-  pimcore: { key: process.env.PIMCORE_KEY },
+  pimcore: {
+    domain: process.env.NEXT_PUBLIC_PIMCORE_DOMAIN,
+    key: process.env.PIMCORE_KEY,
+  },
   services: {
     provider: base(process.env.PROVIDER_PORTAL_BASE_URL || 'http://localhost'),
     content: base(process.env.PIMCORE_URL || 'http://localhost'),

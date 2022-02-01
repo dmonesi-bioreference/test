@@ -22,7 +22,11 @@ const CardStyled = styled.div<CardProps>`
   }
 
   .card__content {
-    padding: 24px;
+    padding: ${tokens.spacingLarge}
+  }
+
+  .card__footer {
+    padding: ${tokens.spacingLarge};
   }
 `;
 

@@ -6,7 +6,7 @@ import { server } from 'test-utils';
 import { createContentClient } from './create-content-client';
 
 const config = {
-  pimcore: { key: '12345' },
+  pimcore: { domain: 'http://localhost', key: '12345' },
   services: { content: 'http://localhost', provider: '' },
 };
 
