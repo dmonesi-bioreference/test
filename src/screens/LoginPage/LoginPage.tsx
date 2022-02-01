@@ -13,6 +13,8 @@ import { Spinner } from 'components/Spinner';
 import { Typography } from 'components/Typography';
 import { tokens } from 'styles/tokens';
 
+import { ActionGroup } from '../../components';
+
 export const LoginPage = () => {
   const t = useAppTranslation();
   const isValid = useAppState('forms.login.validation.valid');
@@ -41,28 +43,28 @@ export const LoginPage = () => {
       ) : null}
       <div style={{ marginBottom: tokens.spacingXLarge }}>
         <Typography type="heading" level="1" alignment="center">
-          {t('sections.login.welcome')}
+          {t('pages.login.title')}
         </Typography>
       </div>
       <div style={{ marginBottom: tokens.spacingXLarge }}>
         <Typography type="heading" level="4" alignment="center">
-          {t('sections.login.journey')}
+          {t('pages.login.description')}
         </Typography>
       </div>
       <div style={{ marginBottom: tokens.spacing }}>
         <LoginElements.EmailAddress
-          label={t('sections.login.form.email.label')}
-          placeholder={t('sections.login.form.email.placeholder')}
+          label={t('forms.login.email.label')}
+          placeholder={t('forms.login.email.placeholder')}
         />
       </div>
       <div style={{ marginBottom: tokens.spacingXLarge }}>
         <LoginElements.Password
-          label={t('sections.login.form.password.label')}
-          placeholder={t('sections.login.form.password.placeholder')}
+          label={t('forms.login.password.label')}
+          placeholder={t('forms.login.password.placeholder')}
         />
       </div>
       <form onSubmit={(event) => event.preventDefault()}>
-        <div style={{ marginBottom: tokens.spacing }}>
+        <ActionGroup>
           <OnState
             matches="auth.authenticating"
             fallback={
@@ -72,19 +74,19 @@ export const LoginPage = () => {
                 disabled={!isValid}
                 onClick={authenticate}
               >
-                {t('sections.login.form.login')}
+                {t('pages.login.actions.primary.label')}
               </Button>
             }
           >
             <Button kind="primary" submit={true} disabled prefix={<Spinner />}>
-              {t('sections.login.form.checkingLogin')}
+              {t('pages.login.actions.primary.loadingLabel')}
             </Button>
           </OnState>
-        </div>
+          <Button kind="link-medium">
+            {t('pages.login.actions.secondary.label')}
+          </Button>
+        </ActionGroup>
       </form>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Button kind="link-medium">{t('sections.login.trouble')}</Button>
-      </div>
     </PageLayout>
   );
 };

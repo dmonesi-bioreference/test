@@ -53,7 +53,7 @@ export const ArticleCards = () => {
           <Content>{article.blurb}</Content>
         </div>
         <Button kind="primary" href={`/demo/article/${article.slug}`}>
-          {t('sections.resources.story.readMore')}
+          {t('components.articleCard.actions.primary.label')}
         </Button>
       </LinkCard>
     );

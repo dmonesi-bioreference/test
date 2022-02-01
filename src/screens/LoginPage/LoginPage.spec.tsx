@@ -57,7 +57,7 @@ describe('Login page', () => {
       await page.findByText('Password', { exact: false });
     });
 
-    it('has Login', async () => {
+    it('has a primary action to log in', async () => {
       const page = await renderWithShell(<LoginPage />);
 
       await page.findByText('Login');

@@ -1,8 +1,8 @@
 import Head from 'next/head';
 
-import { AuthenticationToken } from 'screens';
+import { Onboarding } from 'screens';
 
-export default function dataConsent() {
+export default function onboarding() {
   return (
     <>
       <Head>
@@ -10,7 +10,7 @@ export default function dataConsent() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <AuthenticationToken />
+      <Onboarding />
     </>
   );
 }

@@ -7,6 +7,42 @@ export const resources = {
         customerServicePhoneNumber: '1-888-XXXX option 3',
       },
       pages: {
+        onboarding: {
+          stories: {
+            1: {
+              label: 'Results & Resources',
+              heading:
+                "View and learn about your child's genetic test results.",
+              description:
+                "We provide you with easy access to your child's genetic test results, as well as with the resources to learn what it means for your family. Understand the challenges of the present and prepare for your child's future.",
+            },
+            2: {
+              label: 'Records',
+              heading: 'Keep all records in one place.',
+              description:
+                "Along with your child's genetic test results, easily keep record of their symptoms, allergies, medications and any health incidents in preparation for appointments and hospital visits. ",
+            },
+          },
+          actions: {
+            primary: {
+              label: 'Register Now',
+            },
+          },
+        },
+        login: {
+          title: 'Welcome back, Barbara & Lisa',
+          description:
+            "We're here to support you and your child's condition along every step of the journey together.",
+          actions: {
+            primary: {
+              label: 'Login',
+              loadingLabel: 'Authenticating',
+            },
+            secondary: {
+              label: 'Having trouble logging in?',
+            },
+          },
+        },
         healthProfile: {
           title: 'Health Profile',
           description:
@@ -155,41 +191,6 @@ export const resources = {
         },
         home: {},
         results: {
-          preResultsPause: {
-            title: "Let's take a moment together before viewing results",
-            description: {
-              paragraph1:
-                'For some people, receiving test results can be difficult to understand and may cause anxiety, regardless of the results.',
-              paragraph2:
-                'Genetic test reports have some limitations that are important to understand, therefore reviewing results with a doctor is necessary to properly understand and plan next steps.',
-            },
-            audio: {
-              title: 'Genetic Counselor Support',
-              description:
-                "Laura explains why it's important to be in the right space and mind to review results.",
-              transcript: {
-                1: {
-                  title: 'Are you in the right setting?',
-                  description:
-                    'Would you rather be at home, in the hospital, at work, etc.?',
-                },
-                2: {
-                  title: 'Are you with the right people?',
-                  description:
-                    'Would you prefer to have your partner, another family member, or a friend present?',
-                },
-                3: {
-                  title: 'Are you okay waiting to ask questions?',
-                  description:
-                    "You might be viewing your child's results before your doctor sees them. Would you prefer to wait and look at results together with your doctor so you can ask questions right away?",
-                },
-              },
-            },
-            actions: {
-              primary: 'Continue to report',
-              secondary: 'Not now, go back',
-            },
-          },
           waiting: {
             title: 'Prepare to View Your Test Results',
             indicatorCard: {
@@ -217,6 +218,13 @@ export const resources = {
         },
       },
       components: {
+        articleCard: {
+          actions: {
+            primary: {
+              label: "Read more"
+            }
+          }
+        },
         audio: {
           actions: {
             showTranscript: 'Read transcript',
@@ -383,67 +391,7 @@ export const resources = {
         },
       },
       sections: {
-        resources: {
-          story: {
-            readMore: 'Read Story',
-          },
-        },
         results: {
-          steps: {
-            title: 'Current step',
-            current: {
-              one: {
-                title: '1: Samples Delivered',
-                details:
-                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text.',
-              },
-              two: {
-                extracting: {
-                  title: '2: Lab steps - Extracting',
-                  details:
-                    'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text.',
-                },
-                amplifying: {
-                  title: '2: Lab steps - Amplifying',
-                  details:
-                    'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text.',
-                },
-                sequencing: {
-                  title: '2: Lab steps - Sequencing',
-                  details:
-                    'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text.',
-                },
-              },
-            },
-          },
-          process: {
-            title: 'Process Breakdown',
-            details:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text.',
-            one: {
-              title: 'Samples Delivered',
-              details:
-                'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text.',
-            },
-            two: {
-              title: 'Lab steps',
-              extracting: {
-                subTitle: 'Extracting',
-                details:
-                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text.',
-              },
-              amplifying: {
-                subTitle: 'Amplifying',
-                details:
-                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text.',
-              },
-              sequencing: {
-                subTitle: 'Sequencing',
-                details:
-                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text.',
-              },
-            },
-          },
           timeline: {
             title: 'Your Timeline',
             subTitle: "What's coming next?",
@@ -488,15 +436,6 @@ export const resources = {
           mayVary: 'Please keep in mind that processing time may vary',
           estimate: 'Expect results in {{estimate}} days',
           expected: 'Results expected {{expectedResultsDate}}',
-          locationCheck: {
-            where: 'Where are you now?',
-            report:
-              "It's been 2 weeks since your genetic test report was generated. Help us deliver the most accurate resources and connections.",
-            nicu: 'In the NICU',
-            home: 'Newly home and adjusting',
-            while: "We've been home for a while",
-            continue: 'Continue',
-          },
         },
         identity: {
           title: 'Welcome, Barbara & Lisa',
@@ -527,72 +466,6 @@ export const resources = {
             checkingIdentity: 'Checking identity',
           },
         },
-        login: {
-          welcome: 'Welcome back, Barbara & Lisa',
-          journey:
-            "We're here to support you and your child's condition along every step of the journey together.",
-          trouble: 'Having trouble logging in?',
-          form: {
-            password: {
-              label: 'Password',
-              placeholder: 'Password',
-            },
-            email: {
-              label: 'Email',
-              placeholder: 'e.g. a.onymous@email.com',
-            },
-            login: 'Login',
-            checkingLogin: 'Authenticating',
-          },
-        },
-        dataSharingSettings: {
-          content: 'Ipsum Dolor set amit lorem',
-          dataSharingHeadingOne: "Allow Families to see my Child's:",
-          headData: 'Data Sharing Settings',
-          titleOne: 'Conditions & Disorders',
-          titleTwo: 'Medications',
-          titleThree: 'Reported Symptoms',
-          titleFour: 'Lorem Ipsum Dolor set amit',
-          titleFive: 'Lorem Ipsum Dolor set amit',
-          titleSix: 'Lorem ipsum share',
-        },
-        dataConsent: {
-          resources: 'PERSONALIZED RESOURCES',
-          similar: 'SIMILAR FAMILY MATCHES',
-          child: 'Personalize for my child',
-          para: "We can provide more fine-tuned resources and  help connect with other parents like you by giving consent to use your child's data",
-          yes: 'Yes please!',
-          no: 'No thanks',
-          continue: 'Continue',
-          footer:
-            "You can always change data sharing settings at any time from your child's health profile.",
-        },
-        authenticationToken: {
-          slides: {
-            1: {
-              title: 'Results & Resources',
-              overView:
-                "View and learn about your child's genetic test results.",
-              content:
-                "We provide you with easy access to your child's genetic test results, as well as with the resources to learn what it means for your family. Understand the challenges of the present and prepare for your child's future.",
-            },
-            2: {
-              title: 'Records',
-              overView: 'Keep all records in one place.',
-              content:
-                "Along with your child's genetic test results, easily keep record of their symptoms, allergies, medications and any health incidents in preparation for appointments and hospital visits. ",
-            },
-            3: {
-              title: 'Community',
-              overView: 'Feel the support of others who truly understand.',
-              content:
-                'Living with a rare or unknown genetic condition can be feel isolating. Connect and communicate with other families that have shared conditions, symptoms and experiences. You are not alone!',
-            },
-          },
-
-          buttonText: 'Register Now',
-        },
-
         furtherRegistration: {
           stepOne: {
             title: 'Thank you!',

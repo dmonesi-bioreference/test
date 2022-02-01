@@ -7,11 +7,7 @@ describe('Demo pages', () => {
       // CI test where all pass locally.
       //'',
       'identity-form',
-      'data-consent',
-      'data-sharing-settings',
-      'location-check',
       'results',
-      'testing-process',
       'registration',
       'resources',
       'resources/faqs',
