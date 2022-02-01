@@ -87,6 +87,7 @@ jobs:
               PROVIDER_PORTAL_API_REFERER="${{ secrets.PROVIDER_PORTAL_API_REFERER }}" \
               PIMCORE_URL="${{ secrets.PIMCORE_URL }}" \
               PIMCORE_KEY="${{ secrets.PIMCORE_KEY }}" \
+              NEXT_PUBLIC_PIMCORE_DOMAIN="${{ secrets.PIMCORE_DOMAIN }}" \
               NEXT_PUBLIC_GTM_ID="${{ secrets[format('GTM_ID_{0}', steps.get_branch_name.outputs.branch_name_uppercase)] }}"
 
       # Wait for the site to be restarted before we start vulnerability scan
