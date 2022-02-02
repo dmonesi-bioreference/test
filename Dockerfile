@@ -25,11 +25,6 @@ RUN yarn build && yarn install --production --ignore-scripts --prefer-offline
 FROM node:alpine AS runner
 WORKDIR /app
 
-ARG GTM_ID
-ARG PIMCORE_DOMAIN
-
-ENV NEXT_PUBLIC_GTM_ID $GTM_ID
-ENV NEXT_PUBLIC_PIMCORE_DOMAIN $PIMCORE_DOMAIN
 ENV NODE_ENV production
 
 RUN addgroup -g 1001 -S nodejs

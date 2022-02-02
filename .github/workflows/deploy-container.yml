@@ -62,14 +62,6 @@ jobs:
             --slot "${{ steps.get_branch_name.outputs.branch_name }}" \
             --linux-fx-version "DOCKER|genedxacr.azurecr.io/pandas:${{ steps.generate_tag.outputs.tag }}"
 
-      - name: Write some logs
-        shell: bash
-        run: |
-          echo "steps.get_branch_name.outputs.branch_name: ${{ steps.get_branch_name.outputs.branch_name }}"
-          echo "steps.get_branch_name.outputs.branch_name_uppercase: ${{ steps.get_branch_name.outputs.branch_name_uppercase }}"
-          echo "format('GTM_ID_{0}', steps.get_branch_name.outputs.branch_name_uppercase): ${{ format('GTM_ID_{0}', steps.get_branch_name.outputs.branch_name_uppercase) }}"
-          echo "secrets[format('GTM_ID_{0}', steps.get_branch_name.outputs.branch_name_uppercase)]: ${{ secrets[format('GTM_ID_{0}', steps.get_branch_name.outputs.branch_name_uppercase)] }}"
-
       - name: Configure Identity provider for patient-* url
         run: |
           az webapp config appsettings set \
