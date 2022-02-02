@@ -45,6 +45,9 @@ jobs:
           push: true
           tags: |
             ${{ secrets.ACR_HOST }}/pandas:${{ steps.generate_tag.outputs.tag }}
+          secrets: |
+            "GTM_ID=${{ secrets[format('GTM_ID_{0}', steps.get_branch_name.outputs.branch_name_uppercase)] }}"
+            "PIMCORE_DOMAIN=${{ secrets.PIMCORE_DOMAIN }}"
 
       - name: Azure login
         uses: azure/login@v1
