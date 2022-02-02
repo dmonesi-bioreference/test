@@ -6,14 +6,13 @@ import {
   useAppState,
   useAppTranslation,
 } from 'app/components/Shell';
+import { ActionGroup } from 'components/ActionGroup';
 import { Button } from 'components/Button';
 import { InformationBanner } from 'components/InformationBanner';
 import { PageLayout } from 'components/PageLayout';
 import { Spinner } from 'components/Spinner';
 import { Typography } from 'components/Typography';
 import { tokens } from 'styles/tokens';
-
-import { ActionGroup } from '../../components';
 
 export const LoginPage = () => {
   const t = useAppTranslation();

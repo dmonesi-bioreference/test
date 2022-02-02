@@ -107,12 +107,14 @@ You can provide these in `.env.local` when you run the app.
 
 We deploy the Auth artifact with manual commands presently. Manual deployment uses the following environment variables:
 
-| Variable name       | Public | Purpose                   | Default                    |
-| ------------------- | ------ | ------------------------- | -------------------------- |
-| AUTH0_DOMAIN        | Public | The current app URL       | bioreference-dev.auth0.com |
-| AUTH0_CLIENT_ID     | Public | Our Auth0 tenant ID       |                            |
-| AUTH0_CLIENT_SECRET | Public | Secret for the client ID  |                            |
-| AUTH0_REALM         | Public | The DB realm / connection | genedx-accounts            |
+| Variable name              | Public | Purpose                              | Default                    |
+| -------------------------- | ------ | ------------------------------------ | -------------------------- |
+| AUTH0_DOMAIN               | Public | The current app URL                  | bioreference-dev.auth0.com |
+| AUTH0_CLIENT_ID            | Public | Our Auth0 tenant ID                  |                            |
+| AUTH0_CLIENT_SECRET        | Public | Secret for the client ID             |                            |
+| AUTH0_REALM                | Public | The DB realm / connection            | genedx-accounts            |
+| NEXT_PUBLIC_GTM_ID         | Public | The GTM ID for ... GTM               |                            |
+| NEXT_PUBLIC_PIMCORE_DOMAIN | Public | Root URL for Pimcore provided assets |                            |
 
 You can provide an `.env.auth` file with these values to use the commands locally.
 

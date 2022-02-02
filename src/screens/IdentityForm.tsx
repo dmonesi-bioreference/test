@@ -6,15 +6,12 @@ import {
   useAppState,
   useAppTranslation,
 } from 'app/components/Shell';
-import {
-  Button,
-  Heading,
-  InformationBanner,
-  PageLayout,
-  PageSection,
-  Spinner,
-  Typography,
-} from 'components';
+import { Button } from 'components/Button';
+import { InformationBanner } from 'components/InformationBanner';
+import { PageLayout } from 'components/PageLayout';
+import { PageSection } from 'components/PageSection';
+import { Spinner } from 'components/Spinner';
+import { Heading, Typography } from 'components/Typography';
 import { tokens } from 'styles';
 
 export const IdentityForm = () => {

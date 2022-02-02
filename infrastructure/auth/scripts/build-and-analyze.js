@@ -8,8 +8,9 @@ const { join } = require('path');
 const { promisify } = require('util');
 
 const builder = require('esbuild');
-const svgrPlugin = require('esbuild-plugin-svgr');
 const handlebars = require('handlebars');
+
+const { buildConfig } = require('./configuration');
 
 const root = join.bind(null, __dirname, '..', '..', '..');
 const dist = root.bind(null, 'dist');
@@ -17,38 +18,8 @@ const auth = root.bind(null, 'infrastructure', 'auth');
 const read = promisify(readFile);
 const write = promisify(writeFile);
 
-require('dotenv').config({ path: root('.env.auth') });
-
 async function buildAndAnalyzeLoginPage() {
-  let output = await builder.build({
-    entryPoints: [root('src', 'auth.tsx')],
-    bundle: true,
-    minify: true,
-    treeShaking: true,
-    metafile: true,
-    platform: 'browser',
-    target: ['chrome58', 'firefox57', 'safari11', 'edge18'],
-    define: {
-      'process.env.AUTH0_REALM': `"${process.env.AUTH0_REALM}"`,
-      'process.env.NODE_ENV': '"production"',
-      'process.env.__NEXT_TRAILING_SLASH': 'false',
-      'process.env.__NEXT_ROUTER_BASEPATH': '""',
-      'process.env.__NEXT_CROSS_ORIGIN': '""',
-      'process.env.__NEXT_I18N_SUPPORT': 'false',
-      'process.env.__NEXT_SCROLL_RESTORATION': 'null',
-      'process.env.__NEXT_IMAGE_OPTS': 'undefined',
-    },
-    plugins: [svgrPlugin()],
-    outfile: dist('auth.js'),
-    loader: {
-      '.jpg': 'file',
-      '.png': 'file',
-      '.ttf': 'file',
-      '.eot': 'file',
-      '.woff': 'file',
-      '.woff2': 'file',
-    },
-  });
+  let output = await builder.build(buildConfig);
 
   console.log(await builder.analyzeMetafile(output.metafile));
 
