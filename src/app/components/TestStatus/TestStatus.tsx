@@ -12,7 +12,7 @@ import TestStatusStyled from './TestStatus.styles';
 import { useTestStatus } from './hooks';
 
 export const TestStatus = () => {
-  const [{ isWaiting, percentComplete, lastUpdated, expectedResultsDate }] =
+  const [{ isWaiting, percentComplete, expectedResultsDate }] =
     useTestStatus();
 
   const t = useAppTranslation();
@@ -81,12 +81,13 @@ export const TestStatus = () => {
           </Typography>
         </div>
 
-        <div className="test-status__last-updated">
+        {/* Removed until decided what info 'last updated' will need to represent */}
+        {/* <div className="test-status__last-updated">
           <Icon name="refresh" />
           <Typography type="body">
             {t('sections.results.updated', { lastUpdated })}
           </Typography>
-        </div>
+        </div> */}
       </Card>
     </TestStatusStyled>
   );

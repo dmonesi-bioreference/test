@@ -37,7 +37,7 @@ describe('The home page', () => {
       await page.findByText(
         'Please keep in mind that processing time may vary.'
       );
-      await page.findByText('Updated 11:12am today');
+      // await page.findByText('Updated 11:12am today');
 
       await page.findByText(
         "We're working on processing your test sample. Meanwhile, let's get your health profile setup."
@@ -64,7 +64,7 @@ describe('The home page', () => {
       await page.findByText(
         'Your doctor will soon arrange an appointment to discuss them with you.'
       );
-      await page.findByText('Updated 11:12am today');
+      // await page.findByText('Updated 11:12am today');
 
       await page.findByText(
         'Now that your results are ready, your doctor will get in touch to arrange an appointment to discuss the results with you.'
@@ -94,7 +94,7 @@ describe('The home page', () => {
       await page.findByText(
         'Your doctor will soon arrange an appointment to discuss them with you.'
       );
-      await page.findByText('Updated 11:12am today');
+      // await page.findByText('Updated 11:12am today');
 
       await page.findByText(
         'You will be able to discuss he results with your doctor and ask any questions that you may have.'
@@ -124,7 +124,7 @@ describe('The home page', () => {
       await page.findByText(
         'Your doctor will soon arrange an appointment to discuss them with you.'
       );
-      await page.findByText('Updated 11:12am today');
+      // await page.findByText('Updated 11:12am today');
 
       await page.findByText(
         'You may also have a follow up discussion with a genetic counselor, a healthcare professional with expertise in genetics.'
