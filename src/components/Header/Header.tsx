@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
+import { MainNav } from 'app/components/MainNav';
 import { Button } from 'components/Button';
 import { Icon } from 'components/Icon';
 import { Logo } from 'components/Logo';
-import { MainNav } from 'components/MainNav';
 
 import HeaderStyled from './Header.styles';
 

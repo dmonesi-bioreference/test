@@ -26,7 +26,6 @@ export * from './List';
 export * from './ListCard';
 export * from './Loading';
 export * from './Logo';
-export * from './MainNav';
 export * from './Message';
 export * from './PageHeader';
 export * from './PageLayout';

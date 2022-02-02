@@ -10,3 +10,4 @@ export * from './MediaElements';
 export * from './TestStatus';
 export * from './Timeline';
 export * from './Footer';
+export * from './MainNav';

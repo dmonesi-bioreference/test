@@ -391,6 +391,19 @@ export const resources = {
         },
       },
       sections: {
+        mainNav: {
+          home: { label: 'Home' },
+          results: { label: 'My Results' },
+          resources: { label: 'Resources' },
+          settings: { label: 'Settings' },
+          healthProfile: { label: 'Health Profile' },
+          logout: { label: 'Log Out' },
+        },
+        resources: {
+          story: {
+            readMore: 'Read Story',
+          },
+        },
         results: {
           timeline: {
             title: 'Your Timeline',
