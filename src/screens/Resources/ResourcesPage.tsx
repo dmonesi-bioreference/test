@@ -19,6 +19,8 @@ import {
 export const ResourcesPage = () => {
   const t = useAppTranslation();
 
+  const loadingArticles = useAppState('content.articles.fetchingAllArticles');
+  const errorFetchingArticles = useAppState('content.articles.failure');
   const loadingFAQs = useAppState('content.faqs.fetchingAllFAQs');
   const errorFetchingFAQs = useAppState('content.faqs.failure');
 
@@ -82,7 +84,15 @@ export const ResourcesPage = () => {
           <FAQCards />
         )}
         <Heading>{t('pages.resources.section.articles.title')}</Heading>
-        <ArticleCards />
+        {loadingArticles ? (
+          <Spinner />
+        ) : errorFetchingArticles ? (
+          <Typography color="error" level="7" type="heading">
+            {t('pages.resources.section.articles.error')}
+          </Typography>
+        ) : (
+          <ArticleCards />
+        )}
       </PageSection>
     </PageLayout>
   );

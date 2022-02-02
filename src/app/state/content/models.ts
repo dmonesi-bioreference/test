@@ -1,5 +1,3 @@
-import { config } from 'config';
-
 declare global {
   interface Content {
     title: string;
@@ -128,13 +126,3 @@ export const isContentFailurePayload = (
     Array.isArray(candidate) && candidate.every((member) => 'field' in member)
   );
 };
-
-export const withDomain = (article: Article) => (
-  {
-    ...article,
-    bannerImage: {
-      ...article.bannerImage as Image,
-      fullpath: `${config.pimcore.domain}${article.bannerImage?.fullpath}`,
-    },
-  } as Article
-);

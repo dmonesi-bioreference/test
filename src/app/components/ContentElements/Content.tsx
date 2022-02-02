@@ -10,18 +10,15 @@ import ContentStyled from './Content.styles';
 
 type ContentProps = {
   children?: string;
-  discard?: ('h1'| 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'h7' | 'h8' | 'p' | 'a' | 'ul' | 'ol')[];
 };
 
-export const Content = ({ children, discard }: ContentProps) => {
+export const Content = ({ children }: ContentProps) => {
   const transform: Transform = (node, index) => {
     if (!hasChildren(node)) {
       if (isText(node)) return node.data;
     }
 
     if (isTag(node)) {
-      if (discard && discard.find(e => e === node.name)) return;
-
       switch (node.name) {
         case 'h1':
         case 'h2':
