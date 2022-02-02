@@ -1,5 +1,33 @@
 import { Shell } from 'app/components/Shell';
 import { renderWithShell } from 'test-utils/render-with-shell';
+import { Mocks } from 'test-utils/server/mocks';
+
+/**
+ * renderKnownCaregiver creates a wrapper that prefills some shell callbacks in order to
+ * give you an easier time creating a caregiver who should be greeted with the landing page.
+ * This approach supplies a premade `onSession`.
+ *
+ * @param {React.ReactNode} ui Any renderable will be attempted, but it expects a React node
+ * @param {object} props Any props meant to pass to the shell
+ * @returns A typical testing library wrapper
+ */
+const renderKnownCaregiver: typeof renderWithShell = async (
+  ui,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  { children, ...props } = {}
+) => {
+  const component = await renderWithShell(
+    <Shell
+      {...props}
+      onPatientGuid={async () => Promise.reject('no guid available')}
+      onSession={async () => Mocks.session.single}
+    >
+      {ui}
+    </Shell>
+  );
+
+  return component;
+};
 
 /**
  * renderVisitor creates a wrapper that prefills some shell callbacks in order to
@@ -88,6 +116,7 @@ const renderEmailRegistration: typeof renderWithShell = async (
 };
 
 export const auth = {
+  caregiver: renderKnownCaregiver,
   visitor: renderVisitor,
   smsRegistration: renderSmsRegistration,
   emailRegistration: renderEmailRegistration,

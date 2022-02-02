@@ -1,5 +1,6 @@
 import Head from 'next/head';
 
+import { Authenticated } from 'app/components/Authenticated';
 import { HealthProfile } from 'screens';
 
 export default function healthProfile() {
@@ -10,7 +11,9 @@ export default function healthProfile() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <HealthProfile />
+      <Authenticated>
+        <HealthProfile />
+      </Authenticated>
     </>
   );
 }

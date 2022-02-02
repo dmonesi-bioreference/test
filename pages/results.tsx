@@ -1,5 +1,6 @@
 import Head from 'next/head';
 
+import { Authenticated } from 'app/components/Authenticated';
 import { TestResults } from 'screens';
 
 export default function ResultsPage() {
@@ -10,7 +11,9 @@ export default function ResultsPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <TestResults />
+      <Authenticated>
+        <TestResults />
+      </Authenticated>
     </>
   );
 }

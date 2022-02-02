@@ -1,5 +1,6 @@
 import Head from 'next/head';
 
+import { Authenticated } from 'app/components/Authenticated';
 import { Settings } from 'screens';
 
 export default function settings() {
@@ -10,7 +11,9 @@ export default function settings() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Settings />
+      <Authenticated>
+        <Settings />
+      </Authenticated>
     </>
   );
 }
