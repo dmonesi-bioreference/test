@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { RefObject, useEffect, useState } from 'react';
 
 import { Content, useAppEvents, useAppSelector, useAppState } from 'app';
 import {
@@ -16,6 +16,7 @@ import ContentPageStyled from './ContentPage.styles';
 
 interface FAQPageProps {
   slug?: string;
+  question?: string;
 }
 
 export const FAQsPage: React.FC<FAQPageProps> = (props) => {
@@ -24,7 +25,7 @@ export const FAQsPage: React.FC<FAQPageProps> = (props) => {
   const [faqTitle, setFaqTitle] = useState<string>();
   const [faqLabel, setFaqLabel] = useState<string>();
   const [faqContents, setFaqContents] = useState<
-    { title: string; content: string }[]
+    { ref: RefObject<HTMLDivElement>; title: string; content: string }[]
   >([]);
 
   const faqs = useAppSelector((state) => state.context.content.FAQs.data);
@@ -37,7 +38,11 @@ export const FAQsPage: React.FC<FAQPageProps> = (props) => {
     setFaqLabel(faq ? faq.label : '');
     setFaqContents(
       faq && faq.content
-        ? faq.content.map((e) => ({ title: e.title, content: e.content }))
+        ? faq.content.map((e) => ({
+            title: e.title,
+            content: e.content,
+            ref: React.createRef(),
+          }))
         : []
     );
   }, [faqs, props]);
@@ -47,6 +52,12 @@ export const FAQsPage: React.FC<FAQPageProps> = (props) => {
       events.fetchSingleFAQ({ FAQSlug: props.slug as string });
     }
   }, [faqContents, events, props]);
+
+  useEffect(() => {
+    faqContents
+      .find((content) => content.title.trim() == props.question)
+      ?.ref.current?.scrollIntoView();
+  });
 
   return (
     <PageLayout theme="resourcesTheme">
@@ -74,11 +85,11 @@ export const FAQsPage: React.FC<FAQPageProps> = (props) => {
             <>
               {faqContents &&
                 faqContents.map((contentBlock, index) => (
-                  <React.Fragment key={index}>
+                  <div ref={contentBlock.ref} key={index}>
                     <ContentBlock title={contentBlock.title}>
                       <Content>{contentBlock.content}</Content>
                     </ContentBlock>
-                  </React.Fragment>
+                  </div>
                 ))}
             </>
           )}

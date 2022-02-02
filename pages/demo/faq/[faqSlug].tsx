@@ -5,7 +5,7 @@ import { FAQsPage } from 'screens';
 
 export default function Resources() {
   const router = useRouter();
-  const { faqSlug } = router.query;
+  const { faqSlug, question } = router.query;
 
   return (
     <>
@@ -14,7 +14,7 @@ export default function Resources() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <FAQsPage slug={faqSlug as string} />
+      <FAQsPage slug={faqSlug as string} question={question as string} />
     </>
   );
 }

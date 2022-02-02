@@ -19,7 +19,7 @@ const FaqCard: React.FC<FaqCardProps> = (props) => {
         key={index}
         color="light"
         kind="link-medium"
-        href={props.href}
+        href={`${props.href}?question=${item}`}
         suffix={<Icon name="chevron-right" size="small" />}
         spreadContent={true}
       >
