@@ -13,10 +13,11 @@ WORKDIR /app
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
 
-RUN --mount=type=secret,id=GTM_ID \
-    --mount=type=secret,id=PIMCORE_DOMAIN \
-    export NEXT_PUBLIC_GTM_ID=$(cat /run/secrets/GTM_ID) && \
-    export NEXT_PUBLIC_PIMCORE_DOMAIN=$(cat /run/secrets/PIMCORE_DOMAIN)
+ARG GTM_ID
+ARG PIMCORE_DOMAIN
+
+ENV NEXT_PUBLIC_GTM_ID $GTM_ID
+ENV NEXT_PUBLIC_PIMCORE_DOMAIN $PIMCORE_DOMAIN
 
 RUN yarn build && yarn install --production --ignore-scripts --prefer-offline
 
@@ -24,12 +25,12 @@ RUN yarn build && yarn install --production --ignore-scripts --prefer-offline
 FROM node:alpine AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
+ARG GTM_ID
+ARG PIMCORE_DOMAIN
 
-RUN --mount=type=secret,id=GTM_ID \
-    --mount=type=secret,id=PIMCORE_DOMAIN \
-    export NEXT_PUBLIC_GTM_ID=$(cat /run/secrets/GTM_ID) && \
-    export NEXT_PUBLIC_PIMCORE_DOMAIN=$(cat /run/secrets/PIMCORE_DOMAIN)
+ENV NEXT_PUBLIC_GTM_ID $GTM_ID
+ENV NEXT_PUBLIC_PIMCORE_DOMAIN $PIMCORE_DOMAIN
+ENV NODE_ENV production
 
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
