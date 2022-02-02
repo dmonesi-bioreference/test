@@ -6,7 +6,7 @@ import { server } from 'test-utils';
 import { createContentClient } from './create-content-client';
 
 const config = {
-  pimcore: { key: '12345' },
+  pimcore: { domain: 'http://localhost', key: '12345' },
   services: { content: 'http://localhost', provider: '' },
 };
 
@@ -75,9 +75,11 @@ describe('Handlers', () => {
     expect(result).toEqual(article);
 
     // @ts-ignore
-    expect(givenRequest.body?.query).toContain('getArticleListing(filter: "{\\"slug\\":\\"/a-url\\"}")');
+    expect(givenRequest.body?.query).toContain(
+      'getArticleListing(filter: "{\\"slug\\":\\"/a-url\\"}")'
+    );
   });
-  
+
   it('.articleById(articleId) maps the given payload into an article', async () => {
     let givenRequest = {} as RestRequest<DefaultRequestBody, RequestParams>;
     const article = {
@@ -200,7 +202,7 @@ describe('Handlers', () => {
 
     const faqTwo = {
       id: '1',
-      slug: 'slug' ,
+      slug: 'slug',
       label: 'label',
       title: 'Title 2',
       blurb: 'blurb',

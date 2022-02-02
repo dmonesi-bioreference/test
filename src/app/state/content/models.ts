@@ -1,3 +1,5 @@
+import { client_config } from 'client_config';
+
 declare global {
   interface Content {
     title: string;
@@ -126,3 +128,12 @@ export const isContentFailurePayload = (
     Array.isArray(candidate) && candidate.every((member) => 'field' in member)
   );
 };
+
+export const withDomain = (article: Article) =>
+  ({
+    ...article,
+    bannerImage: {
+      ...(article.bannerImage as Image),
+      fullpath: `${client_config.pimcore.domain}${article.bannerImage?.fullpath}`,
+    },
+  } as Article);

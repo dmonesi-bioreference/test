@@ -6,6 +6,7 @@ import {
   isContentFailurePayload,
   isFAQPayload,
   isMultiFAQPayload,
+  withDomain,
 } from './models';
 
 declare global {
@@ -50,10 +51,10 @@ export const actions = {
   articlesUpdate: assign((context: AppContext, event: AppEvents) => {
     const data = 'data' in event ? event?.data : [];
     if (isArticlePayload(data)) {
-      context.content.articles.data = [data];
+      context.content.articles.data = [withDomain(data)];
     }
     if (isMultiArticlePayload(data)) {
-      context.content.articles.data = data;
+      context.content.articles.data = data.map((e) => withDomain(e));
     }
   }),
   articlesError: assign((context: AppContext, event: AppEvents) => {

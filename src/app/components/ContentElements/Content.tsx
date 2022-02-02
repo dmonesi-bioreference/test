@@ -10,15 +10,31 @@ import ContentStyled from './Content.styles';
 
 type ContentProps = {
   children?: string;
+  discard?: (
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'h6'
+    | 'h7'
+    | 'h8'
+    | 'p'
+    | 'a'
+    | 'ul'
+    | 'ol'
+  )[];
 };
 
-export const Content = ({ children }: ContentProps) => {
+export const Content = ({ children, discard }: ContentProps) => {
   const transform: Transform = (node, index) => {
     if (!hasChildren(node)) {
       if (isText(node)) return node.data;
     }
 
     if (isTag(node)) {
+      if (discard && discard.find((e) => e === node.name)) return;
+
       switch (node.name) {
         case 'h1':
         case 'h2':
@@ -42,19 +58,15 @@ export const Content = ({ children }: ContentProps) => {
         case 'ul':
           return (
             <Typography key={index} type="body">
-              <ul>
-                {node.children.map((child, i) => transform(child, i))}
-              </ul>
+              <ul>{node.children.map((child, i) => transform(child, i))}</ul>
             </Typography>
           );
         case 'ol':
           return (
             <Typography key={index} type="body">
-              <ol>
-                {node.children.map((child, i) => transform(child, i))}
-              </ol>
+              <ol>{node.children.map((child, i) => transform(child, i))}</ol>
             </Typography>
-          )
+          );
         case 'strong':
           return (
             <strong key={index}>
