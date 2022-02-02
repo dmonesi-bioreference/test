@@ -2,13 +2,13 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { Errors } from 'client/errors';
 import { Services } from 'client/services';
-import { config } from 'config';
+import { server_config } from 'server_config';
 
 export default Errors.wrap(async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (!config.services.provider) {
+  if (!server_config.services.provider) {
     return res.status(500).json(Errors.missingConfig('Provider api endpoint'));
   }
 

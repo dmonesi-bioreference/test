@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { Errors } from 'client/errors';
 import { Services } from 'client/services';
-import { config } from 'config';
+import { server_config } from 'server_config';
 
 /**
  * This is purely here because we want to call out a Next.js type for being loose.
@@ -24,7 +24,7 @@ export default Errors.wrap(async function handler(
 ) {
   const slug = req.query.faqSlug;
 
-  if (!config.pimcore.key) return res.status(404).json({});
+  if (!server_config.pimcore.key) return res.status(404).json({});
 
   if (ensureTypeIsStringBecauseNextJsHasLooseRequestTypes(slug)) {
     const faq = await Services.Content.faq(slug);

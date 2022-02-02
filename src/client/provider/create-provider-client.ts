@@ -1,12 +1,12 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
 import { Errors } from 'client/errors';
-import { config } from 'config';
+import { server_config } from 'server_config';
 
 const NULL_PAYLOAD = Errors.api('Patient service returned null payload.');
 
 export function createProviderClient(overrides: Partial<Configuration>) {
-  const params = { ...config, ...overrides };
+  const params = { ...server_config, ...overrides };
   const client = axios.create({
     baseURL: params.services.provider,
     insecureHTTPParser: true,

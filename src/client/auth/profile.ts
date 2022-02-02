@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { config } from 'config';
+import { server_config } from 'server_config';
 
 import { IdentityService } from './identity-service';
 
@@ -18,9 +18,9 @@ export async function profile(
   const service =
     overrides.service ||
     new IdentityService({
-      id: config.identity.id,
-      secret: config.identity.secret,
-      domain: config.identity.domain,
+      id: server_config.identity.id,
+      secret: server_config.identity.secret,
+      domain: server_config.identity.domain,
     });
 
   if (!service.configured) {

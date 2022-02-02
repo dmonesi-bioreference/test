@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import TagManager from 'react-gtm-module';
 
-import { config } from 'config';
+import { client_config } from 'client_config';
 
 import { AppProvider, AppProviderProps } from './AppProvider';
 import { Theme } from './Theme';
@@ -10,8 +10,8 @@ type ShellProps = AppProviderProps;
 
 export function Shell({ children, ...props }: Props<ShellProps>) {
   useEffect(() => {
-    if (config.gtm.id) {
-      TagManager.initialize({ gtmId: config.gtm.id });
+    if (client_config.gtm.id) {
+      TagManager.initialize({ gtmId: client_config.gtm.id });
     }
   }, []);
 

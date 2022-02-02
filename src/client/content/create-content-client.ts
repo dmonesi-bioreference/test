@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 
-import { config } from 'config';
+import { server_config } from 'server_config';
 
 import * as Queries from './queries';
 
@@ -8,7 +8,7 @@ const GRAPHQL_ENDPOINT = '/gdx-webservices/patient';
 const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 
 export function createContentClient(overrides: Partial<Configuration>) {
-  const params = { ...config, ...overrides };
+  const params = { ...server_config, ...overrides };
 
   const client = axios.create({
     baseURL: params.services.content,

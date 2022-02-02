@@ -1,7 +1,7 @@
 const domain = (givenString: string) => new URL(givenString).host;
 const base = (givenString: string) => new URL(givenString).origin;
 
-export const config = {
+export const server_config = {
   identity: {
     domain: domain(process.env.AUTH0_ISSUER_BASE_URL || 'http://localhost'),
     id: process.env.IDENTITY_CLIENT_ID || '',
@@ -18,11 +18,8 @@ export const config = {
     username: process.env.PROVIDER_PORTAL_API_BASIC_AUTH_USERNAME,
     password: process.env.PROVIDER_PORTAL_API_BASIC_AUTH_PASSWORD,
   },
-  gtm: {
-    id: process.env.NEXT_PUBLIC_GTM_ID,
-  },
 };
 
 declare global {
-  type Configuration = typeof config;
+  type Configuration = typeof server_config;
 }
