@@ -6,7 +6,9 @@ export function useTestStatus() {
   });
 
   const state = {
-    isWaiting: useAppState('tests.waitingOnTests'),
+    loading: useAppState('tests.loading'),
+    errorLoading: useAppState('tests.notLoaded'),
+    isWaiting: useAppState('tests.notAllComple'),
     percentComplete: test ? test.percentComplete : 0,
     expectedResultsDate: test ? test.expectedResultsDate : '',
     lastUpdated: test ? test.lastUpdated : '',

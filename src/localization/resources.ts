@@ -406,6 +406,7 @@ export const resources = {
         },
         results: {
           timeline: {
+            error: 'Error loading timeline',
             title: 'Your Timeline',
             subTitle: "What's coming next?",
             waiting: {
@@ -449,6 +450,7 @@ export const resources = {
           mayVary: 'Please keep in mind that processing time may vary',
           estimate: 'Expect results in {{estimate}} days',
           expected: 'Results expected {{expectedResultsDate}}',
+          error: 'Error fetching test results',
         },
         identity: {
           title: 'Welcome, Barbara & Lisa',

@@ -43,7 +43,7 @@ export function AppProvider({
   requests = {},
   onAuthenticate: handleAuth = async () => undefined,
   onIdentity: handleIdentityCheck = async () => undefined,
-  onLoadTests: handleLoadTests = async () => [],
+  onLoadTests: handleFetchTests = async () => [],
   onAppointmentStatus: handleAppointmentStatus = async () => ({
     appointmentStatus: undefined,
   }),
@@ -70,7 +70,7 @@ export function AppProvider({
     handleAuth,
     handleIdentityCheck,
     handleSession,
-    handleLoadTests,
+    handleFetchTests,
     handleAppointmentStatus,
     handleReport,
     handleFetchArticle,

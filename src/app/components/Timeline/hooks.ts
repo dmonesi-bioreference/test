@@ -3,15 +3,17 @@ import { useAppSelector, useAppState } from 'app/components/Shell';
 export function useTestStatus() {
   const state = {
     photo: useAppSelector((state) => state.context.geneticCounselor.photo),
-    isWaiting: useAppState('tests.waitingOnTests'),
+    loading: useAppState('tests.loading'),
+    errorLoading: useAppState('tests.notLoaded'),
+    isWaiting: useAppState('tests.notAllComple'),
     isResultsReady: useAppState(
-      'tests.testsReady.appointment.unknownAppointmentStatus'
+      'tests.allComplete.appointment.unknownAppointmentStatus'
     ),
-    isAtAppointment: useAppState('tests.testsReady.appointment.atAppointment'),
+    isAtAppointment: useAppState('tests.allComplete.appointment.atAppointment'),
     isAfterAppointment: useAppState(
-      'tests.testsReady.appointment.afterAppointment'
+      'tests.allComplete.appointment.afterAppointment'
     ),
-    isViewed: useAppState('tests.testsReady.view'),
+    isViewed: useAppState('tests.allComplete.view'),
   };
 
   return [state] as const;

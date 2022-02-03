@@ -1,5 +1,5 @@
 import { useAppTranslation } from 'app/components/Shell';
-import { Avatar, Heading, Typography } from "components";
+import { Avatar, Heading, Spinner, Typography } from "components";
 
 import { AfterAppointmentStage } from "./Stages/AfterAppointmentStage";
 import { AtAppointmentStage } from "./Stages/AtAppointmentStage";
@@ -11,7 +11,8 @@ import { useTestStatus } from './hooks';
 export const Timeline: React.FC = () => {
   const t = useAppTranslation();
 
-  const [{ photo, isWaiting, isResultsReady, isAtAppointment, isAfterAppointment }] = useTestStatus();
+  const [{ photo, loading, errorLoading, isWaiting, isResultsReady, isAtAppointment, isAfterAppointment }] =
+    useTestStatus();
 
   return (
     <TimelineStyled>
@@ -31,18 +32,31 @@ export const Timeline: React.FC = () => {
       </div>
 
       <div className="timeline__body">
-        <WaitingStage
-          status={isWaiting ? 'present' : 'past'}
-        />
-        <TestResultsReadyStage
-          status={isResultsReady ? 'present' : (isWaiting ? 'future' : 'past')}
-        />
-        <AtAppointmentStage
-          status={isAtAppointment ? 'present' : (isAfterAppointment ? 'past' : 'future')}
-        />
-        <AfterAppointmentStage
-          status={isAfterAppointment ? 'present' : 'future'}
-        />
+        {loading
+          ? (<Spinner />)
+          : errorLoading
+          ? (
+            <Typography color="error" level="7" type="heading">
+              {t('sections.results.timeline.error')}
+            </Typography>
+            )
+          : (
+            <>
+              <WaitingStage
+                status={isWaiting ? 'present' : 'past'}
+              />
+              <TestResultsReadyStage
+                status={isResultsReady ? 'present' : (isWaiting ? 'future' : 'past')}
+              />
+              <AtAppointmentStage
+                status={isAtAppointment ? 'present' : (isAfterAppointment ? 'past' : 'future')}
+              />
+              <AfterAppointmentStage
+                status={isAfterAppointment ? 'present' : 'future'}
+              />
+            </>
+          )
+        }
       </div>
     </TimelineStyled>
   );

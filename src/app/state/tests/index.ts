@@ -53,7 +53,7 @@ export const actions = {
       });
     }
   }),
-  checkTestsReady: send((context: AppContext) => {
+  getTestsPercentCompletion: send((context: AppContext) => {
     const testsCount = context.tests.actors.length;
     const testsReadyCount = context.tests.tests.filter(test => test.percentComplete == 100).length;
 
@@ -100,47 +100,56 @@ export const context: {
 }
 
 export const machine = {
-  initial: 'testsNotLoaded',
+  initial: 'notLoaded',
   states: {
-    loadingTests: {
-      invoke: {
-        src: 'handleLoadTests',
-        onDone: {
-          target: 'syncingTests',
-          actions: ['spawnTests'],
+    loading: {
+      type: 'compound',
+      initial: 'fetching',
+      states: {
+        fetching: {
+          invoke: {
+            src: 'handleFetchTests',
+            onDone: {
+              target: 'syncing',
+              actions: ['spawnTests'],
+            },
+            onError: '#notLoaded',
+          },
         },
-        onError: 'testsNotLoaded',
-      },
-    },
-    testsNotLoaded: {
-      on: {
-        LOAD_TESTS: 'loadingTests'
-      },
-    },
-    syncingTests: {
-      entry: [
-        (context: AppContext) => context.tests.actors.forEach(actor => actor.send('SYNC_REQUEST')),
-      ],
-      on: {
-        SYNC_RESPONSE: {
-          target: 'checkingTests',
-          actions: ['syncTests'],
+        syncing: {
+          entry: [
+            (context: AppContext) => context.tests.actors.forEach(actor => actor.send('SYNC_REQUEST')),
+          ],
+          on: {
+            SYNC_RESPONSE: {
+              target: 'resolving',
+              actions: ['syncTests'],
+            },
+          },
+        },
+        resolving: {
+          entry: ['getTestsPercentCompletion'],
+          on: {
+            READY: '#allComplete',
+            NOT_READY: '#notAllComple'
+          },
         },
       },
     },
-    checkingTests: {
-      entry: ['checkTestsReady'],
+    notLoaded: {
+      id: 'notLoaded',
       on: {
-        READY: 'testsReady',
-        NOT_READY: 'waitingOnTests'
+        LOAD_TESTS: 'loading'
       },
     },
-    waitingOnTests: {
+    notAllComple: {
+      id: 'notAllComple',
       on: {
-        READY: 'testsReady'
+        READY: 'allComplete'
       },
     },
-    testsReady: {
+    allComplete: {
+      id: 'allComplete',
       type: 'parallel',
       states: {
         view: {

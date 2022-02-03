@@ -1,21 +1,35 @@
 import { remToPx } from 'polished';
 
 import { useAppTranslation } from 'app/components/Shell';
-import { Button } from 'components/Button';
-import { Card } from 'components/Card';
-import { CircularProgress } from 'components/CircularProgress';
-import { Icon } from 'components/Icon';
-import { Typography, Heading } from 'components/Typography';
+import { Button, Card, CircularProgress, Heading, Icon, Spinner, Typography } from 'components';
 import { colors, tokens } from 'styles';
 
 import TestStatusStyled from './TestStatus.styles';
 import { useTestStatus } from './hooks';
 
 export const TestStatus = () => {
-  const [{ isWaiting, percentComplete, expectedResultsDate }] =
+  const [{ loading, errorLoading, isWaiting, percentComplete, expectedResultsDate }] =
     useTestStatus();
 
   const t = useAppTranslation();
+
+  if (loading) {
+    return (
+      <Card>
+        <Spinner/>
+      </Card>
+    );
+  }
+
+  if (errorLoading) {
+    return (
+      <Card>
+        <Typography color="error" level="7" type="heading">
+          {t('sections.results.error')}
+        </Typography>
+      </Card>
+    );
+  }
 
   return (
     <TestStatusStyled>

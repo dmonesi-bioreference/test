@@ -6,10 +6,10 @@ import { WaitingForResults } from './WaitingForResults';
 export function TestResults() {
   return (
     <>
-      <OnState matches="tests.waitingOnTests">
+      <OnState matches="tests.notAllComple">
         <WaitingForResults />
       </OnState>
-      <OnState matches="tests.testsReady.view.viewed">
+      <OnState matches="tests.allComplete.view.viewed">
         <ResultsReady />
       </OnState>
     </>
