@@ -1,17 +1,10 @@
-import Head from 'next/head';
+import { DeleteAccount as DeleteAccountScreen } from 'screens';
 
-import { DeleteAccount } from 'screens';
-
-export default function deleteAccount() {
+export default function DeleteAccount() {
   return (
     <>
-      <Head>
-        <title>Delete Account</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <main>
-        <DeleteAccount />
+        <DeleteAccountScreen />
       </main>
 
       <footer></footer>

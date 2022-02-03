@@ -1,6 +1,13 @@
+import Head from 'next/head';
 import React, { RefObject, useEffect, useState } from 'react';
 
-import { Content, useAppEvents, useAppSelector, useAppState } from 'app';
+import {
+  Content,
+  useAppEvents,
+  useAppSelector,
+  useAppState,
+  useAppTranslation,
+} from 'app';
 import {
   ContentBlock,
   Heading,
@@ -20,6 +27,7 @@ interface FAQPageProps {
 }
 
 export const FAQsPage: React.FC<FAQPageProps> = (props) => {
+  const t = useAppTranslation();
   const events = useAppEvents();
 
   const [faqTitle, setFaqTitle] = useState<string>();
@@ -60,41 +68,46 @@ export const FAQsPage: React.FC<FAQPageProps> = (props) => {
   });
 
   return (
-    <PageLayout theme="resourcesTheme">
-      <ContentPageStyled>
-        <ReturnLink label="Return" href="/demo/resources" />
-        <PageSection
-          header={
-            <div style={{ marginBottom: tokens.spacingXSmall }}>
+    <>
+      <Head>
+        <title>{t('pages.faqs.pageTitle')}</title>
+      </Head>
+      <PageLayout theme="resourcesTheme">
+        <ContentPageStyled>
+          <ReturnLink label="Return" href="/demo/resources" />
+          <PageSection
+            header={
               <div style={{ marginBottom: tokens.spacingXSmall }}>
-                <Typography type="label" labelType="title" color="blue">
-                  {faqLabel}
-                </Typography>
+                <div style={{ marginBottom: tokens.spacingXSmall }}>
+                  <Typography type="label" labelType="title" color="blue">
+                    {faqLabel}
+                  </Typography>
+                </div>
+                <Heading level="1">{faqTitle}</Heading>
               </div>
-              <Heading level="1">{faqTitle}</Heading>
-            </div>
-          }
-        >
-          {loadingFAQs ? (
-            <Spinner />
-          ) : errorFetchingFAQs ? (
-            <Typography color="error" level="7" type="heading">
-              Error fetching FAQs.
-            </Typography>
-          ) : (
-            <>
-              {faqContents &&
-                faqContents.map((contentBlock, index) => (
-                  <div ref={contentBlock.ref} key={index}>
-                    <ContentBlock title={contentBlock.title}>
-                      <Content>{contentBlock.content}</Content>
-                    </ContentBlock>
-                  </div>
-                ))}
-            </>
-          )}
-        </PageSection>
-      </ContentPageStyled>
-    </PageLayout>
+            }
+          >
+            {loadingFAQs ? (
+              <Spinner />
+            ) : errorFetchingFAQs ? (
+              <Typography color="error" level="7" type="heading">
+                Error fetching FAQs.
+              </Typography>
+            ) : (
+              <>
+                {faqContents &&
+                  faqContents.map((contentBlock, index) => (
+                    <div ref={contentBlock.ref} key={index}>
+                      <ContentBlock title={contentBlock.title}>
+                        <Content>{contentBlock.content}</Content>
+                      </ContentBlock>
+                    </div>
+                  ))}
+              </>
+            )}
+          </PageSection>
+        </ContentPageStyled>
+      </PageLayout>
+    </>
   );
 };

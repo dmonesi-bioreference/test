@@ -1,5 +1,3 @@
-import Head from 'next/head';
-
 import { Shell } from 'app/components';
 import { HealthProfile } from 'screens';
 
@@ -35,24 +33,17 @@ export default function healthProfile() {
   };
 
   return (
-    <>
-      <Head>
-        <title>Health Profile</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <Shell
-        requests={{
-          identityProfile: async () => {
-            await new Promise((resolve) => setTimeout(resolve, 3_000));
-            return profile;
-          },
-        }}
-        onPatientGuid={async () => patientGuidMock}
-        onSession={async () => session}
-      >
-        <HealthProfile />
-      </Shell>
-    </>
+    <Shell
+      requests={{
+        identityProfile: async () => {
+          await new Promise((resolve) => setTimeout(resolve, 3_000));
+          return profile;
+        },
+      }}
+      onPatientGuid={async () => patientGuidMock}
+      onSession={async () => session}
+    >
+      <HealthProfile />
+    </Shell>
   );
 }

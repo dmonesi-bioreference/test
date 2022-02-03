@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 
 import {
@@ -64,42 +65,47 @@ export const ArticlePage: React.FC<ArticlePageProps> = (props) => {
   }, [articleContents, events, props]);
 
   return (
-    <PageLayout theme="resourcesTheme">
-      <ContentPageStyled>
-        <ReturnLink label="Return" href="/demo/resources" />
-        <PageSection
-          header={
-            <div style={{ marginBottom: tokens.spacingXSmall }}>
+    <>
+      <Head>
+        <title>{t('pages.article.pageTitle', { articleTitle })}</title>
+      </Head>
+      <PageLayout theme="resourcesTheme">
+        <ContentPageStyled>
+          <ReturnLink label="Return" href="/demo/resources" />
+          <PageSection
+            header={
               <div style={{ marginBottom: tokens.spacingXSmall }}>
-                <Typography type="label" labelType="title" color="blue">
-                  {articleLabel}
-                </Typography>
+                <div style={{ marginBottom: tokens.spacingXSmall }}>
+                  <Typography type="label" labelType="title" color="blue">
+                    {articleLabel}
+                  </Typography>
+                </div>
+                <Heading level="1">{articleTitle}</Heading>
               </div>
-              <Heading level="1">{articleTitle}</Heading>
-            </div>
-          }
-        >
-          {loading ? (
-            <Spinner />
-          ) : error ? (
-            <Typography color="error" level="7" type="heading">
-              {t('pages.articles.errorFetchingArticle')}
-            </Typography>
-          ) : (
-            articleContents && (
-              <>
-                {articleContents.map((contentBlock, index) => (
-                  <React.Fragment key={index}>
-                    <ContentBlock title={contentBlock.title}>
-                      <Content>{contentBlock.content}</Content>
-                    </ContentBlock>
-                  </React.Fragment>
-                ))}
-              </>
-            )
-          )}
-        </PageSection>
-      </ContentPageStyled>
-    </PageLayout>
+            }
+          >
+            {loading ? (
+              <Spinner />
+            ) : error ? (
+              <Typography color="error" level="7" type="heading">
+                {t('pages.articles.errorFetchingArticle')}
+              </Typography>
+            ) : (
+              articleContents && (
+                <>
+                  {articleContents.map((contentBlock, index) => (
+                    <React.Fragment key={index}>
+                      <ContentBlock title={contentBlock.title}>
+                        <Content>{contentBlock.content}</Content>
+                      </ContentBlock>
+                    </React.Fragment>
+                  ))}
+                </>
+              )
+            )}
+          </PageSection>
+        </ContentPageStyled>
+      </PageLayout>
+    </>
   );
 };

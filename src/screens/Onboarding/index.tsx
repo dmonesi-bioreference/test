@@ -1,3 +1,5 @@
+import Head from 'next/head';
+
 import { useAppTranslation } from 'app/components';
 import AcademicResearch from 'assets/images/png/AcademicResearch.png';
 import ResultsToProvider1_4 from 'assets/images/png/ResultsToProvider1_4.png';
@@ -30,25 +32,30 @@ export const Onboarding = () => {
   ];
 
   return (
-    <PageLayout containsCards={true}>
-      <Carousel>
-        {articleCardSpecs.map((articleCardSpec, i) => (
-          <LinkCard
-            variant="article"
-            key={i}
-            imageSrc={articleCardSpec.imageSrc}
-            imageAlt={articleCardSpec.imageTitle}
-            label={articleCardSpec.label}
-            heading={articleCardSpec.heading}
-            body={articleCardSpec.body}
-          />
-        ))}
-      </Carousel>
-      <ActionGroup>
-        <Button kind="primary" href="/demo/authentication-form">
-          {t('pages.onboarding.actions.primary.label')}
-        </Button>
-      </ActionGroup>
-    </PageLayout>
+    <>
+      <Head>
+        <title>{t('pages.onboarding.pageTitle')}</title>
+      </Head>
+      <PageLayout containsCards={true}>
+        <Carousel>
+          {articleCardSpecs.map((articleCardSpec, i) => (
+            <LinkCard
+              variant="article"
+              key={i}
+              imageSrc={articleCardSpec.imageSrc}
+              imageAlt={articleCardSpec.imageTitle}
+              label={articleCardSpec.label}
+              heading={articleCardSpec.heading}
+              body={articleCardSpec.body}
+            />
+          ))}
+        </Carousel>
+        <ActionGroup>
+          <Button kind="primary" href="/demo/authentication-form">
+            {t('pages.onboarding.actions.primary.label')}
+          </Button>
+        </ActionGroup>
+      </PageLayout>
+    </>
   );
 };

@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { useEffect } from 'react';
 
 import { useAppEvents, useAppState } from 'app';
@@ -21,14 +20,5 @@ export default function Login() {
     }
   }, [events, isUnverified]);
 
-  return (
-    <>
-      <Head>
-        <title>GeneDX</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <LoginPage />
-    </>
-  );
+  return <LoginPage />;
 }

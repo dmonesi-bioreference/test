@@ -1,3 +1,5 @@
+import Head from 'next/head';
+
 import { LoginElements } from 'app/components/LoginElements';
 import {
   OnState,
@@ -22,70 +24,80 @@ export const LoginPage = () => {
   const anyErrors = errors.length > 0;
 
   return (
-    <PageLayout containsCards={true}>
-      {anyErrors ? (
-        <InformationBanner
-          title={t('sections.identity.errors.title')}
-          type="error"
-        >
-          <div style={{ marginBottom: tokens.spacing }}>
-            {errors.map((error) => (
-              <Typography key={error} type="body">
-                <strong>{error}</strong>
-              </Typography>
-            ))}
-          </div>
-          <div style={{ textAlign: 'center' }}>
-            <Button kind="link-medium">Get some help</Button>
-          </div>
-        </InformationBanner>
-      ) : null}
-      <div style={{ marginBottom: tokens.spacingXLarge }}>
-        <Typography type="heading" level="1" alignment="center">
-          {t('pages.login.title')}
-        </Typography>
-      </div>
-      <div style={{ marginBottom: tokens.spacingXLarge }}>
-        <Typography type="heading" level="4" alignment="center">
-          {t('pages.login.description')}
-        </Typography>
-      </div>
-      <div style={{ marginBottom: tokens.spacing }}>
-        <LoginElements.EmailAddress
-          label={t('forms.login.email.label')}
-          placeholder={t('forms.login.email.placeholder')}
-        />
-      </div>
-      <div style={{ marginBottom: tokens.spacingXLarge }}>
-        <LoginElements.Password
-          label={t('forms.login.password.label')}
-          placeholder={t('forms.login.password.placeholder')}
-        />
-      </div>
-      <form onSubmit={(event) => event.preventDefault()}>
-        <ActionGroup>
-          <OnState
-            matches="auth.authenticating"
-            fallback={
-              <Button
-                submit={true}
-                kind="primary"
-                disabled={!isValid}
-                onClick={authenticate}
-              >
-                {t('pages.login.actions.primary.label')}
-              </Button>
-            }
+    <>
+      <Head>
+        <title>{t('pages.login.pageTitle')}</title>
+      </Head>
+      <PageLayout containsCards={true}>
+        {anyErrors ? (
+          <InformationBanner
+            title={t('sections.identity.errors.title')}
+            type="error"
           >
-            <Button kind="primary" submit={true} disabled prefix={<Spinner />}>
-              {t('pages.login.actions.primary.loadingLabel')}
+            <div style={{ marginBottom: tokens.spacing }}>
+              {errors.map((error) => (
+                <Typography key={error} type="body">
+                  <strong>{error}</strong>
+                </Typography>
+              ))}
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <Button kind="link-medium">Get some help</Button>
+            </div>
+          </InformationBanner>
+        ) : null}
+        <div style={{ marginBottom: tokens.spacingXLarge }}>
+          <Typography type="heading" level="1" alignment="center">
+            {t('pages.login.title')}
+          </Typography>
+        </div>
+        <div style={{ marginBottom: tokens.spacingXLarge }}>
+          <Typography type="heading" level="4" alignment="center">
+            {t('pages.login.description')}
+          </Typography>
+        </div>
+        <div style={{ marginBottom: tokens.spacing }}>
+          <LoginElements.EmailAddress
+            label={t('forms.login.email.label')}
+            placeholder={t('forms.login.email.placeholder')}
+          />
+        </div>
+        <div style={{ marginBottom: tokens.spacingXLarge }}>
+          <LoginElements.Password
+            label={t('forms.login.password.label')}
+            placeholder={t('forms.login.password.placeholder')}
+          />
+        </div>
+        <form onSubmit={(event) => event.preventDefault()}>
+          <ActionGroup>
+            <OnState
+              matches="auth.authenticating"
+              fallback={
+                <Button
+                  submit={true}
+                  kind="primary"
+                  disabled={!isValid}
+                  onClick={authenticate}
+                >
+                  {t('pages.login.actions.primary.label')}
+                </Button>
+              }
+            >
+              <Button
+                kind="primary"
+                submit={true}
+                disabled
+                prefix={<Spinner />}
+              >
+                {t('pages.login.actions.primary.loadingLabel')}
+              </Button>
+            </OnState>
+            <Button kind="link-medium">
+              {t('pages.login.actions.secondary.label')}
             </Button>
-          </OnState>
-          <Button kind="link-medium">
-            {t('pages.login.actions.secondary.label')}
-          </Button>
-        </ActionGroup>
-      </form>
-    </PageLayout>
+          </ActionGroup>
+        </form>
+      </PageLayout>
+    </>
   );
 };

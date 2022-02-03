@@ -1,4 +1,5 @@
 import type { AppProps } from 'next/app';
+import Head from 'next/head';
 import { useMemo } from 'react';
 
 import { Shell } from 'app/components/Shell';
@@ -66,6 +67,10 @@ function WebApp({ Component, pageProps }: AppProps) {
       onFetchAllFAQs={Api.Content.faqs}
       onFetchFAQ={Api.Content.faq}
     >
+      <Head>
+        <title>GeneDx</title>
+        <link rel="icon" href="/favicon.ico" key="favicon" />
+      </Head>
       <Component {...pageProps} />
     </Shell>
   );

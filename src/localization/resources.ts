@@ -8,6 +8,7 @@ export const resources = {
       },
       pages: {
         onboarding: {
+          pageTitle: 'Onboarding | GeneDx',
           stories: {
             1: {
               label: 'Results & Resources',
@@ -30,6 +31,7 @@ export const resources = {
           },
         },
         login: {
+          pageTitle: 'Login | GeneDx',
           title: 'Welcome back, Barbara & Lisa',
           description:
             "We're here to support you and your child's condition along every step of the journey together.",
@@ -43,7 +45,14 @@ export const resources = {
             },
           },
         },
+        identity: {
+          pageTitle: 'Identity | GeneDx',
+        },
+        registration: {
+          pageTitle: 'Registration | GeneDx',
+        },
         healthProfile: {
+          pageTitle: 'Health Profile | GeneDx',
           title: 'Health Profile',
           description:
             "A detailed overview of {{patientsNickname}}'s needs for new providers or caregivers.",
@@ -90,6 +99,7 @@ export const resources = {
           },
         },
         deleteAccount: {
+          pageTitle: 'Delete Account | GeneDx',
           title: 'Delete Account',
           description: {
             paragraph1:
@@ -115,6 +125,7 @@ export const resources = {
           },
         },
         resources: {
+          pageTitle: 'Resources | GeneDx',
           title: 'Resources',
           description:
             'Here are some educational resources to help you better understand the who, what, and why’s of genetic testing.',
@@ -146,11 +157,15 @@ export const resources = {
             },
           },
         },
+        article: {
+          pageTitle: '{{articleTitle}} | GeneDx',
+        },
         articles: {
           return: 'Return',
           errorFetchingArticle: 'Error fetching article',
         },
         settings: {
+          pageTitle: 'Settings | GeneDx',
           title: 'Settings',
           accountDetails: {
             title: 'My Account',
@@ -189,8 +204,11 @@ export const resources = {
             },
           },
         },
-        home: {},
+        landing: {
+          pageTitle: 'GeneDx',
+        },
         results: {
+          pageTitle: 'Test Results | GeneDx',
           waiting: {
             title: 'Prepare to View Your Test Results',
             indicatorCard: {
@@ -216,14 +234,20 @@ export const resources = {
             },
           },
         },
+        faq: {
+          pageTitle: '{{faqTitle}} | GeneDx',
+        },
+        faqs: {
+          pageTitle: 'FAQs | GeneDx',
+        },
       },
       components: {
         articleCard: {
           actions: {
             primary: {
-              label: "Read more"
-            }
-          }
+              label: 'Read more',
+            },
+          },
         },
         audio: {
           actions: {
