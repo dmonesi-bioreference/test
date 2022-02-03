@@ -1,7 +1,7 @@
 import { useAppEvents, useAppSelector } from 'app/components/Shell';
 
 export function useIdentityField(field: keyof ValidationModelMap['identity']) {
-  const { identityChange } = useAppEvents();
+  const { identityChange, caregiverContactChange } = useAppEvents();
   const identity = useAppSelector((state) => state.context.forms.identity);
 
   const state = {
@@ -12,7 +12,13 @@ export function useIdentityField(field: keyof ValidationModelMap['identity']) {
   };
 
   const events = {
-    update: (value: string) => identityChange({ field, value }),
+    update: (value: string) => {
+      identityChange({ field, value });
+
+      if (field === 'email' || field === 'phone') {
+        caregiverContactChange({ field, value });
+      }
+    },
   };
 
   return [state, events] as const;

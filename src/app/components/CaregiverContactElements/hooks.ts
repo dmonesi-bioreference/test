@@ -3,7 +3,7 @@ import { useAppEvents, useAppSelector } from 'app/components/Shell';
 export function useCaregiverContactField(
   field: keyof ValidationModelMap['caregiverContact']
 ) {
-  const { caregiverContactChange } = useAppEvents();
+  const { identityChange, caregiverContactChange } = useAppEvents();
   const caregiverContact = useAppSelector(
     (state) => state.context.forms.caregiverContact
   );
@@ -16,7 +16,10 @@ export function useCaregiverContactField(
   };
 
   const events = {
-    update: (value: string) => caregiverContactChange({ field, value }),
+    update: (value: string) => {
+      caregiverContactChange({ field, value });
+      identityChange({ field, value });
+    },
   };
 
   return [state, events] as const;
