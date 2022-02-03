@@ -3,11 +3,15 @@ import { Story } from '@storybook/react/types-6-0';
 import { Shell } from 'app/components/Shell';
 import { createMany } from 'test-utils/server/mocks/tests';
 
-import { LandingPage } from './LandingPage';
+import { Timeline } from './Timeline';
 
 export default {
-  component: LandingPage,
-  title: 'Templates/Main',
+  component: Timeline,
+  title: 'App/Timeline',
+  parameters: {
+    componentSubtitle:
+      'Timeline to display the current stage of the test with future and past stages',
+  },
   argTypes: {
     labStatus: {
       options: ['In Lab', 'Report Ready'],
@@ -17,14 +21,14 @@ export default {
       options: [undefined, 'at appointment', 'after appointment'],
       control: { type: 'select' },
     },
-  } as const,
+  },
 };
 
 const Template: Story = (args) => (
   <Shell
     onLoadTests={async () =>
       createMany({
-        DueDate: '2022-11-11T00:00:00.000',
+        DueDate: '2021-11-11T00:00:00.000',
         LabStatus: args.labStatus,
       })
     }
@@ -32,20 +36,32 @@ const Template: Story = (args) => (
       appointmentStatus: args.appointmentStatus,
     })}
   >
-    <LandingPage />
+    <Timeline />
   </Shell>
 );
 
-export const LandingPageWithLabStatusInLab: Story = Template.bind({});
+export const Waiting = Template.bind({});
 
-LandingPageWithLabStatusInLab.args = {
+Waiting.args = {
   labStatus: 'In Lab',
-  appointmentStatus: undefined,
 };
 
-export const LandingPageWithLabStatusReady: Story = Template.bind({});
+export const ResultsReady = Template.bind({});
 
-LandingPageWithLabStatusReady.args = {
+ResultsReady.args = {
   labStatus: 'Report Ready',
-  appointmentStatus: undefined,
+};
+
+export const AtAppointment = Template.bind({});
+
+AtAppointment.args = {
+  labStatus: 'Report Ready',
+  appointmentStatus: 'at appointment',
+};
+
+export const AfterAppointment = Template.bind({});
+
+AfterAppointment.args = {
+  labStatus: 'Report Ready',
+  appointmentStatus: 'after appointment',
 };

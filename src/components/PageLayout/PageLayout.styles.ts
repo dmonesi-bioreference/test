@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { tokens, base } from 'styles';
+import { tokens, containers, base } from 'styles';
 
 const PageLayoutStyled = styled.div`
   ${base};
@@ -19,12 +19,11 @@ const PageLayoutStyled = styled.div`
     display: flex;
     flex-direction: column;
     align-content: center;
-    padding: 0 ${tokens.spacingLarge} ${tokens.spacingXxxxLarge}
-      ${tokens.spacingLarge};
+    padding: 0 ${containers.spacingGutter} ${tokens.spacingXxxxLarge};
   }
 
   .page-layout__content--with-cards {
-    padding: 0 ${tokens.spacing} ${tokens.spacingXxxxLarge} ${tokens.spacing};
+    padding: 0 ${containers.spacingGutter} ${tokens.spacingXxxxLarge};
   }
 `;
 

@@ -1,8 +1,11 @@
+import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 
 import { Button } from 'components/Button';
 import { Icon } from 'components/Icon';
-import { Heading } from 'components/Typography';
+import { Typography } from 'components/Typography';
+import { colors } from 'styles';
+import slideInDown from 'styles/animations/slide-in';
 
 import TimelineItemStyled from './TimelineItem.styles';
 import TimelineItemBody from './TimelineItemBody';
@@ -32,7 +35,7 @@ const TimelineItem: React.FC<TimelineItemProps> = (props) => {
   };
 
   const [headingHeight, setHeadingHeight] = useState<number>(0);
-  const [detailsHeight, setDetailsHeight] = useState<number>(0);
+  const [bodyHeight, setBodyHeight] = useState<number>(0);
   const [bodyVisible, setBodyVisible] = useState<boolean>(
     props.isCollapseEnabled ? false : true
   );
@@ -43,26 +46,30 @@ const TimelineItem: React.FC<TimelineItemProps> = (props) => {
     if (props.isCollapseEnabled) setBodyVisible(!bodyVisible);
   };
 
+  /* Used to set the custom svg height directly from html ref */
   const onHeightChange = (h) => {
-    setDetailsHeight(h);
+    setBodyHeight(h);
   };
 
   useEffect(() => {
     setHeadingHeight(headingRef.current ? headingRef.current.offsetHeight : 0);
   }, []);
 
-  const grid = () => {
+  /* Variables shared between svgs (here) and in styling logic */
+  const figure = () => {
     const radius = props.isSmall ? 10 : 14;
-    const strokeWidth = props.isSmall ? 4 : 6;
+    const iconStrokeWidth = props.isSmall ? 4 : 6;
+    const lineWidth = 4;
 
     return {
       radius,
-      strokeWidth,
-      width: radius * 2 + strokeWidth,
-      height: radius * 2 + strokeWidth,
+      lineWidth,
+      iconStrokeWidth,
+      diameter: radius * 2 + iconStrokeWidth,
+      height: radius * 2 + iconStrokeWidth,
       origin: {
-        x: radius + strokeWidth / 2,
-        y: radius + strokeWidth / 2,
+        x: radius + iconStrokeWidth / 2,
+        y: radius + iconStrokeWidth / 2,
       },
     };
   };
@@ -70,26 +77,48 @@ const TimelineItem: React.FC<TimelineItemProps> = (props) => {
   return (
     <TimelineItemStyled
       bodyVisible={bodyVisible}
-      lineHeight={headingHeight + (bodyVisible ? detailsHeight : 0)}
+      contentHeight={headingHeight + (bodyVisible ? bodyHeight : 0)}
       {...props}
-      grid={grid()}
+      figure={figure()}
     >
       <div className="icon">
         <svg>
           <circle
             className="bg"
-            cx={grid().origin.x}
-            cy={grid().origin.y}
-            r={grid().radius}
+            cx={figure().origin.x}
+            cy={figure().origin.y}
+            r={figure().radius}
+            stroke={colors.grey[800]}
           />
-          <circle className="indicator" />
-          {!props.isTail && <rect />}
+          <circle
+            className="indicator"
+            cx={figure().origin.x}
+            cy={figure().origin.y}
+            r={figure().radius}
+            strokeDasharray={2 * Math.PI * figure().radius}
+            stroke={colors.grey[900]}
+            strokeDashoffset={
+              ((100 - (props.percent || 0)) / 100) *
+              2 *
+              Math.PI *
+              figure().radius
+            }
+            transform={`rotate(-90 ${figure().origin.x} ${figure().origin.y})`}
+          />
+          {!props.isTail && (
+            <rect
+              x={figure().origin.x - figure().lineWidth / 2}
+              y={figure().height}
+              width={figure().lineWidth}
+              height="100%"
+            />
+          )}
 
           <foreignObject
-            x={grid().origin.x - grid().radius / 2}
-            y={grid().origin.y - grid().radius / 2}
-            width={grid().radius}
-            height={grid().radius}
+            x={figure().origin.x - figure().radius / 2}
+            y={figure().origin.y - figure().radius / 2}
+            width={figure().radius}
+            height={figure().radius}
             style={{ position: 'fixed' }}
           >
             {props.icon}
@@ -107,16 +136,34 @@ const TimelineItem: React.FC<TimelineItemProps> = (props) => {
               ) : null
             }
             onClick={onHeadingClick}
+            className="header__link"
           >
-            <Heading level={props.isSmall ? '8' : '5'}>{props.heading}</Heading>
+            <Typography type="body" level={`${props.isSmall ? '8' : '5'}`}>
+              {props.heading}
+            </Typography>
           </Button>
         </div>
-
-        <TimelineItemBody
-          body={props.body}
-          link={props.link}
-          onHeightChange={onHeightChange}
-        />
+        <AnimatePresence>
+          {bodyVisible && (
+            <motion.div
+              initial={
+                props.isCollapseEnabled
+                  ? slideInDown.states.hidden
+                  : slideInDown.states.visible
+              }
+              animate={slideInDown.states.animate}
+              variants={slideInDown.variants}
+              transition={slideInDown.transition}
+              key="body"
+            >
+              <TimelineItemBody
+                body={props.body}
+                link={props.link}
+                onHeightChange={onHeightChange}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </TimelineItemStyled>
   );

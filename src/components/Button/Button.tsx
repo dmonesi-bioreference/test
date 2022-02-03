@@ -86,7 +86,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     <Link href={props.href} passHref>
       <ButtonStyled
         as="a"
-        className={`${color} ${className} ${props.className}`}
+        className={`${color} ${className} ${props.className}?`}
         target={props.target}
         download={props.download}
         onClick={props.onClick}

@@ -18,6 +18,7 @@ const TestResultsReadyStageStyled = styled.div<TestResultsReadyStageStyledProps>
     display: flex;
     width: 0;
     height: 0;
+    position: fixed;
   }
 
   &.present {

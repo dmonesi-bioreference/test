@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router';
+
 import { useAppTranslation } from 'app/components/Shell';
 import { Icon } from 'components/Icon';
 import { TimelineItem } from 'components/TimelineItem';
@@ -11,6 +13,7 @@ interface WaitingStageProps {
 
 export const WaitingStage: React.FC<WaitingStageProps> = (props) => {
   const t = useAppTranslation();
+  const router = useRouter();
 
   return (
     <WaitingStageStyled
@@ -18,7 +21,7 @@ export const WaitingStage: React.FC<WaitingStageProps> = (props) => {
       className={props.status}
       linearGradient="isWaitingLinearGradient"
     >
-      <svg className="linearGradientSvg">
+      <svg className="linearGradientSvg" width="0" height="0">
         <defs>
           <linearGradient
             id="isWaitingLinearGradient"
@@ -39,14 +42,10 @@ export const WaitingStage: React.FC<WaitingStageProps> = (props) => {
       <TimelineItem
         heading={t('sections.results.timeline.waiting.heading')}
         body={t('sections.results.timeline.waiting.body')}
-        link={
-          props.status == 'present'
-            ? {
-                label: t('sections.results.timeline.waiting.linkLabel'),
-                onClick: () => null,
-              }
-            : undefined
-        }
+        link={{
+          label: t('sections.results.timeline.waiting.linkLabel'),
+          onClick: () => router.push('/resources'),
+        }}
         icon={
           props.status === 'present' ? (
             <Icon name="search" style="solid" />

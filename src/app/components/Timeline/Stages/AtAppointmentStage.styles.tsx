@@ -18,6 +18,7 @@ const AtAppointmentStageStyled = styled.div<AtAppointmentStageStyledProps>`
     display: flex;
     width: 0;
     height: 0;
+    position: fixed;
   }
 
   &.present {

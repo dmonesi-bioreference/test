@@ -15,19 +15,22 @@ const WaitingStageStyled = styled.div<WaitingStageStyledProps>`
 
   .linearGradientSvg {
     display: flex;
-    width: 0;
-    height: 0;
+    position: fixed;
   }
 
   &.present {
     ${TimelineItemStyled} {
       .icon > svg {
         circle {
-          stroke: ${colors.powderBlue[500]};
+          stroke: ${colors.cornflowerBlue[100]};
+        }
+
+        .indicator {
+          stroke: ${colors.cornflowerBlue[500]};
         }
 
         .bg {
-          stroke: ${colors.powderBlue[50]};
+          stroke: ${colors.cornflowerBlue[100]};
         }
 
         rect {

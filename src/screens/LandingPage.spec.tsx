@@ -60,9 +60,9 @@ describe('The home page', () => {
       // await page.findByText('Updated 11:12am today');
 
       await page.findByText(
-        "We're working on processing your test sample. Meanwhile, let's get your health profile setup."
+        "We're working on processing your test sample. Meanwhile, learn more from our resources."
       );
-      await page.findByText('Set up your Health Profile');
+      await page.findByText('Check out resources');
     });
 
     it('has test results ready', async () => {
