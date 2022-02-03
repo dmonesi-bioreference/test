@@ -17,6 +17,26 @@ describe('The home page', () => {
       await page.findByText('Lisa Consuela Jackson');
     });
 
+    it('displays a spinning indicator while loading', async () => {
+      const page = await renderWithShell(<LandingPage />, {
+        onLoadTests: async () => {
+          await new Promise((resolve) => setTimeout(resolve, 10_000_000));
+          return Mocks.tests.createMany({
+            DueDate: '2021-11-11T00:00:00.000',
+            LabStatus: 'In Lab',
+            UpdatedDate: `${today.getFullYear()}-${
+              today.getMonth() + 1 < 10 ? '0' : ''
+            }${today.getMonth() + 1}-${
+              today.getDate() < 10 ? '0' : ''
+            }${today.getDate()}T11:12:00.000`,
+          })
+        },
+      });
+
+      await page.findByTestId('spinner-testStatus');
+      await page.findByTestId('spinner-timeline');
+    });
+
     it('has test results on waiting', async () => {
       const page = await renderWithShell(<LandingPage />, {
         onLoadTests: async () =>

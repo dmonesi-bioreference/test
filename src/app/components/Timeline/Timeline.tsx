@@ -33,7 +33,7 @@ export const Timeline: React.FC = () => {
 
       <div className="timeline__body">
         {loading
-          ? (<Spinner />)
+          ? (<Spinner data-testid="spinner-timeline" />)
           : errorLoading
           ? (
             <Typography color="error" level="7" type="heading">

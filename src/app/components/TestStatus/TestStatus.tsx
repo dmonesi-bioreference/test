@@ -16,7 +16,7 @@ export const TestStatus = () => {
   if (loading) {
     return (
       <Card>
-        <Spinner/>
+        <Spinner data-testid="spinner-testStatus" />
       </Card>
     );
   }
