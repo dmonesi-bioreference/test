@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
-import { useAppTranslation, TestStatus, Timeline } from 'app';
-import { PageLayout, PageSection, UserHeader } from 'components';
+import { useAppTranslation, TestStatus, Timeline, PatientBanner } from 'app';
+import { PageLayout, PageSection } from 'components';
 
 export const LandingPage = () => {
   const t = useAppTranslation();
@@ -12,16 +12,7 @@ export const LandingPage = () => {
         <title>{t('pages.landing.pageTitle')}</title>
       </Head>
 
-      <PageLayout
-        containsCards={true}
-        customHeader={
-          <UserHeader
-            title={t('sections.results.patient')}
-            name="Lisa Consuela Jackson"
-            variant="patient"
-          />
-        }
-      >
+      <PageLayout containsCards={true} customHeader={<PatientBanner />}>
         <PageSection>
           <TestStatus />
           <Timeline />

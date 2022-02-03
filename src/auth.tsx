@@ -126,6 +126,8 @@ async function register({
         patient_guid: patientGuid,
         phone_number: mobileNumber,
         relation_to_patient: relationshipToPatient,
+        caregiver_name: `${firstName} ${lastName}`,
+        caregiver_nickname: firstName,
         caregiver_dob: dateOfBirth as any,
       };
 

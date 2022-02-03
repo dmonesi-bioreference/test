@@ -164,11 +164,7 @@ export function createRequestMachine<GivenKey extends RequestModelKey>(
           onDone: { target: 'success', actions: [key.update] },
         },
       },
-      success: {
-        on: {
-          [key.init]: { target: 'requesting', actions: [key.clear] },
-        },
-      },
+      success: {},
       failure: {
         on: {
           [key.init]: { target: 'requesting', actions: [key.clear] },

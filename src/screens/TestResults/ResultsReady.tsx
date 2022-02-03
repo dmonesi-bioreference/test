@@ -5,6 +5,7 @@ import {
   useAppEvents,
   useAppTranslation,
   useAppSelector,
+  PatientBanner,
 } from 'app';
 import {
   Button,
@@ -13,7 +14,6 @@ import {
   Typography,
   PageLayout,
   PageSection,
-  UserHeader,
 } from 'components';
 
 import ResultsReadyStyled from './ResultsReady.styles';
@@ -25,18 +25,12 @@ export const ResultsReady = () => {
 
   useEffect(() => {
     viewTestResults();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <PageLayout containsCards={true}>
-      <PageSection
-        header={
-          <UserHeader
-            title={t('sections.results.patient')}
-            name="Lisa Consuela Jackson"
-          />
-        }
-      >
+      <PageSection header={<PatientBanner />}>
         <ResultsReadyStyled>
           <div className="results-ready__nav">
             <Button href="/demo" prefix={<Icon name="chevron-left" />}>

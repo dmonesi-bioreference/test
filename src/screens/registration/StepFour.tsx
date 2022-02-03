@@ -50,6 +50,9 @@ export const StepFour = () => {
               {t('sections.furtherRegistration.inputValidation.letters')}
             </Typography>
             <Typography type="list">
+              {t('sections.furtherRegistration.inputValidation.capitalization')}
+            </Typography>
+            <Typography type="list">
               {t('sections.furtherRegistration.inputValidation.numbers')}
             </Typography>
           </InformationBanner>

@@ -11,10 +11,16 @@ describe('The home page', () => {
 
   describe('results section', () => {
     it("features the patient's name", async () => {
-      const page = await renderWithShell(<LandingPage />);
+      const name = 'Lisa Consuela Jackson';
+      const page = await renderWithShell(<LandingPage />, {
+        requests: {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+          identityProfile: async () => ({ patient_name: name } as any),
+        },
+      });
 
       await page.findByText('Patient');
-      await page.findByText('Lisa Consuela Jackson');
+      await page.findByText(name);
     });
 
     it('displays a spinning indicator while loading', async () => {

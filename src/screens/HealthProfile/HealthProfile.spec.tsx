@@ -10,6 +10,8 @@ describe('Rendering', () => {
     patient_dob: '11/29/2020',
     patient_nickname: 'Lisa',
     patient_name: 'Lisa Consuela',
+    caregiver_name: 'Cromwell Bromwell',
+    caregiver_nickname: 'Cromsworth',
     caregiver_dob: new Date(Date.UTC(2012, 1, 14)),
     gender_identity: 'Female',
     gender_genetic: 'Male',
@@ -98,7 +100,7 @@ describe('Rendering', () => {
       String(t('formatting.date', { value: profile.caregiver_dob }))
     );
 
-    await screen.findByText(session.name);
+    await screen.findByText(profile.caregiver_name);
     await screen.findByText(session.email);
     await screen.findByText(profile.phone_number);
     await screen.findByText(profile.caregiver_location);
@@ -113,7 +115,6 @@ describe('Rendering', () => {
     });
 
     await assert.heading(t('pages.healthProfile.title'));
-    await assert.button(t('pages.healthProfile.actions.download.label'));
     await assert.heading(t('pages.healthProfile.basicInformation.title'));
     await assert.heading(t('pages.healthProfile.primaryIndication.title'));
     await assert.heading(t('pages.healthProfile.yourDetails.title'));

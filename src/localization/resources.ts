@@ -71,7 +71,7 @@ export const resources = {
           primaryIndication: {
             title: 'Primary Indication',
             fields: {
-              phenotype: { label: 'Phenotype' },
+              phenotype: { label: 'Clinical Diagnosis' },
             },
           },
           yourDetails: {
@@ -170,36 +170,20 @@ export const resources = {
           accountDetails: {
             title: 'My Account',
             fields: {
-              1: {
-                label: 'First Name',
-              },
-              2: {
-                label: 'Last Name',
-              },
+              nickname: { label: 'Nickname' },
+              fullName: { label: 'Full Name' },
             },
           },
           contactDetails: {
             title: 'Contact Details',
             fields: {
-              1: {
-                label: 'Email Address',
-              },
-              2: {
-                label: 'Phone Number',
-              },
-              3: {
-                label: 'Preferred Contact Method',
-              },
+              email: { label: 'Email Address' },
+              phone: { label: 'Phone Number' },
+              preference: { label: 'Preferred Contact Method' },
             },
           },
           actions: {
-            1: {
-              label: 'Review Data Sharing Consent',
-            },
-            2: {
-              label: 'Review Patient Portal User Agreement',
-            },
-            3: {
+            delete: {
               label: 'Delete My Account',
             },
           },
@@ -262,6 +246,10 @@ export const resources = {
         },
         displayField: {
           defaultValue: 'Not Available',
+        },
+        patientBanner: {
+          fetching: 'Retrieving patient profile',
+          label: 'Patient',
         },
         pdf: {
           actions: {
@@ -456,7 +444,6 @@ export const resources = {
               linkLabel: "Focus on your child's care",
             },
           },
-          patient: 'Patient',
           getUpdates: 'Receive progress updates',
           noUpdates: 'No updates since your last login',
           onTrack: 'Everything is on track',
@@ -534,6 +521,7 @@ export const resources = {
           },
           inputValidation: {
             title: 'Your strong password must include:',
+            capitalization: 'At least one capital and one lowercase letter.',
             characters: 'At least 9 characters in total.',
             letters: 'At least 1 letter (a - z)',
             numbers: 'At least 1 number (0 - 9)',

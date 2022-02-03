@@ -2,6 +2,7 @@ import { Story } from '@storybook/react/types-6-0';
 
 import geneticCounselor from 'assets/images/png/geneticCounselor.png';
 import { Avatar } from 'components/Avatar';
+import { Theme } from 'styles';
 
 import UserHeader, { UserHeaderProps } from './UserHeader';
 
@@ -14,7 +15,11 @@ export default {
   },
 };
 
-const Template: Story<UserHeaderProps> = (args) => <UserHeader {...args} />;
+const Template: Story<UserHeaderProps> = (args) => (
+  <Theme>
+    <UserHeader {...args} />
+  </Theme>
+);
 
 export const Generic = Template.bind({});
 
@@ -27,7 +32,6 @@ Generic.args = {
 export const HeaderWithPatient = Template.bind({});
 
 HeaderWithPatient.args = {
-  /* In dev, use { useAppTranslation('sections.results.patient')} */
   title: 'Patient',
   name: 'Lisa Consuela Jackson',
   variant: 'patient',

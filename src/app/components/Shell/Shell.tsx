@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import TagManager from 'react-gtm-module';
 
 import { client_config } from 'client_config';
+import { Theme } from 'styles/Theme';
 
 import { AppProvider, AppProviderProps } from './AppProvider';
-import { Theme } from './Theme';
 
 type ShellProps = AppProviderProps;
 

@@ -1,21 +1,15 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
 
+import { DisplayField } from 'app/components/DisplayField';
+import { PatientBanner } from 'app/components/PatientBanner';
 import {
   useAppTranslation,
   useAppSelector,
   useAppEvents,
   useAppState,
-} from 'app';
-import { DisplayField } from 'app/components/DisplayField';
-import {
-  Button,
-  ListCard,
-  Icon,
-  PageLayout,
-  UserHeader,
-  Spinner,
-} from 'components';
+} from 'app/components/Shell';
+import { ListCard, PageLayout, Spinner } from 'components';
 
 import {
   HealthProfileContainer,
@@ -29,7 +23,6 @@ export const HealthProfile = () => {
   const isLoading = useAppState('requests.identityProfile.requesting');
 
   const session = useAppSelector(({ context }) => context.auth.session);
-
   const profile = useAppSelector(
     ({ context }) => context.requests.identityProfile.values
   );
@@ -53,27 +46,12 @@ export const HealthProfile = () => {
             patientsNickname: profile.patient_nickname,
           })}
           theme="healthProfileTheme"
-          customHeader={
-            <UserHeader
-              title={t(
-                'pages.healthProfile.basicInformation.fields.name.label'
-              )}
-              variant="patient"
-              name={profile.patient_name}
-            />
-          }
+          customHeader={<PatientBanner />}
         >
           <HealthProfileContent pending={isLoading}>
             <HealthProfileActivity>
               {isLoading ? <Spinner data-testid="spinner" /> : null}
             </HealthProfileActivity>
-            <Button
-              className="health-profile__download"
-              kind="link-small"
-              prefix={<Icon name="download" />}
-            >
-              {t('pages.healthProfile.actions.download.label')}
-            </Button>
 
             <ListCard
               iconName="information-circle"
@@ -138,7 +116,7 @@ export const HealthProfile = () => {
               <DisplayField
                 label={t('pages.healthProfile.yourDetails.fields.1.label')}
               >
-                {session.name}
+                {profile.caregiver_name}
               </DisplayField>
               <DisplayField
                 label={t('pages.healthProfile.yourDetails.fields.2.label')}

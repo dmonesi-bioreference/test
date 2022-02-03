@@ -1,6 +1,8 @@
 declare global {
   interface RegistrationProfile {
     caregiver_dob: Date;
+    caregiver_name: string;
+    caregiver_nickname: string;
 
     patient_guid: string;
     phone_number: string;
@@ -25,6 +27,8 @@ export const identityProfile: RequestModels['identityProfile'] = {
     gender_identity: '',
     insurance: '',
     phenotype: '',
+    caregiver_name: '',
+    caregiver_nickname: '',
     caregiver_location: '',
     terms_given: '',
     terms_timestamp: '',

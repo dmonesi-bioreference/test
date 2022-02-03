@@ -7,6 +7,7 @@ import {
   ArticleCards,
   FAQCards,
 } from 'app';
+import { PatientBanner } from 'app/components/PatientBanner';
 import {
   BulletItem,
   Heading,
@@ -15,7 +16,6 @@ import {
   PageSection,
   Typography,
   Spinner,
-  UserHeader,
 } from 'components';
 
 export const ResourcesPage = () => {
@@ -23,17 +23,6 @@ export const ResourcesPage = () => {
 
   const loadingFAQs = useAppState('content.faqs.fetchingAllFAQs');
   const errorFetchingFAQs = useAppState('content.faqs.failure');
-
-  const patientData = {
-    shortName: 'Lisa',
-    fullName: 'Lisa Consuela Jackson',
-    dob: new Date(Date.UTC(2012, 1, 14)),
-    genderGenetic: 'Female',
-    genderIdentified: 'Female',
-    insurance: 'Kaiser',
-    relationToCaregiver: 'Child',
-    phenotype: 'Phenotype information here',
-  };
 
   return (
     <>
@@ -45,13 +34,7 @@ export const ResourcesPage = () => {
         theme="resourcesTheme"
         title={t('pages.resources.title')}
         description={t('pages.resources.description')}
-        customHeader={
-          <UserHeader
-            title={t('sections.results.patient')}
-            name={patientData.fullName}
-            variant="patient"
-          />
-        }
+        customHeader={<PatientBanner />}
       >
         <PageSection>
           <MediaElements.Audio

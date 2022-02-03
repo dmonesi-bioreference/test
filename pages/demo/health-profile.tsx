@@ -26,6 +26,8 @@ export default function healthProfile() {
     patient_name: 'Lisa Consuela',
     patient_nickname: 'Lisa',
     patient_dob: '11/29/2020',
+    caregiver_name: 'Hanna Barbara',
+    caregiver_nickname: 'Barb',
     caregiver_dob: new Date(Date.UTC(1989, 3, 9)),
     caregiver_location: 'Austin, Texas',
     phone_number: '267-190-5214',

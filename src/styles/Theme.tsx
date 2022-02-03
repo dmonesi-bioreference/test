@@ -3,10 +3,13 @@ import { ThemeProvider } from 'styled-components';
 import { getTheme } from 'styles';
 
 import { ApplyThemeRootVariables } from './ApplyThemeVariables';
-import { useAppSelector } from './hooks';
 
-export function Theme(props: Props<unknown>) {
-  const theme = useAppSelector(() => getTheme('defaultTheme'));
+interface ThemeProps {
+  theme?: Themes;
+}
+
+export function Theme(props: Props<ThemeProps>) {
+  const theme = getTheme(props.theme || 'defaultTheme');
 
   return (
     <ThemeProvider theme={theme}>

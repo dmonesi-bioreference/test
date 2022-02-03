@@ -1,11 +1,10 @@
-import { useAppTranslation } from 'app';
+import { PatientBanner, useAppTranslation } from 'app';
 import {
   Card,
   CircularProgress,
   Heading,
   PageLayout,
   PageSection,
-  UserHeader,
 } from 'components';
 import { colors } from 'styles';
 
@@ -18,14 +17,7 @@ export const WaitingForResults = () => {
 
   return (
     <PageLayout containsCards={true}>
-      <PageSection
-        header={
-          <UserHeader
-            title={t('sections.results.patient')}
-            name="Lisa Consuela Jackson"
-          />
-        }
-      >
+      <PageSection header={<PatientBanner />}>
         <WaitingForResultsStyled>
           <Heading level="1" color="minor">
             {t('pages.results.waiting.title')}

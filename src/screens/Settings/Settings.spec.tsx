@@ -1,4 +1,4 @@
-import { renderWithShell } from 'test-utils';
+import { Mocks, renderWithShell } from 'test-utils';
 
 import { Settings } from './index';
 
@@ -7,32 +7,72 @@ describe('The Settings Page', () => {
     await renderWithShell(<Settings />);
   });
 
+  it('fetches the profile', async () => {
+    const listener = jest.fn(async () => Promise.reject('boink'));
+
+    await renderWithShell(<Settings />, {
+      requests: { identityProfile: listener },
+    });
+
+    expect(listener).toHaveBeenCalled();
+  });
+
+  it('displays a spinning indicator while loading', async () => {
+    const { findByTestId } = await renderWithShell(<Settings />, {
+      requests: {
+        identityProfile: async () => {
+          await new Promise((resolve) => setTimeout(resolve, 10_000_000));
+          return Promise.reject('oh noooooo');
+        },
+      },
+    });
+
+    await findByTestId('spinner');
+  });
+
   it('has a title', async () => {
     const page = await renderWithShell(<Settings />);
     await page.findAllByText('Settings');
   });
 
   it('contains account details', async () => {
-    const page = await renderWithShell(<Settings />);
-    await page.findAllByText('First Name');
-    await page.findAllByText('Last Name');
+    const nickname = 'Barb';
+    const name = 'Hanna Barbara';
+    const page = await renderWithShell(<Settings />, {
+      requests: {
+        identityProfile: async () =>
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+          ({
+            caregiver_name: name,
+            caregiver_nickname: nickname,
+          } as any),
+      },
+    });
+
+    await page.findByText('Nickname');
+    await page.findByText(nickname);
+    await page.findByText('Full Name');
+    await page.findByText(name);
   });
 
   it('contains contact details', async () => {
-    const page = await renderWithShell(<Settings />);
-    await page.findAllByText('Email Address');
-    await page.findAllByText('Phone Number');
-    await page.findAllByText('Preferred Contact Method');
-  });
+    const phoneNumber = '333 333 3333';
+    const page = await renderWithShell(<Settings />, {
+      onSession: async () => Mocks.session.single,
+      requests: {
+        identityProfile: async () =>
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+          ({
+            phone_number: phoneNumber,
+          } as any),
+      },
+    });
 
-  it('has an option to review data sharing consent', async () => {
-    const page = await renderWithShell(<Settings />);
-    await page.findAllByText('Review Data Sharing Consent');
-  });
-
-  it('has an option to review user agreement', async () => {
-    const page = await renderWithShell(<Settings />);
-    await page.findAllByText('Review Patient Portal User Agreement');
+    await page.findByText('Email Address');
+    await page.findByText(Mocks.session.single.email);
+    await page.findByText('Phone Number');
+    await page.findByText(phoneNumber);
+    await page.findByText('Preferred Contact Method');
   });
 
   it('has an option to delete the account', async () => {
