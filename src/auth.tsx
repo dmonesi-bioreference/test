@@ -155,6 +155,18 @@ async function register({
 
 ReactDOM.render(
   <Shell
+    requests={{
+      // We pass the PatientProfile to this page in the `/api/auth/[...auth0].ts` identity
+      // handlers. The resulting structure here isn't the entirety of the profile, but it
+      // is all we need at the identity form stage.
+      //
+      identityProfile: async () => {
+        const profile = getConfig().extraParams;
+
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+        return profile;
+      },
+    }}
     onSession={async () => Promise.reject('No session available')}
     onPatientGuid={async () => {
       const config = getConfig();

@@ -32,7 +32,7 @@ export const resources = {
         },
         login: {
           pageTitle: 'Login | GeneDx',
-          title: 'Welcome back, Barbara & Lisa',
+          title: 'Welcome back',
           description:
             "We're here to support you and your child's condition along every step of the journey together.",
           actions: {
@@ -464,7 +464,7 @@ export const resources = {
           error: 'Error fetching test results',
         },
         identity: {
-          title: 'Welcome, Barbara & Lisa',
+          title: 'Welcome, {{patientName}}',
           subTitle:
             "To make sure we keep your child's information safe, we have a few details to confirm.",
           errors: {
@@ -474,11 +474,11 @@ export const resources = {
           },
           form: {
             zipCode: {
-              label: "Lisa's Zip Code",
+              label: "{{patientNickname}}'s Zip Code",
               placeholder: 'e.g. 123456',
             },
             dateOfBirth: {
-              label: "Lisa's Date of Birth",
+              label: "{{patientNickname}}'s Date of Birth",
             },
             phone: {
               label: 'Your Mobile Phone',

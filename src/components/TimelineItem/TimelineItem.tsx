@@ -5,7 +5,7 @@ import { Button } from 'components/Button';
 import { Icon } from 'components/Icon';
 import { Typography } from 'components/Typography';
 import { colors } from 'styles';
-import slideInDown from 'styles/animations/slide-in';
+import { slideInDown } from 'styles/animations';
 
 import TimelineItemStyled from './TimelineItem.styles';
 import TimelineItemBody from './TimelineItemBody';

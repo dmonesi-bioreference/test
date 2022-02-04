@@ -1,6 +1,6 @@
 import { Story } from '@storybook/react/types-6-0';
 
-import { Button } from 'components';
+import { Button } from 'components/Button';
 
 import ActionGroup from './ActionGroup';
 

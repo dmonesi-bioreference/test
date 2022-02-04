@@ -5,6 +5,26 @@ import { act, delay, renderWithShell, roles } from 'test-utils';
 
 import { IdentityForm } from './IdentityForm';
 
+const profile: HealthProfile = {
+  patient_dob: '11/29/2020',
+  patient_nickname: 'Lava Girl',
+  patient_name: 'High Princess Lava Girl',
+  caregiver_name: 'Cromwell Bromwell',
+  caregiver_nickname: 'Cromsworth',
+  caregiver_dob: new Date(Date.UTC(2012, 1, 14)),
+  gender_identity: 'Female',
+  gender_genetic: 'Female',
+  insurance: 'Kaiser',
+  phenotype: 'Phenotype information here',
+  caregiver_location: 'Austin, Texas',
+  terms_version: '0.1',
+  terms_given: 'true',
+  terms_timestamp: '',
+  patient_guid: '1234',
+  phone_number: '267-190-5214',
+  relation_to_patient: 'Parent',
+};
+
 function SetCustomDateInOrderToGetAroundDatePickerMarkupComplexity(
   props: Props<{ date: string }>
 ) {
@@ -36,19 +56,55 @@ describe('The identity form page', () => {
     await page.findByText('Your Mobile Phone');
   });
 
+  it('displays a spinning indicator while loading', async () => {
+    const page = await renderWithShell(<IdentityForm />, {
+      requests: {
+        identityProfile: async () => {
+          await new Promise((resolve) => setTimeout(resolve, 10_000_000));
+          return profile;
+        },
+      },
+    });
+
+    await page.findByTestId('async-region-spinner');
+  });
+
+  it('executes an identity profile request on load', async () => {
+    const listener = jest.fn(async () => profile);
+    await renderWithShell(<IdentityForm />, {
+      requests: { identityProfile: listener },
+    });
+
+    expect(listener).toHaveBeenCalledTimes(1);
+  });
+
+  it('shows patient profile info', async () => {
+    const page = await renderWithShell(<IdentityForm />, {
+      requests: { identityProfile: async () => profile },
+    });
+
+    await page.findByText(`Welcome, ${profile.patient_nickname}`);
+    await page.findByText(`${profile.patient_nickname}'s Date of Birth`);
+    await page.findByText(`${profile.patient_nickname}'s Zip Code`);
+  });
+
   describe('identity form validation', () => {
     it('disables the confirm button until the form is valid', async () => {
       const page = await renderWithShell(
         <>
           <IdentityForm />
           <SetCustomDateInOrderToGetAroundDatePickerMarkupComplexity date="10/22/2021" />
-        </>
+        </>,
+        { requests: { identityProfile: async () => profile } }
       );
 
       expect((await page.findByText('Confirm')).parentElement).toBeDisabled();
 
       userEvent.click(await page.findByText('Date of birth workaround'));
-      userEvent.type(await page.findByLabelText("Lisa's Zip Code"), '90210');
+      userEvent.type(
+        await page.findByLabelText(`${profile.patient_nickname}'s Zip Code`),
+        '90210'
+      );
 
       userEvent.type(
         await page.findByLabelText('Your Email Address'),
@@ -76,6 +132,7 @@ describe('The identity form page', () => {
           />
         </>,
         {
+          requests: { identityProfile: async () => profile },
           onIdentity: listener,
           onSession: () => Promise.reject('no session found'),
         }
@@ -108,6 +165,7 @@ describe('The identity form page', () => {
         {
           onPatientGuid: async () => ({ guid: '1234', source: '' }),
           onIdentity: listener,
+          requests: { identityProfile: async () => profile },
           onSession: () => Promise.reject('no session found'),
         }
       );
@@ -115,7 +173,10 @@ describe('The identity form page', () => {
       expect((await page.findByText('Confirm')).parentElement).toBeDisabled();
 
       userEvent.click(await page.findByText('Date of birth workaround'));
-      userEvent.type(await page.findByLabelText("Lisa's Zip Code"), zip);
+      userEvent.type(
+        await page.findByLabelText(`${profile.patient_nickname}'s Zip Code`),
+        zip
+      );
       userEvent.type(await page.findByLabelText('Your Email Address'), email);
 
       await act(async () => {
@@ -143,6 +204,7 @@ describe('The identity form page', () => {
         {
           onPatientGuid: async () => ({ guid: '1234', source: '' }),
           onIdentity: listener,
+          requests: { identityProfile: async () => profile },
           onSession: () => Promise.reject('no session found'),
         }
       );
@@ -150,7 +212,10 @@ describe('The identity form page', () => {
       expect((await page.findByText('Confirm')).parentElement).toBeDisabled();
 
       userEvent.click(await page.findByText('Date of birth workaround'));
-      userEvent.type(await page.findByLabelText("Lisa's Zip Code"), zip);
+      userEvent.type(
+        await page.findByLabelText(`${profile.patient_nickname}'s Zip Code`),
+        zip
+      );
       userEvent.type(await page.findByLabelText('Your Email Address'), email);
 
       await act(async () => {
@@ -179,9 +244,13 @@ describe('The identity form page', () => {
 
   describe('identity form copy', () => {
     it('has a title', async () => {
-      const page = await renderWithShell(<IdentityForm />);
+      const page = await renderWithShell(<IdentityForm />, {
+        requests: { identityProfile: async () => profile },
+      });
 
-      await page.findByText('Welcome', { exact: false });
+      await page.findByText(`Welcome, ${profile.patient_nickname}`, {
+        exact: false,
+      });
     });
 
     it('has date of birth, zipcode and email inputs', async () => {

@@ -5,8 +5,10 @@ import { act, delay, renderWithShell } from 'test-utils';
 import { LoginPage } from './index';
 
 describe('Login page', () => {
-  it('does not explode', async () => {
-    await renderWithShell(<LoginPage />);
+  it('greets the returning visitor', async () => {
+    const app = await renderWithShell(<LoginPage />);
+
+    await app.findByText('Welcome back');
   });
 
   describe('identity form validation', () => {
