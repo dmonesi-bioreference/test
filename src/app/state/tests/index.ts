@@ -100,8 +100,13 @@ export const context: {
 }
 
 export const machine = {
-  initial: 'notLoaded',
+  initial: 'idle',
   states: {
+    idle: {
+      on: {
+        LOAD_TESTS: 'loading'
+      },
+    },
     loading: {
       type: 'compound',
       initial: 'fetching',
@@ -113,7 +118,7 @@ export const machine = {
               target: 'syncing',
               actions: ['spawnTests'],
             },
-            onError: '#notLoaded',
+            onError: '#errorLoading',
           },
         },
         syncing: {
@@ -131,19 +136,19 @@ export const machine = {
           entry: ['getTestsPercentCompletion'],
           on: {
             READY: '#allComplete',
-            NOT_READY: '#notAllComple'
+            NOT_READY: '#notAllComplete'
           },
         },
       },
     },
-    notLoaded: {
-      id: 'notLoaded',
+    errorLoading: {
+      id: 'errorLoading',
       on: {
         LOAD_TESTS: 'loading'
-      },
+      }
     },
-    notAllComple: {
-      id: 'notAllComple',
+    notAllComplete: {
+      id: 'notAllComplete',
       on: {
         READY: 'allComplete'
       },

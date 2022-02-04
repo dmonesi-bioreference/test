@@ -8,10 +8,50 @@ import { WaitingStage } from "./Stages/WaitingStage";
 import TimelineStyled from './Timeline.styles';
 import { useTestStatus } from './hooks';
 
+const TimelineBody: React.FC = () => {
+  const t = useAppTranslation();
+
+  const [{ notLoaded, loading, errorLoading, isWaiting, isResultsReady, isAtAppointment, isAfterAppointment }] =
+    useTestStatus();
+
+    if (notLoaded) {
+      return <Heading level='7'>{t('sections.results.notLoaded')}</Heading>
+    }
+
+    if (loading) {
+      return <Spinner data-testid="spinner-timeline" />
+    }
+
+    if (errorLoading) {
+      return (
+        <Typography color="error" level="7" type="heading">
+          {t('sections.results.timeline.error')}
+        </Typography>
+      );
+    }
+
+    return (
+      <>
+        <WaitingStage
+          status={isWaiting ? 'present' : 'past'}
+        />
+        <TestResultsReadyStage
+          status={isResultsReady ? 'present' : (isWaiting ? 'future' : 'past')}
+        />
+        <AtAppointmentStage
+          status={isAtAppointment ? 'present' : (isAfterAppointment ? 'past' : 'future')}
+        />
+        <AfterAppointmentStage
+          status={isAfterAppointment ? 'present' : 'future'}
+        />
+      </>
+    );
+}
+
 export const Timeline: React.FC = () => {
   const t = useAppTranslation();
 
-  const [{ photo, loading, errorLoading, isWaiting, isResultsReady, isAtAppointment, isAfterAppointment }] =
+  const [{ photo }] =
     useTestStatus();
 
   return (
@@ -30,33 +70,8 @@ export const Timeline: React.FC = () => {
           <Heading level="5" color="white">{t('sections.results.timeline.subTitle')}</Heading>
         </div>
       </div>
-
       <div className="timeline__body">
-        {loading
-          ? (<Spinner data-testid="spinner-timeline" />)
-          : errorLoading
-          ? (
-            <Typography color="error" level="7" type="heading">
-              {t('sections.results.timeline.error')}
-            </Typography>
-            )
-          : (
-            <>
-              <WaitingStage
-                status={isWaiting ? 'present' : 'past'}
-              />
-              <TestResultsReadyStage
-                status={isResultsReady ? 'present' : (isWaiting ? 'future' : 'past')}
-              />
-              <AtAppointmentStage
-                status={isAtAppointment ? 'present' : (isAfterAppointment ? 'past' : 'future')}
-              />
-              <AfterAppointmentStage
-                status={isAfterAppointment ? 'present' : 'future'}
-              />
-            </>
-          )
-        }
+        <TimelineBody />
       </div>
     </TimelineStyled>
   );

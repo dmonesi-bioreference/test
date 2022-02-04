@@ -3,9 +3,10 @@ import { useAppSelector, useAppState } from 'app/components/Shell';
 export function useTestStatus() {
   const state = {
     photo: useAppSelector((state) => state.context.geneticCounselor.photo),
+    notLoaded: useAppState('tests.idle'),
     loading: useAppState('tests.loading'),
-    errorLoading: useAppState('tests.notLoaded'),
-    isWaiting: useAppState('tests.notAllComple'),
+    errorLoading: useAppState('tests.errorLoading'),
+    isWaiting: useAppState('tests.notAllComplete'),
     isResultsReady: useAppState(
       'tests.allComplete.appointment.unknownAppointmentStatus'
     ),

@@ -17,10 +17,18 @@ import { useTestStatus } from './hooks';
 
 export const TestStatus = () => {
   const [
-    { loading, errorLoading, isWaiting, percentComplete, expectedResultsDate },
+    { notLoaded, loading, errorLoading, isWaiting, percentComplete, expectedResultsDate },
   ] = useTestStatus();
 
   const t = useAppTranslation();
+
+  if (notLoaded) {
+    return (
+      <Card>
+        <Heading level='7'>{t('sections.results.notLoaded')}</Heading>
+      </Card>
+    );
+  }
 
   if (loading) {
     return (
@@ -33,9 +41,9 @@ export const TestStatus = () => {
   if (errorLoading) {
     return (
       <Card>
-        <Typography color="error" level="7" type="heading">
+        <Heading color="error" level="7">
           {t('sections.results.error')}
-        </Typography>
+        </Heading>
       </Card>
     );
   }

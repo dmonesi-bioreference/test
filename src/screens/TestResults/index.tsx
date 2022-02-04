@@ -13,7 +13,7 @@ export function TestResults() {
       <Head>
         <title>{t('pages.results.pageTitle')}</title>
       </Head>
-      <OnState matches="tests.notAllComple">
+      <OnState matches="tests.notAllComplete">
         <WaitingForResults />
       </OnState>
       <OnState matches="tests.allComplete.view.viewed">

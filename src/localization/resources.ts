@@ -462,6 +462,7 @@ export const resources = {
           estimate: 'Expect results in {{estimate}} days',
           expected: 'Results expected {{expectedResultsDate}}',
           error: 'Error fetching test results',
+          notLoaded: 'Test results not fetched',
         },
         identity: {
           title: 'Welcome, {{patientName}}',
