@@ -21,7 +21,7 @@ const ListCard: React.FC<ListCardProps> = (props) => {
           <div className="list-card__header">
             <div className="list-card__heading">
               <Icon name={props.iconName} />
-              <Typography type="heading" level="3">
+              <Typography type="heading" level="3" color="inherit">
                 {props.title}
               </Typography>
             </div>

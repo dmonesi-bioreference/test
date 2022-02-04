@@ -9,7 +9,7 @@ const TypographyStyled = styled.div`
   line-height: ${tokens.lineHeightDense};
   margin: 0;
   overflow: hidden;
-  max-width: 40ch;
+  max-width: 42ch;
 
   &.default {
     color: ${tokens.colorDefaultText};
@@ -17,6 +17,10 @@ const TypographyStyled = styled.div`
 
   &.primary {
     color: ${tokens.colorPrimaryText};
+  }
+
+  &.inherit {
+    color: inherit;
   }
 
   &.minor {

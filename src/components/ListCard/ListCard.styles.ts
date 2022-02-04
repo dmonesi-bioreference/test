@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { base, colors, tokens } from 'styles';
+import { base, tokens } from 'styles';
 
 const ListCardStyled = styled.div`
   ${base};
@@ -11,7 +11,8 @@ const ListCardStyled = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: ${colors.grey[200]};
+    background-color: ${({ theme }) => theme.colors.foreground};
+    color: ${({ theme }) => theme.colors.headerText};
     padding: ${tokens.spacing};
   }
 

@@ -31,6 +31,7 @@ export interface CircularProgressProps {
     x: number;
     y: number;
   };
+  marginTop?: boolean;
 }
 
 export const CircularProgress: React.FC<CircularProgressProps> = (props) => {
@@ -40,6 +41,7 @@ export const CircularProgress: React.FC<CircularProgressProps> = (props) => {
     trackColor: colors.white,
     indicatorColor: colors.grey[700],
     strokePaddingColor: colors.white,
+    marginTop: false,
     ...props,
   };
 

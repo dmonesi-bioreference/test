@@ -1,15 +1,24 @@
 import { remToPx } from 'polished';
 
 import { useAppTranslation } from 'app/components/Shell';
-import { Button, Card, CircularProgress, Heading, Icon, Spinner, Typography } from 'components';
+import {
+  Button,
+  Card,
+  CircularProgress,
+  Heading,
+  Icon,
+  Spinner,
+  Typography,
+} from 'components';
 import { colors, tokens } from 'styles';
 
 import TestStatusStyled from './TestStatus.styles';
 import { useTestStatus } from './hooks';
 
 export const TestStatus = () => {
-  const [{ loading, errorLoading, isWaiting, percentComplete, expectedResultsDate }] =
-    useTestStatus();
+  const [
+    { loading, errorLoading, isWaiting, percentComplete, expectedResultsDate },
+  ] = useTestStatus();
 
   const t = useAppTranslation();
 
@@ -39,10 +48,11 @@ export const TestStatus = () => {
         strokeWidth={parseInt(remToPx(tokens.spacingLarge), 10)}
         withOuterShadow={true}
         withInsetShadow={true}
+        marginTop={true}
         indicatorColor={
           isWaiting
-            ? [colors.powderBlue[700], colors.powderBlue[800]]
-            : colors.powderBlue[700]
+            ? [colors.indigo[700], colors.indigo[800]]
+            : colors.indigo[700]
         }
         strokePadding={parseInt(remToPx(tokens.spacingXxSmall), 10)}
         strokePaddingCut={{

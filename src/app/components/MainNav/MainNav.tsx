@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 import { useAppTranslation } from 'app/components/Shell';
 import { IconButton } from 'components/IconButton';
 import { Typography } from 'components/Typography';
@@ -10,8 +12,12 @@ const MainNav: React.FC<MainNavProps> = () => {
   const t = useAppTranslation();
   return (
     <MainNavStyled id="main-nav">
-      <ul className="menu">
-        <li className="menu__item">
+      <motion.ul
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="menu"
+      >
+        <li className="menu__item home">
           <IconButton
             href="/"
             encircled
@@ -24,7 +30,7 @@ const MainNav: React.FC<MainNavProps> = () => {
           </IconButton>
         </li>
 
-        <li className="menu__item">
+        <li className="menu__item results">
           <IconButton
             name="document-search"
             label={t('sections.mainNav.results.label')}
@@ -37,7 +43,7 @@ const MainNav: React.FC<MainNavProps> = () => {
           </IconButton>
         </li>
 
-        <li className="menu__item">
+        <li className="menu__item health-profile">
           <IconButton
             name="heart"
             label={t('sections.mainNav.healthProfile.label')}
@@ -50,7 +56,7 @@ const MainNav: React.FC<MainNavProps> = () => {
           </IconButton>
         </li>
 
-        <li className="menu__item">
+        <li className="menu__item resources">
           <IconButton
             name="book-open"
             label={t('sections.mainNav.resources.label')}
@@ -63,7 +69,7 @@ const MainNav: React.FC<MainNavProps> = () => {
           </IconButton>
         </li>
 
-        <li className="menu__item">
+        <li className="menu__item settings">
           <IconButton
             name="cog"
             label={t('sections.mainNav.settings.label')}
@@ -76,7 +82,7 @@ const MainNav: React.FC<MainNavProps> = () => {
           </IconButton>
         </li>
 
-        <li className="menu__item">
+        <li className="menu__item logout">
           <IconButton
             name="logout"
             label={t('sections.mainNav.logout.label')}
@@ -88,7 +94,7 @@ const MainNav: React.FC<MainNavProps> = () => {
             </Typography>
           </IconButton>
         </li>
-      </ul>
+      </motion.ul>
     </MainNavStyled>
   );
 };

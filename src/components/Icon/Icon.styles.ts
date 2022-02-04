@@ -10,10 +10,6 @@ const IconStyled = styled.div`
   width: fit-content;
   height: fit-content;
 
-  &.default {
-    color: ${colors.grey[700]};
-  }
-
   &.primary {
     color: ${tokens.colorPrimary};
   }
@@ -35,13 +31,9 @@ const IconStyled = styled.div`
   }
 
   &.encircled {
-    background-color: ${colors.grey[300]};
+    background-color: ${colors.grey[100]};
     padding: ${tokens.spacingXSmall};
     border-radius: ${tokens.borderRadiusCircle};
-
-    .default {
-      color: ${colors.grey[700]};
-    }
 
     .primary {
       color: ${tokens.colorPrimary};

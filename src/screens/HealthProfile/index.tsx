@@ -9,7 +9,7 @@ import {
   useAppEvents,
   useAppState,
 } from 'app/components/Shell';
-import { ListCard, PageLayout, Spinner } from 'components';
+import { ListCard, PageLayout, PageSection, Spinner } from 'components';
 
 import {
   HealthProfileContainer,
@@ -48,105 +48,109 @@ export const HealthProfile = () => {
           theme="healthProfileTheme"
           customHeader={<PatientBanner />}
         >
-          <HealthProfileContent pending={isLoading}>
-            <HealthProfileActivity>
-              {isLoading ? <Spinner data-testid="spinner" /> : null}
-            </HealthProfileActivity>
+          <PageSection>
+            <HealthProfileContent pending={isLoading}>
+              {isLoading && (
+                <HealthProfileActivity>
+                  <Spinner data-testid="spinner" />
+                </HealthProfileActivity>
+              )}
 
-            <ListCard
-              iconName="information-circle"
-              title={t('pages.healthProfile.basicInformation.title')}
-            >
-              <DisplayField
-                label={t(
-                  'pages.healthProfile.basicInformation.fields.name.label'
-                )}
+              <ListCard
+                iconName="information-circle"
+                title={t('pages.healthProfile.basicInformation.title')}
               >
-                {profile.patient_name}
-              </DisplayField>
-              <DisplayField
-                label={t(
-                  'pages.healthProfile.basicInformation.fields.dob.label'
-                )}
-              >
-                {profile.patient_dob
-                  ? t('formatting.date', { value: profile.patient_dob })
-                  : null}
-              </DisplayField>
-              <DisplayField
-                label={t(
-                  'pages.healthProfile.basicInformation.fields.gender.label'
-                )}
-              >
-                {profile.gender_genetic}
-              </DisplayField>
-              <DisplayField
-                label={t(
-                  'pages.healthProfile.basicInformation.fields.genderIdentity.label'
-                )}
-              >
-                {profile.gender_identity}
-              </DisplayField>
-              <DisplayField
-                label={t(
-                  'pages.healthProfile.basicInformation.fields.insurance.label'
-                )}
-              >
-                {profile.insurance}
-              </DisplayField>
-            </ListCard>
+                <DisplayField
+                  label={t(
+                    'pages.healthProfile.basicInformation.fields.name.label'
+                  )}
+                >
+                  {profile.patient_name}
+                </DisplayField>
+                <DisplayField
+                  label={t(
+                    'pages.healthProfile.basicInformation.fields.dob.label'
+                  )}
+                >
+                  {profile.patient_dob
+                    ? t('formatting.date', { value: profile.patient_dob })
+                    : null}
+                </DisplayField>
+                <DisplayField
+                  label={t(
+                    'pages.healthProfile.basicInformation.fields.gender.label'
+                  )}
+                >
+                  {profile.gender_genetic}
+                </DisplayField>
+                <DisplayField
+                  label={t(
+                    'pages.healthProfile.basicInformation.fields.genderIdentity.label'
+                  )}
+                >
+                  {profile.gender_identity}
+                </DisplayField>
+                <DisplayField
+                  label={t(
+                    'pages.healthProfile.basicInformation.fields.insurance.label'
+                  )}
+                >
+                  {profile.insurance}
+                </DisplayField>
+              </ListCard>
 
-            <ListCard
-              iconName="clipboard"
-              title={t('pages.healthProfile.primaryIndication.title')}
-            >
-              <DisplayField
-                label={t(
-                  'pages.healthProfile.primaryIndication.fields.phenotype.label'
-                )}
+              <ListCard
+                iconName="clipboard"
+                title={t('pages.healthProfile.primaryIndication.title')}
               >
-                {profile.phenotype}
-              </DisplayField>
-            </ListCard>
+                <DisplayField
+                  label={t(
+                    'pages.healthProfile.primaryIndication.fields.phenotype.label'
+                  )}
+                >
+                  {profile.phenotype}
+                </DisplayField>
+              </ListCard>
 
-            <ListCard
-              iconName="user-circle"
-              title={t('pages.healthProfile.yourDetails.title')}
-            >
-              <DisplayField
-                label={t('pages.healthProfile.yourDetails.fields.1.label')}
+              <ListCard
+                iconName="user-circle"
+                title={t('pages.healthProfile.yourDetails.title')}
               >
-                {profile.caregiver_name}
-              </DisplayField>
-              <DisplayField
-                label={t('pages.healthProfile.yourDetails.fields.2.label')}
-              >
-                {profile.phone_number}
-              </DisplayField>
-              <DisplayField
-                label={t('pages.healthProfile.yourDetails.fields.3.label')}
-              >
-                {session.email}
-              </DisplayField>
-              <DisplayField
-                label={t('pages.healthProfile.yourDetails.fields.4.label')}
-              >
-                {profile.caregiver_location}
-              </DisplayField>
-              <DisplayField
-                label={t('pages.healthProfile.yourDetails.fields.5.label')}
-              >
-                {profile.caregiver_dob
-                  ? t('formatting.date', { value: profile.caregiver_dob })
-                  : null}
-              </DisplayField>
-              <DisplayField
-                label={t('pages.healthProfile.yourDetails.fields.6.label')}
-              >
-                {profile.relation_to_patient}
-              </DisplayField>
-            </ListCard>
-          </HealthProfileContent>
+                <DisplayField
+                  label={t('pages.healthProfile.yourDetails.fields.1.label')}
+                >
+                  {profile.caregiver_name}
+                </DisplayField>
+                <DisplayField
+                  label={t('pages.healthProfile.yourDetails.fields.2.label')}
+                >
+                  {profile.phone_number}
+                </DisplayField>
+                <DisplayField
+                  label={t('pages.healthProfile.yourDetails.fields.3.label')}
+                >
+                  {session.email}
+                </DisplayField>
+                <DisplayField
+                  label={t('pages.healthProfile.yourDetails.fields.4.label')}
+                >
+                  {profile.caregiver_location}
+                </DisplayField>
+                <DisplayField
+                  label={t('pages.healthProfile.yourDetails.fields.5.label')}
+                >
+                  {profile.caregiver_dob
+                    ? t('formatting.date', { value: profile.caregiver_dob })
+                    : null}
+                </DisplayField>
+                <DisplayField
+                  label={t('pages.healthProfile.yourDetails.fields.6.label')}
+                >
+                  {profile.relation_to_patient}
+                </DisplayField>
+              </ListCard>
+            </HealthProfileContent>
+          </PageSection>
         </PageLayout>
       </HealthProfileContainer>
     </>

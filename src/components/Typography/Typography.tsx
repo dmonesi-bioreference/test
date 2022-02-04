@@ -9,6 +9,7 @@ export type TypographyAlignment = 'left' | 'center' | 'right';
 export type TypographyColor =
   | 'default'
   | 'primary'
+  | 'inherit'
   | 'minor'
   | 'white'
   | 'blue'

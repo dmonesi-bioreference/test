@@ -52,18 +52,18 @@ const TestStatusStyled = styled.div`
     }
 
     ${IconStyled} {
-      color: ${colors.powderBlue[800]};
+      color: ${colors.cornflowerBlue[800]};
     }
 
     .test-status__header-main {
       ${TypographyStyled} {
-        color: ${colors.powderBlue[700]};
+        color: ${colors.cornflowerBlue[900]};
       }
     }
 
     .test-status__header-minor {
       ${TypographyStyled} {
-        color: ${colors.powderBlue[800]};
+        color: ${colors.cornflowerBlue[800]};
       }
     }
   }

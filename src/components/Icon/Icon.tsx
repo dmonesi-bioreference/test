@@ -14,7 +14,7 @@ export interface HeroiconProps {
   name: HeroiconName;
   style?: 'solid' | 'outline';
   kind?: 'heroicon';
-  color?: 'default' | 'primary' | 'danger' | 'white';
+  color?: undefined | 'primary' | 'danger' | 'white';
   /* large = 32px, small = 24px, x-small = 16px */
   size?: 'large' | 'small' | 'x-small';
   encircled?: boolean;
@@ -31,6 +31,9 @@ export type IconProps = CustomIconProps | HeroiconProps;
  * Icons use `currentColor` to determine their fill or stroke colors.
  * To set a color, set the `color` style property on the icon itself or on a
  * parent element.
+ *
+ * To ensure passing colors through, default value for color is undefined,
+ * and therefore will rely on the parent colors as noted above.
  *
  * Icons are sized relative to their current font size. To change their size,
  * set the `font-size` style property on the icon itself or on a parent element.
@@ -62,7 +65,7 @@ const convertToNumber = (size: string) => {
 const AsyncHeroIcon: React.FC<HeroiconProps> = ({
   style = 'outline',
   size = 'small',
-  color = 'default',
+  color,
   name,
   encircled = false,
 }) => {

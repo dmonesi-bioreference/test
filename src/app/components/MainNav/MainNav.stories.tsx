@@ -1,5 +1,7 @@
 import { Story } from '@storybook/react/types-6-0';
 
+import { Shell } from 'app/components/Shell';
+
 import MainNav, { MainNavProps } from './MainNav';
 
 export default {
@@ -10,8 +12,13 @@ export default {
   },
 };
 
-const Template: Story<MainNavProps> = (args) => <MainNav {...args}></MainNav>;
-
+const Template: Story<MainNavProps> = (args) => {
+  return (
+    <Shell>
+      <MainNav {...args}></MainNav>
+    </Shell>
+  );
+};
 export const Primary = Template.bind({});
 
 Primary.args = {};

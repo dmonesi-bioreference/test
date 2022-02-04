@@ -6,10 +6,6 @@ import TypographyStyled from 'components/Typography/Typography.styles';
 import { colors, tokens } from 'styles';
 
 const WaitingForResultsStyled = styled.div`
-  ${TypographyStyled} {
-    margin-top: ${tokens.spacingLarge};
-  }
-
   ${CardStyled} {
     border: ${tokens.spacingXxxSmall} solid ${colors.powderBlue[200]};
     margin-top: ${tokens.spacing};

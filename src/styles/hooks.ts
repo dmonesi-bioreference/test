@@ -1,8 +1,8 @@
-import { useTheme } from 'styled-components';
+import { DefaultTheme, useTheme } from 'styled-components';
 
 import { defaultTheme } from './themes';
 
-export function useStyleTheme() {
+export function useStyleTheme(): DefaultTheme {
   const theme = useTheme();
 
   if (theme && theme.colors) {

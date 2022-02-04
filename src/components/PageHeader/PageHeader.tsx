@@ -14,7 +14,7 @@ export interface PageHeaderProps {
 
 const PageHeader: React.FC<PageHeaderProps> = (props) => {
   const withDescription = props.description ? (
-    <Typography type="heading" level="7">
+    <Typography type="body" level="7">
       {props.description}
     </Typography>
   ) : null;
@@ -32,7 +32,7 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
         <Typography type="heading" level="1">
           {props.children}
         </Typography>
-        {withDescription}
+        <div className="description">{withDescription}</div>
       </div>
     </PageHeaderStyled>
   );

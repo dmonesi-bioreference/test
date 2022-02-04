@@ -116,9 +116,7 @@ export const colors = {
 };
 
 export const fonts = {
-  fontFamilyRoboto: 'Arial, sans-serif',
   fontFamilyPoppins: "'Poppins', 'Helvetica Neue', Arial, sans-serif",
-  fontFamilyEBGaramond: "'EB Garamond', serif",
 };
 
 export const tokens = {
@@ -156,7 +154,7 @@ export const tokens = {
   /* font-family */
   fontFamilySansSerif: fonts.fontFamilyPoppins,
   fontFamilyLabel: fonts.fontFamilyPoppins,
-  fontFamilyBody: fonts.fontFamilyRoboto,
+  fontFamilyBody: fonts.fontFamilyPoppins,
   fontFamilyMonospace: 'monospace',
 
   /* font-weight */

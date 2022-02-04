@@ -31,9 +31,9 @@ const FaqCard: React.FC<FaqCardProps> = (props) => {
     <FaqCardStyled>
       <div className="faq-card__header">
         <div className="faq-card__header-icon">
-          <Icon name="puzzle" color="default" />
+          <Icon name="puzzle" />
         </div>
-        <Typography type="heading" level="3" color="primary">
+        <Typography type="heading" level="3" color="inherit">
           {props.title}
         </Typography>
       </div>

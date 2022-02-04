@@ -32,9 +32,11 @@ export const Settings = () => {
       </Head>
       <PageLayout containsCards title={t('pages.settings.title')}>
         <SettingsContent pending={requesting}>
-          <SettingsActivity>
-            {requesting ? <Spinner data-testid="spinner" /> : null}
-          </SettingsActivity>
+          {requesting && (
+            <SettingsActivity>
+              <Spinner data-testid="spinner" />
+            </SettingsActivity>
+          )}
           <PageSection>
             <ListCard
               iconName="user-circle"

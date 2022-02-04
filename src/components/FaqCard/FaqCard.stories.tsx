@@ -1,5 +1,7 @@
 import { Story } from '@storybook/react/types-6-0';
 
+import { Shell } from 'app/components/Shell';
+
 import FaqCard, { FaqCardProps } from './FaqCard';
 
 export default {
@@ -11,7 +13,11 @@ export default {
   },
 };
 
-const Template: Story<FaqCardProps> = (args) => <FaqCard {...args}></FaqCard>;
+const Template: Story<FaqCardProps> = (args) => (
+  <Shell>
+    <FaqCard {...args}></FaqCard>
+  </Shell>
+);
 
 export const Primary = Template.bind({});
 

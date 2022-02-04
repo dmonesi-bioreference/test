@@ -11,9 +11,9 @@ export const decorators = [
 ];
 
 Object.defineProperty(nextImage, 'default', {
-    configurable: true,
-      value: (props) => <img {...props} />
-    });
+  configurable: true,
+  value: (props) => <img {...props} />,
+});
 
 export const parameters = {
   backgrounds: {

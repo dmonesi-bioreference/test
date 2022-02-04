@@ -17,8 +17,7 @@ const PageHeaderStyled = styled.div`
   &.page-header--primaryPage {
     border-top: ${tokens.borderWidthExtraThick} solid;
     border-color: ${({ theme }) => theme.colors.borderHighlight};
-    padding: ${tokens.spacingLarge} ${tokens.spacing} ${tokens.spacingXLarge}
-      ${tokens.spacing};
+    padding: ${tokens.spacingLarge} 0 ${tokens.spacing};
   }
 
   &.page-header--secondaryPage {
@@ -28,6 +27,10 @@ const PageHeaderStyled = styled.div`
 
   &.page-header > * :not(:last-child) {
     margin-bottom: ${tokens.spacing};
+  }
+
+  .description {
+    margin-top: ${tokens.spacingSmall};
   }
 `;
 

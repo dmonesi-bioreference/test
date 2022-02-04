@@ -14,7 +14,7 @@ const IconButtonStyled = styled.button`
   border-radius: ${tokens.borderRadius};
   font-size: inherit;
   border: 1px solid transparent;
-  color: ${tokens.colorSecondary};
+  color: ${colors.grey[100]};
   padding: ${tokens.spacingSmall};
   transition: ${tokens.transitionMedium} color;
 
