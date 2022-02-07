@@ -1,3 +1,5 @@
+import { screen } from '@testing-library/react';
+
 import { Mocks, renderWithShell } from 'test-utils';
 
 import { Settings } from './index';
@@ -18,7 +20,7 @@ describe('The Settings Page', () => {
   });
 
   it('displays a spinning indicator while loading', async () => {
-    const { findByTestId } = await renderWithShell(<Settings />, {
+    await renderWithShell(<Settings />, {
       requests: {
         identityProfile: async () => {
           await new Promise((resolve) => setTimeout(resolve, 10_000_000));
@@ -27,7 +29,11 @@ describe('The Settings Page', () => {
       },
     });
 
-    await findByTestId('spinner');
+    const asyncRegion = await screen.findByRole('region', {
+      name: 'loaded content',
+    });
+    expect(asyncRegion.textContent).toContain('My Account');
+    expect(+asyncRegion.style.opacity).toBeLessThan(1);
   });
 
   it('has a title', async () => {

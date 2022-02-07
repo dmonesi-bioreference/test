@@ -32,7 +32,9 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
         <Typography type="heading" level="1">
           {props.children}
         </Typography>
-        <div className="description">{withDescription}</div>
+        {withDescription && (
+          <div className="description">{withDescription}</div>
+        )}
       </div>
     </PageHeaderStyled>
   );

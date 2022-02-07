@@ -2,6 +2,7 @@ import { ThemeProvider } from 'styled-components';
 
 import { Footer } from 'app/components/Footer';
 import { Header } from 'components/Header';
+import { PageBorder } from 'components/PageBorder';
 import { PageHeader } from 'components/PageHeader';
 import { GlobalStyle } from 'index';
 import { getTheme } from 'styles/themes';
@@ -15,20 +16,28 @@ export interface PageLayoutProps {
   description?: string;
   title?: string;
   theme?: Themes;
+  loading?: boolean;
 }
 
 const PageLayout: React.FC<PageLayoutProps> = ({
   containsCards,
   children,
   theme = 'defaultTheme',
+  loading = false,
   ...props
 }) => {
   const belongsTo = props.kind || 'primary';
   const withCards = containsCards ? '--with-cards' : '';
   const withHeader = props.title ? (
-    <PageHeader belongsTo={`${belongsTo}Page`} description={props.description}>
-      {props.title}
-    </PageHeader>
+    <>
+      <PageBorder loading={loading} />
+      <PageHeader
+        belongsTo={`${belongsTo}Page`}
+        description={props.description}
+      >
+        {props.title}
+      </PageHeader>
+    </>
   ) : null;
   return (
     <ThemeProvider theme={getTheme(theme)}>

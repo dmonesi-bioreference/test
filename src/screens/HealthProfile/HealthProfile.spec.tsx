@@ -43,7 +43,7 @@ describe('Rendering', () => {
     heading: (name: string) => screen.findByRole('heading', { name }),
   };
 
-  it('displays a spinning indicator while loading', async () => {
+  it('fades content while loading', async () => {
     await TestUtils.renderWithShell(<HealthProfile />, {
       requests: {
         identityProfile: async () => {
@@ -55,7 +55,11 @@ describe('Rendering', () => {
       onSession: async () => session,
     });
 
-    await screen.findByTestId('spinner');
+    const asyncRegion = await screen.findByRole('region', {
+      name: 'loaded content',
+    });
+    expect(asyncRegion.textContent).toContain('Basic Information');
+    expect(+asyncRegion.style.opacity).toBeLessThan(1);
   });
 
   it('executes an identity profile request on load', async () => {

@@ -21,6 +21,7 @@ import {
 export const ResourcesPage = () => {
   const t = useAppTranslation();
 
+  const requesting = useAppState('requests.identityProfile.requesting');
   const loadingFAQs = useAppState('requests.allFaqs.requesting');
   const errorFetchingFAQs = useAppState('requests.allFaqs.failure');
 
@@ -35,6 +36,7 @@ export const ResourcesPage = () => {
         title={t('pages.resources.title')}
         description={t('pages.resources.description')}
         customHeader={<PatientBanner />}
+        loading={requesting || loadingFAQs}
       >
         <PageSection>
           <MediaElements.Audio

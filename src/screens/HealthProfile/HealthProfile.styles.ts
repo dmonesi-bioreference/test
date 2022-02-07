@@ -14,17 +14,3 @@ export const HealthProfileContainer = styled.div`
     margin-bottom: ${tokens.spacingLarge};
   }
 `;
-
-export const HealthProfileContent = styled.div`
-  opacity: ${(props: { pending: boolean }) => (props.pending ? 0.4 : 1)};
-  pointer-events: ${(props: { pending: boolean }) =>
-    props.pending ? 'none' : 'default'};
-  transition: 0.3s ease-in-out;
-`;
-
-export const HealthProfileActivity = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  height: ${tokens.spacingXLarge};
-`;

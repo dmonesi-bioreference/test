@@ -9,18 +9,15 @@ import {
   useAppEvents,
   useAppState,
 } from 'app/components/Shell';
-import { ListCard, PageLayout, PageSection, Spinner } from 'components';
+import { ListCard, PageLayout, PageSection } from 'components';
+import { AsyncRegion } from 'components/AsyncRegion';
 
-import {
-  HealthProfileContainer,
-  HealthProfileContent,
-  HealthProfileActivity,
-} from './HealthProfile.styles';
+import { HealthProfileContainer } from './HealthProfile.styles';
 
 export const HealthProfile = () => {
   const t = useAppTranslation();
   const { identityProfileRequest } = useAppEvents();
-  const isLoading = useAppState('requests.identityProfile.requesting');
+  const requesting = useAppState('requests.identityProfile.requesting');
 
   const session = useAppSelector(({ context }) => context.auth.session);
   const profile = useAppSelector(
@@ -47,15 +44,10 @@ export const HealthProfile = () => {
           })}
           theme="healthProfileTheme"
           customHeader={<PatientBanner />}
+          loading={requesting}
         >
           <PageSection>
-            <HealthProfileContent pending={isLoading}>
-              {isLoading && (
-                <HealthProfileActivity>
-                  <Spinner data-testid="spinner" />
-                </HealthProfileActivity>
-              )}
-
+            <AsyncRegion pending={requesting}>
               <ListCard
                 iconName="information-circle"
                 title={t('pages.healthProfile.basicInformation.title')}
@@ -98,7 +90,6 @@ export const HealthProfile = () => {
                   {profile.insurance}
                 </DisplayField>
               </ListCard>
-
               <ListCard
                 iconName="clipboard"
                 title={t('pages.healthProfile.primaryIndication.title')}
@@ -111,7 +102,6 @@ export const HealthProfile = () => {
                   {profile.phenotype}
                 </DisplayField>
               </ListCard>
-
               <ListCard
                 iconName="user-circle"
                 title={t('pages.healthProfile.yourDetails.title')}
@@ -149,7 +139,7 @@ export const HealthProfile = () => {
                   {profile.relation_to_patient}
                 </DisplayField>
               </ListCard>
-            </HealthProfileContent>
+            </AsyncRegion>
           </PageSection>
         </PageLayout>
       </HealthProfileContainer>

@@ -8,9 +8,8 @@ import {
   useAppTranslation,
 } from 'app';
 import { DisplayField } from 'app/components/DisplayField';
-import { Button, ListCard, PageLayout, PageSection, Spinner } from 'components';
-
-import { SettingsActivity, SettingsContent } from './Settings.styles';
+import { Button, ListCard, PageLayout, PageSection } from 'components';
+import { AsyncRegion } from 'components/AsyncRegion';
 
 export const Settings = () => {
   const events = useAppEvents();
@@ -30,13 +29,12 @@ export const Settings = () => {
       <Head>
         <title>{t('pages.settings.pageTitle')}</title>
       </Head>
-      <PageLayout containsCards title={t('pages.settings.title')}>
-        <SettingsContent pending={requesting}>
-          {requesting && (
-            <SettingsActivity>
-              <Spinner data-testid="spinner" />
-            </SettingsActivity>
-          )}
+      <PageLayout
+        containsCards
+        title={t('pages.settings.title')}
+        loading={requesting}
+      >
+        <AsyncRegion pending={requesting}>
           <PageSection>
             <ListCard
               iconName="user-circle"
@@ -83,7 +81,7 @@ export const Settings = () => {
               {t('pages.settings.actions.delete.label')}
             </Button>
           </PageSection>
-        </SettingsContent>
+        </AsyncRegion>
       </PageLayout>
     </>
   );

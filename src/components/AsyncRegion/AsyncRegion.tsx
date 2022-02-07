@@ -1,11 +1,6 @@
-import { Spinner } from 'components/Spinner';
-import { fadeWhileWorking, slideInRight } from 'styles/animations';
+import { fadeWhileWorking } from 'styles/animations';
 
-import {
-  AsyncRegionActivity,
-  AsyncRegionActivityIndicator,
-  AsyncRegionContainer,
-} from './AsyncRegion.styles';
+import { AsyncRegionContainer } from './AsyncRegion.styles';
 
 interface AsyncRegionProps {
   pending: boolean;
@@ -22,23 +17,9 @@ export function AsyncRegion(props: Props<AsyncRegionProps>) {
       }
       variants={fadeWhileWorking.variants}
       transition={fadeWhileWorking.transition}
+      role="region"
+      aria-label="loaded content"
     >
-      <AsyncRegionActivity>
-        {props.pending ? (
-          <AsyncRegionActivityIndicator
-            variants={slideInRight.variants}
-            exit={slideInRight.variants.hidden}
-            animate={
-              props.pending
-                ? slideInRight.states.visible
-                : slideInRight.states.hidden
-            }
-            transition={slideInRight.transition}
-          >
-            <Spinner data-testid="async-region-spinner" />
-          </AsyncRegionActivityIndicator>
-        ) : null}
-      </AsyncRegionActivity>
       {props.children}
     </AsyncRegionContainer>
   );

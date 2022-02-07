@@ -1,5 +1,5 @@
 /* eslint-disable sort-keys */
-import { rem } from 'polished';
+import { linearGradient, rem } from 'polished';
 
 export const colors = {
   // Dev Note: slate purple, coral, and sand removed
@@ -150,6 +150,9 @@ export const tokens = {
   colorDangerHover: colors.red[800],
   colorDangerText: colors.red[700],
   colorDangerFocus: colors.red[200],
+  colorGradientLoading: linearGradient({
+    colorStops: [colors.indigo[900], colors.indigo[800]],
+  }),
 
   /* font-family */
   fontFamilySansSerif: fonts.fontFamilyPoppins,

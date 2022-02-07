@@ -56,7 +56,7 @@ describe('The identity form page', () => {
     await page.findByText('Your Mobile Phone');
   });
 
-  it('displays a spinning indicator while loading', async () => {
+  it('fades content while loading', async () => {
     const page = await renderWithShell(<IdentityForm />, {
       requests: {
         identityProfile: async () => {
@@ -66,7 +66,11 @@ describe('The identity form page', () => {
       },
     });
 
-    await page.findByTestId('async-region-spinner');
+    const asyncRegion = await page.findByRole('region', {
+      name: 'loaded content',
+    });
+    expect(asyncRegion.textContent).toContain('To make sure we keep your');
+    expect(+asyncRegion.style.opacity).toBeLessThan(1);
   });
 
   it('executes an identity profile request on load', async () => {
