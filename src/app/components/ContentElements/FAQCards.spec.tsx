@@ -9,7 +9,7 @@ describe('The faq card component', () => {
 
   it('renders highest priority FAQ card when test status is waiting', async () => {
     const page = await renderWithShell(<FAQCards />, {
-      onFetchAllFAQs: async () => [
+      requests: { allFaqs: async () => [
         Mocks.faqs.create({
           id: '1',
           introduceAt: 'WAITING',
@@ -22,7 +22,7 @@ describe('The faq card component', () => {
           priority: 1,
           content: [{ title: 'Waiting FAQ - High Priority', content: '' }],
         }),
-      ],
+      ]},
       onLoadTests: async () => Mocks.tests.createMany({ LabStatus: 'In Lab' }),
       onPatientGuid: async () => ({ guid: '1234', source: '' }),
     });
@@ -32,7 +32,7 @@ describe('The faq card component', () => {
 
   it('renders relevant FAQ card when test status is ready', async () => {
     const page = await renderWithShell(<FAQCards />, {
-      onFetchAllFAQs: async () => [
+      requests: { allFaqs: async () => [
         Mocks.faqs.create({
           id: '1',
           introduceAt: 'WAITING',
@@ -47,7 +47,7 @@ describe('The faq card component', () => {
             { title: 'Results Ready FAQ - High Priority', content: '' },
           ],
         }),
-      ],
+      ]},
       onLoadTests: async () =>
         Mocks.tests.createMany({ LabStatus: 'Report Ready' }),
       onPatientGuid: async () => ({ guid: '1234', source: '' }),
@@ -58,7 +58,7 @@ describe('The faq card component', () => {
 
   it('renders relevant FAQ card when results have been viewed', async () => {
     const page = await renderWithShell(<FAQCards />, {
-      onFetchAllFAQs: async () => [
+      requests: { allFaqs: async () => [
         Mocks.faqs.create({
           id: '1',
           introduceAt: 'WAITING',
@@ -71,7 +71,7 @@ describe('The faq card component', () => {
           priority: 1,
           content: [{ title: 'Viewed FAQ - High Priority', content: '' }],
         }),
-      ],
+      ]},
       onLoadTests: async () =>
         Mocks.tests.createMany({ LabStatus: 'Report Ready' }),
       onPatientGuid: async () => ({ guid: '1234', source: '' }),
@@ -85,7 +85,7 @@ describe('The faq card component', () => {
 
   it('renders relevant FAQ card when test results have been discussed', async () => {
     const page = await renderWithShell(<FAQCards />, {
-      onFetchAllFAQs: async () => [
+      requests: { allFaqs: async () => [
         Mocks.faqs.create({
           id: '1',
           introduceAt: 'WAITING',
@@ -98,7 +98,7 @@ describe('The faq card component', () => {
           priority: 1,
           content: [{ title: 'Discussed FAQ - High Priority', content: '' }],
         }),
-      ],
+      ]},
       onLoadTests: async () =>
         Mocks.tests.createMany({ LabStatus: 'Report Ready' }),
       onPatientGuid: async () => ({ guid: '1234', source: '' }),

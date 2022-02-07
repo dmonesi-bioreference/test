@@ -36,7 +36,6 @@ const buildConfig = {
   target: ['chrome58', 'firefox57', 'safari11', 'edge18'],
   define: {
     'process.env.NEXT_PUBLIC_GTM_ID': `"${process.env.NEXT_PUBLIC_GTM_ID}"`,
-    'process.env.NEXT_PUBLIC_PIMCORE_DOMAIN': `"${process.env.NEXT_PUBLIC_PIMCORE_DOMAIN}"`,
     'process.env.AUTH0_REALM': `"${process.env.AUTH0_REALM}"`,
     'process.env.NODE_ENV': '"production"',
     'process.env.ARTIFACT_TARGET': '"auth0"',

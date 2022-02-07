@@ -9,13 +9,11 @@ import { Content } from './Content';
 
 export const FAQCards = () => {
   const t = useAppTranslation();
-  const events = useAppEvents();
+  const { allFaqsRequest } = useAppEvents();
 
-  useEffect(() => {
-    events.fetchAllFAQs();
-  }, [events]);
+  useEffect(allFaqsRequest, [allFaqsRequest]);
 
-  const faqs = useAppSelector((state) => state.context.content.FAQs.data);
+  const faqs = useAppSelector((state) => state.context.requests.allFaqs.values);
 
   const [{ isWaiting, isResultsReady, isAfterAppointment, isViewed }] =
     useTestStatus();
@@ -51,7 +49,7 @@ export const FAQCards = () => {
       <FaqCard
         key={faq.id}
         title={faq.title}
-        href={`/demo/faq/${faq.slug}`}
+        href={`/demo/faq${faq.slug}`}
         label={<Content>{faq.blurb}</Content>}
         questions={
           faq.content

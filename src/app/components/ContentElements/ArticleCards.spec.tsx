@@ -9,13 +9,13 @@ describe('The article cards component', () => {
 
   it('creates article cards when test status is waiting', async () => {
     const page = await renderWithShell(<ArticleCards />, {
-      onFetchAllArticles: async () => [
+      requests: { allArticles: async () => [
         {
           ...Mocks.article.single,
           introduceAt: 'WAITING',
           title: 'Waiting article title',
         },
-      ],
+      ]},
       onLoadTests: async () => [
         {
           ...Mocks.tests.single,
@@ -31,13 +31,13 @@ describe('The article cards component', () => {
 
   it('creates article cards when test status is ready', async () => {
     const page = await renderWithShell(<ArticleCards />, {
-      onFetchAllArticles: async () => [
+      requests: { allArticles: async () => [
         {
           ...Mocks.article.single,
           introduceAt: 'READY',
           title: 'Results ready article title',
         },
-      ],
+      ]},
       onLoadTests: async () => [
         { ...Mocks.tests.single, LabStatus: 'Report Ready' },
       ],
@@ -49,13 +49,13 @@ describe('The article cards component', () => {
 
   it('creates article cards when test results have been viewed', async () => {
     const page = await renderWithShell(<ArticleCards />, {
-      onFetchAllArticles: async () => [
+      requests: { allArticles: async () => [
         {
           ...Mocks.article.single,
           introduceAt: 'VIEWED',
           title: 'Viewed article title',
         },
-      ],
+      ]},
       onLoadTests: async () => [
         { ...Mocks.tests.single, LabStatus: 'Report Ready' },
       ],
@@ -70,13 +70,13 @@ describe('The article cards component', () => {
 
   it('creates article cards when test results have been discussed', async () => {
     const page = await renderWithShell(<ArticleCards />, {
-      onFetchAllArticles: async () => [
+      requests: { allArticles: async () => [
         {
           ...Mocks.article.single,
           introduceAt: 'DISCUSSED',
           title: 'Discussed article title',
         },
-      ],
+      ]},
       onLoadTests: async () => [
         { ...Mocks.tests.single, LabStatus: 'Report Ready' },
       ],

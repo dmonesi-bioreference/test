@@ -39,7 +39,16 @@ export function createContentClient(overrides: Partial<Configuration>) {
           query: Queries.articleById(articleId),
         })
         .then(responseBody)
-        .then((response) => response.data.getArticle),
+        .then((response) => {
+          const article = response.data.getArticle;
+          return {
+            ...article,
+            bannerImage: {
+              ...(article.bannerImage as Image),
+              fullpath: `${server_config.pimcore.domain ?? ''}${article.bannerImage?.fullpath}`,
+            }
+          }
+        }),
     articles: async () =>
       await client
         .post<{ data: { getArticleListing: { edges: { node: Article }[] } } }>(
@@ -48,7 +57,13 @@ export function createContentClient(overrides: Partial<Configuration>) {
         )
         .then(responseBody)
         .then((body) =>
-          body.data.getArticleListing.edges.map(({ node }) => node)
+          body.data.getArticleListing.edges.map(({ node }) => ({
+            ...node,
+            bannerImage: {
+              ...node.bannerImage,
+              fullpath: `${server_config.pimcore.domain ?? ''}${node.bannerImage?.fullpath}`,
+            }
+          }))
         ),
     faqs: async () =>
       await client

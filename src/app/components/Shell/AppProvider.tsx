@@ -20,10 +20,6 @@ export interface AppProviderProps {
   onReport?: AppEventFn<
     { src: string; thumbnail: string | StaticImageData } | undefined
   >;
-  onFetchArticle?: AppEventFn<Article>;
-  onFetchAllArticles?: AppEventFn<Article[]>;
-  onFetchAllFAQs?: AppEventFn<FAQ[]>;
-  onFetchFAQ?: AppEventFn<FAQ>;
   onPatientGuid?: AppEventFn<{ guid: string; source: string }>;
   onRegistration?: AppEventFn<unknown>;
 }
@@ -49,11 +45,6 @@ export function AppProvider({
   }),
   onReport: handleReport = async () => undefined,
   onPatientGuid: handlePatientGuid = getPatientInfo,
-  onFetchArticle: handleFetchArticle = async () =>
-    Promise.reject('No article found'),
-  onFetchAllArticles: handleFetchAllArticles = async () => [],
-  onFetchAllFAQs: handleFetchAllFAQs = async () => [],
-  onFetchFAQ: handleFetchFAQ = async () => Promise.reject('No faq found'),
   onSession: handleSession = async () => emptySession,
   onRegistration: handleRegistration = async () => undefined,
 }: Props<AppProviderProps>) {
@@ -64,6 +55,22 @@ export function AppProvider({
       requests.identityProfile ||
       (async () =>
         Promise.reject(Errors.api('No caregiver profile available'))),
+    handleSingleArticleRequest:
+      requests.singleArticle ||
+      (async () =>
+        Promise.reject(Errors.api('No article available'))),
+    handleAllArticlesRequest:
+      requests.allArticles ||
+      (async () =>
+        Promise.reject(Errors.api('No articles available'))),
+    handleSingleFaqRequest:
+      requests.singleFaq ||
+      (async () =>
+        Promise.reject(Errors.api('No faq found'))),
+    handleAllFaqsRequest:
+      requests.allFaqs ||
+      (async () =>
+        Promise.reject(Errors.api('No faqs found'))),
   };
 
   const services = {
@@ -73,10 +80,6 @@ export function AppProvider({
     handleFetchTests,
     handleAppointmentStatus,
     handleReport,
-    handleFetchArticle,
-    handleFetchFAQ,
-    handleFetchAllArticles,
-    handleFetchAllFAQs,
     handlePatientGuid,
     handleRegistration,
     ...requestHandlers,
@@ -98,18 +101,16 @@ export function AppProvider({
         getTestStatus: () => send('CHECK_TESTS'),
         getAppointmentStatus: () => send('GET_APPOINTMENT_STATUS'),
         viewTestResults: () => send('VIEW_TEST_RESULTS'),
-        fetchSingleArticle: (payload?: { articleIdentifier: string }) =>
+        setArticleIdentifier: (payload?: { articleIdentifier: string }) =>
           send({
-            type: 'FETCH_SINGLE_ARTICLE',
+            type: 'SET_ARTICLE_IDENTIFIER',
             articleIdentifier: payload ? payload.articleIdentifier : '',
           }),
-        fetchSingleFAQ: (payload?: { FAQSlug: string }) =>
+        setFaqSlug: (payload?: { FAQSlug: string }) =>
           send({
-            type: 'FETCH_SINGLE_FAQ',
+            type: 'SET_FAQ_SLUG',
             FAQSlug: payload ? payload.FAQSlug : '',
           }),
-        fetchAllArticles: () => send('fetchAllArticles'),
-        fetchAllFAQs: () => send('fetchAllFAQs'),
         register: () => send('register'),
       };
 

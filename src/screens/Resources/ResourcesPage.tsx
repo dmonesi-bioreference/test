@@ -21,8 +21,8 @@ import {
 export const ResourcesPage = () => {
   const t = useAppTranslation();
 
-  const loadingFAQs = useAppState('content.faqs.fetchingAllFAQs');
-  const errorFetchingFAQs = useAppState('content.faqs.failure');
+  const loadingFAQs = useAppState('requests.allFaqs.requesting');
+  const errorFetchingFAQs = useAppState('requests.allFaqs.failure');
 
   return (
     <>

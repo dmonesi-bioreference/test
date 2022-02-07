@@ -44,6 +44,10 @@ function WebApp({ Component, pageProps }: AppProps) {
     const requests: AppEventFnMap<RequestModelMap> = {
       identityProfile: Api.Identity.profile,
       verifyPatientInfo: Api.Identity.validate,
+      singleArticle: Api.Content.article,
+      allArticles: Api.Content.articles,
+      singleFaq: Api.Content.faq,
+      allFaqs: Api.Content.faqs,
     };
 
     return requests;
@@ -62,10 +66,6 @@ function WebApp({ Component, pageProps }: AppProps) {
       }}
       onIdentity={Api.Identity.validate}
       onLoadTests={Api.Tests.list}
-      onFetchArticle={Api.Content.article}
-      onFetchAllArticles={Api.Content.articles}
-      onFetchAllFAQs={Api.Content.faqs}
-      onFetchFAQ={Api.Content.faq}
     >
       <Head>
         <title>GeneDx</title>

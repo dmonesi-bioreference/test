@@ -27,47 +27,41 @@ interface ArticlePageProps {
 
 export const ArticlePage: React.FC<ArticlePageProps> = (props) => {
   const t = useAppTranslation();
-  const events = useAppEvents();
+  const { setArticleIdentifier, singleArticleRequest } = useAppEvents();
+  
+  const [article, setArticle] = useState<Article>();
 
-  const [articleTitle, setArticleTitle] = useState<string>();
-  const [articleContents, setArticleContents] = useState<
-    { title: string; content: string }[]
-  >([]);
-  const [articleLabel, setArticleLabel] = useState<string>();
+  const { articleIdentifier } = props;
 
-  const articles = useAppSelector(
-    (state) => state.context.content.articles.data
-  );
-  const loading = useAppState('content.articles.fetchingSingleArticle');
-  const error = useAppState('content.articles.failure');
+  const loading = useAppState('requests.singleArticle.requesting');
+  const error = useAppState('requests.singleArticle.failure');
+  const articles = useAppSelector(state => state.context.requests.allArticles.values);
+  const singleArticle = useAppSelector(state => state.context.requests.singleArticle.values);
 
-  useEffect(() => {
-    const article = articles.find(
-      (e) =>
-        e.id === props.articleIdentifier ||
-        e.slug === `/${props.articleIdentifier}`
-    );
-    setArticleTitle(article ? article.title : '');
-    setArticleLabel(article ? article.label : '');
-    setArticleContents(
-      article && article.contents
-        ? article.contents.map((e) => ({ title: e.title, content: e.content }))
-        : []
-    );
-  }, [articles, props]);
+  useEffect(() => setArticle(singleArticle), [singleArticle]);
 
   useEffect(() => {
-    if (articleContents.length == 0) {
-      events.fetchSingleArticle({
-        articleIdentifier: props.articleIdentifier as string,
+    if (articles.length == 0) {
+      setArticleIdentifier({
+        articleIdentifier: articleIdentifier as string,
       });
+      singleArticleRequest();
     }
-  }, [articleContents, events, props]);
+    else {
+      setArticle(
+        articles.find(
+          (e) =>
+            e.id === articleIdentifier ||
+            e.slug === `/${articleIdentifier}`
+        ) as Article
+      );
+    }
+  }, [articleIdentifier, articles, setArticleIdentifier, singleArticleRequest]);
 
   return (
     <>
       <Head>
-        <title>{t('pages.article.pageTitle', { articleTitle })}</title>
+        <title>{t('pages.article.pageTitle', { articleTitle: article ? article.title : '' })}</title>
       </Head>
       <PageLayout theme="resourcesTheme">
         <ContentPageStyled>
@@ -77,10 +71,10 @@ export const ArticlePage: React.FC<ArticlePageProps> = (props) => {
               <div style={{ marginBottom: tokens.spacingXSmall }}>
                 <div style={{ marginBottom: tokens.spacingXSmall }}>
                   <Typography type="label" labelType="title" color="blue">
-                    {articleLabel}
+                    {article ? article.label : ''}
                   </Typography>
                 </div>
-                <Heading level="1">{articleTitle}</Heading>
+                <Heading level="1">{article ? article.title : ''}</Heading>
               </div>
             }
           >
@@ -91,9 +85,9 @@ export const ArticlePage: React.FC<ArticlePageProps> = (props) => {
                 {t('pages.articles.errorFetchingArticle')}
               </Typography>
             ) : (
-              articleContents && (
+              article && article.contents && (
                 <>
-                  {articleContents.map((contentBlock, index) => (
+                  {article.contents.map((contentBlock, index) => (
                     <React.Fragment key={index}>
                       <ContentBlock title={contentBlock.title}>
                         <Content>{contentBlock.content}</Content>

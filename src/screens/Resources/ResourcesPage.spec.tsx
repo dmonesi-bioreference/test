@@ -23,7 +23,7 @@ describe('The resources page', () => {
 
   it('has an article section', async () => {
     const page = await renderWithShell(<ResourcesPage />, {
-      onFetchAllArticles: async () => Mocks.article.list,
+      requests: { allArticles: async () => Mocks.article.list },
     });
 
     await page.findByText('Read');
@@ -36,7 +36,7 @@ describe('The resources page', () => {
 
   it('has a faqs section', async () => {
     const page = await renderWithShell(<ResourcesPage />, {
-      onFetchAllFAQs: async () => Mocks.faqs.list,
+      requests: { allFaqs: async () => Mocks.faqs.list },
     });
 
     await page.findByText('What is Genetic Testing?');

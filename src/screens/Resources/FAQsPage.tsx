@@ -28,7 +28,7 @@ interface FAQPageProps {
 
 export const FAQsPage: React.FC<FAQPageProps> = (props) => {
   const t = useAppTranslation();
-  const events = useAppEvents();
+  const { setFaqSlug, singleFaqRequest } = useAppEvents();
 
   const [faqTitle, setFaqTitle] = useState<string>();
   const [faqLabel, setFaqLabel] = useState<string>();
@@ -36,34 +36,53 @@ export const FAQsPage: React.FC<FAQPageProps> = (props) => {
     { ref: RefObject<HTMLDivElement>; title: string; content: string }[]
   >([]);
 
-  const faqs = useAppSelector((state) => state.context.content.FAQs.data);
-  const loadingFAQs = useAppState('content.faqs.fetchingSingleFAQ');
-  const errorFetchingFAQs = useAppState('content.faqs.failure');
+  const { slug, question } = props;
+
+  const loadingFAQs = useAppState('requests.singleFaq.requesting');
+  const errorFetchingFAQs = useAppState('requests.singleFaq.failure');
+  const faqs = useAppSelector(state => state.context.requests.allFaqs.values);
+  const singleFaq = useAppSelector(state => state.context.requests.singleFaq.values);
 
   useEffect(() => {
-    const faq = faqs.find((faq) => faq.slug === `/${props.slug}`);
-    setFaqTitle(faq ? faq.title : '');
-    setFaqLabel(faq ? faq.label : '');
+    setFaqTitle(singleFaq.title);
+    setFaqLabel(singleFaq.label);
     setFaqContents(
-      faq && faq.content
-        ? faq.content.map((e) => ({
+      singleFaq.content
+        ? singleFaq.content.map((e) => ({
             title: e.title,
             content: e.content,
             ref: React.createRef(),
           }))
         : []
     );
-  }, [faqs, props]);
+  }, [singleFaq]);
 
   useEffect(() => {
     if (faqContents.length == 0) {
-      events.fetchSingleFAQ({ FAQSlug: props.slug as string });
+      setFaqSlug({
+        FAQSlug: slug as string,
+      });
+      singleFaqRequest();
     }
-  }, [faqContents, events, props]);
+    else {
+      const faq = faqs.find((faq) => faq.slug === `/${slug}`);
+      setFaqTitle(faq ? faq.title : '');
+      setFaqLabel(faq ? faq.label : '');
+      setFaqContents(
+        faq && faq.content
+          ? faq.content.map((e) => ({
+              title: e.title,
+              content: e.content,
+              ref: React.createRef(),
+            }))
+          : []
+      );
+    }
+  }, [slug, faqs, faqContents, setFaqSlug, singleFaqRequest]);
 
   useEffect(() => {
     faqContents
-      .find((content) => content.title.trim() == props.question)
+      .find((content) => content.title.trim() == question)
       ?.ref.current?.scrollIntoView();
   });
 
@@ -80,7 +99,7 @@ export const FAQsPage: React.FC<FAQPageProps> = (props) => {
               <div style={{ marginBottom: tokens.spacingXSmall }}>
                 <div style={{ marginBottom: tokens.spacingXSmall }}>
                   <Typography type="label" labelType="title" color="blue">
-                    {faqLabel}
+                  {faqLabel}
                   </Typography>
                 </div>
                 <Heading level="1">{faqTitle}</Heading>

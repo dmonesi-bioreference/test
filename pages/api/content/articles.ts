@@ -13,5 +13,6 @@ export default Errors.wrap(async function handler(
   }
 
   const articles = await Services.Content.articles();
+
   return res.status(200).json(articles);
 });

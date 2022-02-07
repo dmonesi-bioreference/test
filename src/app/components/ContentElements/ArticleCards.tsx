@@ -11,11 +11,9 @@ import { useContent } from './hooks';
 
 export const ArticleCards = () => {
   const t = useAppTranslation();
-  const events = useAppEvents();
+  const { allArticlesRequest } = useAppEvents();
 
-  useEffect(() => {
-    events.fetchAllArticles();
-  }, [events]);
+  useEffect(allArticlesRequest, [allArticlesRequest]);
 
   const [{ articles, loadingArticles, errorFetchingArticles }] = useContent();
 

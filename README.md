@@ -114,7 +114,7 @@ We deploy the Auth artifact with manual commands presently. Manual deployment us
 | AUTH0_CLIENT_SECRET        | Public | Secret for the client ID             |                            |
 | AUTH0_REALM                | Public | The DB realm / connection            | genedx-accounts            |
 | NEXT_PUBLIC_GTM_ID         | Public | The GTM ID for ... GTM               |                            |
-| NEXT_PUBLIC_PIMCORE_DOMAIN | Public | Root URL for Pimcore provided assets |                            |
+| PIMCORE_DOMAIN             | Public | Root URL for Pimcore provided assets |                            |
 
 You can provide an `.env.auth` file with these values to use the commands locally.
 

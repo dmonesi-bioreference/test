@@ -1,3 +1,5 @@
+
+import * as content from './content';
 import { identityProfile } from './identity-profile';
 import { verifyPatientInfo } from './verify-patient-info';
 
@@ -30,4 +32,8 @@ declare global {
 // Add a request model to this export to incorporate it into the forms
 // state chart automatically.
 //
-export const all = [identityProfile, verifyPatientInfo];
+export const all = [
+  identityProfile,
+  verifyPatientInfo,
+  ...content.all,
+];
