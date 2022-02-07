@@ -30,6 +30,26 @@ yarn test
 
 This will kick off Jest, which is a slimmer test suite that doesn't leverage the entire app and all of its backing services.
 
+To run the cypress test suite you need a few accounts which are set up in specific states, to do this, provide the following environment variables
+
+| Variable name                         | Purpose                       | Default |
+|---------------------------------------|-------------------------------|---------|
+| CYPRESS_AUTH0_ROOT                    | The auth0 deployment root url |         |
+| CYPRESS_AUTH0_GUID_TEST_ORDERED       | The guid of the account       |         |
+| CYPRESS_AUTH0_USERNAME_TEST_ORDERED   | The username of the account   |         |
+| CYPRESS_AUTH0_PASSWORD_TEST_ORDERED   | The password of the account   |         |
+| CYPRESS_AUTH0_GUID_TEST_IN_LAB        | The guid of the account       |         |
+| CYPRESS_AUTH0_USERNAME_TEST_IN_LAB    | The username of the account   |         |
+| CYPRESS_AUTH0_PASSWORD_TEST_IN_LAB    | The password of the account   |         |
+| CYPRESS_AUTH0_GUID_RESULTS_READY      | The guid of the account       |         |
+| CYPRESS_AUTH0_USERNAME_RESULTS_READY  | The username of the account   |         |
+| CYPRESS_AUTH0_PASSWORD_RESULTS_READY  | The password of the account   |         |
+| CYPRESS_AUTH0_GUID_RESULTS_VIEWED     | The guid of the account       |         |
+| CYPRESS_AUTH0_USERNAME_RESULTS_VIEWED | The username of the account   |         |
+| CYPRESS_AUTH0_PASSWORD_RESULTS_VIEWED | The password of the account   |         |
+
+You can provide these in `.env.local` when you run the app.
+
 ## Starting the Storybook Documentation Site
 
 Much of the work done developing components is done through a Storybook environment,
@@ -91,7 +111,7 @@ You can fix it locally by running yarn and then re-attempting the above commands
 This repo manages several artifacts, one of which is a smaller single-page version of the app meant for deployment into an Auth0 tenant. For Auth0 integration, we require a series of environment variables for public, private, and deploy systems to use.
 
 | Variable name          | Purpose                          | Default                            |
-| ---------------------- | -------------------------------- | ---------------------------------- |
+|------------------------|----------------------------------|------------------------------------|
 | AUTH0_SECRET           | Encryption secret for cookies    |                                    |
 | AUTH0_BASE_URL         | The current app URL              | http://localhost:3000              |
 | AUTH0_ISSUER_BASE_URL  | The base URL of the tenant       | https://bioreference-dev.auth0.com |
@@ -108,7 +128,7 @@ You can provide these in `.env.local` when you run the app.
 We deploy the Auth artifact with manual commands presently. Manual deployment uses the following environment variables:
 
 | Variable name              | Public | Purpose                              | Default                    |
-| -------------------------- | ------ | ------------------------------------ | -------------------------- |
+|----------------------------|--------|--------------------------------------|----------------------------|
 | AUTH0_DOMAIN               | Public | The current app URL                  | bioreference-dev.auth0.com |
 | AUTH0_CLIENT_ID            | Public | Our Auth0 tenant ID                  |                            |
 | AUTH0_CLIENT_SECRET        | Public | Secret for the client ID             |                            |
