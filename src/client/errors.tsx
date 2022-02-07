@@ -52,6 +52,8 @@ function missingConfig(value: string) {
   );
 
   logger.error({ value, payload, traceId }, payload.message);
+
+  return payload;
 }
 
 /**

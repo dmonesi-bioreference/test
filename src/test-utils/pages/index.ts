@@ -1,5 +1,7 @@
-import { Home } from './home';
+import { Landing } from './landing';
+import { Results } from './results';
 
 export const Pages = {
-  Home,
+  Landing,
+  Results,
 };

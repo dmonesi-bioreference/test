@@ -44,6 +44,7 @@
     "@typescript-eslint/restrict-template-expressions": "off",
     "jsx-a11y/no-noninteractive-tabindex": "off",
     "security/detect-object-injection": "off",
+    "security/detect-non-literal-fs-filename": "off",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
     "react/no-unescaped-entities": "off",

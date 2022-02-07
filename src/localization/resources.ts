@@ -265,6 +265,9 @@ export const resources = {
             cookie: 'Cookie Settings',
           },
         },
+        userHeader: {
+          patient: 'Patient',
+        },
       },
       forms: {
         identity: {

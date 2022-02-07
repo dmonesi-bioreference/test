@@ -32,7 +32,7 @@
     "cypress": "cypress run",
     "cypress:app": "cypress open",
     "test": "cross-env SKIP_PREFLIGHT_CHECK=true react-scripts test --env=jsdom",
-    "test:ci": "npm run test:once && npm run test:e2e",
+    "test:ci": "npm run test:once",
     "test:once": "cross-env SKIP_PREFLIGHT_CHECK=true CI=true react-scripts test --env=jsdom",
     "test:e2e": "start-server-and-test http://localhost:3000 cypress",
     "test:e2e:app": "start-server-and-test http://localhost:3000 cypress:app"

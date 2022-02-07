@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
 
-import { act, delay, renderWithShell } from 'test-utils';
+import { act, delay, Mocks, renderWithShell } from 'test-utils';
 
 import { LoginPage } from './index';
 
@@ -63,6 +63,54 @@ describe('Login page', () => {
       const page = await renderWithShell(<LoginPage />);
 
       await page.findByText('Login');
+    });
+  });
+
+  describe('states', () => {
+    it('uses a persistent session', async () => {
+      let isUsingSession = false;
+      const onSession = function () {
+        isUsingSession = true;
+        return Mocks.session.single;
+      };
+
+      await renderWithShell(<LoginPage />, {
+        onSession: async () => onSession(),
+        onAuthenticate: () => Promise.reject('no authentication available'),
+      });
+
+      expect(isUsingSession).toBe(true);
+    });
+
+    it('authenticates on login', async () => {
+      let isAuthenticating = false;
+      const onAuthenticate = function () {
+        isAuthenticating = true;
+        return {};
+      };
+
+      const page = await renderWithShell(<LoginPage />, {
+        onSession: () => Promise.reject('no session found'),
+        onAuthenticate: async () => onAuthenticate(),
+      });
+
+      userEvent.type(await page.findByLabelText('Email'), 'person@example.com');
+      userEvent.type(
+        await page.findByLabelText('Password'),
+        'super secret password'
+      );
+
+      await act(async () => {
+        await delay(300);
+      });
+
+      userEvent.click(page.getByRole('button', { name: 'Login' }));
+
+      await act(async () => {
+        await delay(300);
+      });
+
+      expect(isAuthenticating).toBe(true);
     });
   });
 });

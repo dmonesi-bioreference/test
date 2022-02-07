@@ -1,15 +1,22 @@
 /// <reference types="cypress" />
 /// <reference types="@testing-library/cypress" />
 
-export class Home {
+export class Landing {
   static from(client: typeof cy) {
-    return new Home(client);
+    return new Landing(client);
   }
 
   constructor(private client: typeof cy) {}
 
-  open() {
-    this.client.visit('http://localhost:3000');
+  open(params?: Record<string, string>) {
+    let url = '/';
+    
+    if (params) {
+      const urlParams = new URLSearchParams(params);
+      url += `?${urlParams.toString()}`;
+    } 
+
+    this.client.visit(url);
   }
 
   hasText(name: string): ReturnType<typeof cy['findByText']> {

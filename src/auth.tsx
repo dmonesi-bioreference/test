@@ -69,6 +69,8 @@ async function login({
         }
       });
     });
+  } else {
+    return Promise.reject('No auth0 instance available for login');
   }
 }
 
