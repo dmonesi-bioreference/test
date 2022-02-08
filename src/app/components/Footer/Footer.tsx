@@ -26,10 +26,6 @@ const Footer: React.FC = () => {
       url: 'https://www.genedx.com/privacy',
       target: '_blank',
     },
-    {
-      label: t('components.footer.links.cookie'),
-      url: '#',
-    },
   ];
 
   return (
@@ -49,6 +45,13 @@ const Footer: React.FC = () => {
             {link.label}
           </Button>
         ))}
+        <Button
+          kind="link-extra-small"
+          color="default"
+          className="ot-sdk-show-settings"
+        >
+          {t('components.footer.links.cookie')}
+        </Button>
       </div>
       <Typography type="fine-print">
         {t('components.footer.copyright')}
