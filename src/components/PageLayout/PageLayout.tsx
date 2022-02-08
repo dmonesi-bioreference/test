@@ -20,17 +20,14 @@ export interface PageLayoutProps {
 }
 
 const PageLayout: React.FC<PageLayoutProps> = ({
-  containsCards,
-  children,
   theme = 'defaultTheme',
-  loading = false,
   ...props
 }) => {
   const belongsTo = props.kind || 'primary';
-  const withCards = containsCards ? '--with-cards' : '';
+  const withCards = props.containsCards ? '--with-cards' : '';
   const withHeader = props.title ? (
     <>
-      <PageBorder loading={loading} />
+      <PageBorder loading={props.loading ? 'loading' : 'loaded'} />
       <PageHeader
         belongsTo={`${belongsTo}Page`}
         description={props.description}
@@ -49,7 +46,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
         <main
           className={`page-layout__content page-layout__content${withCards} page-layout__content--${belongsTo}`}
         >
-          {children}
+          {props.children}
         </main>
         <Footer />
       </PageLayoutStyled>

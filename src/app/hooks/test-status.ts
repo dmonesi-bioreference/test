@@ -1,5 +1,8 @@
 import { useAppSelector, useAppState } from 'app/components/Shell';
 
+/**
+ * @returns The current app test state object
+ */
 export function useTestStatus() {
   const state = {
     photo: useAppSelector((state) => state.context.geneticCounselor.photo),

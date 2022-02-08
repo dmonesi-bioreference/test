@@ -1,4 +1,4 @@
-import { PatientBanner, useAppTranslation } from 'app';
+import { PatientBanner, useAppState, useAppTranslation } from 'app';
 import { Card, CircularProgress, PageLayout, PageSection } from 'components';
 import { Typography, Heading } from 'components/Typography';
 import { colors } from 'styles';
@@ -9,6 +9,7 @@ import { useTestResults } from './hooks';
 export const WaitingForResults = () => {
   const t = useAppTranslation();
   const [{ percentComplete, expectedResultsDate }] = useTestResults();
+  const requesting = useAppState('requests.identityProfile.requesting');
 
   return (
     <PageLayout
@@ -16,6 +17,7 @@ export const WaitingForResults = () => {
       customHeader={<PatientBanner />}
       theme="healthProfileTheme"
       title={t('pages.results.waiting.title')}
+      loading={requesting}
     >
       <PageSection>
         <WaitingForResultsStyled>

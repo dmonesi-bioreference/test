@@ -1,3 +1,5 @@
+import userEvents from '@testing-library/user-event';
+
 import { renderWithShell, Mocks } from 'test-utils';
 
 import { LandingPage } from './LandingPage';
@@ -35,7 +37,7 @@ describe('The home page', () => {
             }${today.getMonth() + 1}-${
               today.getDate() < 10 ? '0' : ''
             }${today.getDate()}T11:12:00.000`,
-          })
+          });
         },
       });
 
@@ -157,5 +159,14 @@ describe('The home page', () => {
       );
       await page.findByText("Focus on your child's care");
     });
+  });
+  it('closes the menu when you click outside', async () => {
+    const page = await renderWithShell(<LandingPage />);
+
+    userEvents.click(await page.findByLabelText('Open menu'));
+    await page.findByText('Home');
+
+    userEvents.click(await page.findByText('Patient'));
+    expect(page.queryByText('Home')).toBeNull();
   });
 });
