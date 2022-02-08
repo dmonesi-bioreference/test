@@ -106,34 +106,34 @@ export const HealthProfile = () => {
                 title={t('pages.healthProfile.yourDetails.title')}
               >
                 <DisplayField
-                  label={t('pages.healthProfile.yourDetails.fields.1.label')}
+                  label={t('pages.healthProfile.yourDetails.fields.fullName.label')}
                 >
                   {profile.caregiver_name}
                 </DisplayField>
                 <DisplayField
-                  label={t('pages.healthProfile.yourDetails.fields.2.label')}
+                  label={t('pages.healthProfile.yourDetails.fields.phoneNumber.label')}
                 >
                   {profile.phone_number}
                 </DisplayField>
                 <DisplayField
-                  label={t('pages.healthProfile.yourDetails.fields.3.label')}
+                  label={t('pages.healthProfile.yourDetails.fields.emailAddress.label')}
                 >
                   {session.email}
                 </DisplayField>
                 <DisplayField
-                  label={t('pages.healthProfile.yourDetails.fields.4.label')}
+                  label={t('pages.healthProfile.yourDetails.fields.city.label')}
                 >
                   {profile.caregiver_location}
                 </DisplayField>
                 <DisplayField
-                  label={t('pages.healthProfile.yourDetails.fields.5.label')}
+                  label={t('pages.healthProfile.yourDetails.fields.dob.label')}
                 >
                   {profile.caregiver_dob
                     ? t('formatting.date', { value: profile.caregiver_dob })
                     : null}
                 </DisplayField>
                 <DisplayField
-                  label={t('pages.healthProfile.yourDetails.fields.6.label')}
+                  label={t('pages.healthProfile.yourDetails.fields.relation.label')}
                 >
                   {profile.relation_to_patient}
                 </DisplayField>

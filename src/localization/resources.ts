@@ -77,22 +77,22 @@ export const resources = {
           yourDetails: {
             title: 'Your Details',
             fields: {
-              1: {
+              fullName: {
                 label: 'Full Name',
               },
-              2: {
+              phoneNumber: {
                 label: 'Phone Number',
               },
-              3: {
+              emailAddress: {
                 label: 'Email Address',
               },
-              4: {
+              city: {
                 label: 'City / Town and State',
               },
-              5: {
+              dob: {
                 label: 'Date of Birth',
               },
-              6: {
+              relation: {
                 label: 'Relation to Patient',
               },
             },
