@@ -2,7 +2,7 @@ import * as TestUtils from 'test-utils';
 
 import { PatientBanner } from './PatientBanner';
 
-describe('PatientBanner', () => {
+describe('PatientBanner component', () => {
   it('displays the patient name with label', async () => {
     const name = 'An Example Name';
     const component = await TestUtils.renderWithShell(<PatientBanner />, {

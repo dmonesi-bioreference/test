@@ -6,7 +6,7 @@ import * as TestUtils from 'test-utils';
 import { HealthProfile } from './index';
 
 describe('Rendering', () => {
-  const profile: HealthProfile = {
+  const profile: FamilyProfile = {
     patient_dob: '11/29/2020',
     patient_nickname: 'Lisa',
     patient_name: 'Lisa Consuela',

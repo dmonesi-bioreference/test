@@ -13,10 +13,10 @@ declare global {
     terms_given: string;
   }
 
-  type HealthProfile = RegistrationProfile & PatientProfile;
+  type FamilyProfile = RegistrationProfile & PatientProfile;
 
   interface RequestModelMap {
-    identityProfile: HealthProfile;
+    identityProfile: FamilyProfile;
   }
 }
 

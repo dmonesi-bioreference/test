@@ -4,7 +4,7 @@ export const Identity = {
     const result = await fetch('/api/identity/profile');
 
     if (result.ok) {
-      return (await result.json()) as HealthProfile;
+      return (await result.json()) as FamilyProfile;
     } else {
       return Promise.reject({});
     }

@@ -7,7 +7,7 @@ import {
   ArticleCards,
   FAQCards,
 } from 'app';
-import { PatientBanner } from 'app/components/PatientBanner';
+import { PatientBanner } from 'app/components';
 import {
   BulletItem,
   Heading,

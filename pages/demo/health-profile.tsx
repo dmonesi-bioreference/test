@@ -14,7 +14,7 @@ export default function healthProfile() {
     sub: 'identity provider ID',
   };
 
-  const profile: HealthProfile = {
+  const profile: FamilyProfile = {
     patient_guid: '1234',
     gender_genetic: 'M',
     gender_identity: 'F',

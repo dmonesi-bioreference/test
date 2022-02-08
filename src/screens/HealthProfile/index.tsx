@@ -1,8 +1,7 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
 
-import { DisplayField } from 'app/components/DisplayField';
-import { PatientBanner } from 'app/components/PatientBanner';
+import { DisplayField, PatientBanner } from 'app/components';
 import {
   useAppTranslation,
   useAppSelector,

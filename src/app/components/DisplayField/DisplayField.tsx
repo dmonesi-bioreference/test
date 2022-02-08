@@ -1,4 +1,4 @@
-import { useAppTranslation } from 'app';
+import { useAppTranslation } from 'app/components/Shell/hooks';
 import { Typography } from 'components/Typography';
 
 import DisplayFieldStyled from './DisplayField.styles';

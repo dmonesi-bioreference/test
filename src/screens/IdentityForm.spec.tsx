@@ -5,7 +5,7 @@ import { act, delay, renderWithShell, roles } from 'test-utils';
 
 import { IdentityForm } from './IdentityForm';
 
-const profile: HealthProfile = {
+const profile: FamilyProfile = {
   patient_dob: '11/29/2020',
   patient_nickname: 'Lava Girl',
   patient_name: 'High Princess Lava Girl',

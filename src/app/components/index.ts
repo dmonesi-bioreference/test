@@ -3,6 +3,7 @@ export * from './CaregiverNameElements';
 export * from './CaregiverPasswordElements';
 export * from './CaregiverRelationshipElements';
 export * from './ContentElements';
+export * from './DisplayField';
 export * from './Footer';
 export * from './IdentityElements';
 export * from './LoginElements';
