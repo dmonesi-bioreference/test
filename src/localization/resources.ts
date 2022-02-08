@@ -563,6 +563,21 @@ export const resources = {
         },
       },
       forms: {
+        consent: {
+          consent: {
+            label: 'I have read and consent to participate',
+            errors: {
+              required: 'Consent is required to participate',
+            },
+          },
+          terms: {
+            label: 'I have read and agree to the',
+            link: 'terms & conditions',
+            errors: {
+              required: 'Agreeing to the terms & conditions is required',
+            },
+          },
+        },
         identity: {
           dob: {
             label: 'Date of birth',
@@ -790,6 +805,9 @@ export const resources = {
           },
         },
         furtherRegistration: {
+          consent: {
+            title: 'Consent to Participate',
+          },
           stepOne: {
             title: 'Thank you!',
             subTitle:
@@ -823,6 +841,7 @@ export const resources = {
             letters: 'At least 1 letter (a - z)',
             numbers: 'At least 1 number (0 - 9)',
           },
+          continue: 'Continue',
           setUpAccount: 'Set up account',
           next: 'Next',
         },

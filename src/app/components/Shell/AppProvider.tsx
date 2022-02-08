@@ -101,6 +101,10 @@ export function AppProvider({
         authenticate: () => send('authenticate'),
         checkIdentity: () => send('checkIdentity'),
         nextStep: () => send('nextStep'),
+        visitStep: (payload) =>
+          payload?.step
+            ? send({ type: 'visitStep', step: payload.step })
+            : null,
         login: () => send('login'),
         getTestStatus: () => send('CHECK_TESTS'),
         getAppointmentStatus: () => send('GET_APPOINTMENT_STATUS'),

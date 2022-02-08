@@ -2,6 +2,7 @@
 import { caregiverContact } from './caregiver-contact';
 import { caregiverName } from './caregiver-name';
 import { caregiverRelationship } from './caregiver-relationship';
+import { consent } from './consent';
 import { identity } from './identity';
 import { login } from './login';
 import { password } from './password';
@@ -38,6 +39,7 @@ declare global {
 export const all = [
   caregiverName,
   caregiverRelationship,
+  consent,
   identity,
   login,
   password,

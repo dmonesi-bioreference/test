@@ -2,20 +2,16 @@ import userEvent from '@testing-library/user-event';
 
 import { act, delay, renderWithShell } from 'test-utils';
 
-import { StepFour } from './StepFour';
+import { Password } from './Password';
 
-describe('Step four page', () => {
+describe('Password step', () => {
   it('does not explode', async () => {
-    await renderWithShell(<StepFour />);
+    await renderWithShell(<Password />);
   });
 
   describe('Password creation validation', () => {
     it('disables next button until form is valid', async () => {
-      const page = await renderWithShell(
-        <>
-          <StepFour />
-        </>
-      );
+      const page = await renderWithShell(<Password />);
 
       expect((await page.findByText('Next')).parentElement).toBeDisabled();
 
@@ -27,7 +23,6 @@ describe('Step four page', () => {
         await page.findByLabelText('Confirm Password'),
         '1 this is So Secure'
       );
-      userEvent.click(await page.findByText('I agree to the'));
 
       await act(async () => {
         await delay(300);
@@ -38,7 +33,7 @@ describe('Step four page', () => {
   });
 
   it('displays errors when passwords do not match', async () => {
-    const page = await renderWithShell(<StepFour />);
+    const page = await renderWithShell(<Password />);
 
     expect((await page.findByText('Next')).parentElement).toBeDisabled();
 

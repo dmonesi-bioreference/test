@@ -3,26 +3,21 @@ import { useState } from 'react';
 import { useAppTranslation } from 'app/components/Shell';
 import { Checkbox } from 'components/Checkbox';
 
-import { useCaregiverPasswordField } from './hooks';
+import { useConsentField } from './hooks';
 import { AppInputProps } from './types';
 
-export function TermsAndConditions({
-  label: givenLabel,
-}: Props<AppInputProps>) {
+export function Terms({ label: givenLabel }: Props<AppInputProps>) {
   const t = useAppTranslation();
-  const [{ value, errors }, events] =
-    useCaregiverPasswordField('termsAndConditions');
+  const [{ value, errors }, events] = useConsentField('terms');
   const [isPristine, setPristine] = useState(true);
-  const label = givenLabel
-    ? givenLabel
-    : t('forms.password.termsAndConditions.label');
+  const label = givenLabel ? givenLabel : t('forms.consent.terms.label');
 
   return (
     <Checkbox
       label={label}
-      name="checkbox"
+      name="terms"
       size="large"
-      linkMessage={t('forms.password.termsAndConditions.link')}
+      linkMessage={t('forms.consent.terms.link')}
       invalid={errors.length > 0 && !isPristine}
       invalidMessage={errors.map(t).join(' ')}
       checked={value === 'accepted'}

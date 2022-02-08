@@ -2,16 +2,16 @@ import userEvent from '@testing-library/user-event';
 
 import { act, delay, renderWithShell } from 'test-utils';
 
-import { StepTwo } from './StepTwo';
+import { CaregiverContact } from './CaregiverContact';
 
-describe('Step two page', () => {
+describe('Caregiver contact step', () => {
   it('does not explode', async () => {
-    await renderWithShell(<StepTwo />);
+    await renderWithShell(<CaregiverContact />);
   });
 
   describe('Caregiver contact form validation', () => {
     it('disables next button until form is valid', async () => {
-      const page = await renderWithShell(<StepTwo />);
+      const page = await renderWithShell(<CaregiverContact />);
 
       expect((await page.findByText('Next')).parentElement).toBeDisabled();
 
@@ -32,7 +32,7 @@ describe('Step two page', () => {
     });
 
     it('only displays errors for changed fields', async () => {
-      const page = await renderWithShell(<StepTwo />);
+      const page = await renderWithShell(<CaregiverContact />);
 
       expect((await page.findByText('Next')).parentElement).toBeDisabled();
 

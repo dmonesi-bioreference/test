@@ -78,6 +78,8 @@ async function register({
   firstName,
   lastName,
   mobileNumber,
+  termsAccepted,
+  consentGiven,
   patientGuid,
   relationshipToPatient,
   dateOfBirth,
@@ -93,7 +95,7 @@ async function register({
   | 'email'
   | 'password',
   string
->) {
+> & { consentGiven: ConsentGiven; termsAccepted: TermsAccepted }) {
   const config = getConfig();
   const leeway = config?.internalOptions?.leeway;
 
@@ -122,9 +124,12 @@ async function register({
       // @ts-ignore
       const webAuth = new window.auth0.WebAuth(params);
       const userMetadata: Partial<RegistrationProfile> = {
-        terms_version: '0.1',
-        terms_given: 'true',
+        terms_version: '0.0.1',
+        terms_accepted: termsAccepted,
         terms_timestamp: new Date().toISOString(),
+        consent_version: '0.0.1',
+        consent_given: consentGiven,
+        consent_timestamp: new Date().toISOString(),
         patient_guid: patientGuid,
         phone_number: mobileNumber,
         relation_to_patient: relationshipToPatient,
@@ -189,6 +194,8 @@ ReactDOM.render(
       });
     }}
     onRegistration={async (context) => {
+      const consentGiven = context.forms.consent.values.consent;
+      const termsAccepted = context.forms.consent.values.terms;
       const { email, phone: mobileNumber } =
         context.forms.caregiverContact.values;
       const { password } = context.forms.password.values;
@@ -198,6 +205,8 @@ ReactDOM.render(
         context.forms.caregiverRelationship.values;
 
       return await register({
+        consentGiven,
+        termsAccepted,
         email,
         mobileNumber,
         password,

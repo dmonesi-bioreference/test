@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { useAppEvents } from 'app';
 import { act, delay, renderWithShell } from 'test-utils';
 
-import { StepThree } from './StepThree';
+import { CaregiverRelationship } from './CaregiverRelationship';
 
 function SetCustomDateInOrderToGetAroundDatePickerMarkupComplexity(
   props: Props<{ date: string }>
@@ -21,9 +21,9 @@ function SetCustomDateInOrderToGetAroundDatePickerMarkupComplexity(
   );
 }
 
-describe('Step three page', () => {
+describe('Caregiver relationship step', () => {
   it('does not explode', async () => {
-    await renderWithShell(<StepThree />);
+    await renderWithShell(<CaregiverRelationship />);
   });
 
   describe('Caregiver relationship form validation', () => {
@@ -31,7 +31,7 @@ describe('Step three page', () => {
       const page = await renderWithShell(
         <>
           <SetCustomDateInOrderToGetAroundDatePickerMarkupComplexity date="01/01/2021" />
-          <StepThree />
+          <CaregiverRelationship />
         </>
       );
 

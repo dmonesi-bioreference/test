@@ -1,4 +1,9 @@
-import { DoneInvokeEvent, InterpreterFrom } from 'xstate';
+import {
+  AssignMeta,
+  DoneInvokeEvent,
+  GuardMeta,
+  InterpreterFrom,
+} from 'xstate';
 
 import geneticCounselor from 'assets/images/png/geneticCounselor.png';
 import { SupportedLanguages } from 'localization';
@@ -17,6 +22,7 @@ export const initialContext = {
   forms: forms.context,
   tests: tests.context,
   content: content.context,
+  registration: registration.context,
   requests: requests.context,
   geneticCounselor: {
     photo: geneticCounselor,
@@ -42,10 +48,11 @@ export const app = init({
     auth.actions,
     forms.actions,
     tests.actions,
+    registration.actions,
     requests.actions,
     content.actions
   ),
-  guards: Object.assign(auth.guards),
+  guards: Object.assign(auth.guards, registration.guards),
   services: Object.assign(forms.services),
 });
 
@@ -69,11 +76,13 @@ declare global {
   type ChangeEventTypes = keyof FormDispatchMap;
   type RequestEventTypes = keyof RequestDispatchMap;
 
-  type AppEvents =
+  type InternalAppEvents =
     | AppEventMap[AppEventTypes]
     | FormDispatchMap[ChangeEventTypes]
-    | RequestDispatchMap[RequestEventTypes]
-    | DoneInvokeEvent<unknown>;
+    | RequestDispatchMap[RequestEventTypes];
+  type AppEvents = InternalAppEvents | DoneInvokeEvent<unknown>;
+  type AppAssignMeta = AssignMeta<AppContext, AppEvents>;
+  type AppGuardMeta = GuardMeta<AppContext, AppEvents>;
 
   type AppDispatchMap = DispatchMap<
     AppEventMap & FormDispatchMap & RequestDispatchMap

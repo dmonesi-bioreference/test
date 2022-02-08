@@ -18,13 +18,10 @@ export type CheckboxProps = Omit<
   'labelPosition' | 'placeholder'
 >;
 
-let idCount = 0;
-
 const Checkbox: React.FC<CheckboxProps> = (props) => {
-  const [id] = useState(++idCount);
-  const inputId = `checkbox-${id}`;
-  const labelId = `checkbox-label-${id}`;
-  const helpTextId = `select-help-text-${id}`;
+  const inputId = `checkbox-${props.name}`;
+  const labelId = `checkbox-label-${props.name}`;
+  const helpTextId = `select-help-text-${props.name}`;
   const [isFocused, setIsFocused] = useState(false);
   const [isChecked, setIsChecked] = useState(props.checked);
   const input = useRef<HTMLInputElement>(null);

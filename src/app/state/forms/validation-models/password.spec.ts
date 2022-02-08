@@ -58,28 +58,17 @@ describe('Validating passwords', () => {
       field: 'password',
       message: 'forms.password.password.errors.required',
     });
-
-    expect(result).toContainEqual({
-      field: 'termsAndConditions',
-      message: 'forms.password.termsAndConditions.errors.required',
-    });
   });
 
-  it('requires password and confirmation match, and terms and conditions is checked', async () => {
+  it('requires password and confirmation match', async () => {
     const result = await validate({
       password: 'arglebargle',
       confirmation: 'arglemcbargle',
-      termsAndConditions: '',
     });
 
     expect(result).toContainEqual({
       field: 'confirmation',
       message: 'forms.password.confirmation.errors.invalid',
-    });
-
-    expect(result).toContainEqual({
-      field: 'termsAndConditions',
-      message: 'forms.password.termsAndConditions.errors.required',
     });
   });
 });
