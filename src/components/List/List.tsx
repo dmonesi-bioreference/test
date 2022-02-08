@@ -17,7 +17,7 @@ const List: React.FC<ListProps> = (props) => {
   );
 };
 
-const buildList = (kind, children: React.ReactNodeArray) => {
+const buildList = (kind: ListProps['kind'], children: React.ReactNodeArray) => {
   return children.map((item, index) => {
     return (
       <li className={`list__item list__item--${kind}`} key={index}>

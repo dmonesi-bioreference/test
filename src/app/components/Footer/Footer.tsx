@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
     },
     {
       label: t('components.footer.links.terms'),
-      url: '#',
+      url: '/terms-and-conditions',
     },
     {
       label: t('components.footer.links.privacy'),

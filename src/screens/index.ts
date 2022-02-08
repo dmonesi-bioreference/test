@@ -13,3 +13,4 @@ export * from './registration/StepTwo';
 export * from './Resources';
 export * from './Settings';
 export * from './TestResults';
+export * from './TermsAndConditions';
