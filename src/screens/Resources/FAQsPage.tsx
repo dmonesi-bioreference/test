@@ -40,8 +40,10 @@ export const FAQsPage: React.FC<FAQPageProps> = (props) => {
 
   const loadingFAQs = useAppState('requests.singleFaq.requesting');
   const errorFetchingFAQs = useAppState('requests.singleFaq.failure');
-  const faqs = useAppSelector(state => state.context.requests.allFaqs.values);
-  const singleFaq = useAppSelector(state => state.context.requests.singleFaq.values);
+  const faqs = useAppSelector((state) => state.context.requests.allFaqs.values);
+  const singleFaq = useAppSelector(
+    (state) => state.context.requests.singleFaq.values
+  );
 
   useEffect(() => {
     setFaqTitle(singleFaq.title);
@@ -63,8 +65,7 @@ export const FAQsPage: React.FC<FAQPageProps> = (props) => {
         FAQSlug: slug as string,
       });
       singleFaqRequest();
-    }
-    else {
+    } else {
       const faq = faqs.find((faq) => faq.slug === `/${slug}`);
       setFaqTitle(faq ? faq.title : '');
       setFaqLabel(faq ? faq.label : '');
@@ -78,7 +79,7 @@ export const FAQsPage: React.FC<FAQPageProps> = (props) => {
           : []
       );
     }
-  }, [slug, faqs, faqContents, setFaqSlug, singleFaqRequest]);
+  }, [slug, faqs, setFaqSlug, singleFaqRequest]);
 
   useEffect(() => {
     faqContents
@@ -99,7 +100,7 @@ export const FAQsPage: React.FC<FAQPageProps> = (props) => {
               <div style={{ marginBottom: tokens.spacingXSmall }}>
                 <div style={{ marginBottom: tokens.spacingXSmall }}>
                   <Typography type="label" labelType="title" color="blue">
-                  {faqLabel}
+                    {faqLabel}
                   </Typography>
                 </div>
                 <Heading level="1">{faqTitle}</Heading>
