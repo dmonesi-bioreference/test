@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 
-import { Carousel, FaqCard } from 'components';
+import { Carousel, FaqCard, Spinner, Typography } from 'components';
 
-import { useAppEvents, useAppSelector, useAppTranslation } from '../Shell';
-import { useTestStatus } from '../Timeline/hooks';
+import { useAppEvents, useAppTranslation } from '../Shell';
 
 import { Content } from './Content';
+import { useContent, useContentByTestStatus } from './hooks';
 
 export const FAQCards = () => {
   const t = useAppTranslation();
@@ -13,36 +13,19 @@ export const FAQCards = () => {
 
   useEffect(allFaqsRequest, [allFaqsRequest]);
 
-  const faqs = useAppSelector((state) => state.context.requests.allFaqs.values);
+  const [{ faqs, loadingFAQs, errorFetchingFAQs }] = useContent();
 
-  const [{ isWaiting, isResultsReady, isAfterAppointment, isViewed }] =
-    useTestStatus();
+  const faqsByTestStatus = useContentByTestStatus(faqs) as FAQ[];
 
-  const faqsByTestStatus = () => {
-    if (isWaiting) {
-      return faqs.filter((faq) => faq.introduceAt === 'WAITING');
-    } else if (isResultsReady) {
-      return faqs.filter((faq) => faq.introduceAt === 'READY');
-    } else if (isAfterAppointment) {
-      return faqs.filter((faq) => faq.introduceAt === 'DISCUSSED');
-    } else if (isViewed) {
-      return faqs.filter((faq) => faq.introduceAt === 'VIEWED');
+  const FAQSetsByPriority = faqsByTestStatus.slice().sort((a, b) => {
+    if (!a.priority) {
+      return 1;
+    } else if (!b.priority) {
+      return -1;
     } else {
-      return faqs;
+      return a.priority < b.priority ? 1 : -1;
     }
-  };
-
-  const FAQSetsByPriority = faqsByTestStatus()
-    .slice()
-    .sort((a, b) => {
-      if (!a.priority) {
-        return 1;
-      } else if (!b.priority) {
-        return -1;
-      } else {
-        return a.priority < b.priority ? 1 : -1;
-      }
-    });
+  });
 
   const FAQCards = FAQSetsByPriority.map((faq) => {
     return (
@@ -61,15 +44,23 @@ export const FAQCards = () => {
   });
 
   return (
-    <Carousel
-      showIndicator={false}
-      externalControl={{
-        prevText: t('pages.resources.section.faqs.prevFAQ'),
-        nextText: t('pages.resources.section.faqs.nextFAQ'),
-      }}
-      enablePeak={true}
-    >
-      {FAQCards}
-    </Carousel>
+    <div>
+      {loadingFAQs ? <Spinner /> : null}
+      {errorFetchingFAQs ? (
+        <Typography color="error" level="7" type="heading">
+          {t('pages.resources.section.faqs.error')}
+        </Typography>
+      ) : null}
+      <Carousel
+        showIndicator={false}
+        externalControl={{
+          prevText: t('pages.resources.section.faqs.prevFAQ'),
+          nextText: t('pages.resources.section.faqs.nextFAQ'),
+        }}
+        enablePeak={true}
+      >
+        {FAQCards}
+      </Carousel>
+    </div>
   );
 };

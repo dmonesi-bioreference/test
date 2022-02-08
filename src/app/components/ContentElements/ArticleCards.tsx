@@ -1,13 +1,12 @@
 import { useEffect } from 'react';
 
-import { useTestStatus } from 'app/components/Timeline/hooks';
 import { Carousel, LinkCard, Spinner, Typography } from 'components';
 import { tokens } from 'styles';
 
 import { useAppEvents, useAppTranslation } from '../Shell';
 
 import { Content } from './Content';
-import { useContent } from './hooks';
+import { useContent, useContentByTestStatus } from './hooks';
 
 export const ArticleCards = () => {
   const t = useAppTranslation();
@@ -17,24 +16,9 @@ export const ArticleCards = () => {
 
   const [{ articles, loadingArticles, errorFetchingArticles }] = useContent();
 
-  const [{ isWaiting, isResultsReady, isAfterAppointment, isViewed }] =
-    useTestStatus();
+  const articlesByTestStatus = useContentByTestStatus(articles) as Article[];
 
-  const articlesByTestStatus = () => {
-    if (isWaiting) {
-      return articles.filter((article) => article.introduceAt === 'WAITING');
-    } else if (isResultsReady) {
-      return articles.filter((article) => article.introduceAt === 'READY');
-    } else if (isAfterAppointment) {
-      return articles.filter((article) => article.introduceAt === 'DISCUSSED');
-    } else if (isViewed) {
-      return articles.filter((article) => article.introduceAt === 'VIEWED');
-    } else {
-      return articles;
-    }
-  };
-
-  const articleCards = articlesByTestStatus().map((article) => {
+  const articleCards = articlesByTestStatus.map((article) => {
     return (
       <LinkCard
         key={article.id}

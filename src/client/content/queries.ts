@@ -242,3 +242,27 @@ export const faq = (slug: String) => `
     }
   }
 `;
+
+export const audios = () => `
+  query {
+    getAudioListing{
+      edges {
+        node {
+          id
+          introduceAt
+          priority
+          label
+          name
+          author
+          blurb
+          srcUrl
+          altText
+          content {
+            title
+            content
+          }
+        }
+      }
+    }
+  }
+`;

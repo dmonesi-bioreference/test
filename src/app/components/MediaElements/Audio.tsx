@@ -2,7 +2,7 @@ import { ReactNode, useState } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 
 import { useAppTranslation } from 'app/components/Shell';
-import { Avatar, Button, Icon, Typography } from "components";
+import { Avatar, Button, Icon, Typography } from 'components';
 
 import AudioStyled from './Audio.styles';
 import { useAudioMetadata } from './hooks';
@@ -23,12 +23,7 @@ const Audio: React.FC<AudioProps> = (props) => {
   return (
     <AudioStyled>
       <div className="audio__header">
-        <Typography
-          type="label"
-          labelType="display"
-          color="primary"
-          alignment="center"
-        >
+        <Typography type="label" labelType="display" alignment="center">
           {props.title}
         </Typography>
       </div>
@@ -42,27 +37,26 @@ const Audio: React.FC<AudioProps> = (props) => {
             size="large"
           />
 
-          <Typography type="body" color="primary" alignment="left">
-            {t('pages.results.preResultsPause.audio.description')}
+          <Typography type="body" alignment="left">
+            {props.children}
           </Typography>
         </div>
 
         <ReactAudioPlayer
           className="audio__player"
-          src=""
+          src={props.src}
           autoPlay={false}
           controls
         />
 
         <Button
           kind="link-small"
-          prefix={<Icon name={iconName} color="primary" />}
+          prefix={<Icon name={iconName} />}
           onClick={() => toggleTranscript(!transcriptHidden)}
         >
           {transcriptHidden
             ? t('components.audio.actions.showTranscript')
-            : t('components.audio.actions.hideTranscript')
-          }
+            : t('components.audio.actions.hideTranscript')}
         </Button>
       </div>
 
@@ -75,6 +69,6 @@ const Audio: React.FC<AudioProps> = (props) => {
       </div>
     </AudioStyled>
   );
-}
+};
 
 export default Audio;

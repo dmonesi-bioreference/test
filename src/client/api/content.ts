@@ -11,6 +11,10 @@ export const Content = {
     const result = await fetch('/api/content/articles');
     return (await result.json()) as Article[];
   },
+  audios: async (): Promise<Audio[]> => {
+    const result = await fetch('/api/content/audios');
+    return (await result.json()) as Audio[];
+  },
   faqs: async function fetchAllFAQs(): Promise<FAQ[]> {
     const result = await fetch('/api/content/faqs');
     return (await result.json()) as FAQ[];

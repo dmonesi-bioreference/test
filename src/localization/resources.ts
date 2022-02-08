@@ -131,15 +131,8 @@ export const resources = {
             'Here are some educational resources to help you better understand the who, what, and why’s of genetic testing.',
           section: {
             audio: {
-              title: 'Genetic Counselor Support',
-              description:
-                'Here is an enlightening description of what to expect from this audio file.',
               showTranscriptLabel: 'Read transcript',
               hideTranscriptLabel: 'Close transcript',
-              bulletOneTitle: 'First of all',
-              bulletOneDescription: 'Here is a description.',
-              bulletTwoTitle: 'And another thing',
-              bulletTwoDescription: 'Here is a description.',
             },
             articles: {
               title: 'Read',

@@ -57,20 +57,19 @@ export function AppProvider({
         Promise.reject(Errors.api('No caregiver profile available'))),
     handleSingleArticleRequest:
       requests.singleArticle ||
-      (async () =>
-        Promise.reject(Errors.api('No article available'))),
+      (async () => Promise.reject(Errors.api('No article available'))),
     handleAllArticlesRequest:
       requests.allArticles ||
-      (async () =>
-        Promise.reject(Errors.api('No articles available'))),
+      (async () => Promise.reject(Errors.api('No articles available'))),
     handleSingleFaqRequest:
       requests.singleFaq ||
-      (async () =>
-        Promise.reject(Errors.api('No faq found'))),
+      (async () => Promise.reject(Errors.api('No faq found'))),
     handleAllFaqsRequest:
       requests.allFaqs ||
-      (async () =>
-        Promise.reject(Errors.api('No faqs found'))),
+      (async () => Promise.reject(Errors.api('No faqs found'))),
+    handleAllAudiosRequest:
+      requests?.allAudios ||
+      (async () => Promise.reject(Errors.api('No audios available'))),
   };
 
   const services = {

@@ -15,9 +15,12 @@ describe('The resources page', () => {
   });
 
   it('has an audio section', async () => {
-    const page = await renderWithShell(<ResourcesPage />);
+    const page = await renderWithShell(<ResourcesPage />, {
+      requests: { allAudios: async () => Mocks.audios.list },
+    });
 
-    await page.findByText('Genetic Counselor support', { exact: false });
+    await page.findByText('Genetic counselor support', { exact: false });
+    await page.findByText('This is the transcript', { exact: false });
     await page.findByText('Read transcript');
   });
 

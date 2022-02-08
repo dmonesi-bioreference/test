@@ -45,9 +45,11 @@ export function createContentClient(overrides: Partial<Configuration>) {
             ...article,
             bannerImage: {
               ...(article.bannerImage as Image),
-              fullpath: `${server_config.pimcore.domain ?? ''}${article.bannerImage?.fullpath}`,
-            }
-          }
+              fullpath: `${server_config.pimcore.domain ?? ''}${
+                article.bannerImage?.fullpath
+              }`,
+            },
+          };
         }),
     articles: async () =>
       await client
@@ -61,8 +63,23 @@ export function createContentClient(overrides: Partial<Configuration>) {
             ...node,
             bannerImage: {
               ...node.bannerImage,
-              fullpath: `${server_config.pimcore.domain ?? ''}${node.bannerImage?.fullpath}`,
-            }
+              fullpath: `${server_config.pimcore.domain ?? ''}${
+                node.bannerImage?.fullpath
+              }`,
+            },
+          }))
+        ),
+    audios: async () =>
+      await client
+        .post<{ data: { getAudioListing: { edges: { node: Audio }[] } } }>(
+          GRAPHQL_ENDPOINT,
+          { query: Queries.audios() }
+        )
+        .then(responseBody)
+        .then((body) =>
+          body.data.getAudioListing.edges.map(({ node }) => ({
+            ...node,
+            srcUrl: `${server_config.pimcore.domain ?? ''}${node.srcUrl}`,
           }))
         ),
     faqs: async () =>

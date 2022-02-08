@@ -1,12 +1,8 @@
 import { singleArticle, allArticles } from './article';
+import { allAudios } from './audio';
 import { singleFaq, allFaqs } from './faq';
 
-export const all = [
-  singleArticle,
-  allArticles,
-  singleFaq,
-  allFaqs,
-];
+export const all = [singleArticle, allArticles, singleFaq, allFaqs, allAudios];
 
 declare global {
   interface Content {
@@ -22,21 +18,6 @@ declare global {
     type?: string;
     filesize?: string;
     altText?: string;
-  }
-
-  interface Audio {
-    id: string;
-    name: string;
-    title: string;
-    blurb: string;
-    srcUrl: string;
-    transcript: string;
-    publishDate: number;
-    unPublishDate?: number;
-    reviewByDate: number;
-    introduceAt?: IntroduceAt;
-    owner: string;
-    priority?: number;
   }
 
   type IntroduceAt = 'WAITING' | 'READY' | 'VIEWED' | 'DISCUSSED';
