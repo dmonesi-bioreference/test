@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import { useAppTranslation, TestStatus, Timeline, PatientBanner } from 'app';
+import { useAppTranslation, InternalLinkCards, TestStatus, Timeline, PatientBanner } from 'app';
 import { PageLayout, PageSection } from 'components';
 
 export const LandingPage = () => {
@@ -16,6 +16,7 @@ export const LandingPage = () => {
         <PageSection>
           <TestStatus />
           <Timeline />
+          <InternalLinkCards />
         </PageSection>
       </PageLayout>
     </>

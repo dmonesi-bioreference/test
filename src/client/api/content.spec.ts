@@ -83,3 +83,17 @@ describe('Content.faqs', () => {
     expect(response).toEqual(Mocks.faqs.list);
   });
 });
+
+describe('Content.internalLinkCards', () => {
+  it('calls the internal link cards api', async () => {
+    server.use(
+      rest.get('/api/content/internalLinkCards', (request, response, context) => {
+        return response(context.status(200), context.json(Mocks.internalLinkCards.list));
+      })
+    );
+
+    const  response = await Content.internalLinkCards();
+
+    expect(response).toEqual(Mocks.internalLinkCards.list);
+  });
+});

@@ -1,7 +1,6 @@
 import { Story } from '@storybook/react/types-6-0';
 
 import AcademicResearch from 'assets/images/png/AcademicResearch.png';
-import { tokens } from 'styles';
 
 import LinkCard, { LinkCardProps } from './LinkCard';
 
@@ -30,7 +29,6 @@ export const Link = Template.bind({});
 Link.args = {
   variant: 'link',
   imageSrc: AcademicResearch,
-  themeColor: tokens.colorCommunity,
   prefixIcon: 'community',
   label: 'Community',
   href: '#',

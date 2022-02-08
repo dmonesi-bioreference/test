@@ -30,21 +30,21 @@ export interface LinkCardProps {
   imageAlt?: string;
   /** Image source url */
   imageSrc: string | StaticImport;
-  /** Optional theme color */
-  themeColor?: string;
 }
 
 const LinkCard: React.FC<LinkCardProps> = (props) => {
   const labelFragment =
     props.variant == 'link' ? (
       <Button
-        className="label--button"
+        className='label--button'
         kind="link-medium"
         href={props.href}
         prefix={
           props.prefixIcon && <Icon kind="custom" name={props.prefixIcon} />
         }
-        suffix={<Icon name="arrow-right" />}
+        suffix={<Icon name="chevron-right" size="small" />}
+        spreadContent={true}
+        group='prefix'
       >
         {props.label}
       </Button>

@@ -2,6 +2,7 @@ import * as article from './articles';
 import * as audios from './audios';
 import * as faqs from './faqs';
 import * as insurance from './insurance';
+import * as internalLinkCards from './internal-link-cards';
 import * as patient from './patient';
 import * as registrationProfile from './registration-profile';
 import * as session from './session';
@@ -12,6 +13,7 @@ export const Mocks = {
   faqs,
   audios,
   registrationProfile,
+  internalLinkCards,
   insurance,
   patient,
   session,

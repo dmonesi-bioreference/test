@@ -102,6 +102,22 @@ export function createContentClient(overrides: Partial<Configuration>) {
         )
         .then(responseBody)
         .then((response) => response.data.getPatientFAQListing.edges[0].node),
+    internalLinkCards: async () =>
+      await client
+        .post<{ data: { getInternalLinkCardListing: { edges: { node: InternalLinkCard }[] } } }>(
+          GRAPHQL_ENDPOINT,
+          { query: Queries.internalLinkCards() }
+        )
+        .then(responseBody)
+        .then((body) =>
+          body.data.getInternalLinkCardListing.edges.map(({ node }) => ({
+            ...node,
+            bannerImage: {
+              ...node.bannerImage,
+              fullpath: `${server_config.pimcore.domain ?? ''}${node.bannerImage?.fullpath}`,
+            }
+          }))
+        ),
   };
 
   return { client, handlers };

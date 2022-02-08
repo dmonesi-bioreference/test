@@ -243,6 +243,36 @@ export const faq = (slug: String) => `
   }
 `;
 
+export const internalLinkCards = () => `
+  query {
+    getInternalLinkCardListing {
+      edges {
+        node {
+          id
+          bannerImage {
+            id
+            filename
+            fullpath
+            mimetype
+            type
+            filesize
+          }
+          label
+          title
+          blurb
+          author
+          published
+          unpublishDate
+          reviewByDate
+          owner
+          priority
+          introduceAt
+        }
+      }
+    }
+  }
+`;
+
 export const audios = () => `
   query {
     getAudioListing{

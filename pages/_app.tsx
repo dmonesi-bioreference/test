@@ -48,6 +48,7 @@ function WebApp({ Component, pageProps }: AppProps) {
       allArticles: Api.Content.articles,
       singleFaq: Api.Content.faq,
       allFaqs: Api.Content.faqs,
+      allInternalLinkCards: Api.Content.internalLinkCards,
       allAudios: Api.Content.audios,
     };
 

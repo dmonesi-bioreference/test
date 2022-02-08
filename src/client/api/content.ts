@@ -27,4 +27,8 @@ export const Content = {
     );
     return (await result.json()) as FAQ;
   },
+  internalLinkCards: async (): Promise<InternalLinkCard[]> => {
+    const result = await fetch('/api/content/internalLinkCards');
+    return (await result.json()) as InternalLinkCard[];
+  },
 };

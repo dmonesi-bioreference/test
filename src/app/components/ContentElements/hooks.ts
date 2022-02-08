@@ -13,6 +13,10 @@ export function useContent() {
     loadingFAQs: useAppState('requests.allFaqs.requesting'),
     errorFetchingFAQs: useAppState('requests.allFaqs.failure'),
 
+    internalLinkCards: useAppSelector((state) => state.context.requests.allInternalLinkCards.values),
+    loadingInternalLinkCards: useAppState('requests.allInternalLinkCards.requesting'),
+    errorLoadingInternalLinkCards: useAppState('requests.allInternalLinkCards.failure'),
+    
     audios: useAppSelector((state) => state.context.requests.allAudios.values),
     loadingAudios: useAppState('requests.allAudios.requesting'),
     errorFetchingAudios: useAppState('requests.allAudios.failure'),

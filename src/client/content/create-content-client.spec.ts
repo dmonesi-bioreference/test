@@ -237,4 +237,63 @@ describe('Handlers', () => {
 
     expect(result).toEqual([faqOne, faqTwo]);
   });
+
+  it('.internalLinkCards() maps the given payload into a list of internal link cards', async () => {
+    const internalLinkCardOne = {
+      id: '1',
+      bannerImage: {
+        id: '',
+        filename: '',
+        fullpath: '',
+        mimetype: '',
+        type: '',
+      },
+      label: '',
+      title: 'Title 1',
+      blurb: '',
+      author: '',
+      published: 1,
+      unpublishedDate: 1,
+      reviewByDate: 1,
+      introduceAt: 'WAITING' as IntroduceAt,
+      owner: '',
+      priority: 1,
+    };
+
+    const internalLinkCardTwo = {
+      id: '2',
+      bannerImage: {
+        id: '',
+        filename: '',
+        fullpath: '',
+        mimetype: '',
+        type: '',
+      },
+      label: '',
+      title: 'Title 2',
+      blurb: '',
+      author: '',
+      published: 2,
+      unpublishedDate: 2,
+      reviewByDate: 2,
+      introduceAt: 'WAITING' as IntroduceAt,
+      owner: '',
+      priority: 2,
+    };
+
+    server.use(
+      rest.post('/gdx-webservices/patient', (request, response, context) => {
+        return response(
+          context.status(200),
+          context.json({
+            data: {
+              getInternalLinkCardListing: {
+                edges: [{ node: internalLinkCardOne }, { node: internalLinkCardTwo }],
+              },
+            },
+          })
+        );
+      })
+    );
+  });
 });

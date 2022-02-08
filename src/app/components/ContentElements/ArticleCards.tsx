@@ -29,7 +29,6 @@ export const ArticleCards = () => {
         label={article.label}
         heading={article.title}
         footer={t('components.articleCard.actions.primary.label')}
-        themeColor={tokens.colorPrimary}
       >
         <div style={{ marginBottom: tokens.spacingLarge }}>
           <Content>{article.blurb}</Content>

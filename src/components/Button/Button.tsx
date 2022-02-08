@@ -42,6 +42,8 @@ export interface ButtonProps {
   suffix?: React.ReactNode;
   /** Used to set spacing between button children. */
   spreadContent?: boolean;
+  /** Group button text with prefix or suffix icons or neither */
+  group?: 'prefix' | 'suffix' | undefined;
   /** Tells the browser where to open the link. Used only if `href` is set. */
   target?: '_blank' | '_parent' | '_self' | '_top';
   color?: 'light' | 'default' | 'danger';
@@ -51,6 +53,7 @@ export interface ButtonProps {
 
 const defaultProps: ButtonProps = {
   kind: 'default',
+  className: '',
 };
 
 const Button: React.FC<ButtonProps> = (props) => {
@@ -82,19 +85,49 @@ const Button: React.FC<ButtonProps> = (props) => {
     'button--space-between': props.spreadContent,
   });
 
+  const ButtonChildren: React.FC = () => {
+    if (props.group === 'prefix') {
+      return (
+        <>
+          <div className='button__grouping'>
+            {renderIfExists(props.prefix, 'button__prefix')}
+            <span className="button__label">{props.children}</span>
+          </div>
+          {renderIfExists(props.suffix, 'button__suffix')}
+        </>
+      );
+    }
+    if (props.group === 'suffix') {
+      return (
+        <>
+          {renderIfExists(props.prefix, 'button__prefix')}
+          <div className='button__grouping'>
+            <span className="button__label">{props.children}</span>
+            {renderIfExists(props.suffix, 'button__suffix')}
+          </div>
+        </>
+      );
+    }
+    return (
+      <>
+        {renderIfExists(props.prefix, 'button__prefix')}
+        <span className="button__label">{props.children}</span>
+        {renderIfExists(props.suffix, 'button__suffix')}
+      </>
+    );
+  }
+
   return props.href ? (
     <Link href={props.href} passHref>
       <ButtonStyled
         as="a"
-        className={`${color} ${className} ${props.className}?`}
+        className={`${color} ${className} ${props.className}`}
         target={props.target}
         download={props.download}
         onClick={props.onClick}
         href={props.href}
       >
-        {renderIfExists(props.prefix, 'button__prefix')}
-        <span className="button__label">{props.children}</span>
-        {renderIfExists(props.suffix, 'button__suffix')}
+        <ButtonChildren />
       </ButtonStyled>
     </Link>
   ) : (
@@ -106,9 +139,7 @@ const Button: React.FC<ButtonProps> = (props) => {
       type={props.submit ? 'submit' : 'button'}
       onClick={props.onClick}
     >
-      {renderIfExists(props.prefix, 'button__prefix')}
-      <span className="button__label">{props.children}</span>
-      {renderIfExists(props.suffix, 'button__suffix')}
+      <ButtonChildren />
     </ButtonStyled>
   );
 };

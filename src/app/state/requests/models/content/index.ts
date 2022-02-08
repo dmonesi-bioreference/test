@@ -1,8 +1,16 @@
 import { singleArticle, allArticles } from './article';
 import { allAudios } from './audio';
 import { singleFaq, allFaqs } from './faq';
+import { allInternalLinkCards } from './internal-link-card';
 
-export const all = [singleArticle, allArticles, singleFaq, allFaqs, allAudios];
+export const all = [
+  singleArticle,
+  allArticles,
+  singleFaq,
+  allFaqs,
+  allInternalLinkCards,
+  allAudios,
+];
 
 declare global {
   interface Content {
