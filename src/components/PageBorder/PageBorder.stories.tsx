@@ -1,6 +1,6 @@
 import { Story } from '@storybook/react/types-6-0';
 
-import { Shell } from 'app';
+import { Shell } from 'app/components/Shell';
 
 import PageBorder, { PageBorderProps } from './PageBorder';
 

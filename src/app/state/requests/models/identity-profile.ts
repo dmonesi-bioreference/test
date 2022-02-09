@@ -8,13 +8,11 @@ declare global {
     phone_number: string;
     relation_to_patient: string;
 
-    consent_given: ConsentGiven;
+    consent_given: string;
     consent_version: string;
-    consent_timestamp: string;
 
-    terms_timestamp: string;
     terms_version: string;
-    terms_accepted: TermsAccepted;
+    terms_accepted: string;
   }
 
   type FamilyProfile = RegistrationProfile & PatientProfile;
@@ -35,10 +33,8 @@ export const identityProfile: RequestModels['identityProfile'] = {
     caregiver_nickname: '',
     caregiver_location: '',
     consent_given: 'not-given',
-    consent_timestamp: '',
     consent_version: '',
     terms_accepted: 'not-accepted',
-    terms_timestamp: '',
     terms_version: '',
     phone_number: '',
     patient_name: '',

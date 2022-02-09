@@ -13,6 +13,9 @@ export function Auth0Registration() {
       <OnState matches="auth.requestingLogin">
         <LoginPage />
       </OnState>
+      <OnState matches="auth.checkingIdentity">
+        <IdentityForm />
+      </OnState>
       <OnState matches="auth.verifyingIdentity">
         <IdentityForm />
       </OnState>

@@ -1,10 +1,29 @@
+import { client } from './client';
+
 export const Identity = {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   profile: async (_context: AppContext = {} as any) => {
-    const result = await fetch('/api/identity/profile');
+    const result = await client.get('/api/identity/profile');
 
     if (result.ok) {
       return (await result.json()) as FamilyProfile;
+    } else {
+      return Promise.reject({});
+    }
+  },
+  confirm: async (context: AppContext) => {
+    const { email, phone } = context.forms.identity.values;
+
+    const payload = {
+      email: email || '',
+      PatientPortalUserId: context.auth.patientGuid,
+      Phone: phone.replace(/\D/g, '') || '',
+    };
+
+    const result = await client.post('/api/identity/confirm', payload);
+
+    if (result.ok) {
+      return (await result.json()) as { IsSuccess: boolean };
     } else {
       return Promise.reject({});
     }
@@ -13,18 +32,14 @@ export const Identity = {
     const { email, dob, zip, phone } = context.forms.identity.values;
 
     const payload = {
-      email,
-      dateOfBirth: dob,
-      PatientUserId: context.auth.patientGuid,
-      Phone: phone,
+      email: email || '',
+      dateOfBirth: toProviderPortalDate(dob),
+      PatientPortalUserId: context.auth.patientGuid,
+      Phone: phone.replace(/\D/g, '') || '',
       zip,
     };
 
-    const result = await fetch('/api/identity/validate', {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
+    const result = await client.post('/api/identity/validate', payload);
 
     if (result.ok) {
       return (await result.json()) as {};
@@ -32,4 +47,21 @@ export const Identity = {
       return Promise.reject({});
     }
   },
+};
+
+const toProviderPortalDate = (dateString: string) => {
+  // By converting our dashes into slashes, we steer the date parsing algorithm
+  // ever so slightly, avoiding an off-by-one-day error.
+  //
+  // Javascript, right?
+  //
+  const date = new Date(dateString.replace(/-/g, '/'));
+
+  const year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(date);
+  const month = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(
+    date
+  );
+  const day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(date);
+
+  return `${month}/${day}/${year}`;
 };

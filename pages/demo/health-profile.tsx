@@ -1,5 +1,5 @@
-import { Shell } from 'app/components';
-import { HealthProfile } from 'screens';
+import { Shell } from 'app/components/Shell';
+import { HealthProfile } from 'screens/HealthProfile';
 
 export default function healthProfile() {
   const patientGuidMock = { guid: '1234', source: 'N/A' };
@@ -22,10 +22,8 @@ export default function healthProfile() {
     insurance: 'Great',
     consent_version: '0.1',
     consent_given: 'given',
-    consent_timestamp: '',
     terms_version: '0.1',
     terms_accepted: 'accepted',
-    terms_timestamp: '',
     patient_name: 'Lisa Consuela',
     patient_nickname: 'Lisa',
     patient_dob: '11/29/2020',

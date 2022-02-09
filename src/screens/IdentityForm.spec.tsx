@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
 
-import { useAppEvents } from 'app';
+import { useAppEvents } from 'app/components/Shell';
 import { act, delay, renderWithShell, roles } from 'test-utils';
 
 import { IdentityForm } from './IdentityForm';
@@ -19,10 +19,8 @@ const profile: FamilyProfile = {
   caregiver_location: 'Austin, Texas',
   consent_version: '0.1',
   consent_given: 'given',
-  consent_timestamp: '',
   terms_version: '0.1',
   terms_accepted: 'accepted',
-  terms_timestamp: '',
   patient_guid: '1234',
   phone_number: '267-190-5214',
   relation_to_patient: 'Parent',
@@ -90,9 +88,9 @@ describe('The identity form page', () => {
       requests: { identityProfile: async () => profile },
     });
 
-    await page.findByText(`Welcome, ${profile.patient_nickname}`);
-    await page.findByText(`${profile.patient_nickname}'s Date of Birth`);
-    await page.findByText(`${profile.patient_nickname}'s Zip Code`);
+    await page.findByText("Let's start by verifying your information");
+    await page.findByText(`Patient Date of Birth`);
+    await page.findByText(`Patient Zip Code`);
   });
 
   describe('identity form validation', () => {
@@ -108,10 +106,7 @@ describe('The identity form page', () => {
       expect((await page.findByText('Confirm')).parentElement).toBeDisabled();
 
       userEvent.click(await page.findByText('Date of birth workaround'));
-      userEvent.type(
-        await page.findByLabelText(`${profile.patient_nickname}'s Zip Code`),
-        '90210'
-      );
+      userEvent.type(await page.findByLabelText(`Patient Zip Code`), '90210');
 
       userEvent.type(
         await page.findByLabelText('Your Email Address'),
@@ -180,10 +175,7 @@ describe('The identity form page', () => {
       expect((await page.findByText('Confirm')).parentElement).toBeDisabled();
 
       userEvent.click(await page.findByText('Date of birth workaround'));
-      userEvent.type(
-        await page.findByLabelText(`${profile.patient_nickname}'s Zip Code`),
-        zip
-      );
+      userEvent.type(await page.findByLabelText(`Patient Zip Code`), zip);
       userEvent.type(await page.findByLabelText('Your Email Address'), email);
 
       await act(async () => {
@@ -219,10 +211,7 @@ describe('The identity form page', () => {
       expect((await page.findByText('Confirm')).parentElement).toBeDisabled();
 
       userEvent.click(await page.findByText('Date of birth workaround'));
-      userEvent.type(
-        await page.findByLabelText(`${profile.patient_nickname}'s Zip Code`),
-        zip
-      );
+      userEvent.type(await page.findByLabelText(`Patient Zip Code`), zip);
       userEvent.type(await page.findByLabelText('Your Email Address'), email);
 
       await act(async () => {
@@ -255,7 +244,7 @@ describe('The identity form page', () => {
         requests: { identityProfile: async () => profile },
       });
 
-      await page.findByText(`Welcome, ${profile.patient_nickname}`, {
+      await page.findByText("Let's start by verifying your information", {
         exact: false,
       });
     });

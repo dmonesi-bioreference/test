@@ -7,6 +7,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { Shell } from 'app/components/Shell';
+import { Api } from 'client/api';
 import { Auth0Registration } from 'screens/Auth0Registration';
 
 declare namespace auth0 {
@@ -125,11 +126,9 @@ async function register({
       const webAuth = new window.auth0.WebAuth(params);
       const userMetadata: Partial<RegistrationProfile> = {
         terms_version: '0.0.1',
-        terms_accepted: termsAccepted,
-        terms_timestamp: new Date().toISOString(),
+        terms_accepted: new Date().toISOString(),
         consent_version: '0.0.1',
-        consent_given: consentGiven,
-        consent_timestamp: new Date().toISOString(),
+        consent_given: new Date().toISOString(),
         patient_guid: patientGuid,
         phone_number: mobileNumber,
         relation_to_patient: relationshipToPatient,
@@ -162,18 +161,7 @@ async function register({
 
 ReactDOM.render(
   <Shell
-    requests={{
-      // We pass the PatientProfile to this page in the `/api/auth/[...auth0].ts` identity
-      // handlers. The resulting structure here isn't the entirety of the profile, but it
-      // is all we need at the identity form stage.
-      //
-      identityProfile: async () => {
-        const profile = getConfig().extraParams;
-
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-        return profile;
-      },
-    }}
+    onIdentity={Api.Identity.validate}
     onSession={async () => Promise.reject('No session available')}
     onPatientGuid={async () => {
       const config = getConfig();
@@ -204,18 +192,24 @@ ReactDOM.render(
       const { relationship: relationshipToPatient, dob: dateOfBirth } =
         context.forms.caregiverRelationship.values;
 
-      return await register({
-        consentGiven,
-        termsAccepted,
-        email,
-        mobileNumber,
-        password,
-        patientGuid,
-        firstName,
-        lastName,
-        relationshipToPatient,
-        dateOfBirth,
-      });
+      const response = await Api.Identity.confirm(context);
+
+      if (response.IsSuccess) {
+        await register({
+          consentGiven,
+          termsAccepted,
+          email,
+          mobileNumber,
+          password,
+          patientGuid,
+          firstName,
+          lastName,
+          relationshipToPatient,
+          dateOfBirth,
+        });
+      } else {
+        throw new Error('Unable to confirm registration');
+      }
     }}
   >
     <Auth0Registration />

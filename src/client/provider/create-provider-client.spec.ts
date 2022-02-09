@@ -37,6 +37,38 @@ describe('Client', () => {
 });
 
 describe('Handlers', () => {
+  it('Identity.confirm calls the update registration url', async () => {
+    const listener = jest.fn();
+    const payload = {
+      email: 'person@example.com',
+      Phone: '123-456-78990',
+      PatientUserId: '1111-22222-33333-44444',
+    };
+
+    const success = {
+      IsSuccess: true,
+      ValidationResult: {
+        IsValid: true,
+        Errors: null,
+      },
+    };
+
+    server.use(
+      rest.post(
+        'http://localhost/v1.0.1/api/PatientPortal/UpdateRegistrationStatus',
+        (request, response, context) => {
+          listener(request.body);
+          return response(context.status(200), context.json(success));
+        }
+      )
+    );
+
+    const response = await handlers.Identity.confirm(payload);
+
+    expect(listener).toHaveBeenCalledWith(payload);
+    expect(response?.data).toEqual(success);
+  });
+
   it('Identity.validate calls the validation url', async () => {
     const listener = jest.fn();
     const payload = {
@@ -68,58 +100,7 @@ describe('Handlers', () => {
     const response = await handlers.Identity.validate(payload);
 
     expect(listener).toHaveBeenCalledWith(payload);
-    expect(response.data).toEqual(success);
-  });
-
-  it('Identity.validate rejects 4xx with response body', async () => {
-    const badRequest = {
-      Data: {
-        IsAuthorized: false,
-        Code: '12345',
-        ErrorMessage: 'Bad Request',
-      },
-      IsSuccess: false,
-      ValidationResult: null,
-    };
-
-    const unauthorized = {
-      Data: {
-        IsAuthorized: false,
-        Code: 'A0004',
-        ErrorMessage: "Basic authentication failed: request isn't authorized.",
-      },
-      IsSuccess: false,
-      ValidationResult: null,
-    };
-
-    const forbidden = {
-      Data: {
-        IsAuthorized: false,
-        Code: '12345',
-        ErrorMessage: 'Patient Portal User identification failed',
-      },
-      IsSuccess: false,
-      ValidationResult: null,
-    };
-
-    const requests = [
-      [400, badRequest],
-      [401, unauthorized],
-      [403, forbidden],
-    ] as const;
-
-    for (const [status, payload] of requests) {
-      server.use(
-        rest.post(
-          'http://localhost/v1.0.1/api/PatientPortal/Validate',
-          (request, response, context) => {
-            return response(context.status(status), context.json(payload));
-          }
-        )
-      );
-
-      await expect(handlers.Identity.validate()).rejects.toEqual(payload);
-    }
+    expect(response?.data).toEqual(success);
   });
 
   it('Patient.profile returns the profile data for the given id', async () => {

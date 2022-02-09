@@ -1,5 +1,5 @@
-import { OnState } from 'app';
-import { LoginPage } from 'screens';
+import { OnState } from 'app/components/Shell';
+import { LoginPage } from 'screens/LoginPage';
 
 import { IdentityForm } from './IdentityForm';
 import { LandingPage } from './LandingPage';

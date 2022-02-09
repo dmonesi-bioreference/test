@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-import { ConsentElements } from 'app';
+import { ConsentElements } from 'app/components/ConsentElements';
 import {
   useAppEvents,
   useAppState,

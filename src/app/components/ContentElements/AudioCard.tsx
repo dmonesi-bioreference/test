@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
-import { MediaElements, useAppTranslation } from 'app';
-import { useAppEvents } from 'app/components/Shell';
+import { MediaElements } from 'app/components/MediaElements';
+import { useAppEvents, useAppTranslation } from 'app/components/Shell';
 import { ContentBlock, Spinner, Typography } from 'components';
 
 import { Content } from './Content';

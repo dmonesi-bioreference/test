@@ -17,7 +17,7 @@ export default Errors.wrap(async function handler(
   }
 
   try {
-    const serviceResponse = await Services.Identity.validate(req.body).catch(
+    const serviceResponse = await Services.Identity.confirm(req.body).catch(
       (error) => error as AxiosResponse
     );
 

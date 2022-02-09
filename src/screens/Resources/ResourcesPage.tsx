@@ -1,14 +1,15 @@
 import Head from 'next/head';
 
 import {
-  useAppTranslation,
-  useAppState,
   ArticleCards,
   FAQCards,
   AudioCard,
-} from 'app';
+} from 'app/components/ContentElements';
 import { useContent } from 'app/components/ContentElements/hooks';
-import { Heading, PageLayout, PageSection } from 'components';
+import { useAppTranslation, useAppState } from 'app/components/Shell';
+import { PageLayout } from 'components/PageLayout';
+import { PageSection } from 'components/PageSection';
+import { Heading } from 'components/Typography';
 
 export const ResourcesPage = () => {
   const t = useAppTranslation();

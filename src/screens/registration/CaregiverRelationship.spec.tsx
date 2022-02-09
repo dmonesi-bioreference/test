@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
 
-import { useAppEvents } from 'app';
+import { useAppEvents } from 'app/components/Shell';
 import { act, delay, renderWithShell } from 'test-utils';
 
 import { CaregiverRelationship } from './CaregiverRelationship';

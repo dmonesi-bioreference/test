@@ -1,14 +1,12 @@
 import Head from 'next/head';
 
-import { useAppTranslation } from 'app';
-import {
-  ActionGroup,
-  Button,
-  ContentBlock,
-  Icon,
-  PageLayout,
-  PageSection,
-} from 'components';
+import { useAppTranslation } from 'app/components/Shell';
+import { ActionGroup } from 'components/ActionGroup';
+import { Button } from 'components/Button';
+import { ContentBlock } from 'components/ContentBlock';
+import { Icon } from 'components/Icon';
+import { PageLayout } from 'components/PageLayout';
+import { PageSection } from 'components/PageSection';
 
 export const DeleteAccount = () => {
   const t = useAppTranslation();

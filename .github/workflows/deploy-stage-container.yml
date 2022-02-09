@@ -5,21 +5,13 @@ name: deploy-container
 on:
   push:
     # Branch names must match with app service slot names
-    branches: [dev, stage]
+    branches: [stage]
 
 jobs:
   deploy-docker-container:
     runs-on: ubuntu-20.04
 
     steps:
-      - name: Get branch name
-        shell: bash
-        run: |
-          branch=${GITHUB_REF#refs/heads/}
-          echo "##[set-output name=branch_name;]$(echo ${branch})"
-          echo "##[set-output name=branch_name_uppercase;]$(echo ${branch^^})"
-        id: get_branch_name
-
       - name: Generate image tag
         shell: bash
         run: echo "##[set-output name=tag;]$(echo ${GITHUB_REF#refs/heads/}-${GITHUB_SHA::8})"
@@ -46,7 +38,7 @@ jobs:
           tags: |
             ${{ secrets.ACR_HOST }}/pandas:${{ steps.generate_tag.outputs.tag }}
           build-args: |
-            GTM_ID=${{ secrets[format('GTM_ID_{0}', steps.get_branch_name.outputs.branch_name_uppercase)] }}
+            GTM_ID=${{ secrets.GTM_ID_STAGE }}
             PIMCORE_DOMAIN=${{ secrets.PIMCORE_DOMAIN }}
 
       - name: Azure login
@@ -59,31 +51,31 @@ jobs:
           az webapp config set \
             --resource-group "${{ secrets.AZURE_RESOURCE_GROUP_NAME }}" \
             --name "${{ secrets.AZURE_WEBAPP_NAME }}" \
-            --slot "${{ steps.get_branch_name.outputs.branch_name }}" \
+            --slot "stage" \
             --linux-fx-version "DOCKER|genedxacr.azurecr.io/pandas:${{ steps.generate_tag.outputs.tag }}"
 
-      - name: Configure Identity provider for patient-* url
+      - name: Configure Identity provider for patient-stage
         run: |
           az webapp config appsettings set \
             --resource-group "${{ secrets.AZURE_RESOURCE_GROUP_NAME }}" \
             --name "${{ secrets.AZURE_WEBAPP_NAME }}" \
-            --slot "${{ steps.get_branch_name.outputs.branch_name }}" \
+            --slot "stage" \
             --slot-settings \
-              AUTH0_SECRET="${{ secrets.AUTH0_SECRET }}" \
-              AUTH0_BASE_URL="https://patient-${{ steps.get_branch_name.outputs.branch_name }}.genedx.com" \
-              AUTH0_ISSUER_BASE_URL=https://${{ secrets.AUTH0_DOMAIN }} \
-              AUTH0_CLIENT_ID="${{ secrets.AUTH0_CLIENT_ID }}" \
-              AUTH0_CLIENT_SECRET="${{ secrets.AUTH0_CLIENT_SECRET }}" \
-              IDENTITY_CLIENT_ID="${{ secrets.IDENTITY_CLIENT_ID }}" \
-              IDENTITY_CLIENT_SECRET="${{ secrets.IDENTITY_CLIENT_SECRET }}" \
-              PROVIDER_PORTAL_BASE_URL="${{ secrets.PROVIDER_PORTAL_BASE_URL }}" \
-              PROVIDER_PORTAL_API_BASIC_AUTH_USERNAME="${{ secrets.PROVIDER_PORTAL_API_BASIC_AUTH_USERNAME }}" \
-              PROVIDER_PORTAL_API_BASIC_AUTH_PASSWORD="${{ secrets.PROVIDER_PORTAL_API_BASIC_AUTH_PASSWORD }}" \
-              PROVIDER_PORTAL_API_REFERER="${{ secrets.PROVIDER_PORTAL_API_REFERER }}" \
+              AUTH0_SECRET="${{ secrets.AUTH0_SECRET_STAGE }}" \
+              AUTH0_BASE_URL="https://patient-stage.genedx.com" \
+              AUTH0_ISSUER_BASE_URL=https://${{ secrets.AUTH0_DOMAIN_STAGE }} \
+              AUTH0_CLIENT_ID="${{ secrets.AUTH0_CLIENT_ID_STAGE }}" \
+              AUTH0_CLIENT_SECRET="${{ secrets.AUTH0_CLIENT_SECRET_STAGE }}" \
+              IDENTITY_CLIENT_ID="${{ secrets.IDENTITY_CLIENT_ID_STAGE }}" \
+              IDENTITY_CLIENT_SECRET="${{ secrets.IDENTITY_CLIENT_SECRET_STAGE }}" \
+              PROVIDER_PORTAL_BASE_URL="${{ secrets.PROVIDER_PORTAL_BASE_URL_STAGE }}" \
+              PROVIDER_PORTAL_API_BASIC_AUTH_USERNAME="${{ secrets.PROVIDER_PORTAL_API_BASIC_AUTH_USERNAME_STAGE }}" \
+              PROVIDER_PORTAL_API_BASIC_AUTH_PASSWORD="${{ secrets.PROVIDER_PORTAL_API_BASIC_AUTH_PASSWORD_STAGE }}" \
+              PROVIDER_PORTAL_API_REFERER="https://patient-stage.genedx.com" \
               PIMCORE_URL="${{ secrets.PIMCORE_URL }}" \
               PIMCORE_KEY="${{ secrets.PIMCORE_KEY }}" \
               PIMCORE_DOMAIN="${{ secrets.PIMCORE_DOMAIN }}" \
-              NEXT_PUBLIC_GTM_ID="${{ secrets[format('GTM_ID_{0}', steps.get_branch_name.outputs.branch_name_uppercase)] }}"
+              NEXT_PUBLIC_GTM_ID="${{ secrets.GTM_ID_STAGE }}"
 
       # Wait for the site to be restarted before we start vulnerability scan
       - name: Wait for 30 seconds...
@@ -92,7 +84,6 @@ jobs:
 
       # Run vulnerability scan only when the code is merged into stage branch
       - name: Start vulnerability scan
-        if: ${{ steps.get_branch_name.outputs.branch_name == 'stage' }}
         id: netsparker-enterprise-scan-step
         uses: netsparker/Netsparker-Cloud-GitHub-Actions@v0.0.1
         with:
@@ -104,5 +95,4 @@ jobs:
           base-url: 'https://www.netsparkercloud.com'
 
       - name: Vulnerability Scan output
-        if: ${{ steps.get_branch_name.outputs.branch_name == 'stage' }}
         run: echo "${{ steps.netsparker-enterprise-scan-step.outputs.scan-message }}"

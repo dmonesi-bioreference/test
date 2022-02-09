@@ -37,6 +37,7 @@ const buildConfig = {
   define: {
     'process.env.NEXT_PUBLIC_GTM_ID': `"${process.env.NEXT_PUBLIC_GTM_ID}"`,
     'process.env.AUTH0_REALM': `"${process.env.AUTH0_REALM}"`,
+    'process.env.NEXT_PUBLIC_API_HOST': `"${process.env.NEXT_PUBLIC_API_HOST}"`,
     'process.env.NODE_ENV': '"production"',
     'process.env.ARTIFACT_TARGET': '"auth0"',
     'process.env.__NEXT_TRAILING_SLASH': 'false',

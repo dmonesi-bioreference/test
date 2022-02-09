@@ -1,15 +1,13 @@
 import Head from 'next/head';
 
-import { useAppTranslation } from 'app/components';
+import { useAppTranslation } from 'app/components/Shell';
 import AcademicResearch from 'assets/images/png/AcademicResearch.png';
 import ResultsToProvider1_4 from 'assets/images/png/ResultsToProvider1_4.png';
-import {
-  PageLayout,
-  Button,
-  LinkCard,
-  Carousel,
-  ActionGroup,
-} from 'components';
+import { ActionGroup } from 'components/ActionGroup';
+import { Button } from 'components/Button';
+import { Carousel } from 'components/Carousel';
+import { LinkCard } from 'components/LinkCard';
+import { PageLayout } from 'components/PageLayout';
 
 export const Onboarding = () => {
   const t = useAppTranslation();

@@ -11,8 +11,8 @@ import { InformationBanner } from 'components/InformationBanner';
 import { ProcessBar } from 'components/ProcessBar';
 import { StepTitle } from 'components/StepTitle';
 import { Heading, Typography } from 'components/Typography';
-import { tokens } from 'styles';
 import { slideInOut } from 'styles/animations';
+import { tokens } from 'styles/tokens';
 
 export function PasswordHeader() {
   const t = useAppTranslation();

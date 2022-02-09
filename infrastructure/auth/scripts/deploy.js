@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { readFile, writeFile } = require('fs');
+const { rm } = require('fs/promises');
 const { join } = require('path');
 const { promisify } = require('util');
 
@@ -17,6 +18,15 @@ const dist = root.bind(null, 'dist');
 const auth = root.bind(null, 'infrastructure', 'auth');
 const read = promisify(readFile);
 const write = promisify(writeFile);
+
+async function clean() {
+  try {
+    await rm(auth('deployment'), { recursive: true, force: true });
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
 
 async function getAuth0Deployment() {
   try {
@@ -57,7 +67,11 @@ async function deployAuth0Content() {
 }
 
 async function main() {
-  // First we retrieve the existing deployment. We want to update it, not replace it.
+  // We clean out any prior artifacts, in order to ensure we don't push one
+  // deployment to another tenant by accident.
+  await clean();
+
+  // We retrieve the existing deployment. We want to update it, not replace it.
   // This way, we can grab the files and modify them, then republish.
   //
   await getAuth0Deployment();

@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 
-import { Carousel, LinkCard, Spinner, Typography } from 'components';
+import { Carousel } from 'components/Carousel';
+import { LinkCard } from 'components/LinkCard';
+import { Spinner } from 'components/Spinner';
+import { Typography } from 'components/Typography';
 import { tokens } from 'styles';
 
 import { useAppEvents, useAppTranslation } from '../Shell';

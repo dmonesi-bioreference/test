@@ -5,7 +5,7 @@ import { Footer } from 'app/components/Footer';
 import { Header } from 'components/Header';
 import { PageBorder } from 'components/PageBorder';
 import { PageHeader } from 'components/PageHeader';
-import { GlobalStyle } from 'index';
+import GlobalStyle from 'styles/global';
 import { getTheme } from 'styles/themes';
 
 import PageLayoutStyled from './PageLayout.styles';

@@ -66,12 +66,10 @@ export function AppProvider({
       (async () => Promise.reject(Errors.api('No faq found'))),
     handleAllFaqsRequest:
       requests.allFaqs ||
-      (async () =>
-        Promise.reject(Errors.api('No faqs found'))),
+      (async () => Promise.reject(Errors.api('No faqs found'))),
     handleAllInternalLinkCardsRequest:
       requests.allInternalLinkCards ||
-      (async () =>
-        Promise.reject(Errors.api('No internal link cards found'))),
+      (async () => Promise.reject(Errors.api('No internal link cards found'))),
     handleAllAudiosRequest:
       requests?.allAudios ||
       (async () => Promise.reject(Errors.api('No audios available'))),

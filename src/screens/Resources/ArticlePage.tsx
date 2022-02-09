@@ -1,23 +1,20 @@
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 
+import { Content } from 'app/components/ContentElements';
 import {
-  Content,
   useAppEvents,
   useAppSelector,
   useAppState,
   useAppTranslation,
-} from 'app';
-import {
-  ContentBlock,
-  Heading,
-  PageLayout,
-  PageSection,
-  ReturnLink,
-  Spinner,
-  Typography,
-} from 'components';
-import { tokens } from 'styles';
+} from 'app/components/Shell';
+import { ContentBlock } from 'components/ContentBlock';
+import { PageLayout } from 'components/PageLayout';
+import { PageSection } from 'components/PageSection';
+import { ReturnLink } from 'components/ReturnLink';
+import { Spinner } from 'components/Spinner';
+import { Heading, Typography } from 'components/Typography';
+import { tokens } from 'styles/tokens';
 
 import ContentPageStyled from './ContentPage.styles';
 

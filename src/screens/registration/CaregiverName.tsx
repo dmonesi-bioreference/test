@@ -9,8 +9,8 @@ import {
 import { Button } from 'components/Button';
 import { ProcessBar } from 'components/ProcessBar';
 import { Heading } from 'components/Typography';
-import { tokens } from 'styles';
 import { slideInOut } from 'styles/animations';
+import { tokens } from 'styles/tokens';
 
 export function CaregiverNameHeader() {
   const t = useAppTranslation();

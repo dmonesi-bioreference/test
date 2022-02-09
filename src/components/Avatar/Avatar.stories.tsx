@@ -1,10 +1,9 @@
 import { Story } from '@storybook/react/types-6-0';
 
-import { Shell } from 'app';
+import { Shell } from 'app/components/Shell';
 import geneticCounselor from 'assets/images/png/geneticCounselor.png';
 
 import Avatar, { AvatarProps } from './Avatar';
-
 
 export default {
   component: Avatar,
@@ -30,5 +29,5 @@ export const Primary = Template.bind({});
 
 Primary.args = {
   src: geneticCounselor,
-  alt: "Photograph of our genetic counselor, Laura."
+  alt: 'Photograph of our genetic counselor, Laura.',
 };

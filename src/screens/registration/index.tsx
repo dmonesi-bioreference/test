@@ -2,8 +2,9 @@ import { AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 
 import { useAppState, useAppTranslation } from 'app/components/Shell';
-import { PageLayout, PageSection } from 'components';
-import { tokens } from 'styles';
+import { PageLayout } from 'components/PageLayout';
+import { PageSection } from 'components/PageSection';
+import { tokens } from 'styles/tokens';
 
 import { CaregiverContact, CaregiverContactHeader } from './CaregiverContact';
 import { CaregiverName, CaregiverNameHeader } from './CaregiverName';

@@ -16,7 +16,7 @@ import { PageLayout } from 'components/PageLayout';
 import { PageSection } from 'components/PageSection';
 import { Spinner } from 'components/Spinner';
 import { Heading, Typography } from 'components/Typography';
-import { tokens } from 'styles';
+import { tokens } from 'styles/tokens';
 
 export const IdentityForm = () => {
   const t = useAppTranslation();
@@ -29,9 +29,6 @@ export const IdentityForm = () => {
   );
   const numberOfAttemptsRemaining = useAppSelector(
     (state) => state.context.auth.identityCheckAttempts
-  );
-  const profile = useAppSelector(
-    (state) => state.context.requests.identityProfile.values
   );
 
   const anyErrors = numberOfAttemptsRemaining < 5;
@@ -59,11 +56,7 @@ export const IdentityForm = () => {
               }}
             >
               <Heading level="1" alignment="center">
-                {profile.patient_name
-                  ? t('sections.identity.title', {
-                      patientName: profile.patient_nickname,
-                    })
-                  : null}
+                {t('sections.identity.title')}
               </Heading>
               <Heading level="4" alignment="center">
                 {t('sections.identity.subTitle')}
@@ -88,14 +81,10 @@ export const IdentityForm = () => {
             ) : null}
             <form onSubmit={(event) => event.preventDefault()}>
               <IdentityElements.DateOfBirth
-                label={t('sections.identity.form.dateOfBirth.label', {
-                  patientNickname: profile.patient_nickname,
-                })}
+                label={t('sections.identity.form.dateOfBirth.label')}
               />
               <IdentityElements.ZipCode
-                label={t('sections.identity.form.zipCode.label', {
-                  patientNickname: profile.patient_nickname,
-                })}
+                label={t('sections.identity.form.zipCode.label')}
                 placeholder={t('sections.identity.form.zipCode.placeholder')}
               />
               <div style={{ marginBottom: tokens.spacingXxLarge }}>

@@ -47,15 +47,82 @@ describe('Identity.profile', () => {
   });
 });
 
+describe('Identity.confirm', () => {
+  it('calls the local confirmation api url', async () => {
+    const listener = jest.fn();
+    const payload = {
+      email: 'person@example.com',
+      Phone: '123-456-7890',
+      PatientPortalUserId: '1111-22222-33333-44444',
+    };
+
+    server.use(
+      rest.post('/api/identity/confirm', (request, response, context) => {
+        listener(request.body);
+        return response(context.status(200), context.json({}));
+      })
+    );
+
+    const context = {
+      auth: { patientGuid: payload.PatientPortalUserId },
+      forms: {
+        identity: {
+          values: {
+            email: payload.email,
+            phone: payload.Phone,
+          },
+        },
+      },
+    };
+
+    const response = await Identity.confirm(context as any);
+
+    expect(listener).toHaveBeenCalledWith({ ...payload, Phone: '1234567890' });
+    expect(response).toEqual({});
+  });
+
+  it('rejects 4xx with response body', async () => {
+    const payload = {
+      email: 'person@example.com',
+      Phone: '123-456-7890',
+      PatientUserId: '1111-22222-33333-44444',
+    };
+
+    const context = {
+      auth: { patientGuid: payload.PatientUserId },
+      forms: {
+        identity: {
+          values: {
+            email: payload.email,
+            phone: payload.Phone,
+          },
+        },
+      },
+    };
+
+    const requests = [400, 401, 403] as const;
+
+    for (const status of requests) {
+      server.use(
+        rest.post('/api/identity/confirm', (request, response, context) => {
+          return response(context.status(status), context.json({}));
+        })
+      );
+
+      await expect(Identity.confirm(context as any)).rejects.toEqual({});
+    }
+  });
+});
+
 describe('Identity.validate', () => {
   it('calls the local validation api url', async () => {
     const listener = jest.fn();
     const payload = {
       email: 'person@example.com',
-      Phone: '123-456-78990',
+      Phone: '123-456-7890',
       zip: '07869',
-      PatientUserId: '1111-22222-33333-44444',
-      dateOfBirth: '11/09/2021',
+      PatientPortalUserId: '1111-22222-33333-44444',
+      dateOfBirth: '02/02/2022',
     };
 
     server.use(
@@ -66,12 +133,12 @@ describe('Identity.validate', () => {
     );
 
     const context = {
-      auth: { patientGuid: payload.PatientUserId },
+      auth: { patientGuid: payload.PatientPortalUserId },
       forms: {
         identity: {
           values: {
             email: payload.email,
-            dob: payload.dateOfBirth,
+            dob: '2022-02-02',
             zip: payload.zip,
             phone: payload.Phone,
           },
@@ -81,21 +148,21 @@ describe('Identity.validate', () => {
 
     const response = await Identity.validate(context as any);
 
-    expect(listener).toHaveBeenCalledWith(payload);
+    expect(listener).toHaveBeenCalledWith({ ...payload, Phone: '1234567890' });
     expect(response).toEqual({});
   });
 
   it('rejects 4xx with response body', async () => {
     const payload = {
       email: 'person@example.com',
-      Phone: '123-456-78990',
+      Phone: '1234567899',
       zip: '07869',
-      PatientUserId: '1111-22222-33333-44444',
+      PatientPortalUserId: '1111-22222-33333-44444',
       dateOfBirth: '11/09/2021',
     };
 
     const context = {
-      auth: { patientGuid: payload.PatientUserId },
+      auth: { patientGuid: payload.PatientPortalUserId },
       forms: {
         identity: {
           values: {

@@ -1,15 +1,17 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
 
-import { DisplayField } from 'app/components';
+import { DisplayField } from 'app/components/DisplayField';
 import {
   useAppTranslation,
   useAppSelector,
   useAppEvents,
   useAppState,
 } from 'app/components/Shell';
-import { ListCard, PageLayout, PageSection } from 'components';
 import { AsyncRegion } from 'components/AsyncRegion';
+import { ListCard } from 'components/ListCard';
+import { PageLayout } from 'components/PageLayout';
+import { PageSection } from 'components/PageSection';
 
 import { HealthProfileContainer } from './HealthProfile.styles';
 
@@ -106,17 +108,23 @@ export const HealthProfile = () => {
                 title={t('pages.healthProfile.yourDetails.title')}
               >
                 <DisplayField
-                  label={t('pages.healthProfile.yourDetails.fields.fullName.label')}
+                  label={t(
+                    'pages.healthProfile.yourDetails.fields.fullName.label'
+                  )}
                 >
                   {profile.caregiver_name}
                 </DisplayField>
                 <DisplayField
-                  label={t('pages.healthProfile.yourDetails.fields.phoneNumber.label')}
+                  label={t(
+                    'pages.healthProfile.yourDetails.fields.phoneNumber.label'
+                  )}
                 >
                   {profile.phone_number}
                 </DisplayField>
                 <DisplayField
-                  label={t('pages.healthProfile.yourDetails.fields.emailAddress.label')}
+                  label={t(
+                    'pages.healthProfile.yourDetails.fields.emailAddress.label'
+                  )}
                 >
                   {session.email}
                 </DisplayField>
@@ -133,7 +141,9 @@ export const HealthProfile = () => {
                     : null}
                 </DisplayField>
                 <DisplayField
-                  label={t('pages.healthProfile.yourDetails.fields.relation.label')}
+                  label={t(
+                    'pages.healthProfile.yourDetails.fields.relation.label'
+                  )}
                 >
                   {profile.relation_to_patient}
                 </DisplayField>

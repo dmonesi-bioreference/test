@@ -1,6 +1,6 @@
 import { Story } from '@storybook/react/types-6-0';
 
-import { Shell } from 'app';
+import { Shell } from 'app/components/Shell';
 import { BulletItem } from 'components/BulletItem';
 import { Icon } from 'components/Icon';
 

@@ -10,8 +10,8 @@ import { Button } from 'components/Button';
 import { ProcessBar } from 'components/ProcessBar';
 import { StepTitle } from 'components/StepTitle';
 import { Heading } from 'components/Typography';
-import { tokens } from 'styles';
 import { slideInOut } from 'styles/animations';
+import { tokens } from 'styles/tokens';
 
 export function CaregiverContactHeader() {
   const t = useAppTranslation();

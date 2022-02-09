@@ -21,11 +21,23 @@ export function createProviderClient(overrides: Partial<Configuration>) {
       ...requestConfig.headers,
       Authorization: `Basic ${basicAuth}`,
       Referer: `${params.provider.referer}`,
+      'Content-Type': 'application/json',
       'X-Frame-Options': 'Deny',
     };
 
     return requestConfig;
   });
+
+  const confirmRegistration = async (
+    record: Partial<{
+      email: string;
+      Phone: string;
+      PatientUserId: string;
+    }> = {}
+  ) =>
+    client
+      .post('/v1.0.1/api/PatientPortal/UpdateRegistrationStatus', record)
+      .catch((error: AxiosError) => error.response);
 
   const validateIdentity = async (
     record: Partial<{
@@ -35,17 +47,10 @@ export function createProviderClient(overrides: Partial<Configuration>) {
       PatientUserId: string;
       dateOfBirth: string;
     }> = {}
-  ) => {
-    const response = await client
+  ) =>
+    await client
       .post('/v1.0.1/api/PatientPortal/Validate', record)
       .catch((error: AxiosError) => error.response);
-
-    if (response?.status !== 200) {
-      throw response?.data;
-    }
-
-    return response;
-  };
 
   const patientProfile = async (id: string) => {
     type TestsResponse = {
@@ -116,7 +121,10 @@ export function createProviderClient(overrides: Partial<Configuration>) {
   };
 
   const handlers = {
-    Identity: { validate: validateIdentity },
+    Identity: {
+      validate: validateIdentity,
+      confirm: confirmRegistration,
+    },
     Patient: { profile: patientProfile },
     Tests: { all: allTests },
   };

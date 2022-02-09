@@ -1,7 +1,11 @@
 import Head from 'next/head';
 
-import { Content, useAppTranslation } from 'app';
-import { ContentBlock, List, PageLayout, Typography } from 'components';
+import { Content } from 'app/components/ContentElements';
+import { useAppTranslation } from 'app/components/Shell';
+import { ContentBlock } from 'components/ContentBlock';
+import { List } from 'components/List';
+import { PageLayout } from 'components/PageLayout';
+import { Typography } from 'components/Typography';
 
 import {
   Introduction,

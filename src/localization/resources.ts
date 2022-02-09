@@ -773,7 +773,7 @@ export const resources = {
           notLoaded: 'Test results not fetched',
         },
         identity: {
-          title: 'Welcome, {{patientName}}',
+          title: "Let's start by verifying your information",
           subTitle:
             "To make sure we keep your child's information safe, we have a few details to confirm.",
           errors: {
@@ -783,11 +783,11 @@ export const resources = {
           },
           form: {
             zipCode: {
-              label: "{{patientNickname}}'s Zip Code",
+              label: 'Patient Zip Code',
               placeholder: 'e.g. 123456',
             },
             dateOfBirth: {
-              label: "{{patientNickname}}'s Date of Birth",
+              label: 'Patient Date of Birth',
             },
             phone: {
               label: 'Your Mobile Phone',
