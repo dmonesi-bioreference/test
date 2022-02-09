@@ -35,6 +35,7 @@ export class Auth {
   login(username: string, password: string, expectInvalidCredentials?: boolean) {
     // Create an intercept to detect when the auth process has completed
     this.client.intercept('/api/auth/callback*').as('callback')
+    this.client.intercept('/api/auth/login').as('login')
 
     // TODO: TB - Not keen on this, would be cool if we could create a proper login
     // but I suspect it's not possible with the OIDC pattern
@@ -53,6 +54,7 @@ export class Auth {
       
       // TODO: TB - The redirect is broken within Cypress, so we do it manually
       this.client.visit('/')
+      this.client.wait('@login')
       // TODO: END
     }
   }
