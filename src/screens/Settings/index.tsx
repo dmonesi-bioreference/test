@@ -32,7 +32,7 @@ export const Settings = () => {
       <PageLayout
         containsCards
         title={t('pages.settings.title')}
-        loading={requesting}
+        isLoading={requesting}
       >
         <AsyncRegion pending={requesting}>
           <PageSection>

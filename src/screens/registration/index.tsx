@@ -20,23 +20,20 @@ interface PageProps {
 
 function Page(props: Props<PageProps>) {
   return (
-    <PageLayout>
-      <PageSection
-        header={
-          <div
-            style={{
-              alignItems: 'center',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: tokens.spacingXLarge,
-              marginTop: tokens.spacingXxLarge,
-              marginBottom: tokens.spacingXxLarge,
-            }}
-          >
-            {props.header}
-          </div>
-        }
-      >
+    <PageLayout isWithoutFooter>
+      <PageSection>
+        <div
+          style={{
+            alignItems: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: tokens.spacingXLarge,
+            marginTop: tokens.spacingXxLarge,
+            marginBottom: tokens.spacingXxLarge,
+          }}
+        >
+          {props.header}
+        </div>
         {props.children}
       </PageSection>
     </PageLayout>

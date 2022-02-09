@@ -95,18 +95,15 @@ export const FAQsPage: React.FC<FAQPageProps> = (props) => {
       <PageLayout theme="resourcesTheme">
         <ContentPageStyled>
           <ReturnLink label="Return" href="/demo/resources" />
-          <PageSection
-            header={
+          <PageSection>
+            <div style={{ marginBottom: tokens.spacingXSmall }}>
               <div style={{ marginBottom: tokens.spacingXSmall }}>
-                <div style={{ marginBottom: tokens.spacingXSmall }}>
-                  <Typography type="label" labelType="title" color="blue">
-                    {faqLabel}
-                  </Typography>
-                </div>
-                <Heading level="1">{faqTitle}</Heading>
+                <Typography type="label" labelType="title" color="blue">
+                  {faqLabel}
+                </Typography>
               </div>
-            }
-          >
+              <Heading level="1">{faqTitle}</Heading>
+            </div>
             {loadingFAQs ? (
               <Spinner />
             ) : errorFetchingFAQs ? (

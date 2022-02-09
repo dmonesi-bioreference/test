@@ -36,7 +36,7 @@ export const Onboarding = () => {
       <Head>
         <title>{t('pages.onboarding.pageTitle')}</title>
       </Head>
-      <PageLayout containsCards={true}>
+      <PageLayout containsCards isWithoutFooter>
         <Carousel>
           {articleCardSpecs.map((articleCardSpec, i) => (
             <LinkCard

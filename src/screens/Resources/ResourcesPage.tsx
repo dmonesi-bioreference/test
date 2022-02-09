@@ -7,7 +7,6 @@ import {
   FAQCards,
   AudioCard,
 } from 'app';
-import { PatientBanner } from 'app/components';
 import { useContent } from 'app/components/ContentElements/hooks';
 import { Heading, PageLayout, PageSection } from 'components';
 
@@ -27,8 +26,10 @@ export const ResourcesPage = () => {
         theme="resourcesTheme"
         title={t('pages.resources.title')}
         description={t('pages.resources.description')}
-        customHeader={<PatientBanner />}
-        loading={requesting || loadingFAQs || loadingArticles || loadingAudios}
+        isLoading={
+          requesting || loadingFAQs || loadingArticles || loadingAudios
+        }
+        hasPatientBanner
       >
         <PageSection>
           <AudioCard />

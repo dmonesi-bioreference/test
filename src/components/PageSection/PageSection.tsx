@@ -1,13 +1,21 @@
+import { Typography } from 'components';
+
 import PageSectionStyled from './PageSection.styles';
 
 export interface PageSectionProps {
-  header?: React.ReactNode;
+  title?: string;
 }
 
 const PageSection: React.FC<PageSectionProps> = (props) => {
   return (
     <PageSectionStyled className="page-section">
-      {props.header && <header>{props.header}</header>}
+      {props.title && (
+        <header>
+          <Typography type="heading" level="2">
+            {props.title}
+          </Typography>
+        </header>
+      )}
       <div className="page-section__content">{props.children}</div>
     </PageSectionStyled>
   );

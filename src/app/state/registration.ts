@@ -18,11 +18,13 @@ export const actions = {
 
         if (isObject(value)) {
           const currentRegistrationStep = Reflect.get(value, 'registration');
-          const steps = new Set(context.registration.steps);
+          const steps = context.registration.steps;
 
-          steps.add(currentRegistrationStep);
+          if (!steps.includes(currentRegistrationStep)) {
+            steps.push(currentRegistrationStep);
+          }
 
-          context.registration.steps = [...steps];
+          context.registration.steps = steps;
         }
       }
     }

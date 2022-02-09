@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import { useAppTranslation, InternalLinkCards, TestStatus, Timeline, PatientBanner } from 'app';
+import { useAppTranslation, InternalLinkCards, TestStatus, Timeline} from 'app';
 import { PageLayout, PageSection } from 'components';
 
 export const LandingPage = () => {
@@ -12,7 +12,7 @@ export const LandingPage = () => {
         <title>{t('pages.landing.pageTitle')}</title>
       </Head>
 
-      <PageLayout containsCards={true} customHeader={<PatientBanner />}>
+      <PageLayout containsCards hasPatientBanner>
         <PageSection>
           <TestStatus />
           <Timeline />

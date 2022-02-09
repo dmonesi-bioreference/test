@@ -24,19 +24,19 @@ export class Auth {
     this.client.visit(`/?Guid=${guid}`);
 
     if (expectInvalidGuid) {
-      const localisation = t('pages.login.title');
-      this.client.findByText(localisation)
+      const localization = t('pages.login.title');
+      this.client.findByText(localization);
     } else {
-      const localisation = t('sections.identity.subTitle');
-      this.client.findByText(localisation)
+      const localization = t('sections.identity.subTitle');
+      this.client.findByText(localization);
     }
   }
 
-  login(username: string, password: string, expectInvalidCredentials?: boolean) {
-    // Create an intercept to detect when the auth process has completed
-    this.client.intercept('/api/auth/callback*').as('callback')
-    this.client.intercept('/api/auth/login').as('login')
-
+  login(
+    username: string,
+    password: string,
+    expectInvalidCredentials?: boolean
+  ) {
     // TODO: TB - Not keen on this, would be cool if we could create a proper login
     // but I suspect it's not possible with the OIDC pattern
     this.client.visit('/');
@@ -44,34 +44,31 @@ export class Auth {
     this.client.findByText('Password', { exact: false }).type(password);
     this.client.findByRole('button', { name: 'Login' }).click();
     // TODO: END
-    
+
     if (expectInvalidCredentials) {
-      const localisation = t('sections.identity.errors.title');
-      this.client.findByText(localisation);
+      const localization = t('sections.identity.errors.title');
+      this.client.findByText(localization);
     } else {
       // Wait for our intercept to detect the auth process has completed
-      this.client.wait('@callback')
-      
+      this.client.wait('@callback');
+
       // TODO: TB - The redirect is broken within Cypress, so we do it manually
-      this.client.visit('/')
-      this.client.wait('@login')
+      this.client.visit('/');
+      this.client.wait('@login');
       // TODO: END
+
+      const localization = t('components.patientBanner.label');
+      this.client.findByText(localization);
     }
   }
 
   logout(): any {
     this.client
       .request(`${Cypress.env('AUTH0_ROOT')}/v2/logout`)
-      .clearCookies()
-    this.client
-      .getCookies()
-      .should('have.length', 0)
-    this.client
-      .request('/api/auth/logout')
-      .clearCookies()
-    this.client
-      .getCookies()
-      .should('have.length', 0)
+      .clearCookies();
+    this.client.getCookies().should('have.length', 0);
+    this.client.request('/api/auth/logout').clearCookies();
+    this.client.getCookies().should('have.length', 0);
   }
 
   hasText(name: string): ReturnType<typeof cy['findByText']> {

@@ -28,7 +28,7 @@ export const LoginPage = () => {
       <Head>
         <title>{t('pages.login.pageTitle')}</title>
       </Head>
-      <PageLayout containsCards={true}>
+      <PageLayout>
         {anyErrors ? (
           <InformationBanner
             title={t('sections.identity.errors.title')}

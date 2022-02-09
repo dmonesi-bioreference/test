@@ -28,15 +28,18 @@ interface ArticlePageProps {
 export const ArticlePage: React.FC<ArticlePageProps> = (props) => {
   const t = useAppTranslation();
   const { setArticleIdentifier, singleArticleRequest } = useAppEvents();
-  
   const [article, setArticle] = useState<Article>();
 
   const { articleIdentifier } = props;
 
   const loading = useAppState('requests.singleArticle.requesting');
   const error = useAppState('requests.singleArticle.failure');
-  const articles = useAppSelector(state => state.context.requests.allArticles.values);
-  const singleArticle = useAppSelector(state => state.context.requests.singleArticle.values);
+  const articles = useAppSelector(
+    (state) => state.context.requests.allArticles.values
+  );
+  const singleArticle = useAppSelector(
+    (state) => state.context.requests.singleArticle.values
+  );
 
   useEffect(() => setArticle(singleArticle), [singleArticle]);
 
@@ -46,13 +49,11 @@ export const ArticlePage: React.FC<ArticlePageProps> = (props) => {
         articleIdentifier: articleIdentifier as string,
       });
       singleArticleRequest();
-    }
-    else {
+    } else {
       setArticle(
         articles.find(
           (e) =>
-            e.id === articleIdentifier ||
-            e.slug === `/${articleIdentifier}`
+            e.id === articleIdentifier || e.slug === `/${articleIdentifier}`
         ) as Article
       );
     }
@@ -61,23 +62,24 @@ export const ArticlePage: React.FC<ArticlePageProps> = (props) => {
   return (
     <>
       <Head>
-        <title>{t('pages.article.pageTitle', { articleTitle: article ? article.title : '' })}</title>
+        <title>
+          {t('pages.article.pageTitle', {
+            articleTitle: article ? article.title : '',
+          })}
+        </title>
       </Head>
       <PageLayout theme="resourcesTheme">
         <ContentPageStyled>
           <ReturnLink label="Return" href="/demo/resources" />
-          <PageSection
-            header={
+          <PageSection>
+            <div style={{ marginBottom: tokens.spacingXSmall }}>
               <div style={{ marginBottom: tokens.spacingXSmall }}>
-                <div style={{ marginBottom: tokens.spacingXSmall }}>
-                  <Typography type="label" labelType="title" color="blue">
-                    {article ? article.label : ''}
-                  </Typography>
-                </div>
-                <Heading level="1">{article ? article.title : ''}</Heading>
+                <Typography type="label" labelType="title" color="blue">
+                  {article ? article.label : ''}
+                </Typography>
               </div>
-            }
-          >
+              <Heading level="1">{article ? article.title : ''}</Heading>
+            </div>
             {loading ? (
               <Spinner />
             ) : error ? (
@@ -85,7 +87,8 @@ export const ArticlePage: React.FC<ArticlePageProps> = (props) => {
                 {t('pages.articles.errorFetchingArticle')}
               </Typography>
             ) : (
-              article && article.contents && (
+              article &&
+              article.contents && (
                 <>
                   {article.contents.map((contentBlock, index) => (
                     <React.Fragment key={index}>

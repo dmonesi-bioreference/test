@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
 
-import { DisplayField, PatientBanner } from 'app/components';
+import { DisplayField } from 'app/components';
 import {
   useAppTranslation,
   useAppSelector,
@@ -42,8 +42,8 @@ export const HealthProfile = () => {
             patientsNickname: profile.patient_nickname,
           })}
           theme="healthProfileTheme"
-          customHeader={<PatientBanner />}
-          loading={requesting}
+          hasPatientBanner
+          isLoading={requesting}
         >
           <PageSection>
             <AsyncRegion pending={requesting}>

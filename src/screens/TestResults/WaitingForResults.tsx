@@ -1,4 +1,4 @@
-import { ArticleCards, PatientBanner, useAppState, useAppTranslation } from 'app';
+import { ArticleCards, useAppState, useAppTranslation } from 'app';
 import { Card, CircularProgress, PageLayout, PageSection } from 'components';
 import { Typography, Heading } from 'components/Typography';
 import { colors } from 'styles';
@@ -13,11 +13,11 @@ export const WaitingForResults = () => {
 
   return (
     <PageLayout
-      containsCards={true}
-      customHeader={<PatientBanner />}
+      containsCards
+      hasPatientBanner
       theme="healthProfileTheme"
       title={t('pages.results.waiting.title')}
-      loading={requesting}
+      isLoading={requesting}
     >
       <PageSection>
         <WaitingForResultsStyled>

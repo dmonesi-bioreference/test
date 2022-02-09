@@ -17,7 +17,8 @@ const PatientBannerStyled = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: ${({ theme }) => theme.colors.background || colors.white};
+    background-color: ${({ theme }) =>
+      theme.colors.bannerBackground || colors.white};
 
     svg {
       width: 90%;

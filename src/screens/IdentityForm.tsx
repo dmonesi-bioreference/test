@@ -46,32 +46,29 @@ export const IdentityForm = () => {
       <Head>
         <title>{t('pages.identity.pageTitle')}</title>
       </Head>
-      <PageLayout>
+      <PageLayout isWithoutFooter>
         <AsyncRegion pending={isRequesting}>
-          <PageSection
-            header={
-              <div
-                style={{
-                  textAlign: 'center',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: tokens.spacingXLarge,
-                  marginBottom: tokens.spacing,
-                }}
-              >
-                <Heading level="1" alignment="center">
-                  {profile.patient_name
-                    ? t('sections.identity.title', {
-                        patientName: profile.patient_nickname,
-                      })
-                    : null}
-                </Heading>
-                <Heading level="4" alignment="center">
-                  {t('sections.identity.subTitle')}
-                </Heading>
-              </div>
-            }
-          >
+          <PageSection>
+            <div
+              style={{
+                textAlign: 'center',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: tokens.spacingXLarge,
+                marginBottom: tokens.spacing,
+              }}
+            >
+              <Heading level="1" alignment="center">
+                {profile.patient_name
+                  ? t('sections.identity.title', {
+                      patientName: profile.patient_nickname,
+                    })
+                  : null}
+              </Heading>
+              <Heading level="4" alignment="center">
+                {t('sections.identity.subTitle')}
+              </Heading>
+            </div>
             {anyErrors ? (
               <InformationBanner
                 title={t('sections.identity.errors.title')}

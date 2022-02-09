@@ -44,7 +44,7 @@ export const PatientBanner: React.FC = () => {
               cx="115.5"
               cy="-84.5"
               r="235.5"
-              fill={theme.colors.foreground}
+              fill={theme.colors.bannerForeground}
             />
           </svg>
         </div>

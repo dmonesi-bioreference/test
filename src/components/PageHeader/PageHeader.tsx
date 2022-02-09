@@ -1,4 +1,5 @@
-import { Button, Icon, Typography } from 'components';
+import { Button, Icon } from 'components';
+import { Typography } from 'components/Typography';
 
 import PageHeaderStyled from './PageHeader.styles';
 

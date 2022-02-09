@@ -5,7 +5,6 @@ import {
   useAppEvents,
   useAppTranslation,
   useAppSelector,
-  PatientBanner,
   ArticleCards,
 } from 'app';
 import {
@@ -30,8 +29,8 @@ export const ResultsReady = () => {
   }, []);
 
   return (
-    <PageLayout containsCards={true}>
-      <PageSection header={<PatientBanner />}>
+    <PageLayout containsCards hasPatientBanner>
+      <PageSection>
         <ResultsReadyStyled>
           <div className="results-ready__nav">
             <Button href="/demo" prefix={<Icon name="chevron-left" />}>

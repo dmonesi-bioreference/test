@@ -23,7 +23,7 @@ const PageLayoutStyled = styled.div`
   }
 
   .page-layout__content--with-cards {
-    padding: 0 ${containers.spacingGutter} ${tokens.spacingXxxxLarge};
+    padding: 0 ${tokens.spacing} ${tokens.spacingXxxxLarge};
   }
 `;
 

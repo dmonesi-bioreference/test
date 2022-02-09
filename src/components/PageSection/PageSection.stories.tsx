@@ -1,8 +1,6 @@
 import { Story } from '@storybook/react/types-6-0';
 
-import { Card } from 'components/Card';
-import { Icon } from 'components/Icon';
-import { Typography } from 'components/Typography';
+import { LinkCard } from 'components';
 
 import PageSection from './PageSection';
 
@@ -16,31 +14,17 @@ export default {
 
 const Template: Story = (args) => (
   <div style={{ width: 343 }}>
-    <PageSection header={factHeader} {...args}>
-      <Card>
-        <div style={{ marginBottom: 32 }}>
-          <Typography type="heading" level="2">
-            Whole Genome Sequencing
-          </Typography>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
-          <div style={{ marginRight: 24 }}>
-            <Icon name="atom" kind="custom" />
-          </div>
-          <Typography type="body">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry standard dummy text.
-          </Typography>
-        </div>
-      </Card>
+    <PageSection title="Read" {...args}>
+      <LinkCard
+        imageSrc="https://picsum.photos/300/150"
+        variant="article"
+        label="Article"
+        heading="An Interesting Topic"
+        body="Lorem ipsum is simply dummy text used by the print industry. Lorem ipsum dolor set amet."
+        footer="Read more"
+      />
     </PageSection>
   </div>
-);
-
-const factHeader = (
-  <Typography type="heading" level="2">
-    The science
-  </Typography>
 );
 
 export const Primary = Template.bind({});

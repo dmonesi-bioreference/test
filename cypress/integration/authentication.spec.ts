@@ -31,23 +31,19 @@ describe('on the home page', () => {
         landingPage.open();
         authApi.hasText(t('pages.login.title'));
       });
-  
+
       it('it can log in and lands on the landing page', () => {
         authApi.login(
           Cypress.env('AUTH0_USERNAME_TEST_ORDERED'),
           Cypress.env('AUTH0_PASSWORD_TEST_ORDERED')
         );
-        authApi.hasText(t('components.userHeader.patient'));
+        authApi.hasText(t('components.patientBanner.label'));
       });
-  
-      it('it won\'t login with invalid credentials', () => {
-        authApi.login(
-          'invalid@email.com',
-          'Inv@lidP@55w0rd',
-          true
-        );
+
+      it("it won't login with invalid credentials", () => {
+        authApi.login('invalid@email.com', 'Inv@lidP@55w0rd', true);
         authApi.hasText(t('sections.identity.errors.title'));
-      });  
+      });
     });
 
     // TODO: TB - It would be nice to test the 'you have x attempts remaining'
@@ -62,7 +58,7 @@ describe('on the home page', () => {
         Cypress.env('AUTH0_PASSWORD_TEST_ORDERED')
       );
     });
-    
+
     // TODO: TB - It would be nice to check what happens if you navigate to
     // a registration link whilst still logged in, but at present this
     // doesn't trigger at all
@@ -74,7 +70,7 @@ describe('on the home page', () => {
 
       it('it lands on the landing page', () => {
         landingPage.open();
-        authApi.hasText(t('components.userHeader.patient'));
+        authApi.hasText(t('components.patientBanner.label'));
       });
     });
   });

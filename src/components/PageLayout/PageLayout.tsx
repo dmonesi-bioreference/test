@@ -1,5 +1,6 @@
 import { ThemeProvider } from 'styled-components';
 
+import { PatientBanner } from 'app/components';
 import { Footer } from 'app/components/Footer';
 import { Header } from 'components/Header';
 import { PageBorder } from 'components/PageBorder';
@@ -12,26 +13,24 @@ import PageLayoutStyled from './PageLayout.styles';
 export interface PageLayoutProps {
   kind?: 'preLogin' | 'home' | 'primary' | 'secondary' | 'content';
   containsCards?: boolean;
-  customHeader?: React.ReactNode;
+  isWithoutFooter?: boolean;
+  isLoading?: boolean;
+  hasPatientBanner?: boolean;
   description?: string;
   title?: string;
   theme?: Themes;
-  loading?: boolean;
 }
 
 const PageLayout: React.FC<PageLayoutProps> = ({
+  kind = 'primary',
   theme = 'defaultTheme',
+  isWithoutFooter = false,
   ...props
 }) => {
-  const belongsTo = props.kind || 'primary';
   const withCards = props.containsCards ? '--with-cards' : '';
   const withHeader = props.title ? (
     <>
-      <PageBorder loading={props.loading ? 'loading' : 'loaded'} />
-      <PageHeader
-        belongsTo={`${belongsTo}Page`}
-        description={props.description}
-      >
+      <PageHeader belongsTo={`${kind}Page`} description={props.description}>
         {props.title}
       </PageHeader>
     </>
@@ -41,14 +40,15 @@ const PageLayout: React.FC<PageLayoutProps> = ({
       <PageLayoutStyled className={`page-layout--${theme}`}>
         <GlobalStyle />
         <Header />
-        {props.customHeader && <div>{props.customHeader}</div>}
+        {props.hasPatientBanner && <PatientBanner />}
+        <PageBorder loading={props.isLoading ? 'loading' : 'loaded'} />
         {withHeader}
         <main
-          className={`page-layout__content page-layout__content${withCards} page-layout__content--${belongsTo}`}
+          className={`page-layout__content page-layout__content${withCards} page-layout__content--${kind}`}
         >
           {props.children}
         </main>
-        <Footer />
+        {!isWithoutFooter && <Footer />}
       </PageLayoutStyled>
     </ThemeProvider>
   );
