@@ -33,40 +33,27 @@ export class Auth {
   }
 
   login(username: string, password: string, expectInvalidCredentials?: boolean) {
+    // Create an intercept to detect when the auth process has completed
+    this.client.intercept('/api/auth/callback*').as('callback')
+
     // TODO: TB - Not keen on this, would be cool if we could create a proper login
     // but I suspect it's not possible with the OIDC pattern
     this.client.visit('/');
     this.client.findByText('Email', { exact: false }).type(username);
     this.client.findByText('Password', { exact: false }).type(password);
-    // TODO: END
-
     this.client.findByRole('button', { name: 'Login' }).click();
-
+    // TODO: END
+    
     if (expectInvalidCredentials) {
       const localisation = t('sections.identity.errors.title');
       this.client.findByText(localisation);
     } else {
-      // TODO: TB - Something is breaking the final redirect only within Cypress.
-      // It looks like this is another chrome security issue but I can't be sure
-      // and getting the test suite working is more important than finding this
-      // edge case.
-
-      // To prevent us waiting an arbitrary amount of time, we look for the error
-      if (Cypress.config().baseUrl == 'http://localhost:3000') {
-        // When running locally, Cypress seems to catch the exception
-        // and crash, and yer...we can't do anything other than wait
-        this.client.wait(1000);
-      } else {
-        // We only get Internal Server Error from our hosted applications
-        this.client.findByText('Internal Server Error');
-      }
-
-      // And then manually redirect
-      this.client.visit('/');
+      // Wait for our intercept to detect the auth process has completed
+      this.client.wait('@callback')
+      
+      // TODO: TB - The redirect is broken within Cypress, so we do it manually
+      this.client.visit('/')
       // TODO: END
-
-      const localisation = t('components.userHeader.patient');
-      this.client.findByText(localisation);
     }
   }
 
@@ -74,10 +61,13 @@ export class Auth {
     this.client
       .request(`${Cypress.env('AUTH0_ROOT')}/v2/logout`)
       .clearCookies()
+    this.client
       .getCookies()
       .should('have.length', 0)
+    this.client
       .request('/api/auth/logout')
       .clearCookies()
+    this.client
       .getCookies()
       .should('have.length', 0)
   }
