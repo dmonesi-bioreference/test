@@ -1,10 +1,10 @@
 import Head from 'next/head';
 
+import { AppLayout } from 'app/components/AppLayout';
 import { Content } from 'app/components/ContentElements';
 import { useAppTranslation } from 'app/components/Shell';
 import { ContentBlock } from 'components/ContentBlock';
 import { List } from 'components/List';
-import { PageLayout } from 'components/PageLayout';
 import { Typography } from 'components/Typography';
 
 import {
@@ -40,7 +40,7 @@ export const TermsAndConditions = () => {
       <Head>
         <title>{t('pages.termsAndConditions.pageTitle')}</title>
       </Head>
-      <PageLayout
+      <AppLayout
         kind="content"
         title={t('pages.termsAndConditions.userAgreement.title')}
       >
@@ -92,7 +92,7 @@ export const TermsAndConditions = () => {
             </Content>
           </ContentBlock>
         </TermsAndConditionsContainer>
-      </PageLayout>
+      </AppLayout>
     </>
   );
 };

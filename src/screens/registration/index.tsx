@@ -1,8 +1,8 @@
 import { AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 
+import { AppLayout } from 'app/components/AppLayout';
 import { useAppState, useAppTranslation } from 'app/components/Shell';
-import { PageLayout } from 'components/PageLayout';
 import { PageSection } from 'components/PageSection';
 import { tokens } from 'styles/tokens';
 
@@ -21,7 +21,7 @@ interface PageProps {
 
 function Page(props: Props<PageProps>) {
   return (
-    <PageLayout isWithoutFooter>
+    <AppLayout isWithoutFooter>
       <PageSection>
         <div
           style={{
@@ -37,7 +37,7 @@ function Page(props: Props<PageProps>) {
         </div>
         {props.children}
       </PageSection>
-    </PageLayout>
+    </AppLayout>
   );
 }
 export function RegistrationWizard() {

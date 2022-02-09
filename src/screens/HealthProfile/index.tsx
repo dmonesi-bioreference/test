@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
 
+import { AppLayout } from 'app/components/AppLayout';
 import { DisplayField } from 'app/components/DisplayField';
 import {
   useAppTranslation,
@@ -10,7 +11,6 @@ import {
 } from 'app/components/Shell';
 import { AsyncRegion } from 'components/AsyncRegion';
 import { ListCard } from 'components/ListCard';
-import { PageLayout } from 'components/PageLayout';
 import { PageSection } from 'components/PageSection';
 
 import { HealthProfileContainer } from './HealthProfile.styles';
@@ -37,7 +37,7 @@ export const HealthProfile = () => {
         <title>{t('pages.healthProfile.pageTitle')}</title>
       </Head>
       <HealthProfileContainer>
-        <PageLayout
+        <AppLayout
           containsCards
           title={t('pages.healthProfile.title')}
           description={t('pages.healthProfile.description', {
@@ -150,7 +150,7 @@ export const HealthProfile = () => {
               </ListCard>
             </AsyncRegion>
           </PageSection>
-        </PageLayout>
+        </AppLayout>
       </HealthProfileContainer>
     </>
   );

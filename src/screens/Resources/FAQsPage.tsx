@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import React, { RefObject, useEffect, useState } from 'react';
 
+import { AppLayout } from 'app/components/AppLayout';
 import { Content } from 'app/components/ContentElements';
 import {
   useAppEvents,
@@ -9,7 +10,6 @@ import {
   useAppTranslation,
 } from 'app/components/Shell';
 import { ContentBlock } from 'components/ContentBlock';
-import { PageLayout } from 'components/PageLayout';
 import { PageSection } from 'components/PageSection';
 import { ReturnLink } from 'components/ReturnLink';
 import { Spinner } from 'components/Spinner';
@@ -76,6 +76,7 @@ export const FAQsPage: React.FC<FAQPageProps> = (props) => {
           : []
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug, faqs, setFaqSlug, singleFaqRequest]);
 
   useEffect(() => {
@@ -89,7 +90,7 @@ export const FAQsPage: React.FC<FAQPageProps> = (props) => {
       <Head>
         <title>{t('pages.faqs.pageTitle')}</title>
       </Head>
-      <PageLayout theme="resourcesTheme">
+      <AppLayout theme="resourcesTheme">
         <ContentPageStyled>
           <ReturnLink label="Return" href="/demo/resources" />
           <PageSection>
@@ -121,7 +122,7 @@ export const FAQsPage: React.FC<FAQPageProps> = (props) => {
             )}
           </PageSection>
         </ContentPageStyled>
-      </PageLayout>
+      </AppLayout>
     </>
   );
 };

@@ -1,10 +1,10 @@
 import Head from 'next/head';
 
+import { AppLayout } from 'app/components/AppLayout';
 import { InternalLinkCards } from 'app/components/ContentElements';
 import { useAppTranslation } from 'app/components/Shell';
 import { TestStatus } from 'app/components/TestStatus';
 import { Timeline } from 'app/components/Timeline';
-import { PageLayout } from 'components/PageLayout';
 import { PageSection } from 'components/PageSection';
 
 export const LandingPage = () => {
@@ -16,13 +16,13 @@ export const LandingPage = () => {
         <title>{t('pages.landing.pageTitle')}</title>
       </Head>
 
-      <PageLayout containsCards hasPatientBanner>
+      <AppLayout containsCards hasPatientBanner>
         <PageSection>
           <TestStatus />
           <Timeline />
           <InternalLinkCards />
         </PageSection>
-      </PageLayout>
+      </AppLayout>
     </>
   );
 };

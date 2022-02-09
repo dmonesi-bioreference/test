@@ -1,5 +1,6 @@
 import Head from 'next/head';
 
+import { AppLayout } from 'app/components/AppLayout';
 import {
   ArticleCards,
   FAQCards,
@@ -7,7 +8,6 @@ import {
 } from 'app/components/ContentElements';
 import { useContent } from 'app/components/ContentElements/hooks';
 import { useAppTranslation, useAppState } from 'app/components/Shell';
-import { PageLayout } from 'components/PageLayout';
 import { PageSection } from 'components/PageSection';
 import { Heading } from 'components/Typography';
 
@@ -22,7 +22,7 @@ export const ResourcesPage = () => {
       <Head>
         <title>{t('pages.resources.pageTitle')}</title>
       </Head>
-      <PageLayout
+      <AppLayout
         containsCards
         theme="resourcesTheme"
         title={t('pages.resources.title')}
@@ -38,7 +38,7 @@ export const ResourcesPage = () => {
           <Heading>{t('pages.resources.section.articles.title')}</Heading>
           <ArticleCards />
         </PageSection>
-      </PageLayout>
+      </AppLayout>
     </>
   );
 };

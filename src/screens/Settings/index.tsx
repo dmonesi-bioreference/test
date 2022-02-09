@@ -1,15 +1,18 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
 
+import { AppLayout } from 'app/components/AppLayout';
+import { DisplayField } from 'app/components/DisplayField';
 import {
   useAppEvents,
   useAppSelector,
   useAppState,
   useAppTranslation,
-} from 'app';
-import { DisplayField } from 'app/components/DisplayField';
-import { Button, ListCard, PageLayout, PageSection } from 'components';
+} from 'app/components/Shell';
 import { AsyncRegion } from 'components/AsyncRegion';
+import { Button } from 'components/Button';
+import { ListCard } from 'components/ListCard';
+import { PageSection } from 'components/PageSection';
 
 export const Settings = () => {
   const events = useAppEvents();
@@ -29,7 +32,7 @@ export const Settings = () => {
       <Head>
         <title>{t('pages.settings.pageTitle')}</title>
       </Head>
-      <PageLayout
+      <AppLayout
         containsCards
         title={t('pages.settings.title')}
         isLoading={requesting}
@@ -82,7 +85,7 @@ export const Settings = () => {
             </Button>
           </PageSection>
         </AsyncRegion>
-      </PageLayout>
+      </AppLayout>
     </>
   );
 };

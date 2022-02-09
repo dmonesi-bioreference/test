@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
 
+import { AppLayout } from 'app/components/AppLayout';
 import { IdentityElements } from 'app/components/IdentityElements';
 import {
   OnState,
@@ -12,7 +13,6 @@ import {
 import { AsyncRegion } from 'components/AsyncRegion';
 import { Button } from 'components/Button';
 import { InformationBanner } from 'components/InformationBanner';
-import { PageLayout } from 'components/PageLayout';
 import { PageSection } from 'components/PageSection';
 import { Spinner } from 'components/Spinner';
 import { Heading, Typography } from 'components/Typography';
@@ -43,7 +43,7 @@ export const IdentityForm = () => {
       <Head>
         <title>{t('pages.identity.pageTitle')}</title>
       </Head>
-      <PageLayout isWithoutFooter>
+      <AppLayout isWithoutFooter>
         <AsyncRegion pending={isRequesting}>
           <PageSection>
             <div
@@ -125,7 +125,7 @@ export const IdentityForm = () => {
             </form>
           </PageSection>
         </AsyncRegion>
-      </PageLayout>
+      </AppLayout>
     </>
   );
 };

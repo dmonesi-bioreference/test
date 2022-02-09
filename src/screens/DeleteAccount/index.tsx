@@ -1,11 +1,11 @@
 import Head from 'next/head';
 
+import { AppLayout } from 'app/components/AppLayout';
 import { useAppTranslation } from 'app/components/Shell';
 import { ActionGroup } from 'components/ActionGroup';
 import { Button } from 'components/Button';
 import { ContentBlock } from 'components/ContentBlock';
 import { Icon } from 'components/Icon';
-import { PageLayout } from 'components/PageLayout';
 import { PageSection } from 'components/PageSection';
 
 export const DeleteAccount = () => {
@@ -15,7 +15,7 @@ export const DeleteAccount = () => {
       <Head>
         <title>{t('pages.deleteAccount.pageTitle')}</title>
       </Head>
-      <PageLayout title={t('pages.deleteAccount.title')} kind="secondary">
+      <AppLayout title={t('pages.deleteAccount.title')} kind="secondary">
         <PageSection>
           <ContentBlock scale="small">
             {t('pages.deleteAccount.description.paragraph1', {
@@ -60,7 +60,7 @@ export const DeleteAccount = () => {
             {t('pages.deleteAccount.actions.secondary.label')}
           </Button>
         </ActionGroup>
-      </PageLayout>
+      </AppLayout>
     </>
   );
 };

@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 
+import { AppLayout } from 'app/components/AppLayout';
 import { Content } from 'app/components/ContentElements';
 import {
   useAppEvents,
@@ -9,7 +10,6 @@ import {
   useAppTranslation,
 } from 'app/components/Shell';
 import { ContentBlock } from 'components/ContentBlock';
-import { PageLayout } from 'components/PageLayout';
 import { PageSection } from 'components/PageSection';
 import { ReturnLink } from 'components/ReturnLink';
 import { Spinner } from 'components/Spinner';
@@ -65,7 +65,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = (props) => {
           })}
         </title>
       </Head>
-      <PageLayout theme="resourcesTheme">
+      <AppLayout theme="resourcesTheme">
         <ContentPageStyled>
           <ReturnLink label="Return" href="/demo/resources" />
           <PageSection>
@@ -99,7 +99,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = (props) => {
             )}
           </PageSection>
         </ContentPageStyled>
-      </PageLayout>
+      </AppLayout>
     </>
   );
 };

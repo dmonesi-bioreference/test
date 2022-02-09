@@ -4,11 +4,11 @@ import { Shell } from 'app';
 import { Typography } from 'components';
 import { tokens } from 'styles';
 
-import PageLayout from './PageLayout';
+import { AppLayout } from './AppLayout';
 
 export default {
-  component: PageLayout,
-  title: 'Components/PageLayout',
+  component: AppLayout,
+  title: 'Components/AppLayout',
   parameters: {
     componentSubtitle: 'Defines the layout of every page.',
   },
@@ -17,11 +17,11 @@ export default {
 const Template: Story = (args) => (
   <Shell>
     <div style={{ width: 375 }}>
-      <PageLayout {...args}>
+      <AppLayout {...args}>
         <ExampleSection />
         <ExampleSection />
         <ExampleSection />
-      </PageLayout>
+      </AppLayout>
     </div>
   </Shell>
 );

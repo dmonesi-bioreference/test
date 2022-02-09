@@ -1,7 +1,5 @@
 import { ThemeProvider } from 'styled-components';
 
-import { PatientBanner } from 'app/components';
-import { Footer } from 'app/components/Footer';
 import { Header } from 'components/Header';
 import { PageBorder } from 'components/PageBorder';
 import { PageHeader } from 'components/PageHeader';
@@ -13,9 +11,9 @@ import PageLayoutStyled from './PageLayout.styles';
 export interface PageLayoutProps {
   kind?: 'preLogin' | 'home' | 'primary' | 'secondary' | 'content';
   containsCards?: boolean;
-  isWithoutFooter?: boolean;
+  footer?: React.ReactNode;
+  banner?: React.ReactNode;
   isLoading?: boolean;
-  hasPatientBanner?: boolean;
   description?: string;
   title?: string;
   theme?: Themes;
@@ -24,7 +22,6 @@ export interface PageLayoutProps {
 const PageLayout: React.FC<PageLayoutProps> = ({
   kind = 'primary',
   theme = 'defaultTheme',
-  isWithoutFooter = false,
   ...props
 }) => {
   const withCards = props.containsCards ? '--with-cards' : '';
@@ -35,12 +32,13 @@ const PageLayout: React.FC<PageLayoutProps> = ({
       </PageHeader>
     </>
   ) : null;
+
   return (
     <ThemeProvider theme={getTheme(theme)}>
       <PageLayoutStyled className={`page-layout--${theme}`}>
         <GlobalStyle />
         <Header />
-        {props.hasPatientBanner && <PatientBanner />}
+        {props.banner}
         <PageBorder loading={props.isLoading ? 'loading' : 'loaded'} />
         {withHeader}
         <main
@@ -48,7 +46,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
         >
           {props.children}
         </main>
-        {!isWithoutFooter && <Footer />}
+        {props.footer}
       </PageLayoutStyled>
     </ThemeProvider>
   );

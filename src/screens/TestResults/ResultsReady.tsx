@@ -1,20 +1,17 @@
 import { useEffect } from 'react';
 
+import { AppLayout } from 'app/components/AppLayout';
+import { ArticleCards } from 'app/components/ContentElements';
+import { MediaElements } from 'app/components/MediaElements';
 import {
-  MediaElements,
   useAppEvents,
   useAppTranslation,
   useAppSelector,
-  ArticleCards,
-} from 'app';
-import {
-  Button,
-  Heading,
-  Icon,
-  Typography,
-  PageLayout,
-  PageSection,
-} from 'components';
+} from 'app/components/Shell';
+import { Button } from 'components/Button';
+import { Icon } from 'components/Icon';
+import { PageSection } from 'components/PageSection';
+import { Heading, Typography } from 'components/Typography';
 
 import ResultsReadyStyled from './ResultsReady.styles';
 
@@ -29,7 +26,7 @@ export const ResultsReady = () => {
   }, []);
 
   return (
-    <PageLayout containsCards hasPatientBanner>
+    <AppLayout containsCards hasPatientBanner>
       <PageSection>
         <ResultsReadyStyled>
           <div className="results-ready__nav">
@@ -71,6 +68,6 @@ export const ResultsReady = () => {
         <Heading>{t('pages.resources.section.articles.title')}</Heading>
         <ArticleCards feature="RESULTS" />
       </PageSection>
-    </PageLayout>
+    </AppLayout>
   );
 };

@@ -1,5 +1,6 @@
 import Head from 'next/head';
 
+import { AppLayout } from 'app/components/AppLayout';
 import { useAppTranslation } from 'app/components/Shell';
 import AcademicResearch from 'assets/images/png/AcademicResearch.png';
 import ResultsToProvider1_4 from 'assets/images/png/ResultsToProvider1_4.png';
@@ -7,7 +8,6 @@ import { ActionGroup } from 'components/ActionGroup';
 import { Button } from 'components/Button';
 import { Carousel } from 'components/Carousel';
 import { LinkCard } from 'components/LinkCard';
-import { PageLayout } from 'components/PageLayout';
 
 export const Onboarding = () => {
   const t = useAppTranslation();
@@ -34,7 +34,7 @@ export const Onboarding = () => {
       <Head>
         <title>{t('pages.onboarding.pageTitle')}</title>
       </Head>
-      <PageLayout containsCards isWithoutFooter>
+      <AppLayout containsCards isWithoutFooter>
         <Carousel>
           {articleCardSpecs.map((articleCardSpec, i) => (
             <LinkCard
@@ -53,7 +53,7 @@ export const Onboarding = () => {
             {t('pages.onboarding.actions.primary.label')}
           </Button>
         </ActionGroup>
-      </PageLayout>
+      </AppLayout>
     </>
   );
 };

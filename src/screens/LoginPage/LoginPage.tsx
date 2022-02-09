@@ -1,5 +1,6 @@
 import Head from 'next/head';
 
+import { AppLayout } from 'app/components/AppLayout';
 import { LoginElements } from 'app/components/LoginElements';
 import {
   OnState,
@@ -11,7 +12,6 @@ import {
 import { ActionGroup } from 'components/ActionGroup';
 import { Button } from 'components/Button';
 import { InformationBanner } from 'components/InformationBanner';
-import { PageLayout } from 'components/PageLayout';
 import { Spinner } from 'components/Spinner';
 import { Typography } from 'components/Typography';
 import { tokens } from 'styles/tokens';
@@ -28,7 +28,7 @@ export const LoginPage = () => {
       <Head>
         <title>{t('pages.login.pageTitle')}</title>
       </Head>
-      <PageLayout>
+      <AppLayout>
         {anyErrors ? (
           <InformationBanner
             title={t('sections.identity.errors.title')}
@@ -97,7 +97,7 @@ export const LoginPage = () => {
             </Button>
           </ActionGroup>
         </form>
-      </PageLayout>
+      </AppLayout>
     </>
   );
 };

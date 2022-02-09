@@ -1,5 +1,9 @@
-import { ArticleCards, useAppState, useAppTranslation } from 'app';
-import { Card, CircularProgress, PageLayout, PageSection } from 'components';
+import { AppLayout } from 'app/components/AppLayout';
+import { ArticleCards } from 'app/components/ContentElements';
+import { useAppState, useAppTranslation } from 'app/components/Shell';
+import { Card } from 'components/Card';
+import { CircularProgress } from 'components/CircularProgress';
+import { PageSection } from 'components/PageSection';
 import { Typography, Heading } from 'components/Typography';
 import { colors } from 'styles';
 
@@ -12,7 +16,7 @@ export const WaitingForResults = () => {
   const requesting = useAppState('requests.identityProfile.requesting');
 
   return (
-    <PageLayout
+    <AppLayout
       containsCards
       hasPatientBanner
       theme="healthProfileTheme"
@@ -50,6 +54,6 @@ export const WaitingForResults = () => {
         <Heading>{t('pages.resources.section.articles.title')}</Heading>
         <ArticleCards feature="RESULTS" />
       </PageSection>
-    </PageLayout>
+    </AppLayout>
   );
 };
