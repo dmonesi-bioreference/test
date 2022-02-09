@@ -8,7 +8,11 @@ import { useAppEvents, useAppTranslation } from '../Shell';
 import { Content } from './Content';
 import { useContent, useContentByTestStatus } from './hooks';
 
-export const ArticleCards = () => {
+export interface ArticleCardsProps {
+  feature?: Feature;
+}
+
+export const ArticleCards: React.FC<ArticleCardsProps> = (props) => {
   const t = useAppTranslation();
   const { allArticlesRequest } = useAppEvents();
 
@@ -18,7 +22,13 @@ export const ArticleCards = () => {
 
   const articlesByTestStatus = useContentByTestStatus(articles) as Article[];
 
-  const articleCards = articlesByTestStatus.map((article) => {
+  const articlesByFeature = props.feature
+    ? articlesByTestStatus.filter(
+        (article) => article.feature === props.feature
+      )
+    : articlesByTestStatus;
+
+  const articleCards = articlesByFeature.map((article) => {
     return (
       <LinkCard
         key={article.id}
@@ -37,22 +47,27 @@ export const ArticleCards = () => {
     );
   });
 
-  return loadingArticles ? (
-    <Spinner />
-  ) : errorFetchingArticles ? (
-    <Typography color="error" level="7" type="heading">
-      {t('pages.resources.section.articles.error')}
-    </Typography>
-  ) : (
-    <Carousel
-      showIndicator={false}
-      externalControl={{
-        prevText: t('pages.resources.section.articles.prevArticle'),
-        nextText: t('pages.resources.section.articles.nextArticle'),
-      }}
-      enablePeak={true}
-    >
-      {articleCards}
-    </Carousel>
+  return (
+    <div>
+      {loadingArticles ? <Spinner /> : null}
+      {errorFetchingArticles ? (
+        <Typography color="error" level="7" type="heading">
+          {t('pages.resources.section.articles.error')}
+        </Typography>
+      ) : null}
+
+      {articlesByFeature.length !== 0 ? (
+        <Carousel
+          showIndicator={false}
+          externalControl={{
+            prevText: t('pages.resources.section.articles.prevArticle'),
+            nextText: t('pages.resources.section.articles.nextArticle'),
+          }}
+          enablePeak={true}
+        >
+          {articleCards}
+        </Carousel>
+      ) : null}
+    </div>
   );
 };

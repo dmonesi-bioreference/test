@@ -12,6 +12,7 @@ export const articleByUrlSlug = (urlSlug: String) => `
             type
             filesize
           }
+          feature
           label
           title
           blurb
@@ -75,6 +76,7 @@ export const articleById = (id: String) => `
         type
         filesize
       }
+      feature
       label
       title
       blurb
@@ -138,6 +140,7 @@ export const articles = () => `
             type
             filesize
           }
+          feature
           label
           title
           blurb

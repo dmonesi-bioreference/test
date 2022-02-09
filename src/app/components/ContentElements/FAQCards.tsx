@@ -51,16 +51,19 @@ export const FAQCards = () => {
           {t('pages.resources.section.faqs.error')}
         </Typography>
       ) : null}
-      <Carousel
-        showIndicator={false}
-        externalControl={{
-          prevText: t('pages.resources.section.faqs.prevFAQ'),
-          nextText: t('pages.resources.section.faqs.nextFAQ'),
-        }}
-        enablePeak={true}
-      >
-        {FAQCards}
-      </Carousel>
+
+      {faqsByTestStatus.length !== 0 ? (
+        <Carousel
+          showIndicator={false}
+          externalControl={{
+            prevText: t('pages.resources.section.faqs.prevFAQ'),
+            nextText: t('pages.resources.section.faqs.nextFAQ'),
+          }}
+          enablePeak={true}
+        >
+          {FAQCards}
+        </Carousel>
+      ) : null}
     </div>
   );
 };

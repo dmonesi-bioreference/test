@@ -6,6 +6,7 @@ import {
   useAppTranslation,
   useAppSelector,
   PatientBanner,
+  ArticleCards,
 } from 'app';
 import {
   Button,
@@ -68,6 +69,8 @@ export const ResultsReady = () => {
             }}
           />
         </ResultsReadyStyled>
+        <Heading>{t('pages.resources.section.articles.title')}</Heading>
+        <ArticleCards feature="RESULTS" />
       </PageSection>
     </PageLayout>
   );

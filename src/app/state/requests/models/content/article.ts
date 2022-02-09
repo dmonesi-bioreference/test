@@ -14,6 +14,7 @@ declare global {
     introduceAt?: IntroduceAt;
     owner?: string;
     priority?: number;
+    feature?: Feature;
   }
 
   interface RequestModelMap {

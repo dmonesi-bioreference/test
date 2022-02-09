@@ -15,8 +15,8 @@ export const single: Article = {
   contents: [
     {
       title: 'Title',
-      content: '<p>Content</p>'
-    }
+      content: '<p>Content</p>',
+    },
   ],
   slug: 'slug',
   published: Date.now(),
@@ -25,3 +25,8 @@ export const single: Article = {
 };
 
 export const list: Article[] = [single];
+
+export const create = (updates: Partial<Article> = {}) => ({
+  ...single,
+  ...updates,
+});

@@ -1,4 +1,4 @@
-import { PatientBanner, useAppState, useAppTranslation } from 'app';
+import { ArticleCards, PatientBanner, useAppState, useAppTranslation } from 'app';
 import { Card, CircularProgress, PageLayout, PageSection } from 'components';
 import { Typography, Heading } from 'components/Typography';
 import { colors } from 'styles';
@@ -47,6 +47,8 @@ export const WaitingForResults = () => {
             {t('pages.results.waiting.article.heading')}.
           </Heading>
         </WaitingForResultsStyled>
+        <Heading>{t('pages.resources.section.articles.title')}</Heading>
+        <ArticleCards feature="RESULTS" />
       </PageSection>
     </PageLayout>
   );
