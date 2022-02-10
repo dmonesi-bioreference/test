@@ -12,6 +12,7 @@ import {
 } from 'app/components/Shell';
 import { AsyncRegion } from 'components/AsyncRegion';
 import { Button } from 'components/Button';
+import { Grid } from 'components/Grid';
 import { InformationBanner } from 'components/InformationBanner';
 import { PageSection } from 'components/PageSection';
 import { Spinner } from 'components/Spinner';
@@ -48,19 +49,22 @@ export const IdentityForm = () => {
           <PageSection>
             <div
               style={{
-                textAlign: 'center',
+                alignItems: 'center',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: tokens.spacingXLarge,
-                marginBottom: tokens.spacing,
+                marginTop: tokens.spacingXxLarge,
+                marginBottom: tokens.spacingXxLarge,
               }}
             >
-              <Heading level="1" alignment="center">
-                {t('sections.identity.title')}
-              </Heading>
-              <Heading level="4" alignment="center">
-                {t('sections.identity.subTitle')}
-              </Heading>
+              <Grid>
+                <Heading level="1" alignment="center">
+                  {t('sections.identity.title')}
+                </Heading>
+                <Heading level="4" alignment="center">
+                  {t('sections.identity.subTitle')}
+                </Heading>
+              </Grid>
             </div>
             {anyErrors ? (
               <InformationBanner

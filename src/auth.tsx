@@ -192,23 +192,36 @@ ReactDOM.render(
       const { relationship: relationshipToPatient, dob: dateOfBirth } =
         context.forms.caregiverRelationship.values;
 
-      const response = await Api.Identity.confirm(context);
+      try {
+        const validation = await Api.Identity.validate(context);
+        const response = await Api.Identity.confirm(context);
 
-      if (response.IsSuccess) {
-        await register({
-          consentGiven,
-          termsAccepted,
-          email,
-          mobileNumber,
-          password,
-          patientGuid,
-          firstName,
-          lastName,
-          relationshipToPatient,
-          dateOfBirth,
-        });
-      } else {
-        throw new Error('Unable to confirm registration');
+        if (!validation.IsSuccess) {
+          return Promise.reject(
+            'Unable to validate your information. Please check your contact information and try again.'
+          );
+        }
+
+        if (response.IsSuccess) {
+          await register({
+            consentGiven,
+            termsAccepted,
+            email,
+            mobileNumber,
+            password,
+            patientGuid,
+            firstName,
+            lastName,
+            relationshipToPatient,
+            dateOfBirth,
+          });
+        } else {
+          return Promise.reject(response.ValidationResult.Errors);
+        }
+      } catch {
+        return Promise.reject(
+          'We encountered an unexpected issue registering your account.'
+        );
       }
     }}
   >

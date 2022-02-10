@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { CaregiverPasswordElements } from 'app/components/CaregiverPasswordElements';
 import {
   useAppEvents,
+  useAppSelector,
   useAppState,
   useAppTranslation,
 } from 'app/components/Shell';
@@ -41,6 +42,9 @@ export function Password() {
   const t = useAppTranslation();
   const events = useAppEvents();
   const isValid = useAppState('forms.password.validation.valid');
+  const isRegistering = useAppState('auth.registering');
+  const errors = useAppSelector((state) => state.context.auth.errors);
+  const anyErrors = errors.length > 0;
 
   return (
     <>
@@ -75,6 +79,20 @@ export function Password() {
         </InformationBanner>
       </motion.div>
 
+      {anyErrors ? (
+        <InformationBanner
+          title={t('sections.furtherRegistration.stepFour.errors.title')}
+          type="error"
+        >
+          <div style={{ marginBottom: tokens.spacing }}>
+            {errors.map((error) => (
+              <Typography type="body" key={error}>
+                <strong>{error}</strong>
+              </Typography>
+            ))}
+          </div>
+        </InformationBanner>
+      ) : null}
       <motion.form
         variants={slideInOut.variants}
         initial={slideInOut.states.enter}
@@ -94,7 +112,7 @@ export function Password() {
           kind="primary"
           onClick={events.register}
           submit={true}
-          disabled={!isValid}
+          disabled={!isValid || isRegistering}
         >
           {t('sections.furtherRegistration.next')}
         </Button>

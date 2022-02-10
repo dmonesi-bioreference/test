@@ -80,38 +80,6 @@ describe('Identity.confirm', () => {
     expect(listener).toHaveBeenCalledWith({ ...payload, Phone: '1234567890' });
     expect(response).toEqual({});
   });
-
-  it('rejects 4xx with response body', async () => {
-    const payload = {
-      email: 'person@example.com',
-      Phone: '123-456-7890',
-      PatientUserId: '1111-22222-33333-44444',
-    };
-
-    const context = {
-      auth: { patientGuid: payload.PatientUserId },
-      forms: {
-        identity: {
-          values: {
-            email: payload.email,
-            phone: payload.Phone,
-          },
-        },
-      },
-    };
-
-    const requests = [400, 401, 403] as const;
-
-    for (const status of requests) {
-      server.use(
-        rest.post('/api/identity/confirm', (request, response, context) => {
-          return response(context.status(status), context.json({}));
-        })
-      );
-
-      await expect(Identity.confirm(context as any)).rejects.toEqual({});
-    }
-  });
 });
 
 describe('Identity.validate', () => {
@@ -150,41 +118,5 @@ describe('Identity.validate', () => {
 
     expect(listener).toHaveBeenCalledWith({ ...payload, Phone: '1234567890' });
     expect(response).toEqual({});
-  });
-
-  it('rejects 4xx with response body', async () => {
-    const payload = {
-      email: 'person@example.com',
-      Phone: '1234567899',
-      zip: '07869',
-      PatientPortalUserId: '1111-22222-33333-44444',
-      dateOfBirth: '11/09/2021',
-    };
-
-    const context = {
-      auth: { patientGuid: payload.PatientPortalUserId },
-      forms: {
-        identity: {
-          values: {
-            email: payload.email,
-            dob: payload.dateOfBirth,
-            zip: payload.zip,
-            phone: payload.Phone,
-          },
-        },
-      },
-    };
-
-    const requests = [400, 401, 403] as const;
-
-    for (const status of requests) {
-      server.use(
-        rest.post('/api/identity/validate', (request, response, context) => {
-          return response(context.status(status), context.json({}));
-        })
-      );
-
-      await expect(Identity.validate(context as any)).rejects.toEqual({});
-    }
   });
 });

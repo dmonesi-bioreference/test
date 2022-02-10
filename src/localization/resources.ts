@@ -818,6 +818,9 @@ export const resources = {
               'Giving us some extra information about you can help us to tailor your experience with us.',
           },
           stepFour: {
+            errors: {
+              title: 'There was a problem registering.',
+            },
             subTitle:
               'Lastly, create a strong password to help keep your account and your information safe.',
           },

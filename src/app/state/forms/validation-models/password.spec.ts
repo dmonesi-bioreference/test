@@ -6,9 +6,9 @@ describe('Validating passwords', () => {
   const validate = async (password: Partial<ValidationModelMap['password']>) =>
     await validatePassword(password).catch((error) => error);
 
-  it('requires passwords of length 8 or more', async () => {
+  it('requires passwords of length 9 or more', async () => {
     const invalid = await validate({
-      password: 'argle',
+      password: 'arglebar',
     });
 
     expect(invalid).toContainEqual({

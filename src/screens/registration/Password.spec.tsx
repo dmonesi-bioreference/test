@@ -1,8 +1,23 @@
 import userEvent from '@testing-library/user-event';
+import { useEffect } from 'react';
 
-import { act, delay, renderWithShell } from 'test-utils';
+import { useAppEvents, useAppState } from 'app';
+import { act, delay, Mocks, renderWithShell, roles } from 'test-utils';
 
 import { Password } from './Password';
+
+function CheckIdentity() {
+  const events = useAppEvents();
+  const isVerifyingIdentity = useAppState('auth.verifyingIdentity');
+
+  useEffect(() => {
+    if (isVerifyingIdentity) {
+      events.checkIdentity();
+    }
+  }, [isVerifyingIdentity, events]);
+
+  return null;
+}
 
 describe('Password step', () => {
   it('does not explode', async () => {
@@ -51,5 +66,116 @@ describe('Password step', () => {
     });
 
     await page.findByText('Password is required', { exact: false });
+  });
+
+  it('disables the submit button when registering', async () => {
+    const password = '1 this is So Secure';
+    const page = await roles.auth.emailRegistration(
+      <>
+        <CheckIdentity />
+        <Password />
+      </>,
+      {
+        onIdentity: async () => Mocks.session.single,
+        onRegistration: async () => {
+          await new Promise((resolve) => setTimeout(resolve, 10_000_000));
+          return Promise.reject('Oh noooo');
+        },
+      }
+    );
+
+    userEvent.type(await page.findByLabelText('Password'), password);
+    userEvent.type(await page.findByLabelText('Confirm Password'), password);
+
+    await act(async () => {
+      await delay(300);
+    });
+
+    userEvent.click(await page.findByText('Next'));
+    expect((await page.findByText('Next')).parentElement).toBeDisabled();
+  });
+
+  it('displays a list of error messages when registration fails', async () => {
+    const errors = ['Error messages'];
+    const password = '1 this is So Secure';
+    const page = await roles.auth.emailRegistration(
+      <>
+        <CheckIdentity />
+        <Password />
+      </>,
+      {
+        onIdentity: async () => Mocks.session.single,
+        onRegistration: async () => Promise.reject(errors),
+      }
+    );
+
+    userEvent.type(await page.findByLabelText('Password'), password);
+    userEvent.type(await page.findByLabelText('Confirm Password'), password);
+
+    await act(async () => {
+      await delay(300);
+    });
+
+    userEvent.click(await page.findByText('Next'));
+
+    await page.findByText('There was a problem registering.');
+
+    for (const error of errors) {
+      await page.findByText(error);
+    }
+  });
+
+  it('displays error descriptions when registration fails', async () => {
+    const error = 'Error messages';
+    const password = '1 this is So Secure';
+    const page = await roles.auth.emailRegistration(
+      <>
+        <CheckIdentity />
+        <Password />
+      </>,
+      {
+        onIdentity: async () => Mocks.session.single,
+        onRegistration: async () => Promise.reject({ description: error }),
+      }
+    );
+
+    userEvent.type(await page.findByLabelText('Password'), password);
+    userEvent.type(await page.findByLabelText('Confirm Password'), password);
+
+    await act(async () => {
+      await delay(300);
+    });
+
+    userEvent.click(await page.findByText('Next'));
+
+    await page.findByText('There was a problem registering.');
+    await page.findByText(error);
+  });
+
+  it('displays text errors when registration fails', async () => {
+    const error = 'Error messages';
+    const password = '1 this is So Secure';
+    const page = await roles.auth.emailRegistration(
+      <>
+        <CheckIdentity />
+        <Password />
+      </>,
+      {
+        onIdentity: async () => Mocks.session.single,
+        onRegistration: async () => Promise.reject(error),
+      }
+    );
+
+    userEvent.type(await page.findByLabelText('Password'), password);
+    userEvent.type(await page.findByLabelText('Confirm Password'), password);
+
+    await act(async () => {
+      await delay(300);
+    });
+
+    userEvent.click(await page.findByText('Next'));
+
+    await page.findByText('There was a problem registering.');
+    await page.findByText(error);
   });
 });

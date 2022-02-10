@@ -1,5 +1,39 @@
 import { client } from './client';
 
+type ValidationResponse =
+  | {
+      IsSuccess: true;
+      ValidationResult: {
+        IsValid: true;
+        Errors: null;
+      };
+    }
+  | {
+      Data: {
+        IsAuthorized: false;
+        Code: string;
+        ErrorMessage: string;
+      };
+      IsSuccess: false;
+      ValidationResult: null;
+    };
+
+type ConfirmationResponse =
+  | {
+      IsSuccess: true;
+      ValidationResult: {
+        IsValid: true;
+        Errors: null;
+      };
+    }
+  | {
+      IsSuccess: false;
+      ValidationResult: {
+        IsValid: false;
+        Errors: string[];
+      };
+    };
+
 export const Identity = {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   profile: async (_context: AppContext = {} as any) => {
@@ -22,11 +56,7 @@ export const Identity = {
 
     const result = await client.post('/api/identity/confirm', payload);
 
-    if (result.ok) {
-      return (await result.json()) as { IsSuccess: boolean };
-    } else {
-      return Promise.reject({});
-    }
+    return (await result.json()) as ConfirmationResponse;
   },
   validate: async (context: AppContext) => {
     const { email, dob, zip, phone } = context.forms.identity.values;
@@ -41,11 +71,7 @@ export const Identity = {
 
     const result = await client.post('/api/identity/validate', payload);
 
-    if (result.ok) {
-      return (await result.json()) as {};
-    } else {
-      return Promise.reject({});
-    }
+    return (await result.json()) as ValidationResponse;
   },
 };
 

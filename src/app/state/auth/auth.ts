@@ -1,4 +1,6 @@
 import { assign } from '@xstate/immer';
+import isArray from 'lodash/isArray';
+import isObject from 'lodash/isObject';
 import { send } from 'xstate';
 
 import { isAuthenticatedSession, isPatientInfo } from './models';
@@ -36,6 +38,21 @@ export const actions = {
 
     if ('error_description' in data) {
       context.auth.errors = [data['error_description'] as string];
+    }
+  }),
+  collectRegistrationErrors: assign((context: AppContext, event: AppEvents) => {
+    const data = 'data' in event ? (event?.data as {}) : {};
+
+    if (typeof data === 'string') {
+      context.auth.errors = [data];
+    }
+
+    if (isArray(data)) {
+      context.auth.errors = data;
+    }
+
+    if (isObject(data) && Reflect.has(data, 'description')) {
+      context.auth.errors = [Reflect.get(data, 'description') as string];
     }
   }),
   collectSession: assign((context: AppContext, event: AppEvents) => {
@@ -126,6 +143,7 @@ export const machine = {
         onDone: 'knownCaregiver',
         onError: {
           target: 'registration',
+          actions: 'collectRegistrationErrors',
         },
       },
     },
