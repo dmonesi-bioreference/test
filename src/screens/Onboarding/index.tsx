@@ -1,58 +1,42 @@
 import Head from 'next/head';
+import { useEffect, useState } from 'react';
 
 import { AppLayout } from 'app/components/AppLayout';
-import { useAppTranslation } from 'app/components/Shell';
-import AcademicResearch from 'assets/images/png/AcademicResearch.png';
-import ResultsToProvider1_4 from 'assets/images/png/ResultsToProvider1_4.png';
-import { ActionGroup } from 'components/ActionGroup';
+import { OnBoardingStories } from 'app/components/ContentElements';
+import { useContent } from 'app/components/ContentElements/hooks';
+import { useAppEvents, useAppTranslation } from 'app/components/Shell';
 import { Button } from 'components/Button';
-import { Carousel } from 'components/Carousel';
-import { LinkCard } from 'components/LinkCard';
+import { PageSection } from 'components/PageSection';
+import { IdentityForm } from 'screens/IdentityForm';
 
-export const Onboarding = () => {
+export const OnBoarding = () => {
   const t = useAppTranslation();
+  const [beginRegistration, setBeginRegistration] = useState(false);
+  const { allOnBoardingCardsRequest } = useAppEvents();
 
-  const articleCardSpecs = [
-    {
-      imageSrc: AcademicResearch,
-      imageTitle: 'Academic Research',
-      label: t('pages.onboarding.stories.1.label'),
-      heading: t('pages.onboarding.stories.1.heading'),
-      body: t('pages.onboarding.stories.1.description'),
-    },
-    {
-      imageSrc: ResultsToProvider1_4,
-      imageTitle: 'Results To Provider',
-      label: t('pages.onboarding.stories.2.label'),
-      heading: t('pages.onboarding.stories.2.heading'),
-      body: t('pages.onboarding.stories.2.description'),
-    },
-  ];
+  useEffect(allOnBoardingCardsRequest, [allOnBoardingCardsRequest]);
 
-  return (
+  const [{ loadingOnBoardingCards }] = useContent();
+
+  return beginRegistration ? (
+    <IdentityForm />
+  ) : (
     <>
       <Head>
-        <title>{t('pages.onboarding.pageTitle')}</title>
+        <title>{t('pages.onboarding.title')}</title>
       </Head>
-      <AppLayout containsCards isWithoutFooter>
-        <Carousel>
-          {articleCardSpecs.map((articleCardSpec, i) => (
-            <LinkCard
-              variant="article"
-              key={i}
-              imageSrc={articleCardSpec.imageSrc}
-              imageAlt={articleCardSpec.imageTitle}
-              label={articleCardSpec.label}
-              heading={articleCardSpec.heading}
-              body={articleCardSpec.body}
-            />
-          ))}
-        </Carousel>
-        <ActionGroup>
-          <Button kind="primary" href="/demo/authentication-form">
-            {t('pages.onboarding.actions.primary.label')}
+      <AppLayout
+        kind="preLogin"
+        isLoading={loadingOnBoardingCards}
+        containsCards
+        isWithoutFooter
+      >
+        <PageSection>
+          <OnBoardingStories />
+          <Button kind="primary" onClick={() => setBeginRegistration(true)}>
+            {t('pages.onboarding.actions.beginRegistration')}
           </Button>
-        </ActionGroup>
+        </PageSection>
       </AppLayout>
     </>
   );

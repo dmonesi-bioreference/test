@@ -21,7 +21,7 @@ export * from './IconButton';
 export * from './InformationBanner';
 export * from './Input';
 export * from './InputHelper';
-export * from './LinkCard';
+export * from './ContentCard';
 export * from './List';
 export * from './ListCard';
 export * from './Loading';

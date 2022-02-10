@@ -50,6 +50,7 @@ function WebApp({ Component, pageProps }: AppProps) {
       allFaqs: Api.Content.faqs,
       allInternalLinkCards: Api.Content.internalLinkCards,
       allAudios: Api.Content.audios,
+      allOnBoardingCards: Api.Content.onBoardingCards,
     };
 
     return requests;

@@ -24,10 +24,12 @@ export const resources = {
             },
           },
           actions: {
-            primary: {
-              label: 'Register Now',
-            },
+            beginRegistration: 'Begin Registration',
           },
+          error: 'Error fetching on-boarding stories.',
+          nextStory: 'Next Story',
+          previousStory: 'Previous Story',
+          title: 'On Boarding',
         },
         login: {
           pageTitle: 'Login | GeneDx',

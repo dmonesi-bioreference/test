@@ -2,7 +2,9 @@ import camelCase from 'lodash/camelCase';
 import { useEffect } from 'react';
 
 import { useAppEvents, useAppTranslation } from 'app/components/Shell';
-import { LinkCard, Spinner, Typography } from 'components';
+import { ContentCard } from 'components/ContentCard';
+import { Spinner } from 'components/Spinner';
+import { Typography } from 'components/Typography';
 import { isTheme, Theme } from 'styles';
 
 import { Content } from './Content';
@@ -40,12 +42,9 @@ export const InternalLinkCards = () => {
     <InternalLinkCardsStyled>
       {internalLinkCards.map((internalLinkCard, index) => {
         const theme = `${camelCase(internalLinkCard.label)}Theme`;
-         return (
-          <Theme
-            key={index}
-            theme={isTheme(theme) ? theme : 'defaultTheme'}
-          >
-            <LinkCard
+        return (
+          <Theme key={index} theme={isTheme(theme) ? theme : 'defaultTheme'}>
+            <ContentCard
               variant="link"
               href={`/demo/${internalLinkCard.label
                 .split(' ')
@@ -61,9 +60,9 @@ export const InternalLinkCards = () => {
               heading={internalLinkCard.title}
             >
               <Content>{internalLinkCard.blurb}</Content>
-            </LinkCard>
+            </ContentCard>
           </Theme>
-        )
+        );
       })}
     </InternalLinkCardsStyled>
   );

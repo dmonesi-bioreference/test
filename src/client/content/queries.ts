@@ -299,3 +299,31 @@ export const audios = () => `
     }
   }
 `;
+
+export const onBoardingCards = () => `
+  query {
+    getOnboardingStoryCardListing{
+      edges {
+        node {
+          id
+          title
+          bannerImage {
+            id
+            filename
+            fullpath
+            mimetype
+            type
+            filesize
+          }
+          priority
+          label
+          author
+          blurb
+          owner
+          reviewByDate
+          unpublishDate
+        }
+      }
+    }
+  }
+`;

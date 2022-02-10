@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 import { Carousel } from 'components/Carousel';
-import { LinkCard } from 'components/LinkCard';
+import { ContentCard } from 'components/ContentCard';
 import { Spinner } from 'components/Spinner';
 import { Typography } from 'components/Typography';
 import { tokens } from 'styles';
@@ -33,7 +33,7 @@ export const ArticleCards: React.FC<ArticleCardsProps> = (props) => {
 
   const articleCards = articlesByFeature.map((article) => {
     return (
-      <LinkCard
+      <ContentCard
         key={article.id}
         href={`/demo/article${article.slug}`}
         variant="article"
@@ -46,7 +46,7 @@ export const ArticleCards: React.FC<ArticleCardsProps> = (props) => {
         <div style={{ marginBottom: tokens.spacingLarge }}>
           <Content>{article.blurb}</Content>
         </div>
-      </LinkCard>
+      </ContentCard>
     );
   });
 

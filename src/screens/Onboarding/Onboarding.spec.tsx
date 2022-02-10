@@ -1,49 +1,15 @@
 import { renderWithShell } from 'test-utils';
 
-import { Onboarding } from './index';
+import { OnBoarding } from './index';
 
-describe('The authentication token page', () => {
+describe('The pre registration on-boarding page', () => {
   it('does not explode', async () => {
-    await renderWithShell(<Onboarding />);
+    await renderWithShell(<OnBoarding />);
   });
 
-  describe('First onboarding story', () => {
-    it('has a label', async () => {
-      const page = await renderWithShell(<Onboarding />);
+  it('has a primary action to begin registration', async () => {
+    const page = await renderWithShell(<OnBoarding />);
 
-      await page.findAllByText('Results & ', { exact: false });
-    });
-
-    it('has a heading', async () => {
-      const page = await renderWithShell(<Onboarding />);
-
-      await page.findAllByText('View and learn ', { exact: false });
-    });
-
-    it('has a description', async () => {
-      const page = await renderWithShell(<Onboarding />);
-
-      await page.findAllByText('We provide you ', { exact: false });
-    });
-  });
-
-  describe('Second onboarding story', () => {
-    it('has a label', async () => {
-      const page = await renderWithShell(<Onboarding />);
-
-      await page.findAllByText('Records ', { exact: false });
-    });
-
-    it('has a heading', async () => {
-      const page = await renderWithShell(<Onboarding />);
-
-      await page.findAllByText('Keep all records ', { exact: false });
-    });
-
-    it('has a description', async () => {
-      const page = await renderWithShell(<Onboarding />);
-
-      await page.findAllByText('Along with your ', { exact: false });
-    });
+    await page.findByText('Begin Registration');
   });
 });

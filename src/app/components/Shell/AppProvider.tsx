@@ -73,6 +73,10 @@ export function AppProvider({
     handleAllAudiosRequest:
       requests?.allAudios ||
       (async () => Promise.reject(Errors.api('No audios available'))),
+    handleAllOnBoardingCardsRequest:
+      requests?.allOnBoardingCards ||
+      (async () =>
+        Promise.reject(Errors.api('No on boarding cards available'))),
   };
 
   const services = {

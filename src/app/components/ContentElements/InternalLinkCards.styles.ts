@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-import LinkCardStyles from 'components/LinkCard/LinkCard.styles';
+import ContentCardStyles from 'components/ContentCard/ContentCard.styles';
 import { base, tokens } from 'styles';
 
 const InternalLinkCardsStyled = styled.div`
   ${base}
 
-  ${LinkCardStyles} {
+  ${ContentCardStyles} {
     margin-bottom: ${tokens.spacingLarge};
 
     .label {

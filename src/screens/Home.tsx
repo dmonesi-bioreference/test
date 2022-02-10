@@ -1,7 +1,7 @@
 import { OnState } from 'app/components/Shell';
 import { LoginPage } from 'screens/LoginPage';
+import { OnBoarding } from 'screens/Onboarding';
 
-import { IdentityForm } from './IdentityForm';
 import { LandingPage } from './LandingPage';
 import { RegistrationWizard } from './registration';
 
@@ -15,7 +15,7 @@ export function Home() {
         <LoginPage />
       </OnState>
       <OnState matches="auth.verifyingIdentity">
-        <IdentityForm />
+        <OnBoarding />
       </OnState>
       <OnState matches="auth.registration">
         <RegistrationWizard />

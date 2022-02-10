@@ -37,7 +37,10 @@ const PageLayout: React.FC<PageLayoutProps> = ({
     <ThemeProvider theme={getTheme(theme)}>
       <PageLayoutStyled className={`page-layout--${theme}`}>
         <GlobalStyle />
-        <Header />
+        <Header
+          withoutMenu={kind === 'preLogin'}
+          alignment={kind === 'preLogin' ? 'center' : 'default'}
+        />
         {props.banner}
         <PageBorder loading={props.isLoading ? 'loading' : 'loaded'} />
         {withHeader}

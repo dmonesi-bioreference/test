@@ -4,16 +4,16 @@ import { Card } from 'components/Card';
 import { Icon } from 'components/Icon';
 import { Typography, Heading } from 'components/Typography';
 
-import LinkCardStyled from './LinkCard.styles';
+import ContentCardStyled from './ContentCard.styles';
 
 interface StaticRequire {
   default: StaticImageData;
 }
 
 declare type StaticImport = StaticRequire | StaticImageData;
-export interface LinkCardProps {
+export interface ContentCardProps {
   /** Differentiates Card behavior and style */
-  variant?: 'link' | 'article';
+  variant?: 'link' | 'article' | 'onboarding';
   /** Category label of card */
   label?: string;
   /** Prefix icon name */
@@ -32,11 +32,11 @@ export interface LinkCardProps {
   imageSrc: string | StaticImport;
 }
 
-const LinkCard: React.FC<LinkCardProps> = (props) => {
+const ContentCard: React.FC<ContentCardProps> = (props) => {
   const labelFragment =
     props.variant == 'link' ? (
       <Button
-        className='label--button'
+        className="label--button"
         kind="link-medium"
         href={props.href}
         prefix={
@@ -44,7 +44,7 @@ const LinkCard: React.FC<LinkCardProps> = (props) => {
         }
         suffix={<Icon name="chevron-right" size="small" />}
         spreadContent={true}
-        group='prefix'
+        group="prefix"
       >
         {props.label}
       </Button>
@@ -56,7 +56,7 @@ const LinkCard: React.FC<LinkCardProps> = (props) => {
     );
 
   return (
-    <LinkCardStyled {...props}>
+    <ContentCardStyled {...props}>
       <Card
         header={
           <AppImage
@@ -68,6 +68,7 @@ const LinkCard: React.FC<LinkCardProps> = (props) => {
             height={189}
           />
         }
+        transparent={props.variant ? props.variant == 'onboarding' : false}
         footer={
           props.footer ? (
             <Button
@@ -91,8 +92,8 @@ const LinkCard: React.FC<LinkCardProps> = (props) => {
           {props.children}
         </div>
       </Card>
-    </LinkCardStyled>
+    </ContentCardStyled>
   );
 };
 
-export default LinkCard;
+export default ContentCard;

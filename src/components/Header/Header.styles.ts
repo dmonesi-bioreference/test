@@ -23,6 +23,10 @@ const HeaderStyled = styled.div`
     background-color: transparent;
     cursor: pointer;
   }
+
+  .main-nav__logo--center {
+    margin: 0 auto;
+  }
 `;
 
 export default HeaderStyled;

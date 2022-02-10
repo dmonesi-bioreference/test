@@ -2,17 +2,17 @@ import { Story } from '@storybook/react/types-6-0';
 
 import AcademicResearch from 'assets/images/png/AcademicResearch.png';
 
-import LinkCard, { LinkCardProps } from './LinkCard';
+import ContentCard, { ContentCardProps } from './ContentCard';
 
 export default {
-  component: LinkCard,
-  title: 'Components/LinkCard',
+  component: ContentCard,
+  title: 'Components/ContentCard',
   parameters: {
     componentSubtitle: 'Article card for displaying images and text content',
   },
 };
 
-const Template: Story<LinkCardProps> = (args) => <LinkCard {...args} />;
+const Template: Story<ContentCardProps> = (args) => <ContentCard {...args} />;
 
 export const Article = Template.bind({});
 
@@ -32,6 +32,16 @@ Link.args = {
   prefixIcon: 'community',
   label: 'Community',
   href: '#',
+  heading: 'Find others like you',
+  body: 'Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.',
+};
+
+export const OnBoarding = Template.bind({});
+
+Link.args = {
+  variant: 'onboarding',
+  imageSrc: AcademicResearch,
+  label: 'Community',
   heading: 'Find others like you',
   body: 'Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.',
 };

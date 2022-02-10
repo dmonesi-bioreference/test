@@ -1,6 +1,6 @@
 import { Story } from '@storybook/react/types-6-0';
 
-import { LinkCard } from 'components';
+import { ContentCard } from 'components';
 
 import PageSection from './PageSection';
 
@@ -15,7 +15,7 @@ export default {
 const Template: Story = (args) => (
   <div style={{ width: 343 }}>
     <PageSection title="Read" {...args}>
-      <LinkCard
+      <ContentCard
         imageSrc="https://picsum.photos/300/150"
         variant="article"
         label="Article"

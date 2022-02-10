@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import TypographyStyled from 'components/Typography/Typography.styles';
 import { base, tokens } from 'styles';
 
-import { LinkCardProps } from './LinkCard';
+import { ContentCardProps } from './ContentCard';
 
-const LinkCardStyled = styled.div<LinkCardProps>`
+const ContentCardStyled = styled.div<ContentCardProps>`
   ${base}
 
   .label {
@@ -25,11 +25,10 @@ const LinkCardStyled = styled.div<LinkCardProps>`
   }
 
   .label--button span {
-    color: ${(props) => (
+    color: ${(props) =>
       props.variant === 'link'
-      ? lighten(0.2, props.theme.colors.headerText)
-      : props.theme.colors.headerText
-    )};
+        ? lighten(0.2, props.theme.colors.headerText)
+        : props.theme.colors.headerText};
     transition: all ${tokens.transitionMedium} ease-in-out;
   }
 
@@ -54,4 +53,4 @@ const LinkCardStyled = styled.div<LinkCardProps>`
   }
 `;
 
-export default LinkCardStyled;
+export default ContentCardStyled;

@@ -104,18 +104,42 @@ export function createContentClient(overrides: Partial<Configuration>) {
         .then((response) => response.data.getPatientFAQListing.edges[0].node),
     internalLinkCards: async () =>
       await client
-        .post<{ data: { getInternalLinkCardListing: { edges: { node: InternalLinkCard }[] } } }>(
-          GRAPHQL_ENDPOINT,
-          { query: Queries.internalLinkCards() }
-        )
+        .post<{
+          data: {
+            getInternalLinkCardListing: { edges: { node: InternalLinkCard }[] };
+          };
+        }>(GRAPHQL_ENDPOINT, { query: Queries.internalLinkCards() })
         .then(responseBody)
         .then((body) =>
           body.data.getInternalLinkCardListing.edges.map(({ node }) => ({
             ...node,
             bannerImage: {
               ...node.bannerImage,
-              fullpath: `${server_config.pimcore.domain ?? ''}${node.bannerImage?.fullpath}`,
-            }
+              fullpath: `${server_config.pimcore.domain ?? ''}${
+                node.bannerImage?.fullpath
+              }`,
+            },
+          }))
+        ),
+    onBoardingCards: async () =>
+      await client
+        .post<{
+          data: {
+            getOnboardingStoryCardListing: {
+              edges: { node: OnBoardingCard }[];
+            };
+          };
+        }>(GRAPHQL_ENDPOINT, { query: Queries.onBoardingCards() })
+        .then(responseBody)
+        .then((body) =>
+          body.data.getOnboardingStoryCardListing.edges.map(({ node }) => ({
+            ...node,
+            bannerImage: {
+              ...node.bannerImage,
+              fullpath: `${server_config.pimcore.domain ?? ''}${
+                node.bannerImage?.fullpath
+              }`,
+            },
           }))
         ),
   };

@@ -13,13 +13,29 @@ export function useContent() {
     loadingFAQs: useAppState('requests.allFaqs.requesting'),
     errorFetchingFAQs: useAppState('requests.allFaqs.failure'),
 
-    internalLinkCards: useAppSelector((state) => state.context.requests.allInternalLinkCards.values),
-    loadingInternalLinkCards: useAppState('requests.allInternalLinkCards.requesting'),
-    errorLoadingInternalLinkCards: useAppState('requests.allInternalLinkCards.failure'),
-    
+    internalLinkCards: useAppSelector(
+      (state) => state.context.requests.allInternalLinkCards.values
+    ),
+    loadingInternalLinkCards: useAppState(
+      'requests.allInternalLinkCards.requesting'
+    ),
+    errorLoadingInternalLinkCards: useAppState(
+      'requests.allInternalLinkCards.failure'
+    ),
+
     audios: useAppSelector((state) => state.context.requests.allAudios.values),
     loadingAudios: useAppState('requests.allAudios.requesting'),
     errorFetchingAudios: useAppState('requests.allAudios.failure'),
+
+    onBoardingCards: useAppSelector(
+      (state) => state.context.requests.allOnBoardingCards.values
+    ),
+    loadingOnBoardingCards: useAppState(
+      'requests.allOnBoardingCards.requesting'
+    ),
+    errorFetchingOnBoardingCards: useAppState(
+      'requests.allOnBoardingCards.failure'
+    ),
   };
 
   return [state] as const;

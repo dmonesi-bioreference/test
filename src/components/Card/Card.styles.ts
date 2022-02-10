@@ -11,6 +11,12 @@ const CardStyled = styled.div<CardProps>`
   box-shadow: ${tokens.shadowXxLarge};
   overflow: hidden;
 
+  &.card--transparent {
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
   .card__header {
     max-height: ${(props) => props.maxHeaderHeight}px;
     overflow: hidden;
