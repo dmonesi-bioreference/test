@@ -33,7 +33,7 @@ This will kick off Jest, which is a slimmer test suite that doesn't leverage the
 To run the cypress test suite you need a few accounts which are set up in specific states, to do this, provide the following environment variables
 
 | Variable name                         | Purpose                       | Default |
-|---------------------------------------|-------------------------------|---------|
+| ------------------------------------- | ----------------------------- | ------- |
 | CYPRESS_AUTH0_ROOT                    | The auth0 deployment root url |         |
 | CYPRESS_AUTH0_GUID_TEST_ORDERED       | The guid of the account       |         |
 | CYPRESS_AUTH0_USERNAME_TEST_ORDERED   | The username of the account   |         |
@@ -111,7 +111,7 @@ You can fix it locally by running yarn and then re-attempting the above commands
 This repo manages several artifacts, one of which is a smaller single-page version of the app meant for deployment into an Auth0 tenant. For Auth0 integration, we require a series of environment variables for public, private, and deploy systems to use.
 
 | Variable name          | Purpose                          | Default                            |
-|------------------------|----------------------------------|------------------------------------|
+| ---------------------- | -------------------------------- | ---------------------------------- |
 | AUTH0_SECRET           | Encryption secret for cookies    |                                    |
 | AUTH0_BASE_URL         | The current app URL              | http://localhost:3000              |
 | AUTH0_ISSUER_BASE_URL  | The base URL of the tenant       | https://bioreference-dev.auth0.com |
@@ -127,18 +127,18 @@ You can provide these in `.env.local` when you run the app.
 
 We deploy the Auth artifact with manual commands presently. Manual deployment uses the following environment variables:
 
-| Variable name              | Public | Purpose                              | Default                    |
-|----------------------------|--------|--------------------------------------|----------------------------|
-| AUTH0_DOMAIN               | Public | The current app URL                  | bioreference-dev.auth0.com |
-| AUTH0_CLIENT_ID            | Public | Our Auth0 tenant ID                  |                            |
-| AUTH0_CLIENT_SECRET        | Public | Secret for the client ID             |                            |
-| AUTH0_REALM                | Public | The DB realm / connection            | genedx-accounts            |
-| NEXT_PUBLIC_GTM_ID         | Public | The GTM ID for ... GTM               |                            |
-| PIMCORE_DOMAIN             | Public | Root URL for Pimcore provided assets |                            |
+| Variable name       | Public | Purpose                              | Default                    |
+| ------------------- | ------ | ------------------------------------ | -------------------------- |
+| AUTH0_DOMAIN        | Public | The current app URL                  | bioreference-dev.auth0.com |
+| AUTH0_CLIENT_ID     | Public | Our Auth0 tenant ID                  |                            |
+| AUTH0_CLIENT_SECRET | Public | Secret for the client ID             |                            |
+| AUTH0_REALM         | Public | The DB realm / connection            | genedx-accounts            |
+| NEXT_PUBLIC_GTM_ID  | Public | The GTM ID for ... GTM               |                            |
+| PIMCORE_DOMAIN      | Public | Root URL for Pimcore provided assets |                            |
 
 You can provide an `.env.auth` file with these values to use the commands locally.
 
-### Deployment Scripts
+### Deployment Scripts for Auth0
 
 As for the new commands in yarn, we've now got two more, directly
 related to the deployment and building of our single page artifact for
@@ -151,7 +151,7 @@ actual pushing to auth0 is not described in a workflow at the time of
 writing. It should be turned on as a separate workflow change PR, and be
 done manually until the ramifications are more clear.
 
-The auth:deploy command pulls the latest tenant state, modifies it, then
+The `auth:deploy` command pulls the latest tenant state, modifies it, then
 redeploys it once the login/registration pages are ready. This is
 incredibly space-restricted, our pages cannot grow larger than 1000kb.
 That's right - not even 1mb.
@@ -165,6 +165,12 @@ sure you haven't clobbered the page size. Don't worry, if you clobber it
 and don't check this command, Auth0 will gripe at you all on its own.
 Then you'll wind up here trying to fix things. Oh, yes.
 
+FYI: If you haven't deployed or built for auth0 before, you'll get an
+expected `no such file or directory` error, but the provided bundle size
+calculations will still be correct.
+
+`yarn auth:build-and-analyze | head`
+
 ## Colophon & Attribution
 
 - Documentation is powered by [Storybook](https://storybook.js.org).
@@ -172,7 +178,6 @@ Then you'll wind up here trying to fix things. Oh, yes.
 - Components are styled using [styled-components](https://www.styled-components.com).
 - Component architecture inspired by [Shoelace](https://shoelace.style/).
 - Icons are courtesy of [Heroicons](https://heroicons.com/).
-- Color pallettes created by [Tailwind](https://tailwindcss.com/docs/customizing-colors).
 
 ## Troubleshooting
 
@@ -188,6 +193,13 @@ Try running this command:
 
 ```sh
 yarn husky install
+```
+
+If you need to skip husky for any reason, like committing a WIP,
+you can use the flag `--no-verify`
+
+```sh
+git commit -m "wip" --no-verify
 ```
 
 **Explanation:** At some point, husky changed how they managed git hooks. Since we've

@@ -71,6 +71,11 @@ function WebApp({ Component, pageProps }: AppProps) {
     >
       <Head>
         <title>GeneDx</title>
+        <meta
+          key="viewport-scaling"
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+        />
         <link rel="icon" href="/favicon.ico" key="favicon" />
       </Head>
       <Component {...pageProps} />
