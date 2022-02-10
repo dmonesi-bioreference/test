@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 import { useAppEvents, useAppTranslation } from 'app/components/Shell';
 import { LinkCard, Spinner, Typography } from 'components';
-import { Theme } from 'styles';
+import { isTheme, Theme } from 'styles';
 
 import { Content } from './Content';
 import InternalLinkCardsStyled from './InternalLinkCards.styles';
@@ -38,34 +38,33 @@ export const InternalLinkCards = () => {
 
   return (
     <InternalLinkCardsStyled>
-      {internalLinkCards.map((internalLinkCard, index) => (
-        <Theme
-          key={index}
-          theme={
-            internalLinkCard.label
-              ? (`${camelCase(internalLinkCard.label)}Theme` as Themes)
-              : 'defaultTheme'
-          }
-        >
-          <LinkCard
-            variant="link"
-            href={`/demo/${internalLinkCard.label
-              .split(' ')
-              .join('-')
-              .toLowerCase()}`}
-            imageSrc={internalLinkCard.bannerImage?.fullpath as string}
-            imageAlt="alt-text"
-            label={internalLinkCard.label.toUpperCase()}
-            prefixIcon={internalLinkCard.label
-              .split(' ')
-              .join('-')
-              .toLowerCase()}
-            heading={internalLinkCard.title}
+      {internalLinkCards.map((internalLinkCard, index) => {
+        const theme = `${camelCase(internalLinkCard.label)}Theme`;
+         return (
+          <Theme
+            key={index}
+            theme={isTheme(theme) ? theme : 'defaultTheme'}
           >
-            <Content>{internalLinkCard.blurb}</Content>
-          </LinkCard>
-        </Theme>
-      ))}
+            <LinkCard
+              variant="link"
+              href={`/demo/${internalLinkCard.label
+                .split(' ')
+                .join('-')
+                .toLowerCase()}`}
+              imageSrc={internalLinkCard.bannerImage?.fullpath as string}
+              imageAlt="alt-text"
+              label={internalLinkCard.label.toUpperCase()}
+              prefixIcon={internalLinkCard.label
+                .split(' ')
+                .join('-')
+                .toLowerCase()}
+              heading={internalLinkCard.title}
+            >
+              <Content>{internalLinkCard.blurb}</Content>
+            </LinkCard>
+          </Theme>
+        )
+      })}
     </InternalLinkCardsStyled>
   );
 };

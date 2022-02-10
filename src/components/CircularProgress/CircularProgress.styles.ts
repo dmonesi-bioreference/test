@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { tokens } from 'styles';
-
 import { CircularProgressProps } from './CircularProgress';
 interface CircularProgressPropsWithGrid extends CircularProgressProps {
   grid: {
@@ -13,8 +11,6 @@ interface CircularProgressPropsWithGrid extends CircularProgressProps {
 }
 
 const CircularProgressStyled = styled.div<CircularProgressPropsWithGrid>`
-  ${(p) => p.marginTop && `margin-top: ${tokens.spacingLarge};`};
-
   .circular-progress__container {
     fill: none;
     stroke-width: ${(p) => p.strokeWidth}px;
@@ -33,23 +29,9 @@ const CircularProgressStyled = styled.div<CircularProgressPropsWithGrid>`
     stroke-width: ${(p) =>
       p.strokeWidth && p.strokeWidth - (p.strokePadding ?? 0) * 2}px;
     stroke-linecap: round;
-    stroke-dasharray: ${(p) => 2 * Math.PI * p.grid.radius};
-    stroke-dashoffset: ${(p) =>
-      2 * Math.PI * (p.grid.radius * ((100 - p.percent) / 100))};
     transform: rotate(-90deg);
     transform-origin: center;
     transform-box: fill-box;
-    animation: fillUp 1.5s ease-in-out;
-  }
-
-  @keyframes fillUp {
-    from {
-      stroke-dashoffset: ${(p) => 2 * Math.PI * p.grid.radius};
-    }
-    to {
-      stroke-dashoffset: ${(p) =>
-        2 * Math.PI * (p.grid.radius * ((100 - p.percent) / 100))};
-    }
   }
 `;
 

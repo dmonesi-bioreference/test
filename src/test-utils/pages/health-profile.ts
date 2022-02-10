@@ -32,7 +32,7 @@ export class HealthProfile {
       .parent()
       .parent()
       .parent()
-      .within((element) => {
+      .within(() => {
         cy.findByText(name, { exact: false })
           .parent()
           .findByText(value, { exact: false });

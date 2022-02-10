@@ -8,7 +8,7 @@ import { CircularProgressProps } from './CircularProgress';
 
 export default {
   component: CircularProgress,
-  title: 'Components/Progress',
+  title: 'Components/CircularProgress',
   parameters: {
     componentSubtitle:
       'Circular progress is used to show the progress of an operation in a circular bar.',
@@ -16,15 +16,19 @@ export default {
 };
 
 const Template: Story<CircularProgressProps> = () => (
-  <CircularProgress percent={70} />
+  <>
+    <CircularProgress
+      radius={parseInt(remToPx(tokens.spacing), 10) * 2.3}
+      strokeWidth={parseInt(remToPx(tokens.spacing), 10) * 1.6}
+      withInsetShadow={true}
+      withOuterShadow={true}
+      trackColor={colors.black}
+      indicatorColor={colors.grey[700]}
+      strokePadding={parseInt(remToPx(tokens.spacingXxSmall), 10)}
+      strokePaddingColor={colors.black}
+      percent={70}
+    />
+  </>
 );
 
 export const Primary = Template.bind({});
-
-Primary.args = {
-  radius: parseInt(remToPx(tokens.spacing), 10) * 2.3,
-  strokeWidth: parseInt(remToPx(tokens.spacing), 10) * 1.6,
-  withInsetShadow: true,
-  strokePadding: parseInt(remToPx(tokens.spacingXxSmall), 10),
-  strokePaddingColor: colors.black,
-};

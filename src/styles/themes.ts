@@ -69,3 +69,5 @@ declare global {
 
 /* getTheme is used from the ThemeProvider to retrieve the theme by key */
 export const getTheme = (theme: Themes) => themes[theme];
+
+export const isTheme = (themeName: string): themeName is Themes => Object.keys(themes).includes(themeName);

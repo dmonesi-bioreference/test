@@ -56,11 +56,10 @@ export const TestStatus = () => {
         strokeWidth={parseInt(remToPx(tokens.spacingLarge), 10)}
         withOuterShadow={true}
         withInsetShadow={true}
-        marginTop={true}
         indicatorColor={
           isWaiting
-            ? [colors.indigo[700], colors.indigo[800]]
-            : colors.indigo[700]
+            ? [colors.indigo[800], colors.indigo[600]]
+            : colors.indigo[800]
         }
         strokePadding={parseInt(remToPx(tokens.spacingXxSmall), 10)}
         strokePaddingCut={{

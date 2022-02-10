@@ -9,6 +9,7 @@ import { base, colors, tokens } from 'styles';
 
 const TestStatusStyled = styled.div`
   ${base}
+  margin-top: ${tokens.spacingLarge};
 
   ${CircularProgressStyled} {
     margin-bottom: calc(${tokens.spacing} * -3.625);
