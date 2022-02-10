@@ -7,6 +7,7 @@ import {
   useAppTranslation,
 } from 'app/components/Shell';
 import { Button } from 'components/Button';
+import { Grid } from 'components/Grid';
 import { Heading } from 'components/Typography';
 import { slideInOut } from 'styles/animations';
 
@@ -41,8 +42,10 @@ export function Consent() {
       transition={slideInOut.transition}
       onSubmit={(event) => event.preventDefault()}
     >
-      <ConsentElements.Terms />
-      <ConsentElements.Consent />
+      <Grid spacing="small" verticalPadding="extraLarge">
+        <ConsentElements.Terms />
+        <ConsentElements.Consent />
+      </Grid>
       <Button
         kind="primary"
         onClick={events.nextStep}

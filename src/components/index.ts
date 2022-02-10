@@ -47,3 +47,4 @@ export * from './Toggle';
 export * from './ToolTip';
 export * from './Typography';
 export * from './PageBorder';
+export * from './Grid';

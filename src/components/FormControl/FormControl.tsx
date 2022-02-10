@@ -91,13 +91,14 @@ const FormControl: React.FC<FormControlProps> = (props) => {
         {props.booleanInput && (
           <div className="form-control__input">{props.children}</div>
         )}
-
-        <Typography type="label" labelType="input">
-          {props.label}
-        </Typography>
-        {props.linkMessage && (
-          <Button kind="link-medium">{props.linkMessage}</Button>
-        )}
+        <div>
+          <Typography type="label" labelType="input">
+            {props.label}
+          </Typography>
+          {props.linkMessage && (
+            <Button kind="link-medium">{props.linkMessage}</Button>
+          )}
+        </div>
 
         {isInvalid && !props.booleanInput && (
           <div className="form-control__invalid-message">

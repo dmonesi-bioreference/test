@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import { useAppTranslation } from 'app/components/Shell';
-import { Button } from 'components/Button';
 import { Icon } from 'components/Icon';
 import { Input } from 'components/Input';
 import { InputHelper } from 'components/InputHelper';
@@ -47,9 +46,11 @@ export function PhoneNumber({
               <Typography type="helper-text" color="white">
                 {t('sections.furtherRegistration.form.number.toolTipContent')}
               </Typography>
+              {/* TODO: Need to add link to set notification preference here
               <Button kind="link-small" color="light">
                 {t('sections.furtherRegistration.form.number.toolTipLink')}
               </Button>
+              */}
             </ToolTip>
           }
         />

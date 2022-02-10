@@ -1,4 +1,4 @@
-import { Heading } from 'components/Typography';
+import { Typography } from 'components/Typography';
 
 import InformationBannerStyled from './InformationBanner.styles';
 
@@ -13,9 +13,9 @@ const InformationBanner: React.FC<InformationBannerProps> = (props) => {
   return (
     <InformationBannerStyled className={`information-banner--${type}`}>
       <div className="information-banner__title">
-        <Heading level="8" color={titleColor}>
+        <Typography type="body" level="8" color={titleColor}>
           {props.title}
-        </Heading>
+        </Typography>
       </div>
       <div className="information-banner__content">{props.children}</div>
     </InformationBannerStyled>

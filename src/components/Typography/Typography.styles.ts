@@ -112,7 +112,7 @@ const TypographyStyled = styled.div`
     font-family: ${tokens.fontFamilyBody};
     font-size: ${tokens.fontSize14};
     font-weight: ${tokens.fontWeightRegular};
-    line-height: ${tokens.lineHeightLoose};
+    line-height: ${tokens.lineHeightNormal};
   }
 
   &.label--title {

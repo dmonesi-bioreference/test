@@ -6,10 +6,6 @@ const PageLayoutStyled = styled.div`
   ${base};
   background-color: ${({ theme }) => theme.colors.background};
 
-  .page-layout__content > * :not(:last-child) {
-    margin-bottom: ${tokens.spacingXxLarge};
-  }
-
   .page-layout__custom-header {
     padding: ${tokens.spacing};
     padding-bottom: ${tokens.spacingLarge};

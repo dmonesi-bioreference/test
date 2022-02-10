@@ -7,10 +7,10 @@ import {
   useAppTranslation,
 } from 'app/components/Shell';
 import { Button } from 'components/Button';
+import { Grid } from 'components/Grid';
 import { ProcessBar } from 'components/ProcessBar';
 import { Heading } from 'components/Typography';
 import { slideInOut } from 'styles/animations';
-import { tokens } from 'styles/tokens';
 
 export function CaregiverNameHeader() {
   const t = useAppTranslation();
@@ -23,13 +23,15 @@ export function CaregiverNameHeader() {
       exit={slideInOut.states.exit}
       transition={slideInOut.transition}
     >
-      <Heading level="1" alignment="center">
-        {t('sections.furtherRegistration.stepOne.title')}
-      </Heading>
-      <Heading level="4" alignment="center">
-        {t('sections.furtherRegistration.stepOne.subTitle')}
-      </Heading>
-      <ProcessBar stepsAmount={4} currentStep={1} />
+      <Grid>
+        <Heading level="1" alignment="center">
+          {t('sections.furtherRegistration.stepOne.title')}
+        </Heading>
+        <Heading level="4" alignment="center">
+          {t('sections.furtherRegistration.stepOne.subTitle')}
+        </Heading>
+        <ProcessBar stepsAmount={4} currentStep={1} />
+      </Grid>
     </motion.div>
   );
 }
@@ -48,21 +50,19 @@ export function CaregiverName() {
       transition={slideInOut.transition}
       onSubmit={(event) => event.preventDefault()}
     >
-      <div style={{ marginBottom: tokens.spacingXxLarge }}>
-        <div style={{ marginBottom: tokens.spacing }}>
-          <CaregiverNameElements.FirstName />
-        </div>
+      <Grid verticalPadding="small">
+        <CaregiverNameElements.FirstName />
         <CaregiverNameElements.LastName />
-      </div>
 
-      <Button
-        kind="primary"
-        onClick={events.nextStep}
-        submit={true}
-        disabled={!isValid}
-      >
-        {t('sections.furtherRegistration.next')}
-      </Button>
+        <Button
+          kind="primary"
+          onClick={events.nextStep}
+          submit={true}
+          disabled={!isValid}
+        >
+          {t('sections.furtherRegistration.next')}
+        </Button>
+      </Grid>
     </motion.form>
   );
 }

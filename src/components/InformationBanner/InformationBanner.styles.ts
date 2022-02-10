@@ -13,6 +13,10 @@ const InformationBannerStyled = styled.div`
     margin-bottom: ${tokens.spacingXSmall};
   }
 
+  .information-banner__content > ul {
+    padding-left: ${tokens.spacing};
+  }
+
   .information-banner__content :last-child {
     margin-bottom: 0;
   }

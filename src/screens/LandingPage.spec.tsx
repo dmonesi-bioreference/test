@@ -157,7 +157,7 @@ describe('The home page', () => {
       await page.findByText(
         'You may also have a follow up discussion with a genetic counselor, a healthcare professional with expertise in genetics.'
       );
-      await page.findByText("Focus on your child's care");
+      await page.findByText('Focus on providing care');
     });
   });
   it('closes the menu when you click outside', async () => {

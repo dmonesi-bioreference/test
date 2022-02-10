@@ -11,6 +11,7 @@ import {
 } from 'app/components/Shell';
 import { ActionGroup } from 'components/ActionGroup';
 import { Button } from 'components/Button';
+import { Grid } from 'components/Grid';
 import { InformationBanner } from 'components/InformationBanner';
 import { Spinner } from 'components/Spinner';
 import { Typography } from 'components/Typography';
@@ -29,33 +30,34 @@ export const LoginPage = () => {
         <title>{t('pages.login.pageTitle')}</title>
       </Head>
       <AppLayout>
-        {anyErrors ? (
-          <InformationBanner
-            title={t('sections.identity.errors.title')}
-            type="error"
-          >
-            <div style={{ marginBottom: tokens.spacing }}>
-              {errors.map((error) => (
-                <Typography key={error} type="body">
-                  <strong>{error}</strong>
-                </Typography>
-              ))}
-            </div>
-            <div style={{ textAlign: 'center' }}>
-              <Button kind="link-medium">Get some help</Button>
-            </div>
-          </InformationBanner>
-        ) : null}
-        <div style={{ marginBottom: tokens.spacingXLarge }}>
-          <Typography type="heading" level="1" alignment="center">
+        <Grid spacing="extraLarge" verticalPadding="large">
+          <Typography type="heading" level="1" alignment="left">
             {t('pages.login.title')}
           </Typography>
-        </div>
-        <div style={{ marginBottom: tokens.spacingXLarge }}>
-          <Typography type="heading" level="4" alignment="center">
+          <Typography type="body" level="4" alignment="left">
             {t('pages.login.description')}
           </Typography>
-        </div>
+        </Grid>
+        {anyErrors ? (
+          <Grid verticalPadding="medium">
+            <InformationBanner
+              title={t('sections.identity.errors.title')}
+              type="error"
+            >
+              <div style={{ marginBottom: tokens.spacing }}>
+                {errors.map((error) => (
+                  <Typography key={error} type="body">
+                    <strong>{error}</strong>
+                  </Typography>
+                ))}
+              </div>
+              {/* TODO: Should link this to customer support, hiding for now. */}
+              {/* <div style={{ textAlign: 'center' }}>
+                <Button kind="link-medium">Get some help</Button>
+              </div> */}
+            </InformationBanner>
+          </Grid>
+        ) : null}
         <div style={{ marginBottom: tokens.spacing }}>
           <LoginElements.EmailAddress
             label={t('forms.login.email.label')}

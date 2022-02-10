@@ -12,16 +12,15 @@ export const resources = {
           stories: {
             1: {
               label: 'Results & Resources',
-              heading:
-                "View and learn about your child's genetic test results.",
+              heading: 'View and learn about your genetic test results.',
               description:
-                "We provide you with easy access to your child's genetic test results, as well as with the resources to learn what it means for your family. Understand the challenges of the present and prepare for your child's future.",
+                'We provide you with easy access to your genetic test results, as well as with the resources to learn what it means for your family. Understand the challenges of the present and prepare for your future.',
             },
             2: {
               label: 'Records',
               heading: 'Keep all records in one place.',
               description:
-                "Along with your child's genetic test results, easily keep record of their symptoms, allergies, medications and any health incidents in preparation for appointments and hospital visits. ",
+                'Along with your genetic test results, easily keep record of their symptoms, allergies, medications and any health incidents in preparation for appointments and hospital visits. ',
             },
           },
           actions: {
@@ -34,7 +33,7 @@ export const resources = {
           pageTitle: 'Login | GeneDx',
           title: 'Welcome back',
           description:
-            "We're here to support you and your child's condition along every step of the journey together.",
+            "We're here to support you along every step of the journey together.",
           actions: {
             primary: {
               label: 'Login',
@@ -749,7 +748,7 @@ export const resources = {
             afterAppointment: {
               heading: 'After Your Appointment',
               body: 'You may also have a follow up discussion with a genetic counselor, a healthcare professional with expertise in genetics.',
-              linkLabel: "Focus on your child's care",
+              linkLabel: 'Focus on providing care',
             },
           },
           getUpdates: 'Receive progress updates',
@@ -765,7 +764,7 @@ export const resources = {
           caveat:
             'Results typically are returned in 7 days, but can take up to 5 weeks',
           expectation:
-            "NOTE: time is not an indicator of case difficulty or a positive test result. Please allow time for your child's genetic test to process before calling the lab or your doctor's office.",
+            "NOTE: time is not an indicator of case difficulty or a positive test result. Please allow time for your genetic test to process before calling the lab or your doctor's office.",
           mayVary: 'Please keep in mind that processing time may vary',
           estimate: 'Expect results in {{estimate}} days',
           expected: 'Results expected {{expectedResultsDate}}',
@@ -775,7 +774,7 @@ export const resources = {
         identity: {
           title: "Let's start by verifying your information",
           subTitle:
-            "To make sure we keep your child's information safe, we have a few details to confirm.",
+            'To make sure we keep your information safe, we have a few details to confirm.',
           errors: {
             title: "Those details don't match our records.",
             attemptsStart: 'Please check them over and try again. You have',
@@ -812,7 +811,7 @@ export const resources = {
           },
           stepTwo: {
             subTitle:
-              "Please let us know how we can notify you of your child's genetic test results.",
+              'Please let us know how we can notify you of your genetic test results.',
           },
           stepThree: {
             subTitle:
@@ -820,7 +819,7 @@ export const resources = {
           },
           stepFour: {
             subTitle:
-              "Lastly, create a strong password to help keep your account and your child's information safe.",
+              'Lastly, create a strong password to help keep your account and your information safe.',
           },
           form: {
             number: {

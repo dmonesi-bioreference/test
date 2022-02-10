@@ -7,11 +7,11 @@ import {
   useAppTranslation,
 } from 'app/components/Shell';
 import { Button } from 'components/Button';
+import { Grid } from 'components/Grid';
 import { ProcessBar } from 'components/ProcessBar';
 import { StepTitle } from 'components/StepTitle';
 import { Heading } from 'components/Typography';
 import { slideInOut } from 'styles/animations';
-import { tokens } from 'styles/tokens';
 
 export function CaregiverContactHeader() {
   const t = useAppTranslation();
@@ -23,11 +23,13 @@ export function CaregiverContactHeader() {
       exit={slideInOut.states.exit}
       transition={slideInOut.transition}
     >
-      <StepTitle number="2" />
-      <Heading level="4" alignment="center">
-        {t('sections.furtherRegistration.stepTwo.subTitle')}
-      </Heading>
-      <ProcessBar stepsAmount={4} currentStep={2} />
+      <Grid>
+        <StepTitle number="2" />
+        <Heading level="4" alignment="center">
+          {t('sections.furtherRegistration.stepTwo.subTitle')}
+        </Heading>
+        <ProcessBar stepsAmount={4} currentStep={2} />
+      </Grid>
     </motion.div>
   );
 }
@@ -46,20 +48,18 @@ export function CaregiverContact() {
       transition={slideInOut.transition}
       onSubmit={(event) => event.preventDefault()}
     >
-      <div style={{ marginBottom: tokens.spacingXxxLarge }}>
-        <div style={{ marginBottom: tokens.spacing }}>
-          <CaregiverContactElements.EmailAddress />
-        </div>
+      <Grid verticalPadding="small">
+        <CaregiverContactElements.EmailAddress />
         <CaregiverContactElements.PhoneNumber />
-      </div>
-      <Button
-        kind="primary"
-        onClick={events.nextStep}
-        submit={true}
-        disabled={!isValid}
-      >
-        {t('sections.furtherRegistration.next')}
-      </Button>
+        <Button
+          kind="primary"
+          onClick={events.nextStep}
+          submit={true}
+          disabled={!isValid}
+        >
+          {t('sections.furtherRegistration.next')}
+        </Button>
+      </Grid>
     </motion.form>
   );
 }

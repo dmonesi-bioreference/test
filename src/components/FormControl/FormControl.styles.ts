@@ -45,7 +45,7 @@ const FormControlStyled = styled.div`
     .form-control__input {
       display: flex;
       align-items: center;
-      margin-right: ${inputs.spacingXxSmall};
+      margin-right: ${inputs.spacingXSmall};
     }
 
     .form-control__help-text {

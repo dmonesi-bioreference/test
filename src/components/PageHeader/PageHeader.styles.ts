@@ -9,7 +9,7 @@ const PageHeaderStyled = styled.div`
   .content {
     display: flex;
     flex-direction: column;
-    padding: ${tokens.spacingXxLarge} 0;
+    padding: ${tokens.spacingLarge} 0;
     max-width: ${containers.maxPageWidth}px;
     margin: 0 auto;
     width: 100%;

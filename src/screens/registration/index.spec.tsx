@@ -95,7 +95,7 @@ describe('RegistrationWizard', () => {
     userEvent.click(await page.findByText('Next'));
 
     await page.findByText(
-      "Lastly, create a strong password to help keep your account and your child's information safe."
+      'Lastly, create a strong password to help keep your account and your information safe.'
     );
 
     userEvent.type(

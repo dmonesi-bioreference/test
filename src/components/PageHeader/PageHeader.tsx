@@ -15,11 +15,11 @@ export interface PageHeaderProps {
 }
 
 const PageHeader: React.FC<PageHeaderProps> = (props) => {
-  const withDescription = props.description ? (
+  const withDescription = props.description && (
     <Typography type="body" level="7">
       {props.description}
     </Typography>
-  ) : null;
+  );
   return (
     <PageHeaderStyled className={`page-header page-header--${props.belongsTo}`}>
       <div className="content">
