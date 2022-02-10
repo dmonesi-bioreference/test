@@ -1,4 +1,4 @@
-import { Typography } from 'components';
+import { Typography } from 'components/Typography';
 
 import PageSectionStyled from './PageSection.styles';
 
