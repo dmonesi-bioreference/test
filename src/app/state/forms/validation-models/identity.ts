@@ -44,7 +44,6 @@ export const validateIdentity = async (
           future: 'forms.identity.dob.errors.future',
           required: 'forms.identity.dob.errors.required',
         }),
-        email,
         phone,
       })
     : yup.object().shape({

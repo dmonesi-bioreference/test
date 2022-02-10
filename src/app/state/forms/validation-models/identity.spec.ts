@@ -33,6 +33,19 @@ describe('identity validations', () => {
     });
   });
 
+  it('allows submissions with either email or phone', async () => {
+    const phone = '212-345-9198';
+    const dob = '02/02/2022';
+    const email = 'person@example.com';
+    const zip = '12345';
+
+    const withPhone = await validate({ phone, dob, zip });
+    const withEmail = await validate({ email, dob, zip });
+
+    expect(withEmail).toEqual({ email, dob, zip });
+    expect(withPhone).toEqual({ phone, dob, zip });
+  });
+
   it('rejects future dates of birth', async () => {
     const dateToDobString = (date: Date) => {
       const year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(
