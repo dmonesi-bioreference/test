@@ -16,7 +16,9 @@ export class HealthProfile {
       url += `?${urlParams.toString()}`;
     } 
 
+    this.client.intercept(url).as('page_load')
     this.client.visit(url);
+    this.client.wait('@page_load')
   }
 
   hasSection(name: string) {

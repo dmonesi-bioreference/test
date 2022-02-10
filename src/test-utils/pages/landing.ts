@@ -16,7 +16,9 @@ export class Landing {
       url += `?${urlParams.toString()}`;
     } 
 
+    this.client.intercept(url).as('page_load')
     this.client.visit(url);
+    this.client.wait('@page_load')
   }
 
   hasText(name: string): ReturnType<typeof cy['findByText']> {

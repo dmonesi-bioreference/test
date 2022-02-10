@@ -37,6 +37,10 @@ export class Auth {
     password: string,
     expectInvalidCredentials?: boolean
   ) {
+    // Create an intercept to detect when the auth process has completed
+    this.client.intercept('/api/auth/callback*').as('callback')
+    this.client.intercept('/api/auth/login').as('login')
+    
     // TODO: TB - Not keen on this, would be cool if we could create a proper login
     // but I suspect it's not possible with the OIDC pattern
     this.client.visit('/');
@@ -65,10 +69,16 @@ export class Auth {
   logout(): any {
     this.client
       .request(`${Cypress.env('AUTH0_ROOT')}/v2/logout`)
-      .clearCookies();
-    this.client.getCookies().should('have.length', 0);
-    this.client.request('/api/auth/logout').clearCookies();
-    this.client.getCookies().should('have.length', 0);
+      .clearCookies()
+    this.client
+      .getCookies()
+      .should('have.length', 0)
+    this.client
+      .request('/api/auth/logout')
+      .clearCookies()
+    this.client
+      .getCookies()
+      .should('have.length', 0)
   }
 
   hasText(name: string): ReturnType<typeof cy['findByText']> {
