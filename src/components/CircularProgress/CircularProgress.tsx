@@ -109,7 +109,7 @@ export const CircularProgress: React.FC<CircularProgressProps> = (props) => {
           variants={{
             hidden: { pathLength: 0, opacity: 0 },
             visible: () => ({
-              pathLength: 0.7,
+              pathLength: props.percent / 100,
               opacity: 1,
               transition: {
                 pathLength: { delay: 0, type: "spring", duration: 2, bounce: 0 },
