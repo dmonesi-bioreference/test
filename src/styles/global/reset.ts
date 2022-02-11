@@ -17,6 +17,7 @@ const reset = css`
   html,
   body {
     height: 100%;
+    font-family: 'poppins', Helvetica, sans-serif;
   }
 
   /*
