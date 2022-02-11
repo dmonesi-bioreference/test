@@ -91,7 +91,7 @@ const FormControl: React.FC<FormControlProps> = (props) => {
         {props.booleanInput && (
           <div className="form-control__input">{props.children}</div>
         )}
-        <div>
+        <div className="form-control__label-group">
           <Typography type="label" labelType="input">
             {props.label}
           </Typography>

@@ -12,7 +12,7 @@ import { Grid } from 'components/Grid';
 import { InformationBanner } from 'components/InformationBanner';
 import { ProcessBar } from 'components/ProcessBar';
 import { StepTitle } from 'components/StepTitle';
-import { Heading, Typography } from 'components/Typography';
+import { Typography } from 'components/Typography';
 import { slideInOut } from 'styles/animations';
 import { tokens } from 'styles/tokens';
 
@@ -29,9 +29,9 @@ export function PasswordHeader() {
     >
       <Grid>
         <StepTitle number="4" />
-        <Heading level="4" alignment="center">
+        <Typography type="body" level="4" alignment="center">
           {t('sections.furtherRegistration.stepFour.subTitle')}
-        </Heading>
+        </Typography>
         <ProcessBar stepsAmount={4} currentStep={4} />
       </Grid>
     </motion.div>

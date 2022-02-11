@@ -17,7 +17,6 @@ import { InformationBanner } from 'components/InformationBanner';
 import { PageSection } from 'components/PageSection';
 import { Spinner } from 'components/Spinner';
 import { Heading, Typography } from 'components/Typography';
-import { tokens } from 'styles/tokens';
 
 export const IdentityForm = () => {
   const t = useAppTranslation();
@@ -47,51 +46,35 @@ export const IdentityForm = () => {
       <AppLayout isWithoutFooter>
         <AsyncRegion pending={isRequesting}>
           <PageSection>
-            <div
-              style={{
-                alignItems: 'center',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: tokens.spacingXLarge,
-                marginTop: tokens.spacingXxLarge,
-                marginBottom: tokens.spacingXxLarge,
-              }}
-            >
-              <Grid>
-                <Heading level="1" alignment="center">
-                  {t('sections.identity.title')}
-                </Heading>
-                <Heading level="4" alignment="center">
-                  {t('sections.identity.subTitle')}
-                </Heading>
-              </Grid>
-            </div>
-            {anyErrors ? (
+            <Grid verticalPadding="large">
+              <Heading level="1">{t('sections.identity.title')}</Heading>
+              <Typography type="body" level="4">
+                {t('sections.identity.subTitle')}
+              </Typography>
+            </Grid>
+            {anyErrors && (
               <InformationBanner
                 title={t('sections.identity.errors.title')}
                 type="error"
               >
-                <div style={{ marginBottom: tokens.spacing }}>
-                  <Typography type="body">
-                    {t('sections.identity.errors.attemptsStart')}{' '}
-                    <strong>{numberOfAttemptsRemaining}</strong>{' '}
-                    {t('sections.identity.errors.attemptsEnd')}
-                  </Typography>
-                </div>
-                <div style={{ textAlign: 'center' }}>
-                  <Button kind="link-medium">Get some help</Button>
-                </div>
+                <Typography type="body">
+                  {t('sections.identity.errors.attemptsStart')}{' '}
+                  <strong>{numberOfAttemptsRemaining}</strong>{' '}
+                  {t('sections.identity.errors.attemptsEnd')}
+                </Typography>
+                <Button kind="link-medium">Get some help</Button>
               </InformationBanner>
-            ) : null}
+            )}
             <form onSubmit={(event) => event.preventDefault()}>
-              <IdentityElements.DateOfBirth
-                label={t('sections.identity.form.dateOfBirth.label')}
-              />
-              <IdentityElements.ZipCode
-                label={t('sections.identity.form.zipCode.label')}
-                placeholder={t('sections.identity.form.zipCode.placeholder')}
-              />
-              <div style={{ marginBottom: tokens.spacingXxLarge }}>
+              <Grid>
+                <IdentityElements.DateOfBirth
+                  label={t('sections.identity.form.dateOfBirth.label')}
+                />
+                <IdentityElements.ZipCode
+                  label={t('sections.identity.form.zipCode.label')}
+                  placeholder={t('sections.identity.form.zipCode.placeholder')}
+                />
+
                 {isSms ? (
                   <IdentityElements.PhoneNumber
                     label={t('sections.identity.form.phone.label')}
@@ -103,29 +86,30 @@ export const IdentityForm = () => {
                     placeholder={t('sections.identity.form.email.placeholder')}
                   />
                 )}
-              </div>
-              <OnState
-                matches="auth.checkingIdentity"
-                fallback={
+
+                <OnState
+                  matches="auth.checkingIdentity"
+                  fallback={
+                    <Button
+                      kind="primary"
+                      submit={true}
+                      disabled={!isValid || attemptsExhausted}
+                      onClick={events.checkIdentity}
+                    >
+                      {t('sections.identity.form.confirm')}
+                    </Button>
+                  }
+                >
                   <Button
                     kind="primary"
                     submit={true}
-                    disabled={!isValid || attemptsExhausted}
-                    onClick={events.checkIdentity}
+                    disabled
+                    prefix={<Spinner />}
                   >
-                    {t('sections.identity.form.confirm')}
+                    {t('sections.identity.form.checkingIdentity')}
                   </Button>
-                }
-              >
-                <Button
-                  kind="primary"
-                  submit={true}
-                  disabled
-                  prefix={<Spinner />}
-                >
-                  {t('sections.identity.form.checkingIdentity')}
-                </Button>
-              </OnState>
+                </OnState>
+              </Grid>
             </form>
           </PageSection>
         </AsyncRegion>

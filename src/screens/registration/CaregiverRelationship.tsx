@@ -10,7 +10,7 @@ import { Button } from 'components/Button';
 import { Grid } from 'components/Grid';
 import { ProcessBar } from 'components/ProcessBar';
 import { StepTitle } from 'components/StepTitle';
-import { Heading } from 'components/Typography';
+import { Typography } from 'components/Typography';
 import { slideInOut } from 'styles/animations';
 
 export function CaregiverRelationshipHeader() {
@@ -25,9 +25,9 @@ export function CaregiverRelationshipHeader() {
     >
       <Grid>
         <StepTitle number="3" />
-        <Heading level="4" alignment="center">
+        <Typography type="body" level="4" alignment="center">
           {t('sections.furtherRegistration.stepThree.subTitle')}
-        </Heading>
+        </Typography>
         <ProcessBar stepsAmount={4} currentStep={3} />
       </Grid>
     </motion.div>

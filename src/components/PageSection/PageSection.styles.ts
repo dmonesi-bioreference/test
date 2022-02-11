@@ -8,9 +8,12 @@ const PageSectionStyled = styled.section`
   max-width: ${containers.maxPageWidth}px;
   width: 100%;
 
+  &.narrow {
+    max-width: ${containers.maxNarrowPageWidth}px;
+  }
+
   &.page-section > * :not(:last-child) {
     margin-bottom: ${tokens.spacing};
-    overflow: auto;
   }
 
   .page-section__content > * :not(:last-child) {

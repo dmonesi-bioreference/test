@@ -48,3 +48,4 @@ export * from './ToolTip';
 export * from './Typography';
 export * from './PageBorder';
 export * from './Grid';
+export * from './Container';

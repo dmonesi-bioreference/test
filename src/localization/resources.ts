@@ -570,7 +570,7 @@ export const resources = {
             },
           },
           terms: {
-            label: 'I have read and agree to the',
+            label: 'I have read and agree to the ',
             link: 'terms & conditions',
             errors: {
               required: 'Agreeing to the terms & conditions is required',

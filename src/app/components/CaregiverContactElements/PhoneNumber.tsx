@@ -3,9 +3,6 @@ import { useState } from 'react';
 import { useAppTranslation } from 'app/components/Shell';
 import { Icon } from 'components/Icon';
 import { Input } from 'components/Input';
-import { InputHelper } from 'components/InputHelper';
-import { ToolTip } from 'components/ToolTip';
-import { Typography } from 'components/Typography';
 
 import { useCaregiverContactField } from './hooks';
 import { AppInputProps } from './types';
@@ -33,28 +30,6 @@ export function PhoneNumber({
       value={value}
       onBlur={() => setPristine(false)}
       onChange={(event) => events.update(event.target.value)}
-      inputHelper={
-        <InputHelper
-          helperText={t(
-            'sections.furtherRegistration.form.number.toolTipHelperMessage'
-          )}
-          toolTip={
-            <ToolTip
-              title={t('sections.furtherRegistration.form.number.toolTipTitle')}
-              placement="bottom"
-            >
-              <Typography type="helper-text" color="white">
-                {t('sections.furtherRegistration.form.number.toolTipContent')}
-              </Typography>
-              {/* TODO: Need to add link to set notification preference here
-              <Button kind="link-small" color="light">
-                {t('sections.furtherRegistration.form.number.toolTipLink')}
-              </Button>
-              */}
-            </ToolTip>
-          }
-        />
-      }
     />
   );
 }

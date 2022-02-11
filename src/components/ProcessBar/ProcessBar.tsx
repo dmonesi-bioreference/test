@@ -5,11 +5,8 @@ export interface ProcessBarProps {
   currentStep: number;
 }
 
-const ProcessBar: React.FC<ProcessBarProps> = ({
-  currentStep,
-  stepsAmount,
-}) => {
-  const steps = [...new Array(stepsAmount).keys()];
+const ProcessBar: React.FC<ProcessBarProps> = (props) => {
+  const steps = [...new Array(props.stepsAmount).keys()];
 
   return (
     <ProcessBarStyled>
@@ -19,20 +16,20 @@ const ProcessBar: React.FC<ProcessBarProps> = ({
             <div
               key={step}
               className="process-bar__step process-bar__step--complete"
-            />
+            ></div>
           );
         } else {
           const processType =
-            step > currentStep - 1 ? 'incomplete' : 'complete';
+            step > props.currentStep - 1 ? 'incomplete' : 'complete';
 
           return (
             <div key={step} className="process-bar__step-group">
               <div
                 className={`process-bar__link process-bar__link--${processType}`}
-              />
+              ></div>
               <div
                 className={`process-bar__step process-bar__step--${processType}`}
-              />
+              ></div>
             </div>
           );
         }

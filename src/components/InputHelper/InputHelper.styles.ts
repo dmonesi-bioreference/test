@@ -6,6 +6,7 @@ const InputHelperStyled = styled.div`
   ${base}
   display: flex;
   align-items: center;
+  position: relative;
   margin-top: ${inputs.spacingXSmall};
 `;
 

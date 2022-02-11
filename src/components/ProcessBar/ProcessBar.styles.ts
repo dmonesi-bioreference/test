@@ -7,13 +7,17 @@ const ProcessBarStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 
   .process-bar__step-group {
     display: flex;
+    flex-direction: row;
     align-items: center;
+    position: relative;
   }
 
   .process-bar__step {
+    display: block;
     height: ${tokens.spacingMedium};
     width: ${tokens.spacingMedium};
     border-radius: ${tokens.borderRadiusCircle};

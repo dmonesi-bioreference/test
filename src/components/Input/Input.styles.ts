@@ -57,6 +57,7 @@ const InputStyled = styled(FormControl)<FormControlProps>`
     box-shadow: none;
     padding: 0;
     margin: 0;
+    width: inherit;
     cursor: inherit;
     /* stylelint-disable property-no-vendor-prefix */
     -webkit-appearance: none;

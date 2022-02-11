@@ -333,6 +333,7 @@ export const containers = {
   headerHeight: tokens.spacingXxxLarge,
   maxNavWidth: '500',
   maxPageWidth: '960',
+  maxNarrowPageWidth: '600',
   spacingGutter: tokens.spacingLarge,
 };
 

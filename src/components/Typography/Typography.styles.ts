@@ -9,7 +9,7 @@ const TypographyStyled = styled.div`
   line-height: ${tokens.lineHeightDense};
   margin: 0;
   overflow: hidden;
-  max-width: 42ch;
+  max-width: 55ch;
 
   &.default {
     color: ${tokens.colorDefaultText};

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import TypographyStyled from 'components/Typography/Typography.styles';
 import { inputs, labels, tokens, visuallyHidden } from 'styles';
 
 const FormControlStyled = styled.div`
@@ -11,14 +12,26 @@ const FormControlStyled = styled.div`
     align-items: center;
     display: flex;
     flex: 0 0 auto;
-    flex-wrap: wrap;
     margin-bottom: ${tokens.spacingXxSmall};
   }
 
-  .form-control__label-with-link {
+  .form-control__label-group {
+    display: inline-flex;
     flex-wrap: wrap;
+    max-width: 100%;
+
+    ${TypographyStyled} {
+      max-width: 100%;
+    }
+  }
+
+  .form-control__label-with-link {
     gap: ${tokens.spacingXxSmall};
     overflow: hidden;
+
+    .label--input {
+      margin-right: ${tokens.spacingXxSmall};
+    }
   }
 
   .form-control__invalid-message {
@@ -45,6 +58,7 @@ const FormControlStyled = styled.div`
     .form-control__input {
       display: flex;
       align-items: center;
+      align-self: start;
       margin-right: ${inputs.spacingXSmall};
     }
 

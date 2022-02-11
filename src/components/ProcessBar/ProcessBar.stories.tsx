@@ -8,6 +8,22 @@ export default {
   parameters: {
     componentSubtitle: 'Visualises steps within a process.',
   },
+  argTypes: {
+    stepsAmount: {
+      control: {
+        type: 'range',
+        min: 1,
+        max: 10,
+      },
+    },
+    currentStep: {
+      control: {
+        type: 'range',
+        min: 1,
+        max: 10,
+      },
+    },
+  },
 };
 
 const Template: Story<ProcessBarProps> = (args) => <ProcessBar {...args} />;
