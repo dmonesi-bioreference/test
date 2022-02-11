@@ -50,7 +50,7 @@ export function CaregiverName() {
       transition={slideInOut.transition}
       onSubmit={(event) => event.preventDefault()}
     >
-      <Grid verticalPadding="small">
+      <Grid>
         <CaregiverNameElements.FirstName />
         <CaregiverNameElements.LastName />
 

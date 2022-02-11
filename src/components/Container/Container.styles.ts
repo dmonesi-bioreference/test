@@ -5,6 +5,7 @@ import { containers, base } from 'styles';
 const ContainerStyled = styled.div`
   ${base}
   max-width: ${containers.maxPageWidth}px;
+  width: 100%;
 
   &.narrow {
     max-width: ${containers.maxNarrowPageWidth}px;

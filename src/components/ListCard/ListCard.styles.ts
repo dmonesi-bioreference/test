@@ -12,7 +12,7 @@ const ListCardStyled = styled.div`
     align-items: center;
     justify-content: space-between;
     background-color: ${({ theme }) => theme.colors.foreground};
-    color: ${({ theme }) => theme.colors.headerText};
+    color: ${({ theme }) => theme.colors.headerText || tokens.colorPrimaryText};
     padding: ${tokens.spacing};
   }
 

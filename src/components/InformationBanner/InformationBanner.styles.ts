@@ -6,12 +6,8 @@ const InformationBannerStyled = styled.div`
   ${base}
   border-radius: ${tokens.borderRadius};
   box-shadow: ${tokens.shadowXxLarge};
-  padding: ${tokens.spacingSmall} ${tokens.spacing} ${tokens.spacing};
+  padding: ${tokens.spacing};
   border: ${tokens.borderWidthThin} solid ${colors.indigo[600]};
-
-  .information-banner__content > * {
-    margin-bottom: ${tokens.spacingXSmall};
-  }
 
   .information-banner__content > ul {
     padding-left: ${tokens.spacing};

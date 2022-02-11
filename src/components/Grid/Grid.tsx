@@ -3,16 +3,24 @@ import styled from 'styled-components';
 import { tokens, base } from 'styles';
 
 export interface GridProps {
-  spacing?: 'small' | 'medium' | 'large' | 'extraLarge';
-  verticalPadding?: 'small' | 'medium' | 'large' | 'extraLarge';
+  spacing?: 'none' | 'small' | 'medium' | 'large' | 'extraLarge';
+  verticalPadding?: 'none' | 'small' | 'medium' | 'large' | 'extraLarge';
 }
 
+/**
+ * @description Provides vertical spacing between direct child elements and outside of a container.
+ * @default spacing: 'large' verticalPadding: 'none'
+ */
 const Grid: React.FC<GridProps> = styled.div<GridProps>`
   ${base}
   display: grid;
   grid-template-columns: 1fr;
-  ${({ spacing }) => {
+  ${({ spacing = 'large' }) => {
     switch (spacing) {
+      case 'none':
+        return `
+          gap: 0;
+        `;
       case 'small':
         return `
           gap: ${tokens.spacingSmall};
@@ -29,14 +37,12 @@ const Grid: React.FC<GridProps> = styled.div<GridProps>`
         return `
           gap: ${tokens.spacingXLarge};
         `;
-      default:
-        return `
-          gap: ${tokens.spacingLarge};
-        `;
     }
   }}
-  ${({ verticalPadding }) => {
+  ${({ verticalPadding = 'none' }) => {
     switch (verticalPadding) {
+      case 'none':
+        return `padding: 0`;
       case 'small':
         return `padding-top: ${tokens.spacingSmall}; padding-bottom: ${tokens.spacingSmall};`;
       case 'medium':
@@ -45,8 +51,6 @@ const Grid: React.FC<GridProps> = styled.div<GridProps>`
         return `padding-top: ${tokens.spacingLarge}; padding-bottom: ${tokens.spacingLarge};`;
       case 'extraLarge':
         return `padding-top: ${tokens.spacingXLarge}; padding-bottom: ${tokens.spacingXLarge};`;
-      default:
-        return `padding: 0`;
     }
   }}
 `;

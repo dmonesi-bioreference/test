@@ -11,8 +11,9 @@ const FaqCardStyled = styled.div`
   width: 100%;
 
   .faq-card__header {
-    background-color: ${({ theme }) => theme.colors.foreground};
-    color: ${({ theme }) => theme.colors.headerText};
+    background-color: ${({ theme }) => theme?.colors?.foreground};
+    color: ${({ theme }) =>
+      theme?.colors?.headerText || tokens.colorPrimaryText};
     overflow: hidden;
     padding: ${tokens.spacing} ${tokens.spacingXLarge} ${tokens.spacing}
       ${tokens.spacing};
@@ -22,7 +23,8 @@ const FaqCardStyled = styled.div`
 
   .faq-card__header-icon {
     flex: none;
-    color: ${({ theme }) => theme.colors.headerText};
+    color: ${({ theme }) =>
+      theme?.colors?.headerText || tokens.colorPrimaryText};
   }
 
   .faq-card__view-all {

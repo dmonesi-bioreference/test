@@ -47,8 +47,8 @@ export const HealthProfile = () => {
           hasPatientBanner
           isLoading={requesting}
         >
-          <PageSection>
-            <AsyncRegion pending={requesting}>
+          <AsyncRegion pending={requesting}>
+            <PageSection>
               <ListCard
                 iconName="information-circle"
                 title={t('pages.healthProfile.basicInformation.title')}
@@ -148,8 +148,8 @@ export const HealthProfile = () => {
                   {profile.relation_to_patient}
                 </DisplayField>
               </ListCard>
-            </AsyncRegion>
-          </PageSection>
+            </PageSection>
+          </AsyncRegion>
         </AppLayout>
       </HealthProfileContainer>
     </>

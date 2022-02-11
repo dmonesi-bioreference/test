@@ -1,5 +1,3 @@
-import Head from 'next/head';
-
 import { OnState, useAppState } from 'app/components/Shell';
 
 import { LoginPage } from './LoginPage';
@@ -14,13 +12,6 @@ export function Auth0Registration() {
 
   return (
     <>
-      <Head>
-        <meta
-          key="viewport-scaling"
-          name="viewport"
-          content="width=device-width, initial-scale=1"
-        />
-      </Head>
       <OnState matches="auth.authenticating">
         <LoginPage />
       </OnState>

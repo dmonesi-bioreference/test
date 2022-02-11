@@ -1,7 +1,7 @@
 import { Story } from '@storybook/react/types-6-0';
 
 import { Shell } from 'app';
-import { Typography } from 'components';
+import { PageSection, Typography } from 'components';
 import { tokens } from 'styles';
 
 import { AppLayout } from './AppLayout';
@@ -18,9 +18,11 @@ const Template: Story = (args) => (
   <Shell>
     <div style={{ width: 375 }}>
       <AppLayout {...args}>
-        <ExampleSection />
-        <ExampleSection />
-        <ExampleSection />
+        <PageSection verticalPadding="small">
+          <ExampleSection />
+          <ExampleSection />
+          <ExampleSection />
+        </PageSection>
       </AppLayout>
     </div>
   </Shell>
@@ -36,11 +38,12 @@ const ExampleSection: React.FC = () => {
         border: `solid black ${tokens.borderWidthMedium}`,
         borderRadius: `${tokens.borderRadius}`,
         height: `${tokens.spacingXxxxLarge}`,
+        padding: `${tokens.spacingSmall}`,
         width: '100%',
       }}
     >
-      <Typography type="heading" level="3">
-        Example Section
+      <Typography type="body" level="5">
+        Example Section wrapped in PageSection
       </Typography>
     </div>
   );

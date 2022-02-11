@@ -20,15 +20,19 @@ const ContentCardStyled = styled.div<ContentCardProps>`
 
   .label--button,
   .label--button svg {
-    color: ${(props) => props.theme.colors.headerText};
+    color: ${({ theme }) =>
+      theme?.colors?.headerText || tokens.colorPrimaryText};
     transition: all ${tokens.transitionMedium} ease-in-out;
   }
 
   .label--button span {
     color: ${(props) =>
       props.variant === 'link'
-        ? lighten(0.2, props.theme.colors.headerText)
-        : props.theme.colors.headerText};
+        ? lighten(
+            0.2,
+            props.theme?.colors?.headerText || tokens.colorPrimaryText
+          )
+        : props.theme?.colors?.headerText || tokens.colorPrimaryText};
     transition: all ${tokens.transitionMedium} ease-in-out;
   }
 
@@ -36,7 +40,11 @@ const ContentCardStyled = styled.div<ContentCardProps>`
     text-decoration: none;
 
     * {
-      color: ${(props) => darken(0.2, props.theme.colors.headerText)};
+      color: ${(props) =>
+        darken(
+          0.2,
+          props.theme?.colors?.headerText || tokens.colorPrimaryText
+        )};
     }
   }
 
@@ -44,7 +52,8 @@ const ContentCardStyled = styled.div<ContentCardProps>`
     margin-bottom: ${tokens.spacing};
 
     ${TypographyStyled} {
-      color: ${(props) => props.theme.colors.headerText};
+      color: ${(props) =>
+        props.theme?.colors?.headerText || tokens.colorPrimaryText};
     }
   }
 

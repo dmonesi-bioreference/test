@@ -45,7 +45,7 @@ export const IdentityForm = () => {
       </Head>
       <AppLayout isWithoutFooter>
         <AsyncRegion pending={isRequesting}>
-          <PageSection>
+          <PageSection spacing="none">
             <Grid verticalPadding="large">
               <Heading level="1">{t('sections.identity.title')}</Heading>
               <Typography type="body" level="4">
