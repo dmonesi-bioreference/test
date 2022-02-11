@@ -30,6 +30,7 @@ export const OnBoarding = () => {
         isLoading={loadingOnBoardingCards}
         containsCards
         isWithoutFooter
+        theme="resourcesTheme"
       >
         <PageSection>
           <OnBoardingStories />
