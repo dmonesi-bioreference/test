@@ -15,7 +15,7 @@ describe('on the landing page', () => {
     });
 
     it('it redirects on the login page', () => {
-      landingPage.open();
+      landingPage.open(undefined, false);
       landingPage.hasText(t('pages.login.title'));
     });
   });

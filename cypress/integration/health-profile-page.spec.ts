@@ -15,7 +15,7 @@ describe('on the health profile page', () => {
     });
 
     it('it redirects on the login page', () => {
-      healthProfilePage.open();
+      healthProfilePage.open(undefined, false);
       healthProfilePage.hasSection(t('pages.login.title'));
     });
   });
@@ -27,15 +27,14 @@ describe('on the health profile page', () => {
         Cypress.env('AUTH0_USERNAME_TEST_ORDERED'),
         Cypress.env('AUTH0_PASSWORD_TEST_ORDERED')
       );
+      healthProfilePage.open();
     });
 
     it('it displays the correct page', () => {
-      healthProfilePage.open();
       healthProfilePage.hasSection(t('pages.healthProfile.title'));
     });
 
     it('it displays correct patient information', () => {
-      healthProfilePage.open();
       healthProfilePage.hasSection(t('pages.healthProfile.basicInformation.title'));
       healthProfilePage.hasField(t('pages.healthProfile.basicInformation.title'), t('pages.healthProfile.basicInformation.fields.name.label'), 'Pandas Ordered');
       healthProfilePage.hasField(t('pages.healthProfile.basicInformation.title'), t('pages.healthProfile.basicInformation.fields.dob.label'), '02/01/2022');
@@ -45,13 +44,11 @@ describe('on the health profile page', () => {
     });
     
     it('it displays correct medical information', () => {
-      healthProfilePage.open();
       healthProfilePage.hasSection(t('pages.healthProfile.primaryIndication.title'));
       healthProfilePage.hasField(t('pages.healthProfile.primaryIndication.title'), t('pages.healthProfile.primaryIndication.fields.phenotype.label'), 'Not Available');
     });
     
     it('it displays correct account information', () => {
-      healthProfilePage.open();
       healthProfilePage.hasSection(t('pages.healthProfile.yourDetails.title'));
       healthProfilePage.hasField(t('pages.healthProfile.yourDetails.title'), t('pages.healthProfile.yourDetails.fields.fullName.label'), 'Not Available');
       healthProfilePage.hasField(t('pages.healthProfile.yourDetails.title'), t('pages.healthProfile.yourDetails.fields.phoneNumber.label'), '01234567890');

@@ -8,7 +8,7 @@ export class HealthProfile {
 
   constructor(private client: typeof cy) {}
 
-  open(params?: Record<string, string>) {
+  open(params?: Record<string, string>, expectSuccess = true) {
     let url = '/health-profile';
     
     if (params) {
@@ -16,9 +16,17 @@ export class HealthProfile {
       url += `?${urlParams.toString()}`;
     } 
 
-    this.client.intercept(url).as('page_load')
+    const waits = Array<string>();
+    this.client.intercept(url).as('page_load');
+    waits.push('@page_load');
+
+    if (expectSuccess) {
+      this.client.intercept('/api/identity/profile').as('profile_load');
+      waits.push('@profile_load');
+    }
+    
     this.client.visit(url);
-    this.client.wait('@page_load')
+    this.client.wait(waits);
   }
 
   hasSection(name: string) {

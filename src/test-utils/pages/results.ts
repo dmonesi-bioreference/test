@@ -8,7 +8,7 @@ export class Results {
 
   constructor(private client: typeof cy) {}
 
-  open(params?: Record<string, string>) {
+  open(params?: Record<string, string>, expectSuccess = true) {
     let url = '/results';
     
     if (params) {
@@ -16,9 +16,17 @@ export class Results {
       url += `?${urlParams.toString()}`;
     } 
 
-    this.client.intercept(url).as('page_load')
+    const waits = Array<string>();
+    this.client.intercept(url).as('page_load');
+    waits.push('@page_load');
+
+    if (expectSuccess) {
+      this.client.intercept('/api/tests').as('tests_load');
+      waits.push('@tests_load');
+    }
+    
     this.client.visit(url);
-    this.client.wait('@page_load')
+    this.client.wait(waits);
   }
 
   hasText(name: string): ReturnType<typeof cy['findByText']> {
