@@ -282,6 +282,14 @@ export const audios = () => `
       edges {
         node {
           id
+          avatar {
+            id
+            filename
+            fullpath
+            mimetype
+            type
+            filesize
+          }
           introduceAt
           priority
           label

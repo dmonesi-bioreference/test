@@ -8,7 +8,7 @@ export const AppImage = ({
 }: Props<NextImageProps>) => {
   const isTest = process.env.NODE_ENV === 'test';
 
-  return isTest ? (
+  return (isTest || !props.src) ? (
     // eslint-disable-next-line @next/next/no-img-element
     <img {...props} alt={props.alt} src={props.src as string} />
   ) : (

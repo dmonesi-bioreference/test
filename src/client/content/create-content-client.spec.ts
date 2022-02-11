@@ -181,6 +181,65 @@ describe('Handlers', () => {
     expect(result).toEqual([articleOne, articleTwo]);
   });
 
+  it('.audios() maps the given payload into a list of audio', async () => {
+    const audioOne: Audio = {
+      id: '1',
+      avatar: {
+        id: '',
+        filename: '',
+        fullpath: '',
+        mimetype: '',
+        type: '',
+      },
+      priority: 1,
+      introduceAt: 'WAITING',
+      label: '',
+      name: 'Name 1',
+      author: '',
+      blurb: '',
+      srcUrl: '',
+      altText: '',
+    };
+
+    const audioTwo: Audio = {
+      id: '2',
+      avatar: {
+        id: '',
+        filename: '',
+        fullpath: '',
+        mimetype: '',
+        type: '',
+      },
+      priority: 2,
+      introduceAt: 'WAITING',
+      label: '',
+      name: 'Name 2',
+      author: '',
+      blurb: '',
+      srcUrl: '',
+      altText: '',
+    };
+
+    server.use(
+      rest.post('/gdx-webservices/patient', (request, response, context) => {
+        return response(
+          context.status(200),
+          context.json({
+            data: {
+              getAudioListing: {
+                edges: [{ node: audioOne }, { node: audioTwo }],
+              },
+            },
+          })
+        );
+      })
+    );
+
+    const result = await handlers.audios();
+
+    expect(result).toEqual([audioOne, audioTwo]);
+  });
+
   it('.faqs() maps the given payload into a list of faqs', async () => {
     const faqOne = {
       id: '1',

@@ -13,8 +13,8 @@ const Avatar: React.FC<AvatarProps> = (props) => {
   return (
     <AvatarStyled className={`${props.shape} ${props.size}`}>
       <AppImage
-        src={props.src ? props.src : ''}
-        alt={props.alt ? props.alt : ''}
+        src={props.src ?? ''}
+        alt={props.alt ?? ''}
         width={85}
         height={85}
       />

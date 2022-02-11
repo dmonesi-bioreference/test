@@ -79,6 +79,10 @@ export function createContentClient(overrides: Partial<Configuration>) {
         .then((body) =>
           body.data.getAudioListing.edges.map(({ node }) => ({
             ...node,
+            avatar: {
+              ...node.avatar,
+              fullpath: `${server_config.pimcore.domain ?? ''}${node.avatar.fullpath}`,
+            },
             srcUrl: `${server_config.pimcore.domain ?? ''}${node.srcUrl}`,
           }))
         ),

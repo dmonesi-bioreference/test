@@ -5,9 +5,9 @@ import { useAppTranslation } from 'app/components/Shell';
 import { Avatar, Button, Icon, Typography } from 'components';
 
 import AudioStyled from './Audio.styles';
-import { useAudioMetadata } from './hooks';
 
 export interface AudioProps {
+  avatarImage?: string;
   title: string;
   src: string;
   transcript: ReactNode;
@@ -18,7 +18,6 @@ const Audio: React.FC<AudioProps> = (props) => {
   const iconName = transcriptHidden ? 'book-open' : 'x';
 
   const t = useAppTranslation();
-  const [{ photo }] = useAudioMetadata();
 
   return (
     <AudioStyled>
@@ -30,12 +29,14 @@ const Audio: React.FC<AudioProps> = (props) => {
 
       <div className="audio__content">
         <div className="audio__description-container">
-          <Avatar
-            src={photo}
-            alt={t('components.avatar.geneticCounselor.altText')}
-            shape="square"
-            size="large"
-          />
+          {props.avatarImage &&
+            <Avatar
+              src={props.avatarImage}
+              alt={t('components.avatar.geneticCounselor.altText')}
+              shape="square"
+              size="large"
+            />
+          }
 
           <Typography type="body" alignment="left">
             {props.children}

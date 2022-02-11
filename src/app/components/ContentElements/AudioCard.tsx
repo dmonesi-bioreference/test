@@ -32,6 +32,7 @@ export const AudioCard = () => {
         </Typography>
       ) : null}
       <MediaElements.Audio
+        avatarImage={firstAudio?.avatar.fullpath as string}
         src={firstAudio?.srcUrl}
         title={firstAudio?.name}
         transcript={

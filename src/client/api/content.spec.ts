@@ -70,6 +70,20 @@ describe('Content.article', () => {
   });
 });
 
+describe('Content.audios', () => {
+  it('calls the audios api', async () => {
+    server.use(
+      rest.get('/api/content/audios', (request, response, context) => {
+        return response(context.status(200), context.json(Mocks.audios.list));
+      })
+    );
+
+    const response = await Content.audios();
+
+    expect(response).toEqual(Mocks.audios.list);
+  });
+});
+
 describe('Content.faqs', () => {
   it('calls the faqs api', async () => {
     server.use(

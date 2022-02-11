@@ -131,9 +131,10 @@ export const resources = {
           description:
             'Here are some educational resources to help you better understand the who, what, and why’s of genetic testing.',
           section: {
-            audio: {
+            audios: {
               showTranscriptLabel: 'Read transcript',
               hideTranscriptLabel: 'Close transcript',
+              error: 'Error fetching audio.'
             },
             articles: {
               title: 'Read',
