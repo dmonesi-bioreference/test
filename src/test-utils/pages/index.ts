@@ -1,6 +1,6 @@
 import { HealthProfile } from './health-profile';
 import { Landing } from './landing';
-import { Results } from './results';
+import { Results } from './test-results';
 
 export const Pages = {
   HealthProfile,

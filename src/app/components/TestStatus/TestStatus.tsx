@@ -79,7 +79,7 @@ export const TestStatus = () => {
           <Button
             kind="link-medium"
             suffix={<Icon name="chevron-right" size="large" />}
-            href="/results"
+            href="/test-results"
           >
             <div className="test-status__header-main">
               <Heading level="2">

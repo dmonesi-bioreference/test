@@ -12,11 +12,11 @@ describe('Demo pages', () => {
       'identity-form',
       // 'location-check',
       'login',
-      'settings',
+      'account-settings',
       'registration',
       'resources',
       'resources/faqs',
-      'results',
+      'test-results',
       // 'testing-process',
     ];
 

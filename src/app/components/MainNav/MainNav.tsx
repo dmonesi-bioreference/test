@@ -34,7 +34,7 @@ const MainNav: React.FC<MainNavProps> = () => {
           <IconButton
             name="document-search"
             label={t('sections.mainNav.results.label')}
-            href="/results"
+            href="/test-results"
             encircled
           >
             <Typography type="menu-item">
@@ -73,7 +73,7 @@ const MainNav: React.FC<MainNavProps> = () => {
           <IconButton
             name="cog"
             label={t('sections.mainNav.settings.label')}
-            href="/settings"
+            href="/account-settings"
             encircled
           >
             <Typography type="menu-item">

@@ -10,7 +10,7 @@ export default function Resources() {
   return (
     <>
       <Head>
-        <title>Project Pandas</title>
+        <title>GeneDx</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

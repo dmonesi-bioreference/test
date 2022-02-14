@@ -9,7 +9,7 @@ export class Results {
   constructor(private client: typeof cy) {}
 
   open(params?: Record<string, string>, expectSuccess = true) {
-    let url = '/results';
+    let url = '/test-results';
     
     if (params) {
       const urlParams = new URLSearchParams(params);
