@@ -15,7 +15,7 @@ describe('on the results page', () => {
     });
 
     it('it redirects on the login page', () => {
-      resultsPage.open(undefined, false);
+      resultsPage.open();
       resultsPage.hasText(t('pages.login.title'));
     });
   });

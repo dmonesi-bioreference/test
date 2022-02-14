@@ -2,31 +2,27 @@
 /// <reference types="@testing-library/cypress" />
 
 export class HealthProfile {
+  get rootUrl(): string {
+    return '/health-profile'
+  }
+
   static from(client: typeof cy) {
     return new HealthProfile(client);
   }
 
   constructor(private client: typeof cy) {}
 
-  open(params?: Record<string, string>, expectSuccess = true) {
-    let url = '/health-profile';
+  open(params?: Record<string, string>) {
+    let url = this.rootUrl;
     
     if (params) {
       const urlParams = new URLSearchParams(params);
       url += `?${urlParams.toString()}`;
     } 
 
-    const waits = Array<string>();
     this.client.intercept(url).as('page_load');
-    waits.push('@page_load');
-
-    if (expectSuccess) {
-      this.client.intercept('/api/identity/profile').as('profile_load');
-      waits.push('@profile_load');
-    }
-    
     this.client.visit(url);
-    this.client.wait(waits);
+    this.client.wait('@page_load');
   }
 
   hasSection(name: string) {

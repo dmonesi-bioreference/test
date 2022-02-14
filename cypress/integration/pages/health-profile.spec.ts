@@ -15,7 +15,7 @@ describe('on the health profile page', () => {
     });
 
     it('it redirects on the login page', () => {
-      healthProfilePage.open(undefined, false);
+      healthProfilePage.open();
       healthProfilePage.hasSection(t('pages.login.title'));
     });
   });
