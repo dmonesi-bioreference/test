@@ -42,13 +42,13 @@ export function useContent() {
 }
 
 export function useContentByTestStatus(contents: (FAQ | Article | Audio)[]) {
-  const [{ isWaiting, isResultsReady, isAfterAppointment, isViewed }] =
+  const [{ isWaiting, isBeforeAppointment, isAfterAppointment, isViewed }] =
     useTestStatus();
 
   const articlesByTestStatus = () => {
     if (isWaiting) {
       return contents.filter((content) => content.introduceAt === 'WAITING');
-    } else if (isResultsReady) {
+    } else if (isBeforeAppointment) {
       return contents.filter((content) => content.introduceAt === 'READY');
     } else if (isAfterAppointment) {
       return contents.filter((content) => content.introduceAt === 'DISCUSSED');

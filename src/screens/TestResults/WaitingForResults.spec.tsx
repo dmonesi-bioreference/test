@@ -8,12 +8,6 @@ describe('The waiting for results page', () => {
   });
 
   describe('The indicator section', () => {
-    it('has the correct heading', async () => {
-      const page = await renderWithShell(<WaitingForResults />);
-
-      await page.findByText('Prepare to View Your Test Results');
-    });
-
     it('has the correct indicator', async () => {
       const page = await renderWithShell(<WaitingForResults />, {
         onLoadTests: async () =>

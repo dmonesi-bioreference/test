@@ -8,13 +8,6 @@ describe('The results ready page', () => {
   });
 
   describe('The details section', () => {
-    it('has te correct heading', async () => {
-      const page = await renderWithShell(<ResultsReady />);
-
-      await page.findByText('Return Home');
-      await page.findByText('Your Full Test Results');
-    });
-
     it('has the report', async () => {
       const page = await renderWithShell(<ResultsReady />, {
         onLoadTests: async () =>

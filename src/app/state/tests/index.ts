@@ -23,18 +23,12 @@ export const actions = {
       context.tests.actors = [
         ...context.tests.actors,
         spawn(
-          testMachine.withContext({ test, percentComplete: 0, expectedResultsDate: '', lastUpdated: '' }),
+          testMachine.withContext({ test }),
           { name: `test-${test.TestID}`, sync: false }
         )
       ];
       context.tests.tests = [
-        ...context.tests.tests,
-        {
-          id: test.TestID,
-          percentComplete: 0,
-          expectedResultsDate: '',
-          lastUpdated: ''
-        }
+        ...context.tests.tests, { id: test.TestID, percentComplete: 0 },
       ];
     });
   }),
@@ -45,8 +39,8 @@ export const actions = {
           return {
             id: test.id,
             percentComplete: event.percentComplete ?? 0,
-            expectedResultsDate: event.expectedResultsDate ?? '',
-            lastUpdated: event.lastUpdated ?? ''
+            expectedResultsDate: event.expectedResultsDate,
+            lastUpdated: event.lastUpdated,
           }
         }
         return test;
@@ -73,7 +67,7 @@ export const actions = {
       case 'after appointment':
         return { type: 'AFTER_APPOINTMENT' };
       default:
-        return { type: 'UNKNOWN' };
+        return { type: 'BEFORE_APPOINTMENT' };
     }
   }),
   resolveReport: assign((context: AppContext, event: AppEvents) => {
@@ -88,7 +82,7 @@ export const actions = {
 
 export const context: {
   actors: ActorRef<EventObject, State<TestContext, EventObject, any, { value: any; context: TestContext; }>>[],
-  tests: { id: string, percentComplete: number, expectedResultsDate: string, lastUpdated: string }[],
+  tests: { id: string, percentComplete: number, expectedResultsDate?: string, lastUpdated?: string }[],
   report: { src: string, thumbnail: string | StaticImageData },
 } = {
   actors: [],
@@ -185,9 +179,10 @@ export const machine = {
             },
             knownAppointmentStatus: {
               on: {
-                UNKNOWN: 'unknownAppointmentStatus',
+                BEFORE_APPOINTMENT: 'beforeAppointment',
                 AT_APPOINTMENT: 'atAppointment',
-                AFTER_APPOINTMENT: 'afterAppointment'
+                AFTER_APPOINTMENT: 'afterAppointment',
+                UNKNOWN: 'unknownAppointmentStatus',
               }
             },
             unknownAppointmentStatus: {
@@ -195,6 +190,7 @@ export const machine = {
                 GET_APPOINTMENT_STATUS: 'loadingAppointmentStatus'
               }
             },
+            beforeAppointment: {},
             atAppointment: {},
             afterAppointment: {}
           }

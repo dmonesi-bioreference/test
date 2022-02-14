@@ -177,7 +177,7 @@ const testMachine = createMachine(
               ? `${date.toLocaleString('default', {
                   month: 'short',
                 })} ${date.getDate()}, ${date.getFullYear()}`
-              : '',
+              : undefined,
         };
       }),
       getLastUpdatedDate: assign((context: TestContext) => {

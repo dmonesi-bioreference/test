@@ -17,7 +17,7 @@ const TimelineBody: React.FC = () => {
       loading,
       errorLoading,
       isWaiting,
-      isResultsReady,
+      isBeforeAppointment,
       isAtAppointment,
       isAfterAppointment,
     },
@@ -43,7 +43,7 @@ const TimelineBody: React.FC = () => {
     <>
       <WaitingStage status={isWaiting ? 'present' : 'past'} />
       <TestResultsReadyStage
-        status={isResultsReady ? 'present' : isWaiting ? 'future' : 'past'}
+        status={isBeforeAppointment ? 'present' : isWaiting ? 'future' : 'past'}
       />
       <AtAppointmentStage
         status={

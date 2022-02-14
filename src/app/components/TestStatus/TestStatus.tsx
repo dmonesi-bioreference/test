@@ -1,6 +1,7 @@
 import { remToPx } from 'polished';
 
 import { useAppTranslation } from 'app/components/Shell';
+import { useTestStatus } from 'app/hooks';
 import {
   Button,
   Card,
@@ -13,11 +14,10 @@ import {
 import { colors, tokens } from 'styles';
 
 import TestStatusStyled from './TestStatus.styles';
-import { useTestStatus } from './hooks';
 
 export const TestStatus = () => {
   const [
-    { notLoaded, loading, errorLoading, isWaiting, percentComplete, expectedResultsDate },
+    { notLoaded, loading, errorLoading, isWaiting, test },
   ] = useTestStatus();
 
   const t = useAppTranslation();
@@ -38,7 +38,7 @@ export const TestStatus = () => {
     );
   }
 
-  if (errorLoading) {
+  if (errorLoading || !test) {
     return (
       <Card>
         <Heading color="error" level="7">
@@ -48,10 +48,20 @@ export const TestStatus = () => {
     );
   }
 
+  const getMinorHeading = () => {
+    if (isWaiting) {
+      return test.expectedResultsDate
+        ? t('sections.results.expected', { expectedResultsDate: test.expectedResultsDate })
+        : t('sections.results.checkBackSoon');
+    }
+
+    return `${t('sections.results.doctorShared').toLowerCase()}.`;
+  }
+
   return (
     <TestStatusStyled>
       <CircularProgress
-        percent={percentComplete}
+        percent={test.percentComplete}
         radius={parseInt(remToPx(tokens.spacingXxLarge), 10)}
         strokeWidth={parseInt(remToPx(tokens.spacingLarge), 10)}
         withOuterShadow={true}
@@ -90,9 +100,7 @@ export const TestStatus = () => {
             </div>
             <div className="test-status__header-minor">
               <Heading level="8">
-                {isWaiting
-                  ? t('sections.results.expected', { expectedResultsDate })
-                  : `${t('sections.results.doctorShared').toLowerCase()}.`}
+                {getMinorHeading()}
               </Heading>
             </div>
           </Button>

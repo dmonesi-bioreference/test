@@ -761,6 +761,7 @@ export const resources = {
           inProgress: 'Test in progress',
           updated: 'Updated {{lastUpdated}}',
           ready: 'Results Ready',
+          checkBackSoon: 'Check back to see when your results should be ready.',
           doctorShared: 'And shared with your doctor',
           doctorAppointment:
             'Your doctor will soon arrange an appointment to discuss them with you',
