@@ -39,7 +39,7 @@ jobs:
             ${{ secrets.ACR_HOST }}/pandas:${{ steps.generate_tag.outputs.tag }}
           build-args: |
             GTM_ID=${{ secrets.GTM_ID_DEV }}
-            PIMCORE_DOMAIN=https://patient-dev.genedx.com
+            PIMCORE_DOMAIN=https://stage.genedx.com
 
       - name: Azure login
         uses: azure/login@v1
@@ -72,8 +72,8 @@ jobs:
               PROVIDER_PORTAL_API_BASIC_AUTH_USERNAME="${{ secrets.PROVIDER_PORTAL_API_BASIC_AUTH_USERNAME }}" \
               PROVIDER_PORTAL_API_BASIC_AUTH_PASSWORD="${{ secrets.PROVIDER_PORTAL_API_BASIC_AUTH_PASSWORD }}" \
               PROVIDER_PORTAL_API_REFERER="https://patient-dev.genedx.com" \
-              PIMCORE_URL="${{ secrets.PIMCORE_URL }}" \
+              PIMCORE_URL="https://stage.genedx.com/gdx-webservices/patient" \
               PIMCORE_KEY="${{ secrets.PIMCORE_KEY }}" \
-              PIMCORE_DOMAIN="https://patient-dev.genedx.com" \
+              PIMCORE_DOMAIN="https://stage.genedx.com" \
               NEXT_PUBLIC_GTM_ID="${{ secrets.GTM_ID_DEV }}" \
-              NEXT_PUBLIC_PIMCORE_DOMAIN="https://patient-dev.genedx.com"
+              NEXT_PUBLIC_PIMCORE_DOMAIN="https://stage.genedx.com"
