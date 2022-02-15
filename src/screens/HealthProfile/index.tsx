@@ -25,6 +25,14 @@ export const HealthProfile = () => {
     ({ context }) => context.requests.identityProfile.values
   );
 
+  const formatPhoneNumber = (phone: string) => {
+    phone = phone.replace(/[^\d]/g, '');
+    if (phone.length == 10) {
+      return phone.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+    }
+    return null;
+  };
+
   useEffect(identityProfileRequest, [identityProfileRequest]);
 
   if (!session) {
@@ -119,7 +127,7 @@ export const HealthProfile = () => {
                     'pages.healthProfile.yourDetails.fields.phoneNumber.label'
                   )}
                 >
-                  {profile.phone_number}
+                  {formatPhoneNumber(profile.phone_number)}
                 </DisplayField>
                 <DisplayField
                   label={t(

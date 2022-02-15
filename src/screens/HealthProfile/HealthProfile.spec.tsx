@@ -107,7 +107,7 @@ describe('Rendering', () => {
 
     await screen.findByText(profile.caregiver_name);
     await screen.findByText(session.email);
-    await screen.findByText(profile.phone_number);
+    await screen.findByText('(267) 190-5214');
     await screen.findByText(profile.caregiver_location);
     await screen.findByText(profile.relation_to_patient);
   });
