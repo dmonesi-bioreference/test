@@ -10,7 +10,6 @@ const CardStyled = styled.div<CardProps>`
   border-radius: ${tokens.borderRadius};
   box-shadow: ${tokens.shadowXxLarge};
   overflow: hidden;
-  position: relative;
 
   &.card--transparent {
     background-color: transparent;
