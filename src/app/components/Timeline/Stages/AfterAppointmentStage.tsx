@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router';
+
 import { useAppTranslation } from 'app/components/Shell';
 import { Icon } from 'components/Icon';
 import { TimelineItem } from 'components/TimelineItem';
@@ -12,6 +14,7 @@ export const AfterAppointmentStage: React.FC<AfterAppointmentStageProps> = (
   props
 ) => {
   const t = useAppTranslation();
+  const router = useRouter();
 
   return (
     <AfterAppointmentStageStyled key={props.status} className={props.status}>
@@ -24,7 +27,7 @@ export const AfterAppointmentStage: React.FC<AfterAppointmentStageProps> = (
                 label: t(
                   'sections.results.timeline.afterAppointment.linkLabel'
                 ),
-                onClick: () => null,
+                onClick: () => router.push('/resources'),
               }
             : undefined
         }

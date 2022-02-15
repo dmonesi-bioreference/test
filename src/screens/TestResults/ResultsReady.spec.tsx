@@ -17,7 +17,7 @@ describe('The results ready page', () => {
 
       await page.findByText('Medical language ahead');
       await page.findByText(
-        'This report is designed with health care providers in mind and contains many medically-oriented details. Talk to your provider to understand what the results mean for your family.'
+        'This report is designed with healthcare providers in mind and contains many medically-oriented details. Please review this test report with your provider to understand what the test results mean for you and your family.'
       );
       await page.findByText('Open PDF');
     });

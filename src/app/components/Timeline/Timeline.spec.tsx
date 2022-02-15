@@ -27,7 +27,7 @@ describe('The timeline componet', () => {
     });
   
     // Button text visible in body of Waiting should exist
-    await app.findByText('Check out resources');
+    await app.findByText('View resources');
   
     // Text only found in "After your appointment" should not exist yet
     expect(
@@ -54,9 +54,9 @@ describe('The timeline componet', () => {
     });
   
     await page.findByText(
-      "We're working on processing your test sample. Meanwhile, learn more from our resources."
+      "We're working on processing your test sample. Meanwhile, check out these helpful resources."
     );
-    await page.findByText('Check out resources');
+    await page.findByText('View resources');
   });
   
   it('has test results ready', async () => {
@@ -65,7 +65,7 @@ describe('The timeline componet', () => {
     });
   
     await page.findByText(
-      'Now that your results are ready, your doctor will get in touch to arrange an appointment to discuss the results with you.'
+      'When your test results are ready, your doctor will arrange an appointment to discuss the results with you.'
     );
     await page.findByText('Prepare for your appointment');
   });
@@ -77,9 +77,8 @@ describe('The timeline componet', () => {
     });
   
     await page.findByText(
-      'You will be able to discuss he results with your doctor and ask any questions that you may have.'
+      'You will be able to discuss the results with your doctor and ask any questions you have.'
     );
-    await page.findByText("I've spoken with my doctor");
   });
   
   it('has test results ready and user after appointment', async () => {
@@ -92,6 +91,6 @@ describe('The timeline componet', () => {
     await page.findByText(
       'You may also have a follow up discussion with a genetic counselor, a healthcare professional with expertise in genetics.'
     );
-    await page.findByText("Focus on providing care");
+    await page.findByText("Support & resources");
   });
 });

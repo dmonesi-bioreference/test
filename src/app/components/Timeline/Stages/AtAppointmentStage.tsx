@@ -41,14 +41,6 @@ export const AtAppointmentStage: React.FC<AtAppointmentStageProps> = (
       <TimelineItem
         heading={t('sections.results.timeline.atAppointment.heading')}
         body={t('sections.results.timeline.atAppointment.body')}
-        link={
-          props.status == 'present'
-            ? {
-                label: t('sections.results.timeline.atAppointment.linkLabel'),
-                onClick: () => null,
-              }
-            : undefined
-        }
         icon={<Icon name="chat-alt-2" style="solid" />}
         isCollapseEnabled={props.status === 'present' ? false : true}
         isSmall={props.status === 'past' ? true : false}

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { ArticleCards } from 'app/components/ContentElements';
+import { ArticleCards, Content } from 'app/components/ContentElements';
 import { MediaElements } from 'app/components/MediaElements';
 import {
   useAppEvents,
@@ -24,14 +24,20 @@ export const ResultsReady = () => {
 
   return (
     <ResultsReadyStyled>
-      <div className="results-ready__attention">
+      <div className="results-ready__description">
+        <Content>
+          {t('pages.results.ready.description')}
+        </Content>
+      </div>
+      
+      <div className="results-ready__report-attention">
         <Icon name="exclamation-circle" />
         <Heading level="3" color="minor">
           {t('pages.results.ready.report.attention')}
         </Heading>
       </div>
 
-      <div className="results-ready__description">
+      <div className="results-ready__report-description">
         <Typography type="body">
           {t('pages.results.ready.report.description')}
         </Typography>

@@ -191,7 +191,7 @@ export const resources = {
           waiting: {
             title: 'Prepare to View Your Test Results',
             indicatorCard: {
-              heading: 'Your genetic test is currently:',
+              heading: 'Your genetic test is currently in progress. While you wait, check out the resources below. These will help you better understand how genetic testing works and what a genetic test report looks like.',
               title: 'In Progress',
               subTitle: 'Results expected {{expectedResultsDate}}',
             },
@@ -203,10 +203,11 @@ export const resources = {
           ready: {
             home: 'Return Home',
             title: 'Your Full Test Results',
+            description: '<p>Genetic test results may be difficult to understand and may cause anxiety for some people, regardless of the results. When reviewing your test results, please keep in mind that genetic test reports have some limitations that are important to understand.</p><br /><p>Thus, reviewing test results with your treating physician first is strongly encouraged, as it is necessary to properly understand and plan your next steps.</p>',
             report: {
               attention: 'Medical language ahead',
               description:
-                'This report is designed with health care providers in mind and contains many medically-oriented details. Talk to your provider to understand what the results mean for your family.',
+                'This report is designed with healthcare providers in mind and contains many medically-oriented details. Please review this test report with your provider to understand what the test results mean for you and your family.',
               pdfLink: 'Open PDF',
               pdfPages: '{{pageNumber}} pages',
               pdfThumbnailAlt: 'Your report in PDF',
@@ -733,25 +734,24 @@ export const resources = {
             subTitle: "What's coming next?",
             waiting: {
               heading: 'Waiting for Results',
-              body: "We're working on processing your test sample. Meanwhile, learn more from our resources.",
-              linkLabel: 'Check out resources',
+              body: "We're working on processing your test sample. Meanwhile, check out these helpful resources.",
+              linkLabel: 'View resources',
             },
             testResultsReady: {
               heading: 'Test Results Ready',
-              body: 'Now that your results are ready, your doctor will get in touch to arrange an appointment to discuss the results with you.',
+              body: 'When your test results are ready, your doctor will arrange an appointment to discuss the results with you.',
               bodyPast:
-                'When your results are ready, your doctor will get in touch to arrange an appointment to discuss the results with you.',
+                'When your test results are ready, your doctor will arrange an appointment to discuss the results with you.',
               linkLabel: 'Prepare for your appointment',
             },
             atAppointment: {
               heading: 'At Your Appointment',
-              body: 'You will be able to discuss he results with your doctor and ask any questions that you may have.',
-              linkLabel: "I've spoken with my doctor",
+              body: 'You will be able to discuss the results with your doctor and ask any questions you have.',
             },
             afterAppointment: {
               heading: 'After Your Appointment',
               body: 'You may also have a follow up discussion with a genetic counselor, a healthcare professional with expertise in genetics.',
-              linkLabel: 'Focus on providing care',
+              linkLabel: 'Support & resources',
             },
           },
           getUpdates: 'Receive progress updates',
