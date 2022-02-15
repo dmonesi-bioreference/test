@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 
+import { Card } from 'components/Card';
 import { Carousel } from 'components/Carousel';
 import { FaqCard } from 'components/FaqCard';
-import { Spinner } from 'components/Spinner';
 import { Typography } from 'components/Typography';
 
 import { useAppEvents, useAppTranslation } from '../Shell';
@@ -48,7 +48,7 @@ export const FAQCards = () => {
 
   return (
     <div>
-      {loadingFAQs ? <Spinner /> : null}
+      {loadingFAQs && <Card loading />}
       {errorFetchingFAQs ? (
         <Typography color="error" level="7" type="heading">
           {t('pages.resources.section.faqs.error')}

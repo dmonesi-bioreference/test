@@ -1,39 +1,33 @@
 /* stylelint-disable declaration-empty-line-before */
 /* eslint-disable import/order */
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-import { colors } from 'styles';
+import { base, colors } from 'styles';
 
 import { LoadingProps } from './Loading';
 
 const LoadingStyled = styled.div<LoadingProps>`
-  ${({ variant }) =>
-    variant == 'fullscreen' &&
-    css`
-      &:before {
-        content: '';
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        height: 100vh;
-        width: 100vw;
-        background: linear-gradient(
-          to right,
-          white 0%,
-          ${colors.grey[100]} 50%,
-          white 100%
+  ${base};
+  height: 100%;
+  width: 100%;
+  ${({ variant, theme }) =>
+    variant == 'shimmer' &&
+    `
+    background: linear-gradient(
+        to right,
+        ${theme?.colors?.background || colors.grey[50]} 0%,
+        ${theme?.colors?.foreground || colors.grey[100]} 50%,
+        ${theme?.colors?.background || colors.grey[50]} 100%
         );
-        animation: load 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      background-size: 200% 100%;
+      animation: 2s shimmer infinite;
 
-        @keyframes load {
-          from {
-            left: -100%;
-          }
-          to {
-            left: 100%;
-          }
+      @keyframes shimmer {
+        0% {
+          background-position: 100% 0;
+        }
+        100% {
+          background-position: -100% 0;
         }
       }
     `}
@@ -59,7 +53,6 @@ const LoadingStyled = styled.div<LoadingProps>`
 
   ul {
     display: flex;
-    align-items: space-between;
     justify-content: space-around;
     padding: 0;
     margin: 0;

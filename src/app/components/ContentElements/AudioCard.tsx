@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 
 import { MediaElements } from 'app/components/MediaElements';
 import { useAppEvents, useAppTranslation } from 'app/components/Shell';
-import { ContentBlock, Spinner, Typography } from 'components';
+import { Card } from 'components/Card';
+import { ContentBlock } from 'components/ContentBlock';
+import { Typography } from 'components/Typography';
 
 import { Content } from './Content';
 import { useContent, useContentByTestStatus } from './hooks';
@@ -16,41 +18,41 @@ export const AudioCard = () => {
   const [{ audios, loadingAudios, errorFetchingAudios }] = useContent();
 
   const audiosByTestStatus = useContentByTestStatus(audios) as Audio[];
+  const firstAudio = audiosByTestStatus.slice(0, 1);
 
-  const firstAudio = audiosByTestStatus[0];
-  const audioTranscript = firstAudio?.content?.map((e) => ({
-    title: e.title,
-    content: e.content,
-  }));
+  const audioCards = firstAudio.map((audio) => {
+    return (
+      <MediaElements.Audio
+      avatarImage={audio?.avatar?.fullpath as string}
+        key={audio.id}
+        src={audio.srcUrl}
+        title={audio.name}
+        transcript={
+          <>
+            {audio.content?.map((contentBlock, index) => (
+              <React.Fragment key={index}>
+                <ContentBlock title={contentBlock.title}>
+                  <Content>{contentBlock.content}</Content>
+                </ContentBlock>
+              </React.Fragment>
+            ))}
+          </>
+        }
+      >
+        <Content>{audio.blurb}</Content>
+      </MediaElements.Audio>
+    );
+  });
 
   return (
     <div>
-      {loadingAudios ? <Spinner /> : null}
-      {errorFetchingAudios ? (
+      {loadingAudios && <Card loading />}
+      {errorFetchingAudios && (
         <Typography color="error" level="7" type="heading">
           {t('pages.resources.section.audios.error')}
         </Typography>
-      ) : null}
-      <MediaElements.Audio
-        avatarImage={firstAudio?.avatar?.fullpath as string}
-        src={firstAudio?.srcUrl}
-        title={firstAudio?.name}
-        transcript={
-          audioTranscript && (
-            <>
-              {audioTranscript.map((contentBlock, index) => (
-                <React.Fragment key={index}>
-                  <ContentBlock title={contentBlock.title}>
-                    <Content>{contentBlock.content}</Content>
-                  </ContentBlock>
-                </React.Fragment>
-              ))}
-            </>
-          )
-        }
-      >
-        <Content>{firstAudio?.blurb}</Content>
-      </MediaElements.Audio>
+      )}
+      {audioCards}
     </div>
   );
 };

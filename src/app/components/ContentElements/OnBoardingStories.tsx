@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 
-import { Carousel, ContentCard, Spinner, Typography } from 'components';
+import { Carousel } from 'components/Carousel';
+import { ContentCard } from 'components/ContentCard';
+import { Spinner } from 'components/Spinner';
+import { Typography } from 'components/Typography';
 import { tokens } from 'styles';
 
 import { useAppEvents, useAppTranslation } from '../Shell';
@@ -42,7 +45,7 @@ export const OnBoardingStories = () => {
         marginBottom: tokens.spacingXxLarge,
       }}
     >
-      {loadingOnBoardingCards ? <Spinner /> : null}
+      {loadingOnBoardingCards && <Spinner />}
       {errorFetchingOnBoardingCards ? (
         <Typography color="error" level="7" type="heading">
           {t('pages.onboarding.error')}

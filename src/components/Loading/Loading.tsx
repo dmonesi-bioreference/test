@@ -1,7 +1,7 @@
 import LoadingStyled from './Loading.styles';
 
 export interface LoadingProps {
-  variant?: 'fullscreen' | 'inline';
+  variant?: 'dna' | 'shimmer';
 }
 
 const Loading: React.FC<LoadingProps> = (props) => {
@@ -17,10 +17,12 @@ const Loading: React.FC<LoadingProps> = (props) => {
   );
   return (
     <LoadingStyled {...props}>
-      <div className="dna-container">
-        <ul>{nucleotides}</ul>
-        <ul className="opposing-set">{nucleotides}</ul>
-      </div>
+      {props.variant === 'dna' && (
+        <div className="dna-container">
+          <ul>{nucleotides}</ul>
+          <ul className="opposing-set">{nucleotides}</ul>
+        </div>
+      )}
     </LoadingStyled>
   );
 };

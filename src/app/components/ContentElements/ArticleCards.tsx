@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 
+import { Card } from 'components/Card';
 import { Carousel } from 'components/Carousel';
 import { ContentCard } from 'components/ContentCard';
-import { Spinner } from 'components/Spinner';
 import { Typography } from 'components/Typography';
 import { tokens } from 'styles';
 
@@ -52,7 +52,7 @@ export const ArticleCards: React.FC<ArticleCardsProps> = (props) => {
 
   return (
     <div>
-      {loadingArticles ? <Spinner /> : null}
+      {loadingArticles && <Card loading />}
       {errorFetchingArticles ? (
         <Typography color="error" level="7" type="heading">
           {t('pages.resources.section.articles.error')}

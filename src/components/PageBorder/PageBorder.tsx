@@ -14,7 +14,7 @@ export interface PageBorderProps {
  * @note State is passed in string form (non-boolean form), as it is passed to html attributes/styled components
  */
 const PageBorder = styled.div<PageBorderProps>`
-  ${base}
+  ${base};
   height: ${tokens.borderWidthExtraThick};
   background: ${({ theme }) => theme.colors.borderHighlight};
   ${({ loading, theme }) =>

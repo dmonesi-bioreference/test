@@ -5,16 +5,21 @@ import { base, colors, tokens } from 'styles';
 import { CardProps } from './Card';
 
 const CardStyled = styled.div<CardProps>`
-  ${base}
+  ${base};
   background-color: ${colors.white};
   border-radius: ${tokens.borderRadius};
   box-shadow: ${tokens.shadowXxLarge};
   overflow: hidden;
+  position: relative;
 
   &.card--transparent {
     background-color: transparent;
     border-radius: 0;
     box-shadow: none;
+  }
+
+  &.card--loading {
+    height: ${tokens.spacingXLarge};
   }
 
   .card__header {

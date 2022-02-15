@@ -1,5 +1,7 @@
 import { Story } from '@storybook/react/types-6-0';
 
+import { Shell } from 'app/components/Shell';
+
 import Loading, { LoadingProps } from './Loading';
 
 export default {
@@ -10,16 +12,21 @@ export default {
   },
 };
 
-const Template: Story<LoadingProps> = (args) => <Loading {...args} />;
+const Template: Story<LoadingProps> = (args) => (
+  <Shell>
+    <div style={{ height: '20px' }}>
+      <Loading {...args} />
+    </div>
+  </Shell>
+);
+export const DNA = Template.bind({});
 
-export const Fullscreen = Template.bind({});
-
-Fullscreen.args = {
-  variant: 'fullscreen',
+DNA.args = {
+  variant: 'dna',
 };
 
-export const Inline = Template.bind({});
+export const Shimmer = Template.bind({});
 
-Inline.args = {
-  variant: 'inline',
+Shimmer.args = {
+  variant: 'shimmer',
 };
