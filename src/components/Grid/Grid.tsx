@@ -13,7 +13,8 @@ export interface GridProps {
  */
 const Grid: React.FC<GridProps> = styled.div<GridProps>`
   ${base}
-  display: grid;
+  display: flex;
+  flex-direction: column;
   grid-template-columns: 1fr;
   ${({ spacing = 'large' }) => {
     switch (spacing) {
