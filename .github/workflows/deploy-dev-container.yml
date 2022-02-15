@@ -75,4 +75,5 @@ jobs:
               PIMCORE_URL="${{ secrets.PIMCORE_URL }}" \
               PIMCORE_KEY="${{ secrets.PIMCORE_KEY }}" \
               PIMCORE_DOMAIN="${{ secrets.PIMCORE_DOMAIN }}" \
-              NEXT_PUBLIC_GTM_ID="${{ secrets.GTM_ID_DEV }}"
+              NEXT_PUBLIC_GTM_ID="${{ secrets.GTM_ID_DEV }}" \
+              NEXT_PUBLIC_PIMCORE_DOMAIN="https://patient-dev.genedx.com"

@@ -75,7 +75,8 @@ jobs:
               PIMCORE_URL="https://stage.genedx.com/gdx-webservices/patient" \
               PIMCORE_KEY="${{ secrets.PIMCORE_KEY }}" \
               PIMCORE_DOMAIN="https://stage.genedx.com" \
-              NEXT_PUBLIC_GTM_ID="${{ secrets.GTM_ID_STAGE }}"
+              NEXT_PUBLIC_GTM_ID="${{ secrets.GTM_ID_STAGE }}" \
+              NEXT_PUBLIC_PIMCORE_DOMAIN="https://stage.genedx.com"
 
       # Wait for the site to be restarted before we start vulnerability scan
       - name: Wait for 30 seconds...

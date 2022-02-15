@@ -2,7 +2,7 @@ import Head from 'next/head';
 import React, { RefObject, useEffect, useState } from 'react';
 
 import { AppLayout } from 'app/components/AppLayout';
-import { Content } from 'app/components/ContentElements';
+import { ContentWithPimcore } from 'app/components/ContentElements';
 import {
   useAppEvents,
   useAppSelector,
@@ -114,7 +114,9 @@ export const FAQsPage: React.FC<FAQPageProps> = (props) => {
                   faqContents.map((contentBlock, index) => (
                     <div ref={contentBlock.ref} key={index}>
                       <ContentBlock title={contentBlock.title}>
-                        <Content>{contentBlock.content}</Content>
+                        <ContentWithPimcore>
+                          {contentBlock.content}
+                        </ContentWithPimcore>
                       </ContentBlock>
                     </div>
                   ))}
