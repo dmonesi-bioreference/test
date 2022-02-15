@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
 
 import { CaregiverPasswordElements } from 'app/components/CaregiverPasswordElements';
 import {
@@ -15,6 +16,7 @@ import { StepTitle } from 'components/StepTitle';
 import { Typography } from 'components/Typography';
 import { slideInOut } from 'styles/animations';
 import { tokens } from 'styles/tokens';
+import { trackSignUpFlowEvent } from 'tracking';
 
 export function PasswordHeader() {
   const t = useAppTranslation();
@@ -45,6 +47,14 @@ export function Password() {
   const isRegistering = useAppState('auth.registering');
   const errors = useAppSelector((state) => state.context.auth.errors);
   const anyErrors = errors.length > 0;
+  const submitButtonText = t('sections.furtherRegistration.next');
+
+  useEffect(() => {
+    trackSignUpFlowEvent({
+      signUpStep: 'password',
+      signUpButtonText: submitButtonText,
+    });
+  }, [submitButtonText]);
 
   return (
     <>
@@ -114,7 +124,7 @@ export function Password() {
           submit={true}
           disabled={!isValid || isRegistering}
         >
-          {t('sections.furtherRegistration.next')}
+          {submitButtonText}
         </Button>
       </motion.form>
     </>

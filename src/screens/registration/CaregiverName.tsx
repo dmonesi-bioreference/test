@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
 
 import { CaregiverNameElements } from 'app/components/CaregiverNameElements';
 import {
@@ -11,6 +12,7 @@ import { Grid } from 'components/Grid';
 import { ProcessBar } from 'components/ProcessBar';
 import { Heading, Typography } from 'components/Typography';
 import { slideInOut } from 'styles/animations';
+import { trackSignUpFlowEvent } from 'tracking';
 
 export function CaregiverNameHeader() {
   const t = useAppTranslation();
@@ -40,6 +42,14 @@ export function CaregiverName() {
   const t = useAppTranslation();
   const events = useAppEvents();
   const isValid = useAppState('forms.caregiverName.validation.valid');
+  const submitButtonText = t('sections.furtherRegistration.next');
+
+  useEffect(() => {
+    trackSignUpFlowEvent({
+      signUpStep: 'name',
+      signUpButtonText: submitButtonText,
+    });
+  }, [submitButtonText]);
 
   return (
     <motion.form
@@ -60,7 +70,7 @@ export function CaregiverName() {
           submit={true}
           disabled={!isValid}
         >
-          {t('sections.furtherRegistration.next')}
+          {submitButtonText}
         </Button>
       </Grid>
     </motion.form>

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
 
 import { CaregiverContactElements } from 'app/components/CaregiverContactElements';
 import {
@@ -12,6 +13,7 @@ import { ProcessBar } from 'components/ProcessBar';
 import { StepTitle } from 'components/StepTitle';
 import { Heading } from 'components/Typography';
 import { slideInOut } from 'styles/animations';
+import { trackSignUpFlowEvent } from 'tracking';
 
 export function CaregiverContactHeader() {
   const t = useAppTranslation();
@@ -38,6 +40,14 @@ export function CaregiverContact() {
   const t = useAppTranslation();
   const events = useAppEvents();
   const isValid = useAppState('forms.caregiverContact.validation.valid');
+  const submitButtonText = t('sections.furtherRegistration.next');
+
+  useEffect(() => {
+    trackSignUpFlowEvent({
+      signUpStep: 'contact',
+      signUpButtonText: submitButtonText,
+    });
+  }, [submitButtonText]);
 
   return (
     <motion.form
@@ -57,7 +67,7 @@ export function CaregiverContact() {
           submit={true}
           disabled={!isValid}
         >
-          {t('sections.furtherRegistration.next')}
+          {submitButtonText}
         </Button>
       </Grid>
     </motion.form>

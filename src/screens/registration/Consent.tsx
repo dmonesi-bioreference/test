@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
 
 import { ConsentElements } from 'app/components/ConsentElements';
 import {
   useAppEvents,
+  useAppSelector,
   useAppState,
   useAppTranslation,
 } from 'app/components/Shell';
@@ -10,6 +12,7 @@ import { Button } from 'components/Button';
 import { Grid } from 'components/Grid';
 import { Heading } from 'components/Typography';
 import { slideInOut } from 'styles/animations';
+import { trackSignUpFlowEvent } from 'tracking';
 
 export function ConsentHeader() {
   const t = useAppTranslation();
@@ -32,6 +35,18 @@ export function Consent() {
   const t = useAppTranslation();
   const events = useAppEvents();
   const isValid = useAppState('forms.consent.validation.valid');
+  const isSms = useAppSelector(
+    (state) => state.context.auth.patientSource === 'SMS'
+  );
+  const submitButtonText = t('sections.furtherRegistration.continue');
+
+  useEffect(() => {
+    trackSignUpFlowEvent({
+      signUpStep: 'consent',
+      signUpMethod: isSms ? 'SMS' : 'email',
+      signUpButtonText: submitButtonText,
+    });
+  }, [isSms, submitButtonText]);
 
   return (
     <motion.form
@@ -52,7 +67,7 @@ export function Consent() {
         submit={true}
         disabled={!isValid}
       >
-        {t('sections.furtherRegistration.continue')}
+        {submitButtonText}
       </Button>
     </motion.form>
   );

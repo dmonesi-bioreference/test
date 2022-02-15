@@ -17,6 +17,7 @@ import { InformationBanner } from 'components/InformationBanner';
 import { PageSection } from 'components/PageSection';
 import { Spinner } from 'components/Spinner';
 import { Heading, Typography } from 'components/Typography';
+import { trackSignUpFlowEvent } from 'tracking';
 
 export const IdentityForm = () => {
   const t = useAppTranslation();
@@ -33,10 +34,19 @@ export const IdentityForm = () => {
 
   const anyErrors = numberOfAttemptsRemaining < 5;
   const attemptsExhausted = numberOfAttemptsRemaining === 0;
+  const submitButtonText = t('sections.identity.form.confirm');
 
   useEffect(() => {
     events.identityProfileRequest();
   }, [events]);
+
+  useEffect(() => {
+    trackSignUpFlowEvent({
+      signUpStep: 'identity',
+      signUpMethod: isSms ? 'SMS' : 'email',
+      signUpButtonText: submitButtonText,
+    });
+  }, [isSms, submitButtonText]);
 
   return (
     <>
@@ -96,7 +106,7 @@ export const IdentityForm = () => {
                       disabled={!isValid || attemptsExhausted}
                       onClick={events.checkIdentity}
                     >
-                      {t('sections.identity.form.confirm')}
+                      {submitButtonText}
                     </Button>
                   }
                 >

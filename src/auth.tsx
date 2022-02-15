@@ -9,6 +9,7 @@ import ReactDOM from 'react-dom';
 import { Shell } from 'app/components/Shell';
 import { Api } from 'client/api';
 import { Auth0Registration } from 'screens/Auth0Registration';
+import { trackSignUpEvent } from 'tracking';
 
 declare namespace auth0 {
   type WebAuth = import('auth0-js').WebAuth;
@@ -149,6 +150,7 @@ async function register({
           if (error) {
             reject(error);
           } else {
+            trackSignUpEvent();
             resolve(result);
           }
         }
