@@ -142,7 +142,7 @@ describe('Handlers', () => {
     };
 
     const articleTwo = {
-      id: '2',
+      id: '1',
       bannerImage: {
         id: '',
         filename: '',
@@ -161,20 +161,6 @@ describe('Handlers', () => {
       introduceAt: 'WAITING' as IntroduceAt,
     };
 
-    const articleWithoutBannerImage = {
-      id: '3',
-      bannerImage: null,
-      label: '',
-      title: 'Title 3',
-      blurb: '',
-      content: '',
-      slug: 'slug',
-      published: 1,
-      reviewByDate: 1,
-      owner: '',
-      introduceAt: 'WAITING' as IntroduceAt,
-    };
-
     server.use(
       rest.post('/gdx-webservices/patient', (request, response, context) => {
         return response(
@@ -182,7 +168,7 @@ describe('Handlers', () => {
           context.json({
             data: {
               getArticleListing: {
-                edges: [{ node: articleOne }, { node: articleTwo }, { node: articleWithoutBannerImage }],
+                edges: [{ node: articleOne }, { node: articleTwo }],
               },
             },
           })
@@ -192,11 +178,11 @@ describe('Handlers', () => {
 
     const result = await handlers.articles();
 
-    expect(result).toEqual([articleOne, articleTwo, articleWithoutBannerImage]);
+    expect(result).toEqual([articleOne, articleTwo]);
   });
 
   it('.audios() maps the given payload into a list of audio', async () => {
-    const audioOne = {
+    const audioOne: Audio = {
       id: '1',
       avatar: {
         id: '',
@@ -215,7 +201,7 @@ describe('Handlers', () => {
       altText: '',
     };
 
-    const audioTwo = {
+    const audioTwo: Audio = {
       id: '2',
       avatar: {
         id: '',
@@ -234,19 +220,6 @@ describe('Handlers', () => {
       altText: '',
     };
 
-    const audioWithoutAvatar = {
-      id: '3',
-      avatar: null,
-      priority: 3,
-      introduceAt: 'WAITING',
-      label: '',
-      name: 'Name 3',
-      author: '',
-      blurb: '',
-      srcUrl: '',
-      altText: '',
-    };
-
     server.use(
       rest.post('/gdx-webservices/patient', (request, response, context) => {
         return response(
@@ -254,7 +227,7 @@ describe('Handlers', () => {
           context.json({
             data: {
               getAudioListing: {
-                edges: [{ node: audioOne }, { node: audioTwo }, { node: audioWithoutAvatar }],
+                edges: [{ node: audioOne }, { node: audioTwo }],
               },
             },
           })
@@ -264,7 +237,7 @@ describe('Handlers', () => {
 
     const result = await handlers.audios();
 
-    expect(result).toEqual([audioOne, audioTwo, audioWithoutAvatar]);
+    expect(result).toEqual([audioOne, audioTwo]);
   });
 
   it('.faqs() maps the given payload into a list of faqs', async () => {
@@ -367,21 +340,6 @@ describe('Handlers', () => {
       priority: 2,
     };
 
-    const internalLinkCardWithoutBannerImage = {
-      id: '2',
-      bannerImage: null,
-      label: '',
-      title: 'Title 2',
-      blurb: '',
-      author: '',
-      published: 2,
-      unpublishedDate: 2,
-      reviewByDate: 2,
-      introduceAt: 'WAITING' as IntroduceAt,
-      owner: '',
-      priority: 2,
-    };
-
     server.use(
       rest.post('/gdx-webservices/patient', (request, response, context) => {
         return response(
@@ -389,89 +347,12 @@ describe('Handlers', () => {
           context.json({
             data: {
               getInternalLinkCardListing: {
-                edges: [{ node: internalLinkCardOne }, { node: internalLinkCardTwo }, { node: internalLinkCardWithoutBannerImage }],
+                edges: [{ node: internalLinkCardOne }, { node: internalLinkCardTwo }],
               },
             },
           })
         );
       })
     );
-
-    const result = await handlers.internalLinkCards();
-  
-    expect(result).toEqual([internalLinkCardOne, internalLinkCardTwo, internalLinkCardWithoutBannerImage]);
-  });
-
-  it('.onBoardingCards() maps the given payload into a list of on-boarding cards', async () => {
-    const onBoardingCardOne = {
-      id: '1',
-      bannerImage: {
-        id: '',
-        filename: '',
-        fullpath: '',
-        mimetype: '',
-        type: '',
-      },
-      label: '',
-      title: 'Title 1',
-      blurb: '',
-      author: '',
-      published: 1,
-      unpublishedDate: 1,
-      reviewByDate: 1,
-      introduceAt: 'WAITING' as IntroduceAt,
-      owner: '',
-      priority: 1,
-    };
-
-    const onBoardingCardOneTwo = {
-      id: '2',
-      bannerImage: {
-        id: '2',
-        filename: '',
-        altText: '',
-        fullpath: '',
-      },
-      label: 'Results & Resources',
-      title: 'View and learn about the genetic test results.',
-      blurb:
-        'We provide you with easy access to your child’s genetic test results, as well as to resources to learn about their impact. Understand what’s happening, and prepare for your child’s future.',
-      unpublishDate: Date.now(),
-      reviewByDate: Date.now(),
-      owner: '',
-      priority: 1,
-    };
-
-    const onBoardingCardOneWithoutBannerImage = {
-      id: '3',
-      bannerImage: null,
-      label: 'Records',
-      title: 'Keep all records in one place.',
-      blurb:
-        'Along with your child’s genetic test results, easily keep record of their symptoms, allergies, medications and any health incidents in preparation for appointments and hospital visits.',
-      unpublishDate: Date.now(),
-      reviewByDate: Date.now(),
-      owner: '',
-      priority: 1,
-    };
-
-    server.use(
-      rest.post('/gdx-webservices/patient', (request, response, context) => {
-        return response(
-          context.status(200),
-          context.json({
-            data: {
-              getOnboardingStoryCardListing: {
-                edges: [{ node: onBoardingCardOne }, { node: onBoardingCardOneTwo }, { node: onBoardingCardOneWithoutBannerImage }],
-              },
-            },
-          })
-        );
-      })
-    );
-
-    const result = await handlers.onBoardingCards();
-  
-    expect(result).toEqual([onBoardingCardOne, onBoardingCardOneTwo, onBoardingCardOneWithoutBannerImage]);
   });
 });

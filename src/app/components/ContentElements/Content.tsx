@@ -4,29 +4,36 @@ import ReactHtmlParser, {
   Transform,
 } from 'react-html-parser';
 
-import { client_config } from 'client_config';
 import { Heading, Typography, TypographyLevel } from 'components';
 
 import ContentStyled from './Content.styles';
 
 type ContentProps = {
   children?: string;
-  customAttributes?: {
-    name: string;
-    attributes: (currentAttributes: { [name: string]: string }) => { [name: string]: string };
-  };
+  discard?: (
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'h6'
+    | 'h7'
+    | 'h8'
+    | 'p'
+    | 'a'
+    | 'ul'
+    | 'ol'
+  )[];
 };
 
-export const Content = ({ children, customAttributes }: ContentProps) => {
+export const Content = ({ children, discard }: ContentProps) => {
   const transform: Transform = (node, index) => {
     if (!hasChildren(node)) {
       if (isText(node)) return node.data;
     }
 
     if (isTag(node)) {
-      if (customAttributes && customAttributes.name === node.name) {
-        node.attribs = customAttributes.attributes(node.attribs);
-      };
+      if (discard && discard.find((e) => e === node.name)) return;
 
       switch (node.name) {
         case 'h1':
@@ -80,20 +87,3 @@ export const Content = ({ children, customAttributes }: ContentProps) => {
     </ContentStyled>
   );
 };
-
-export const ContentWithPimcore = ({ children }: ContentProps) => {
-  return (
-    <Content
-      customAttributes={{
-        name: 'img',
-        attributes: (currentAttributes) => ({
-          ...currentAttributes,
-          src: `${client_config.pimcore.domain}${currentAttributes.src}`,
-          style: '',
-        })
-      }}
-    >
-      {children}
-    </Content>
-  );
-}

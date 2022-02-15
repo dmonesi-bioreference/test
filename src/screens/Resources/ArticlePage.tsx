@@ -2,7 +2,7 @@ import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 
 import { AppLayout } from 'app/components/AppLayout';
-import { ContentWithPimcore } from 'app/components/ContentElements';
+import { Content } from 'app/components/ContentElements';
 import {
   useAppEvents,
   useAppSelector,
@@ -90,9 +90,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = (props) => {
                   {article.contents.map((contentBlock, index) => (
                     <React.Fragment key={index}>
                       <ContentBlock title={contentBlock.title}>
-                        <ContentWithPimcore>
-                          {contentBlock.content}
-                        </ContentWithPimcore>
+                        <Content>{contentBlock.content}</Content>
                       </ContentBlock>
                     </React.Fragment>
                   ))}
