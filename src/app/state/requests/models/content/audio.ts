@@ -1,7 +1,7 @@
 declare global {
   interface Audio {
     id: string;
-    avatar: Image;
+    avatar?: Image;
     introduceAt: IntroduceAt;
     priority: number;
     label: string;

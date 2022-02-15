@@ -17,6 +17,7 @@ ARG GTM_ID
 ARG PIMCORE_DOMAIN
 
 ENV NEXT_PUBLIC_GTM_ID $GTM_ID
+ENV NEXT_PUBLIC_PIMCORE_DOMAIN $PIMCORE_DOMAIN
 
 RUN yarn build && yarn install --production --ignore-scripts --prefer-offline
 

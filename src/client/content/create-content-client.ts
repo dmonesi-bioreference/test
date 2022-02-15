@@ -43,12 +43,12 @@ export function createContentClient(overrides: Partial<Configuration>) {
           const article = response.data.getArticle;
           return {
             ...article,
-            bannerImage: {
-              ...(article.bannerImage as Image),
+            bannerImage: article.bannerImage ? {
+              ...article.bannerImage,
               fullpath: `${server_config.pimcore.domain ?? ''}${
                 article.bannerImage?.fullpath
               }`,
-            },
+            } : null,
           };
         }),
     articles: async () =>
@@ -61,12 +61,12 @@ export function createContentClient(overrides: Partial<Configuration>) {
         .then((body) =>
           body.data.getArticleListing.edges.map(({ node }) => ({
             ...node,
-            bannerImage: {
+            bannerImage: node.bannerImage ? {
               ...node.bannerImage,
               fullpath: `${server_config.pimcore.domain ?? ''}${
                 node.bannerImage?.fullpath
               }`,
-            },
+            } : null,
           }))
         ),
     audios: async () =>
@@ -79,10 +79,10 @@ export function createContentClient(overrides: Partial<Configuration>) {
         .then((body) =>
           body.data.getAudioListing.edges.map(({ node }) => ({
             ...node,
-            avatar: {
+            avatar: node.avatar ? {
               ...node.avatar,
-              fullpath: `${server_config.pimcore.domain ?? ''}${node.avatar.fullpath}`,
-            },
+              fullpath: `${server_config.pimcore.domain ?? ''}${node.avatar?.fullpath}`,
+            } : null,
             srcUrl: `${server_config.pimcore.domain ?? ''}${node.srcUrl}`,
           }))
         ),
@@ -117,12 +117,12 @@ export function createContentClient(overrides: Partial<Configuration>) {
         .then((body) =>
           body.data.getInternalLinkCardListing.edges.map(({ node }) => ({
             ...node,
-            bannerImage: {
+            bannerImage: node.bannerImage ? {
               ...node.bannerImage,
               fullpath: `${server_config.pimcore.domain ?? ''}${
                 node.bannerImage?.fullpath
               }`,
-            },
+            } : null,
           }))
         ),
     onBoardingCards: async () =>
@@ -138,12 +138,12 @@ export function createContentClient(overrides: Partial<Configuration>) {
         .then((body) =>
           body.data.getOnboardingStoryCardListing.edges.map(({ node }) => ({
             ...node,
-            bannerImage: {
+            bannerImage: node.bannerImage ? {
               ...node.bannerImage,
               fullpath: `${server_config.pimcore.domain ?? ''}${
                 node.bannerImage?.fullpath
               }`,
-            },
+            } : null,
           }))
         ),
   };
