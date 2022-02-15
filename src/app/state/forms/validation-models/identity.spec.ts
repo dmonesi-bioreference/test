@@ -46,7 +46,7 @@ describe('identity validations', () => {
     expect(withPhone).toEqual({ phone, dob, zip });
   });
 
-  it('rejects future dates of birth', async () => {
+  it('accepts past and future dates of birth', async () => {
     const dateToDobString = (date: Date) => {
       const year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(
         date
@@ -68,7 +68,7 @@ describe('identity validations', () => {
       dob: `${nextYear}-12-28`,
     });
 
-    expect(future).toContainEqual({
+    expect(future).not.toContainEqual({
       field: 'dob',
       message: 'forms.identity.dob.errors.future',
     });

@@ -1,11 +1,11 @@
 import { string } from 'yup';
 
-interface Messages {
+interface CaregiverDOBMessages {
   future: string;
   required: string;
 }
 
-export const dob = (messages: Messages) =>
+export const caregiverDob = (messages: CaregiverDOBMessages) =>
   string()
     .trim()
     .test(
@@ -21,3 +21,10 @@ export const dob = (messages: Messages) =>
       }
     )
     .required(messages.required);
+
+interface PatientDOBMessages {
+  required: string;
+}
+
+export const patientDob = (messages: PatientDOBMessages) =>
+  string().trim().required(messages.required);

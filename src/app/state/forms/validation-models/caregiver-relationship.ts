@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-import { dob } from './date-of-birth';
+import { caregiverDob } from './date-of-birth';
 import { toErrorList } from './validation-failure';
 
 const parent = 'Parent' as const;
@@ -12,21 +12,29 @@ const spouse = 'Spouse' as const;
 const child = 'Child' as const;
 const grandchild = 'Grandchild' as const;
 const sibling = 'Sibling' as const;
-export const caregiverRelationshipValues = [parent, guardian, caregiver, grandparent, _self, spouse, child, grandchild, sibling];
+export const caregiverRelationshipValues = [
+  parent,
+  guardian,
+  caregiver,
+  grandparent,
+  _self,
+  spouse,
+  child,
+  grandchild,
+  sibling,
+];
 
 declare global {
   interface ValidationModelMap {
     caregiverRelationship: {
       dob: string;
-      relationship: typeof parent | typeof guardian | typeof caregiver | typeof
-        grandparent | typeof _self | typeof spouse | typeof child | typeof
-        grandchild | typeof sibling | '';
+      relationship: typeof caregiverRelationshipValues[number] | '';
     };
   }
 }
 
 const schema = yup.object().shape({
-  dob: dob({
+  dob: caregiverDob({
     future: 'forms.caregiverRelationship.dob.errors.future',
     required: 'forms.caregiverRelationship.dob.errors.required',
   }),

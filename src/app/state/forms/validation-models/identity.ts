@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-import { dob } from './date-of-birth';
+import { patientDob } from './date-of-birth';
 import { PHONE } from './expressions';
 import { toErrorList } from './validation-failure';
 
@@ -40,16 +40,14 @@ export const validateIdentity = async (
   const schema = identity.phone
     ? yup.object().shape({
         zip,
-        dob: dob({
-          future: 'forms.identity.dob.errors.future',
+        dob: patientDob({
           required: 'forms.identity.dob.errors.required',
         }),
         phone,
       })
     : yup.object().shape({
         zip,
-        dob: dob({
-          future: 'forms.identity.dob.errors.future',
+        dob: patientDob({
           required: 'forms.identity.dob.errors.required',
         }),
         email,
