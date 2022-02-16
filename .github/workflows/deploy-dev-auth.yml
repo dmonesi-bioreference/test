@@ -1,0 +1,36 @@
+name: deploy-dev-auth
+
+# Deploys a SPA artifact from dev to Auth0.
+#
+on:
+  push:
+    branches: [dev]
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
+
+      - name: Get Yarn
+        run: npm i -g yarn
+
+      - name: Installing
+        run: yarn
+
+      - name: Build & Deploy Auth Bundle
+        run: yarn auth:deploy
+        env:
+          AUTH0_CLIENT_ID: ${{ secrets.IDENTITY_CLIENT_ID }}
+          AUTH0_CLIENT_SECRET: ${{ secrets.IDENTITY_CLIENT_SECRET }}
+          AUTH0_DOMAIN: bioreference-dev.auth0.com
+          AUTH0_REALM: ${{ secrets.AUTH0_REALM }}
+          NEXT_PUBLIC_GTM_ID: ${{ secrets.GTM_ID_DEV }}
+          NEXT_PUBLIC_PIMCORE_DOMAIN: https://stage.genedx.com
+          NEXT_PUBLIC_API_HOST: https://patient-dev.genedx.com

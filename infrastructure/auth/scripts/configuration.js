@@ -4,12 +4,15 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { join } = require('path');
 
+const dotenv = require('dotenv');
+const globalsPlugin = require('esbuild-plugin-globals');
 const svgrPlugin = require('esbuild-plugin-svgr');
 
 const root = join.bind(null, __dirname, '..', '..', '..');
 const dist = root.bind(null, 'dist');
 
-require('dotenv').config({ path: root('.env.auth') });
+dotenv.config({ path: root('.env.auth') });
+dotenv.config({ path: root('.env') });
 
 // You will need to get these environment variables somehow. If they
 // aren't already present in your environment variables, you can also
@@ -48,7 +51,13 @@ const buildConfig = {
     'process.env.__NEXT_SCROLL_RESTORATION': 'null',
     'process.env.__NEXT_IMAGE_OPTS': 'undefined',
   },
-  plugins: [svgrPlugin()],
+  plugins: [
+    svgrPlugin(),
+    globalsPlugin({
+      react: 'React',
+      ['react-dom']: 'ReactDOM',
+    }),
+  ],
   outfile: dist('auth.js'),
   loader: {
     '.jpg': 'file',
@@ -59,5 +68,49 @@ const buildConfig = {
     '.woff2': 'file',
   },
 };
+
+const ENVIRONMENT_VARIABLE_MISSING = 'missing';
+const ENVIRONMENT_VARIABLE_PRESENT = 'present';
+const REQUIRED_ENVIRONMENT_VARIABLES = [
+  'AUTH0_CLIENT_SECRET',
+  'AUTH0_CLIENT_ID',
+  'AUTH0_DOMAIN',
+  'AUTH0_REALM',
+  'NEXT_PUBLIC_GTM_ID',
+  'NEXT_PUBLIC_PIMCORE_DOMAIN',
+  'NEXT_PUBLIC_API_HOST',
+];
+
+function performConfigurationPreflightCheck() {
+  let configurationInvalid = false;
+  const variableAnalysis = {};
+
+  for (const environmentVariable of REQUIRED_ENVIRONMENT_VARIABLES) {
+    if (typeof process.env[environmentVariable] === 'undefined') {
+      variableAnalysis[environmentVariable] = ENVIRONMENT_VARIABLE_MISSING;
+      configurationInvalid = true;
+    } else {
+      variableAnalysis[environmentVariable] = ENVIRONMENT_VARIABLE_PRESENT;
+    }
+  }
+
+  if (configurationInvalid) {
+    console.log(
+      [
+        'Auth configuration failed preflight check.',
+        '',
+
+        'Some values were missing.',
+        '',
+      ].join('\n')
+    );
+
+    console.dir(variableAnalysis);
+
+    process.exit(1);
+  }
+}
+
+performConfigurationPreflightCheck();
 
 module.exports = { config, buildConfig };

@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/unbound-method */
 /* eslint-disable @typescript-eslint/no-var-requires */
-const { readFile, writeFile } = require('fs');
+const { readFile, writeFile, stat } = require('fs');
 const { join } = require('path');
 const { promisify } = require('util');
 
@@ -15,11 +15,14 @@ const { buildConfig } = require('./configuration');
 const root = join.bind(null, __dirname, '..', '..', '..');
 const dist = root.bind(null, 'dist');
 const auth = root.bind(null, 'infrastructure', 'auth');
+const statFile = promisify(stat);
 const read = promisify(readFile);
 const write = promisify(writeFile);
 
-async function buildAndAnalyzeLoginPage() {
-  const output = await builder.build(buildConfig);
+const THRESHOLD = 1_000 * 1024;
+
+async function buildAndPrformBundleCheck() {
+  await builder.build(buildConfig);
 
   const css = await read(dist('auth.css'));
   const js = await read(dist('auth.js'));
@@ -28,24 +31,26 @@ async function buildAndAnalyzeLoginPage() {
   const template = handlebars.compile(rawTemplate.toString());
 
   await write(dist('auth.html'), template({ css, js }));
-  await write(
-    dist('auth-build-metafile.json'),
-    JSON.stringify(output.metafile)
-  );
 
-  console.log(await builder.analyzeMetafile(output.metafile));
+  const file = await statFile(dist('auth.html'));
+  const bytes = file.size;
+  const kb = (bytes / 1024).toFixed(0);
 
-  await write(
-    auth('deployment', 'pages', 'login.html'),
-    await read(dist('auth.html'))
-  );
+  if (bytes > THRESHOLD) {
+    console.log(
+      `Bundle too large at ${bytes} bytes (${kb}kb - limit is 1000kb)`
+    );
+    process.exit(1);
+  } else {
+    console.log(`Bundle size comes in at ${kb}kb - ready to deploy.`);
+  }
 }
 
 // This file is purely to allow you to see what's going into the build output
 // for a given page.
 //
 async function main() {
-  await buildAndAnalyzeLoginPage();
+  await buildAndPrformBundleCheck();
 }
 
 main().catch(console.error);

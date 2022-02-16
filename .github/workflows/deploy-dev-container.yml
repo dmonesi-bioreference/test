@@ -1,10 +1,9 @@
-name: deploy-container
+name: deploy-dev-container
 
-# Begin a release build every time a push to main occurs.
+# Begin a release build every time a push to dev occurs.
 #
 on:
   push:
-    # Branch names must match with app service slot names
     branches: [dev]
 
 jobs:
