@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 
 import { ConsentElements } from 'app/components/ConsentElements';
+import { Content } from 'app/components/ContentElements/Content';
 import {
   useAppEvents,
   useAppSelector,
@@ -57,7 +58,10 @@ export function Consent() {
       transition={slideInOut.transition}
       onSubmit={(event) => event.preventDefault()}
     >
-      <Grid spacing="small" verticalPadding="extraLarge">
+      <Grid spacing="small">
+        <Content withBreaks={true}>
+          {t('forms.consent.description')}
+        </Content>
         <ConsentElements.Terms />
         <ConsentElements.Consent />
       </Grid>

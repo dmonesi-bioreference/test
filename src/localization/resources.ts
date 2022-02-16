@@ -564,17 +564,38 @@ export const resources = {
       },
       forms: {
         consent: {
-          consent: {
-            label: 'I have read and consent to participate',
-            errors: {
-              required: 'Consent is required to participate',
+          title: 'Consent to Participate',
+          description: 
+            '<h7>At GeneDx we believe you should be in control of how your health information is used and whether and how it can be shared. Sharing health information that has been de-identified – which means information like your name, birthdate and location has been removed – can be a valuable contribution to medical research, helping scientists discover new causes and new treatments for diseases.</h7>' +
+            '<h7>We want you to understand how your health information might be used when you sign up for an account with us. By registering for an account on GeneDx.com, I agree to:</h7>' +
+            '<ol>' +
+            '<li><h7>receive emails and/or text messages from GeneDx. I can choose which method I prefer and what information I am most interested in. I understand I have the ability to opt-out from emails and/or text messages at any time.</h7></li>' +
+            '<li><h7>receive a copy of genetic test results. I can choose whether or not to view the test report once it is available in my account.</h7></li>' +
+            '<li><h7>provide information about myself and/or my dependent who had genetic testing by GeneDx. I can choose how much information to provide. Any information I provide will be securely stored by GeneDx and used for the following purposes:</h7></li>' +
+            '<ol>' +
+            '<li><h7><u>Reanalysis</u> - Information I provide can be used to re-analyze my or my dependent’s genetic test results again after the original genetic test was completed (reanalysis). New health information I provide may help the geneticists at GeneDx find new information about my or my dependent’s genetics, for example a change in the likely significance of a gene variation I might have. , If GeneDx finds something new, it will be reported to me.</h7></li>' +
+            '<li><h7><u>Health summary</u> - The information I provide may be used to create a health summary which I can use with my clinicians along with my genetic test results.  I will always have access to the health summary.</h7></li>' +
+            '<li><h7><u>Resources</u> - GeneDx may use the health information I provide, plus my genetic test results, to identify resources that may interest me. For example, a link to a support group or a fact sheet about a particular medical condition may be offered to me.</h7></li>' +
+            '<li><h7><u>GeneDx Research</u> - GeneDx may use my or my dependent’s de-identified information in research that helps with future analyses for other people. De-identified information means data that has been stripped of any identifying information and used in aggregate, (this means a large amount of data from many people that is pooled together). For example including some of the information included in my test results regarding gene variants in counts of those variants among all GeneDx patients.</h7></li>' +
+            '<li><h7><u>Research, Clinical Trials or Patient Registries</u> - If there is an potentially relevant opportunity for me or my dependent to participate in research outside of GeneDx, such as clinical trials, GeneDx may contact me with information about those opportunities. I can then choose if I want to participate or not. My contact information will not be shared with any 3rd party unless I choose to participate and agree to have my information shared.</h7></li>' +
+            '</ol>' +
+            '<li><h7>I also agree that GeneDx may use my or my dependent’s de-identified information for product development or quality control activities. The information will only be used in aggregate (this means a large amount of data from many people that is pooled together).<i>Some of these activities may be sponsored by or conducted on behalf of third parties, such as non-profit foundations, academic institutions or pharmaceutical companies.</i></h7></li>' +
+            '</ul>' +
+            '<p><h7>The scope of your right to request an accounting may be modified from time to time to comply with changes in federal law or state law.</h7></p>' +
+            '<p><h7>Ordinarily we will respond to your request for an accounting within 60 days. If we need additional time to prepare the accounting you have requested, we will notify you in writing about the reason for the delay and the date when you can expect to receive the accounting. In rare cases, we may have to delay providing you with the accounting without notifying you because a law enforcement official or government agency has asked us to do so.</h7></p>',
+          agreement: {
+            consent: {
+              label: 'I have read and consent to participate',
+              errors: {
+                required: 'Consent is required to participate',
+              },
             },
-          },
-          terms: {
-            label: 'I have read and agree to the ',
-            link: 'terms & conditions',
-            errors: {
-              required: 'Agreeing to the terms & conditions is required',
+            terms: {
+              label: 'I have read and agree to the ',
+              link: 'terms & conditions',
+              errors: {
+                required: 'Agreeing to the terms & conditions is required',
+              },
             },
           },
         },

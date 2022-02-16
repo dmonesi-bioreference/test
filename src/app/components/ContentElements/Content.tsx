@@ -15,9 +15,10 @@ type ContentProps = {
     name: string;
     attributes: (currentAttributes: { [name: string]: string }) => { [name: string]: string };
   };
+  withBreaks?: boolean;
 };
 
-export const Content = ({ children, customAttributes }: ContentProps) => {
+export const Content = ({ children, customAttributes, withBreaks = false }: ContentProps) => {
   const transform: Transform = (node, index) => {
     if (!hasChildren(node)) {
       if (isText(node)) return node.data;
@@ -28,6 +29,8 @@ export const Content = ({ children, customAttributes }: ContentProps) => {
         node.attribs = customAttributes.attributes(node.attribs);
       };
 
+      let transformedNode = convertNodeToElement(node, index, transform);
+
       switch (node.name) {
         case 'h1':
         case 'h2':
@@ -37,38 +40,40 @@ export const Content = ({ children, customAttributes }: ContentProps) => {
         case 'h6':
         case 'h7':
         case 'h8':
-          return (
-            <Heading level={node.name.split('')[1] as TypographyLevel}>
+          transformedNode =
+            <Heading key={index} level={node.name.split('')[1] as TypographyLevel}>
               {node.children.map((child, i) => transform(child, i))}
-            </Heading>
-          );
+            </Heading>;
+          break;
         case 'p':
-          return (
+          transformedNode =
             <Typography key={index} type="body">
               {node.children.map((child, i) => transform(child, i))}
-            </Typography>
-          );
+            </Typography>;
+          break;
         case 'ul':
-          return (
+          transformedNode = 
             <Typography key={index} type="body">
               <ul>{node.children.map((child, i) => transform(child, i))}</ul>
             </Typography>
-          );
+          break;
         case 'ol':
-          return (
+          transformedNode =
             <Typography key={index} type="body">
               <ol>{node.children.map((child, i) => transform(child, i))}</ol>
             </Typography>
-          );
+          break;
         case 'strong':
-          return (
+          transformedNode =
             <strong key={index}>
               {node.children.map((child, i) => transform(child, i))}
             </strong>
-          );
-        default:
-          return convertNodeToElement(node, index, transform);
+          break;
       }
+
+      return withBreaks
+        ? <>{transformedNode} <br key={index} /></>
+        : transformedNode;
     }
   };
 

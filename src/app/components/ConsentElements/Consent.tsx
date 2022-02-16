@@ -10,7 +10,7 @@ export function Consent({ label: givenLabel }: Props<AppInputProps>) {
   const t = useAppTranslation();
   const [{ value, errors }, events] = useConsentField('consent');
   const [isPristine, setPristine] = useState(true);
-  const label = givenLabel ? givenLabel : t('forms.consent.consent.label');
+  const label = givenLabel ? givenLabel : t('forms.consent.agreement.consent.label');
 
   return (
     <Checkbox

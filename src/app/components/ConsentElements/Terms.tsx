@@ -10,14 +10,14 @@ export function Terms({ label: givenLabel }: Props<AppInputProps>) {
   const t = useAppTranslation();
   const [{ value, errors }, events] = useConsentField('terms');
   const [isPristine, setPristine] = useState(true);
-  const label = givenLabel ? givenLabel : t('forms.consent.terms.label');
+  const label = givenLabel ? givenLabel : t('forms.consent.agreement.terms.label');
 
   return (
     <Checkbox
       label={label}
       name="terms"
       size="large"
-      linkMessage={t('forms.consent.terms.link')}
+      linkMessage={t('forms.consent.agreement.terms.link')}
       invalid={errors.length > 0 && !isPristine}
       invalidMessage={errors.map(t).join(' ')}
       checked={value === 'accepted'}
