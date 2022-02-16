@@ -8,8 +8,6 @@ import { colors, tokens } from 'styles';
 const WaitingForResultsStyled = styled.div`
   ${CardStyled} {
     border: ${tokens.spacingXxxSmall} solid ${colors.powderBlue[200]};
-    margin-top: ${tokens.spacing};
-    margin-bottom: ${tokens.spacingLarge};
 
     .card__content {
       display: inline-flex;

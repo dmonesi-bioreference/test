@@ -6,6 +6,8 @@ import { PageLayoutProps } from 'components/PageLayout/PageLayout';
 type AppLayoutProps = Omit<PageLayoutProps, 'header' | 'footer'> & {
   isWithoutFooter?: boolean;
   hasPatientBanner?: boolean;
+  isWithoutNav?: boolean;
+  hasReturnLink?: boolean;
 };
 
 export const AppLayout: React.FC<AppLayoutProps> = ({

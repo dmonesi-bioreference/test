@@ -6,7 +6,7 @@ const TypographyStyled = styled.div`
   ${base};
   word-break: break-word;
   font-family: ${tokens.fontFamilySansSerif};
-  line-height: ${tokens.lineHeightDense};
+  line-height: ${tokens.lineHeightNormal};
   margin: 0;
   overflow: hidden;
   max-width: 55ch;
@@ -128,6 +128,7 @@ const TypographyStyled = styled.div`
     font-family: ${tokens.fontFamilyLabel};
     font-size: ${tokens.fontSize12};
     font-weight: ${tokens.fontWeightBold};
+    line-height: ${tokens.lineHeightDense};
     letter-spacing: 0.03em;
     text-transform: uppercase;
   }

@@ -8,8 +8,7 @@ const PatientBannerStyled = styled.div`
   position: relative;
   overflow: hidden;
   margin: 0;
-  padding: ${tokens.spacing} ${tokens.spacing} ${tokens.spacingLarge}
-    ${tokens.spacing};
+  padding: ${tokens.spacing};
 
   .patient-banner__background-panel {
     position: absolute;

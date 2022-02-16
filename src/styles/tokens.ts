@@ -240,7 +240,7 @@ export const tokens = {
   transitionXFast: '50ms',
 
   /* z-index */
-  zIndexDrawer: '700',
+  zIndexIndicator: '700',
   zIndexDialog: '800',
   zIndexDropdown: '900',
   zIndexToast: '950',

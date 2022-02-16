@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { tokens } from 'styles';
+
 import { CircularProgressProps } from './CircularProgress';
 interface CircularProgressPropsWithGrid extends CircularProgressProps {
   grid: {
@@ -11,6 +13,8 @@ interface CircularProgressPropsWithGrid extends CircularProgressProps {
 }
 
 const CircularProgressStyled = styled.div<CircularProgressPropsWithGrid>`
+  position: relative;
+  z-index: ${tokens.zIndexIndicator};
   .circular-progress__container {
     fill: none;
     stroke-width: ${(p) => p.strokeWidth}px;

@@ -21,7 +21,7 @@ interface PageProps {
 
 function Page(props: Props<PageProps>) {
   return (
-    <AppLayout isWithoutFooter>
+    <AppLayout isWithoutFooter isWithoutNav>
       <PageSection>
         <div
           style={{

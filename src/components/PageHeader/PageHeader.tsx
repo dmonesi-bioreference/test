@@ -1,17 +1,14 @@
-import { Button } from 'components/Button';
-import { Icon } from 'components/Icon';
+import { PageSection } from 'components/PageSection';
+import { ReturnLink } from 'components/ReturnLink';
 import { Typography } from 'components/Typography';
 
 import PageHeaderStyled from './PageHeader.styles';
 
 export interface PageHeaderProps {
-  belongsTo:
-    | 'preLoginPage'
-    | 'homePage'
-    | 'primaryPage'
-    | 'secondaryPage'
-    | 'contentPage';
+  belongsTo: 'homePage' | 'primaryPage' | 'secondaryPage' | 'contentPage';
   description?: string;
+  /** If a secondary page, backLink you to override the return link at the top of the page. */
+  backLink?: string;
 }
 
 const PageHeader: React.FC<PageHeaderProps> = (props) => {
@@ -20,24 +17,20 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
       {props.description}
     </Typography>
   );
+
   return (
     <PageHeaderStyled className={`page-header page-header--${props.belongsTo}`}>
-      <div className="content">
-        {props.belongsTo === 'secondaryPage' ? (
-          <Button
-            kind="link-small"
-            prefix={<Icon name="chevron-left" style="solid" />}
-          >
-            Return
-          </Button>
-        ) : null}
-        <Typography type="heading" level="1">
-          {props.children}
-        </Typography>
-        {withDescription && (
-          <div className="description">{withDescription}</div>
-        )}
-      </div>
+      <PageSection verticalPadding="extraLarge">
+        {props.belongsTo === 'secondaryPage' && <ReturnLink />}
+        <div className="content">
+          <Typography type="heading" level="1">
+            {props.children}
+          </Typography>
+          {withDescription && (
+            <div className="description">{withDescription}</div>
+          )}
+        </div>
+      </PageSection>
     </PageHeaderStyled>
   );
 };

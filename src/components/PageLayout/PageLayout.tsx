@@ -9,7 +9,7 @@ import { getTheme } from 'styles/themes';
 import PageLayoutStyled from './PageLayout.styles';
 
 export interface PageLayoutProps {
-  kind?: 'preLogin' | 'home' | 'primary' | 'secondary' | 'content';
+  kind?: 'home' | 'primary' | 'secondary' | 'content';
   containsCards?: boolean;
   footer?: React.ReactNode;
   banner?: React.ReactNode;
@@ -17,6 +17,7 @@ export interface PageLayoutProps {
   description?: string;
   title?: string;
   theme?: Themes;
+  isWithoutNav?: boolean;
 }
 
 const PageLayout: React.FC<PageLayoutProps> = ({
@@ -38,14 +39,14 @@ const PageLayout: React.FC<PageLayoutProps> = ({
       <PageLayoutStyled className={`page-layout--${theme}`}>
         <GlobalStyle />
         <Header
-          withoutMenu={kind === 'preLogin'}
-          alignment={kind === 'preLogin' ? 'center' : 'default'}
+          withoutMenu={props.isWithoutNav}
+          alignment={props.isWithoutNav ? 'center' : 'default'}
         />
         {props.banner}
         <PageBorder loading={props.isLoading ? 'loading' : 'loaded'} />
         {withHeader}
         <main
-          className={`page-layout__content page-layout__content${withCards} page-layout__content--${kind}`}
+          className={`page-layout__content page-layout__content${withCards}`}
         >
           {props.children}
         </main>

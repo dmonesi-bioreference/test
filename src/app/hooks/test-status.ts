@@ -16,7 +16,9 @@ export function useTestStatus() {
     errorLoading: useAppState('tests.errorLoading'),
     isWaiting: useAppState('tests.notAllComplete'),
     isResultsReady: useAppState('tests.allComplete'),
-    isBeforeAppointment: useAppState('tests.allComplete.appointment.beforeAppointment'),
+    isBeforeAppointment: useAppState(
+      'tests.allComplete.appointment.beforeAppointment'
+    ),
     isAtAppointment: useAppState('tests.allComplete.appointment.atAppointment'),
     isAfterAppointment: useAppState(
       'tests.allComplete.appointment.afterAppointment'

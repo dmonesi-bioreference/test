@@ -26,7 +26,6 @@ export const OnBoarding = () => {
         <title>{t('pages.onboarding.title')}</title>
       </Head>
       <AppLayout
-        kind="preLogin"
         isLoading={loadingOnBoardingCards}
         containsCards
         isWithoutFooter

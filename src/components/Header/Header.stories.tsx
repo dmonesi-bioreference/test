@@ -19,3 +19,9 @@ const Template: Story = (args) => (
 export const Primary = Template.bind({});
 
 Primary.args = {};
+
+export const WithoutMenu = Template.bind({});
+
+WithoutMenu.args = {
+  withoutMenu: true,
+};

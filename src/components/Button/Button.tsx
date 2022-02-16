@@ -46,6 +46,8 @@ export interface ButtonProps {
   group?: 'prefix' | 'suffix' | undefined;
   /** Tells the browser where to open the link. Used only if `href` is set. */
   target?: '_blank' | '_parent' | '_self' | '_top';
+  /** Specify relationship between current doc and linked doc */
+  rel?: string;
   color?: 'light' | 'default' | 'danger';
   /** Used to pass className down to component */
   className?: string;
@@ -89,7 +91,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     if (props.group === 'prefix') {
       return (
         <>
-          <div className='button__grouping'>
+          <div className="button__grouping">
             {renderIfExists(props.prefix, 'button__prefix')}
             <span className="button__label">{props.children}</span>
           </div>
@@ -101,7 +103,7 @@ const Button: React.FC<ButtonProps> = (props) => {
       return (
         <>
           {renderIfExists(props.prefix, 'button__prefix')}
-          <div className='button__grouping'>
+          <div className="button__grouping">
             <span className="button__label">{props.children}</span>
             {renderIfExists(props.suffix, 'button__suffix')}
           </div>
@@ -115,7 +117,7 @@ const Button: React.FC<ButtonProps> = (props) => {
         {renderIfExists(props.suffix, 'button__suffix')}
       </>
     );
-  }
+  };
 
   return props.href ? (
     <Link href={props.href} passHref>
@@ -126,6 +128,8 @@ const Button: React.FC<ButtonProps> = (props) => {
         download={props.download}
         onClick={props.onClick}
         href={props.href}
+        /** Inclusion of this line prevents tabnabbing phishing */
+        rel={props.target === '_blank' ? 'noopener noreferrer' : props.rel}
       >
         <ButtonChildren />
       </ButtonStyled>

@@ -6,22 +6,8 @@ const PageHeaderStyled = styled.div`
   ${base};
   padding: 0 ${containers.spacingGutter};
 
-  .content {
-    display: flex;
-    flex-direction: column;
-    padding: ${tokens.spacingLarge} 0;
-    max-width: ${containers.maxPageWidth}px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
   &.page-header--secondaryPage {
-    padding: ${tokens.spacingLarge} ${tokens.spacingLarge}
-      ${tokens.spacingXLarge};
-  }
-
-  &.page-header > * :not(:last-child) {
-    margin-bottom: ${tokens.spacing};
+    padding: ${tokens.spacingSmall} ${tokens.spacingLarge};
   }
 
   .description {
