@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useAppTranslation } from 'app/components/Shell';
 import { IconButton } from 'components/IconButton';
 import { Typography } from 'components/Typography';
+import { trackLogoutEvent } from 'tracking';
 
 import MainNavStyled from './MainNav.styles';
 
@@ -88,6 +89,7 @@ const MainNav: React.FC<MainNavProps> = () => {
             label={t('sections.mainNav.logout.label')}
             href="/api/auth/logout"
             encircled
+            onClick={trackLogoutEvent}
           >
             <Typography type="menu-item">
               {t('sections.mainNav.logout.label')}

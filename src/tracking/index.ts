@@ -17,3 +17,7 @@ export const trackSignUpFlowEvent = (props: SignUpFlowEventProps) =>
 
 export const trackSignUpEvent = () =>
   trackEvent(TrackingEvents.SignUpCompleted);
+
+export const trackLoginEvent = () => trackEvent(TrackingEvents.Login);
+
+export const trackLogoutEvent = () => trackEvent(TrackingEvents.Logout);
