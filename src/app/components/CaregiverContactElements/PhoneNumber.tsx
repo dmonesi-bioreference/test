@@ -18,6 +18,22 @@ export function PhoneNumber({
     ? givenLabel
     : t('forms.caregiverContact.phone.label');
 
+  const formatPhoneNumber = (phone: string) => {
+    phone = phone.replace(/[^\d]/g, '');
+    const phoneNumberLength = phone.length;
+    if (phoneNumberLength < 4) return phone;
+    if (phoneNumberLength < 7) {
+      return `(${phone.slice(0, 3)}) ${phone.slice(3)}`;
+    }
+    if (phoneNumberLength > 6) {
+      return `(${phone.slice(0, 3)}) ${phone.slice(3, 6)}-${phone.slice(
+        6,
+        10
+      )}`;
+    }
+    return phone;
+  };
+
   return (
     <Input
       type="tel"
@@ -27,7 +43,7 @@ export function PhoneNumber({
       prefix={<Icon name="phone" color="primary" />}
       invalid={errors.length > 0 && !isPristine}
       invalidMessage={errors.map(t).join(' ')}
-      value={value}
+      value={formatPhoneNumber(value)}
       onBlur={() => setPristine(false)}
       onChange={(event) => events.update(event.target.value)}
     />

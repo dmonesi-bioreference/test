@@ -77,7 +77,7 @@ test('IdentityElements.PhoneNumber synchronizes with caregiver contact', async (
 });
 
 test('CaregiverContactElements.PhoneNumber synchronizes with identity', async () => {
-  const phone = '212 345 9998';
+  const phone = '(212) 345-9998';
   const component = await TestUtils.renderWithShell(
     <SynchronizationDiagnostics>
       <CaregiverContactElements.PhoneNumber />
