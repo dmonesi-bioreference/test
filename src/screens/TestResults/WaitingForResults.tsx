@@ -31,9 +31,10 @@ export const WaitingForResults = () => {
           </Heading>
           <Typography type="body" level="8" color="minor">
             {test && test.expectedResultsDate
-              ? t('sections.results.expected', { expectedResultsDate: test.expectedResultsDate })
-              : t('sections.results.checkBackSoon')
-            }
+              ? t('sections.results.expected', {
+                  expectedResultsDate: test.expectedResultsDate,
+                })
+              : t('sections.results.checkBackSoon')}
           </Typography>
         </div>
       </Card>
@@ -41,7 +42,7 @@ export const WaitingForResults = () => {
         {t('pages.results.waiting.article.heading')}.
       </Heading>
       <Heading>{t('pages.resources.section.articles.title')}</Heading>
-      <ArticleCards feature="RESULTS" />
+      <ArticleCards feature="RESULT" />
     </WaitingForResultsStyled>
   );
 };

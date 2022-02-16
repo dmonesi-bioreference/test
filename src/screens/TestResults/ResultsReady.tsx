@@ -25,11 +25,9 @@ export const ResultsReady = () => {
   return (
     <ResultsReadyStyled>
       <div className="results-ready__description">
-        <Content>
-          {t('pages.results.ready.description')}
-        </Content>
+        <Content>{t('pages.results.ready.description')}</Content>
       </div>
-      
+
       <div className="results-ready__report-attention">
         <Icon name="exclamation-circle" />
         <Heading level="3" color="minor">
@@ -51,7 +49,7 @@ export const ResultsReady = () => {
         }}
       />
       <Heading>{t('pages.resources.section.articles.title')}</Heading>
-      <ArticleCards feature="RESULTS" />
+      <ArticleCards feature="RESULT" />
     </ResultsReadyStyled>
   );
 };

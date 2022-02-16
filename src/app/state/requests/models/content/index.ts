@@ -32,5 +32,5 @@ declare global {
 
   type IntroduceAt = 'WAITING' | 'READY' | 'VIEWED' | 'DISCUSSED';
 
-  type Feature = 'RESULTS' | 'COMMUNITY';
+  type Feature = 'RESULT' | 'COMMUNITY';
 }

@@ -18,7 +18,9 @@ describe('The waiting for results page', () => {
         onPatientGuid: async () => ({ guid: '1234', source: '' }),
       });
 
-      await page.findByText('Your genetic test is currently in progress. While you wait, check out the resources below. These will help you better understand how genetic testing works and what a genetic test report looks like.');
+      await page.findByText(
+        'Your genetic test is currently in progress. While you wait, check out the resources below. These will help you better understand how genetic testing works and what a genetic test report looks like.'
+      );
       await page.findByText('In Progress');
       await page.findByText('Results expected Nov 11, 2021');
       await page.findByText(
@@ -40,7 +42,7 @@ describe('The waiting for results page', () => {
             Mocks.article.create({
               introduceAt: 'WAITING',
               title: 'Waiting results article',
-              feature: 'RESULTS',
+              feature: 'RESULT',
             }),
           ],
         },

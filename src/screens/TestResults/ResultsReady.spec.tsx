@@ -36,7 +36,7 @@ describe('The results ready page', () => {
             Mocks.article.create({
               introduceAt: 'WAITING',
               title: 'Waiting results article',
-              feature: 'RESULTS',
+              feature: 'RESULT',
             }),
           ],
         },
