@@ -55,7 +55,7 @@ export class Auth {
     // Intentionally separate steps. Wait seems to do something to prevent the
     // state machine in the auth0 page from continuing and triggering the 
     // /api/auth/me call
-    this.client.wait('@me_load');
+    this.client.wait(['@me_load', '@login']);
     this.client.findByText('Email', { exact: false }).type(username);
     this.client.findByText('Password', { exact: false }).type(password);
     this.client.findByRole('button', { name: 'Login' }).click();
