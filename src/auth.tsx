@@ -163,6 +163,9 @@ async function register({
 
 ReactDOM.render(
   <Shell
+    requests={{
+      allOnBoardingCards: Api.Content.onBoardingCards,
+    }}
     onIdentity={Api.Identity.validate}
     onSession={async () => Promise.reject('No session available')}
     onPatientGuid={async () => {

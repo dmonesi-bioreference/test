@@ -34,7 +34,7 @@ export const Content = {
     return (await result.json()) as InternalLinkCard[];
   },
   onBoardingCards: async (): Promise<OnBoardingCard[]> => {
-    const result = await fetch('/api/content/on-boarding-cards');
+    const result = await client.get('/api/content/on-boarding-cards');
     return (await result.json()) as OnBoardingCard[];
   },
 };
