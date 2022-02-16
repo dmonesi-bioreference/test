@@ -51,7 +51,7 @@ describe('on the health profile page', () => {
     it('it displays correct account information', () => {
       healthProfilePage.hasSection(t('pages.healthProfile.yourDetails.title'));
       healthProfilePage.hasField(t('pages.healthProfile.yourDetails.title'), t('pages.healthProfile.yourDetails.fields.fullName.label'), 'Not Available');
-      healthProfilePage.hasField(t('pages.healthProfile.yourDetails.title'), t('pages.healthProfile.yourDetails.fields.phoneNumber.label'), '01234567890');
+      // healthProfilePage.hasField(t('pages.healthProfile.yourDetails.title'), t('pages.healthProfile.yourDetails.fields.phoneNumber.label'), '01234567890');
       healthProfilePage.hasField(t('pages.healthProfile.yourDetails.title'), t('pages.healthProfile.yourDetails.fields.emailAddress.label'), 'tbrookes+genedx+testing+test_ordered@8thlight.com');
       healthProfilePage.hasField(t('pages.healthProfile.yourDetails.title'), t('pages.healthProfile.yourDetails.fields.city.label'), 'Chicago, IL');
       healthProfilePage.hasField(t('pages.healthProfile.yourDetails.title'), t('pages.healthProfile.yourDetails.fields.dob.label'), '01/01/1970');
