@@ -4,7 +4,6 @@ import { Card } from 'components/Card';
 import { Carousel } from 'components/Carousel';
 import { ContentCard } from 'components/ContentCard';
 import { Typography } from 'components/Typography';
-import { tokens } from 'styles';
 
 import { useAppEvents, useAppTranslation } from '../Shell';
 
@@ -43,9 +42,7 @@ export const ArticleCards: React.FC<ArticleCardsProps> = (props) => {
         heading={article.title}
         footer={t('components.articleCard.actions.primary.label')}
       >
-        <div style={{ marginBottom: tokens.spacingLarge }}>
-          <Content>{article.blurb}</Content>
-        </div>
+        <Content>{article.blurb}</Content>
       </ContentCard>
     );
   });

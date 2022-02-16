@@ -9,6 +9,12 @@ import { ContentCardProps } from './ContentCard';
 const ContentCardStyled = styled.div<ContentCardProps>`
   ${base}
 
+  .card__content {
+    display: flex;
+    flex-direction: column;
+    ${(props) => props.footer && `padding-bottom: 0;`}
+  }
+
   .label {
     margin-bottom: ${tokens.spacingXSmall};
   }
@@ -55,10 +61,6 @@ const ContentCardStyled = styled.div<ContentCardProps>`
       color: ${(props) =>
         props.theme?.colors?.headerText || tokens.colorPrimaryText};
     }
-  }
-
-  .body {
-    margin-bottom: ${tokens.spacingLarge};
   }
 `;
 
