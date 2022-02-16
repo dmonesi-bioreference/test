@@ -49,6 +49,7 @@ export class Auth {
     this.client.intercept('/api/tests').as('tests_load');
     this.client.intercept(`${Cypress.env('AUTH0_ROOT')}/login*`).as('auth_page_load');
     this.client.intercept('/').as('app_page_load');
+    this.client.intercept('https://geolocation.onetrust.com/cookieconsentpub/v1/geo/location').as('onetrust_load')
     
     this.client.visit('/');
     this.client.wait(['@app_page_load', '@auth_page_load']);
@@ -56,6 +57,16 @@ export class Auth {
     // state machine in the auth0 page from continuing and triggering the 
     // /api/auth/me call
     this.client.wait(['@me_load', '@login']);
+
+    // At some point after page load the One Trust cookie popup will
+    // cover the screen and make the email, password, and login components
+    // inaccessible
+    this.client.wait('@onetrust_load').then(() => {
+      // React style findBy... aren't working here
+      cy.get('#onetrust-pc-btn-handler').click();
+      cy.get('.ot-pc-refuse-all-handler').click();
+    })
+
     this.client.findByText('Email', { exact: false }).type(username);
     this.client.findByText('Password', { exact: false }).type(password);
     this.client.findByRole('button', { name: 'Login' }).click();
