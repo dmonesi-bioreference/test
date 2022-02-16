@@ -17,13 +17,6 @@ const log = (...args: any[]) => {
 async function getAuth0SessionForNonDemoPages() {
   log('Checking session');
 
-  if (
-    typeof window !== 'undefined' &&
-    window.location.pathname.startsWith('/demo')
-  ) {
-    return Promise.reject('No sessions in demo routes.');
-  }
-
   const result = await fetch('/api/auth/me');
 
   if (!result.ok) {

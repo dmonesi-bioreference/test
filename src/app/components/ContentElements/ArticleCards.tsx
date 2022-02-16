@@ -35,7 +35,7 @@ export const ArticleCards: React.FC<ArticleCardsProps> = (props) => {
     return (
       <ContentCard
         key={article.id}
-        href={`/demo/article${article.slug}`}
+        href={`/article${article.slug}`}
         variant="article"
         imageSrc={article.bannerImage?.fullpath as string}
         imageAlt="alt-text"

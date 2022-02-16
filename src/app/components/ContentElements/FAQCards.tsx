@@ -35,7 +35,7 @@ export const FAQCards = () => {
       <FaqCard
         key={faq.id}
         title={faq.title}
-        href={`/demo/faq${faq.slug}`}
+        href={`/faq${faq.slug}`}
         label={<Content>{faq.blurb}</Content>}
         questions={
           faq.content

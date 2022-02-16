@@ -76,11 +76,7 @@ export const Settings = () => {
               ></DisplayField>
             </ListCard>
 
-            <Button
-              kind="link-small"
-              color="danger"
-              href="/demo/delete-account"
-            >
+            <Button kind="link-small" color="danger" href="/delete-account">
               {t('pages.settings.actions.delete.label')}
             </Button>
           </PageSection>

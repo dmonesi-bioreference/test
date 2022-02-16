@@ -46,7 +46,7 @@ export const InternalLinkCards = () => {
           <Theme key={index} theme={isTheme(theme) ? theme : 'defaultTheme'}>
             <ContentCard
               variant="link"
-              href={`/demo/${internalLinkCard.label
+              href={`/${internalLinkCard.label
                 .split(' ')
                 .join('-')
                 .toLowerCase()}`}

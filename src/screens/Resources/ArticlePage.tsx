@@ -67,7 +67,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = (props) => {
       </Head>
       <AppLayout theme="resourcesTheme">
         <ContentPageStyled>
-          <ReturnLink label="Return" href="/demo/resources" />
+          <ReturnLink label="Return" href="/resources" />
           <PageSection>
             <div style={{ marginBottom: tokens.spacingXSmall }}>
               <div style={{ marginBottom: tokens.spacingXSmall }}>

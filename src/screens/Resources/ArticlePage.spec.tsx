@@ -8,10 +8,11 @@ describe('The article page', () => {
   });
 
   it('has the return to resources button', async () => {
-    const page = await renderWithShell(
-      <ArticlePage />
-    );
+    const page = await renderWithShell(<ArticlePage />);
 
-    expect((await page.findByText('Return')).closest('a')).toHaveAttribute('href', '/demo/resources')
+    expect((await page.findByText('Return')).closest('a')).toHaveAttribute(
+      'href',
+      '/resources'
+    );
   });
 });
