@@ -8,7 +8,7 @@ import { AppLayout } from './AppLayout';
 
 export default {
   component: AppLayout,
-  title: 'Components/AppLayout',
+  title: 'App/AppLayout',
   parameters: {
     componentSubtitle: 'Defines the layout of every page.',
   },

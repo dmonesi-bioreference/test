@@ -8,7 +8,7 @@ import { ResourcesPage } from './ResourcesPage';
 
 export default {
   component: ResourcesPage,
-  title: 'Templates/Resources',
+  title: 'Screens/Resources',
 };
 
 const LoadMockResources = () => {

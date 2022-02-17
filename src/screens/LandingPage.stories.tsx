@@ -7,7 +7,7 @@ import { LandingPage } from './LandingPage';
 
 export default {
   component: LandingPage,
-  title: 'Templates/Main',
+  title: 'Screens/Main',
   argTypes: {
     labStatus: {
       options: ['In Lab', 'Report Ready'],

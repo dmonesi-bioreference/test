@@ -2,16 +2,16 @@ import { Story } from '@storybook/react/types-6-0';
 
 import { Shell } from 'app/components/Shell';
 
-import { TermsAndConditions } from './index';
+import { RegistrationWizard } from './index';
 
 export default {
-  component: TermsAndConditions,
-  title: 'Screens/TermsAndConditions',
+  component: RegistrationWizard,
+  title: 'Screens/RegistrationWizard',
 };
 
 const Template: Story = () => (
   <Shell>
-    <TermsAndConditions />
+    <RegistrationWizard /> v
   </Shell>
 );
 
