@@ -27,10 +27,11 @@ export class Auth {
     this.client.wait('@page_load');
 
     if (expectInvalidGuid) {
-      const localization = t('pages.login.title');
+      // At present we allow invalid guids to enter the registraiton flow
+      const localization = t('pages.onboarding.actions.beginRegistration');
       this.client.findByText(localization);
     } else {
-      const localization = t('sections.identity.subTitle');
+      const localization = t('pages.onboarding.actions.beginRegistration');
       this.client.findByText(localization);
     }
   }

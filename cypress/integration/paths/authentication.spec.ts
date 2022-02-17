@@ -14,12 +14,11 @@ describe('on the home page', () => {
       authApi.logout();
     });
 
-    // TODO: TB - Disabled because broken by code change
-    // describe('with an invalid GUID url parameter', () => {
-    //   it('it lands on the login page', () => {
-    //     authApi.register('1234', true);
-    //   });
-    // });
+    describe('with an invalid GUID url parameter', () => {
+      it('it lands on the begin registration page', () => {
+        authApi.register('1234', true);
+      });
+    });
 
     // TODO: TB - Disabled because broken by code change
     // describe('with a GUID url parameter', () => {
