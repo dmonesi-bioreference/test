@@ -72,12 +72,9 @@ describe('RegistrationWizard', () => {
 
     userEvent.click(await page.findByText('Next'));
 
+    userEvent.type(await page.findByLabelText('Mobile Number'), '2123456789');
     userEvent.type(
-      await page.findByLabelText('Your Mobile Number'),
-      '2123456789'
-    );
-    userEvent.type(
-      await page.findByLabelText('Your Email Address'),
+      await page.findByLabelText('Email Address'),
       'lisa@jackson.com'
     );
 

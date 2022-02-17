@@ -16,11 +16,11 @@ describe('Caregiver contact step', () => {
       expect((await page.findByText('Next')).parentElement).toBeDisabled();
 
       userEvent.type(
-        await page.findByLabelText('Your Mobile Number'),
+        await page.findByLabelText('Mobile Number'),
         '212-345-6789'
       );
       userEvent.type(
-        await page.findByLabelText('Your Email Address'),
+        await page.findByLabelText('Email Address'),
         'lisa@jackson.com'
       );
 
@@ -36,14 +36,14 @@ describe('Caregiver contact step', () => {
 
       expect((await page.findByText('Next')).parentElement).toBeDisabled();
 
-      userEvent.click(await page.findByText('Your Email Address'));
+      userEvent.click(await page.findByText('Email Address'));
 
       await act(async () => {
         await delay(300);
       });
 
       userEvent.type(
-        await page.findByLabelText('Your Mobile Number'),
+        await page.findByLabelText('Mobile Number'),
         '212-345-6789'
       );
 

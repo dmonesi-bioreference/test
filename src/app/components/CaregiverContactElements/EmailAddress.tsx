@@ -24,6 +24,7 @@ export function EmailAddress({
       name="email"
       label={label}
       placeholder={placeholder || t('forms.caregiverContact.email.placeholder')}
+      helpText={t('forms.caregiverContact.email.helpText')}
       prefix={<Icon name="mail" color="primary" />}
       invalid={errors.length > 0 && !isPristine}
       invalidMessage={errors.map(t).join(' ')}

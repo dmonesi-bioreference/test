@@ -134,7 +134,7 @@ export const resources = {
             audios: {
               showTranscriptLabel: 'Read transcript',
               hideTranscriptLabel: 'Close transcript',
-              error: 'Error fetching audio.'
+              error: 'Error fetching audio.',
             },
             articles: {
               title: 'Read',
@@ -191,7 +191,8 @@ export const resources = {
           waiting: {
             title: 'Prepare to View Your Test Results',
             indicatorCard: {
-              heading: 'Your genetic test is currently in progress. While you wait, check out the resources below. These will help you better understand how genetic testing works and what a genetic test report looks like.',
+              heading:
+                'Your genetic test is currently in progress. While you wait, check out the resources below. These will help you better understand how genetic testing works and what a genetic test report looks like.',
               title: 'In Progress',
               subTitle: 'Results expected {{expectedResultsDate}}',
             },
@@ -203,7 +204,8 @@ export const resources = {
           ready: {
             home: 'Return Home',
             title: 'Your Full Test Results',
-            description: '<p>Genetic test results may be difficult to understand and may cause anxiety for some people, regardless of the results. When reviewing your test results, please keep in mind that genetic test reports have some limitations that are important to understand.</p><br /><p>Thus, reviewing test results with your treating physician first is strongly encouraged, as it is necessary to properly understand and plan your next steps.</p>',
+            description:
+              '<p>Genetic test results may be difficult to understand and may cause anxiety for some people, regardless of the results. When reviewing your test results, please keep in mind that genetic test reports have some limitations that are important to understand.</p><br /><p>Thus, reviewing test results with your treating physician first is strongly encouraged, as it is necessary to properly understand and plan your next steps.</p>',
             report: {
               attention: 'Medical language ahead',
               description:
@@ -565,7 +567,7 @@ export const resources = {
       forms: {
         consent: {
           title: 'Consent to Participate',
-          description: 
+          description:
             '<h7>At GeneDx we believe you should be in control of how your health information is used and whether and how it can be shared. Sharing health information that has been de-identified – which means information like your name, birthdate and location has been removed – can be a valuable contribution to medical research, helping scientists discover new causes and new treatments for diseases.</h7>' +
             '<h7>We want you to understand how your health information might be used when you sign up for an account with us. By registering for an account on GeneDx.com, I agree to:</h7>' +
             '<ol>' +
@@ -668,7 +670,7 @@ export const resources = {
         },
         caregiverContact: {
           phone: {
-            label: 'Your Mobile Number',
+            label: 'Mobile Number',
             placeholder: 'e.g. 212-345-6789',
             errors: {
               required: 'Phone number is required.',
@@ -676,8 +678,9 @@ export const resources = {
             },
           },
           email: {
-            label: 'Your Email Address',
+            label: 'Email Address',
             placeholder: 'barb.jackson@example.com',
+            helpText: 'You will use this email to log in to your account.',
             errors: {
               required: 'Email address is required.',
               invalid: 'Email address is invalid.',
@@ -836,7 +839,7 @@ export const resources = {
           },
           stepTwo: {
             subTitle:
-              'Please let us know how we can notify you of your genetic test results.',
+              'This information will be used to log in and receive future notifications.',
           },
           stepThree: {
             subTitle:

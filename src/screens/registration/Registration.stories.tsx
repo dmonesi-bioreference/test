@@ -11,7 +11,7 @@ export default {
 
 const Template: Story = () => (
   <Shell>
-    <RegistrationWizard /> v
+    <RegistrationWizard />
   </Shell>
 );
 

@@ -56,7 +56,7 @@ test('CaregiverContactElements.EmailAddress synchronizes with identity', async (
     </SynchronizationDiagnostics>
   );
 
-  userEvents.type(await component.findByLabelText('Your Email Address'), email);
+  userEvents.type(await component.findByLabelText('Email Address'), email);
 
   await component.findByText(`Identity email: ${email}`);
   await component.findByText(`Caregiver contact email: ${email}`);
@@ -84,7 +84,7 @@ test('CaregiverContactElements.PhoneNumber synchronizes with identity', async ()
     </SynchronizationDiagnostics>
   );
 
-  userEvents.type(await component.findByLabelText('Your Mobile Number'), phone);
+  userEvents.type(await component.findByLabelText('Mobile Number'), phone);
 
   await component.findByText(`Identity phone: ${phone}`);
   await component.findByText(`Caregiver contact phone: ${phone}`);
