@@ -17,4 +17,10 @@ describe('Terms and conditions screen', () => {
     await assert.heading(t('pages.termsAndConditions.complains.title'));
     await assert.heading(t('pages.termsAndConditions.translations.title'));
   });
+
+  it('has a return button', async () => {
+    await TestUtils.renderWithShell(<TermsAndConditions />);
+
+    expect(screen.getByRole('button', { name: 'Return' })).toBeInTheDocument();
+  });
 });
