@@ -149,13 +149,16 @@ async function register({
           email,
           password,
           connection: process.env.AUTH0_REALM || '',
-        },
+          onRedirecting: (done: () => void) => {
+            trackSignUpEvent();
+            done();
+          },
+        } as any, // options parameter is passed into webAuth.login method under the hood. Second parameter (callback) is called only in case of error.
         // eslint-disable-next-line no-console
         (error, result) => {
           if (error) {
             reject(error);
           } else {
-            trackSignUpEvent();
             resolve(result);
           }
         }

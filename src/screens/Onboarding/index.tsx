@@ -4,15 +4,34 @@ import { useEffect, useState } from 'react';
 import { AppLayout } from 'app/components/AppLayout';
 import { OnBoardingStories } from 'app/components/ContentElements';
 import { useContent } from 'app/components/ContentElements/hooks';
-import { useAppEvents, useAppTranslation } from 'app/components/Shell';
+import {
+  useAppEvents,
+  useAppSelector,
+  useAppTranslation,
+} from 'app/components/Shell';
 import { Button } from 'components/Button';
 import { PageSection } from 'components/PageSection';
 import { IdentityForm } from 'screens/IdentityForm';
+import { trackSignUpFlowEvent } from 'tracking';
 
 export const OnBoarding = () => {
   const t = useAppTranslation();
   const [beginRegistration, setBeginRegistration] = useState(false);
   const { allOnBoardingCardsRequest } = useAppEvents();
+  const isSms = useAppSelector(
+    (state) => state.context.auth.patientSource === 'SMS'
+  );
+  const submitButtonText = t('pages.onboarding.actions.beginRegistration');
+
+  useEffect(() => {
+    if (!beginRegistration) {
+      trackSignUpFlowEvent({
+        signUpStep: 'start',
+        signUpMethod: isSms ? 'SMS' : 'email',
+        signUpButtonText: submitButtonText,
+      });
+    }
+  }, [beginRegistration, isSms, submitButtonText]);
 
   useEffect(allOnBoardingCardsRequest, [allOnBoardingCardsRequest]);
 
@@ -34,7 +53,7 @@ export const OnBoarding = () => {
         <PageSection>
           <OnBoardingStories />
           <Button kind="primary" onClick={() => setBeginRegistration(true)}>
-            {t('pages.onboarding.actions.beginRegistration')}
+            {submitButtonText}
           </Button>
         </PageSection>
       </AppLayout>

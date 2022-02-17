@@ -1,5 +1,6 @@
 export interface SignUpFlowEventProps {
   signUpStep:
+    | 'start'
     | 'identity'
     | 'consent'
     | 'name'
