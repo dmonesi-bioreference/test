@@ -9,7 +9,7 @@ export default {
   title: 'Templates/TermsAndConditions',
 };
 
-const Template: Story = (args) => (
+const Template: Story = () => (
   <Shell>
     <TermsAndConditions />
   </Shell>

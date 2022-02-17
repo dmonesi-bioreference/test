@@ -5,6 +5,6 @@
     "pageLoadTimeout": 120000,
     "chromeWebSecurity": false,
     "video": false,
-    "viewportWidth": 400,
-    "viewportHeiht": 1115
+    "viewportWidth": 375,
+    "viewportHeight": 812
 }

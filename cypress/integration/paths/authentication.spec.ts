@@ -20,12 +20,11 @@ describe('on the home page', () => {
       });
     });
 
-    // TODO: TB - Disabled because broken by code change
-    // describe('with a GUID url parameter', () => {
-    //   it('it lands on the identify verification page', () => {
-    //     authApi.register(Cypress.env('AUTH0_GUID_TEST_ORDERED'));
-    //   });
-    // });
+    describe('with a GUID url parameter', () => {
+      it('it lands on the identify verification page', () => {
+        authApi.register(Cypress.env('AUTH0_GUID_TEST_ORDERED'));
+      });
+    });
 
     describe('without any url parameters', () => {
       it('it lands on the login page', () => {

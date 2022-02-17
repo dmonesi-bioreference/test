@@ -51,34 +51,19 @@ describe('on the results page', () => {
       });
     });
 
-    // describe('which has ready but unviewed tests', () => {
-    //   beforeEach(() => {
-    //     authApi.logout();
-    //     authApi.login(
-    //       Cypress.env('AUTH0_USERNAME_RESULTS_READY'),
-    //       Cypress.env('AUTH0_PASSWORD_RESULTS_READY')
-    //     );
-    //   });
+    describe('which has viewed tests', () => {
+      beforeEach(() => {
+        authApi.logout();
+        authApi.login(
+          Cypress.env('AUTH0_USERNAME_RESULTS_VIEWED'),
+          Cypress.env('AUTH0_PASSWORD_RESULTS_VIEWED')
+        );
+      });
       
-    //   it('it displays the tests as ready', () => {
-    //     resultsPage.open();
-    //     resultsPage.hasText(t('pages.results.preResultsPause.title'));
-    //   });
-    // });
-
-    // describe('which has viewed tests', () => {
-    //   beforeEach(() => {
-    //     authApi.logout();
-    //     authApi.login(
-    //       Cypress.env('AUTH0_USERNAME_RESULTS_VIEWED'),
-    //       Cypress.env('AUTH0_PASSWORD_RESULTS_VIEWED')
-    //     );
-    //   });
-      
-    //   it('it dispalys the tests as ready', () => {
-    //     resultsPage.open();
-    //     resultsPage.hasText(t('pages.results.ready.title'));
-    //   });
-    // });
+      it('it dispalys the tests as ready', () => {
+        resultsPage.open();
+        resultsPage.hasText(t('pages.results.ready.title'));
+      });
+    });
   });
 });
