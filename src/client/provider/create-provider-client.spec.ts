@@ -103,6 +103,50 @@ describe('Handlers', () => {
     expect(response?.data).toEqual(success);
   });
 
+  it('Patient.profile gracefully fails on incomplete information', async () => {
+    const id = '1234';
+    const listener = jest.fn();
+
+    const success = {
+      Data: [
+        {
+          Insurances: [],
+          Patient: {},
+          Tests: Mocks.tests.list,
+        },
+      ],
+      IsSuccess: true,
+      ValidationResult: {
+        IsValid: true,
+        Errors: null,
+      },
+    };
+
+    server.use(
+      rest.get(
+        'http://localhost/v1.0.1/api/PatientPortal/:id/Tests',
+        (request, response, context) => {
+          listener(request.params.id);
+          return response(context.status(200), context.json(success));
+        }
+      )
+    );
+
+    const response = await handlers.Patient.profile(id);
+
+    expect(listener).toHaveBeenCalledWith(id);
+    expect(response).toEqual({
+      gender_genetic: '',
+      gender_identity: '',
+      insurance: '',
+      phenotype: Mocks.tests.single.PhenotypeNames,
+      patient_dob: '',
+      patient_name: '',
+      patient_nickname: '',
+      caregiver_location: '',
+    });
+  });
+
   it('Patient.profile returns the profile data for the given id', async () => {
     const id = '1234';
     const listener = jest.fn();

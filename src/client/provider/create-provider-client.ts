@@ -54,7 +54,7 @@ export function createProviderClient(overrides: Partial<Configuration>) {
 
   const patientProfile = async (id: string) => {
     type TestsResponse = {
-      Data: { Patient: Patient; Insurances: Insurance[]; Tests: Test[] }[];
+      Data: { Patient?: Patient; Insurances: Insurance[]; Tests: Test[] }[];
     };
 
     const response = await client
@@ -77,14 +77,18 @@ export function createProviderClient(overrides: Partial<Configuration>) {
       const [firstTest] = first.Tests;
       const [firstInsurance] = first.Insurances;
       const patientProfile: PatientProfile = {
-        patient_name: `${first.Patient.FirstName} ${first.Patient.LastName}`,
-        patient_nickname: first.Patient.FirstName,
-        patient_dob: first.Patient.BirthDate,
-        gender_genetic: first.Patient.Gender,
-        gender_identity: first.Patient.GenderIdentification,
-        insurance: firstInsurance.Insurance.Name,
+        patient_name: [first.Patient?.FirstName, first.Patient?.LastName]
+          .filter((name) => name)
+          .join(' '),
+        patient_nickname: first.Patient?.FirstName || '',
+        patient_dob: first.Patient?.BirthDate || '',
+        gender_genetic: first.Patient?.Gender || '',
+        gender_identity: first.Patient?.GenderIdentification || '',
+        insurance: firstInsurance?.Insurance?.Name || '',
         phenotype: firstTest.PhenotypeNames,
-        caregiver_location: `${first.Patient.City}, ${first.Patient.State}`,
+        caregiver_location: [first.Patient?.City, first.Patient?.State]
+          .filter((location) => location)
+          .join(', '),
       };
 
       return patientProfile;
