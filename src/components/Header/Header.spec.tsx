@@ -1,3 +1,4 @@
+import { waitForElementToBeRemoved } from '@testing-library/react';
 import userEvents from '@testing-library/user-event';
 
 import { renderWithShell } from 'test-utils';
@@ -19,7 +20,8 @@ describe('header', () => {
     await page.findByText('Home');
 
     userEvents.click(await page.findByLabelText('Open menu'));
-    expect(page.queryByText('Home')).toBeNull();
+
+    await waitForElementToBeRemoved(() => page.queryByText('Home'));
   });
 
   it('navigates to the Home page when clicked', async () => {

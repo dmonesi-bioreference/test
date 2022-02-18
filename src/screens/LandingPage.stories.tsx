@@ -7,7 +7,10 @@ import { LandingPage } from './LandingPage';
 
 export default {
   component: LandingPage,
-  title: 'Screens/Main',
+  title: 'Screens/LandingPage',
+  parameters: {
+    layout: 'fullscreen',
+  },
   argTypes: {
     labStatus: {
       options: ['In Lab', 'Report Ready'],

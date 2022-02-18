@@ -8,6 +8,9 @@ import { Mocks } from 'test-utils/server/mocks';
 export default {
   component: OnBoarding,
   title: 'Screens/OnBoarding',
+  parameters: {
+    layout: 'fullscreen',
+  },
 };
 
 const LoadMockOnboardingStories = () => {

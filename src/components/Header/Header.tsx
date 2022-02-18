@@ -44,7 +44,7 @@ const Header: React.FC<HeaderProps> = (props) => {
           </button>
         )}
       </header>
-      {isOpen && <MainNav />}
+      <MainNav isOpen={isOpen} />
     </HeaderStyled>
   );
 };

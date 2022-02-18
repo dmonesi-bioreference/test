@@ -6,6 +6,9 @@ import { IdentityForm } from 'screens/IdentityForm';
 export default {
   component: IdentityForm,
   title: 'Screens/IdentityForm',
+  parameters: {
+    layout: 'fullscreen',
+  },
 };
 
 const Template: Story = () => (

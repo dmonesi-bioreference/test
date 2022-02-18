@@ -1,3 +1,4 @@
+import { waitForElementToBeRemoved } from '@testing-library/react';
 import userEvents from '@testing-library/user-event';
 
 import { renderWithShell } from 'test-utils';
@@ -29,6 +30,7 @@ describe('The home page', () => {
     await page.findByText('Home');
 
     userEvents.click(await page.findByText('Patient'));
-    expect(page.queryByText('Home')).toBeNull();
+
+    await waitForElementToBeRemoved(() => page.queryByText('Home'));
   });
 });

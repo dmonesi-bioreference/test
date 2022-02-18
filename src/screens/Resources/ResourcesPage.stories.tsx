@@ -9,6 +9,9 @@ import { ResourcesPage } from './ResourcesPage';
 export default {
   component: ResourcesPage,
   title: 'Screens/Resources',
+  parameters: {
+    layout: 'fullscreen',
+  },
 };
 
 const LoadMockResources = () => {

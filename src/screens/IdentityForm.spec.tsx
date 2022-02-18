@@ -1,7 +1,8 @@
+import { waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { useAppEvents } from 'app/components/Shell';
-import { act, delay, renderWithShell, roles } from 'test-utils';
+import { renderWithShell, roles } from 'test-utils';
 
 import { IdentityForm } from './IdentityForm';
 
@@ -113,13 +114,10 @@ describe('The identity form page', () => {
         'person@example.com'
       );
 
-      await act(async () => {
-        await delay(300);
-      });
+      const confirmButtonParent = (await page.findByText('Confirm'))
+        .parentElement;
 
-      expect(
-        (await page.findByText('Confirm')).parentElement
-      ).not.toBeDisabled();
+      await waitFor(() => expect(confirmButtonParent).not.toBeDisabled());
     });
 
     it('only displays errors for changed fields', async () => {
@@ -144,11 +142,9 @@ describe('The identity form page', () => {
 
       userEvent.click(await page.findByText('Date of birth workaround'));
 
-      await act(async () => {
-        await delay(300);
-      });
-
-      expect(page.queryByText('There were some problems.')).toBeNull();
+      await waitFor(() =>
+        expect(page.queryByText('There were some problems.')).toBeNull()
+      );
     });
 
     it('prevents more than 5 identity check attempts', async () => {
@@ -178,9 +174,9 @@ describe('The identity form page', () => {
       userEvent.type(await page.findByLabelText(`Patient Zip Code`), zip);
       userEvent.type(await page.findByLabelText('Your Email Address'), email);
 
-      await act(async () => {
-        await delay(300);
-      });
+      const confirmButtonParent = (await page.findByText('Confirm'))
+        .parentElement;
+      await waitFor(() => expect(confirmButtonParent).not.toBeDisabled());
 
       userEvent.click(await page.findByText('Confirm'));
 
@@ -214,26 +210,24 @@ describe('The identity form page', () => {
       userEvent.type(await page.findByLabelText(`Patient Zip Code`), zip);
       userEvent.type(await page.findByLabelText('Your Email Address'), email);
 
-      await act(async () => {
-        await delay(300);
-      });
+      const confirmButtonParent = (await page.findByText('Confirm'))
+        .parentElement;
+      await waitFor(() => expect(confirmButtonParent).not.toBeDisabled());
 
       userEvent.click(await page.findByText('Confirm'));
 
-      await act(async () => {
-        await delay(300);
-      });
-
-      expect(listener).toHaveBeenCalledWith(
-        expect.objectContaining({
-          forms: expect.objectContaining({
-            identity: expect.objectContaining({
-              values: { dob, email, zip, phone: '' },
+      await waitFor(() =>
+        expect(listener).toHaveBeenCalledWith(
+          expect.objectContaining({
+            forms: expect.objectContaining({
+              identity: expect.objectContaining({
+                values: { dob, email, zip, phone: '' },
+              }),
             }),
           }),
-        }),
-        expect.anything(),
-        expect.anything()
+          expect.anything(),
+          expect.anything()
+        )
       );
     });
   });

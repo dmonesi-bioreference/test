@@ -7,6 +7,9 @@ import { TermsAndConditions } from './index';
 export default {
   component: TermsAndConditions,
   title: 'Screens/TermsAndConditions',
+  parameters: {
+    layout: 'fullscreen',
+  },
 };
 
 const Template: Story = () => (

@@ -7,6 +7,9 @@ import { RegistrationWizard } from './index';
 export default {
   component: RegistrationWizard,
   title: 'Screens/RegistrationWizard',
+  parameters: {
+    layout: 'fullscreen',
+  },
 };
 
 const Template: Story = () => (

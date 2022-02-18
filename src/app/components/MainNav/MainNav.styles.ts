@@ -7,23 +7,19 @@ import media from 'styles/media-queries';
 
 const MainNavStyled = styled.nav`
   ${base}
-  position: fixed;
-  top: ${containers.headerHeight};
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  background-color: ${colors.white};
-  transition: opacity ${tokens.transitionFast} ease-in-out;
+  height: max-content;
+  left: ${tokens.spacingSmall};
+  min-height: max-content;
+  position: absolute;
+  right: ${tokens.spacingSmall};
+  top: calc(${containers.headerHeight} + ${tokens.spacingSmall});
   z-index: ${tokens.zIndexDropdown};
 
   ${media.mediumUp} {
-    top: calc(${containers.headerHeight} + ${tokens.spacingSmall});
-    max-width: ${containers.maxNavWidth}px;
-    height: min-content;
-    box-shadow: ${tokens.shadowMedium};
     border-radius: ${tokens.borderRadius};
+    left: auto;
     right: ${tokens.spacingMedium};
+    width: ${containers.maxNavWidth}px;
   }
 
   .menu {
@@ -33,6 +29,9 @@ const MainNavStyled = styled.nav`
     justify-content: left;
     padding: ${tokens.spacingXSmall};
     list-style: none;
+    background-color: ${colors.white};
+    box-shadow: ${tokens.shadowXxxLarge};
+    border-radius: ${tokens.borderRadius};
   }
 
   .menu__item {
