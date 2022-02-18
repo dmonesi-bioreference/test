@@ -1,3 +1,4 @@
+
 import { Mocks, renderWithShell } from 'test-utils';
 
 import { ResultsReady } from './ResultsReady';
@@ -7,18 +8,42 @@ describe('The results ready page', () => {
     await renderWithShell(<ResultsReady />);
   });
 
-  describe('The details section', () => {
-    it('has the report', async () => {
+  describe('The report section', () => {
+    it('displays  medial language ahead warning', async () => {
       const page = await renderWithShell(<ResultsReady />, {
         onLoadTests: async () =>
           Mocks.tests.createMany({ LabStatus: 'Report Ready' }),
-        onReport: async () => ({ src: '', thumbnail: '' }),
       });
 
       await page.findByText('Medical language ahead');
       await page.findByText(
         'This report is designed with healthcare providers in mind and contains many medically-oriented details. Please review this test report with your provider to understand what the test results mean for you and your family.'
       );
+    });
+
+    it('has the spinner indicator when report is loading', async () => {
+      const page = await renderWithShell(<ResultsReady />, {
+        onLoadTests: async () =>
+          Mocks.tests.createMany({ LabStatus: 'Report Ready' }),
+        onReport: async () => await new Promise((resolve) => setTimeout(resolve, 10_000_000)),
+      });
+
+      await page.findByTestId('spinner-report');
+    });
+
+    it('shown the "Open PDF" button when report is loaded', async () => {
+      window.URL.revokeObjectURL = jest.fn();
+
+      const pdfBuffer = await Mocks.report.get();
+  
+      const pdfBlob = new Blob([pdfBuffer], { type: 'application/pdf' });
+      
+      const page = await renderWithShell(<ResultsReady />, {
+        onLoadTests: async () =>
+          Mocks.tests.createMany({ LabStatus: 'Report Ready' }),
+        onReport: async () => pdfBlob
+      });
+
       await page.findByText('Open PDF');
     });
   });

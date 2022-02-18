@@ -95,6 +95,48 @@ declare global {
     ExpirationDate: string | null;
     PaymentType: string;
   }
+
+  interface Test {
+    TestID: string;
+    TestCode: string;
+    ShortDescription: string;
+    ReflexOrderingParentTestCode: string;
+    StartDate?: string;
+    DueDate?: string;
+    LabStatus:
+      | 'In Transit'
+      | 'Specimen Received'
+      | 'Hold For BI'
+      | 'In Lab'
+      | 'On Hold'
+      | 'Canceled'
+      | 'Finished'
+      | 'Report Ready'
+      | 'Updated Report';
+    LabAccessionId?: string;
+    LabStatusUpdateDate?: string;
+    TestCancelledBySystem: string;
+    WasBi: boolean;
+    UserEnteredSliceName: string;
+    PreDefinedSliceNames: string;
+    PhenotypeNames: string;
+    LastBiRunDate?: string;
+    BIStatus?: string;
+    HoldForBI: boolean;
+    BundledBillingQualify: boolean;
+    ReportedDate?: string;
+    ReportUpdatedDate?: string;
+    TestReasonText: string;
+    TestReasonCode: string;
+    TestIssues: string[];
+    CreatedDate: string;
+    UpdatedDate: string;
+    IsTrio: boolean;
+    TestFinishedDate?: string;
+    RevisedDueDate?: string;
+    Indent: number;
+    InsuranceEnabled: boolean;
+  }
 }
 
 export * from './create-provider-client';

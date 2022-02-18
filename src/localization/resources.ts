@@ -213,6 +213,7 @@ export const resources = {
               pdfLink: 'Open PDF',
               pdfPages: '{{pageNumber}} pages',
               pdfThumbnailAlt: 'Your report in PDF',
+              error: 'Error loading report',
             },
           },
         },

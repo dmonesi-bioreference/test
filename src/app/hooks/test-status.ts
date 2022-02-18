@@ -24,6 +24,8 @@ export function useTestStatus() {
       'tests.allComplete.appointment.afterAppointment'
     ),
     isViewed: useAppState('tests.allComplete.view'),
+    loadingReport: useAppState('tests.allComplete.report.fetchingReport'),
+    errorLoadingReport: useAppState('tests.allComplete.report.errorFetchingReport'),
   };
 
   return [state] as const;

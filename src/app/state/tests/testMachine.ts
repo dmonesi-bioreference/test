@@ -1,63 +1,11 @@
 import { assign, createMachine, send, sendParent } from 'xstate';
 
-declare global {
-  interface Test {
-    TestID: string;
-    TestCode: string;
-    ShortDescription: string;
-    ReflexOrderingParentTestCode: string;
-    StartDate?: string;
-    DueDate?: string;
-    LabStatus:
-      | 'In Transit'
-      | 'Specimen Received'
-      | 'Hold For BI'
-      | 'In Lab'
-      | 'On Hold'
-      | 'Canceled'
-      | 'Finished'
-      | 'Report Ready'
-      | 'Updated Report';
-    LabAccessionId?: string;
-    LabStatusUpdateDate?: string;
-    TestCancelledBySystem: string;
-    WasBi: boolean;
-    UserEnteredSliceName: string;
-    PreDefinedSliceNames: string;
-    PhenotypeNames: string;
-    LastBiRunDate?: string;
-    BIStatus?: string;
-    HoldForBI: boolean;
-    BundledBillingQualify: boolean;
-    ReportedDate?: string;
-    ReportUpdatedDate?: string;
-    TestReasonText: string;
-    TestReasonCode: string;
-    TestIssues: string[];
-    CreatedDate: string;
-    UpdatedDate: string;
-    IsTrio: boolean;
-    TestFinishedDate?: string;
-    RevisedDueDate?: string;
-    Indent: number;
-    InsuranceEnabled: boolean;
-  }
-
-  interface TestsJsonPayload {
-    Data: WithWildCards<{ Tests: Test[] }>[];
-    IsSuccess: boolean;
-    ValidationResult: {
-      IsValid: boolean;
-      Errors: unknown;
-    };
-  }
-}
-
 export type TestContext = {
   test: Test;
   percentComplete?: number;
   expectedResultsDate?: string;
   lastUpdated?: string;
+  reportId?: string;
 };
 
 export function isTestContext(
@@ -69,6 +17,7 @@ export function isTestContext(
     'percentComplete',
     'expectedResultsDate',
     'lastUpdated',
+    'reportId',
   ];
 
   return Object.keys(candidate as object).every((key) => props.includes(key));
@@ -85,6 +34,7 @@ const testMachine = createMachine(
           'calculatePercent',
           'getExpectedResultsDate',
           'getLastUpdatedDate',
+          'getReportId',
         ],
         on: {
           WAITING: 'waiting',
@@ -207,6 +157,13 @@ const testMachine = createMachine(
             date.getHours() > 12 ? 'pm' : 'am'
           } ${day}`,
         };
+      }),
+      getReportId: assign((context: TestContext) => {
+        if (!context.test) return { ...context };
+
+        const { LabAccessionId } = context.test;
+
+        return { ...context, reportId: LabAccessionId }
       }),
     },
   }

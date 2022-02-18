@@ -6,6 +6,7 @@ import * as internalLinkCards from './internal-link-cards';
 import * as onBoardingCards from './on-boarding-cards';
 import * as patient from './patient';
 import * as registrationProfile from './registration-profile';
+import * as report from './report';
 import * as session from './session';
 import * as tests from './tests';
 
@@ -20,4 +21,5 @@ export const Mocks = {
   patient,
   session,
   tests,
+  report,
 };

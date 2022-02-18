@@ -393,4 +393,71 @@ describe('Handlers', () => {
       await expect(handlers.Tests.all('1234')).rejects.toEqual(payload);
     }
   });
+
+  it('Tests.report returns the PDF for the given patient portal user id and report id', async () => {
+    const patientPortalUserId = '1234';
+    const reportId = '1234';
+
+    const listener = jest.fn();
+    const pdfBuffer = await Mocks.report.get();
+
+    server.use(
+      rest.get(
+        'http://localhost/v1.0.1/api/PatientPortal/Report/:patientPortalUserId/:reportId',
+        (request, response, context) => {
+          listener(request.params.patientPortalUserId, request.params.reportId);
+          return response(
+            context.set('Content-Length', pdfBuffer.byteLength.toString()),
+            context.set('Content-Type', 'application/pdf'),
+            context.body(pdfBuffer),
+          );
+        }
+      )
+    );
+
+    const response = await handlers.Tests.report(patientPortalUserId, reportId);
+
+    expect(listener).toHaveBeenCalledWith(patientPortalUserId, reportId);
+    expect(response?.data).toEqual(pdfBuffer);
+  });
+
+  it('Tests.report returns returns 4xx with response body', async () => {
+    const reportNotFoundRequest = {
+      Data: {
+        IsAuthorized: false,
+        Code: '1031',
+        ErrorMessage: 'Report information cannot be found',
+      },
+      IsSuccess: false,
+      ValidationResult: null,
+    }
+
+    const unauthorizedReportAccess = {
+      Data: {
+        IsAuthorized: false,
+        Code: '4033',
+        ErrorMessage: 'The patient can only view their own reports',
+      },
+      IsSuccess: false,
+      ValidationResult: null,
+    }
+
+    const requests = [
+      [401, reportNotFoundRequest],
+      [401, unauthorizedReportAccess],
+    ] as const;
+
+    for (const [status, payload] of requests) {
+      server.use(
+        rest.get(
+          'http://localhost/v1.0.1/api/PatientPortal/Report/:patientPortalUserId/:reportId',
+          (_, response, context) => {
+            return response(context.status(status), context.json(payload));
+          }
+        )
+      );
+
+      await expect(handlers.Tests.report('1234', '1234')).rejects.toEqual(payload);
+    }
+  });
 });

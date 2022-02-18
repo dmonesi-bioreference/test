@@ -124,13 +124,27 @@ export function createProviderClient(overrides: Partial<Configuration>) {
     return [];
   };
 
+  const report = async (userId: string, reportId: string) => {
+    const response = await client
+      .get<Blob>(`/v1.0.1/api/PatientPortal/Report/${userId}/${reportId}`)
+      .catch(
+        (error: AxiosError) => error.response as AxiosResponse<Blob>
+      );
+
+    if (response?.status !== 200) {
+      throw response?.data;
+    }
+    
+    return response;
+  }
+
   const handlers = {
     Identity: {
       validate: validateIdentity,
       confirm: confirmRegistration,
     },
     Patient: { profile: patientProfile },
-    Tests: { all: allTests },
+    Tests: { all: allTests, report },
   };
 
   return { client, handlers };

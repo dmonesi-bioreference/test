@@ -10,6 +10,7 @@ declare global {
     getTestStatus: { type: 'CHECK_TESTS' };
     getAppointmentStatus: { type: 'GET_APPOINTMENT_STATUS' };
     viewTestResults: { type: 'VIEW_TEST_RESULTS' };
+    fetchReport: { type: 'FETCH_REPORT' };
   }
 }
 
@@ -41,6 +42,7 @@ export const actions = {
             percentComplete: event.percentComplete ?? 0,
             expectedResultsDate: event.expectedResultsDate,
             lastUpdated: event.lastUpdated,
+            reportId: event.reportId,
           }
         }
         return test;
@@ -70,27 +72,26 @@ export const actions = {
         return { type: 'BEFORE_APPOINTMENT' };
     }
   }),
-  resolveReport: assign((context: AppContext, event: AppEvents) => {
-    const data = ('data' in event ? event?.data : {}) as { src: string, thumbnail: string | StaticImageData };
+  storeReport: assign((context: AppContext, event: AppEvents) => {
+    const data = ('data' in event ? event?.data : {}) as Blob;
 
     if (!data) return;
 
-    context.tests.report.src = data.src;
-    context.tests.report.thumbnail = data.thumbnail;
+    context.tests.report = {
+      pdf: data,
+      thumbnail: geneticTestReportTemplate,
+    }
   })
 };
 
 export const context: {
   actors: ActorRef<EventObject, State<TestContext, EventObject, any, { value: any; context: TestContext; }>>[],
-  tests: { id: string, percentComplete: number, expectedResultsDate?: string, lastUpdated?: string }[],
-  report: { src: string, thumbnail: string | StaticImageData },
+  tests: { id: string, percentComplete: number, expectedResultsDate?: string, lastUpdated?: string, reportId?: string }[],
+  report: { pdf: Blob, thumbnail: string | StaticImageData } | undefined,
 } = {
   actors: [],
   tests: [],
-  report: {
-    src: '',
-    thumbnail: geneticTestReportTemplate
-  },
+  report: undefined,
 }
 
 export const machine = {
@@ -197,22 +198,27 @@ export const machine = {
         },
         report: {
           type: 'compound',
-          initial: 'gettingReport',
+          initial: 'idle',
           states: {
-            gettingReport: {
+            idle: {
+              on: {
+                FETCH_REPORT: 'fetchingReport',
+              },
+            },
+            fetchingReport: {
               invoke: {
                 src: 'handleReport',
                 onDone: {
-                  target: 'reportLoaded',
-                  actions: 'resolveReport',
+                  target: 'reportFetched',
+                  actions: 'storeReport',
                 },
-                onError: 'reportNotLoaded',
+                onError: 'errorFetchingReport',
               },
             },
-            reportLoaded: {},
-            reportNotLoaded: {
+            reportFetched: {},
+            errorFetchingReport: {
               on: {
-                GET_REPORT: 'gettingReport'
+                FETCH_REPORT: 'fetchingReport'
               },
             },
           },

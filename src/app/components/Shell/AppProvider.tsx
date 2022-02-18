@@ -17,9 +17,7 @@ export interface AppProviderProps {
   onAppointmentStatus?: AppEventFn<{
     appointmentStatus: 'at appointment' | 'after appointment' | undefined;
   }>;
-  onReport?: AppEventFn<
-    { src: string; thumbnail: string | StaticImageData } | undefined
-  >;
+  onReport?: AppEventFn<Blob | undefined>;
   onPatientGuid?: AppEventFn<{ guid: string; source: string }>;
   onRegistration?: AppEventFn<unknown>;
 }
@@ -111,6 +109,7 @@ export function AppProvider({
         getTestStatus: () => send('CHECK_TESTS'),
         getAppointmentStatus: () => send('GET_APPOINTMENT_STATUS'),
         viewTestResults: () => send('VIEW_TEST_RESULTS'),
+        fetchReport: () => send('FETCH_REPORT'),
         setArticleIdentifier: (payload?: { articleIdentifier: string }) =>
           send({
             type: 'SET_ARTICLE_IDENTIFIER',
