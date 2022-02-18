@@ -35,7 +35,7 @@ export const resources = {
           pageTitle: 'Login | GeneDx',
           title: 'Welcome back',
           description:
-            "We're here to support you along every step of the journey together.",
+            "We're here to support you along every step of your journey.",
           actions: {
             primary: {
               label: 'Login',
