@@ -1,3 +1,5 @@
+import { within } from '@testing-library/dom';
+
 import { renderWithShell, Mocks } from 'test-utils';
 
 import { ArticleCards } from './ArticleCards';
@@ -49,6 +51,43 @@ describe('The article cards component', () => {
     await page.findByText('Results ready article title');
   });
 
+  it('creates article cards relevant to ready when appointment status is undefined', async () => {
+    const page = await renderWithShell(<ArticleCards />, {
+      requests: {
+        allArticles: async () => [
+          Mocks.article.create({
+            introduceAt: 'DISCUSSED',
+            title: 'Discussed article title',
+          }),
+          Mocks.article.create({
+            introduceAt: 'VIEWED',
+            title: 'Viewed article title',
+          }),
+          Mocks.article.create({
+            introduceAt: 'READY',
+            title: 'Ready article title',
+          }),
+          Mocks.article.create({
+            introduceAt: 'WAITING',
+            title: 'Waiting article title',
+          }),
+        ],
+      },
+      onLoadTests: async () => [
+        { ...Mocks.tests.single, LabStatus: 'Report Ready' },
+      ],
+      onPatientGuid: async () => ({ guid: '1234', source: '' }),
+      onAppointmentStatus: async () => ({
+        appointmentStatus: undefined,
+      }),
+    });
+
+    await page.findByText('Ready article title');
+    expect(page.queryByText('Viewed article title')).toBeNull();
+    expect(page.queryByText('Discussed article title')).toBeNull();
+    expect(page.queryByText('Waiting article title')).toBeNull();
+  });
+
   it('creates article cards when test results have been viewed', async () => {
     const page = await renderWithShell(<ArticleCards />, {
       requests: {
@@ -91,5 +130,34 @@ describe('The article cards component', () => {
     });
 
     await page.findByText('Discussed article title');
+  });
+
+  it('creates article cards ordered by priority', async () => {
+    const page = await renderWithShell(<ArticleCards />, {
+      requests: {
+        allArticles: async () => [
+          Mocks.article.create({
+            introduceAt: 'WAITING',
+            priority: 2,
+            title: 'Low priority article',
+          }),
+          Mocks.article.create({
+            introduceAt: 'WAITING',
+            priority: 1,
+            title: 'High priority article',
+          }),
+        ],
+      },
+    });
+
+    const [firstArticle, secondArticle] = page.getAllByRole('heading', {
+      level: 2,
+    });
+    expect(
+      within(firstArticle).getByText('High priority article')
+    ).toBeTruthy();
+    expect(
+      within(secondArticle).getByText('Low priority article')
+    ).toBeTruthy();
   });
 });

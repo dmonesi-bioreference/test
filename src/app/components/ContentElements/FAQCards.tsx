@@ -8,7 +8,11 @@ import { Typography } from 'components/Typography';
 import { useAppEvents, useAppTranslation } from '../Shell';
 
 import { Content } from './Content';
-import { useContent, useContentByTestStatus } from './hooks';
+import {
+  useContent,
+  useContentByPriority,
+  useContentByTestStatus,
+} from './hooks';
 
 export const FAQCards = () => {
   const t = useAppTranslation();
@@ -19,16 +23,7 @@ export const FAQCards = () => {
   const [{ faqs, loadingFAQs, errorFetchingFAQs }] = useContent();
 
   const faqsByTestStatus = useContentByTestStatus(faqs) as FAQ[];
-
-  const FAQSetsByPriority = faqsByTestStatus.slice().sort((a, b) => {
-    if (!a.priority) {
-      return 1;
-    } else if (!b.priority) {
-      return -1;
-    } else {
-      return a.priority < b.priority ? 1 : -1;
-    }
-  });
+  const FAQSetsByPriority = useContentByPriority(faqsByTestStatus) as FAQ[];
 
   const FAQCards = FAQSetsByPriority.map((faq) => {
     return (
@@ -48,7 +43,7 @@ export const FAQCards = () => {
 
   return (
     <div>
-      {loadingFAQs && <Card loading />}
+      {loadingFAQs && <Card isLoading />}
       {errorFetchingFAQs ? (
         <Typography color="error" level="7" type="heading">
           {t('pages.resources.section.faqs.error')}

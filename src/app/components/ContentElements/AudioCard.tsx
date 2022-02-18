@@ -23,7 +23,7 @@ export const AudioCard = () => {
   const audioCards = firstAudio.map((audio) => {
     return (
       <MediaElements.Audio
-      avatarImage={audio?.avatar?.fullpath as string}
+        avatarImage={audio?.avatar?.fullpath as string}
         key={audio.id}
         src={audio.srcUrl}
         title={audio.name}
@@ -46,7 +46,7 @@ export const AudioCard = () => {
 
   return (
     <div>
-      {loadingAudios && <Card loading />}
+      {loadingAudios && <Card isLoading />}
       {errorFetchingAudios && (
         <Typography color="error" level="7" type="heading">
           {t('pages.resources.section.audios.error')}

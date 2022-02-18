@@ -12,19 +12,19 @@ export interface CardProps {
   /** Maximum header height in px without value */
   maxHeaderHeight?: number;
   transparent?: boolean;
-  loading?: boolean;
+  isLoading?: boolean;
   children?: React.ReactNode;
 }
 
 const Card: React.FC<CardProps> = (props) => {
   const cardClasses = clsx(
-    props.loading && 'card--loading',
+    props.isLoading && 'card--loading',
     props.transparent && 'card--transparent'
   );
 
   return (
     <CardStyled {...props} className={cardClasses}>
-      {props.loading ? (
+      {props.isLoading ? (
         <Loading variant="shimmer" />
       ) : (
         <>

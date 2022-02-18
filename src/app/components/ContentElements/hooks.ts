@@ -61,3 +61,15 @@ export function useContentByTestStatus(contents: (FAQ | Article | Audio)[]) {
 
   return articlesByTestStatus();
 }
+
+export function useContentByPriority(contents: (FAQ | Article)[]) {
+  return contents.slice().sort((a, b) => {
+    if (!a.priority) {
+      return -1;
+    } else if (!b.priority) {
+      return 1;
+    } else {
+      return a.priority < b.priority ? -1 : 1;
+    }
+  });
+}

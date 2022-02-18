@@ -8,7 +8,11 @@ import { Typography } from 'components/Typography';
 import { useAppEvents, useAppTranslation } from '../Shell';
 
 import { Content } from './Content';
-import { useContent, useContentByTestStatus } from './hooks';
+import {
+  useContent,
+  useContentByPriority,
+  useContentByTestStatus,
+} from './hooks';
 
 export interface ArticleCardsProps {
   feature?: Feature;
@@ -23,12 +27,13 @@ export const ArticleCards: React.FC<ArticleCardsProps> = (props) => {
   const [{ articles, loadingArticles, errorFetchingArticles }] = useContent();
 
   const articlesByTestStatus = useContentByTestStatus(articles) as Article[];
+  const articlesByPriority = useContentByPriority(
+    articlesByTestStatus
+  ) as Article[];
 
   const articlesByFeature = props.feature
-    ? articlesByTestStatus.filter(
-        (article) => article.feature === props.feature
-      )
-    : articlesByTestStatus;
+    ? articlesByPriority.filter((article) => article.feature === props.feature)
+    : articlesByPriority;
 
   const articleCards = articlesByFeature.map((article) => {
     return (
@@ -49,7 +54,7 @@ export const ArticleCards: React.FC<ArticleCardsProps> = (props) => {
 
   return (
     <div>
-      {loadingArticles && <Card loading />}
+      {loadingArticles && <Card isLoading />}
       {errorFetchingArticles ? (
         <Typography color="error" level="7" type="heading">
           {t('pages.resources.section.articles.error')}

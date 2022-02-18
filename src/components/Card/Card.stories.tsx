@@ -38,7 +38,7 @@ Primary.args = {
 export const Loading = Template.bind({});
 
 Loading.args = {
-  loading: true,
+  isLoading: true,
 };
 
 export const Transparent = Template.bind({});

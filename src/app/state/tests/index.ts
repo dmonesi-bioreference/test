@@ -20,22 +20,23 @@ export const actions = {
 
     if (!data) return;
 
-    data.forEach(test => {
+    data.forEach((test) => {
       context.tests.actors = [
         ...context.tests.actors,
-        spawn(
-          testMachine.withContext({ test }),
-          { name: `test-${test.TestID}`, sync: false }
-        )
+        spawn(testMachine.withContext({ test }), {
+          name: `test-${test.TestID}`,
+          sync: false,
+        }),
       ];
       context.tests.tests = [
-        ...context.tests.tests, { id: test.TestID, percentComplete: 0 },
+        ...context.tests.tests,
+        { id: test.TestID, percentComplete: 0 },
       ];
     });
   }),
   syncTests: assign((context: AppContext, event: AppEvents) => {
     if (isTestContext(event)) {
-      context.tests.tests = context.tests.tests.map(test => {
+      context.tests.tests = context.tests.tests.map((test) => {
         if (test.id === event.test.TestID) {
           return {
             id: test.id,
@@ -43,7 +44,7 @@ export const actions = {
             expectedResultsDate: event.expectedResultsDate,
             lastUpdated: event.lastUpdated,
             reportId: event.reportId,
-          }
+          };
         }
         return test;
       });
@@ -51,16 +52,20 @@ export const actions = {
   }),
   getTestsPercentCompletion: send((context: AppContext) => {
     const testsCount = context.tests.actors.length;
-    const testsReadyCount = context.tests.tests.filter(test => test.percentComplete == 100).length;
+    const testsReadyCount = context.tests.tests.filter(
+      (test) => test.percentComplete == 100
+    ).length;
 
     if (testsReadyCount === testsCount) return { type: 'READY' };
     return { type: 'NOT_READY' };
   }),
   resolveAppointmentStatus: send((_, event: AppEvents) => {
-    const data = ('data' in event ? event?.data : {}) as { appointmentStatus: string };
+    const data = ('data' in event ? event?.data : {}) as {
+      appointmentStatus: string;
+    };
 
-    if (!data) return { type: 'UNKNOWN' };
-    
+    if (!data) return { type: 'errorLoadingAppointmentStatus' };
+
     const { appointmentStatus } = data;
 
     switch (appointmentStatus) {
@@ -80,26 +85,35 @@ export const actions = {
     context.tests.report = {
       pdf: data,
       thumbnail: geneticTestReportTemplate,
-    }
-  })
+    };
+  }),
 };
 
 export const context: {
-  actors: ActorRef<EventObject, State<TestContext, EventObject, any, { value: any; context: TestContext; }>>[],
-  tests: { id: string, percentComplete: number, expectedResultsDate?: string, lastUpdated?: string, reportId?: string }[],
-  report: { pdf: Blob, thumbnail: string | StaticImageData } | undefined,
+  actors: ActorRef<
+    EventObject,
+    State<TestContext, EventObject, any, { value: any; context: TestContext }>
+  >[];
+  tests: {
+    id: string;
+    percentComplete: number;
+    expectedResultsDate?: string;
+    lastUpdated?: string;
+    reportId?: string;
+  }[];
+  report: { pdf: Blob; thumbnail: string | StaticImageData } | undefined;
 } = {
   actors: [],
   tests: [],
   report: undefined,
-}
+};
 
 export const machine = {
   initial: 'idle',
   states: {
     idle: {
       on: {
-        LOAD_TESTS: 'loading'
+        LOAD_TESTS: 'loading',
       },
     },
     loading: {
@@ -118,7 +132,10 @@ export const machine = {
         },
         syncing: {
           entry: [
-            (context: AppContext) => context.tests.actors.forEach(actor => actor.send('SYNC_REQUEST')),
+            (context: AppContext) =>
+              context.tests.actors.forEach((actor) =>
+                actor.send('SYNC_REQUEST')
+              ),
           ],
           on: {
             SYNC_RESPONSE: {
@@ -131,7 +148,7 @@ export const machine = {
           entry: ['getTestsPercentCompletion'],
           on: {
             READY: '#allComplete',
-            NOT_READY: '#notAllComplete'
+            NOT_READY: '#notAllComplete',
           },
         },
       },
@@ -139,13 +156,13 @@ export const machine = {
     errorLoading: {
       id: 'errorLoading',
       on: {
-        LOAD_TESTS: 'loading'
-      }
+        LOAD_TESTS: 'loading',
+      },
     },
     notAllComplete: {
       id: 'notAllComplete',
       on: {
-        READY: 'allComplete'
+        READY: 'allComplete',
       },
     },
     allComplete: {
@@ -158,11 +175,11 @@ export const machine = {
           states: {
             notViewed: {
               on: {
-                VIEW_TEST_RESULTS: 'viewed'
-              }
+                VIEW_TEST_RESULTS: 'viewed',
+              },
             },
-            viewed: {}
-          }
+            viewed: {},
+          },
         },
         appointment: {
           type: 'compound',
@@ -173,28 +190,27 @@ export const machine = {
                 src: 'handleAppointmentStatus',
                 onDone: {
                   target: 'knownAppointmentStatus',
-                  actions: 'resolveAppointmentStatus'
+                  actions: 'resolveAppointmentStatus',
                 },
-                onError: 'unknownAppointmentStatus',
-              }
+                onError: 'errorLoadingAppointmentStatus',
+              },
             },
             knownAppointmentStatus: {
               on: {
                 BEFORE_APPOINTMENT: 'beforeAppointment',
                 AT_APPOINTMENT: 'atAppointment',
                 AFTER_APPOINTMENT: 'afterAppointment',
-                UNKNOWN: 'unknownAppointmentStatus',
-              }
+              },
             },
-            unknownAppointmentStatus: {
+            errorLoadingAppointmentStatus: {
               on: {
-                GET_APPOINTMENT_STATUS: 'loadingAppointmentStatus'
-              }
+                GET_APPOINTMENT_STATUS: 'loadingAppointmentStatus',
+              },
             },
             beforeAppointment: {},
             atAppointment: {},
-            afterAppointment: {}
-          }
+            afterAppointment: {},
+          },
         },
         report: {
           type: 'compound',
@@ -218,12 +234,12 @@ export const machine = {
             reportFetched: {},
             errorFetchingReport: {
               on: {
-                FETCH_REPORT: 'fetchingReport'
+                FETCH_REPORT: 'fetchingReport',
               },
             },
           },
         },
-      }
+      },
     },
   },
 };

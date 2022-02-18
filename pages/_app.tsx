@@ -58,7 +58,7 @@ function WebApp({ Component, pageProps }: AppProps) {
       }}
       onAppointmentStatus={async () => {
         // API call goes here
-        return { appointmentStatus: 'after appointment' };
+        return { appointmentStatus: undefined };
       }}
       onIdentity={Api.Identity.validate}
       onLoadTests={Api.Tests.list}
