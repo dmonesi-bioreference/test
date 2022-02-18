@@ -64,7 +64,7 @@ export const actions = {
       appointmentStatus: string;
     };
 
-    if (!data) return { type: 'errorLoadingAppointmentStatus' };
+    if (!data) return { type: 'ERROR' };
 
     const { appointmentStatus } = data;
 
@@ -200,6 +200,7 @@ export const machine = {
                 BEFORE_APPOINTMENT: 'beforeAppointment',
                 AT_APPOINTMENT: 'atAppointment',
                 AFTER_APPOINTMENT: 'afterAppointment',
+                ERROR: 'errorLoadingAppointmentStatus',
               },
             },
             errorLoadingAppointmentStatus: {
