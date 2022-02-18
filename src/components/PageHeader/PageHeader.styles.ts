@@ -6,12 +6,19 @@ const PageHeaderStyled = styled.div`
   ${base};
   padding: 0 ${containers.spacingGutter};
 
-  &.page-header--secondaryPage {
-    padding: ${tokens.spacingSmall} ${tokens.spacingLarge};
-  }
+  .page-header__title {
+    display: grid;
+    gap: ${tokens.spacingXSmall};
 
-  .description {
-    margin-top: ${tokens.spacingSmall};
+    .label {
+      color: ${({ theme }) =>
+        theme.colors.labelText || tokens.colorPrimaryText};
+    }
+
+    h1 {
+      color: ${({ theme }) =>
+        theme.colors.headerText || tokens.colorPrimaryText};
+    }
   }
 `;
 

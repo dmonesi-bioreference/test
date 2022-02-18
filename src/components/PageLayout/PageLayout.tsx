@@ -9,26 +9,32 @@ import { getTheme } from 'styles/themes';
 import PageLayoutStyled from './PageLayout.styles';
 
 export interface PageLayoutProps {
-  kind?: 'home' | 'primary' | 'secondary' | 'content';
   containsCards?: boolean;
   footer?: React.ReactNode;
   banner?: React.ReactNode;
+  hasReturnLink?: boolean;
   isLoading?: boolean;
   description?: string;
+  label?: string;
   title?: string;
   theme?: Themes;
   isWithoutNav?: boolean;
+  hasBackgroundEllipse?: boolean;
 }
 
 const PageLayout: React.FC<PageLayoutProps> = ({
-  kind = 'primary',
   theme = 'defaultTheme',
   ...props
 }) => {
   const withCards = props.containsCards ? '--with-cards' : '';
   const withHeader = props.title ? (
     <>
-      <PageHeader belongsTo={`${kind}Page`} description={props.description}>
+      <PageHeader
+        description={props.description}
+        label={props.label}
+        hasReturnLink={props.hasReturnLink}
+        theme={theme}
+      >
         {props.title}
       </PageHeader>
     </>
@@ -38,6 +44,9 @@ const PageLayout: React.FC<PageLayoutProps> = ({
     <ThemeProvider theme={getTheme(theme)}>
       <PageLayoutStyled className={`page-layout--${theme}`}>
         <GlobalStyle />
+        <div className={'page-layout__background-wrapper'}>
+          {props.hasBackgroundEllipse && <figure className="ellipse" />}
+        </div>
         <Header
           withoutMenu={props.isWithoutNav}
           alignment={props.isWithoutNav ? 'center' : 'default'}

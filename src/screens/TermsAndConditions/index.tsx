@@ -41,8 +41,8 @@ export const TermsAndConditions = () => {
         <title>{t('pages.termsAndConditions.pageTitle')}</title>
       </Head>
       <AppLayout
-        kind="secondary"
         title={t('pages.termsAndConditions.userAgreement.title')}
+        hasReturnLink
       >
         <TermsAndConditionsContainer>
           <Introduction>

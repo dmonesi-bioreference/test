@@ -15,7 +15,7 @@ export const DeleteAccount = () => {
       <Head>
         <title>{t('pages.deleteAccount.pageTitle')}</title>
       </Head>
-      <AppLayout title={t('pages.deleteAccount.title')} kind="secondary">
+      <AppLayout title={t('pages.deleteAccount.title')} hasReturnLink>
         <PageSection>
           <ContentBlock scale="small">
             {t('pages.deleteAccount.description.paragraph1', {

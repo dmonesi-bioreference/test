@@ -35,7 +35,7 @@ const PatientBannerStyled = styled.div`
 
     ${TypographyStyled} {
       color: ${({ theme }) =>
-        theme.colors.headerText || tokens.colorPrimaryText};
+        theme.colors.labelText || tokens.colorPrimaryText};
     }
   }
 `;

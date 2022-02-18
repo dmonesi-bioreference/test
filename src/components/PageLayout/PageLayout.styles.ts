@@ -1,14 +1,30 @@
 import styled from 'styled-components';
 
-import { tokens, containers, base } from 'styles';
+import { base, containers, tokens } from 'styles';
 
 const PageLayoutStyled = styled.div`
   ${base};
-  background-color: ${({ theme }) => theme.colors.background};
+  position: relative;
+  overflow: hidden;
 
-  .page-layout__custom-header {
-    padding: ${tokens.spacing};
-    padding-bottom: ${tokens.spacingLarge};
+  .page-layout__background-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    top: ${tokens.spacingSmall};
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background-color: ${({ theme }) => theme.colors.background};
+
+    .ellipse {
+      position: absolute;
+      width: calc(${tokens.spacingXxLarge} * 10);
+      height: calc(${tokens.spacingXxLarge} * 10);
+      border-radius: ${tokens.borderRadiusCircle};
+      background-color: ${({ theme }) => theme.colors.foreground};
+    }
   }
 
   .page-layout__content {

@@ -3,11 +3,9 @@ import { PatientBanner } from 'app/components/PatientBanner';
 import { PageLayout } from 'components/PageLayout';
 import { PageLayoutProps } from 'components/PageLayout/PageLayout';
 
-type AppLayoutProps = Omit<PageLayoutProps, 'header' | 'footer'> & {
+type AppLayoutProps = Omit<PageLayoutProps, 'header' | 'footer' | 'banner'> & {
   isWithoutFooter?: boolean;
   hasPatientBanner?: boolean;
-  isWithoutNav?: boolean;
-  hasReturnLink?: boolean;
 };
 
 export const AppLayout: React.FC<AppLayoutProps> = ({

@@ -6,7 +6,7 @@ import MainNav, { MainNavProps } from './MainNav';
 
 export default {
   component: MainNav,
-  title: 'Components/MainNav',
+  title: 'App/MainNav',
   parameters: {
     componentSubtitle: 'Main navigation menu for the application',
   },

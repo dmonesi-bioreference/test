@@ -42,6 +42,7 @@ const TypographyStyled = styled.div`
   &.level1 {
     font-size: ${tokens.fontSize32};
     font-weight: ${tokens.fontWeightBold};
+    line-height: ${tokens.lineHeightDense};
   }
 
   &.level2 {

@@ -9,7 +9,8 @@ export const defaultTheme = {
     foreground: colors.indigo[100],
     bannerBackground: colors.violet[50],
     bannerForeground: colors.violet[100],
-    headerText: colors.violet[900],
+    labelText: colors.indigo[700],
+    headerText: colors.cornflowerBlue[800],
     icon: colors.violet[800],
     borderHighlight: colors.indigo[300],
   },
@@ -22,6 +23,7 @@ export const resourcesTheme = {
     foreground: colors.cornflowerBlue[100],
     bannerBackground: colors.cornflowerBlue[50],
     bannerForeground: colors.cornflowerBlue[100],
+    labelText: colors.cornflowerBlue[700],
     headerText: colors.cornflowerBlue[900],
     icon: colors.cornflowerBlue[800],
     borderHighlight: colors.cornflowerBlue[800],
@@ -35,6 +37,7 @@ export const healthProfileTheme = {
     foreground: colors.powderBlue[100],
     bannerBackground: colors.powderBlue[50],
     bannerForeground: colors.powderBlue[100],
+    labelText: colors.powderBlue[700],
     headerText: colors.powderBlue[800],
     icon: colors.powderBlue[600],
     borderHighlight: colors.powderBlue[300],
@@ -49,6 +52,7 @@ export const communityTheme = {
     foreground: colors.green[100],
     bannerBackground: colors.green[50],
     bannerForeground: colors.green[100],
+    labelText: colors.green[700],
     headerText: colors.green[800],
     icon: colors.green[600],
     borderHighlight: colors.green[300],
@@ -70,4 +74,5 @@ declare global {
 /* getTheme is used from the ThemeProvider to retrieve the theme by key */
 export const getTheme = (theme: Themes) => themes[theme];
 
-export const isTheme = (themeName: string): themeName is Themes => Object.keys(themes).includes(themeName);
+export const isTheme = (themeName: string): themeName is Themes =>
+  Object.keys(themes).includes(themeName);

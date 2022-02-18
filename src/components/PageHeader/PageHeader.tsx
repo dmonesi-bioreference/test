@@ -1,14 +1,21 @@
+import { ThemeProvider } from 'styled-components';
+
 import { PageSection } from 'components/PageSection';
 import { ReturnLink } from 'components/ReturnLink';
 import { Typography } from 'components/Typography';
+import { getTheme } from 'styles';
+
+import { Grid } from '../Grid';
 
 import PageHeaderStyled from './PageHeader.styles';
 
 export interface PageHeaderProps {
-  belongsTo: 'homePage' | 'primaryPage' | 'secondaryPage' | 'contentPage';
   description?: string;
+  theme?: Themes;
+  /** If a content page, display a label above the title */
+  label?: string;
   /** If a secondary page, backLink you to override the return link at the top of the page. */
-  backLink?: string;
+  hasReturnLink?: boolean;
 }
 
 const PageHeader: React.FC<PageHeaderProps> = (props) => {
@@ -17,20 +24,27 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
       {props.description}
     </Typography>
   );
-
+  const theme = props.theme || 'defaultTheme';
   return (
-    <PageHeaderStyled className={`page-header page-header--${props.belongsTo}`}>
-      <PageSection verticalPadding="extraLarge">
-        {props.belongsTo === 'secondaryPage' && <ReturnLink />}
-        <div className="content">
-          <Typography type="heading" level="1">
-            {props.children}
-          </Typography>
-          {withDescription && (
-            <div className="description">{withDescription}</div>
-          )}
-        </div>
-      </PageSection>
+    <PageHeaderStyled>
+      <ThemeProvider theme={getTheme(theme)}>
+        <PageSection spacing="extraLarge" verticalPadding="extraLarge">
+          {props.hasReturnLink && <ReturnLink />}
+          <Grid spacing="base">
+            <div className="page-header__title">
+              {props.label && (
+                <Typography type="label" labelType="title">
+                  {props.label}
+                </Typography>
+              )}
+              <Typography type="heading" level="1">
+                {props.children}
+              </Typography>
+            </div>
+            {withDescription}
+          </Grid>
+        </PageSection>
+      </ThemeProvider>
     </PageHeaderStyled>
   );
 };

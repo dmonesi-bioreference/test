@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { tokens, base } from 'styles';
 
 export interface GridProps {
-  spacing?: 'none' | 'small' | 'medium' | 'large' | 'extraLarge';
+  spacing?: 'none' | 'small' | 'base' | 'medium' | 'large' | 'extraLarge';
   verticalPadding?: 'none' | 'small' | 'medium' | 'large' | 'extraLarge';
 }
 
@@ -12,7 +12,7 @@ export interface GridProps {
  * @default spacing: 'large' verticalPadding: 'none'
  */
 const Grid: React.FC<GridProps> = styled.div<GridProps>`
-  ${base}
+  ${base};
   display: flex;
   flex-direction: column;
   grid-template-columns: 1fr;
@@ -25,6 +25,10 @@ const Grid: React.FC<GridProps> = styled.div<GridProps>`
       case 'small':
         return `
           gap: ${tokens.spacingSmall};
+        `;
+      case 'base':
+        return `
+          gap: ${tokens.spacing};
         `;
       case 'medium':
         return `
