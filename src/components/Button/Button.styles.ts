@@ -333,6 +333,10 @@ const ButtonStyled = styled.button`
     justify-content: space-between;
     width: 100%;
   }
+
+  &.button--hug-content {
+    width: max-content;
+  }
 `;
 
 export default ButtonStyled;

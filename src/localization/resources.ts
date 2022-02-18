@@ -522,6 +522,17 @@ export const resources = {
               '</ul>',
           },
         },
+        errorPage: {
+          title: 'Error | GeneDx',
+          notFound: {
+            title: '404 Not Found',
+            content: 'Sorry, the page you are looking for does not exist.',
+          },
+          serverError: {
+            title: '500 Internal Server Error',
+            content: 'Sorry, the server encountered an internal error.',
+          },
+        },
       },
       components: {
         articleCard: {

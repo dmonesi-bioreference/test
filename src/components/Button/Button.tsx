@@ -51,6 +51,8 @@ export interface ButtonProps {
   color?: 'light' | 'default' | 'danger';
   /** Used to pass className down to component */
   className?: string;
+  /** Button will hug contents */
+  hugContent?: boolean;
 }
 
 const defaultProps: ButtonProps = {
@@ -85,6 +87,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     // Modifiers
     'button--disabled': props.disabled,
     'button--space-between': props.spreadContent,
+    'button--hug-content': props.hugContent,
   });
 
   const ButtonChildren: React.FC = () => {

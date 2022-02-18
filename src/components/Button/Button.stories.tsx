@@ -100,3 +100,17 @@ WithSuffixIcon.args = {
   suffix: <Icon name="arrow-right" />,
   href: 'https://example.com',
 };
+
+export const HugContents = Template.bind({});
+
+HugContents.args = {
+  href: '/',
+  hugContent: true,
+};
+
+HugContents.parameters = {
+  docs: {
+    storyDescription:
+      'Use the `hugContent` prop to hug the contents of the button. By default, buttons take up the full width.',
+  },
+};
