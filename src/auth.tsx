@@ -206,14 +206,7 @@ ReactDOM.render(
         context.forms.caregiverRelationship.values;
 
       try {
-        const validation = await Api.Identity.validate(context);
         const response = await Api.Identity.confirm(context);
-
-        if (!validation.IsSuccess) {
-          return Promise.reject(
-            'Unable to validate your information. Please check your contact information and try again.'
-          );
-        }
 
         if (response.IsSuccess) {
           await register({

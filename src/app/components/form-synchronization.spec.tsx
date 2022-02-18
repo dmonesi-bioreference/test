@@ -3,7 +3,6 @@ import userEvents from '@testing-library/user-event';
 import { useAppSelector } from 'app/components/Shell';
 import * as TestUtils from 'test-utils';
 
-import { CaregiverContactElements } from './CaregiverContactElements';
 import { IdentityElements } from './IdentityElements';
 
 function SynchronizationDiagnostics(props: Props<unknown>) {
@@ -48,20 +47,6 @@ test('IdentityElements.EmailAddress synchronizes with caregiver contact', async 
   await component.findByText(`Caregiver contact email: ${email}`);
 });
 
-test('CaregiverContactElements.EmailAddress synchronizes with identity', async () => {
-  const email = 'person@example.com';
-  const component = await TestUtils.renderWithShell(
-    <SynchronizationDiagnostics>
-      <CaregiverContactElements.EmailAddress />
-    </SynchronizationDiagnostics>
-  );
-
-  userEvents.type(await component.findByLabelText('Email Address'), email);
-
-  await component.findByText(`Identity email: ${email}`);
-  await component.findByText(`Caregiver contact email: ${email}`);
-});
-
 test('IdentityElements.PhoneNumber synchronizes with caregiver contact', async () => {
   const phone = '212 345 9998';
   const component = await TestUtils.renderWithShell(
@@ -71,20 +56,6 @@ test('IdentityElements.PhoneNumber synchronizes with caregiver contact', async (
   );
 
   userEvents.type(await component.findByLabelText('Your Mobile Phone'), phone);
-
-  await component.findByText(`Identity phone: ${phone}`);
-  await component.findByText(`Caregiver contact phone: ${phone}`);
-});
-
-test('CaregiverContactElements.PhoneNumber synchronizes with identity', async () => {
-  const phone = '(212) 345-9998';
-  const component = await TestUtils.renderWithShell(
-    <SynchronizationDiagnostics>
-      <CaregiverContactElements.PhoneNumber />
-    </SynchronizationDiagnostics>
-  );
-
-  userEvents.type(await component.findByLabelText('Mobile Number'), phone);
 
   await component.findByText(`Identity phone: ${phone}`);
   await component.findByText(`Caregiver contact phone: ${phone}`);
