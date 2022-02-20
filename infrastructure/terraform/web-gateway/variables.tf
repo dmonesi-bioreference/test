@@ -10,6 +10,8 @@ variable "rg_name" {}
 ##### Virtual Network ######
 variable "vnet_name" {}
 
+##### Log Analytics Workspace ######
+variable "log_analytics_workspace_id" {}
 
 ##### Application Gateway ######
 variable "agw_subnet_name" {}

@@ -39,3 +39,8 @@ variable "container_repository" {}
 variable "container_tag_prod" {}
 variable "container_tag_stage" {}
 variable "container_tag_dev" {}
+
+##### Log Analytics Workspace ######
+variable "log_analytics_workspace_name" {}
+
+

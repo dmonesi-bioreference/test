@@ -21,7 +21,7 @@ resource "azurerm_application_insights" "main" {
   name                = "${var.app_name}-appinsights"
   location            = var.location
   resource_group_name = var.rg_name
-  application_type    = "other"
+  application_type    = "web"
   retention_in_days   = 90
 
   lifecycle {
@@ -58,6 +58,18 @@ resource "azurerm_app_service" "main" {
     default_documents = []
   }
 
+  logs {
+    application_logs {
+      file_system_level = "Information"
+    }
+    http_logs {
+      file_system {
+        retention_in_days = 30
+        retention_in_mb = 25
+      }
+    }
+  }
+
   depends_on = [azurerm_application_insights.main]
 }
 
@@ -75,6 +87,8 @@ resource "azurerm_app_service_custom_hostname_binding" "main" {
 
 module "app_service_slot_stage" {
   source                            = "../app_service_slot"
+  env_prefix                        = "stg"
+  app_name                          = var.app_name
   slot_name                         = "stage"
   rg_name                           = var.rg_name
   location                          = var.location
@@ -85,7 +99,8 @@ module "app_service_slot_stage" {
   docker_registry_server_password   = var.docker_registry_server_password
   container_repository              = var.container_repository
   container_tag                     = var.container_tag_stage
-  app_insights_instrumentation_key  = azurerm_application_insights.main.instrumentation_key
+
+  log_analytics_workspace_id        = var.log_analytics_workspace_id
 
   depends_on = [
     azurerm_app_service.main
@@ -94,6 +109,8 @@ module "app_service_slot_stage" {
 
 module "app_service_slot_dev" {
   source                            = "../app_service_slot"
+  env_prefix                        = "dev"
+  app_name                          = var.app_name
   slot_name                         = "dev"
   rg_name                           = var.rg_name
   location                          = var.location
@@ -104,10 +121,22 @@ module "app_service_slot_dev" {
   docker_registry_server_password   = var.docker_registry_server_password
   container_repository              = var.container_repository
   container_tag                     = var.container_tag_dev
-  app_insights_instrumentation_key  = azurerm_application_insights.main.instrumentation_key
+  
+  log_analytics_workspace_id        = var.log_analytics_workspace_id 
 
   depends_on = [
     azurerm_app_service.main
   ]
 }
+
+### added settings to push container and console logs to an log analytic workspace
+### refer to the module for settings details
+
+module "app_service_diagnostic_setting_prod" {
+  source                      = "../app_service_diag_setting"
+  name                        = "web_diag_prod"
+  target_resource_id          = azurerm_app_service.main.id
+  log_analytics_workspace_id  = var.log_analytics_workspace_id
+}
+
 

@@ -43,6 +43,15 @@ module "genedx_acr" {
   location = module.pandas_resource_group.location
 }
 
+# Log Analytics workspace to receive logs from different resources
+module "pandas_log_analytics_workspace" {
+   source   = "../modules/log_analytics_workspace"
+   name     = var.log_analytics_workspace_name
+   rg_name  = var.rg_name
+   location = module.pandas_resource_group.location
+}
+
+
 # ASE Subnet
 module "pandas_ase_subnet" {
   source          = "../modules/ase_subnet"
@@ -95,6 +104,8 @@ module "pandas_app_service" {
   container_tag_prod              = var.container_tag_prod
   container_tag_stage             = var.container_tag_stage
   container_tag_dev               = var.container_tag_dev
+  
+  log_analytics_workspace_id      = module.pandas_log_analytics_workspace.id
 
   depends_on = [
     module.pandas_ase,
@@ -116,4 +127,17 @@ module "pandas_private_dns_zone" {
   depends_on = [
     module.pandas_ase
   ]
+}
+
+# Temp Application Service (For testing purposes)
+module "test_app_service" {
+  source                          = "../modules/app_service_temp"
+  client_id                       = var.client_id
+  client_secret                   = var.client_secret
+  tenant_id                       = var.tenant_id
+  app_name                        = "testapp"
+  kind                            = "Windows"
+  rg_name                         = module.pandas_resource_group.name
+  location                        = module.pandas_resource_group.location
+  ase_id                          = module.pandas_ase.id
 }

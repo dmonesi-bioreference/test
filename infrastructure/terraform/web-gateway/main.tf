@@ -35,6 +35,7 @@ module "pandas_resource_group" {
   rg_name = var.rg_name[local.env_name]
 }
 
+
 # Application Gateway Subnet
 module "pandas_agw_subnet" {
   source          = "../modules/agw_subnet"
@@ -65,6 +66,8 @@ module "pandas_agw" {
   ssl_cert_pwd           = var.app_ssl_cert_pwd
   backend_auth_cert      = var.agw_backend_cert_file[local.env_name]
   backend_auth_cert_name = var.agw_backend_cert_name[local.env_name]
+
+  log_analytics_workspace_id = var.log_analytics_workspace_id[local.env_name]
 
   depends_on = [
     module.pandas_agw_subnet

@@ -48,4 +48,5 @@ yarn-error.log*
 
 # infrastructure
 /infrastructure/terraform/**/.terraform
+/infrastructure/terraform/**/*.pfx
 /infrastructure/auth/deployment

@@ -20,6 +20,12 @@ vnet_name = {
   production  = "VNT-USE2-BRLI-01"
 }
 
+log_analytics_workspace_id = {
+  development = "/subscriptions/7b6eb8ae-f42b-4435-953c-1424bfc51325/resourcegroups/rgp-use2-prd-pandas/providers/microsoft.operationalinsights/workspaces/logs-pandas"
+  stage       = "/subscriptions/7b6eb8ae-f42b-4435-953c-1424bfc51325/resourcegroups/rgp-use2-prd-pandas/providers/microsoft.operationalinsights/workspaces/logs-pandas"
+  production  = "/subscriptions/7b6eb8ae-f42b-4435-953c-1424bfc51325/resourcegroups/rgp-use2-prd-pandas/providers/microsoft.operationalinsights/workspaces/logs-pandas"
+}
+
 agw_subnet_name = {
   development = "SBT-USE2-DEV-PANDAS-AGW"
   stage       = "SBT-USE2-STG-PANDAS-AGW"

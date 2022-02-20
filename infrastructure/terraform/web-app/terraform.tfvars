@@ -47,3 +47,6 @@ container_repository = "genedxacr.azurecr.io/pandas"
 container_tag_prod = "stage-a58b0d2f"
 container_tag_stage = "stage-a58b0d2f"
 container_tag_dev = "dev-a58b0d2f"
+
+log_analytics_workspace_name = "logs-pandas"
+  

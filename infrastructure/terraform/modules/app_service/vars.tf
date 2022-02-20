@@ -32,4 +32,6 @@ variable "client_id" {}
 variable "client_secret" {}
 variable "tenant_id" {}
 
+variable "log_analytics_workspace_id" {}
+
 

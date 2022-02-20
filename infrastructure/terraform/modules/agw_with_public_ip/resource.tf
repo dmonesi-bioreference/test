@@ -137,3 +137,44 @@ resource "azurerm_application_gateway" "main" {
   }
 }
 
+resource "azurerm_monitor_diagnostic_setting" "main" {
+  name                        = "AGW-Diag"
+  target_resource_id          = azurerm_application_gateway.main.id
+  log_analytics_workspace_id  = var.log_analytics_workspace_id
+
+  log {
+    category = "ApplicationGatewayAccessLog"
+
+    retention_policy {
+      enabled = true
+      days = 60
+    }
+  }
+
+  log {
+    category = "ApplicationGatewayPerformanceLog"
+
+    retention_policy {
+      enabled = true
+      days = 60
+    }
+  }
+
+  log {
+    category = "ApplicationGatewayFirewallLog"
+
+    retention_policy {
+      enabled = true
+      days = 60
+    }
+  }
+  
+  metric {
+    category = "AllMetrics"
+
+    retention_policy {
+      enabled = true
+      days = 60
+    }
+  }
+}

@@ -130,3 +130,5 @@ variable "request_http_routing_rule_type" {
 variable "request_https_routing_rule_type" {
   default = "Basic"
 }
+
+variable "log_analytics_workspace_id" {}
