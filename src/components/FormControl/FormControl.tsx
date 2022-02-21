@@ -33,6 +33,8 @@ export interface FormControlProps {
   helpText?: string;
   /** Appends link to label. */
   linkMessage?: string;
+  /** Click event for linkMessage */
+  onLinkClick?: () => void;
 }
 
 const defaultProps: Partial<FormControlProps> = {
@@ -78,36 +80,38 @@ const FormControl: React.FC<FormControlProps> = (props) => {
         </div>
       )}
       <label
-        className={clsx(
-          {
-            'form-control__label': true,
-            'form-control__label-with-link': props.linkMessage,
-          },
-          props.className
-        )}
+        className={clsx('form-control__label', props.className)}
         id={props.labelId}
         htmlFor={props.inputId}
+        aria-label={`${props.label} ${
+          props.linkMessage && ' ' + props.linkMessage
+        }`}
       >
         {props.booleanInput && (
           <div className="form-control__input">{props.children}</div>
         )}
-        <div className="form-control__label-group">
-          <Typography type="label" labelType="input">
-            {props.label}
-          </Typography>
-          {props.linkMessage && (
-            <Button kind="link-medium">{props.linkMessage}</Button>
-          )}
-        </div>
-
-        {isInvalid && !props.booleanInput && (
-          <div className="form-control__invalid-message">
-            <Typography type="validation" color="error">
-              - {props.invalidMessage}
-            </Typography>
-          </div>
-        )}
+        <Typography type="label" labelType="input">
+          {props.label}
+        </Typography>
       </label>
+
+      {props.linkMessage && (
+        <Button
+          kind="link-medium"
+          onClick={props.onLinkClick}
+          className="form-control__link"
+        >
+          {props.linkMessage}
+        </Button>
+      )}
+
+      {isInvalid && !props.booleanInput && (
+        <div className="form-control__invalid-message">
+          <Typography type="validation" color="error">
+            - {props.invalidMessage}
+          </Typography>
+        </div>
+      )}
 
       {!props.booleanInput && (
         <div className="form-control__input">{props.children}</div>

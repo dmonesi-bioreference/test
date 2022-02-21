@@ -25,7 +25,8 @@ function Page(props: Props<PageProps>) {
       <PageSection>
         <div
           style={{
-            alignItems: 'center',
+            alignItems: 'start',
+            justifyContent: 'start',
             display: 'flex',
             flexDirection: 'column',
             gap: tokens.spacingXLarge,

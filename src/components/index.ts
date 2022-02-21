@@ -49,3 +49,5 @@ export * from './Typography';
 export * from './PageBorder';
 export * from './Grid';
 export * from './Container';
+export * from './ScrollArea';
+export * from './Modal';

@@ -140,6 +140,7 @@ const TypographyStyled = styled.div`
     font-size: ${tokens.fontSize16};
     font-weight: ${tokens.fontWeightMedium};
     line-height: ${tokens.lineHeightDense};
+    max-width: 100%;
   }
 
   &.label--data {

@@ -9,10 +9,13 @@ const FormControlStyled = styled.div`
   }
 
   .form-control__label {
-    align-items: center;
     display: flex;
+    align-items: center;
     flex: 0 0 auto;
     margin-bottom: ${tokens.spacingXxSmall};
+    max-width: 100%;
+    word-break: break-word;
+    flex-wrap: wrap;
   }
 
   .form-control__label-group {
@@ -25,13 +28,9 @@ const FormControlStyled = styled.div`
     }
   }
 
-  .form-control__label-with-link {
-    gap: ${tokens.spacingXxSmall};
-    overflow: hidden;
-
-    .label--input {
-      margin-right: ${tokens.spacingXxSmall};
-    }
+  .form-control__link {
+    margin-left: ${tokens.spacingXxSmall};
+    margin-bottom: ${tokens.spacingXxSmall};
   }
 
   .form-control__invalid-message {

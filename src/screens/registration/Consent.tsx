@@ -11,6 +11,7 @@ import {
 } from 'app/components/Shell';
 import { Button } from 'components/Button';
 import { Grid } from 'components/Grid';
+import { ScrollArea } from 'components/ScrollArea';
 import { Heading } from 'components/Typography';
 import { slideInOut } from 'styles/animations';
 import { trackSignUpFlowEvent } from 'tracking';
@@ -58,21 +59,25 @@ export function Consent() {
       transition={slideInOut.transition}
       onSubmit={(event) => event.preventDefault()}
     >
-      <Grid spacing="small">
-        <Content withBreaks={true}>
-          {t('forms.consent.description')}
-        </Content>
-        <ConsentElements.Terms />
-        <ConsentElements.Consent />
+      <Grid spacing="extraLarge">
+        <ScrollArea>
+          <Content withBreaks={true}>{t('forms.consent.description')}</Content>
+        </ScrollArea>
+
+        <Grid spacing="small">
+          <ConsentElements.Terms />
+          <ConsentElements.Consent />
+        </Grid>
+
+        <Button
+          kind="primary"
+          onClick={events.nextStep}
+          submit={true}
+          disabled={!isValid}
+        >
+          {submitButtonText}
+        </Button>
       </Grid>
-      <Button
-        kind="primary"
-        onClick={events.nextStep}
-        submit={true}
-        disabled={!isValid}
-      >
-        {submitButtonText}
-      </Button>
     </motion.form>
   );
 }

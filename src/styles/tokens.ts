@@ -243,6 +243,7 @@ export const tokens = {
   /* z-index */
   zIndexIndicator: '700',
   zIndexDialog: '800',
+  zIndexModal: '800',
   zIndexDropdown: '900',
   zIndexToast: '950',
   zIndexTooltip: '1000',
@@ -336,6 +337,10 @@ export const containers = {
   maxPageWidth: '960',
   maxNarrowPageWidth: '600',
   spacingGutter: tokens.spacingLarge,
+  scrollArea: {
+    minHeight: '400px',
+    height: '60vh',
+  },
 };
 
 const toggleHandle = {

@@ -13,12 +13,18 @@ type ContentProps = {
   children?: string;
   customAttributes?: {
     name: string;
-    attributes: (currentAttributes: { [name: string]: string }) => { [name: string]: string };
+    attributes: (currentAttributes: { [name: string]: string }) => {
+      [name: string]: string;
+    };
   };
   withBreaks?: boolean;
 };
 
-export const Content = ({ children, customAttributes, withBreaks = false }: ContentProps) => {
+export const Content = ({
+  children,
+  customAttributes,
+  withBreaks = false,
+}: ContentProps) => {
   const transform: Transform = (node, index) => {
     if (!hasChildren(node)) {
       if (isText(node)) return node.data;
@@ -27,7 +33,7 @@ export const Content = ({ children, customAttributes, withBreaks = false }: Cont
     if (isTag(node)) {
       if (customAttributes && customAttributes.name === node.name) {
         node.attribs = customAttributes.attributes(node.attribs);
-      };
+      }
 
       let transformedNode = convertNodeToElement(node, index, transform);
 
@@ -40,40 +46,52 @@ export const Content = ({ children, customAttributes, withBreaks = false }: Cont
         case 'h6':
         case 'h7':
         case 'h8':
-          transformedNode =
-            <Heading key={index} level={node.name.split('')[1] as TypographyLevel}>
+          transformedNode = (
+            <Heading
+              key={index}
+              level={node.name.split('')[1] as TypographyLevel}
+            >
               {node.children.map((child, i) => transform(child, i))}
-            </Heading>;
+            </Heading>
+          );
           break;
-        case 'p':
-          transformedNode =
+        case 'span':
+          transformedNode = (
             <Typography key={index} type="body">
               {node.children.map((child, i) => transform(child, i))}
-            </Typography>;
+            </Typography>
+          );
           break;
         case 'ul':
-          transformedNode = 
+          transformedNode = (
             <Typography key={index} type="body">
               <ul>{node.children.map((child, i) => transform(child, i))}</ul>
             </Typography>
+          );
           break;
         case 'ol':
-          transformedNode =
+          transformedNode = (
             <Typography key={index} type="body">
               <ol>{node.children.map((child, i) => transform(child, i))}</ol>
             </Typography>
+          );
           break;
         case 'strong':
-          transformedNode =
+          transformedNode = (
             <strong key={index}>
               {node.children.map((child, i) => transform(child, i))}
             </strong>
+          );
           break;
       }
 
-      return withBreaks
-        ? <>{transformedNode} <br key={index} /></>
-        : transformedNode;
+      return withBreaks ? (
+        <>
+          {transformedNode} <br key={index} />
+        </>
+      ) : (
+        transformedNode
+      );
     }
   };
 
@@ -95,10 +113,10 @@ export const ContentWithPimcore = ({ children }: ContentProps) => {
           ...currentAttributes,
           src: `${client_config.pimcore.domain}${currentAttributes.src}`,
           style: '',
-        })
+        }),
       }}
     >
       {children}
     </Content>
   );
-}
+};

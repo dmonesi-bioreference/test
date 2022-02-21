@@ -11,6 +11,8 @@ interface CheckboxInterface extends InputBaseProps {
   checked?: boolean;
   /** Appends a link to the label. */
   linkMessage?: string;
+  /** Appends a link to the label. */
+  onLinkClick?: () => void;
 }
 
 export type CheckboxProps = Omit<
@@ -59,6 +61,7 @@ const Checkbox: React.FC<CheckboxProps> = (props) => {
       invalidMessage={props.invalidMessage}
       size={props.size || 'medium'}
       linkMessage={props.linkMessage}
+      onLinkClick={props.onLinkClick}
     >
       <div
         className={clsx({

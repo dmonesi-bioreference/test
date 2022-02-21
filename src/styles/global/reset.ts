@@ -56,6 +56,7 @@ const reset = css`
   8. Avoid text overflows
   */
   p,
+  span,
   h1,
   h2,
   h3,

@@ -13,12 +13,10 @@ const ButtonStyled = styled.button`
   font-family: ${tokens.fontFamilyLabel};
   font-size: ${buttons.fontSize};
   font-weight: ${tokens.fontWeightBold};
-  height: ${inputs.heightLarge};
-  line-height: ${tokens.lineHeightSelf};
-  padding: 0 ${tokens.spacingXLarge};
+  line-height: ${tokens.lineHeightDense};
+  padding: ${tokens.spacingSmall} ${tokens.spacingXLarge};
   text-decoration: none;
   user-select: none;
-  white-space: nowrap;
   vertical-align: middle;
   transition: ${tokens.transitionFast} all;
   cursor: pointer;

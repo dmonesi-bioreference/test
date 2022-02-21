@@ -1,18 +1,27 @@
 import styled from 'styled-components';
 
 import { FormControl, FormControlProps } from 'components/FormControl';
+import TypographyStyled from 'components/Typography/Typography.styles';
 import { base, inputs, focus, colors, tokens } from 'styles';
 
 /* stylelint-disable no-descending-specificity */
 
 const CheckboxStyled = styled(FormControl)<FormControlProps>`
   ${base}
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
 
   .checkbox {
     display: inline-flex;
     align-items: center;
     vertical-align: middle;
     cursor: pointer;
+    flex-wrap: nowrap;
+  }
+
+  ${TypographyStyled} {
+    word-wrap: break-word;
   }
 
   .checkbox__control {

@@ -603,6 +603,11 @@ export const resources = {
                 required: 'Consent is required to participate',
               },
             },
+            termsModal: {
+              title: 'Terms & Conditions',
+              agree: 'I agree to the terms and conditions',
+              disagree: 'Decline and exit registration',
+            },
             terms: {
               label: 'I have read and agree to the ',
               link: 'terms & conditions',
