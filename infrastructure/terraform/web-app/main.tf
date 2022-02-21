@@ -71,6 +71,8 @@ module "pandas_ase" {
   rg_name   = module.pandas_resource_group.name
   subnet_id = module.pandas_ase_subnet.id
 
+  log_analytics_workspace_id = module.pandas_log_analytics_workspace.id
+
   depends_on = [
     module.pandas_ase_subnet
   ]

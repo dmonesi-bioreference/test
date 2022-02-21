@@ -10,3 +10,5 @@ variable "front_end_scale_factor" {
 variable "internal_load_balancing_mode" {
   default = "Web, Publishing"
 }
+
+variable "log_analytics_workspace_id" {}

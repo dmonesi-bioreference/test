@@ -11,6 +11,13 @@ resource "azurerm_app_service_environment" "main" {
   }
 }
 
+module "app_service_environment_diagnostic_setting" {
+  source                      = "../app_service_environment_diag_setting"
+  name                        = "ase_diag"
+  target_resource_id          = azurerm_app_service_environment.main.id
+  log_analytics_workspace_id  = var.log_analytics_workspace_id
+}
+
 output "id" {
   value = azurerm_app_service_environment.main.id
 }
