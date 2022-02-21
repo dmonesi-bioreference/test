@@ -204,7 +204,7 @@ export const resources = {
             home: 'Return Home',
             title: 'Your Full Test Results',
             description:
-              '<p>Genetic test results may be difficult to understand and may cause anxiety for some people, regardless of the results. When reviewing your test results, please keep in mind that genetic test reports have some limitations that are important to understand.</p><br /><p>Thus, reviewing test results with your treating physician first is strongly encouraged, as it is necessary to properly understand and plan your next steps.</p>',
+              '<p>Genetic test results may be difficult to understand and may cause anxiety for some people, regardless of the results. When reviewing your test results, please keep in mind that genetic test reports have some limitations that are important to understand.</p><br /><p>Thus, reviewing test results with your healthcare provider first is strongly encouraged, as it is necessary to properly understand and plan your next steps.</p>',
             report: {
               attention: 'Medical language ahead',
               description:
