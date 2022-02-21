@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { AppImage } from 'components/AppImage';
 import { Button } from 'components/Button';
 import { Card } from 'components/Card';
@@ -55,43 +57,52 @@ const ContentCard: React.FC<ContentCardProps> = (props) => {
       </Typography>
     );
 
+  const LinkWrapper: React.FC = ({ children }) =>
+    props.variant == 'link' && props.href ? (
+      <Link href={props.href}>{children}</Link>
+    ) : (
+      <>{children}</>
+    );
+
   return (
     <ContentCardStyled {...props}>
-      <Card
-        header={
-          <AppImage
-            src={props.imageSrc}
-            alt={props.imageAlt}
-            layout="responsive"
-            objectPosition="center center"
-            width={343}
-            height={189}
-          />
-        }
-        transparent={props.variant ? props.variant == 'onboarding' : false}
-        footer={
-          props.footer ? (
-            <Button
-              color="light"
-              kind="link-medium"
-              href={props.href}
-              suffix={<Icon name="chevron-right" size="small" />}
-              spreadContent={true}
-            >
-              {props.footer}
-            </Button>
-          ) : undefined
-        }
-      >
-        <div className="label">{labelFragment}</div>
-        <div className="heading">
-          <Heading>{props.heading}</Heading>
-        </div>
-        <div className="body">
-          {props.body && <Typography type="body">{props.body}</Typography>}
-          {props.children}
-        </div>
-      </Card>
+      <LinkWrapper>
+        <Card
+          header={
+            <AppImage
+              src={props.imageSrc}
+              alt={props.imageAlt}
+              layout="responsive"
+              objectPosition="center center"
+              width={343}
+              height={189}
+            />
+          }
+          transparent={props.variant ? props.variant == 'onboarding' : false}
+          footer={
+            props.footer ? (
+              <Button
+                color="light"
+                kind="link-medium"
+                href={props.href}
+                suffix={<Icon name="chevron-right" size="small" />}
+                spreadContent={true}
+              >
+                {props.footer}
+              </Button>
+            ) : undefined
+          }
+        >
+          <div className="label">{labelFragment}</div>
+          <div className="heading">
+            <Heading>{props.heading}</Heading>
+          </div>
+          <div className="body">
+            {props.body && <Typography type="body">{props.body}</Typography>}
+            {props.children}
+          </div>
+        </Card>
+      </LinkWrapper>
     </ContentCardStyled>
   );
 };

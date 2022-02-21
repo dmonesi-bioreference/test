@@ -8,6 +8,8 @@ import { ContentCardProps } from './ContentCard';
 
 const ContentCardStyled = styled.div<ContentCardProps>`
   ${base}
+  ${({ variant, href }) =>
+    variant === 'link' && href ? 'cursor: pointer;' : ''}
 
   .card__content {
     display: flex;
