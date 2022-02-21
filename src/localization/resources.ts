@@ -57,7 +57,6 @@ export const resources = {
           title: 'Health Profile',
           description:
             "A detailed overview of {{patientsNickname}}'s needs for new providers or caregivers.",
-          actions: { download: { label: 'Download print version' } },
           basicInformation: {
             title: 'Basic Information',
             fields: {
@@ -476,7 +475,7 @@ export const resources = {
               },
             ],
           },
-          complains: {
+          complaints: {
             title: 'How to Complain About Our Privacy Practices:',
             content:
               '<p>If you believe your privacy rights have been violated, you may file a complaint with GeneDx or the federal agency that enforces HIPAA by submitting your complaint as described below:</p>' +
@@ -770,7 +769,7 @@ export const resources = {
             subTitle: "What's coming next?",
             waiting: {
               heading: 'Waiting for Results',
-              body: "We're working on processing your test sample. Meanwhile, check out these helpful resources.",
+              body: "We're working on processing your test sample. You can check out these resources while you're waiting.",
               linkLabel: 'View resources',
             },
             testResultsReady: {
@@ -790,10 +789,6 @@ export const resources = {
               linkLabel: 'Support & resources',
             },
           },
-          getUpdates: 'Receive progress updates',
-          noUpdates: 'No updates since your last login',
-          onTrack: 'Everything is on track',
-          inProcess: 'Test in process',
           inProgress: 'Test in progress',
           updated: 'Updated {{lastUpdated}}',
           ready: 'Results Ready',
@@ -801,12 +796,7 @@ export const resources = {
           doctorShared: 'And shared with your doctor',
           doctorAppointment:
             'Your doctor will soon arrange an appointment to discuss them with you',
-          caveat:
-            'Results typically are returned in 7 days, but can take up to 5 weeks',
-          expectation:
-            "NOTE: time is not an indicator of case difficulty or a positive test result. Please allow time for your genetic test to process before calling the lab or your doctor's office.",
           mayVary: 'Please keep in mind that processing time may vary',
-          estimate: 'Expect results in {{estimate}} days',
           expected: 'Results expected {{expectedResultsDate}}',
           error: 'Error fetching test results',
           notLoaded: 'Test results not fetched',
@@ -881,7 +871,6 @@ export const resources = {
             numbers: 'At least 1 number (0 - 9)',
           },
           continue: 'Continue',
-          setUpAccount: 'Set up account',
           next: 'Next',
         },
       },

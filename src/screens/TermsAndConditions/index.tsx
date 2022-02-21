@@ -81,8 +81,10 @@ export const TermsAndConditions = () => {
                 </ContentBlock>
               ))}
           </List>
-          <ContentBlock title={t('pages.termsAndConditions.complains.title')}>
-            <Content>{t('pages.termsAndConditions.complains.content')}</Content>
+          <ContentBlock title={t('pages.termsAndConditions.complaints.title')}>
+            <Content>
+              {t('pages.termsAndConditions.complaints.content')}
+            </Content>
           </ContentBlock>
           <ContentBlock
             title={t('pages.termsAndConditions.translations.title')}

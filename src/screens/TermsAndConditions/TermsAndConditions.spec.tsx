@@ -14,7 +14,7 @@ describe('Terms and conditions screen', () => {
     await TestUtils.renderWithShell(<TermsAndConditions />);
     await assert.heading(t('pages.termsAndConditions.userAgreement.title'));
     await assert.heading(t('pages.termsAndConditions.privacyPolicy.title'));
-    await assert.heading(t('pages.termsAndConditions.complains.title'));
+    await assert.heading(t('pages.termsAndConditions.complaints.title'));
     await assert.heading(t('pages.termsAndConditions.translations.title'));
   });
 
