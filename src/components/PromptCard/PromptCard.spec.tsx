@@ -11,14 +11,14 @@ describe('Rendering', () => {
 
   beforeEach(async () => {
     await TestUtils.renderWithShell(
-      <PromptCard prompt={promptText} heading={headingText}>
+      <PromptCard prompt={promptText} heading={headingText} href="/">
         {bodyText}
       </PromptCard>
     );
   });
 
-  it('renders a clickable prompt', () => {
-    screen.getByRole('button', { name: promptText });
+  it('renders a clickable prompt when provided with an href', () => {
+    screen.getByRole('link', { name: promptText });
   });
 
   it('renders a heading', () => {

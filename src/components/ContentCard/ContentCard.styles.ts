@@ -11,6 +11,9 @@ const ContentCardStyled = styled.div<ContentCardProps>`
   ${({ variant, href }) =>
     variant === 'link' && href ? 'cursor: pointer;' : ''}
 
+  ${({ variant, href }) =>
+    variant === 'link' && href ? 'cursor: pointer;' : ''}
+
   .card__content {
     display: flex;
     flex-direction: column;

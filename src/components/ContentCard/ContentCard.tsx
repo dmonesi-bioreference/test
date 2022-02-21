@@ -40,7 +40,6 @@ const ContentCard: React.FC<ContentCardProps> = (props) => {
       <Button
         className="label--button"
         kind="link-medium"
-        href={props.href}
         prefix={
           props.prefixIcon && <Icon kind="custom" name={props.prefixIcon} />
         }
@@ -68,6 +67,7 @@ const ContentCard: React.FC<ContentCardProps> = (props) => {
     <ContentCardStyled {...props}>
       <LinkWrapper>
         <Card
+          href={props.href}
           header={
             <AppImage
               src={props.imageSrc}
@@ -84,7 +84,6 @@ const ContentCard: React.FC<ContentCardProps> = (props) => {
               <Button
                 color="light"
                 kind="link-medium"
-                href={props.href}
                 suffix={<Icon name="chevron-right" size="small" />}
                 spreadContent={true}
               >

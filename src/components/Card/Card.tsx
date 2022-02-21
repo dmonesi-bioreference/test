@@ -14,6 +14,8 @@ export interface CardProps {
   transparent?: boolean;
   isLoading?: boolean;
   children?: React.ReactNode;
+  /** Link returns a Card as a button */
+  href?: string;
 }
 
 const Card: React.FC<CardProps> = (props) => {
@@ -23,7 +25,12 @@ const Card: React.FC<CardProps> = (props) => {
   );
 
   return (
-    <CardStyled {...props} className={cardClasses}>
+    <CardStyled
+      {...props}
+      className={cardClasses}
+      as={props.href && 'button'}
+      href={props.href}
+    >
       {props.isLoading ? (
         <Loading variant="shimmer" />
       ) : (

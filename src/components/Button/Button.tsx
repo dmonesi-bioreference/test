@@ -122,33 +122,47 @@ const Button: React.FC<ButtonProps> = (props) => {
     );
   };
 
-  return props.href ? (
-    <Link href={props.href} passHref>
+  if (props.href) {
+    return (
+      <Link href={props.href} passHref>
+        <ButtonStyled
+          as="a"
+          className={`${color} ${className} ${props.className}`}
+          target={props.target}
+          download={props.download}
+          onClick={props.onClick}
+          href={props.href}
+          /** Inclusion of this line prevents tabnabbing phishing */
+          rel={props.target === '_blank' ? 'noopener noreferrer' : props.rel}
+        >
+          <ButtonChildren />
+        </ButtonStyled>
+      </Link>
+    );
+  } else if (props.onClick) {
+    return (
       <ButtonStyled
-        as="a"
+        as="button"
         className={`${color} ${className} ${props.className}`}
-        target={props.target}
-        download={props.download}
+        disabled={props.disabled}
+        name={props.name}
+        value={props.value}
+        type={props.submit ? 'submit' : 'button'}
         onClick={props.onClick}
-        href={props.href}
-        /** Inclusion of this line prevents tabnabbing phishing */
-        rel={props.target === '_blank' ? 'noopener noreferrer' : props.rel}
       >
         <ButtonChildren />
       </ButtonStyled>
-    </Link>
-  ) : (
-    <ButtonStyled
-      className={`${color} ${className} ${props.className}`}
-      disabled={props.disabled}
-      name={props.name}
-      value={props.value}
-      type={props.submit ? 'submit' : 'button'}
-      onClick={props.onClick}
-    >
-      <ButtonChildren />
-    </ButtonStyled>
-  );
+    );
+  } else {
+    return (
+      <ButtonStyled
+        as="div"
+        className={`${color} ${className} ${props.className}`}
+      >
+        <ButtonChildren />
+      </ButtonStyled>
+    );
+  }
 };
 
 const renderIfExists = (component: React.ReactNode, className: string) => {

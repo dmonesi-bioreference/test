@@ -52,6 +52,13 @@ const reset = css`
     font: inherit;
   }
 
+  /* Remove default button styles */
+  button {
+    cursor: pointer;
+    padding: 0;
+    border: 0;
+  }
+
   /*
   8. Avoid text overflows
   */
