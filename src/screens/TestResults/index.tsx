@@ -19,7 +19,7 @@ export function TestResults() {
     if (isWaiting) return t('pages.results.waiting.title');
     if (isResultsReady) return t('pages.results.ready.title');
     return '';
-  }
+  };
 
   return (
     <>
@@ -32,13 +32,12 @@ export function TestResults() {
         theme="healthProfileTheme"
         title={getTitle()}
         isLoading={requesting}
+        hasReturnLink
       >
         <PageSection>
           <OnState matches="tests.idle">
             <Card>
-              <Heading level='7'>
-                {t('sections.results.notLoaded')}
-              </Heading>
+              <Heading level="7">{t('sections.results.notLoaded')}</Heading>
             </Card>
           </OnState>
           <OnState matches="tests.loading">
