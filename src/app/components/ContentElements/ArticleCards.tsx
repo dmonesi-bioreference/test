@@ -26,10 +26,8 @@ export const ArticleCards: React.FC<ArticleCardsProps> = (props) => {
 
   const [{ articles, loadingArticles, errorFetchingArticles }] = useContent();
 
-  const articlesByTestStatus = useContentByTestStatus(articles) as Article[];
-  const articlesByPriority = useContentByPriority(
-    articlesByTestStatus
-  ) as Article[];
+  const articlesByTestStatus = useContentByTestStatus(articles);
+  const articlesByPriority = useContentByPriority(articlesByTestStatus);
 
   const articlesByFeature = props.feature
     ? articlesByPriority.filter((article) => article.feature === props.feature)

@@ -17,7 +17,7 @@ export const AudioCard = () => {
 
   const [{ audios, loadingAudios, errorFetchingAudios }] = useContent();
 
-  const audiosByTestStatus = useContentByTestStatus(audios) as Audio[];
+  const audiosByTestStatus = useContentByTestStatus(audios);
   const firstAudio = audiosByTestStatus.slice(0, 1);
 
   const audioCards = firstAudio.map((audio) => {

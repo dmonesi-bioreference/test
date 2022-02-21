@@ -41,7 +41,9 @@ export function useContent() {
   return [state] as const;
 }
 
-export function useContentByTestStatus(contents: (FAQ | Article | Audio)[]) {
+export function useContentByTestStatus<
+  T extends { introduceAt?: IntroduceAt | undefined }
+>(contents: T[]) {
   const [{ isWaiting, isBeforeAppointment, isAfterAppointment, isViewed }] =
     useTestStatus();
 
@@ -62,7 +64,9 @@ export function useContentByTestStatus(contents: (FAQ | Article | Audio)[]) {
   return articlesByTestStatus();
 }
 
-export function useContentByPriority(contents: (FAQ | Article)[]) {
+export function useContentByPriority<
+  T extends { priority?: number | undefined }
+>(contents: T[]) {
   return contents.slice().sort((a, b) => {
     if (!a.priority) {
       return -1;

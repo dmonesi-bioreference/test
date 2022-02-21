@@ -36,12 +36,9 @@ describe('The faq card component', () => {
     const [firstFAQSet, secondFAQSet] = page.getAllByRole('heading', {
       level: 3,
     });
-    expect(
-      within(firstFAQSet).getByText('Waiting FAQ - High Priority')
-    ).toBeTruthy();
-    expect(
-      within(secondFAQSet).getByText('Waiting FAQ - Low Priority')
-    ).toBeTruthy();
+
+    within(firstFAQSet).getByText('Waiting FAQ - High Priority');
+    within(secondFAQSet).getByText('Waiting FAQ - Low Priority');
   });
 
   it('renders relevant FAQ card when test status is ready', async () => {

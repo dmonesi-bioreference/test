@@ -22,8 +22,8 @@ export const FAQCards = () => {
 
   const [{ faqs, loadingFAQs, errorFetchingFAQs }] = useContent();
 
-  const faqsByTestStatus = useContentByTestStatus(faqs) as FAQ[];
-  const FAQSetsByPriority = useContentByPriority(faqsByTestStatus) as FAQ[];
+  const faqsByTestStatus = useContentByTestStatus(faqs);
+  const FAQSetsByPriority = useContentByPriority(faqsByTestStatus);
 
   const FAQCards = FAQSetsByPriority.map((faq) => {
     return (

@@ -153,11 +153,8 @@ describe('The article cards component', () => {
     const [firstArticle, secondArticle] = page.getAllByRole('heading', {
       level: 2,
     });
-    expect(
-      within(firstArticle).getByText('High priority article')
-    ).toBeTruthy();
-    expect(
-      within(secondArticle).getByText('Low priority article')
-    ).toBeTruthy();
+
+    await within(firstArticle).findByText('High priority article');
+    await within(secondArticle).findByText('Low priority article');
   });
 });
