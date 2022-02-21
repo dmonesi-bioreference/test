@@ -28,28 +28,25 @@ export const actions = {
           sync: false,
         }),
       ];
-      context.tests.tests = [
-        ...context.tests.tests,
-        { id: test.TestID, percentComplete: 0 },
-      ];
     });
   }),
   syncTests: assign((context: AppContext, event: AppEvents) => {
     if (isTestContext(event)) {
-      context.tests.tests = context.tests.tests.map((test) => {
-        if (test.id === event.test.TestID) {
-          return {
-            id: test.id,
-            percentComplete: event.percentComplete ?? 0,
-            expectedResultsDate: event.expectedResultsDate,
-            lastUpdated: event.lastUpdated,
-            reportId: event.reportId,
-          };
+      context.tests.tests = [
+        ...context.tests.tests,
+        {
+          id: event.test.TestID,
+          percentComplete: event.percentComplete ?? 0,
+          expectedResultsDate: event.expectedResultsDate,
+          lastUpdated: event.lastUpdated,
+          reportId: event.reportId,
         }
-        return test;
-      });
+      ];
     }
   }),
+  checkSyncComplete: send((context: AppContext) => ({
+      type: context.tests.actors.length === context.tests.tests.length ? 'SYNC_COMPLETE' : ''
+  })),
   getTestsPercentCompletion: send((context: AppContext) => {
     const testsCount = context.tests.actors.length;
     const testsReadyCount = context.tests.tests.filter(
@@ -139,9 +136,9 @@ export const machine = {
           ],
           on: {
             SYNC_RESPONSE: {
-              target: 'resolving',
-              actions: ['syncTests'],
+              actions: ['syncTests', 'checkSyncComplete'],
             },
+            SYNC_COMPLETE: 'resolving',
           },
         },
         resolving: {
