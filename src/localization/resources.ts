@@ -795,7 +795,7 @@ export const resources = {
           checkBackSoon: 'Check back to see when your results should be ready.',
           doctorShared: 'And shared with your doctor',
           doctorAppointment:
-            'Your doctor will soon arrange an appointment to discuss them with you',
+            'Your healthcare provider will soon arrange an appointment to discuss them with you',
           mayVary: 'Please keep in mind that processing time may vary',
           expected: 'Results expected {{expectedResultsDate}}',
           error: 'Error fetching test results',
