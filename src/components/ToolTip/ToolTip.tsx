@@ -3,7 +3,6 @@ import 'tippy.js/dist/svg-arrow.css';
 import 'tippy.js/dist/tippy.css';
 import { roundArrow } from 'tippy.js';
 
-import { Icon } from 'components/Icon';
 import { InformationBanner } from 'components/InformationBanner';
 
 import ToolTipStyled from './ToolTip.styles';
@@ -28,9 +27,7 @@ const ToolTip: React.FC<ToolTipProps> = (props) => {
           </InformationBanner>
         }
       >
-        <div>
-          <Icon name="question-mark-circle" color="primary" size="small" />
-        </div>
+        <div className="tooltip__icon">?</div>
       </Tippy>
     </ToolTipStyled>
   );
