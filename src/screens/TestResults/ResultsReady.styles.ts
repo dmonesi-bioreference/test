@@ -1,53 +1,34 @@
 import styled from 'styled-components';
 
-import AudioCardStyled from 'app/components/ContentElements/AudioCard.styles';
-import AccordionStyled, { AccordionBodyStyled, AccordionHeaderStyled } from 'components/Accordion/Accordion.styles';
+import IconStyled from 'components/Icon/Icon.styles';
 import { colors, tokens } from 'styles';
 
-const ResultsReadyStyled = styled.div`
-  .results-ready__audio {
-    display: flex;
-    justify-content: center;
-  }
-
-  ${AudioCardStyled} {
-    width: 95%;
-    margin-bottom: -${tokens.spacingLarge};
-    z-index: 1;
-
-    * {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-  }
-`;
-
-export const ResultsReadyReportStyled = styled.div`
-  .results-ready__report_bar {
-    background-color: ${({ theme }) => theme?.colors?.foreground || colors.grey[400]};
-    height: ${tokens.spacingLarge};
-  }
-
-  background: linear-gradient(
-    180deg,
-    ${({ theme }) => theme?.colors?.background || colors.grey[400]}
-    60%,
-    transparent 60%
-  );
-
-  ${AccordionStyled} {
+const ResultsStyled = styled.div`
+  .results-ready__description {
     margin-bottom: ${tokens.spacingLarge};
   }
 
-  ${AccordionHeaderStyled} {
-    border-top: ${({ theme }) =>
-      `${tokens.borderWidthMedium} solid ${theme?.colors?.borderHighlight || colors.grey[400]}`};
+  .results-ready__audio {
+    display: flex;
+    justify-content: center;
+    margin-bottom: ${tokens.spacingLarge};
   }
 
-  ${AccordionBodyStyled} {
-    background-color: transparent;
-    padding-bottom: 0;
+  .results-ready__report-attention {
+    display: flex;
+    padding: ${tokens.spacing} ${tokens.spacingXxxLarge} ${tokens.spacing}
+      ${tokens.spacingMedium};
+    background-color: ${colors.yellow[100]};
+
+    ${IconStyled} {
+      margin-right: ${tokens.spacing};
+    }
+  }
+
+  .results-ready__report-description {
+    padding: ${tokens.spacing} ${tokens.spacing} ${tokens.spacingLarge}
+      ${tokens.spacing};
+    background-color: ${colors.yellow[50]};
   }
 `;
-
-export default ResultsReadyStyled;
+export default ResultsStyled;
