@@ -36,4 +36,6 @@ const Template: Story = (args) => {
 
 export const Primary = Template.bind({});
 
-Primary.args = {};
+Primary.args = {
+  href: '/article/[articleIdentifier]',
+};

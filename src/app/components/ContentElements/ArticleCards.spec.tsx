@@ -157,4 +157,26 @@ describe('The article cards component', () => {
     await within(firstArticle).findByText('High priority article');
     await within(secondArticle).findByText('Low priority article');
   });
+
+  it('links to the appropriate route when provided', async () => {
+    const page = await renderWithShell(<ArticleCards />, {
+      requests: {
+        allArticles: async () => [
+          Mocks.article.create({
+            introduceAt: 'WAITING',
+            priority: 2,
+            title: 'Low priority article',
+            label: 'Article Label',
+            slug: 'slug',
+          }),
+        ],
+      },
+    });
+
+    const cardButton = page.getByRole('button', {
+      name: 'Low priority article',
+    });
+
+    expect(cardButton).toHaveAttribute('href', '/articleslug');
+  });
 });

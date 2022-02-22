@@ -1,7 +1,4 @@
-import Link from 'next/link';
-
 import { AppImage } from 'components/AppImage';
-import { Button } from 'components/Button';
 import { Card } from 'components/Card';
 import { Icon } from 'components/Icon';
 import { Typography, Heading } from 'components/Typography';
@@ -20,7 +17,7 @@ export interface ContentCardProps {
   label?: string;
   /** Prefix icon name */
   prefixIcon?: 'community' | 'health-profile' | 'resources' | string;
-  /** Color of the label area, usually a theme */
+  /** Returns a button when provided an href */
   href?: string;
   /** Title of card */
   heading?: string;
@@ -35,75 +32,58 @@ export interface ContentCardProps {
 }
 
 const ContentCard: React.FC<ContentCardProps> = (props) => {
-  const labelFragment =
-    props.variant == 'link' ? (
-      <Button
-        className="label--button"
-        kind="link-medium"
-        href={props.href}
-        suffix={<Icon name="chevron-right" size="small" />}
-        spreadContent={true}
-      >
-        <>
-          {props.prefixIcon &&
-            <Icon kind="custom" name={props.prefixIcon} />
-          }
-          {props.label}
-        </>
-      </Button>
-    ) : (
-      /** Return if the variant is 'article' */
+  const labelFragment = (
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        width: '100%',
+      }}
+    >
       <Typography type="label" labelType="title" color="primary">
         {props.label}
       </Typography>
-    );
-
-  const LinkWrapper: React.FC = ({ children }) =>
-    props.variant == 'link' && props.href ? (
-      <Link href={props.href}>{children}</Link>
-    ) : (
-      <>{children}</>
-    );
+      {props.variant === 'link' && <Icon name="chevron-right" size="small" />}
+    </div>
+  );
 
   return (
     <ContentCardStyled {...props}>
-      <LinkWrapper>
-        <Card
-          href={props.href}
-          header={
-            <AppImage
-              src={props.imageSrc}
-              alt={props.imageAlt}
-              layout="responsive"
-              objectPosition="center center"
-              width={343}
-              height={189}
-            />
-          }
-          transparent={props.variant ? props.variant == 'onboarding' : false}
-          footer={
-            props.footer ? (
-              <Button
-                color="light"
-                kind="link-medium"
-                suffix={<Icon name="chevron-right" size="small" />}
-                spreadContent={true}
-              >
+      <Card
+        href={props.href}
+        aria-label={props.heading}
+        header={
+          <AppImage
+            src={props.imageSrc}
+            alt={props.imageAlt}
+            layout="responsive"
+            objectPosition="center center"
+            width={343}
+            height={189}
+          />
+        }
+        transparent={props.variant ? props.variant == 'onboarding' : false}
+        footer={
+          props.footer ? (
+            <div className="footer">
+              <Typography type="heading" color="primary" level="6">
                 {props.footer}
-              </Button>
-            ) : undefined
-          }
-        >
-          <div className="label">{labelFragment}</div>
-          <div className="heading">
-            <Heading>{props.heading}</Heading>
-          </div>
-          <div className="body">
-            {props.body && <Typography type="body">{props.body}</Typography>}
-            {props.children}
-          </div>
-        </Card>
-      </LinkWrapper>
+              </Typography>
+
+              <Icon name="chevron-right" size="small" />
+            </div>
+          ) : undefined
+        }
+      >
+        <div className="label">{labelFragment}</div>
+        <div className="heading">
+          <Heading>{props.heading}</Heading>
+        </div>
+        <div className="body">
+          {props.body && <Typography type="body">{props.body}</Typography>}
+          {props.children}
+        </div>
+      </Card>
     </ContentCardStyled>
   );
 };

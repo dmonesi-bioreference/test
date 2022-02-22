@@ -21,7 +21,8 @@ const ContentCardStyled = styled.div<ContentCardProps>`
   }
 
   .label {
-    margin-bottom: ${tokens.spacingXSmall};
+    margin-bottom: ${({ variant }) =>
+      variant !== 'link' ? tokens.spacingXSmall : 0};
   }
 
   .label--button {
@@ -72,6 +73,15 @@ const ContentCardStyled = styled.div<ContentCardProps>`
       color: ${(props) =>
         props.theme?.colors?.headerText || tokens.colorPrimaryText};
     }
+  }
+
+  .body {
+    text-align: left;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
   }
 `;
 

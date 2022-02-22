@@ -1,7 +1,7 @@
-
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { ReactChild, useState } from 'react';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { Children, useState } from 'react';
 import { Carousel as ResponsiveCarousel } from 'react-responsive-carousel';
+import styled from 'styled-components';
 
 import { Button } from '../Button';
 import { Icon } from '../Icon';
@@ -10,17 +10,20 @@ import { Typography } from '../Typography';
 import CarouselStyled from './Carousel.styles';
 
 export interface CarouselProps {
-  children?: ReactChild[];
   autoPlay?: boolean;
   showIndicator?: boolean;
   enablePeak?: boolean;
   externalControl?: {
     prevText?: string;
     nextText?: string;
-  }
+  };
 }
 
-const Carousel: React.FC<CarouselProps> = (props) => {
+const PointerEvents = styled.div<{ disabled: boolean }>`
+  pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
+`;
+
+const Carousel: React.FC<CarouselProps> = ({ children, ...props }) => {
   props = {
     ...props,
     autoPlay: props.autoPlay ?? false,
@@ -30,9 +33,9 @@ const Carousel: React.FC<CarouselProps> = (props) => {
 
   const [currentSlide, setCurrentSlide] = useState<number>(0);
 
-  const next = () => setCurrentSlide(currentSlide => currentSlide + 1);
-
-  const prev = () => setCurrentSlide(currentSlide => currentSlide - 1);
+  const next = () => setCurrentSlide((currentSlide) => currentSlide + 1);
+  const prev = () => setCurrentSlide((currentSlide) => currentSlide - 1);
+  const [disabled, setDisabled] = useState<boolean>(false);
 
   return (
     <CarouselStyled>
@@ -49,37 +52,46 @@ const Carousel: React.FC<CarouselProps> = (props) => {
         centerMode={props.enablePeak}
         centerSlidePercentage={90}
         onChange={(index) => setCurrentSlide(index)}
+        onSwipeEnd={() => setDisabled(false)}
+        onSwipeMove={() => {
+          setDisabled(true);
+          return true;
+        }}
       >
-        {props.children}
+        {
+          Children.map(children, (child) => (
+            <PointerEvents disabled={disabled}>{child}</PointerEvents>
+          )) as React.ReactElement[]
+        }
       </ResponsiveCarousel>
-      {props.externalControl && 
+      {props.externalControl && (
         <div className="carousel__external-control">
           <div>
-            {currentSlide != 0 &&
+            {currentSlide != 0 && (
               <Button kind="link-small" onClick={prev}>
                 <Icon name="arrow-left" size="x-small" color="primary" />
-                {props.externalControl.prevText && 
+                {props.externalControl.prevText && (
                   <Typography type="body" color="primary">
                     {props.externalControl.prevText}
                   </Typography>
-                }
+                )}
               </Button>
-            }
+            )}
           </div>
           <div>
-            {props.children && props.children.length - 1 != currentSlide &&
+            {Children.count(children) - 1 != currentSlide && (
               <Button kind="link-small" onClick={next}>
-                {props.externalControl.nextText &&
+                {props.externalControl.nextText && (
                   <Typography type="body" color="primary">
                     {props.externalControl.nextText}
                   </Typography>
-                }
+                )}
                 <Icon name="arrow-right" size="x-small" color="primary" />
               </Button>
-            }
+            )}
           </div>
         </div>
-      }
+      )}
     </CarouselStyled>
   );
 };
