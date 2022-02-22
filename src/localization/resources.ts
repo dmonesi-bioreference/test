@@ -774,7 +774,7 @@ export const resources = {
             subTitle: "What's coming next?",
             waiting: {
               heading: 'Waiting for Results',
-              body: "We're working on processing your test sample. You can check out these resources while you're waiting.",
+              body: "We're working on processing your DNA sample. You can check out these resources while you're waiting.",
               linkLabel: 'View resources',
             },
             testResultsReady: {

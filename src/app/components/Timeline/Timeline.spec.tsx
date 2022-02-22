@@ -56,7 +56,7 @@ describe('The timeline componet', () => {
     });
 
     await page.findByText(
-      "We're working on processing your test sample. You can check out these resources while you're waiting."
+      "We're working on processing your DNA sample. You can check out these resources while you're waiting."
     );
     await page.findByText('View resources');
   });
