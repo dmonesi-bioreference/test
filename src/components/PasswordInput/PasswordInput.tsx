@@ -1,8 +1,8 @@
+import { LockClosedIcon } from '@heroicons/react/outline';
 import { useState } from 'react';
 
 import { Button } from 'components/Button';
 import { InputBaseProps } from 'components/FormControl';
-import { Icon } from 'components/Icon';
 import { Input } from 'components/Input';
 
 const PasswordInput: React.FC<InputBaseProps> = (props) => {
@@ -22,7 +22,7 @@ const PasswordInput: React.FC<InputBaseProps> = (props) => {
           {passwordShown ? 'Hide' : 'Show'}
         </Button>
       }
-      prefix={<Icon name="lock-closed" color="primary" />}
+      prefix={<LockClosedIcon className="input__icon--primary" />}
     />
   );
 };

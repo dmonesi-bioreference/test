@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { FormControl, FormControlProps } from 'components/FormControl';
-import { base, colors, inputs, focus } from 'styles';
+import { base, colors, tokens, inputs, focus } from 'styles';
 
 /* stylelint-disable no-descending-specificity */
 
@@ -136,6 +136,12 @@ const InputStyled = styled(FormControl)<FormControlProps>`
 
   .input--invalid {
     border-color: ${colors.red[400]};
+  }
+
+  .input__icon--primary {
+    color: ${tokens.colorPrimary};
+    height: 18px;
+    width: 18px;
   }
 `;
 

@@ -1,7 +1,7 @@
+import { UserIcon } from '@heroicons/react/outline';
 import { useState } from 'react';
 
 import { useAppTranslation } from 'app/components/Shell';
-import { Icon } from 'components/Icon';
 import { Input } from 'components/Input';
 
 import { useCaregiverContactField } from './hooks';
@@ -40,7 +40,7 @@ export function PhoneNumber({
       name="number"
       label={label}
       placeholder={placeholder || t('forms.caregiverContact.phone.placeholder')}
-      prefix={<Icon name="phone" color="primary" />}
+      prefix={<UserIcon className="input__icon--primary" />}
       invalid={errors.length > 0 && !isPristine}
       invalidMessage={errors.map(t).join(' ')}
       value={formatPhoneNumber(value)}

@@ -1,7 +1,7 @@
+import { UserIcon } from '@heroicons/react/outline';
 import { useState } from 'react';
 
 import { useAppTranslation } from 'app/components/Shell';
-import { Icon } from 'components/Icon';
 import { Input } from 'components/Input';
 
 import { useCaregiverNameField } from './hooks';
@@ -26,7 +26,7 @@ export function FirstName({
       placeholder={
         placeholder || t('forms.caregiverName.firstName.placeholder')
       }
-      prefix={<Icon name="user" color="primary" />}
+      prefix={<UserIcon className="input__icon--primary" />}
       invalid={errors.length > 0 && !isPristine}
       invalidMessage={errors.map(t).join(' ')}
       value={value}

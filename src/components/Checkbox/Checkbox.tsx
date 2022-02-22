@@ -1,8 +1,8 @@
+import { CheckIcon } from '@heroicons/react/outline';
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
 
 import { InputBaseProps } from 'components/FormControl';
-import { Icon } from 'components/Icon';
 
 import CheckboxStyled from './Checkbox.styles';
 
@@ -88,7 +88,7 @@ const Checkbox: React.FC<CheckboxProps> = (props) => {
         >
           {isChecked && (
             <span className="checkbox__icon">
-              <Icon name="check" color="white" />
+              <CheckIcon />
             </span>
           )}
           <input

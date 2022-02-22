@@ -1,7 +1,7 @@
+import { UserIcon } from '@heroicons/react/outline';
 import { useState } from 'react';
 
 import { useAppTranslation } from 'app/components/Shell';
-import { Icon } from 'components/Icon';
 import { Input } from 'components/Input';
 
 import { useCaregiverContactField } from './hooks';
@@ -25,7 +25,7 @@ export function EmailAddress({
       label={label}
       placeholder={placeholder || t('forms.caregiverContact.email.placeholder')}
       helpText={t('forms.caregiverContact.email.helpText')}
-      prefix={<Icon name="mail" color="primary" />}
+      prefix={<UserIcon className="input__icon--primary" />}
       invalid={errors.length > 0 && !isPristine}
       invalidMessage={errors.map(t).join(' ')}
       value={value}

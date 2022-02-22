@@ -17,14 +17,9 @@ const ToolTipStyled = styled.div`
   }
 
   .tooltip__icon {
-    color: ${colors.indigo[700]};
-    border-radius: ${tokens.borderRadiusCircle};
-    width: 18px;
     height: 18px;
-    border: ${tokens.borderWidthMedium} solid ${colors.indigo[700]};
-    margin-left: ${tokens.spacingXxSmall};
-    line-height: 16px;
-    text-align: center;
+    width: 18px;
+    color: ${tokens.colorPrimary};
   }
 
   [class*='arrow'] {

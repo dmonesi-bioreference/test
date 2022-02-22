@@ -1,3 +1,4 @@
+import { QuestionMarkCircleIcon } from '@heroicons/react/outline';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/svg-arrow.css';
 import 'tippy.js/dist/tippy.css';
@@ -27,7 +28,9 @@ const ToolTip: React.FC<ToolTipProps> = (props) => {
           </InformationBanner>
         }
       >
-        <div className="tooltip__icon">?</div>
+        <div>
+          <QuestionMarkCircleIcon className="tooltip__icon" />
+        </div>
       </Tippy>
     </ToolTipStyled>
   );
