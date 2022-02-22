@@ -68,7 +68,7 @@ describe('The timeline componet', () => {
     });
 
     await page.findByText(
-      'When your test results are ready, your doctor will arrange an appointment to discuss the results with you.'
+      'When your test results are ready, your healthcare provider will arrange an appointment to discuss the results with you.'
     );
     await page.findByText('Prepare for your appointment');
   });
@@ -83,7 +83,7 @@ describe('The timeline componet', () => {
     });
 
     await page.findByText(
-      'You will be able to discuss the results with your doctor and ask any questions you have.'
+      'You will be able to discuss the results with your healthcare provider and ask any questions you have.'
     );
   });
 

@@ -128,7 +128,7 @@ export const resources = {
           pageTitle: 'Resources | GeneDx',
           title: 'Resources',
           description:
-            'Here are some educational resources to help you better understand the who, what, and why’s of genetic testing.',
+            'Here are some educational resources to help you better understand the who, what, and whys of genetic testing.',
           section: {
             audios: {
               showTranscriptLabel: 'Read transcript',
@@ -240,7 +240,7 @@ export const resources = {
                 title: 'Purpose of the Patient Portal',
                 content:
                   'GeneDx is providing the Patient Portal to you so you can conveniently store, access, and manage your laboratory test results within your Patient Portal account.  The information stored in your Patient Portal account is not intended to be, and should not be used for, diagnosis or treatment purposes. Such information may not always be up-to-date. <br />' +
-                  'Information provided to you through the Patient Portal should not be regarded as medical or health care advice, diagnosis, or treatment. In fact, the information provided through the Patient Portal is for informational purposes only and is not medical advice. Always seek the advice of your physician or other qualified healthcare provider with any questions you may have regarding interpretation of your laboratory test results, a medical condition, or other health related issues. In the case of a health emergency, seek immediate assistance from emergency personnel. The content provided through the Patient Portal should not be used during a medical emergency or for the diagnosis or treatment of any medical condition. Consult your doctor or other qualified healthcare provider regarding any medical condition or changes in your health or in connection with any decision to start, stop or change a drug regimen or course of treatment.  Do not delay or disregard medical advice based on information obtained through the Patient Portal.',
+                  'Information provided to you through the Patient Portal should not be regarded as medical or health care advice, diagnosis, or treatment. In fact, the information provided through the Patient Portal is for informational purposes only and is not medical advice. Always seek the advice of your physician or other qualified healthcare provider with any questions you may have regarding interpretation of your laboratory test results, a medical condition, or other health related issues. In the case of a health emergency, seek immediate assistance from emergency personnel. The content provided through the Patient Portal should not be used during a medical emergency or for the diagnosis or treatment of any medical condition. Consult your healthcare provider regarding any medical condition or changes in your health or in connection with any decision to start, stop or change a drug regimen or course of treatment.  Do not delay or disregard medical advice based on information obtained through the Patient Portal.',
               },
               {
                 title: 'Changes to this Agreement',
@@ -409,7 +409,7 @@ export const resources = {
                   'HOW WE MAY USE AND DISCLOSE YOUR PROTECTED HEALTH INFORMATION',
                 content:
                   '<p>We may collect, use, disclose, and maintain your PHI for the following purposes:</p>' +
-                  '<p><b><u>For Treatment, Benefits and Services:</u></b> As a service provider, we may disclose your PHI to healthcare providers who are involved in your health care, and they may use such PHI to treat you, While providing services, we may use your PHI to determine care management options.  For example, your PHI will be shared among your healthcare providers. Your doctor may also share your health information with another doctor or healthcare provider to whom you have been referred for further treatment./p>' +
+                  '<p><b><u>For Treatment, Benefits and Services:</u></b> As a service provider, we may disclose your PHI to healthcare providers who are involved in your health care, and they may use such PHI to treat you, While providing services, we may use your PHI to determine care management options.  For example, your PHI will be shared among your healthcare providers. Your healthcare provider may also share your health information with another healthcare provider to whom you have been referred for further treatment./p>' +
                   '<p>We may also make your PHI available to providers by making it accessible through a Health Information Exchange <b>(HIE)</b>, an electronic network that makes it possible to share information electronically, but no one will be permitted to access it through the HIE without your consent except in an emergency, unless you direct us not to allow access during an emergency.  Be aware that if your healthcare provider allows us to transfer your laboratory and pathology reports to his or her electronic health record <b>(EHR)</b> in his or her office, once they have been transferred, anyone taking care of you at that office may be able to access your laboratory and pathology results directly.</p>' +
                   '<p><b><u>For Payment:</u></b> We may use and disclose your PHI to bill and collect payment for your healthcare and/or release portions of your PHI to a private insurer to get paid for services that we delivered to you.  For example, we may share your PHI with your health insurance plan so it will pay for your services or to obtain prior authorization for your services.</p>' +
                   '<p><b><u>For Health Care Operations:</u></b> We may use and disclose your PHI while operating our clinical laboratory.  For example, we may use your PHI for certain administrative, financial, legal, and quality improvement purposes, such as to conduct quality assessments, internal audits, general administrative and business planning activities and other activities necessary to support our healthcare operations.  We may share your health information with other healthcare providers and payors for certain of their health care operations if the information is related to a relationship the healthcare provider or payor currently has or previously had with you, and if the healthcare provider or payor is required by federal law to protect the privacy of your health information.</p>' +
@@ -779,14 +779,14 @@ export const resources = {
             },
             testResultsReady: {
               heading: 'Test Results Ready',
-              body: 'When your test results are ready, your doctor will arrange an appointment to discuss the results with you.',
+              body: 'When your test results are ready, your healthcare provider will arrange an appointment to discuss the results with you.',
               bodyPast:
-                'When your test results are ready, your doctor will arrange an appointment to discuss the results with you.',
+                'When your test results are ready, your healthcare provider will arrange an appointment to discuss the results with you.',
               linkLabel: 'Prepare for your appointment',
             },
             atAppointment: {
               heading: 'At Your Appointment',
-              body: 'You will be able to discuss the results with your doctor and ask any questions you have.',
+              body: 'You will be able to discuss the results with your healthcare provider and ask any questions you have.',
             },
             afterAppointment: {
               heading: 'After Your Appointment',
@@ -798,7 +798,7 @@ export const resources = {
           updated: 'Updated {{lastUpdated}}',
           ready: 'Results Ready',
           checkBackSoon: 'Check back to see when your results should be ready.',
-          doctorShared: 'And shared with your doctor',
+          doctorShared: 'And shared with your healthcare provider',
           doctorAppointment:
             'Your healthcare provider will soon arrange an appointment to discuss them with you',
           mayVary: 'Please keep in mind that processing time may vary',

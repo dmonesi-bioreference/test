@@ -53,7 +53,7 @@ describe('The test status component', () => {
     });
 
     await page.findByText('Results Ready');
-    await page.findByText('and shared with your doctor.');
+    await page.findByText('and shared with your healthcare provider.');
     await page.findByText(
       'Your healthcare provider will soon arrange an appointment to discuss them with you.'
     );
@@ -70,7 +70,7 @@ describe('The test status component', () => {
     });
 
     await page.findByText('Results Ready');
-    await page.findByText('and shared with your doctor.');
+    await page.findByText('and shared with your healthcare provider.');
     await page.findByText(
       'Your healthcare provider will soon arrange an appointment to discuss them with you.'
     );
@@ -87,7 +87,7 @@ describe('The test status component', () => {
     });
 
     await page.findByText('Results Ready');
-    await page.findByText('and shared with your doctor.');
+    await page.findByText('and shared with your healthcare provider.');
     await page.findByText(
       'Your healthcare provider will soon arrange an appointment to discuss them with you.'
     );
