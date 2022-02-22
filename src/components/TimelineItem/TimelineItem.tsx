@@ -1,11 +1,9 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 
-import { Button } from 'components/Button';
+import { Accordion } from 'components/Accordion';
 import { Icon } from 'components/Icon';
 import { Typography } from 'components/Typography';
 import { colors } from 'styles';
-import { slideInDown } from 'styles/animations';
 
 import TimelineItemStyled from './TimelineItem.styles';
 import TimelineItemBody from './TimelineItemBody';
@@ -36,24 +34,12 @@ const TimelineItem: React.FC<TimelineItemProps> = (props) => {
 
   const [headingHeight, setHeadingHeight] = useState<number>(0);
   const [bodyHeight, setBodyHeight] = useState<number>(0);
-  const [bodyVisible, setBodyVisible] = useState<boolean>(
-    props.isCollapseEnabled ? false : true
-  );
-
-  const headingRef = useRef<HTMLHeadingElement>(null);
-
-  const onHeadingClick = () => {
-    if (props.isCollapseEnabled) setBodyVisible(!bodyVisible);
-  };
+  const [bodyVisible, setBodyVisible] = useState<boolean>(!props.isCollapseEnabled);
 
   /* Used to set the custom svg height directly from html ref */
   const onHeightChange = (h) => {
     setBodyHeight(h);
   };
-
-  useEffect(() => {
-    setHeadingHeight(headingRef.current ? headingRef.current.offsetHeight : 0);
-  }, []);
 
   /* Variables shared between svgs (here) and in styling logic */
   const figure = () => {
@@ -126,45 +112,23 @@ const TimelineItem: React.FC<TimelineItemProps> = (props) => {
         </svg>
       </div>
 
-      <div className="timeline-item-content">
-        <div ref={headingRef}>
-          <Button
-            kind="link-medium"
-            suffix={
-              props.isCollapseEnabled ? (
-                <Icon name="chevron-left" style="solid" />
-              ) : null
-            }
-            onClick={onHeadingClick}
-            className="header__link"
-          >
-            <Typography type="body" level={`${props.isSmall ? '8' : '5'}`}>
-              {props.heading}
-            </Typography>
-          </Button>
-        </div>
-        <AnimatePresence>
-          {bodyVisible && (
-            <motion.div
-              initial={
-                props.isCollapseEnabled
-                  ? slideInDown.states.hidden
-                  : slideInDown.states.visible
-              }
-              animate={slideInDown.states.animate}
-              variants={slideInDown.variants}
-              transition={slideInDown.transition}
-              key="body"
-            >
-              <TimelineItemBody
-                body={props.body}
-                link={props.link}
-                onHeightChange={onHeightChange}
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+      <Accordion
+        isCollapsable={props.isCollapseEnabled ?? true}
+        heading={
+          <Typography type="body" level={`${props.isSmall ? '8' : '5'}`}>
+            {props.heading}
+          </Typography>
+        }
+        body={
+          <TimelineItemBody
+            body={props.body}
+            link={props.link}
+            onHeightChange={onHeightChange}
+          />
+        }
+        onRender={(e) => setHeadingHeight(e.current ? e.current.offsetHeight : 0)}
+        onCollapse={(e) => setBodyVisible(e)}
+      />
     </TimelineItemStyled>
   );
 };

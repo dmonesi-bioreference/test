@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import AccordionStyled from 'components/Accordion/Accordion.styles';
 import ButtonStyled from 'components/Button/Button.styles';
 import IconStyled from 'components/Icon/Icon.styles';
 import TimelineItemStyled from 'components/TimelineItem/TimelineItem.styles';
@@ -39,7 +40,7 @@ const TestResultsReadyStageStyled = styled.div<TestResultsReadyStageStyledProps>
         }
       }
 
-      .timeline-item-content {
+      ${AccordionStyled} {
         ${ButtonStyled} {
           ${TypographyStyled} {
             color: ${colors.powderBlue[700]};
@@ -71,7 +72,7 @@ const TestResultsReadyStageStyled = styled.div<TestResultsReadyStageStyledProps>
         }
       }
 
-      .timeline-item-content {
+      ${AccordionStyled} {
         ${ButtonStyled} {
           ${TypographyStyled} {
             color: ${colors.powderBlue[800]};
@@ -103,7 +104,7 @@ const TestResultsReadyStageStyled = styled.div<TestResultsReadyStageStyledProps>
         }
       }
 
-      .timeline-item-content {
+      ${AccordionStyled} {
         ${ButtonStyled} {
           ${TypographyStyled} {
             color: ${colors.violet[700]};

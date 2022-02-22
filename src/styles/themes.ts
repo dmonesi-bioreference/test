@@ -59,11 +59,26 @@ export const communityTheme = {
   },
 };
 
+export const medicalReportTheme = {
+  name: 'medical report',
+  colors: {
+    background: colors.lime[50],
+    foreground: colors.lime[100],
+    bannerBackground: colors.lime[50],
+    bannerForeground: colors.lime[100],
+    labelText: colors.lime[700],
+    headerText: colors.lime[800],
+    icon: colors.lime[600],
+    borderHighlight: colors.lime[400],
+  }
+};
+
 export const themes = {
   defaultTheme,
   resourcesTheme,
   healthProfileTheme,
   communityTheme,
+  medicalReportTheme
 } as const;
 
 /* Register the Theme type globally, so that it can be accessed from any component */

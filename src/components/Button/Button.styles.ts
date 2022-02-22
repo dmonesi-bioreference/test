@@ -307,12 +307,6 @@ const ButtonStyled = styled.button`
     }
   }
 
-  .button__grouping {
-    display: inline-flex;
-    align-items: center;
-    gap: ${tokens.spacingSmall};
-  }
-
   .button__prefix,
   .button__suffix {
     display: flex;

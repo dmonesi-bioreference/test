@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 
-import ButtonStyled from 'components/Button/Button.styles';
+import AccordionStyled, { AccordionBodyStyled, AccordionHeaderStyled } from 'components/Accordion/Accordion.styles';
 import IconStyled from 'components/Icon/Icon.styles';
 import TypographyStyled from 'components/Typography/Typography.styles';
 import { colors, tokens, parseRemToPx } from 'styles';
 import media from 'styles/media-queries';
 
 import { TimelineItemProps } from './TimelineItem';
-import TimelineItemBodyStyled from './TimelineItemBody.styles';
 
 interface TimelineItemStyledProps extends TimelineItemProps {
   bodyVisible: boolean;
@@ -71,7 +70,7 @@ const TimelineItemStyled = styled.div<TimelineItemStyledProps>`
     }
   }
 
-  .timeline-item-content {
+  ${AccordionStyled} {
     margin-left: ${tokens.spacing};
     border-radius: ${tokens.borderRadius};
     height: min-content;
@@ -87,42 +86,17 @@ const TimelineItemStyled = styled.div<TimelineItemStyledProps>`
       background-color: ${colors.white};
     }
 
-    ${ButtonStyled}.header__link {
-      justify-content: space-between;
-      text-decoration: none;
-      display: inline-flex;
-      padding: ${verticalContentPadding}px;
-      width: 100%;
-
-      &:hover:not(.button--disabled) {
-        box-shadow: none;
-        text-decoration: none;
-      }
-
-      &:focus:not(.button--disabled) {
-        box-shadow: none;
-        text-decoration: none;
-      }
-
-      &:active:not(.button--disabled) {
-        box-shadow: none;
-        text-decoration: none;
-      }
+    ${AccordionHeaderStyled} {
+      background-color: transparent;
 
       ${TypographyStyled} {
         color: ${colors.grey[400]};
       }
-
-      ${IconStyled} {
-        color: ${colors.grey[400]};
-        transition: all ${tokens.transitionFast} ease-out;
-        transform: ${(p) => (p.bodyVisible ? 'rotate(-90deg)' : '')};
-      }
     }
 
-    ${TimelineItemBodyStyled} {
-      margin: ${verticalContentPadding}px;
-      margin-top: 0;
+    ${AccordionBodyStyled} {
+      background-color: transparent;
+      padding-top: 0;
     }
   }
 `;

@@ -40,14 +40,16 @@ const ContentCard: React.FC<ContentCardProps> = (props) => {
       <Button
         className="label--button"
         kind="link-medium"
-        prefix={
-          props.prefixIcon && <Icon kind="custom" name={props.prefixIcon} />
-        }
+        href={props.href}
         suffix={<Icon name="chevron-right" size="small" />}
         spreadContent={true}
-        group="prefix"
       >
-        {props.label}
+        <>
+          {props.prefixIcon &&
+            <Icon kind="custom" name={props.prefixIcon} />
+          }
+          {props.label}
+        </>
       </Button>
     ) : (
       /** Return if the variant is 'article' */

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import AccordionStyled from 'components/Accordion/Accordion.styles';
 import ButtonStyled from 'components/Button/Button.styles';
 import IconStyled from 'components/Icon/Icon.styles';
 import TimelineItemStyled from 'components/TimelineItem/TimelineItem.styles';
@@ -44,7 +45,7 @@ const WaitingStageStyled = styled.div<WaitingStageStyledProps>`
         }
       }
 
-      .timeline-item-content {
+      ${AccordionStyled} {
         ${ButtonStyled} {
           ${TypographyStyled} {
             color: ${colors.powderBlue[700]};
@@ -76,7 +77,7 @@ const WaitingStageStyled = styled.div<WaitingStageStyledProps>`
         }
       }
 
-      .timeline-item-content {
+      ${AccordionStyled} {
         ${ButtonStyled} {
           ${TypographyStyled} {
             color: ${colors.powderBlue[800]};

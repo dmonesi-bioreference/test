@@ -1,3 +1,4 @@
+import userEvents from '@testing-library/user-event';
 
 import { Mocks, renderWithShell } from 'test-utils';
 
@@ -9,15 +10,24 @@ describe('The results ready page', () => {
   });
 
   describe('The report section', () => {
-    it('displays  medial language ahead warning', async () => {
+    it('displays medical language ahead warning with a collapsed accordion', async () => {
       const page = await renderWithShell(<ResultsReady />, {
         onLoadTests: async () =>
           Mocks.tests.createMany({ LabStatus: 'Report Ready' }),
       });
 
       await page.findByText('Medical language ahead');
+
+      userEvents.click(await page.findByText('Medical language ahead'));
+
       await page.findByText(
-        'This report is designed with healthcare providers in mind and contains many medically-oriented details. Please review this test report with your provider to understand what the test results mean for you and your family.'
+        'This report is designed with health care providers in mind and contains many medically-oriented details.'
+      );
+      await page.findByText(
+        'For some people, receiving test results can be difficult to understand and may cause anxiety, regardless of the results.'
+      );
+      await page.findByText(
+        'Genetic test reports have some limitations that are important to undertstand, therefore reviewing results with a doctor is necessary to properly understand and plan next steps.'
       );
     });
 

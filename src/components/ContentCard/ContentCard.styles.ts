@@ -25,6 +25,12 @@ const ContentCardStyled = styled.div<ContentCardProps>`
   }
 
   .label--button {
+    * {
+      display: flex;
+      align-items: center;
+      gap: ${tokens.spacing};
+    }
+
     width: 100%;
     grid-template-columns: max-content 1fr max-content;
   }

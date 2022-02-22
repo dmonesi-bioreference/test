@@ -42,8 +42,6 @@ export interface ButtonProps {
   suffix?: React.ReactNode;
   /** Used to set spacing between button children. */
   spreadContent?: boolean;
-  /** Group button text with prefix or suffix icons or neither */
-  group?: 'prefix' | 'suffix' | undefined;
   /** Tells the browser where to open the link. Used only if `href` is set. */
   target?: '_blank' | '_parent' | '_self' | '_top';
   /** Specify relationship between current doc and linked doc */
@@ -90,79 +88,37 @@ const Button: React.FC<ButtonProps> = (props) => {
     'button--hug-content': props.hugContent,
   });
 
-  const ButtonChildren: React.FC = () => {
-    if (props.group === 'prefix') {
-      return (
-        <>
-          <div className="button__grouping">
-            {renderIfExists(props.prefix, 'button__prefix')}
-            <span className="button__label">{props.children}</span>
-          </div>
-          {renderIfExists(props.suffix, 'button__suffix')}
-        </>
-      );
-    }
-    if (props.group === 'suffix') {
-      return (
-        <>
-          {renderIfExists(props.prefix, 'button__prefix')}
-          <div className="button__grouping">
-            <span className="button__label">{props.children}</span>
-            {renderIfExists(props.suffix, 'button__suffix')}
-          </div>
-        </>
-      );
-    }
-    return (
-      <>
+  return props.href ? (
+    <Link href={props.href} passHref>
+      <ButtonStyled
+        as="a"
+        className={`${color} ${className} ${props.className}`}
+        target={props.target}
+        download={props.download}
+        onClick={props.onClick}
+        href={props.href}
+        /** Inclusion of this line prevents tabnabbing phishing */
+        rel={props.target === '_blank' ? 'noopener noreferrer' : props.rel}
+      >
         {renderIfExists(props.prefix, 'button__prefix')}
         <span className="button__label">{props.children}</span>
         {renderIfExists(props.suffix, 'button__suffix')}
-      </>
-    );
-  };
-
-  if (props.href) {
-    return (
-      <Link href={props.href} passHref>
-        <ButtonStyled
-          as="a"
-          className={`${color} ${className} ${props.className}`}
-          target={props.target}
-          download={props.download}
-          onClick={props.onClick}
-          href={props.href}
-          /** Inclusion of this line prevents tabnabbing phishing */
-          rel={props.target === '_blank' ? 'noopener noreferrer' : props.rel}
-        >
-          <ButtonChildren />
-        </ButtonStyled>
-      </Link>
-    );
-  } else if (props.onClick) {
-    return (
-      <ButtonStyled
-        as="button"
-        className={`${color} ${className} ${props.className}`}
-        disabled={props.disabled}
-        name={props.name}
-        value={props.value}
-        type={props.submit ? 'submit' : 'button'}
-        onClick={props.onClick}
-      >
-        <ButtonChildren />
       </ButtonStyled>
-    );
-  } else {
-    return (
-      <ButtonStyled
-        as="div"
-        className={`${color} ${className} ${props.className}`}
-      >
-        <ButtonChildren />
-      </ButtonStyled>
-    );
-  }
+    </Link>
+  ) : (
+    <ButtonStyled
+      className={`${color} ${className} ${props.className}`}
+      disabled={props.disabled}
+      name={props.name}
+      value={props.value}
+      type={props.submit ? 'submit' : 'button'}
+      onClick={props.onClick}
+    >
+      {renderIfExists(props.prefix, 'button__prefix')}
+      <span className="button__label">{props.children}</span>
+      {renderIfExists(props.suffix, 'button__suffix')}
+    </ButtonStyled>
+  );
 };
 
 const renderIfExists = (component: React.ReactNode, className: string) => {

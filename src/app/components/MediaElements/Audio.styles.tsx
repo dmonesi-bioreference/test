@@ -4,7 +4,10 @@ import { base, tokens, colors } from 'styles';
 
 const AudioStyled = styled.div`
   ${base}
-  background-color: ${colors.cornflowerBlue[100]};
+  
+  background-color: ${({ theme }) =>
+    theme?.colors?.foreground || colors.cornflowerBlue[100]};
+
   border-radius: ${tokens.borderRadius};
   box-shadow: ${tokens.shadowXxLarge};
   width: 100%;

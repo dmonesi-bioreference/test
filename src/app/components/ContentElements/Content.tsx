@@ -35,7 +35,11 @@ export const Content = ({
         node.attribs = customAttributes.attributes(node.attribs);
       }
 
-      let transformedNode = convertNodeToElement(node, index, transform);
+      let transformedNode;
+      
+      const breakNode = (index != 0 && withBreaks)
+        ? <br key={`break-${index}`} />
+        : <></>;
 
       switch (node.name) {
         case 'h1':
@@ -83,14 +87,15 @@ export const Content = ({
             </strong>
           );
           break;
+        default:
+          transformedNode = convertNodeToElement(node, index, transform);
       }
 
-      return withBreaks ? (
+      return (
         <>
-          {transformedNode} <br key={index} />
+          {breakNode}
+          {transformedNode}
         </>
-      ) : (
-        transformedNode
       );
     }
   };

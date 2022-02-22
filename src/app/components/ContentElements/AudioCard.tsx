@@ -6,6 +6,7 @@ import { Card } from 'components/Card';
 import { ContentBlock } from 'components/ContentBlock';
 import { Typography } from 'components/Typography';
 
+import AudioCardStyled from './AudioCard.styles';
 import { Content } from './Content';
 import { useContent, useContentByTestStatus } from './hooks';
 
@@ -45,7 +46,7 @@ export const AudioCard = () => {
   });
 
   return (
-    <div>
+    <AudioCardStyled>
       {loadingAudios && <Card isLoading />}
       {errorFetchingAudios && (
         <Typography color="error" level="7" type="heading">
@@ -53,6 +54,6 @@ export const AudioCard = () => {
         </Typography>
       )}
       {audioCards}
-    </div>
+    </AudioCardStyled>
   );
 };
