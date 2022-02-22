@@ -57,7 +57,7 @@ export const FAQsPage: React.FC<FAQPageProps> = (props) => {
   }, [singleFaq]);
 
   useEffect(() => {
-    if (faqContents.length == 0) {
+    if (faqs.length == 0) {
       setFaqSlug({
         FAQSlug: slug as string,
       });
