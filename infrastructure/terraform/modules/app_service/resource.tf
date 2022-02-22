@@ -17,6 +17,29 @@ resource "azurerm_app_service_plan" "main" {
   }
 }
 
+resource "azurerm_application_insights_web_test" "main" {
+  name                    = "${var.app_name}-webtest"
+  location                = var.location
+  resource_group_name     = var.rg_name
+  application_insights_id = azurerm_application_insights.main.id
+  kind                    = "ping"
+  frequency               = 600
+  timeout                 = 60
+  enabled                 = true
+  retry_enabled           = true 
+  geo_locations           = ["us-tx-sn1-azr", "us-il-ch1-azr","us-ca-sjc-azr","us-va-ash-azr","us-fl-mia-edge"]
+
+  configuration = <<XML
+<WebTest Name="ProdWebTest1" Enabled="True" CssProjectStructure="" CssIteration="" WorkItemIds="" Description="" CredentialUserName="" CredentialPassword="" Proxy="default" StopOnError="False" RecordedResultFile="" ResultsLocale="">
+  <Items>
+    <Request Method="GET" Version="1.1" Url="https://patient.genedx.com" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="200" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False" />
+  </Items>
+</WebTest>
+XML
+
+}
+
+
 resource "azurerm_application_insights" "main" {
   name                = "${var.app_name}-appinsights"
   location            = var.location
