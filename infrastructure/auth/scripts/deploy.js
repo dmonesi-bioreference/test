@@ -2,22 +2,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/unbound-method */
 /* eslint-disable @typescript-eslint/no-var-requires */
-const { readFile, writeFile } = require('fs');
 const { rm } = require('fs/promises');
-const { join } = require('path');
-const { promisify } = require('util');
 
 const { deploy, dump } = require('auth0-deploy-cli');
-const builder = require('esbuild');
-const handlebars = require('handlebars');
 
-const { config, buildConfig } = require('./configuration');
-
-const root = join.bind(null, __dirname, '..', '..', '..');
-const dist = root.bind(null, 'dist');
-const auth = root.bind(null, 'infrastructure', 'auth');
-const read = promisify(readFile);
-const write = promisify(writeFile);
+const { buildLoginPage } = require('./build-login-page');
+const { config } = require('./configuration');
+const { write, auth, root } = require('./project-paths');
 
 async function clean() {
   try {
@@ -35,23 +26,6 @@ async function getAuth0Deployment() {
     console.error(error);
     throw error;
   }
-}
-
-async function buildLoginPage() {
-  await builder.build(buildConfig);
-
-  const css = await read(dist('auth.css'));
-  const js = await read(dist('auth.js'));
-  const rawTemplate = await read(auth('templates', 'auth.html.hbs'));
-
-  const template = handlebars.compile(rawTemplate.toString());
-
-  await write(dist('auth.html'), template({ css, js }));
-
-  await write(
-    auth('deployment', 'pages', 'login.html'),
-    await read(dist('auth.html'))
-  );
 }
 
 async function deployAuth0Content() {
@@ -79,7 +53,9 @@ async function main() {
   // Now we grab the local pages we want to build, and create single page versions
   // of them with a combination of esbuild + handlebars.
   //
-  await buildLoginPage();
+  await buildLoginPage(async (contents) => {
+    await write(auth('deployment', 'pages', 'login.html'), contents);
+  });
 
   // Finally, we upload the whole thing to our Auth0 tenant.
   //

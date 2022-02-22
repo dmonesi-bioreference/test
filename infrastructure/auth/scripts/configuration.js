@@ -69,6 +69,10 @@ const buildConfig = {
   },
 };
 
+const variables = {
+  deploymentHost: process.env.NEXT_PUBLIC_API_HOST,
+};
+
 const ENVIRONMENT_VARIABLE_MISSING = 'missing';
 const ENVIRONMENT_VARIABLE_PRESENT = 'present';
 const REQUIRED_ENVIRONMENT_VARIABLES = [
@@ -113,4 +117,4 @@ function performConfigurationPreflightCheck() {
 
 performConfigurationPreflightCheck();
 
-module.exports = { config, buildConfig };
+module.exports = { config, buildConfig, variables };

@@ -3,42 +3,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/unbound-method */
 /* eslint-disable @typescript-eslint/no-var-requires */
-const { readFile, writeFile } = require('fs');
-const { join } = require('path');
-const { promisify } = require('util');
-
-const builder = require('esbuild');
-const handlebars = require('handlebars');
-
-const { buildConfig } = require('./configuration');
-
-const root = join.bind(null, __dirname, '..', '..', '..');
-const dist = root.bind(null, 'dist');
-const auth = root.bind(null, 'infrastructure', 'auth');
-const read = promisify(readFile);
-const write = promisify(writeFile);
+const { buildLoginPage } = require('./build-login-page');
 
 async function buildAndAnalyzeLoginPage() {
-  const output = await builder.build(buildConfig);
-
-  const css = await read(dist('auth.css'));
-  const js = await read(dist('auth.js'));
-  const rawTemplate = await read(auth('templates', 'auth.html.hbs'));
-
-  const template = handlebars.compile(rawTemplate.toString());
-
-  await write(dist('auth.html'), template({ css, js }));
-  await write(
-    dist('auth-build-metafile.json'),
-    JSON.stringify(output.metafile)
-  );
-
-  console.log(await builder.analyzeMetafile(output.metafile));
-
-  await write(
-    auth('deployment', 'pages', 'login.html'),
-    await read(dist('auth.html'))
-  );
+  await buildLoginPage(async (_content, analysis) => {
+    console.log(analysis);
+  });
 }
 
 // This file is purely to allow you to see what's going into the build output
