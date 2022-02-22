@@ -2,8 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-// @ts-ignore
-import React from 'react';
+import { CrossOriginLoginOptions } from 'auth0-js';
 import ReactDOM from 'react-dom';
 
 import { Shell } from 'app/components/Shell';
@@ -56,8 +55,8 @@ async function login({
   if ('auth0' in window) {
     // @ts-ignore
     const webAuth = new window.auth0.WebAuth(params);
-    //TODO: use "options: CrossOriginLoginOptions" here when Type Definitions are fixed in next versions of @types/auth0-js package. Issue: https://github.com/auth0/auth0.js/issues/1238
-    const options = {
+
+    const options: CrossOriginLoginOptions = {
       realm: process.env.AUTH0_REALM,
       email,
       password,
@@ -153,7 +152,7 @@ async function register({
             trackSignUpEvent();
             done();
           },
-        } as any, // options parameter is passed into webAuth.login method under the hood. Second parameter (callback) is called only in case of error.
+        },
         // eslint-disable-next-line no-console
         (error, result) => {
           if (error) {
