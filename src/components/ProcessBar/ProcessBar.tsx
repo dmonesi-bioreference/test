@@ -6,7 +6,9 @@ export interface ProcessBarProps {
 }
 
 const ProcessBar: React.FC<ProcessBarProps> = (props) => {
-  const steps = [...new Array(props.stepsAmount).keys()];
+  const steps = Array(props.stepsAmount)
+    .fill(null)
+    .map((_, i) => i);
 
   return (
     <ProcessBarStyled>
