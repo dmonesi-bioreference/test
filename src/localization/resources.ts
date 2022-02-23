@@ -60,7 +60,7 @@ export const resources = {
           basicInformation: {
             title: 'Basic Information',
             fields: {
-              name: { label: "Child's Name" },
+              name: { label: "Patient's Name" },
               dob: { label: 'Date of Birth' },
               gender: { label: 'Genetic Gender' },
               genderIdentity: { label: 'Gender Identification' },
