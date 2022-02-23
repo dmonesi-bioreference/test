@@ -36,6 +36,10 @@ export function useContent() {
     errorFetchingOnBoardingCards: useAppState(
       'requests.allOnBoardingCards.failure'
     ),
+
+    avatars: useAppSelector((state) => state.context.requests.allAvatars.values),
+    loadingAvatars: useAppState('requests.allAvatars.requesting'),
+    errorFetchingAvatars: useAppState('requests.allAvatars.failure'),
   };
 
   return [state] as const;

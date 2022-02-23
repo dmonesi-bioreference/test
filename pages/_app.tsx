@@ -44,6 +44,7 @@ function WebApp({ Component, pageProps }: AppProps) {
       allInternalLinkCards: Api.Content.internalLinkCards,
       allAudios: Api.Content.audios,
       allOnBoardingCards: Api.Content.onBoardingCards,
+      allAvatars: Api.Content.avatars,
     };
 
     return requests;

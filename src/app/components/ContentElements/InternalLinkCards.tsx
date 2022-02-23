@@ -2,6 +2,7 @@ import camelCase from 'lodash/camelCase';
 import { useEffect } from 'react';
 
 import { useAppEvents, useAppTranslation } from 'app/components/Shell';
+import { useContent } from 'app/hooks';
 import { ContentCard } from 'components/ContentCard';
 import { Grid } from 'components/Grid';
 import { Spinner } from 'components/Spinner';
@@ -10,8 +11,6 @@ import { isTheme, Theme } from 'styles';
 
 import { Content } from './Content';
 import InternalLinkCardsStyled from './InternalLinkCards.styles';
-import { useContent } from './hooks';
-
 export const InternalLinkCards = () => {
   const t = useAppTranslation();
 

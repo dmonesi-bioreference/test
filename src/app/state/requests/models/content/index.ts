@@ -1,5 +1,6 @@
 import { singleArticle, allArticles } from './article';
 import { allAudios } from './audio';
+import { allAvatars } from './avatar';
 import { singleFaq, allFaqs } from './faq';
 import { allInternalLinkCards } from './internal-link-card';
 import { allOnBoardingCards } from './on-boarding-card';
@@ -12,6 +13,7 @@ export const all = [
   allInternalLinkCards,
   allAudios,
   allOnBoardingCards,
+  allAvatars,
 ];
 
 declare global {

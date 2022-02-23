@@ -1,5 +1,6 @@
 import * as article from './articles';
 import * as audios from './audios';
+import * as avatars from './avatars';
 import * as faqs from './faqs';
 import * as insurance from './insurance';
 import * as internalLinkCards from './internal-link-cards';
@@ -14,6 +15,7 @@ export const Mocks = {
   article,
   faqs,
   audios,
+  avatars,
   registrationProfile,
   onBoardingCards,
   internalLinkCards,

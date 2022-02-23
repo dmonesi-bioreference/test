@@ -75,6 +75,10 @@ export function AppProvider({
       requests?.allOnBoardingCards ||
       (async () =>
         Promise.reject(Errors.api('No on boarding cards available'))),
+    handleAllAvatarsRequest:
+      requests?.allAvatars ||
+      (async () =>
+        Promise.reject(Errors.api('No avatars found'))),
   };
 
   const services = {

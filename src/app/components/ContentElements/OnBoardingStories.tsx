@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 
+import { useContent } from 'app/hooks';
 import { Carousel } from 'components/Carousel';
 import { ContentCard } from 'components/ContentCard';
 import { Spinner } from 'components/Spinner';
@@ -9,7 +10,6 @@ import { tokens } from 'styles';
 import { useAppEvents, useAppTranslation } from '../Shell';
 
 import { Content } from './Content';
-import { useContent } from './hooks';
 
 export const OnBoardingStories = () => {
   const t = useAppTranslation();

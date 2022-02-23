@@ -3,12 +3,12 @@ import { useEffect, useState } from 'react';
 
 import { AppLayout } from 'app/components/AppLayout';
 import { OnBoardingStories } from 'app/components/ContentElements';
-import { useContent } from 'app/components/ContentElements/hooks';
 import {
   useAppEvents,
   useAppSelector,
   useAppTranslation,
 } from 'app/components/Shell';
+import { useContent } from 'app/hooks';
 import { Button } from 'components/Button';
 import { PageSection } from 'components/PageSection';
 import { IdentityForm } from 'screens/IdentityForm';

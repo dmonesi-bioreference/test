@@ -1,5 +1,7 @@
-import { useAppTranslation } from 'app/components/Shell';
-import { useTestStatus } from 'app/hooks';
+import { useEffect } from 'react';
+
+import { useAppEvents, useAppTranslation } from 'app/components/Shell';
+import { useContent, useTestStatus } from 'app/hooks';
 import { Avatar, Heading, Spinner, Typography } from 'components';
 
 import { AfterAppointmentStage } from './Stages/AfterAppointmentStage';
@@ -59,17 +61,21 @@ const TimelineBody: React.FC = () => {
 
 export const Timeline: React.FC = () => {
   const t = useAppTranslation();
+  const { allAvatarsRequest } = useAppEvents();
 
-  const [{ photo }] = useTestStatus();
+  const [{ avatars, loadingAvatars }] = useContent();
+
+  useEffect(allAvatarsRequest, [allAvatarsRequest]);
 
   return (
     <TimelineStyled>
       <div className="timeline__heading">
         <Avatar
-          src={photo}
-          alt={t('components.avatar.geneticCounselor.altText')}
+          src={avatars[0] ? avatars[0].avatar?.fullpath : ''}
+          alt={avatars[0] ? avatars[0].avatar?.altText : ''}
           shape="circular"
           size="small"
+          isLoading={loadingAvatars}
         />
         <div>
           <Typography type="label" color="white" labelType="display">

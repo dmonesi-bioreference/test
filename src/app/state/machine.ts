@@ -5,7 +5,6 @@ import {
   InterpreterFrom,
 } from 'xstate';
 
-import geneticCounselor from 'assets/images/png/geneticCounselor.png';
 import { SupportedLanguages } from 'localization';
 
 import * as auth from './auth';
@@ -24,9 +23,6 @@ export const initialContext = {
   content: content.context,
   registration: registration.context,
   requests: requests.context,
-  geneticCounselor: {
-    photo: geneticCounselor,
-  },
 };
 
 const { init, schema } = createAppMachine({

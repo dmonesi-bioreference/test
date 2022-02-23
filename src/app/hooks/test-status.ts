@@ -10,7 +10,6 @@ export function useTestStatus() {
 
   const state = {
     test,
-    photo: useAppSelector((state) => state.context.geneticCounselor.photo),
     notLoaded: useAppState('tests.idle'),
     loading: useAppState('tests.loading'),
     errorLoading: useAppState('tests.errorLoading'),

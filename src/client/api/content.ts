@@ -17,6 +17,10 @@ export const Content = {
     const result = await client.get('/api/content/audios');
     return (await result.json()) as Audio[];
   },
+  avatars: async (): Promise<Avatar[]> => {
+    const result = await client.get('/api/content/avatars');
+    return (await result.json()) as Avatar[];
+  },
   faqs: async function fetchAllFAQs(): Promise<FAQ[]> {
     const result = await client.get('/api/content/faqs');
     return (await result.json()) as FAQ[];

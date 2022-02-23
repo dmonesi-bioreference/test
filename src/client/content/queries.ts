@@ -308,6 +308,25 @@ export const audios = () => `
   }
 `;
 
+export const avatars = () => `
+  query {
+    getAudioListing {
+      edges {
+        node {
+          avatar {
+            id
+            filename
+            fullpath
+            mimetype
+            type
+            filesize
+          }
+        }
+      }
+    }
+  }
+`;
+
 export const onBoardingCards = () => `
   query {
     getOnboardingStoryCardListing{

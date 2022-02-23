@@ -267,6 +267,47 @@ describe('Handlers', () => {
     expect(result).toEqual([audioOne, audioTwo, audioWithoutAvatar]);
   });
 
+  it('.avatars() maps the given payload into a list of avatars', async () => {
+    const avatarOne = {
+      avatar: {
+        id: '1',
+        filename: '',
+        fullpath: '',
+        mimetype: '',
+        type: '',
+      },
+    };
+
+    const avatarTwo = {
+      avatar: {
+        id: '2',
+        filename: '',
+        fullpath: '',
+        mimetype: '',
+        type: '',
+      },
+    };
+
+    server.use(
+      rest.post('/gdx-webservices/patient', (request, response, context) => {
+        return response(
+          context.status(200),
+          context.json({
+            data: {
+              getAudioListing: {
+                edges: [{ node: avatarOne }, { node: avatarTwo } ],
+              },
+            },
+          })
+        );
+      })
+    );
+
+    const result = await handlers.avatars();
+
+    expect(result).toEqual([avatarOne, avatarTwo]);
+  });
+
   it('.faqs() maps the given payload into a list of faqs', async () => {
     const faqOne = {
       id: '1',

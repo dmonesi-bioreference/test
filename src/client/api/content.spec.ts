@@ -84,6 +84,20 @@ describe('Content.audios', () => {
   });
 });
 
+describe('Content.avatars', () => {
+  it('calls the avatars api', async () => {
+    server.use(
+      rest.get('/api/content/avatars', (request, response, context) => {
+        return response(context.status(200), context.json(Mocks.avatars.list));
+      })
+    );
+
+    const response = await Content.avatars();
+
+    expect(response).toEqual(Mocks.avatars.list);
+  });
+});
+
 describe('Content.faqs', () => {
   it('calls the faqs api', async () => {
     server.use(

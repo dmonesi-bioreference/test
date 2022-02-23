@@ -86,6 +86,22 @@ export function createContentClient(overrides: Partial<Configuration>) {
             srcUrl: `${server_config.pimcore.domain ?? ''}${node.srcUrl}`,
           }))
         ),
+    avatars: async () =>
+      await client
+        .post<{ data: { getAudioListing: { edges: { node: Avatar }[] } } }>(
+          GRAPHQL_ENDPOINT,
+          { query: Queries.avatars() }
+        )
+        .then(responseBody)
+        .then((body) =>
+          body.data.getAudioListing.edges.map(({ node }) => ({
+            ...node,
+            avatar: node.avatar ? {
+              ...node.avatar,
+              fullpath: `${server_config.pimcore.domain ?? ''}${node.avatar?.fullpath}`,
+            } : null,
+          }))
+        ),
     faqs: async () =>
       await client
         .post<{ data: { getPatientFAQListing: { edges: { node: FAQ }[] } } }>(

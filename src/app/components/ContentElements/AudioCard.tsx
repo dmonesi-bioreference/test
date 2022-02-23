@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 
 import { MediaElements } from 'app/components/MediaElements';
 import { useAppEvents, useAppTranslation } from 'app/components/Shell';
+import { useContent, useContentByTestStatus } from 'app/hooks';
 import { Card } from 'components/Card';
 import { ContentBlock } from 'components/ContentBlock';
 import { Typography } from 'components/Typography';
 
 import AudioCardStyled from './AudioCard.styles';
 import { Content } from './Content';
-import { useContent, useContentByTestStatus } from './hooks';
 
 export const AudioCard = () => {
   const t = useAppTranslation();

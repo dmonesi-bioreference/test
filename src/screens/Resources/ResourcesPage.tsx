@@ -6,8 +6,8 @@ import {
   FAQCards,
   AudioCard,
 } from 'app/components/ContentElements';
-import { useContent } from 'app/components/ContentElements/hooks';
 import { useAppTranslation, useAppState } from 'app/components/Shell';
+import { useContent } from 'app/hooks';
 import { PageSection } from 'components/PageSection';
 import { Heading } from 'components/Typography';
 
