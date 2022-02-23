@@ -1,6 +1,7 @@
 import NextDocument, {
   DocumentContext,
   DocumentInitialProps,
+  Html, Head, Main, NextScript
 } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
@@ -32,5 +33,19 @@ export default class Document extends NextDocument {
     } finally {
       serverSideStyles.seal();
     }
+  }
+
+  render(): JSX.Element {
+    const nonce = 'REPLACE_WITH_NONCE'
+
+    return (
+      <Html lang='en'>
+        <Head />
+        <body>
+          <Main />
+          <NextScript nonce={nonce} />
+        </body>
+      </Html>
+    );
   }
 }

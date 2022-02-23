@@ -1,17 +1,17 @@
 
 const httpsOnly = process.env.NODE_ENV == 'production' ? 'https:' : '';
-const scriptUnsafeEval = process.env.NODE_ENV == 'production' ? '' : '\'unsafe-eval\'';
+const scriptRule = process.env.NODE_ENV == 'production' ? '\'nonce-REPLACE_WITH_NONCE\' \'strict-dynamic\'' : '\'self\' \'unsafe-eval\'';
 const cssUnsafeInline = process.env.NODE_ENV == 'production' ? '\'unsafe-inline\'' : '\'unsafe-inline\'';
 const ContentSecurityPolicy = `
   navigate-to ${httpsOnly} ${process.env.AUTH0_ISSUER_BASE_URL};
   default-src 'none';
   child-src 'none';
-  connect-src 'self';
+  connect-src 'self' https://www.googletagmanager.com;
   font-src 'self';
   frame-src 'none';
   img-src 'self' data:;
   object-src 'none';
-  script-src 'self' ${scriptUnsafeEval};
+  script-src ${scriptRule};
   style-src 'self' ${cssUnsafeInline};
   form-action 'self';
   frame-ancestors 'none';
