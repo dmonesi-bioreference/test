@@ -25,7 +25,7 @@ describe('on the landing page', () => {
   // });
 
   describe('with a valid session', () => {
-    before(() => {
+    beforeEach(() => {
       authApi.logout();
       authApi.login(
         Cypress.env('AUTH0_USERNAME_TEST_ORDERED'),
