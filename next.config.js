@@ -1,15 +1,14 @@
-
 const httpsOnly = process.env.NODE_ENV == 'production' ? 'https:' : '';
-const scriptRule = process.env.NODE_ENV == 'production' ? '\'nonce-REPLACE_WITH_NONCE\' \'strict-dynamic\'' : '\'self\' \'unsafe-eval\'';
+const scriptRule = process.env.NODE_ENV == 'production' ? '\'nonce-%REPLACE_WITH_NONCE%\' \'strict-dynamic\'' : '\'self\' \'unsafe-eval\'';
 const cssUnsafeInline = process.env.NODE_ENV == 'production' ? '\'unsafe-inline\'' : '\'unsafe-inline\'';
 const ContentSecurityPolicy = `
   navigate-to ${httpsOnly} ${process.env.AUTH0_ISSUER_BASE_URL};
   default-src 'none';
   child-src 'none';
-  connect-src 'self' https://www.googletagmanager.com;
+  connect-src 'self' https://www.googletagmanager.com https://cdn.cookielaw.org https://www.google-analytics.com;
   font-src 'self';
   frame-src 'none';
-  img-src 'self' data:;
+  img-src 'self' data: https://*.genedx.com;
   object-src 'none';
   script-src ${scriptRule};
   style-src 'self' ${cssUnsafeInline};

@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 import NextDocument, {
   DocumentContext,
   DocumentInitialProps,
@@ -8,14 +9,28 @@ import NextDocument, {
 } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
-export default class Document extends NextDocument {
+type MyProps = DocumentInitialProps & {
+  nonce: string
+}
+
+export default class Document extends NextDocument<MyProps> {
   static async getInitialProps(
     context: DocumentContext
-  ): Promise<DocumentInitialProps> {
+  ): Promise<MyProps> {
     const serverSideStyles = new ServerStyleSheet();
     const originalRenderResult = context.renderPage;
+    const nonce = nanoid();
 
     try {
+      // Overwrite the nonces in the CSP
+      if (context.res) {
+        let cspHeader: string = context.res.getHeader('Content-Security-Policy') as string;
+        if (cspHeader && typeof(cspHeader) == 'string') {
+          cspHeader = cspHeader.replace('%REPLACE_WITH_NONCE%', nonce);
+          context.res.setHeader('Content-Security-Policy', cspHeader);
+        }
+      }
+
       context.renderPage = () =>
         originalRenderResult({
           enhanceApp: (App) => (props) =>
@@ -23,7 +38,7 @@ export default class Document extends NextDocument {
         });
 
       const initialProps = await NextDocument.getInitialProps(context);
-
+      
       return {
         ...initialProps,
         styles: (
@@ -32,6 +47,7 @@ export default class Document extends NextDocument {
             {serverSideStyles.getStyleElement()}
           </>
         ),
+        nonce: nonce,
       };
     } finally {
       serverSideStyles.seal();
@@ -39,11 +55,13 @@ export default class Document extends NextDocument {
   }
 
   render(): JSX.Element {
-    const nonce = 'REPLACE_WITH_NONCE';
+    const nonce = this.props.nonce;
 
     return (
       <Html lang="en">
-        <Head nonce={nonce} />
+        <Head nonce={nonce}>
+          <meta property="csp-nonce" content={nonce} />
+        </Head>
         <body>
           <Main />
           <NextScript nonce={nonce} />

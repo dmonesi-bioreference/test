@@ -80,3 +80,6 @@ function WebApp({ Component, pageProps }: AppProps) {
   );
 }
 export default WebApp;
+
+//  Disable static optimization to always server render, making nonce unique on every request
+WebApp.getInitialProps = () => ({})

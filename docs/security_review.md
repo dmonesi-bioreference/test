@@ -44,6 +44,7 @@ The pentest correctly identified we had no CSP header defined, to implement this
 - I am now banning any non-`https:` request or redirect to any site other than auth0
 - I had to allow images sourced as `data:`, this seems to be coming from our select component 
 - In development I have to allow `unsafe-eval` as react.js uses this for hot reloading, this is disabled in production
+- In production scripts use nonce generation combined with `strict-dynamic` to allow trusted scripts to inject more code, this is for things like GTM and OneTrust
 - In **all** environments I have had to allow `unsafe-inline` on styles, this is because of our use of styled-components, which adds inline styles *everywhere*
   - This does leave us exposed to potential [data leaking](https://www.netsparker.com/blog/web-security/private-data-stolen-exploiting-css-injection/)
   - This could be [prevented with a lot of effort](https://reesmorris.co.uk/blog/implementing-proper-csp-nextjs-styled-components)
