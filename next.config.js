@@ -1,5 +1,5 @@
 const httpsOnly = process.env.NODE_ENV == 'production' ? 'https:' : '';
-const scriptRule = process.env.NODE_ENV == 'production' ? '\'nonce-%REPLACE_WITH_NONCE%\' \'strict-dynamic\'' : '\'self\' \'unsafe-eval\'';
+const scriptUnsafeEval = process.env.NODE_ENV == 'production' ? '' : '\'unsafe-eval\'';
 const cssUnsafeInline = process.env.NODE_ENV == 'production' ? '\'unsafe-inline\'' : '\'unsafe-inline\'';
 const ContentSecurityPolicy = `
   navigate-to ${httpsOnly} ${process.env.AUTH0_ISSUER_BASE_URL};
@@ -10,7 +10,7 @@ const ContentSecurityPolicy = `
   frame-src 'none';
   img-src 'self' data: https://*.genedx.com;
   object-src 'none';
-  script-src ${scriptRule};
+  script-src 'nonce-%REPLACE_WITH_NONCE%' 'strict-dynamic' 'self' ${scriptUnsafeEval};
   style-src 'self' ${cssUnsafeInline};
   form-action 'self';
   frame-ancestors 'none';

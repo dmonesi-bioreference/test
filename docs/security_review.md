@@ -64,14 +64,23 @@ Additional research identified this header, it is used to tell browsers not to g
 
 ## Referrer-Policy
 
-Additional research identified this header, it is used to tell browsers how much information to include in `Referer` headers, the value has been set to only include our origin TODO: Will this upset GTM?
+Additional research identified this header, it is used to tell browsers how much information to include in `Referer` headers, the value has been set to only include our origin
 
 ## Strict-Transport-Security
 
 Additional research identified this header, it is used to tell browsers to use the `https:` protocol when interacting with our site, the values have been set to the recommended values
+
+## Incapsula
+
+There is something seemingly called Incapsula being injected into our site. I cant find any reference to this in our code base, and suspect it's used by Azure.
+
+On initial load to our application multiple cookies are set, including one to persistently identify users, and another to identify the current session (privacy issues?), in addition, a script is injected which at present the CSP is interfering with this. I suspect the reason for a non-http-only cookie is because the script being injected is going to add the cookie to all requests dynamically
+
+This also seems to be the source od rthe `__utmvc` cookie, which Google results suggest is an intentionally malformed cookie used to detect brower information.
 
 # Recommendations
 
 - Submit our sites to the [HSTS Preload List](https://hstspreload.org/)
   - This prevents man-in-the-middle attacks by allowing browsers to know they should load a site via HTTPS before an initial load, which would otherwise be vulnerable to a downgrade attack prior to the `Strict-Transport-Security` header being used
 - Try to remove inline styles so we can remove `unsafe-inline` from the `style-src` in the `Content-Security-Policy` header
+- Find out what the Imperva script is and how to make it allowed
