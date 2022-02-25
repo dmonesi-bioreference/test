@@ -43,8 +43,10 @@ There are a few locations where we take URIs and inject them into GraphQL reques
 The pentest correctly identified we had no CSP header defined, to implement this I start at the most restrictive, marking everything as `'none'`, unsurprisingly this made everything break, so error by error I released the restrictions. The following are my observations on the current state;
 - I am now banning any non-`https:` request or redirect to any site other than auth0
 - I had to allow images sourced as `data:`, this seems to be coming from our select component 
-- In development I have to allow `unsafe-eval` as react.js uses this for hot reloading, this is disabled in production
+- I have also allowed all subdomains of `genedx.com` as dev uses staging for some images etc
+- In development I have to allow `unsafe-eval` for scripts as react.js uses this for hot reloading, this is disabled in production
 - In production scripts use nonce generation combined with `strict-dynamic` to allow trusted scripts to inject more code, this is for things like GTM and OneTrust
+  - As a fallback for any non CSP level 3 brower, we allow all `'self'` scripts, this will mean GTM and OneTrust do not work, but prevent opening up all script attack vectors
 - In **all** environments I have had to allow `unsafe-inline` on styles, this is because of our use of styled-components, which adds inline styles *everywhere*
   - This does leave us exposed to potential [data leaking](https://www.netsparker.com/blog/web-security/private-data-stolen-exploiting-css-injection/)
   - This could be [prevented with a lot of effort](https://reesmorris.co.uk/blog/implementing-proper-csp-nextjs-styled-components)
@@ -84,3 +86,4 @@ This also seems to be the source od rthe `__utmvc` cookie, which Google results 
   - This prevents man-in-the-middle attacks by allowing browsers to know they should load a site via HTTPS before an initial load, which would otherwise be vulnerable to a downgrade attack prior to the `Strict-Transport-Security` header being used
 - Try to remove inline styles so we can remove `unsafe-inline` from the `style-src` in the `Content-Security-Policy` header
 - Find out what the Imperva script is and how to make it allowed
+- Investigate if we need all the above security headers enabled on auth0 - at present they are not

@@ -5,19 +5,19 @@ const ContentSecurityPolicy = `
   navigate-to ${httpsOnly} ${process.env.AUTH0_ISSUER_BASE_URL};
   default-src 'none';
   child-src 'none';
-  connect-src 'self' https://www.googletagmanager.com https://cdn.cookielaw.org https://www.google-analytics.com;
-  font-src 'self';
+  connect-src 'self' https://www.googletagmanager.com https://tagmanager.google.com https://cdn.cookielaw.org https://www.google-analytics.com https://*.onetrust.com;
+  font-src 'self' https://fonts.gstatic.com data:;
   frame-src 'none';
-  img-src 'self' data: https://*.genedx.com;
+  img-src 'self' data: https://*.genedx.com https://ssl.gstatic.com https://www.gstatic.com;
   object-src 'none';
-  script-src 'nonce-%REPLACE_WITH_NONCE%' 'strict-dynamic' 'self' ${scriptUnsafeEval};
-  style-src 'self' ${cssUnsafeInline};
+  script-src 'nonce-%REPLACE_WITH_NONCE%' 'strict-dynamic' 'self' https://tagmanager.google.com ${scriptUnsafeEval};
+  style-src 'self' https://tagmanager.google.com https://fonts.googleapis.com ${cssUnsafeInline};
   form-action 'self';
   frame-ancestors 'none';
   base-uri 'self';
   worker-src 'none';
   manifest-src 'self';
-  prefetch-src 'self';
+  prefetch-src 'self' ;
 `
 
 /* eslint-disable @typescript-eslint/no-var-requires */
