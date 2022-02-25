@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router';
+
 import { useAppTranslation } from 'app/components/Shell';
 import { Icon } from 'components/Icon';
 import { TimelineItem } from 'components/TimelineItem';
@@ -13,6 +15,7 @@ export const TestResultsReadyStage: React.FC<TestResultsReadyStageProps> = (
   props
 ) => {
   const t = useAppTranslation();
+  const router = useRouter();
 
   return (
     <TestResultsReadyStageStyled
@@ -54,7 +57,7 @@ export const TestResultsReadyStage: React.FC<TestResultsReadyStageProps> = (
                 label: t(
                   'sections.results.timeline.testResultsReady.linkLabel'
                 ),
-                onClick: () => null,
+                onClick: () => router.push('article/healthcare-provider-appointment-tips'),
               }
             : undefined
         }
