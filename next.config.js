@@ -9,6 +9,7 @@ const ContentSecurityPolicy = `
   font-src 'self' https://fonts.gstatic.com data:;
   frame-src 'none';
   img-src 'self' data: https://*.genedx.com https://ssl.gstatic.com https://www.gstatic.com;
+  media-src 'self' data: https://*.genedx.com;
   object-src 'none';
   script-src 'nonce-%REPLACE_WITH_NONCE%' 'strict-dynamic' 'self' https://tagmanager.google.com ${scriptUnsafeEval};
   style-src 'self' https://tagmanager.google.com https://fonts.googleapis.com ${cssUnsafeInline};
