@@ -36,10 +36,9 @@ export const Content = ({
       }
 
       let transformedNode;
-      
-      const breakNode = (index != 0 && withBreaks)
-        ? <br key={`break-${index}`} />
-        : <></>;
+
+      const breakNode =
+        index != 0 && withBreaks ? <br key={`break-${index}`} /> : <></>;
 
       switch (node.name) {
         case 'h1':
@@ -60,6 +59,7 @@ export const Content = ({
           );
           break;
         case 'span':
+        case 'p':
           transformedNode = (
             <Typography key={index} type="body">
               {node.children.map((child, i) => transform(child, i))}
@@ -68,14 +68,14 @@ export const Content = ({
           break;
         case 'ul':
           transformedNode = (
-            <Typography key={index} type="body">
+            <Typography key={index} type="list">
               <ul>{node.children.map((child, i) => transform(child, i))}</ul>
             </Typography>
           );
           break;
         case 'ol':
           transformedNode = (
-            <Typography key={index} type="body">
+            <Typography key={index} type="list">
               <ol>{node.children.map((child, i) => transform(child, i))}</ol>
             </Typography>
           );
