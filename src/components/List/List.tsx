@@ -9,10 +9,8 @@ export interface ListProps {
 const List: React.FC<ListProps> = (props) => {
   const children = Children.toArray(props.children);
   return (
-    <ListStyled>
-      <ul className={`list list--${props.kind}`}>
-        {buildList(props.kind, children)}
-      </ul>
+    <ListStyled className={`list list--${props.kind}`}>
+      {buildList(props.kind, children)}
     </ListStyled>
   );
 };

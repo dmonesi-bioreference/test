@@ -1,6 +1,6 @@
 import { Story } from '@storybook/react/types-6-0';
 
-import { Typography } from 'components/Typography';
+import { Heading } from 'components/Typography';
 
 import { AsyncRegion } from './AsyncRegion';
 
@@ -14,9 +14,9 @@ export default {
 
 const Template: Story = ({ pending }) => (
   <AsyncRegion pending={pending}>
-    <Typography type="heading">
+    <Heading>
       Any kind of interior content will be faded and prefixed with a spinner.
-    </Typography>
+    </Heading>
   </AsyncRegion>
 );
 

@@ -24,11 +24,13 @@ const ContentBlock: React.FC<ContentBlockProps> = (props) => {
       ) : null}
 
       {scale === 'large' ? (
-        <Typography type="body" level="7">
+        <Typography type="body" level="7" as="span">
           {props.children}
         </Typography>
       ) : (
-        <Typography type="body">{props.children}</Typography>
+        <Typography type="body" as="span">
+          {props.children}
+        </Typography>
       )}
     </ContentBlockStyled>
   );

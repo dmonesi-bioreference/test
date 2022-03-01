@@ -1,7 +1,5 @@
 import { Story } from '@storybook/react/types-6-0';
 
-import geneticCounselor from 'assets/images/png/geneticCounselor.png';
-import { Avatar } from 'components/Avatar';
 import { StyleGuideItem } from 'components/StyleGuide/StyleGuideItem';
 
 import { Typography } from './Typography';
@@ -25,18 +23,7 @@ export const Headings: Story = () => (
 
     <StyleGuideItem label="Primary Heading(h1), Wrapped around Image">
       <div style={{ width: 375 }}>
-        <Typography
-          type="heading"
-          level="1"
-          objectToWrap={
-            <Avatar
-              src={geneticCounselor}
-              alt="Photograph of our genetic counselor, Laura."
-              shape="circular"
-              size="small"
-            />
-          }
-        >
+        <Typography type="heading" level="1">
           Here is a much longer title than the others, to demonstrate wrapping.
         </Typography>
       </div>

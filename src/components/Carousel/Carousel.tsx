@@ -59,8 +59,10 @@ const Carousel: React.FC<CarouselProps> = ({ children, ...props }) => {
         }}
       >
         {
-          Children.map(children, (child) => (
-            <PointerEvents disabled={disabled}>{child}</PointerEvents>
+          Children.map(children, (child, index) => (
+            <PointerEvents disabled={disabled} key={index}>
+              {child}
+            </PointerEvents>
           )) as React.ReactElement[]
         }
       </ResponsiveCarousel>

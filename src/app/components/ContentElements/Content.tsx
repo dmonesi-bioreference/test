@@ -1,4 +1,5 @@
 import { hasChildren, isTag, isText } from 'domhandler';
+import { Fragment } from 'react';
 import ReactHtmlParser, {
   convertNodeToElement,
   Transform,
@@ -38,7 +39,7 @@ export const Content = ({
       let transformedNode;
 
       const breakNode =
-        index != 0 && withBreaks ? <br key={`break-${index}`} /> : <></>;
+        index != 0 && withBreaks ? <br key={`break-${index}`} /> : null;
 
       switch (node.name) {
         case 'h1':
@@ -61,24 +62,19 @@ export const Content = ({
         case 'span':
         case 'p':
           transformedNode = (
-            <Typography key={index} type="body">
+            <Typography key={index} type="body" as={node.name}>
               {node.children.map((child, i) => transform(child, i))}
             </Typography>
           );
           break;
         case 'ul':
+        case 'ol':
           transformedNode = (
-            <Typography key={index} type="list">
-              <ul>{node.children.map((child, i) => transform(child, i))}</ul>
+            <Typography key={index} type="list" as={node.name}>
+              {node.children.map((child, i) => transform(child, i))}
             </Typography>
           );
           break;
-        case 'ol':
-          transformedNode = (
-            <Typography key={index} type="list">
-              <ol>{node.children.map((child, i) => transform(child, i))}</ol>
-            </Typography>
-          );
           break;
         case 'strong':
           transformedNode = (
@@ -92,15 +88,15 @@ export const Content = ({
       }
 
       return (
-        <>
+        <Fragment key={index}>
           {breakNode}
           {transformedNode}
-        </>
+        </Fragment>
       );
     }
   };
 
-  if (!children) return <></>;
+  if (!children) return null;
 
   return (
     <ContentStyled>

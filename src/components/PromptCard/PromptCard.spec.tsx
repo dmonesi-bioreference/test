@@ -26,6 +26,6 @@ describe('Rendering', () => {
   });
 
   it('renders a body', async () => {
-    expect(screen.getByRole('paragraph').textContent).toEqual(bodyText);
+    expect(screen.getByText(bodyText)).toBeInTheDocument();
   });
 });

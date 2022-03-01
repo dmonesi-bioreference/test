@@ -25,7 +25,7 @@ const PromptCard: React.FC<PromptCardProps> = (props) => {
         </div>
 
         <div className="label__prompt">
-          <Typography type="heading" level="3">
+          <Typography type="body" level="3">
             {props.prompt}
           </Typography>
         </div>

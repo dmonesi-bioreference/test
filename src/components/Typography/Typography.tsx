@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 import TypographyStyled from './Typography.styles';
 
 export type TypographyLevel = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8';
@@ -15,15 +13,14 @@ export type TypographyColor =
   | 'blue'
   | 'error';
 
-interface HeadingProps {
-  level?: TypographyLevel;
+type CommonTypeProps = {
   color?: TypographyColor;
   alignment?: TypographyAlignment;
-  objectToWrap?: ReactNode;
-}
+  as?: string | React.ComponentType<any>;
+};
 
 type TypographyProps =
-  | {
+  | ({
       type:
         | 'body'
         | 'list'
@@ -31,31 +28,29 @@ type TypographyProps =
         | 'validation'
         | 'menu-item'
         | 'fine-print';
-      color?: TypographyColor;
-      alignment?: TypographyAlignment;
       level?: TypographyLevel;
-    }
-  | {
+    } & CommonTypeProps)
+  | ({
       type: 'label';
       labelType: 'display' | 'title' | 'input' | 'data';
-      color?: TypographyColor;
-      alignment?: TypographyAlignment;
-    }
+    } & CommonTypeProps)
   | ({
       type: 'heading';
-    } & HeadingProps);
+      level: TypographyLevel;
+    } & CommonTypeProps);
 
 export const Typography: React.FC<TypographyProps> = (props) => {
   const color = props.color || 'default';
   const alignment = props.alignment || 'left';
+  const componentType = props.as || 'span';
+
   switch (props.type) {
     case 'fine-print':
     case 'body': {
       return (
         /* Providing a level prop will override the default body styling */
         <TypographyStyled
-          as="p"
-          role="paragraph"
+          as={componentType}
           className={`${
             props.level ? 'level' + props.level : props.type
           } ${color} ${alignment}`}
@@ -70,6 +65,7 @@ export const Typography: React.FC<TypographyProps> = (props) => {
     case 'menu-item': {
       return (
         <TypographyStyled
+          as={componentType}
           className={`level2 ${props.type} ${color} ${alignment}`}
         >
           {props.children}
@@ -79,6 +75,7 @@ export const Typography: React.FC<TypographyProps> = (props) => {
     case 'label': {
       return (
         <TypographyStyled
+          as={componentType}
           className={`${props.type} ${color} label--${props.labelType} ${alignment}`}
         >
           {props.children}
@@ -107,11 +104,6 @@ export const Typography: React.FC<TypographyProps> = (props) => {
           role="heading"
           aria-level={parseInt(level)}
         >
-          {props.objectToWrap ? (
-            <div className="floated">{props.objectToWrap}</div>
-          ) : (
-            ''
-          )}
           {props.children}
         </TypographyStyled>
       );
@@ -119,20 +111,23 @@ export const Typography: React.FC<TypographyProps> = (props) => {
   }
 };
 
-export const Heading = ({
-  level = '2',
-  color = 'default',
-  alignment = 'left',
-  children,
-}: Props<HeadingProps>) => {
+/**
+ * @returns Header component (eg. h1, h2, h3...)
+ */
+export const Heading: React.FC<
+  Partial<TypographyProps> & {
+    level?: TypographyLevel;
+    type?: 'heading';
+  }
+> = (props) => {
   return (
     <Typography
       type="heading"
-      level={level}
-      color={color}
-      alignment={alignment}
+      level={props.level || '2'}
+      color={props.color || 'default'}
+      alignment={props.alignment || 'left'}
     >
-      {children}
+      {props.children}
     </Typography>
   );
 };

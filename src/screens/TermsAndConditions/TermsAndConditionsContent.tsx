@@ -2,7 +2,7 @@ import { Content } from 'app/components/ContentElements';
 import { useAppTranslation } from 'app/components/Shell';
 import { ContentBlock } from 'components/ContentBlock';
 import { List } from 'components/List';
-import { Typography } from 'components/Typography';
+import { Typography, Heading } from 'components/Typography';
 
 import {
   Introduction,
@@ -46,9 +46,7 @@ export const TermsAndConditionsContent = () => {
               </ContentBlock>
             ))}
         </List>
-        <Typography type="heading">
-          {t('pages.termsAndConditions.privacyPolicy.title')}
-        </Typography>
+        <Heading>{t('pages.termsAndConditions.privacyPolicy.title')}</Heading>
         <Typography type="helper-text">
           {t('pages.termsAndConditions.privacyPolicy.subtitle')}
         </Typography>
