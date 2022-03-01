@@ -20,8 +20,12 @@ const CarouselStyled = styled.div`
     }
   }
 
+  .slider {
+    display: grid;
+    gap: ${tokens.spacing};
+  }
+
   .slide {
-    padding: 0 ${tokens.spacingXSmall} 0;
     text-align: initial;
   }
 `;

@@ -8,6 +8,6 @@ export * from './Onboarding';
 export * from './registration';
 export * from './Resources';
 export * from './Settings';
-export * from './TestResults';
+export * from './TestResults/TestResults';
 export * from './TermsAndConditions';
 export * from './ErrorPage';

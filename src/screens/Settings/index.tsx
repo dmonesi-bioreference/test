@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
 
-import { AppLayout } from 'app/components/AppLayout';
+import { MainNavPageLayout } from 'app/components/AppLayout';
 import { DisplayField } from 'app/components/DisplayField';
 import {
   useAppEvents,
@@ -32,8 +32,7 @@ export const Settings = () => {
       <Head>
         <title>{t('pages.settings.pageTitle')}</title>
       </Head>
-      <AppLayout
-        containsCards
+      <MainNavPageLayout
         title={t('pages.settings.title')}
         isLoading={requesting}
       >
@@ -81,7 +80,7 @@ export const Settings = () => {
             </Button>
           </PageSection>
         </AsyncRegion>
-      </AppLayout>
+      </MainNavPageLayout>
     </>
   );
 };

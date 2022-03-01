@@ -4,7 +4,6 @@ import { AppLayout } from 'app/components/AppLayout';
 import { useAppTranslation } from 'app/components/Shell';
 import { Button } from 'components/Button';
 import { PageSection } from 'components/PageSection';
-import { Typography, Heading } from 'components/Typography';
 
 export interface ErrorPageProps {
   statusCode: 404 | 500;
@@ -25,12 +24,8 @@ export const ErrorPage: React.FC<ErrorPageProps> = (props) => {
         <title>{t('pages.errorPage.title')}</title>
       </Head>
 
-      <AppLayout isWithoutNav>
-        <PageSection verticalPadding="extraLarge" spacing="extraLarge">
-          <Heading level="1">{pageTitle}</Heading>
-          <Typography type="body" level="2">
-            {pageContent}
-          </Typography>
+      <AppLayout isWithoutNav title={pageTitle} description={pageContent}>
+        <PageSection>
           <Button href="/" kind="primary" hugContent>
             Go back to home
           </Button>

@@ -1,16 +1,16 @@
 import { Story } from '@storybook/react/types-6-0';
 
-import StepTitle, { StepTitleProps } from './StepTitle';
+import SubTitle, { SubTitleProps } from './SubTitle';
 
 export default {
-  component: StepTitle,
-  title: 'Components/StepTitle',
+  component: SubTitle,
+  title: 'Components/SubTitle',
   parameters: {
     componentSubtitle: 'Displays a step count.',
   },
 };
 
-const Template: Story<StepTitleProps> = (args) => <StepTitle {...args} />;
+const Template: Story<SubTitleProps> = (args) => <SubTitle {...args} />;
 
 export const Primary = Template.bind({});
 

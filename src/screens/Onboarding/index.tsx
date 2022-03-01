@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 
-import { AppLayout } from 'app/components/AppLayout';
+import { RegistrationPageLayout } from 'app/components/AppLayout';
 import { OnBoardingStories } from 'app/components/ContentElements';
 import {
   useAppEvents,
@@ -10,7 +10,6 @@ import {
 } from 'app/components/Shell';
 import { useContent } from 'app/hooks';
 import { Button } from 'components/Button';
-import { PageSection } from 'components/PageSection';
 import { IdentityForm } from 'screens/IdentityForm';
 import { trackSignUpFlowEvent } from 'tracking';
 
@@ -44,19 +43,12 @@ export const OnBoarding = () => {
       <Head>
         <title>{t('pages.onboarding.title')}</title>
       </Head>
-      <AppLayout
-        isLoading={loadingOnBoardingCards}
-        containsCards
-        isWithoutFooter
-        theme="resourcesTheme"
-      >
-        <PageSection>
-          <OnBoardingStories />
-          <Button kind="primary" onClick={() => setBeginRegistration(true)}>
-            {submitButtonText}
-          </Button>
-        </PageSection>
-      </AppLayout>
+      <RegistrationPageLayout isLoading={loadingOnBoardingCards}>
+        <OnBoardingStories />
+        <Button kind="primary" onClick={() => setBeginRegistration(true)}>
+          {submitButtonText}
+        </Button>
+      </RegistrationPageLayout>
     </>
   );
 };

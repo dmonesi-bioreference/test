@@ -38,6 +38,8 @@ export interface ButtonProps {
   prefix?: React.ReactNode;
   /** Set to true if activating the button should submit the form. Ignored if `href` is set. */
   submit?: boolean;
+  /** Pass in if submit button sits outside form */
+  formId?: string;
   /** Used to append an icon or similar element to the button. */
   suffix?: React.ReactNode;
   /** Used to set spacing between button children. */
@@ -113,6 +115,7 @@ const Button: React.FC<ButtonProps> = (props) => {
       value={props.value}
       type={props.submit ? 'submit' : 'button'}
       onClick={props.onClick}
+      form={props.formId}
     >
       {renderIfExists(props.prefix, 'button__prefix')}
       <span className="button__label">{props.children}</span>

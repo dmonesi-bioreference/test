@@ -3,8 +3,21 @@ import styled from 'styled-components';
 import { tokens, base } from 'styles';
 
 export interface GridProps {
-  spacing?: 'none' | 'small' | 'base' | 'medium' | 'large' | 'extraLarge';
-  verticalPadding?: 'none' | 'small' | 'medium' | 'large' | 'extraLarge';
+  spacing?:
+    | 'none'
+    | 'small'
+    | 'base'
+    | 'medium'
+    | 'large'
+    | 'extraLarge'
+    | 'extraExtraLarge';
+  verticalPadding?:
+    | 'none'
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'extraLarge'
+    | 'extraExtraLarge';
 }
 
 /**
@@ -42,12 +55,16 @@ const Grid: React.FC<GridProps> = styled.div<GridProps>`
         return `
           gap: ${tokens.spacingXLarge};
         `;
+      case 'extraExtraLarge':
+        return `
+          gap: ${tokens.spacingXxLarge};
+        `;
     }
   }}
   ${({ verticalPadding = 'none' }) => {
     switch (verticalPadding) {
       case 'none':
-        return `padding: 0`;
+        return `padding-top: 0; padding-bottom: 0`;
       case 'small':
         return `padding-top: ${tokens.spacingSmall}; padding-bottom: ${tokens.spacingSmall};`;
       case 'medium':
@@ -56,6 +73,8 @@ const Grid: React.FC<GridProps> = styled.div<GridProps>`
         return `padding-top: ${tokens.spacingLarge}; padding-bottom: ${tokens.spacingLarge};`;
       case 'extraLarge':
         return `padding-top: ${tokens.spacingXLarge}; padding-bottom: ${tokens.spacingXLarge};`;
+      case 'extraExtraLarge':
+        return `padding-top: ${tokens.spacingXxLarge}; padding-bottom: ${tokens.spacingXxLarge};`;
     }
   }}
 `;

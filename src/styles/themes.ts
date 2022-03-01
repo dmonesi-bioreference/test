@@ -70,7 +70,21 @@ export const medicalReportTheme = {
     headerText: colors.lime[800],
     icon: colors.lime[600],
     borderHighlight: colors.lime[400],
-  }
+  },
+};
+
+export const dangerTheme = {
+  name: 'danger',
+  colors: {
+    background: colors.red[50],
+    foreground: colors.red[100],
+    bannerBackground: colors.red[50],
+    bannerForeground: colors.red[100],
+    labelText: colors.red[700],
+    headerText: colors.red[800],
+    icon: colors.red[600],
+    borderHighlight: colors.red[400],
+  },
 };
 
 export const themes = {
@@ -78,7 +92,8 @@ export const themes = {
   resourcesTheme,
   healthProfileTheme,
   communityTheme,
-  medicalReportTheme
+  medicalReportTheme,
+  dangerTheme,
 } as const;
 
 /* Register the Theme type globally, so that it can be accessed from any component */

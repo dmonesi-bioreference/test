@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import { AppLayout } from 'app/components/AppLayout';
+import { HomePageLayout } from 'app/components/AppLayout';
 import { InternalLinkCards } from 'app/components/ContentElements';
 import { useAppTranslation } from 'app/components/Shell';
 import { TestStatus } from 'app/components/TestStatus';
@@ -16,13 +16,15 @@ export const LandingPage = () => {
         <title>{t('pages.landing.pageTitle')}</title>
       </Head>
 
-      <AppLayout containsCards hasPatientBanner>
+      <HomePageLayout>
         <PageSection>
           <TestStatus />
           <Timeline />
+        </PageSection>
+        <PageSection>
           <InternalLinkCards />
         </PageSection>
-      </AppLayout>
+      </HomePageLayout>
     </>
   );
 };

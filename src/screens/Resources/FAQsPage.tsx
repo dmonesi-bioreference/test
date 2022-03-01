@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import React, { RefObject, useEffect, useState } from 'react';
 
-import { AppLayout } from 'app/components/AppLayout';
+import { ContentPageLayout } from 'app/components/AppLayout';
 import { ContentWithPimcore } from 'app/components/ContentElements';
 import {
   useAppEvents,
@@ -11,12 +11,8 @@ import {
 } from 'app/components/Shell';
 import { ContentBlock } from 'components/ContentBlock';
 import { PageSection } from 'components/PageSection';
-import { ReturnLink } from 'components/ReturnLink';
 import { Spinner } from 'components/Spinner';
-import { Heading, Typography } from 'components/Typography';
-import { tokens } from 'styles/tokens';
-
-import ContentPageStyled from './ContentPage.styles';
+import { Typography } from 'components/Typography';
 
 interface FAQPageProps {
   slug?: string;
@@ -90,41 +86,45 @@ export const FAQsPage: React.FC<FAQPageProps> = (props) => {
       <Head>
         <title>{t('pages.faqs.pageTitle')}</title>
       </Head>
-      <AppLayout theme="resourcesTheme">
-        <ContentPageStyled>
-          <ReturnLink label="Return" href="/resources" />
-          <PageSection>
-            <div style={{ marginBottom: tokens.spacingXSmall }}>
-              <div style={{ marginBottom: tokens.spacingXSmall }}>
-                <Typography type="label" labelType="title" color="blue">
-                  {faqLabel}
-                </Typography>
-              </div>
-              <Heading level="1">{faqTitle}</Heading>
-            </div>
-            {loadingFAQs ? (
-              <Spinner />
-            ) : errorFetchingFAQs ? (
-              <Typography color="error" level="7" type="heading">
-                Error fetching FAQs.
-              </Typography>
-            ) : (
-              <>
-                {faqContents &&
-                  faqContents.map((contentBlock, index) => (
-                    <div ref={contentBlock.ref} key={index}>
-                      <ContentBlock title={contentBlock.title}>
-                        <ContentWithPimcore>
-                          {contentBlock.content}
-                        </ContentWithPimcore>
-                      </ContentBlock>
-                    </div>
-                  ))}
-              </>
-            )}
+      <ContentPageLayout label={faqLabel} title={faqTitle}>
+        {loadingFAQs ? (
+          <PageSection centered verticalPadding="large">
+            <Spinner />
           </PageSection>
-        </ContentPageStyled>
-      </AppLayout>
+        ) : errorFetchingFAQs ? (
+          <PageSection centered verticalPadding="large">
+            <Typography color="error" level="7" type="heading">
+              Error fetching FAQs.
+            </Typography>
+          </PageSection>
+        ) : (
+          renderContentOf(faqContents)
+        )}
+      </ContentPageLayout>
     </>
   );
+};
+
+const renderContentOf = (
+  faqContents: {
+    ref: RefObject<HTMLDivElement>;
+    title: string;
+    content: string;
+  }[]
+) => {
+  const contents: React.ReactNode[] = [];
+  if (faqContents) {
+    {
+      faqContents.map((contentBlock, index) =>
+        contents.push(
+          <PageSection>
+            <ContentBlock title={contentBlock.title} scale="large" key={index}>
+              <ContentWithPimcore>{contentBlock.content}</ContentWithPimcore>
+            </ContentBlock>
+          </PageSection>
+        )
+      );
+    }
+  }
+  return contents;
 };

@@ -39,7 +39,7 @@ export * from './ReturnLink';
 export * from './Select';
 export * from './Spinner';
 export * from './Step';
-export * from './StepTitle';
+export * from './SubTitle';
 export * from './StyleGuide/StyleLabel';
 export * from './Table';
 export * from './Textarea';

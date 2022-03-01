@@ -18,9 +18,13 @@ export interface PageSectionProps extends ContainerProps, GridProps {
  */
 const PageSection: React.FC<PageSectionProps> = (props) => {
   return (
-    <PageSectionStyled narrow={props.narrow} centered>
+    <PageSectionStyled
+      narrow={props.narrow}
+      centered
+      horizontalPadding={props.horizontalPadding}
+    >
       {props.title && (
-        <header>
+        <header className="page-section__header">
           <Typography type="heading" level="2">
             {props.title}
           </Typography>

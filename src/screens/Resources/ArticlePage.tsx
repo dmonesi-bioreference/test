@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 
-import { AppLayout } from 'app/components/AppLayout';
+import { ContentPageLayout } from 'app/components/AppLayout';
 import { ContentWithPimcore } from 'app/components/ContentElements';
 import {
   useAppEvents,
@@ -11,12 +11,8 @@ import {
 } from 'app/components/Shell';
 import { ContentBlock } from 'components/ContentBlock';
 import { PageSection } from 'components/PageSection';
-import { ReturnLink } from 'components/ReturnLink';
 import { Spinner } from 'components/Spinner';
-import { Heading, Typography } from 'components/Typography';
-import { tokens } from 'styles/tokens';
-
-import ContentPageStyled from './ContentPage.styles';
+import { Typography } from 'components/Typography';
 
 interface ArticlePageProps {
   articleIdentifier?: string;
@@ -65,43 +61,42 @@ export const ArticlePage: React.FC<ArticlePageProps> = (props) => {
           })}
         </title>
       </Head>
-      <AppLayout theme="resourcesTheme">
-        <ContentPageStyled>
-          <ReturnLink label="Return" href="/resources" />
-          <PageSection>
-            <div style={{ marginBottom: tokens.spacingXSmall }}>
-              <div style={{ marginBottom: tokens.spacingXSmall }}>
-                <Typography type="label" labelType="title" color="blue">
-                  {article ? article.label : ''}
-                </Typography>
-              </div>
-              <Heading level="1">{article ? article.title : ''}</Heading>
-            </div>
-            {loading ? (
-              <Spinner />
-            ) : error ? (
-              <Typography color="error" level="7" type="heading">
-                {t('pages.articles.errorFetchingArticle')}
-              </Typography>
-            ) : (
-              article &&
-              article.contents && (
-                <>
-                  {article.contents.map((contentBlock, index) => (
-                    <React.Fragment key={index}>
-                      <ContentBlock title={contentBlock.title}>
-                        <ContentWithPimcore>
-                          {contentBlock.content}
-                        </ContentWithPimcore>
-                      </ContentBlock>
-                    </React.Fragment>
-                  ))}
-                </>
-              )
-            )}
+      <ContentPageLayout
+        label={article && article.label}
+        title={article && article.title}
+      >
+        {loading ? (
+          <PageSection centered verticalPadding="large">
+            <Spinner />
           </PageSection>
-        </ContentPageStyled>
-      </AppLayout>
+        ) : error ? (
+          <PageSection centered verticalPadding="large">
+            <Typography color="error" level="7" type="heading">
+              {t('pages.articles.errorFetchingArticle')}
+            </Typography>
+          </PageSection>
+        ) : (
+          renderContentOf(article)
+        )}
+      </ContentPageLayout>
     </>
   );
+};
+
+const renderContentOf = (article: Article | undefined) => {
+  const contents: React.ReactNode[] = [];
+  if (article && article.contents) {
+    {
+      article.contents.map((contentBlock, index) =>
+        contents.push(
+          <PageSection>
+            <ContentBlock title={contentBlock.title} scale="large" key={index}>
+              <ContentWithPimcore>{contentBlock.content}</ContentWithPimcore>
+            </ContentBlock>
+          </PageSection>
+        )
+      );
+    }
+  }
+  return contents;
 };

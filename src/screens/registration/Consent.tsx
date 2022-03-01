@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 
+import { RegistrationPageLayout } from 'app/components/AppLayout';
 import { ConsentElements } from 'app/components/ConsentElements';
 import { Content } from 'app/components/ContentElements/Content';
 import {
@@ -12,26 +13,8 @@ import {
 import { Button } from 'components/Button';
 import { Grid } from 'components/Grid';
 import { ScrollArea } from 'components/ScrollArea';
-import { Heading } from 'components/Typography';
 import { slideInOut } from 'styles/animations';
 import { trackSignUpFlowEvent } from 'tracking';
-
-export function ConsentHeader() {
-  const t = useAppTranslation();
-  return (
-    <motion.div
-      variants={slideInOut.variants}
-      initial={slideInOut.states.enter}
-      animate={slideInOut.states.center}
-      exit={slideInOut.states.exit}
-      transition={slideInOut.transition}
-    >
-      <Heading level="1" alignment="center">
-        {t('sections.furtherRegistration.consent.title')}
-      </Heading>
-    </motion.div>
-  );
-}
 
 export function Consent() {
   const t = useAppTranslation();
@@ -59,16 +42,16 @@ export function Consent() {
       transition={slideInOut.transition}
       onSubmit={(event) => event.preventDefault()}
     >
-      <Grid spacing="extraLarge">
+      <RegistrationPageLayout
+        title={t('sections.furtherRegistration.consent.title')}
+      >
         <ScrollArea>
           <Content withBreaks={true}>{t('forms.consent.description')}</Content>
         </ScrollArea>
-
         <Grid spacing="small">
           <ConsentElements.Terms />
           <ConsentElements.Consent />
         </Grid>
-
         <Button
           kind="primary"
           onClick={events.nextStep}
@@ -77,7 +60,7 @@ export function Consent() {
         >
           {submitButtonText}
         </Button>
-      </Grid>
+      </RegistrationPageLayout>
     </motion.form>
   );
 }

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 
+import { RegistrationPageLayout } from 'app/components/AppLayout';
 import { CaregiverContactElements } from 'app/components/CaregiverContactElements';
 import {
   useAppEvents,
@@ -10,31 +11,8 @@ import {
 import { Button } from 'components/Button';
 import { Grid } from 'components/Grid';
 import { ProcessBar } from 'components/ProcessBar';
-import { StepTitle } from 'components/StepTitle';
-import { Heading } from 'components/Typography';
 import { slideInOut } from 'styles/animations';
 import { trackSignUpFlowEvent } from 'tracking';
-
-export function CaregiverContactHeader() {
-  const t = useAppTranslation();
-  return (
-    <motion.div
-      variants={slideInOut.variants}
-      initial={slideInOut.states.enter}
-      animate={slideInOut.states.center}
-      exit={slideInOut.states.exit}
-      transition={slideInOut.transition}
-    >
-      <Grid>
-        <StepTitle number="2" />
-        <Heading level="4" alignment="center">
-          {t('sections.furtherRegistration.stepTwo.subTitle')}
-        </Heading>
-        <ProcessBar stepsAmount={4} currentStep={2} />
-      </Grid>
-    </motion.div>
-  );
-}
 
 export function CaregiverContact() {
   const t = useAppTranslation();
@@ -58,9 +36,15 @@ export function CaregiverContact() {
       transition={slideInOut.transition}
       onSubmit={(event) => event.preventDefault()}
     >
-      <Grid verticalPadding="small">
-        <CaregiverContactElements.EmailAddress />
-        <CaregiverContactElements.PhoneNumber />
+      <RegistrationPageLayout
+        description={t('sections.furtherRegistration.stepTwo.subTitle')}
+        subTitle="Step 2"
+      >
+        <ProcessBar stepsAmount={4} currentStep={2} />
+        <Grid>
+          <CaregiverContactElements.EmailAddress />
+          <CaregiverContactElements.PhoneNumber />
+        </Grid>
         <Button
           kind="primary"
           onClick={events.nextStep}
@@ -69,7 +53,7 @@ export function CaregiverContact() {
         >
           {submitButtonText}
         </Button>
-      </Grid>
+      </RegistrationPageLayout>
     </motion.form>
   );
 }

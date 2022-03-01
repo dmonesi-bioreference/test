@@ -2,18 +2,19 @@ import styled from 'styled-components';
 
 import { base, tokens } from 'styles';
 
-const StepTitleStyled = styled.div`
-  ${base}
+const SubTitleStyled = styled.div`
+  ${base};
 
-  &.step-title {
+  &.sub-title {
     display: flex;
     justify-content: center;
+    padding: ${tokens.spacing} 0;
   }
 
-  .step-title__label {
+  .sub-title__label {
     margin-bottom: ${tokens.spacingXSmall};
     padding: 0 ${tokens.spacingLarge} 0 ${tokens.spacingLarge};
   }
 `;
 
-export default StepTitleStyled;
+export default SubTitleStyled;

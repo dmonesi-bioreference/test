@@ -10,11 +10,21 @@ export const generic: FAQ = {
   },
   slug: 'slug',
   label: 'label',
-  title: 'What is Genetic Testing?',
+  title: 'Genetic Testing FAQs',
   blurb: 'blurb',
   content: [
     {
-      title: 'Title',
+      title: '',
+      content:
+        '<p>Understanding the basic elements of genetics and the language used by clinicians will help you have a more productive conversation when your results are ready.</p>',
+    },
+    {
+      title: 'What is Genetic Testing?',
+      content:
+        '<p>Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>',
+    },
+    {
+      title: 'What is DNA?',
       content:
         '<p>Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>',
     },

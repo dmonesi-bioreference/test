@@ -7,6 +7,7 @@ export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   narrow?: boolean;
   /** Center */
   centered?: boolean;
+  horizontalPadding?: 'none' | 'base' | 'large';
 }
 
 const Container: React.FC<ContainerProps> = (props) => {
@@ -15,6 +16,7 @@ const Container: React.FC<ContainerProps> = (props) => {
       className={clsx(
         props.narrow && 'narrow',
         props.centered && 'centered',
+        `horizontal-padding--${props.horizontalPadding}`,
         props.className
       )}
       style={props.style}

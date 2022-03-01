@@ -188,7 +188,7 @@ export const tokens = {
 
   /* line-height */
   lineHeightDense: '1.25',
-  lineHeightNormal: '1.5',
+  lineHeightNormal: '1.6',
   lineHeightLoose: '2.2',
   lineHeightSelf: '1',
 
@@ -337,6 +337,7 @@ export const containers = {
   maxPageWidth: '960',
   maxNarrowPageWidth: '600',
   spacingGutter: tokens.spacingLarge,
+  spacingPageBottom: tokens.spacingXxxxLarge,
   scrollArea: {
     minHeight: '400px',
     height: '60vh',

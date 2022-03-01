@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import { AppLayout } from 'app/components/AppLayout';
+import { MainNavPageLayout } from 'app/components/AppLayout';
 import {
   ArticleCards,
   FAQCards,
@@ -9,7 +9,6 @@ import {
 import { useAppTranslation, useAppState } from 'app/components/Shell';
 import { useContent } from 'app/hooks';
 import { PageSection } from 'components/PageSection';
-import { Heading } from 'components/Typography';
 
 export const ResourcesPage = () => {
   const t = useAppTranslation();
@@ -22,23 +21,23 @@ export const ResourcesPage = () => {
       <Head>
         <title>{t('pages.resources.pageTitle')}</title>
       </Head>
-      <AppLayout
-        containsCards
+      <MainNavPageLayout
         theme="resourcesTheme"
         title={t('pages.resources.title')}
         description={t('pages.resources.description')}
         isLoading={
           requesting || loadingFAQs || loadingArticles || loadingAudios
         }
-        hasPatientBanner
       >
         <PageSection>
           <AudioCard />
           <FAQCards />
-          <Heading>{t('pages.resources.section.articles.title')}</Heading>
+        </PageSection>
+
+        <PageSection title={t('pages.resources.section.articles.title')}>
           <ArticleCards />
         </PageSection>
-      </AppLayout>
+      </MainNavPageLayout>
     </>
   );
 };

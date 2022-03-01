@@ -4,16 +4,6 @@ import IconStyled from 'components/Icon/Icon.styles';
 import { colors, tokens } from 'styles';
 
 const ResultsStyled = styled.div`
-  .results-ready__description {
-    margin-bottom: ${tokens.spacingLarge};
-  }
-
-  .results-ready__audio {
-    display: flex;
-    justify-content: center;
-    margin-bottom: ${tokens.spacingLarge};
-  }
-
   .results-ready__report-attention {
     display: flex;
     padding: ${tokens.spacing} ${tokens.spacingXxxLarge} ${tokens.spacing}

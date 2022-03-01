@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import { AppLayout } from 'app/components/AppLayout';
+import { TerminusPageLayout } from 'app/components/AppLayout';
 import { useAppTranslation } from 'app/components/Shell';
 import { ActionGroup } from 'components/ActionGroup';
 import { Button } from 'components/Button';
@@ -15,7 +15,10 @@ export const DeleteAccount = () => {
       <Head>
         <title>{t('pages.deleteAccount.pageTitle')}</title>
       </Head>
-      <AppLayout title={t('pages.deleteAccount.title')} hasReturnLink>
+      <TerminusPageLayout
+        title={t('pages.deleteAccount.title')}
+        theme="dangerTheme"
+      >
         <PageSection>
           <ContentBlock scale="small">
             {t('pages.deleteAccount.description.paragraph1', {
@@ -38,7 +41,9 @@ export const DeleteAccount = () => {
           >
             {t('pages.deleteAccount.implications.1.answer')}
           </ContentBlock>
-          <ActionGroup narrow topPadding>
+        </PageSection>
+        <PageSection>
+          <ActionGroup narrow>
             <Button
               href={`mailto:${t(
                 'application.customerServiceEmailAddress'
@@ -60,7 +65,7 @@ export const DeleteAccount = () => {
             </Button>
           </ActionGroup>
         </PageSection>
-      </AppLayout>
+      </TerminusPageLayout>
     </>
   );
 };
