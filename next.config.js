@@ -1,25 +1,27 @@
 const httpsOnly = process.env.NODE_ENV == 'production' ? 'https:' : '';
-const scriptUnsafeEval = process.env.NODE_ENV == 'production' ? '' : '\'unsafe-eval\'';
-const cssUnsafeInline = process.env.NODE_ENV == 'production' ? '\'unsafe-inline\'' : '\'unsafe-inline\'';
+const scriptUnsafeEval =
+  process.env.NODE_ENV == 'production' ? '' : "'unsafe-eval'";
+const cssUnsafeInline =
+  process.env.NODE_ENV == 'production' ? "'unsafe-inline'" : "'unsafe-inline'";
 const ContentSecurityPolicy = `
   navigate-to ${httpsOnly} ${process.env.AUTH0_ISSUER_BASE_URL};
   default-src 'none';
   child-src 'none';
-  connect-src 'self' https://www.googletagmanager.com https://tagmanager.google.com https://cdn.cookielaw.org https://www.google-analytics.com https://*.onetrust.com;
+  connect-src 'self' https://www.googletagmanager.com https://tagmanager.google.com https://cdn.cookielaw.org https://www.google-analytics.com https://*.onetrust.com https://optanon.blob.core.windows.net;
   font-src 'self' https://fonts.gstatic.com data:;
   frame-src 'none';
-  img-src 'self' data: https://*.genedx.com https://ssl.gstatic.com https://www.gstatic.com;
+  img-src 'self' data: https://*.genedx.com https://ssl.gstatic.com https://www.gstatic.com https://fonts.gstatic.com;
   media-src 'self' data: https://*.genedx.com;
   object-src 'none';
   script-src 'nonce-%REPLACE_WITH_NONCE%' 'strict-dynamic' 'self' https://tagmanager.google.com ${scriptUnsafeEval};
-  style-src 'self' https://tagmanager.google.com https://fonts.googleapis.com ${cssUnsafeInline};
+  style-src 'self' https://www.googletagmanager.com https://tagmanager.google.com https://fonts.googleapis.com ${cssUnsafeInline};
   form-action 'self';
   frame-ancestors 'none';
   base-uri 'self';
   worker-src 'none';
   manifest-src 'self';
   prefetch-src 'self' ;
-`
+`;
 
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
@@ -34,7 +36,7 @@ module.exports = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim()
+            value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim(),
           },
 
           // The following are not strictly necessary with a strong CSP
@@ -42,32 +44,32 @@ module.exports = {
           {
             // Don't let the page render within an iframe
             key: 'X-Frame-Options',
-            value: 'DENY'
+            value: 'DENY',
           },
           {
             // Prevents page load when reflected XSS attacks
             // are detected
             key: 'X-XSS-Protection',
-            value: '1; mode=block'
+            value: '1; mode=block',
           },
           {
             // Don't let the browser guess content types
             key: 'X-Content-Type-Options',
-            value: 'nosniff'
+            value: 'nosniff',
           },
           {
             // Reduces amount of information included in the referrer header
             key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin' // TODO: will this upset GTM
+            value: 'origin-when-cross-origin', // TODO: will this upset GTM
           },
           {
             // Don't let HTTPS pages request HTTP content
             key: 'Strict-Transport-Security',
-            value: 'max-age=63072000; includeSubDomains; preload'
-          }
-        ]
-      }
-    ]
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
+        ],
+      },
+    ];
   },
   reactStrictMode: true,
   images: {
