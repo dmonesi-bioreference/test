@@ -8,7 +8,7 @@ import { Pages } from 'test-utils/pages';
 const authApi = Api.Auth.from(cy);
 const resultsPage = Pages.Results.from(cy);
 
-describe('on the results page', () => {  
+describe('on the results page', () => {
   describe('without a valid session', () => {
     beforeEach(() => {
       authApi.logout();
@@ -59,8 +59,8 @@ describe('on the results page', () => {
           Cypress.env('AUTH0_PASSWORD_RESULTS_VIEWED')
         );
       });
-      
-      it('it dispalys the tests as ready', () => {
+
+      it('it displays the tests as ready', () => {
         resultsPage.open();
         resultsPage.hasText(t('pages.results.ready.title'));
       });

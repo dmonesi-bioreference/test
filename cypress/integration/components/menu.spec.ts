@@ -9,6 +9,7 @@ import { Pages } from 'test-utils/pages';
 const healthProfilePage = Pages.HealthProfile.from(cy);
 const landingPage = Pages.Landing.from(cy);
 const resultsPage = Pages.Results.from(cy);
+const resourcesPage = Pages.Resources.from(cy);
 const menuComponent = Components.Menu.from(cy);
 const authApi = Api.Auth.from(cy);
 
@@ -34,40 +35,52 @@ describe('on the landing page', () => {
     });
 
     beforeEach(() => {
-      landingPage.open()
-    })
+      landingPage.open();
+    });
 
     it('has a menu', () => {
       menuComponent.openMenu();
     });
-    
+
     it('can navigate to the home page', () => {
-      menuComponent.clickMenuOption(t('sections.mainNav.home.label'))
-      cy.url().should('equal', `${Cypress.config().baseUrl}${landingPage.rootUrl}`)
-    })
-    
+      menuComponent.clickMenuOption(t('sections.mainNav.home.label'));
+      cy.url().should(
+        'equal',
+        `${Cypress.config().baseUrl}${landingPage.rootUrl}`
+      );
+    });
+
     it('can navigate to the results page', () => {
-      menuComponent.clickMenuOption(t('sections.mainNav.results.label'))
-      cy.url().should('equal', `${Cypress.config().baseUrl}${resultsPage.rootUrl}`)
-    })
-    
+      menuComponent.clickMenuOption(t('sections.mainNav.results.label'));
+      cy.url().should(
+        'equal',
+        `${Cypress.config().baseUrl}${resultsPage.rootUrl}`
+      );
+    });
+
     it('can navigate to the health profile page', () => {
-      menuComponent.clickMenuOption(t('sections.mainNav.healthProfile.label'))
-      cy.url().should('equal', `${Cypress.config().baseUrl}${healthProfilePage.rootUrl}`)
-    })
-    
+      menuComponent.clickMenuOption(t('sections.mainNav.healthProfile.label'));
+      cy.url().should(
+        'equal',
+        `${Cypress.config().baseUrl}${healthProfilePage.rootUrl}`
+      );
+    });
+
     it('can navigate to the resources page', () => {
-      menuComponent.clickMenuOption(t('sections.mainNav.resources.label'))
-      // cy.url().should('equal', `${Cypress.config().baseUrl}${resourcesPage.rootUrl}`)
-    })
-    
+      menuComponent.clickMenuOption(t('sections.mainNav.resources.label'));
+      cy.url().should(
+        'equal',
+        `${Cypress.config().baseUrl}${resourcesPage.rootUrl}`
+      );
+    });
+
     it('can navigate to the settings page', () => {
-      menuComponent.clickMenuOption(t('sections.mainNav.settings.label'))
+      menuComponent.clickMenuOption(t('sections.mainNav.settings.label'));
       // cy.url().should('equal', `${Cypress.config().baseUrl}${settingsPage.rootUrl}`)
-    })
+    });
 
     it('can logout', () => {
-      menuComponent.clickMenuOption(t('sections.mainNav.logout.label'))
-    })
+      menuComponent.clickMenuOption(t('sections.mainNav.logout.label'));
+    });
   });
 });

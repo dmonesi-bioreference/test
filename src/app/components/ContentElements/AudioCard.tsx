@@ -21,7 +21,7 @@ export const AudioCard = () => {
   const audiosByTestStatus = useContentByTestStatus(audios);
   const firstAudio = audiosByTestStatus.slice(0, 1);
 
-  const audioCards = firstAudio.map((audio) => {
+  const audioCard = firstAudio.map((audio) => {
     return (
       <MediaElements.Audio
         avatarImage={audio?.avatar?.fullpath as string}
@@ -53,7 +53,10 @@ export const AudioCard = () => {
           {t('pages.resources.section.audios.error')}
         </Typography>
       )}
-      {audioCards}
+
+      {audiosByTestStatus.length !== 0 ? (
+        <div data-testid="resources--audio-card">{audioCard}</div>
+      ) : null}
     </AudioCardStyled>
   );
 };

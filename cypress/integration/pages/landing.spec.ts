@@ -8,7 +8,7 @@ import { Pages } from 'test-utils/pages';
 const authApi = Api.Auth.from(cy);
 const landingPage = Pages.Landing.from(cy);
 
-describe('on the landing page', () => {  
+describe('on the landing page', () => {
   describe('without a valid session', () => {
     beforeEach(() => {
       authApi.logout();
@@ -61,7 +61,7 @@ describe('on the landing page', () => {
           Cypress.env('AUTH0_PASSWORD_RESULTS_READY')
         );
       });
-      
+
       it('it displays the tests as ready', () => {
         landingPage.open();
         landingPage.hasText(t('sections.results.ready'));
@@ -77,8 +77,8 @@ describe('on the landing page', () => {
           Cypress.env('AUTH0_PASSWORD_RESULTS_VIEWED')
         );
       });
-      
-      it('it dispalys the tests as ready', () => {
+
+      it('it displays the tests as ready', () => {
         landingPage.open();
         landingPage.hasText(t('sections.results.ready'));
         // landingPage.hasText(t('sections.results.doctorShared'));

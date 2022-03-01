@@ -60,16 +60,18 @@ export const ArticleCards: React.FC<ArticleCardsProps> = (props) => {
       ) : null}
 
       {articlesByFeature.length !== 0 ? (
-        <Carousel
-          showIndicator={false}
-          externalControl={{
-            prevText: t('pages.resources.section.articles.prevArticle'),
-            nextText: t('pages.resources.section.articles.nextArticle'),
-          }}
-          enablePeak={true}
-        >
-          {articleCards}
-        </Carousel>
+        <div data-testid="resources--articles-carousel">
+          <Carousel
+            showIndicator={false}
+            externalControl={{
+              prevText: t('pages.resources.section.articles.prevArticle'),
+              nextText: t('pages.resources.section.articles.nextArticle'),
+            }}
+            enablePeak={true}
+          >
+            {articleCards}
+          </Carousel>
+        </div>
       ) : null}
     </div>
   );
