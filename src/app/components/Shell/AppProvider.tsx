@@ -17,7 +17,6 @@ export interface AppProviderProps {
   onAppointmentStatus?: AppEventFn<{
     appointmentStatus: 'at appointment' | 'after appointment' | undefined;
   }>;
-  onReport?: AppEventFn<Blob | undefined>;
   onPatientGuid?: AppEventFn<{ guid: string; source: string }>;
   onRegistration?: AppEventFn<unknown>;
 }
@@ -41,7 +40,6 @@ export function AppProvider({
   onAppointmentStatus: handleAppointmentStatus = async () => ({
     appointmentStatus: undefined,
   }),
-  onReport: handleReport = async () => undefined,
   onPatientGuid: handlePatientGuid = getPatientInfo,
   onSession: handleSession = async () => emptySession,
   onRegistration: handleRegistration = async () => undefined,
@@ -87,7 +85,6 @@ export function AppProvider({
     handleSession,
     handleFetchTests,
     handleAppointmentStatus,
-    handleReport,
     handlePatientGuid,
     handleRegistration,
     ...requestHandlers,
@@ -113,7 +110,11 @@ export function AppProvider({
         getTestStatus: () => send('CHECK_TESTS'),
         getAppointmentStatus: () => send('GET_APPOINTMENT_STATUS'),
         viewTestResults: () => send('VIEW_TEST_RESULTS'),
-        fetchReport: () => send('FETCH_REPORT'),
+        loadReport: (payload?: { testId: string }) =>
+          send({
+            type: 'LOAD_REPORT',
+            testId: payload ? payload.testId : ''
+          }),
         setArticleIdentifier: (payload?: { articleIdentifier: string }) =>
           send({
             type: 'SET_ARTICLE_IDENTIFIER',

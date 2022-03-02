@@ -65,14 +65,8 @@ describe('Tests.report', () => {
     );
 
     const context = {
-      tests: {
-        tests: [
-          {
-            id: '5678',
-            percentComplete: 0,
-            reportId,
-          },
-        ],
+      test: {
+        LabAccessionId: reportId
       },
     };
 
@@ -82,11 +76,11 @@ describe('Tests.report', () => {
   });
 
   it('rejects 4xx with response body', async () => {
-    const requests = [401] as const;
+    const requests = [400, 401] as const;
 
     for (const status of requests) {
       server.use(
-        rest.get('/api/tests', (_request, response, context) =>
+        rest.get('/api/tests/report/', (_request, response, context) =>
           response(context.status(status), context.json({}))
         )
       );

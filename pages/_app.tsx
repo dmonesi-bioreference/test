@@ -63,7 +63,6 @@ function WebApp({ Component, pageProps }: AppProps) {
       }}
       onIdentity={Api.Identity.validate}
       onLoadTests={Api.Tests.list}
-      onReport={Api.Tests.report}
     >
       <Head>
         <title>GeneDx</title>

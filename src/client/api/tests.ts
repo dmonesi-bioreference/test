@@ -11,10 +11,12 @@ export const Tests = {
       return Promise.reject({});
     }
   },
-  report: async (_context: AppContext = {} as any): Promise<Blob> => {
-    if (!_context.tests || _context.tests.tests.length == 0) return Promise.reject({});
+  report: async (context: TestContext = {} as any): Promise<Blob> => {
+    if (!context.test || !context.test.LabAccessionId) return Promise.reject({});
 
-    const result = await client.get(`/api/tests/report/${_context.tests.tests[0].reportId}`);
+    const reportId = context.test.LabAccessionId;
+
+    const result = await client.get(`/api/tests/report/${reportId}`);
 
     if (result.ok) {
       return await result.blob();

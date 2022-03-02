@@ -1,11 +1,18 @@
-import { assign, createMachine, send, sendParent } from 'xstate';
+import { assign, createMachine, DoneInvokeEvent, send, sendParent } from 'xstate';
 
-export type TestContext = {
-  test: Test;
-  percentComplete?: number;
-  expectedResultsDate?: string;
-  lastUpdated?: string;
-  reportId?: string;
+import geneticTestReportTemplate from 'assets/images/png/geneticTestReportTemplate.png';
+
+declare global {
+  type TestContext = {
+    test: Test;
+    percentComplete?: number;
+    expectedResultsDate?: string;
+    lastUpdated?: string;
+    report?: {
+      id: string;
+      asset: { pdf: Blob; thumbnail: string | StaticImageData } | undefined;
+    }
+  }
 };
 
 export function isTestContext(
@@ -17,7 +24,7 @@ export function isTestContext(
     'percentComplete',
     'expectedResultsDate',
     'lastUpdated',
-    'reportId',
+    'report',
   ];
 
   return Object.keys(candidate as object).every((key) => props.includes(key));
@@ -26,15 +33,14 @@ export function isTestContext(
 const testMachine = createMachine(
   {
     id: 'child',
-    initial: 'starting',
+    initial: 'resolving',
     states: {
-      starting: {
+      resolving: {
         entry: [
           'resolveTestStatus',
           'calculatePercent',
           'getExpectedResultsDate',
           'getLastUpdatedDate',
-          'getReportId',
         ],
         on: {
           WAITING: 'waiting',
@@ -44,7 +50,68 @@ const testMachine = createMachine(
         },
       },
       waiting: {},
-      resultsReady: {},
+      resultsReady: {
+        type: 'parallel',
+        states: {
+          report: {
+            type: 'compound',
+            initial: 'idle',
+            states: {
+              idle: {
+                on: {
+                  FETCH_REPORT: 'fetchingReport',
+                },
+              },
+              fetchingReport: {
+                invoke: {
+                  src: 'fetchReport',
+                  onDone: {
+                    target: 'reportFetched',
+                    actions: [
+                      assign((context: TestContext, event: DoneInvokeEvent<Blob>) => {
+                        const data = ('data' in event ? event?.data : undefined) as Blob;
+                
+                        if (!data) return context;
+                
+                        return {
+                          ...context,
+                          report: {
+                            ...context.report,
+                            asset: {
+                              pdf: data,
+                              thumbnail: geneticTestReportTemplate,
+                            },
+                          },
+                        } as TestContext;
+                      }),
+                    ],
+                  },
+                  onError: 'errorFetchingReport',
+                },
+              },
+              reportFetched: {
+                entry: [
+                  sendParent((context: TestContext) => ({
+                    ...context,
+                    type: 'REPORT_FETCH_SUCCESS',
+                  }))
+                ],
+              },
+              errorFetchingReport: {
+                entry: [
+                  sendParent((context: TestContext) => ({
+                    ...context,
+                    type: 'REPORT_FETCH_FAILED',
+                  }))
+                ],
+                on: {
+                  FETCH_REPORT: 'fetchingReport',
+                },
+              },
+            },
+          },
+        },
+      },
       canceled: {},
       unknown: {},
     },
@@ -157,13 +224,6 @@ const testMachine = createMachine(
             date.getHours() > 12 ? 'pm' : 'am'
           } ${day}`,
         };
-      }),
-      getReportId: assign((context: TestContext) => {
-        if (!context.test) return { ...context };
-
-        const { LabAccessionId } = context.test;
-
-        return { ...context, reportId: LabAccessionId }
       }),
     },
   }

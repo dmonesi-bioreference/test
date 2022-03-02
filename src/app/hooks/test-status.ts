@@ -23,8 +23,8 @@ export function useTestStatus() {
       'tests.allComplete.appointment.afterAppointment'
     ),
     isViewed: useAppState('tests.allComplete.view'),
-    loadingReport: useAppState('tests.allComplete.report.fetchingReport'),
-    errorLoadingReport: useAppState('tests.allComplete.report.errorFetchingReport'),
+    loadingReport: useAppState('tests.allComplete.report.loadingReport'),
+    errorLoadingReport: useAppState('tests.allComplete.report.errorLoadingReport'),
   };
 
   return [state] as const;

@@ -1,16 +1,19 @@
 import { assign } from '@xstate/immer';
 import { ActorRef, EventObject, send, spawn, State } from 'xstate';
 
-import geneticTestReportTemplate from 'assets/images/png/geneticTestReportTemplate.png';
+import { Api } from 'client/api';
 
-import testMachine, { isTestContext, TestContext } from './testMachine';
+import testMachine, { isTestContext } from './testMachine';
 
 declare global {
   interface AppEventMap {
     getTestStatus: { type: 'CHECK_TESTS' };
     getAppointmentStatus: { type: 'GET_APPOINTMENT_STATUS' };
     viewTestResults: { type: 'VIEW_TEST_RESULTS' };
-    fetchReport: { type: 'FETCH_REPORT' };
+    loadReport: {
+      type: 'LOAD_REPORT';
+      testId: string;
+    };
   }
 }
 
@@ -23,13 +26,21 @@ export const actions = {
     data.forEach((test) => {
       context.tests.actors = [
         ...context.tests.actors,
-        spawn(testMachine.withContext({ test }), {
-          name: `test-${test.TestID}`,
-          sync: false,
-        }),
+        spawn(
+          testMachine
+            .withConfig({ services: { fetchReport: Api.Tests.report } })
+            .withContext({ test }),
+          {
+            name: `test-${test.TestID}`,
+            sync: false,
+          }
+        ),
       ];
     });
   }),
+  requestSyncWithActors: (context: AppContext) => {
+    context.tests.actors.forEach((actor) => actor.send('SYNC_REQUEST'));
+  },
   syncTests: assign((context: AppContext, event: AppEvents) => {
     if (isTestContext(event)) {
       context.tests.tests = [
@@ -39,7 +50,6 @@ export const actions = {
           percentComplete: event.percentComplete ?? 0,
           expectedResultsDate: event.expectedResultsDate,
           lastUpdated: event.lastUpdated,
-          reportId: event.reportId,
         }
       ];
     }
@@ -55,6 +65,31 @@ export const actions = {
 
     if (testsReadyCount === testsCount) return { type: 'READY' };
     return { type: 'NOT_READY' };
+  }),
+  requestReportFromActor: assign((context: AppContext, event: AppEvents) => {
+    const testId =
+      'testId' in event ? event?.testId : '';
+
+    const test = context.tests.tests.find(test => test.id === testId);
+
+    if (!test || test.report) return { type: 'REPORT_FETCHED' };
+
+    const actor = context.tests.actors.find((actor) => actor.id === `test-${test.id}`);
+
+    if (actor) {
+      actor.send('FETCH_REPORT');
+    }
+  }),
+  loadReportFromActor: assign((context: AppContext, event: AppEvents) => {
+    if (isTestContext(event)) {
+      context.tests.tests = context.tests.tests.map((test) => {
+        if (test.id !== event.test.TestID) return test;
+        return {
+          ...test,
+          report: event.report?.asset,
+        }
+      });
+    }
   }),
   resolveAppointmentStatus: send((_, event: AppEvents) => {
     const data = ('data' in event ? event?.data : {}) as {
@@ -74,16 +109,6 @@ export const actions = {
         return { type: 'BEFORE_APPOINTMENT' };
     }
   }),
-  storeReport: assign((context: AppContext, event: AppEvents) => {
-    const data = ('data' in event ? event?.data : {}) as Blob;
-
-    if (!data) return;
-
-    context.tests.report = {
-      pdf: data,
-      thumbnail: geneticTestReportTemplate,
-    };
-  }),
 };
 
 export const context: {
@@ -96,13 +121,11 @@ export const context: {
     percentComplete: number;
     expectedResultsDate?: string;
     lastUpdated?: string;
-    reportId?: string;
+    report?: { pdf: Blob; thumbnail: string | StaticImageData } | undefined;
   }[];
-  report: { pdf: Blob; thumbnail: string | StaticImageData } | undefined;
 } = {
   actors: [],
   tests: [],
-  report: undefined,
 };
 
 export const machine = {
@@ -128,12 +151,7 @@ export const machine = {
           },
         },
         syncing: {
-          entry: [
-            (context: AppContext) =>
-              context.tests.actors.forEach((actor) =>
-                actor.send('SYNC_REQUEST')
-              ),
-          ],
+          entry: ['requestSyncWithActors'],
           on: {
             SYNC_RESPONSE: {
               actions: ['syncTests', 'checkSyncComplete'],
@@ -216,23 +234,28 @@ export const machine = {
           states: {
             idle: {
               on: {
-                FETCH_REPORT: 'fetchingReport',
+                LOAD_REPORT: {
+                  target: 'loadingReport',
+                  actions: ['requestReportFromActor'],
+                }
               },
             },
-            fetchingReport: {
-              invoke: {
-                src: 'handleReport',
-                onDone: {
-                  target: 'reportFetched',
-                  actions: 'storeReport',
-                },
-                onError: 'errorFetchingReport',
-              },
-            },
-            reportFetched: {},
-            errorFetchingReport: {
+            loadingReport: {
               on: {
-                FETCH_REPORT: 'fetchingReport',
+                REPORT_FETCHED: 'idle',
+                REPORT_FETCH_SUCCESS: {
+                  target: 'idle',
+                  actions: ['loadReportFromActor'],
+                },
+                REPORT_FETCH_FAILED: 'errorLoadingReport'
+              },
+            },
+            errorLoadingReport: {
+              on: {
+                LOAD_REPORT: {
+                  target: 'loadingReport',
+                  actions: ['requestReportFromActor'],
+                },
               },
             },
           },
