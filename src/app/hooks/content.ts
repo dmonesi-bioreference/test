@@ -1,6 +1,14 @@
 import { useAppSelector, useAppState } from 'app/components/Shell';
 import { useTestStatus } from 'app/hooks';
 
+/**
+ * useContent is a hook that allows you access the state of requests for CMS content.
+ * This hook grabs the running xstate requests chart from our app's context, specific to the types of content that are being fetched.
+ * @returns The state of requests for content, either in loading or error states, or returns the content itself e.g. a list of articles.
+ * @example
+ * const [{ articles, loadingArticles, errorFetchingArticles }] = useContent();
+ */
+
 export function useContent() {
   const state = {
     articles: useAppSelector(
@@ -37,13 +45,24 @@ export function useContent() {
       'requests.allOnBoardingCards.failure'
     ),
 
-    avatars: useAppSelector((state) => state.context.requests.allAvatars.values),
+    avatars: useAppSelector(
+      (state) => state.context.requests.allAvatars.values
+    ),
     loadingAvatars: useAppState('requests.allAvatars.requesting'),
     errorFetchingAvatars: useAppState('requests.allAvatars.failure'),
   };
 
   return [state] as const;
 }
+
+/**
+ * useContentByTestStatus is a hook which leverages the `useTestStatus` hook
+ * to filter for content relevant to the status of the results of a test sample.
+ * @param contents A list of content objects, with property 'introduceAt'.
+ * @returns Content filtered by the status of the patients test results.
+ * @example
+ * const articlesByTestStatus = useContentByTestStatus(articles);
+ */
 
 export function useContentByTestStatus<
   T extends { introduceAt?: IntroduceAt | undefined }
@@ -67,6 +86,15 @@ export function useContentByTestStatus<
 
   return articlesByTestStatus();
 }
+
+/**
+ * useContentByPriority is a hook which leverages the `useTestStatus` hook
+ * to order content by priority, 1 being the highest priority.
+ * @param contents A list of content objects, with property 'priority'.
+ * @returns Content ordered by priority.
+ * @example
+ * const articlesByPriority = useContentByPriority(articlesByTestStatus);
+ */
 
 export function useContentByPriority<
   T extends { priority?: number | undefined }

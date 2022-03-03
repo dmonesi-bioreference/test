@@ -1,8 +1,15 @@
 import { useAppSelector, useAppState } from 'app/components/Shell';
 
 /**
- * @returns The current app test state object
+ * useTestStatus is a hook that allows you access the state for the status of a patients test sample.
+ * This hook grabs the running xstate tests chart from our app's context.
+ * Currently, there is no trigger to update the status of a test to `isAtAppointment`, or `isAfterAppointment`.
+ * The state defaults to `isBeforeAppointment` when results are ready.
+ * @returns The state of tests results, either in loading or error states, or returns the test status itself ranging from 'isWaiting' to 'isViewed'.
+ * @example
+ * const [{loading, errorLoading, isWaiting, isBeforeAppointment, isAtAppointment, isAfterAppointment}] = useTestStatus();
  */
+
 export function useTestStatus() {
   const test = useAppSelector((state) => {
     return state.context.tests.tests[0];
