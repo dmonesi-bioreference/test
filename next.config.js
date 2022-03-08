@@ -60,7 +60,7 @@ module.exports = {
           {
             // Reduces amount of information included in the referrer header
             key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin', // TODO: will this upset GTM
+            value: 'origin-when-cross-origin',
           },
           {
             // Don't let HTTPS pages request HTTP content

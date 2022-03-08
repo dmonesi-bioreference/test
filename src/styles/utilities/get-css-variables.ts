@@ -40,7 +40,7 @@ export function getKeypaths<Value>(
 export function getCssVariables(
   theme: typeof defaultTheme
 ): Record<'name' | 'value', string>[] {
-  const variables = [] as Record<'name' | 'value', string>[];
+  const variables: Record<'name' | 'value', string>[] = [];
 
   for (const keyPath of getKeypaths(theme)) {
     const value = get(theme, keyPath) as unknown;

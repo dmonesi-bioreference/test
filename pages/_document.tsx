@@ -10,13 +10,11 @@ import NextDocument, {
 import { ServerStyleSheet } from 'styled-components';
 
 type MyProps = DocumentInitialProps & {
-  nonce: string
-}
+  nonce: string;
+};
 
 export default class Document extends NextDocument<MyProps> {
-  static async getInitialProps(
-    context: DocumentContext
-  ): Promise<MyProps> {
+  static async getInitialProps(context: DocumentContext): Promise<MyProps> {
     const serverSideStyles = new ServerStyleSheet();
     const originalRenderResult = context.renderPage;
     const nonce = nanoid();
@@ -24,8 +22,8 @@ export default class Document extends NextDocument<MyProps> {
     try {
       // Overwrite the nonces in the CSP
       if (context.res) {
-        let cspHeader: string = context.res.getHeader('Content-Security-Policy') as string;
-        if (cspHeader && typeof(cspHeader) == 'string') {
+        let cspHeader = context.res.getHeader('Content-Security-Policy');
+        if (cspHeader && typeof cspHeader == 'string') {
           cspHeader = cspHeader.replace('%REPLACE_WITH_NONCE%', nonce);
           context.res.setHeader('Content-Security-Policy', cspHeader);
         }
@@ -38,7 +36,7 @@ export default class Document extends NextDocument<MyProps> {
         });
 
       const initialProps = await NextDocument.getInitialProps(context);
-      
+
       return {
         ...initialProps,
         styles: (

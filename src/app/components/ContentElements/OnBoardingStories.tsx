@@ -27,7 +27,7 @@ export const OnBoardingStories = () => {
         key={onBoardingCard.id}
         variant="onboarding"
         imageSrc={onBoardingCard.bannerImage?.fullpath as string}
-        imageAlt={onBoardingCard.bannerImage?.altText as string}
+        imageAlt={onBoardingCard.bannerImage?.altText}
         label={onBoardingCard.label}
         heading={onBoardingCard.title}
       >

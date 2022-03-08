@@ -7,7 +7,10 @@ import { Typography } from 'components/Typography';
 import { rotateDown } from 'styles/animations/rotate';
 import { slideInDown } from 'styles/animations/slide-in';
 
-import AccordionStyled, { AccordionBodyStyled, AccordionHeaderStyled } from './Accordion.styles';
+import AccordionStyled, {
+  AccordionBodyStyled,
+  AccordionHeaderStyled,
+} from './Accordion.styles';
 
 export interface AccordionProps {
   heading: string | React.ReactNode;
@@ -20,7 +23,7 @@ export interface AccordionProps {
 
 const Accordion: React.FC<AccordionProps> = (props) => {
   props = {
-      isCollapsable: true,
+    isCollapsable: true,
     ...props,
   };
 
@@ -29,7 +32,7 @@ const Accordion: React.FC<AccordionProps> = (props) => {
   const { onRender, onCollapse } = props;
 
   const headingRef = useRef<HTMLHeadingElement>(null);
-  
+
   const onHeadingClick = () => {
     if (props.isCollapsable) setBodyVisible(!bodyVisible);
   };
@@ -52,9 +55,7 @@ const Accordion: React.FC<AccordionProps> = (props) => {
             props.isCollapsable ? (
               <motion.div
                 animate={
-                  bodyVisible
-                    ? rotateDown.states.down
-                    : rotateDown.states.none
+                  bodyVisible ? rotateDown.states.down : rotateDown.states.none
                 }
                 variants={rotateDown.variants}
                 transition={rotateDown.transition}
@@ -68,14 +69,13 @@ const Accordion: React.FC<AccordionProps> = (props) => {
         >
           <>
             {props.icon}
-            {props.heading as string
-              ? (
-                <Typography type="body" level='5'>
-                  {props.heading}
-                </Typography>
-              )
-              : props.heading
-            }
+            {props.heading ? (
+              <Typography type="body" level="5">
+                {props.heading}
+              </Typography>
+            ) : (
+              props.heading
+            )}
           </>
         </Button>
       </AccordionHeaderStyled>
@@ -92,9 +92,7 @@ const Accordion: React.FC<AccordionProps> = (props) => {
             transition={slideInDown.transition}
             key="body"
           >
-            <AccordionBodyStyled>
-              {props.body}
-            </AccordionBodyStyled>
+            <AccordionBodyStyled>{props.body}</AccordionBodyStyled>
           </motion.div>
         )}
       </AnimatePresence>

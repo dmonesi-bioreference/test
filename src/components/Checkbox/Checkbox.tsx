@@ -42,8 +42,8 @@ const Checkbox: React.FC<CheckboxProps> = (props) => {
     props.onBlur;
   };
 
-  const handleClick = (e: React.MouseEvent) => {
-    const input = e.currentTarget as HTMLInputElement;
+  const handleClick = (e: React.MouseEvent<HTMLInputElement>) => {
+    const input = e.currentTarget;
     setIsChecked(input.checked);
     props.onClick;
   };

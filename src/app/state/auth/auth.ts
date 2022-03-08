@@ -33,11 +33,11 @@ export const actions = {
     const data = 'data' in event ? (event?.data as {}) : {};
 
     if ('description' in data) {
-      context.auth.errors = [data['description'] as string];
+      context.auth.errors = [data['description']];
     }
 
     if ('error_description' in data) {
-      context.auth.errors = [data['error_description'] as string];
+      context.auth.errors = [data['error_description']];
     }
   }),
   collectRegistrationErrors: assign((context: AppContext, event: AppEvents) => {
@@ -52,7 +52,7 @@ export const actions = {
     }
 
     if (isObject(data) && Reflect.has(data, 'description')) {
-      context.auth.errors = [Reflect.get(data, 'description') as string];
+      context.auth.errors = [Reflect.get(data, 'description')];
     }
   }),
   collectSession: assign((context: AppContext, event: AppEvents) => {

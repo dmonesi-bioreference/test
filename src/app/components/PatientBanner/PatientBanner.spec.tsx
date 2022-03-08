@@ -8,7 +8,7 @@ describe('PatientBanner component', () => {
     const component = await TestUtils.renderWithShell(<PatientBanner />, {
       requests: {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-        identityProfile: async () => ({ patient_name: name } as any),
+        identityProfile: async () => ({ patient_name: name } as FamilyProfile),
       },
     });
 
