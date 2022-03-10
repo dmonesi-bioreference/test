@@ -12,9 +12,13 @@ export interface CardProps {
   footer?: React.ReactNode;
   /** Maximum header height in px without value */
   maxHeaderHeight?: number;
+  /** Removes any background color. */
   transparent?: boolean;
+  /** Set to true to display Loading component. */
   isLoading?: boolean;
+  /** The contents of the Card. */
   children?: React.ReactNode;
+  /** The link to follow when the Card is clicked. */
   href?: string;
 }
 

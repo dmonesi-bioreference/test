@@ -9,16 +9,24 @@ import TimelineItemStyled from './TimelineItem.styles';
 import TimelineItemBody from './TimelineItemBody';
 
 export interface TimelineItemProps {
+  /** Use to present a heading. */
   heading?: string;
+  /** Use to present a body. */
   body?: string;
+  /** Use to display a link below the body. */
   link?: {
     label: string;
     onClick: () => void;
   };
+  /** Use to display icon against the heading. */
   icon?: JSX.Element;
+  /** Use to calculate the amount of fill in the circle around the icon. */
   percent?: number;
+  /** Set to true to allow the timeline item to be collapsable. */
   isCollapseEnabled?: boolean;
+  /** Set to true to set the heading size to 14px, else 16px. */
   isSmall?: boolean;
+  /** Set to true to remove the connecting line below the timeline item. */
   isTail?: boolean;
 }
 
@@ -34,7 +42,9 @@ const TimelineItem: React.FC<TimelineItemProps> = (props) => {
 
   const [headingHeight, setHeadingHeight] = useState<number>(0);
   const [bodyHeight, setBodyHeight] = useState<number>(0);
-  const [bodyVisible, setBodyVisible] = useState<boolean>(!props.isCollapseEnabled);
+  const [bodyVisible, setBodyVisible] = useState<boolean>(
+    !props.isCollapseEnabled
+  );
 
   /* Used to set the custom svg height directly from html ref */
   const onHeightChange = (h) => {
@@ -126,8 +136,10 @@ const TimelineItem: React.FC<TimelineItemProps> = (props) => {
             onHeightChange={onHeightChange}
           />
         }
-        onRender={(e) => setHeadingHeight(e.current ? e.current.offsetHeight : 0)}
-        onCollapse={(e) => setBodyVisible(e)}
+        onRender={(e) =>
+          setHeadingHeight(e.current ? e.current.offsetHeight : 0)
+        }
+        onBodyVisibilityChange={(e) => setBodyVisible(e)}
       />
     </TimelineItemStyled>
   );

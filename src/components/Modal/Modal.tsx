@@ -9,10 +9,15 @@ import { Heading } from 'components/Typography';
 import ModalStyled from './Modal.styles';
 
 export interface ModalProps {
+  /** Set to true to open the modal. */
   opened: boolean;
+  /** Specify the onClose event for the modal. */
   onClose: () => void;
+  /** Set to true to hide the button which closes the modal. */
   hideCloseButton?: boolean;
+  /** Displays a header within modal. */
   header?: string;
+  /** Set to true to render the modal full screen. */
   fullscreen?: boolean;
 }
 

@@ -1,7 +1,8 @@
 import LoadingStyled from './Loading.styles';
 
 export interface LoadingProps {
-  variant?: 'dna' | 'shimmer';
+  /** Options for loading states. */
+  variant: 'dna' | 'shimmer';
 }
 
 const Loading: React.FC<LoadingProps> = (props) => {

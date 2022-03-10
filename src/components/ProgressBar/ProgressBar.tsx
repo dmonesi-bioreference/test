@@ -3,7 +3,9 @@ import Step, { StepPosition } from 'components/Step/Step';
 import ProgressBarStyled from './ProgressBar.styles';
 
 export interface ProgressBarProps {
+  /** The total number of steps in the progress bar. */
   stepsAmount: number;
+  /** The number of complete steps in the progress bar. */
   currentStep: number;
 }
 

@@ -7,7 +7,9 @@ import { Typography } from 'components/Typography';
 import ReturnLinkStyled from './ReturnLink.styles';
 
 export interface ReturnLinkProps {
+  /** Sets the label of the return link, displays icon if left blank. */
   label?: string;
+  /** The link to follow when the return link is clicked */
   href?: string;
 }
 

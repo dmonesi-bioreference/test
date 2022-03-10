@@ -9,7 +9,9 @@ import { InformationBanner } from 'components/InformationBanner';
 import ToolTipStyled from './ToolTip.styles';
 
 export interface ToolTipProps {
+  /** Title of tooltip. */
   title: string;
+  /** Displays tooltip above or below the tooltip icon, defaults to 'top'. */
   placement?: 'bottom' | 'top';
 }
 

@@ -1,5 +1,7 @@
 import { Story } from '@storybook/react/types-6-0';
 
+import { Shell } from 'app/components/Shell';
+
 import Header from './Header';
 
 export default {
@@ -11,9 +13,11 @@ export default {
 };
 
 const Template: Story = (args) => (
-  <div style={{ width: 375 }}>
-    <Header {...args} />
-  </div>
+  <Shell>
+    <div style={{ width: 375 }}>
+      <Header {...args} />
+    </div>
+  </Shell>
 );
 
 export const Primary = Template.bind({});

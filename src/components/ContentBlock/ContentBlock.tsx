@@ -5,8 +5,11 @@ import { Typography } from '../Typography';
 import ContentBlockStyled from './ContentBlock.styles';
 
 export interface ContentBlockProps {
+  /** Title text of content block. */
   title?: string;
+  /** Sets heading level: small = 3 & large = 5, and margin bottom: small = 4px & large = 12px */
   scale?: 'large' | 'small';
+  /** Adds a custom css class. */
   className?: string;
 }
 

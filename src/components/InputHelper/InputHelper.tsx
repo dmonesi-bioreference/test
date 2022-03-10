@@ -3,7 +3,9 @@ import { Typography } from 'components/Typography';
 import InputHelperStyled from './InputHelper.styles';
 
 export interface InputHelperProps {
+  /** Information about an input field. */
   helperText: string;
+  /** Allows for a ToolTip component to be displayed alongside the input field. */
   toolTip?: React.ReactNode;
 }
 

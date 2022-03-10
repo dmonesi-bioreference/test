@@ -1,7 +1,9 @@
 import ProcessBarStyled from './ProcessBar.styles';
 
 export interface ProcessBarProps {
+  /** The total number of steps in the process bar. */
   stepsAmount: number;
+  /** The number of complete steps in the process bar. */
   currentStep: number;
 }
 

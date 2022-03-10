@@ -10,7 +10,9 @@ import { useOnClickOutside } from 'components/hooks';
 import HeaderStyled from './Header.styles';
 
 export interface HeaderProps {
+  /** Set to true to render the header without the Menu button. */
   withoutMenu?: boolean;
+  /** Options to align the GeneDx logo within the Header. */
   alignment?: 'center' | 'default';
 }
 

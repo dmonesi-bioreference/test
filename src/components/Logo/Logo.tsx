@@ -1,8 +1,11 @@
 import { colors } from 'styles';
 
 export interface LogoProps {
+  /** Sets the width of the logo in px. */
   width?: number;
+  /** Sets the height of the logo in px. */
   height?: number;
+  /** Options for the color of the Logo. */
   variant?: 'default' | 'white';
 }
 

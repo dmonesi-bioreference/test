@@ -21,5 +21,4 @@ export const Primary = Template.bind({});
 Primary.args = {
   prompt: 'Help other families',
   heading: 'Contribute community resources',
-  themeName: 'community',
 };

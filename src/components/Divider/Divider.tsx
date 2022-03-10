@@ -1,7 +1,9 @@
 import DividerStyled from './Divider.styles';
 
 export interface DividerProps {
+  /** The color of the divider, defaults to 'neutral'. */
   color?: 'neutral' | 'lime';
+  /** The thickness of the divider, defaults to 'thin'. */
   thickness?: 'thick' | 'thin';
 }
 

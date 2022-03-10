@@ -6,9 +6,13 @@ import { Typography } from 'components/Typography';
 import FaqCardStyled from './FaqCard.styles';
 
 export interface FaqCardProps {
+  /** The title of the FAQ set. */
   title: string;
+  /** The description of the FAQ set. */
   label: React.ReactNode;
+  /** An array of strings that correspond to a particular FAQ, the FAQ that is selected gets added as a query param to the FAQ page. */
   questions: Array<string>;
+  /** The link to the FAQ page. */
   href: string;
 }
 

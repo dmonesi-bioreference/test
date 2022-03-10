@@ -6,8 +6,6 @@ import { Typography } from 'components/Typography';
 import PromptCardStyled from './PromptCard.styles';
 
 export interface PromptCardProps {
-  /** Theme name */
-  themeName?: 'community' | 'health-profile' | 'resources' | string;
   /** The link to follow when the header is clicked */
   href?: string;
   /** Prompt text of the card */

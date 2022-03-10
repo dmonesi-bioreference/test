@@ -5,7 +5,9 @@ import { Typography } from 'components/Typography';
 import BulletItemStyled from './BulletItem.styles';
 
 export interface BulletItemProps {
+  /** Sets an icon for the bullet point. */
   icon: ReactNode;
+  /** The title of the bullet item. */
   title: string;
 }
 

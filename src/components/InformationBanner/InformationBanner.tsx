@@ -3,7 +3,9 @@ import { Typography } from 'components/Typography';
 import InformationBannerStyled from './InformationBanner.styles';
 
 export interface InformationBannerProps {
+  /** The title of the information banner. */
   title?: string;
+  /** Options to change the styling of the information banner. */
   type?: 'default' | 'tooltip' | 'error';
 }
 

@@ -11,6 +11,7 @@ import { Grid } from '../Grid';
 import PageHeaderStyled from './PageHeader.styles';
 
 export interface PageHeaderProps {
+  /** Use to optionally present a description. */
   description?: string;
   theme?: Themes;
   /** Use to display a label above the title */

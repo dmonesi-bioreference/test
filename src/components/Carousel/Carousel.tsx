@@ -10,9 +10,13 @@ import { Typography } from '../Typography';
 import CarouselStyled from './Carousel.styles';
 
 export interface CarouselProps {
+  /** Use to change the slides automatically, defaults to false. */
   autoPlay?: boolean;
+  /** Enable indicators (small circles below the slides) to select a slide, defaults to true. */
   showIndicator?: boolean;
+  /** Use to display a small section of the previous and next slide when on the current slide, defaults to false. */
   enablePeak?: boolean;
+  /** Use to present text against the previous and next controls. */
   externalControl?: {
     prevText?: string;
     nextText?: string;

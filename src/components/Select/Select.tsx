@@ -6,6 +6,7 @@ import { InputBaseProps } from 'components/FormControl';
 import SelectStyled from './Select.styles';
 
 export interface SelectProps extends InputBaseProps {
+  /** Displays an InputHelper alongside the Select element. */
   inputHelper?: React.ReactNode;
 }
 

@@ -8,10 +8,17 @@ import { Typography } from 'components/Typography';
 import ListCardStyled from './ListCard.styles';
 
 export interface ListCardProps {
+  /** Displays a Heroicon alongside the title. */
   iconName: HeroiconName;
+  /** The title of the ListCard. */
   title: string;
+  /** Set to true to display an edit button within the ListCard header. */
   editable?: boolean;
 }
+
+const defaultProps: Partial<ListCardProps> = {
+  editable: false,
+};
 
 const ListCard: React.FC<ListCardProps> = (props) => {
   return (
@@ -38,5 +45,7 @@ const ListCard: React.FC<ListCardProps> = (props) => {
     </ListCardStyled>
   );
 };
+
+ListCard.defaultProps = defaultProps;
 
 export default ListCard;

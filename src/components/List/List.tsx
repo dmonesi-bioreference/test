@@ -3,7 +3,10 @@ import { Children } from 'react';
 import ListStyled from './List.styles';
 
 export interface ListProps {
+  /** Options for how the list is displayed. */
   kind: 'bulleted' | 'divided' | 'plain';
+  /** Items to be listed. */
+  children?: React.ReactNode;
 }
 
 const List: React.FC<ListProps> = (props) => {

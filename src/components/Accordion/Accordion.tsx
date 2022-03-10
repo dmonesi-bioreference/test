@@ -13,12 +13,18 @@ import AccordionStyled, {
 } from './Accordion.styles';
 
 export interface AccordionProps {
+  /** The heading. */
   heading: string | React.ReactNode;
+  /** Text which appears in collapsable dropdown. */
   body: string | React.ReactNode;
+  /** Optional icon displayed in heading. */
   icon?: React.ReactNode;
+  /** Set to true to add a collapsable dropdown. */
   isCollapsable?: boolean;
+  /** Specify the onRender event for when the accordion mounts and is rendered. */
   onRender?: (headingRef: RefObject<HTMLHeadingElement>) => void;
-  onCollapse?: (bodyVisible: boolean) => void;
+  /** Specify the onBodyVisibilityChange event for when the dropdown is opened or closed. */
+  onBodyVisibilityChange?: (bodyVisible: boolean) => void;
 }
 
 const Accordion: React.FC<AccordionProps> = (props) => {
@@ -29,7 +35,7 @@ const Accordion: React.FC<AccordionProps> = (props) => {
 
   const [bodyVisible, setBodyVisible] = useState<boolean>(!props.isCollapsable);
 
-  const { onRender, onCollapse } = props;
+  const { onRender, onBodyVisibilityChange } = props;
 
   const headingRef = useRef<HTMLHeadingElement>(null);
 
@@ -38,8 +44,8 @@ const Accordion: React.FC<AccordionProps> = (props) => {
   };
 
   useEffect(() => {
-    if (onCollapse) onCollapse(bodyVisible);
-  }, [onCollapse, bodyVisible]);
+    if (onBodyVisibilityChange) onBodyVisibilityChange(bodyVisible);
+  }, [onBodyVisibilityChange, bodyVisible]);
 
   useEffect(() => {
     if (onRender) onRender(headingRef);

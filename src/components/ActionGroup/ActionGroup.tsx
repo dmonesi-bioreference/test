@@ -3,7 +3,9 @@ import clsx from 'clsx';
 import ActionGroupStyled from './ActionGroup.styles';
 
 interface ActionGroupProps {
+  /** Set to true to allow for narrow styling. */
   narrow?: boolean;
+  /** Set to true to add top padding. */
   topPadding?: boolean;
 }
 

@@ -14,8 +14,11 @@ export type TypographyColor =
   | 'error';
 
 type CommonTypeProps = {
+  /** Use to change the color of the text. */
   color?: TypographyColor;
+  /** Use to align the text, either 'left', 'center' or 'right', defaults to 'left'. */
   alignment?: TypographyAlignment;
+  /** Use to set the component type, defaults to 'span'. */
   as?: string | React.ComponentType<any>;
 };
 
@@ -28,13 +31,16 @@ type TypographyProps =
         | 'validation'
         | 'menu-item'
         | 'fine-print';
+      /** Determines the heading level, ranges from 1 (H1) to 8 (H8). */
       level?: TypographyLevel;
     } & CommonTypeProps)
   | ({
+      /** Use for labels. */
       type: 'label';
       labelType: 'display' | 'title' | 'input' | 'data';
     } & CommonTypeProps)
   | ({
+      /** Use for headings. */
       type: 'heading';
       level: TypographyLevel;
     } & CommonTypeProps);

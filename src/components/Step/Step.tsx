@@ -4,8 +4,11 @@ import StepStyled from './Step.styles';
 
 export type StepPosition = 'past' | 'current' | 'next' | 'future';
 
+/** Used as a step within the ProgressBar. */
 export interface StepProps {
+  /** A visual representation of the Step number. */
   number: number;
+  /** Determines the styling depending on whether it's a 'past', 'current', 'next' or 'future' step. */
   position: StepPosition;
 }
 

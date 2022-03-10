@@ -29,7 +29,11 @@ export default {
 
 const Template: Story = ({ theme = 'defaultTheme', ...args }) => (
   <Theme theme={theme}>
-    <ListCard title={args.title} iconName={args.iconName}>
+    <ListCard
+      title={args.title}
+      iconName={args.iconName}
+      editable={args.editable}
+    >
       <Typography type="body" level="5">
         Item One
       </Typography>
@@ -53,4 +57,5 @@ Primary.args = {
   title: 'My List Card',
   iconName: 'information-circle',
   theme: 'defaultTheme',
+  editable: true,
 };

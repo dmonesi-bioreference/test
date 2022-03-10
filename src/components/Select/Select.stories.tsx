@@ -4,7 +4,7 @@ import Select, { SelectProps } from './Select';
 
 export default {
   component: Select,
-  title: 'Components/Form Elements/Select',
+  title: 'Components/Select',
   parameters: {
     componentSubtitle:
       'Selects allow the user to choose an option from a dropdown menu.',
