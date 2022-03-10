@@ -10,6 +10,15 @@ We use yarn for prototype work.
 
 > `yarn`
 
+## Get more info
+
+Gain a deeper understanding of how things are set up by checking out the following resources.
+
+1. Our Storybook instance has documentation and demonstrations of many of our components and systems, get started there by booting up the storybook instance with this command: `yarn storybook`.
+2. We have a `docs/` folder and some concepts and ADRs are outlined at length in there.
+3. In some spots of the code, notably `src/app/shell`, we've added JSDOC notation to explain ourselves.
+4. In many folders that might need elaboration or explanation, we have a README with a description of what's going on.
+
 ## Testing
 
 This project uses two kinds of test environments: a unit/integration test environment, where we make sure that components, services, and other things in `src/` are sound, and an end to end test environment, which gives us full testing of our entire app.

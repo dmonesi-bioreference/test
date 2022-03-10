@@ -1,8 +1,6 @@
 import Cors from 'cors';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-// import { server_config } from 'server_config';
-
 type Middleware = (
   request: NextApiRequest,
   response: NextApiResponse,
