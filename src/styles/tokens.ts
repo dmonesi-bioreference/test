@@ -232,6 +232,7 @@ export const tokens = {
   shadowXLarge: `0 4px 16px rgba(0, 0, 0, 0.1)`,
   shadowXxLarge: `0 10px 20px -10px rgba(27, 33, 50, 0.08)`,
   shadowXxxLarge: `0 50px 100px -20px rgba(27, 33, 50, 0.08), 0 30px 60px -30px rgba(0,0,0,0.3)`,
+  shadowCard: `0px 4px 20px rgba(0, 0, 0, 0.1), 0px 2px 0px -10px rgba(27, 33, 50, 0.08)`,
 
   /* transition */
   transitionXSlow: '1000ms',

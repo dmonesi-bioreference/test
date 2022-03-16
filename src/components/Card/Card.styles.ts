@@ -8,7 +8,7 @@ const CardStyled = styled.div<CardProps>`
   ${base};
   background-color: ${colors.white};
   border-radius: ${tokens.borderRadius};
-  box-shadow: ${tokens.shadowXxLarge};
+  box-shadow: ${tokens.shadowCard};
   overflow: hidden;
   width: 100%;
 
