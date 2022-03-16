@@ -13,7 +13,7 @@ const StyleLabelStyled = styled.div`
   font-family: ${tokens.fontFamilyMonospace};
 
   .style-label__underline {
-    border-bottom: solid ${colors.grey[300]} ${tokens.borderWidthThin};
+    border-bottom: dashed ${colors.yellow[400]} ${tokens.borderWidthThin};
     width: 100%;
   }
 `;

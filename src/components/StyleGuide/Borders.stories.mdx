@@ -1,0 +1,25 @@
+import {
+  Meta,
+} from '@storybook/addon-docs';
+import { Border } from './Border';
+import { tokens } from 'styles';
+
+<Meta title="StyleGuide/Borders" />
+
+# Borders
+
+### Border radius
+
+<Border title="borderRadiusSmall" radius={tokens.borderRadiusSmall} />
+<Border title="borderRadiusMedium" radius={tokens.borderRadiusMedium} />
+<Border title="borderRadius" radius={tokens.borderRadius} />
+<Border title="borderRadiusLarge" radius={tokens.borderRadiusLarge} />
+<Border title="borderRadiusCircle" radius={tokens.borderRadiusCircle} />
+<Border title="borderRadiusPill" radius={tokens.borderRadiusPill} shapeHeight="40px" shapeWidth="160px"/>
+
+### Border width
+
+<Border title="borderWidthThin" borderWidth={tokens.borderWidthThin} />
+<Border title="borderWidthMedium" borderWidth={tokens.borderWidthMedium} />
+<Border title="borderWidthThick" borderWidth={tokens.borderWidthThick} />
+<Border title="borderWidthExtraThick" borderWidth={tokens.borderWidthExtraThick} />
