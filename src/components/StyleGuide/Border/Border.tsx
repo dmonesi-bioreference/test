@@ -14,7 +14,7 @@ const Border: React.FC<BorderProps> = (props) => {
   return (
     <BorderStyled {...props}>
       <div className="border--shape" />
-      <StyleGuideItem label={props.title}></StyleGuideItem>
+      <StyleGuideItem label={props.title} />
     </BorderStyled>
   );
 };
