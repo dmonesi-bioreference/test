@@ -6,7 +6,7 @@ import FaqCard, { FaqCardProps } from './FaqCard';
 
 export default {
   component: FaqCard,
-  title: 'Components/FaqCard',
+  title: 'App/FaqCard',
   parameters: {
     componentSubtitle:
       'Lists frequently asked questions, with links to answers',
@@ -15,7 +15,7 @@ export default {
 
 const Template: Story<FaqCardProps> = (args) => (
   <Shell>
-    <FaqCard {...args}></FaqCard>
+    <FaqCard {...args} />
   </Shell>
 );
 

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 
+import { FaqCard } from 'app/components/FaqCard';
 import {
   useContent,
   useContentByPriority,
@@ -7,7 +8,6 @@ import {
 } from 'app/hooks';
 import { Card } from 'components/Card';
 import { Carousel } from 'components/Carousel';
-import { FaqCard } from 'components/FaqCard';
 import { Typography } from 'components/Typography';
 
 import { useAppEvents, useAppTranslation } from '../Shell';

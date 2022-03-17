@@ -565,6 +565,9 @@ export const resources = {
             openPdf: 'Open PDF',
           },
         },
+        faqCard: {
+          viewAll: 'View all FAQs',
+        },
         footer: {
           copyright: `GeneDx, Inc © ${new Date().getFullYear()} | All rights reserved`,
           links: {

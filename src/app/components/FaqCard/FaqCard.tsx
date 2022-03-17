@@ -1,3 +1,4 @@
+import { useAppTranslation } from 'app/components/Shell/hooks';
 import { Button } from 'components/Button';
 import { Icon } from 'components/Icon';
 import { List } from 'components/List';
@@ -17,6 +18,7 @@ export interface FaqCardProps {
 }
 
 const FaqCard: React.FC<FaqCardProps> = (props) => {
+  const t = useAppTranslation();
   const questions = props.questions.map((item, index) => {
     return (
       <Button
@@ -49,7 +51,7 @@ const FaqCard: React.FC<FaqCardProps> = (props) => {
       </div>
       <div className="faq-card__view-all">
         <Button href={props.href} kind="link-small">
-          View all FAQs
+          {t('components.faqCard.viewAll')}
         </Button>
       </div>
     </FaqCardStyled>

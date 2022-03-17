@@ -13,7 +13,6 @@ export * from './CircularProgress';
 export * from './ContentBlock';
 export * from './Data';
 export * from './Divider';
-export * from './FaqCard';
 export * from './Fieldset';
 export * from './Flag';
 export * from './Header';

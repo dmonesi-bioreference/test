@@ -5,6 +5,7 @@ export * from './CaregiverRelationshipElements';
 export * from './ContentElements';
 export * from './ConsentElements';
 export * from './DisplayField';
+export * from './FaqCard';
 export * from './Footer';
 export * from './IdentityElements';
 export * from './LoginElements';
