@@ -9,16 +9,14 @@ const PageHeaderStyled = styled.div`
   .page-header__title {
     display: grid;
     gap: ${tokens.spacingXSmall};
+  }
 
-    .label {
-      color: ${({ theme }) =>
-        theme.colors.labelText || tokens.colorPrimaryText};
-    }
+  .label {
+    color: ${tokens.colorPrimaryText};
+  }
 
-    h1 {
-      color: ${({ theme }) =>
-        theme.colors.headerText || tokens.colorPrimaryText};
-    }
+  h1 {
+    color: ${tokens.colorPrimaryText};
   }
 `;
 

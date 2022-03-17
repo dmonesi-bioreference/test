@@ -45,7 +45,6 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
           description={props.description}
           label={props.label}
           hasReturnLink={props.hasReturnLink}
-          theme={theme}
           subTitle={props.subTitle}
         >
           {props.title}

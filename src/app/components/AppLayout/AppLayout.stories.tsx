@@ -37,7 +37,7 @@ const Template: Story = (args) => (
         <Typography type="heading" level="2">
           Configurable
         </Typography>
-        <AppLayout {...args}>
+        <AppLayout title="Example title" label="Example label" {...args}>
           <PageSection>
             <ExampleSection />
             <ExampleSection />

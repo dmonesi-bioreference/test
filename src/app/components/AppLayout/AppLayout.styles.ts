@@ -27,6 +27,14 @@ const AppLayoutStyled = styled.div`
       background-color: ${({ theme }) => theme.colors.foreground};
     }
   }
+
+  .label {
+    color: ${({ theme }) => theme.colors.labelText || tokens.colorPrimaryText};
+  }
+
+  .level1 {
+    color: ${({ theme }) => theme.colors.headerText || tokens.colorPrimaryText};
+  }
 `;
 
 export default AppLayoutStyled;

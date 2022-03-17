@@ -1,7 +1,5 @@
 import { Story } from '@storybook/react/types-6-0';
 
-import { Shell } from 'app';
-
 import PageHeader, { PageHeaderProps } from './PageHeader';
 
 export default {
@@ -14,9 +12,7 @@ export default {
 };
 
 const Template: Story<PageHeaderProps> = (args) => (
-  <Shell>
-    <PageHeader {...args}>Page Title</PageHeader>
-  </Shell>
+  <PageHeader {...args}>Page Title</PageHeader>
 );
 
 export const Primary = Template.bind({});
@@ -25,5 +21,4 @@ Primary.args = {
   label: 'Optional label',
   description: 'And an optional description.',
   hasReturnLink: true,
-  theme: 'resourcesTheme',
 };
